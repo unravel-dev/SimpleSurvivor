@@ -3,11 +3,11 @@ using System.Runtime.CompilerServices;
 using Unravel.Core;
 
 /// <summary>
-/// WeaponComponent that automatically targets and shoots at enemies within range.
+/// Weapon that automatically targets and shoots at enemies within range.
 /// Handles automatic firing, enemy detection, and projectile spawning.
 /// </summary>
 [ScriptSourceFile]
-public class WeaponComponent : ScriptComponent
+public class Weapon : ScriptComponent
 {
     //[Header("Weapon Settings")]
     [Tooltip("Rate of fire in shots per second")]
@@ -26,14 +26,11 @@ public class WeaponComponent : ScriptComponent
     public float projectileForce = 25.0f;
     [Tooltip("Projectile lifetime in seconds before auto-destruction")]
     public float projectileLifetime = 5.0f;
-    [Tooltip("Spread angle for projectile accuracy (0 = perfect accuracy)")]
-    public float spread = 0.1f;
+    [Tooltip("Spread angle in degrees for projectile accuracy (0 = perfect accuracy)")]
+    public float spread = 5.0f;
     [Tooltip("Number of projectiles to fire per shot")]
     public int projectileCount = 1;
     
-    //[Header("Targeting Settings")]
-    [Tooltip("Layer mask for enemy detection (which layers contain enemies)")]
-    public bool autoDetectEnemies = true;
     [Tooltip("Require line of sight to target (raycast check)")]
     public bool requireLineOfSight = false;
     
@@ -60,16 +57,14 @@ public class WeaponComponent : ScriptComponent
         
         if (transformComponent == null)
         {
-            Log.Error($"WeaponComponent on {owner.name}: TransformComponent not found!");
+            Log.Error($"Weapon on {owner.name}: TransformComponent not found!");
         }
         
         // Validate projectile
         if (projectile == null)
         {
-            Log.Warning($"WeaponComponent on {owner.name}: No projectile prefab assigned!");
+            Log.Warning($"Weapon on {owner.name}: No projectile prefab assigned!");
         }
-        
-        Log.Info($"WeaponComponent initialized on {owner.name}");
     }
     
     /// <summary>
@@ -80,7 +75,7 @@ public class WeaponComponent : ScriptComponent
         // Validate components
         if (transformComponent == null)
         {
-            Log.Error($"WeaponComponent on {owner.name}: Missing required components. Disabling script.");
+            Log.Error($"Weapon on {owner.name}: Missing required components. Disabling script.");
             return;
         }
         
@@ -94,19 +89,18 @@ public class WeaponComponent : ScriptComponent
                 projectileContainer = containerEntity;
                 if (debugWeapon)
                 {
-                    Log.Info($"WeaponComponent: Found existing ProjectileContainer");
+                    Log.Info($"Weapon: Found existing ProjectileContainer");
                 }
             }
             else
             {
                 if (debugWeapon)
                 {
-                    Log.Info($"WeaponComponent: No ProjectileContainer found, projectiles will spawn without parent");
+                    Log.Info($"Weapon: No ProjectileContainer found, projectiles will spawn without parent");
                 }
             }
         }
         
-        Log.Info($"WeaponComponent started on {owner.name}");
     }
     
     /// <summary>
@@ -141,7 +135,7 @@ public class WeaponComponent : ScriptComponent
                 
                 if (debugWeapon)
                 {
-                    Log.Info($"WeaponComponent: Fired at {target.name} at distance {Vector3.Distance(transformComponent.position, target.transform.position):F2}");
+                    Log.Info($"Weapon: Fired at {target.name} at distance {Vector3.Distance(transformComponent.position, target.transform.position):F2}");
                 }
             }
         }
@@ -190,9 +184,6 @@ public class WeaponComponent : ScriptComponent
             // Skip self
             if (entity == owner) continue;
             
-            // Check if it's an enemy (simple name-based check if auto-detect is enabled)
-            if (autoDetectEnemies && !IsEnemyEntity(entity)) continue;
-            
             // Calculate distance
             float distance = Vector3.Distance(weaponPosition, entity.transform.position);
             
@@ -213,22 +204,6 @@ public class WeaponComponent : ScriptComponent
         return closestEnemy;
     }
     
-    /// <summary>
-    /// Check if an entity is considered an enemy.
-    /// </summary>
-    /// <param name="entity">The entity to check.</param>
-    /// <returns>True if the entity is an enemy.</returns>
-    private bool IsEnemyEntity(Entity entity)
-    {
-        // Simple name-based detection
-        if (entity.name.Contains("Enemy")) return true;
-        
-        // Check for Enemy component
-        var enemyComponent = entity.GetComponent<Enemy>();
-        if (enemyComponent != null) return true;
-        
-        return false;
-    }
     
     /// <summary>
     /// Check if there's a clear line of sight to the target.
@@ -282,11 +257,11 @@ public class WeaponComponent : ScriptComponent
     }
     
     /// <summary>
-    /// Shoot projectiles in the specified direction.
+    /// Shoot projectiles with proper angular spread from the source position.
     /// </summary>
     /// <param name="source">The source position for projectiles.</param>
-    /// <param name="shootDir">The shooting direction.</param>
-    /// <param name="spread">The spread angle for accuracy.</param>
+    /// <param name="shootDir">The base shooting direction.</param>
+    /// <param name="spread">The spread angle in degrees (cone angle).</param>
     /// <param name="count">The number of projectiles to spawn.</param>
     private void Shoot(Vector3 source, Vector3 shootDir, float spread, int count)
     {
@@ -300,21 +275,79 @@ public class WeaponComponent : ScriptComponent
                 instance.transform.parent = projectileContainer;
             }
             
-            // Set position with spread
-            instance.transform.position = source + Random.insideUnitSphere * spread + shootDir * 0.5f;
-            instance.transform.forward = shootDir;
+            // Calculate spread direction using angular deviation
+            Vector3 spreadDirection = CalculateSpreadDirection(shootDir, spread);
+            
+            // Set projectile position at source (no position spread, only angular)
+            instance.transform.position = source;
+            
+            // Set projectile orientation to face the spread direction
+            instance.transform.forward = spreadDirection;
 
-            // Apply physics force
+            // Apply physics force in the spread direction
             var iphysics = instance.GetComponent<PhysicsComponent>();
             if (iphysics != null)
             {
-                iphysics.excludeLayers = owner.layers;
-                iphysics.ApplyForce(shootDir * projectileForce, ForceMode.Impulse);
+                iphysics.ApplyForce(spreadDirection * projectileForce, ForceMode.Impulse);
             }
             
-            // Auto-destroy after lifetime
-            Scene.DestroyEntity(instance, projectileLifetime);
+            // Configure projectile component if it exists
+            var projectileComp = instance.AddComponent<Projectile>();
+            if (projectileComp != null)
+            {
+                projectileComp.SetSourceEntity(owner);
+ 
+                if (debugWeapon)
+                {
+                    Log.Info($"Weapon: Configured projectile {instance.name} with source {owner.name} and damage {damage}");
+                }
+            }
+            else
+            {
+                // Fallback: Auto-destroy after lifetime if no Projectile
+                Scene.DestroyEntity(instance, projectileLifetime);
+            }
         }
+    }
+    
+    /// <summary>
+    /// Calculate a spread direction by applying random angular deviation on the horizontal plane (X,Z only).
+    /// </summary>
+    /// <param name="baseDirection">The base shooting direction.</param>
+    /// <param name="spreadAngle">The maximum spread angle in degrees.</param>
+    /// <returns>A direction vector with applied horizontal spread.</returns>
+    private Vector3 CalculateSpreadDirection(Vector3 baseDirection, float spreadAngle)
+    {
+        if (spreadAngle <= 0)
+            return baseDirection;
+            
+        // Convert spread angle from degrees to radians
+        float spreadRadians = spreadAngle * Mathf.Deg2Rad;
+        
+        // Generate random deviation angle within the spread range
+        float randomDeviation = Random.Range(-spreadRadians, spreadRadians);
+        
+        // Project base direction onto XZ plane (remove Y component)
+        Vector3 horizontalDirection = new Vector3(baseDirection.x, 0, baseDirection.z).normalized;
+        
+        // If the base direction is purely vertical, use forward as default
+        if (horizontalDirection.sqrMagnitude < 0.01f)
+        {
+            horizontalDirection = Vector3.forward;
+        }
+        
+        // Calculate the spread direction by rotating around the Y axis
+        float currentAngle = Mathf.Atan2(horizontalDirection.z, horizontalDirection.x);
+        float newAngle = currentAngle + randomDeviation;
+        
+        // Create the new horizontal direction
+        Vector3 spreadDirection = new Vector3(
+            Mathf.Cos(newAngle),
+            baseDirection.y, // Preserve original Y component
+            Mathf.Sin(newAngle)
+        );
+        
+        return spreadDirection.normalized;
     }
     
     /// <summary>
@@ -330,7 +363,7 @@ public class WeaponComponent : ScriptComponent
         {
             if (debugWeapon)
             {
-                Log.Info($"WeaponComponent Debug - Range: {range}, Position: {weaponPosition}");
+                Log.Info($"Weapon Debug - Range: {range}, Position: {weaponPosition}");
             }
         }
     }

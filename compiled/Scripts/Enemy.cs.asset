@@ -31,6 +31,18 @@ public class Enemy : ScriptComponent
     [Tooltip("Maximum distance to chase the player (0 = unlimited)")]
     public float maxChaseDistance = 0.0f;
     
+    //[Header("Experience Drop")]
+    [Tooltip("Experience orb prefab to drop when enemy dies")]
+    public Prefab experienceOrbPrefab;
+    [Tooltip("Base experience value to drop")]
+    public float baseExperienceValue = 10.0f;
+    [Tooltip("Random variance in experience value (±percentage)")]
+    public float experienceVariance = 0.2f;
+    [Tooltip("Number of experience orbs to drop")]
+    public int experienceOrbCount = 1;
+    [Tooltip("Spread radius for dropped orbs")]
+    public float dropSpreadRadius = 2.0f;
+    
     //[Header("Debug")]
     [Tooltip("Enable debug logging for enemy behavior")]
     public bool debugMovement = false;
@@ -38,6 +50,7 @@ public class Enemy : ScriptComponent
     // Component references
     private TransformComponent transformComponent;
     private PhysicsComponent physicsComponent;
+    private Health Health;
     
     // Movement state
     private Vector3 lastPlayerPosition;
@@ -50,6 +63,7 @@ public class Enemy : ScriptComponent
     {
         transformComponent = owner.GetComponent<TransformComponent>();
         physicsComponent = owner.GetComponent<PhysicsComponent>();
+        Health = owner.GetComponent<Health>();
         
         if (transformComponent == null)
         {
@@ -62,7 +76,16 @@ public class Enemy : ScriptComponent
             usePhysicsMovement = false;
         }
         
-        Log.Info($"Enemy initialized on {owner.name}");
+        if (Health == null)
+        {
+            Log.Warning($"Enemy on {owner.name}: Health not found! Enemy will not be able to take damage.");
+        }
+        else
+        {
+            // Subscribe to health events
+            Health.OnDeath += OnEnemyDeath;
+            Health.OnDamageTaken += OnEnemyDamageTaken;
+        }
     }
     
     /// <summary>
@@ -89,7 +112,6 @@ public class Enemy : ScriptComponent
             lastPlayerPosition = target.transform.position;
         }
         
-        Log.Info($"Enemy started on {owner.name}");
     }
     
     /// <summary>
@@ -130,6 +152,13 @@ public class Enemy : ScriptComponent
     /// </summary>
     private void UpdateAI()
     {
+        // Don't update AI if dead
+        if (Health != null && Health.IsDead())
+        {
+            isChasing = false;
+            return;
+        }
+        
         Vector3 playerPosition = target.transform.position;
         Vector3 enemyPosition = transformComponent.position;
         
@@ -307,7 +336,6 @@ public class Enemy : ScriptComponent
         if (playerEntity)
         {
             target = playerEntity;
-            Log.Info($"Enemy {owner.name}: Found player target: {target.name}");
             return;
         }
         
@@ -415,7 +443,7 @@ public class Enemy : ScriptComponent
     /// </summary>
     public void ResumeChasing()
     {
-        if (target)
+        if (target && (Health == null || !Health.IsDead()))
         {
             isChasing = true;
             
@@ -424,5 +452,140 @@ public class Enemy : ScriptComponent
                 Log.Info($"Enemy {owner.name}: Resumed chasing");
             }
         }
+    }
+    
+    /// <summary>
+    /// Called when the enemy takes damage.
+    /// </summary>
+    /// <param name="damageAmount">Amount of damage taken.</param>
+    private void OnEnemyDamageTaken(float damageAmount)
+    {
+        if (debugMovement)
+        {
+            Log.Info($"Enemy {owner.name}: Took {damageAmount} damage - Health: {Health.GetCurrentHealth()}/{Health.GetMaxHealth()}");
+        }
+        
+        // Could add damage reaction behaviors here, like:
+        // - Play damage sound/animation
+        // - Briefly stop moving
+        // - Change color/material
+        // - Increase aggression
+    }
+    
+    /// <summary>
+    /// Called when the enemy dies.
+    /// </summary>
+    private void OnEnemyDeath()
+    {
+        if (debugMovement)
+        {
+            Log.Info($"Enemy {owner.name}: Died");
+        }
+        
+        // Stop all movement
+        isChasing = false;
+        
+        // Stop physics movement
+        if (physicsComponent != null)
+        {
+            Vector3 currentVelocity = physicsComponent.velocity;
+            physicsComponent.velocity = new Vector3(0, currentVelocity.y, 0);
+        }
+        
+        // Drop experience orbs
+        DropExperienceOrbs();
+        
+        // Could add other death behaviors here, like:
+        // - Play death sound/animation
+        // - Spawn other loot/items
+        // - Add score points
+        // - Trigger death effects
+    }
+    
+    /// <summary>
+    /// Drop experience orbs when the enemy dies.
+    /// </summary>
+    private void DropExperienceOrbs()
+    {
+        if (experienceOrbPrefab == null || baseExperienceValue <= 0 || experienceOrbCount <= 0)
+        {
+            if (debugMovement && experienceOrbPrefab == null)
+            {
+                Log.Warning($"Enemy {owner.name}: No experience orb prefab assigned, cannot drop experience");
+            }
+            return;
+        }
+        
+        Vector3 dropPosition = transformComponent.position;
+        
+        for (int i = 0; i < experienceOrbCount; i++)
+        {
+            // Calculate random position within spread radius
+            Vector2 randomCircle = Random.insideUnitCircle * dropSpreadRadius;
+            Vector3 orbPosition = dropPosition + new Vector3(randomCircle.x, 0.5f, randomCircle.y);
+            
+            // Instantiate experience orb
+            var orbEntity = Scene.Instantiate(experienceOrbPrefab);
+            if (orbEntity)
+            {
+                orbEntity.transform.position = orbPosition;
+                
+                // Configure experience value with variance
+                var experienceOrb = orbEntity.GetComponent<ExperienceOrb>();
+                if (experienceOrb != null)
+                {
+                    float variance = Random.Range(-experienceVariance, experienceVariance);
+                    float finalExperienceValue = baseExperienceValue * (1.0f + variance);
+                    experienceOrb.SetExperienceValue(finalExperienceValue);
+                    
+                    if (debugMovement)
+                    {
+                        Log.Info($"Enemy {owner.name}: Dropped experience orb with value {finalExperienceValue:F1}");
+                    }
+                }
+                else
+                {
+                    if (debugMovement)
+                    {
+                        Log.Warning($"Enemy {owner.name}: Experience orb prefab missing ExperienceOrb component");
+                    }
+                }
+            }
+        }
+        
+        if (debugMovement)
+        {
+            Log.Info($"Enemy {owner.name}: Dropped {experienceOrbCount} experience orbs (base value: {baseExperienceValue})");
+        }
+    }
+    
+    /// <summary>
+    /// Get the enemy's health component.
+    /// </summary>
+    /// <returns>Health if available, null otherwise.</returns>
+    public Health GetHealth()
+    {
+        return Health;
+    }
+    
+    /// <summary>
+    /// Check if the enemy is alive.
+    /// </summary>
+    /// <returns>True if alive (not dead).</returns>
+    public bool IsAlive()
+    {
+        return Health == null || !Health.IsDead();
+    }
+    
+    /// <summary>
+    /// Get the enemy's current health percentage.
+    /// </summary>
+    /// <returns>Health percentage (0.0 to 1.0), or 1.0 if no health component.</returns>
+    public float GetHealthPercentage()
+    {
+        if (Health == null)
+            return 1.0f;
+            
+        return Health.GetHealthPercentage();
     }
 }

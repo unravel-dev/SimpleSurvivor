@@ -3,12 +3,12 @@ using System.Runtime.CompilerServices;
 using Unravel.Core;
 
 /// <summary>
-/// PlayerController component that implements basic rigidbody movement for a top-down game.
+/// Player component that implements basic rigidbody movement for a top-down game.
 /// Handles player input, movement, and physics interactions.
 /// Requires a PhysicsComponent with a Capsule collider attached to the same entity.
 /// </summary>
 [ScriptSourceFile]
-public class PlayerController : ScriptComponent
+public class Player : ScriptComponent
 {
     //[Header("Movement Settings")]
     [Tooltip("Maximum movement speed in units per second")]
@@ -25,6 +25,8 @@ public class PlayerController : ScriptComponent
     // Component references
     private PhysicsComponent physicsComponent;
     private TransformComponent transformComponent;
+    private Health Health;
+    private Experience Experience;
     
     // Movement state
     private Vector3 inputDirection;
@@ -39,18 +41,42 @@ public class PlayerController : ScriptComponent
         // Get required components
         physicsComponent = owner.GetComponent<PhysicsComponent>();
         transformComponent = owner.GetComponent<TransformComponent>();
+        Health = owner.GetComponent<Health>();
+        Experience = owner.GetComponent<Experience>();
         
         if (physicsComponent == null)
         {
-            Log.Error($"PlayerController on {owner.name}: PhysicsComponent not found! Please attach a PhysicsComponent with a Capsule collider.");
+            Log.Error($"Player on {owner.name}: PhysicsComponent not found! Please attach a PhysicsComponent with a Capsule collider.");
         }
         
         if (transformComponent == null)
         {
-            Log.Error($"PlayerController on {owner.name}: TransformComponent not found!");
+            Log.Error($"Player on {owner.name}: TransformComponent not found!");
         }
         
-        Log.Info($"PlayerController initialized on {owner.name}");
+        if (Health == null)
+        {
+            Log.Warning($"Player on {owner.name}: Health not found! Player will not be able to take damage or heal.");
+        }
+        else
+        {
+            // Subscribe to health events
+            Health.OnDeath += OnPlayerDeath;
+            Health.OnDamageTaken += OnPlayerDamageTaken;
+            Health.OnHealed += OnPlayerHealed;
+        }
+        
+        if (Experience == null)
+        {
+            Log.Warning($"Player on {owner.name}: Experience not found! Player will not be able to collect experience.");
+        }
+        else
+        {
+            // Subscribe to experience events
+            Experience.OnExperienceGained += OnExperienceGained;
+            Experience.OnLevelUp += OnLevelUp;
+            Experience.OnExperienceChanged += OnExperienceChanged;
+        }
     }
     
     /// <summary>
@@ -65,11 +91,9 @@ public class PlayerController : ScriptComponent
         // Validate components
         if (physicsComponent == null || transformComponent == null)
         {
-            Log.Error($"PlayerController on {owner.name}: Missing required components. Disabling script.");
+            Log.Error($"Player on {owner.name}: Missing required components. Disabling script.");
             return;
         }
-        
-        Log.Info($"PlayerController started on {owner.name}");
     }
     
     /// <summary>
@@ -78,6 +102,10 @@ public class PlayerController : ScriptComponent
     public override void OnUpdate()
     {
         if (physicsComponent == null || transformComponent == null)
+            return;
+            
+        // Don't process input/movement if player is dead
+        if (Health != null && Health.IsDead())
             return;
             
         // Handle input
@@ -98,6 +126,18 @@ public override void OnFixedUpdate()
     {
         if (physicsComponent == null || transformComponent == null)
             return;
+            
+        // Don't process physics movement if player is dead
+        if (Health != null && Health.IsDead())
+        {
+            // Stop horizontal movement when dead
+            if (physicsComponent != null)
+            {
+                Vector3 currentVelocity = physicsComponent.velocity;
+                physicsComponent.velocity = new Vector3(0, currentVelocity.y, 0);
+            }
+            return;
+        }
             
         // Handle input
         // HandleInput();
@@ -152,7 +192,6 @@ public override void OnFixedUpdate()
 
             var hits = Physics.SphereOverlap(hitPoint, radius, LayerMask.GetMask("Enemy"));
 
-            Log.Info($"Hits: {hits.Length}");
             foreach (var e in hits)
             {
                 var ph = e.GetComponent<PhysicsComponent>();
@@ -269,7 +308,7 @@ public override void OnFixedUpdate()
     public override void OnCollisionEnter(Collision collision)
     {
         // Example: Log collision for debugging
-        Log.Info($"Player collided with {collision.entity.name}");
+        // Log.Info($"Player collided with {collision.entity.name}");
         
         // Add custom collision handling here
         // For example: damage from enemies, item pickup, etc.
@@ -286,5 +325,202 @@ public override void OnFixedUpdate()
         
         // Add custom sensor handling here
         // For example: item pickup, area triggers, etc.
+    }
+    
+    /// <summary>
+    /// Called when the player takes damage.
+    /// </summary>
+    /// <param name="damageAmount">Amount of damage taken.</param>
+    private void OnPlayerDamageTaken(float damageAmount)
+    {
+        Log.Info($"Player took {damageAmount} damage - Health: {Health.GetCurrentHealth()}/{Health.GetMaxHealth()}");
+        
+        // Could add damage reaction behaviors here, like:
+        // - Screen shake/flash
+        // - Play damage sound
+        // - Show damage UI
+        // - Brief invincibility frames
+        // - Knockback effect
+    }
+    
+    /// <summary>
+    /// Called when the player is healed.
+    /// </summary>
+    /// <param name="healAmount">Amount healed.</param>
+    private void OnPlayerHealed(float healAmount)
+    {
+        Log.Info($"Player healed for {healAmount} - Health: {Health.GetCurrentHealth()}/{Health.GetMaxHealth()}");
+        
+        // Could add healing reaction behaviors here, like:
+        // - Play healing sound/effect
+        // - Show healing UI
+        // - Particle effects
+    }
+    
+    /// <summary>
+    /// Called when the player dies.
+    /// </summary>
+    private void OnPlayerDeath()
+    {
+        Log.Info($"Player has died");
+        
+        // Stop all movement
+        currentVelocity = Vector3.zero;
+        targetVelocity = Vector3.zero;
+        inputDirection = Vector3.zero;
+        
+        // Could add death behaviors here, like:
+        // - Show game over screen
+        // - Play death sound/animation
+        // - Disable input
+        // - Restart level
+        // - Show respawn options
+    }
+    
+    /// <summary>
+    /// Get the player's health component.
+    /// </summary>
+    /// <returns>Health if available, null otherwise.</returns>
+    public Health GetHealth()
+    {
+        return Health;
+    }
+    
+    /// <summary>
+    /// Check if the player is alive.
+    /// </summary>
+    /// <returns>True if alive (not dead).</returns>
+    public bool IsAlive()
+    {
+        return Health == null || !Health.IsDead();
+    }
+    
+    /// <summary>
+    /// Get the player's current health percentage.
+    /// </summary>
+    /// <returns>Health percentage (0.0 to 1.0), or 1.0 if no health component.</returns>
+    public float GetHealthPercentage()
+    {
+        if (Health == null)
+            return 1.0f;
+            
+        return Health.GetHealthPercentage();
+    }
+    
+    /// <summary>
+    /// Heal the player by a specific amount.
+    /// </summary>
+    /// <param name="healAmount">Amount to heal.</param>
+    /// <returns>Actual amount healed.</returns>
+    public float HealPlayer(float healAmount)
+    {
+        if (Health == null)
+            return 0;
+            
+        return Health.Heal(healAmount, owner);
+    }
+    
+    /// <summary>
+    /// Deal damage to the player.
+    /// </summary>
+    /// <param name="damage">Amount of damage to deal.</param>
+    /// <param name="source">Source of the damage.</param>
+    /// <returns>True if the player died from this damage.</returns>
+    public bool DamagePlayer(float damage, Entity source)
+    {
+        if (Health == null)
+            return false;
+            
+        return Health.TakeDamage(damage, source);
+    }
+    
+    /// <summary>
+    /// Called when the player gains experience.
+    /// </summary>
+    /// <param name="experienceAmount">Amount of experience gained.</param>
+    private void OnExperienceGained(float experienceAmount)
+    {
+        Log.Info($"Player gained {experienceAmount} experience!");
+        
+        // Could add experience gain behaviors here, like:
+        // - Play experience gain sound/effect
+        // - Show floating text
+        // - Update UI
+        // - Particle effects
+    }
+    
+    /// <summary>
+    /// Called when the player levels up.
+    /// </summary>
+    /// <param name="newLevel">New level.</param>
+    /// <param name="oldLevel">Previous level.</param>
+    private void OnLevelUp(int newLevel, int oldLevel)
+    {
+        Log.Info($"Player LEVEL UP! {oldLevel} -> {newLevel}");
+        
+        // Could add level up behaviors here, like:
+        // - Play level up sound/fanfare
+        // - Screen flash/effect
+        // - Show level up UI
+        // - Restore health
+        // - Unlock new abilities
+        // - Increase stats
+        
+        // Example: Restore health on level up
+        if (Health != null)
+        {
+            Health.RestoreToFullHealth();
+            Log.Info("Player health restored on level up!");
+        }
+    }
+    
+    /// <summary>
+    /// Called when the player's experience changes.
+    /// </summary>
+    /// <param name="currentExp">Current experience amount.</param>
+    /// <param name="expToNextLevel">Experience needed for next level.</param>
+    private void OnExperienceChanged(float currentExp, float expToNextLevel)
+    {
+        // This is called frequently, so avoid heavy logging
+        // Could update UI elements here, like:
+        // - Experience bar
+        // - Level display
+        // - Progress indicators
+    }
+    
+    /// <summary>
+    /// Get the player's current level.
+    /// </summary>
+    /// <returns>Current level, or 1 if no experience pickup component.</returns>
+    public int GetLevel()
+    {
+        if (Experience == null)
+            return 1;
+            
+        return Experience.GetCurrentLevel();
+    }
+    
+    /// <summary>
+    /// Get the player's current experience.
+    /// </summary>
+    /// <returns>Current experience, or 0 if no experience pickup component.</returns>
+    public float GetExperience()
+    {
+        if (Experience == null)
+            return 0;
+            
+        return Experience.GetCurrentExperience();
+    }
+    
+    /// <summary>
+    /// Get the player's experience progress towards next level.
+    /// </summary>
+    /// <returns>Progress percentage (0.0 to 1.0).</returns>
+    public float GetLevelProgress()
+    {
+        if (Experience == null)
+            return 0;
+            
+        return Experience.GetLevelProgress();
     }
 }

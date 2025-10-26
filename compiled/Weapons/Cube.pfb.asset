@@ -2,7 +2,7 @@
  "entities": [
   {
    "prefab_uid": "927f4725-005a-864b-8e18-e5433d70b6fc",
-   "id": 47185921,
+   "id": 138412033,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -120,6 +120,17 @@
          }
         }
        }
+      }
+     ]
+    },
+    "has_script_component": true,
+    "script_component": {
+     "script_components": [
+      {
+       "type": "DirectDamageEffect",
+       "damageAmount": 25.0,
+       "destroyProjectileOnHit": true,
+       "debugDamage": false
       }
      ]
     }

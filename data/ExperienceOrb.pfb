@@ -1,0 +1,206 @@
+{
+ "entities": [
+  {
+   "prefab_uid": "b46d51d1-fea8-b14f-9a3a-0347104fe3a3",
+   "id": 5242881,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "ExperienceOrb",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 128
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "b46d51d1-fea8-b14f-9a3a-0347104fe3a3"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 5.188956260681152,
+       "y": 1.724479079246521,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "00000000-0000-0000-0000-000000000000",
+      "id": 4294967295
+     },
+     "children": [],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "b755a718-ef93-1552-bf79-f79c0e6973eb"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+       }
+      ],
+      "material_instances": [
+       {
+        "polymorphic_id": 2147483649,
+        "polymorphic_name": "pbr_material",
+        "ptr_wrapper": {
+         "id": 2147483649,
+         "data": {
+          "base_type": {
+           "cull_type": 2
+          },
+          "base_color": {
+           "r": 0.0,
+           "g": 0.8117647171020508,
+           "b": 1.0,
+           "a": 1.0
+          },
+          "subsurface_color": {
+           "r": 0.0,
+           "g": 0.0,
+           "b": 0.0,
+           "a": 0.8196078538894653
+          },
+          "emissive_color": {
+           "r": 0.0,
+           "g": 0.7883815765380859,
+           "b": 1.0,
+           "a": 0.0
+          },
+          "surface_data": {
+           "x": 0.0,
+           "y": 0.0,
+           "z": 1.0,
+           "w": 0.25
+          },
+          "tiling": {
+           "x": 1.0,
+           "y": 1.0
+          },
+          "dither_threshold": {
+           "x": 0.5,
+           "y": 0.0
+          },
+          "color_map": {
+           "uid": "00000000-0000-0000-0000-000000000000"
+          },
+          "normal_map": {
+           "uid": "00000000-0000-0000-0000-000000000000"
+          },
+          "roughness_map": {
+           "uid": "00000000-0000-0000-0000-000000000000"
+          },
+          "metalness_map": {
+           "uid": "00000000-0000-0000-0000-000000000000"
+          },
+          "emissive_map": {
+           "uid": "00000000-0000-0000-0000-000000000000"
+          },
+          "ao_map": {
+           "uid": "00000000-0000-0000-0000-000000000000"
+          }
+         }
+        }
+       }
+      ],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    },
+    "has_physics_component": true,
+    "physics_component": {
+     "is_using_gravity": false,
+     "is_kinematic": false,
+     "is_sensor": true,
+     "is_autoscaled": true,
+     "mass": 1.0,
+     "include_layers": {
+      "mask": -1
+     },
+     "exclude_layers": {
+      "mask": 0
+     },
+     "freeze_position": {
+      "x": false,
+      "y": false,
+      "z": false
+     },
+     "freeze_rotation": {
+      "x": false,
+      "y": false,
+      "z": false
+     },
+     "material": {
+      "uid": "00000000-0000-0000-0000-000000000000"
+     },
+     "shapes": [
+      {
+       "shape": {
+        "index": 1,
+        "data": {
+         "center": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+         },
+         "radius": 0.5
+        }
+       }
+      }
+     ]
+    },
+    "has_script_component": true,
+    "script_component": {
+     "script_components": [
+      {
+       "type": "ExperienceOrb",
+       "experienceValue": 10.0,
+       "lifetime": 30.0,
+       "attractionSpeed": 15.0,
+       "attractionAcceleration": 30.0,
+       "collectDistance": 1.0,
+       "enableFloating": true,
+       "floatSpeed": 2.0,
+       "floatAmplitude": 0.30000001192092898,
+       "debugOrb": false
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "version": "1.0.0"
+}

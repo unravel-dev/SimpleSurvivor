@@ -3,12 +3,12 @@ using System.Runtime.CompilerServices;
 using Unravel.Core;
 
 /// <summary>
-/// TopDownCameraController component that implements smooth camera following for a top-down game.
+/// TopDownCamera component that implements smooth camera following for a top-down game.
 /// Handles camera positioning, smooth following, and optional boundaries.
 /// Requires a CameraComponent attached to the same entity.
 /// </summary>
 [ScriptSourceFile]
-public class TopDownCameraController : ScriptComponent
+public class TopDownCamera : ScriptComponent
 {
     //[Header("Target Settings")]
     [Tooltip("The entity (player) that the camera should follow")]
@@ -20,7 +20,7 @@ public class TopDownCameraController : ScriptComponent
     
     //[Header("Follow Settings")]
     [Tooltip("Use physics-based camera movement in OnFixedUpdate vs frame-based in OnUpdate")]
-    public bool usePhysicsMovement = false;
+    public bool usePhysicsMovement = true;
     [Tooltip("Use smooth camera following vs linear movement")]
     public bool smoothFollow = true;
     [Tooltip("Speed of linear camera following (when smooth follow is disabled)")]
@@ -72,15 +72,13 @@ public class TopDownCameraController : ScriptComponent
         
         if (cameraComponent == null)
         {
-            Log.Error($"TopDownCameraController on {owner.name}: CameraComponent not found! Please attach a CameraComponent.");
+            Log.Error($"TopDownCamera on {owner.name}: CameraComponent not found! Please attach a CameraComponent.");
         }
         
         if (transformComponent == null)
         {
-            Log.Error($"TopDownCameraController on {owner.name}: TransformComponent not found!");
+            Log.Error($"TopDownCamera on {owner.name}: TransformComponent not found!");
         }
-        
-        Log.Info($"TopDownCameraController initialized on {owner.name}");
     }
     
     /// <summary>
@@ -91,7 +89,7 @@ public class TopDownCameraController : ScriptComponent
         // Validate components
         if (cameraComponent == null || transformComponent == null)
         {
-            Log.Error($"TopDownCameraController on {owner.name}: Missing required components. Disabling script.");
+            Log.Error($"TopDownCamera on {owner.name}: Missing required components. Disabling script.");
             return;
         }
         
@@ -113,8 +111,6 @@ public class TopDownCameraController : ScriptComponent
             targetPosition = CalculateTargetPosition();
             transformComponent.position = targetPosition;
         }
-        
-        Log.Info($"TopDownCameraController started on {owner.name}");
     }
     
     /// <summary>
@@ -263,10 +259,10 @@ public class TopDownCameraController : ScriptComponent
             return;
             
         // Get player controller to check movement
-        var playerController = target.GetComponent<PlayerController>();
-        if (playerController != null)
+        var Player = target.GetComponent<Player>();
+        if (Player != null)
         {
-            Vector3 inputDirection = playerController.GetInputDirection();
+            Vector3 inputDirection = Player.GetInputDirection();
             Vector3 desiredLookAhead = inputDirection * lookAheadDistance;
             
             // Smooth the look-ahead offset (use appropriate deltaTime based on physics movement)
@@ -299,14 +295,13 @@ public class TopDownCameraController : ScriptComponent
         if (playerEntity)
         {
             target = playerEntity;
-            Log.Info($"TopDownCameraController: Found player target by name: {target.name}");
             return;
         }
         
-        // Try to find entity with PlayerController component
+        // Try to find entity with Player component
         // Note: This is a simplified approach - in a real implementation you might want
         // to use a more sophisticated entity finding system
-        Log.Warning($"TopDownCameraController: Could not auto-find player. Please assign target manually.");
+        Log.Warning($"TopDownCamera: Could not auto-find player. Please assign target manually.");
     }
     
     /// <summary>
@@ -318,7 +313,6 @@ public class TopDownCameraController : ScriptComponent
         target = newTarget;
         if (target)
         {
-            Log.Info($"TopDownCameraController: Target set to {target.name}");
             // Reset velocity for smooth transition
             velocity = Vector3.zero;
         }
@@ -342,7 +336,5 @@ public class TopDownCameraController : ScriptComponent
         transformComponent.position = targetPosition;
         velocity = Vector3.zero;
         lookAheadOffset = Vector3.zero;
-        
-        Log.Info($"TopDownCameraController: Snapped to target position: {targetPosition}");
     }
 }

@@ -21,7 +21,7 @@ public class BasicLevelDirector : ScriptComponent
     [Tooltip("Y position offset for spawned entities (relative to player Y)")]
     public float spawnYOffset = 0.0f;
     [Tooltip("Enable debug logging for spawn operations")]
-    public bool debugSpawning = true;
+    public bool debugSpawning = false;
     
     //[Header("Enemy Spawning")]
     [Tooltip("Enemy prefab to spawn automatically")]
@@ -39,7 +39,6 @@ public class BasicLevelDirector : ScriptComponent
     /// </summary>
     public override void OnCreate()
     {
-        Log.Info($"BasicLevelDirector initialized on {owner.name}");
     }
     
     /// <summary>
@@ -52,8 +51,6 @@ public class BasicLevelDirector : ScriptComponent
         {
             FindPlayer();
         }
-        
-        Log.Info($"BasicLevelDirector started on {owner.name}");
     }
     
     /// <summary>
@@ -326,11 +323,10 @@ public class BasicLevelDirector : ScriptComponent
         if (playerEntity)
         {
             player = playerEntity;
-            Log.Info($"BasicLevelDirector: Found player by name: {player.name}");
             return;
         }
         
-        // Try to find entity with PlayerController component
+        // Try to find entity with Player component
         // This is a simplified approach - in a real implementation you might want
         // to use a more sophisticated entity finding system or tags
         Log.Warning($"BasicLevelDirector: Could not auto-find player. Please assign player manually.");

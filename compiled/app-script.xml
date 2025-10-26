@@ -4,138 +4,6 @@
         <name>app-script</name>
     </assembly>
     <members>
-        <member name="T:MainMenu">
-             <summary>
-             Main Menu script that handles the primary navigation buttons.
-             Uses LobbyUI for centralized navigation instead of direct menu manipulation.
-             Now inherits from BaseMenuController to eliminate code duplication.
-             </summary>
-            </member>
-        <member name="M:MainMenu.OnPlayButtonClick(Unravel.Core.UIPointerEvent)">
-             <summary>
-             Handles the Play button click - starts the game.
-             </summary>
-            </member>
-        <member name="M:MainMenu.OnSettingsButtonClick(Unravel.Core.UIPointerEvent)">
-             <summary>
-             Handles the Settings button click - opens settings menu.
-             </summary>
-            </member>
-        <member name="M:MainMenu.OnExitButtonClick(Unravel.Core.UIPointerEvent)">
-             <summary>
-             Handles the Exit button click - quits the application.
-             </summary>
-            </member>
-        <member name="T:WeaponComponent">
-             <summary>
-             WeaponComponent that automatically targets and shoots at enemies within range.
-             Handles automatic firing, enemy detection, and projectile spawning.
-             </summary>
-            </member>
-        <member name="M:WeaponComponent.OnCreate">
-             <summary>
-             Called when the script is created. Initialize component references.
-             </summary>
-            </member>
-        <member name="M:WeaponComponent.OnStart">
-             <summary>
-             Called when the script starts execution.
-             </summary>
-            </member>
-        <member name="M:WeaponComponent.OnUpdate">
-             <summary>
-             Called every frame to update weapon logic.
-             </summary>
-            </member>
-        <member name="M:WeaponComponent.CanFire">
-             <summary>
-             Check if the weapon can fire based on fire rate.
-             </summary>
-             <returns>True if weapon can fire.</returns>
-            </member>
-        <member name="M:WeaponComponent.FindClosestEnemy">
-             <summary>
-             Find the closest enemy within range using SphereOverlap.
-             </summary>
-             <returns>The closest enemy entity, or Entity.Invalid if none found.</returns>
-            </member>
-        <member name="M:WeaponComponent.IsEnemyEntity(Unravel.Core.Entity)">
-             <summary>
-             Check if an entity is considered an enemy.
-             </summary>
-             <param name="entity">The entity to check.</param>
-             <returns>True if the entity is an enemy.</returns>
-            </member>
-        <member name="M:WeaponComponent.HasLineOfSight(Unravel.Core.Entity)">
-             <summary>
-             Check if there's a clear line of sight to the target.
-             </summary>
-             <param name="target">The target entity.</param>
-             <returns>True if line of sight is clear.</returns>
-            </member>
-        <member name="M:WeaponComponent.CalculateShootDirection(Unravel.Core.Entity)">
-             <summary>
-             Calculate the shooting direction towards the target.
-             </summary>
-             <param name="target">The target entity.</param>
-             <returns>The normalized shooting direction.</returns>
-            </member>
-        <member name="M:WeaponComponent.FireWeapon(Vector3)">
-             <summary>
-             Fire the weapon in the specified direction.
-             </summary>
-             <param name="shootDirection">The direction to shoot.</param>
-            </member>
-        <member name="M:WeaponComponent.Shoot(Vector3,Vector3,System.Single,System.Int32)">
-             <summary>
-             Shoot projectiles in the specified direction.
-             </summary>
-             <param name="source">The source position for projectiles.</param>
-             <param name="shootDir">The shooting direction.</param>
-             <param name="spread">The spread angle for accuracy.</param>
-             <param name="count">The number of projectiles to spawn.</param>
-            </member>
-        <member name="M:WeaponComponent.DrawDebugRanges">
-             <summary>
-             Draw debug visualization for weapon ranges.
-             </summary>
-            </member>
-        <member name="M:WeaponComponent.GetCurrentTarget">
-             <summary>
-             Get the current target entity.
-             </summary>
-             <returns>The current target entity.</returns>
-            </member>
-        <member name="M:WeaponComponent.GetTimeUntilNextShot">
-             <summary>
-             Get the time until the next shot can be fired.
-             </summary>
-             <returns>Time in seconds until next shot.</returns>
-            </member>
-        <member name="M:WeaponComponent.IsReadyToFire">
-             <summary>
-             Check if the weapon is ready to fire.
-             </summary>
-             <returns>True if ready to fire.</returns>
-            </member>
-        <member name="M:WeaponComponent.SetFireRate(System.Single)">
-             <summary>
-             Set the fire rate of the weapon.
-             </summary>
-             <param name="newFireRate">New fire rate in shots per second.</param>
-            </member>
-        <member name="M:WeaponComponent.SetRange(System.Single)">
-             <summary>
-             Set the weapon range.
-             </summary>
-             <param name="newRange">New weapon range.</param>
-            </member>
-        <member name="M:WeaponComponent.SetDamage(System.Single)">
-             <summary>
-             Set the weapon damage.
-             </summary>
-             <param name="newDamage">New damage value.</param>
-            </member>
         <member name="T:BasicLevelDirector">
              <summary>
              Level director that provides spawning functionality for a top-down game.
@@ -246,6 +114,219 @@
              </summary>
              <param name="newPlayer">The new player entity.</param>
             </member>
+        <member name="T:Weapon">
+             <summary>
+             Weapon that automatically targets and shoots at enemies within range.
+             Handles automatic firing, enemy detection, and projectile spawning.
+             </summary>
+            </member>
+        <member name="M:Weapon.OnCreate">
+             <summary>
+             Called when the script is created. Initialize component references.
+             </summary>
+            </member>
+        <member name="M:Weapon.OnStart">
+             <summary>
+             Called when the script starts execution.
+             </summary>
+            </member>
+        <member name="M:Weapon.OnUpdate">
+             <summary>
+             Called every frame to update weapon logic.
+             </summary>
+            </member>
+        <member name="M:Weapon.CanFire">
+             <summary>
+             Check if the weapon can fire based on fire rate.
+             </summary>
+             <returns>True if weapon can fire.</returns>
+            </member>
+        <member name="M:Weapon.FindClosestEnemy">
+             <summary>
+             Find the closest enemy within range using SphereOverlap.
+             </summary>
+             <returns>The closest enemy entity, or Entity.Invalid if none found.</returns>
+            </member>
+        <member name="M:Weapon.HasLineOfSight(Unravel.Core.Entity)">
+             <summary>
+             Check if there's a clear line of sight to the target.
+             </summary>
+             <param name="target">The target entity.</param>
+             <returns>True if line of sight is clear.</returns>
+            </member>
+        <member name="M:Weapon.CalculateShootDirection(Unravel.Core.Entity)">
+             <summary>
+             Calculate the shooting direction towards the target.
+             </summary>
+             <param name="target">The target entity.</param>
+             <returns>The normalized shooting direction.</returns>
+            </member>
+        <member name="M:Weapon.FireWeapon(Vector3)">
+             <summary>
+             Fire the weapon in the specified direction.
+             </summary>
+             <param name="shootDirection">The direction to shoot.</param>
+            </member>
+        <member name="M:Weapon.Shoot(Vector3,Vector3,System.Single,System.Int32)">
+             <summary>
+             Shoot projectiles with proper angular spread from the source position.
+             </summary>
+             <param name="source">The source position for projectiles.</param>
+             <param name="shootDir">The base shooting direction.</param>
+             <param name="spread">The spread angle in degrees (cone angle).</param>
+             <param name="count">The number of projectiles to spawn.</param>
+            </member>
+        <member name="M:Weapon.CalculateSpreadDirection(Vector3,System.Single)">
+             <summary>
+             Calculate a spread direction by applying random angular deviation on the horizontal plane (X,Z only).
+             </summary>
+             <param name="baseDirection">The base shooting direction.</param>
+             <param name="spreadAngle">The maximum spread angle in degrees.</param>
+             <returns>A direction vector with applied horizontal spread.</returns>
+            </member>
+        <member name="M:Weapon.DrawDebugRanges">
+             <summary>
+             Draw debug visualization for weapon ranges.
+             </summary>
+            </member>
+        <member name="M:Weapon.GetCurrentTarget">
+             <summary>
+             Get the current target entity.
+             </summary>
+             <returns>The current target entity.</returns>
+            </member>
+        <member name="M:Weapon.GetTimeUntilNextShot">
+             <summary>
+             Get the time until the next shot can be fired.
+             </summary>
+             <returns>Time in seconds until next shot.</returns>
+            </member>
+        <member name="M:Weapon.IsReadyToFire">
+             <summary>
+             Check if the weapon is ready to fire.
+             </summary>
+             <returns>True if ready to fire.</returns>
+            </member>
+        <member name="M:Weapon.SetFireRate(System.Single)">
+             <summary>
+             Set the fire rate of the weapon.
+             </summary>
+             <param name="newFireRate">New fire rate in shots per second.</param>
+            </member>
+        <member name="M:Weapon.SetRange(System.Single)">
+             <summary>
+             Set the weapon range.
+             </summary>
+             <param name="newRange">New weapon range.</param>
+            </member>
+        <member name="M:Weapon.SetDamage(System.Single)">
+             <summary>
+             Set the weapon damage.
+             </summary>
+             <param name="newDamage">New damage value.</param>
+            </member>
+        <member name="T:MainMenu">
+             <summary>
+             Main Menu script that handles the primary navigation buttons.
+             Uses LobbyUI for centralized navigation instead of direct menu manipulation.
+             Now inherits from BaseMenuController to eliminate code duplication.
+             </summary>
+            </member>
+        <member name="M:MainMenu.OnPlayButtonClick(Unravel.Core.UIPointerEvent)">
+             <summary>
+             Handles the Play button click - starts the game.
+             </summary>
+            </member>
+        <member name="M:MainMenu.OnSettingsButtonClick(Unravel.Core.UIPointerEvent)">
+             <summary>
+             Handles the Settings button click - opens settings menu.
+             </summary>
+            </member>
+        <member name="M:MainMenu.OnExitButtonClick(Unravel.Core.UIPointerEvent)">
+             <summary>
+             Handles the Exit button click - quits the application.
+             </summary>
+            </member>
+        <member name="T:Projectile">
+             <summary>
+             Projectile that handles projectile behavior, collision detection, and effect application.
+             </summary>
+            </member>
+        <member name="M:Projectile.OnCreate">
+             <summary>
+             Called when the script is created.
+             </summary>
+            </member>
+        <member name="M:Projectile.OnStart">
+             <summary>
+             Called when the script starts execution.
+             </summary>
+            </member>
+        <member name="M:Projectile.OnUpdate">
+             <summary>
+             Called every frame to update projectile logic.
+             </summary>
+            </member>
+        <member name="M:Projectile.OnCollisionEnter(Unravel.Core.Collision)">
+             <summary>
+             Called when this projectile collides with another entity.
+             </summary>
+             <param name="collision">Collision details.</param>
+            </member>
+        <member name="M:Projectile.CollectEffectComponents">
+             <summary>
+             Collect all effect components attached to this entity.
+             </summary>
+            </member>
+        <member name="M:Projectile.ApplyEffects(Unravel.Core.Entity,Unravel.Core.Collision)">
+             <summary>
+             Apply all effects to the target.
+             </summary>
+             <param name="target">Target entity.</param>
+             <param name="collision">Collision details.</param>
+            </member>
+        <member name="M:Projectile.SetSourceEntity(Unravel.Core.Entity)">
+             <summary>
+             Set the source entity that fired this projectile.
+             </summary>
+             <param name="source">Source entity.</param>
+            </member>
+        <member name="M:Projectile.GetSourceEntity">
+             <summary>
+             Get the source entity that fired this projectile.
+             </summary>
+             <returns>Source entity.</returns>
+            </member>
+        <member name="M:Projectile.AddEffect(IWeaponEffect)">
+             <summary>
+             Add an effect to this projectile.
+             </summary>
+             <param name="effect">Effect to add.</param>
+            </member>
+        <member name="M:Projectile.RemoveEffect(IWeaponEffect)">
+             <summary>
+             Remove an effect from this projectile.
+             </summary>
+             <param name="effect">Effect to remove.</param>
+            </member>
+        <member name="M:Projectile.GetEffectCount">
+             <summary>
+             Get the number of effects on this projectile.
+             </summary>
+             <returns>Number of effects.</returns>
+            </member>
+        <member name="M:Projectile.GetTimeAlive">
+             <summary>
+             Get the time this projectile has been alive.
+             </summary>
+             <returns>Time alive in seconds.</returns>
+            </member>
+        <member name="M:Projectile.HasCollided">
+             <summary>
+             Check if this projectile has collided with something.
+             </summary>
+             <returns>True if has collided.</returns>
+            </member>
         <member name="T:Enemy">
              <summary>
              Simple enemy AI that moves towards the player's position.
@@ -347,152 +428,605 @@
              Resume chasing the target.
              </summary>
             </member>
-        <member name="T:PlayerController">
+        <member name="M:Enemy.OnEnemyDamageTaken(System.Single)">
              <summary>
-             PlayerController component that implements basic rigidbody movement for a top-down game.
+             Called when the enemy takes damage.
+             </summary>
+             <param name="damageAmount">Amount of damage taken.</param>
+            </member>
+        <member name="M:Enemy.OnEnemyDeath">
+             <summary>
+             Called when the enemy dies.
+             </summary>
+            </member>
+        <member name="M:Enemy.DropExperienceOrbs">
+             <summary>
+             Drop experience orbs when the enemy dies.
+             </summary>
+            </member>
+        <member name="M:Enemy.GetHealth">
+             <summary>
+             Get the enemy's health component.
+             </summary>
+             <returns>Health if available, null otherwise.</returns>
+            </member>
+        <member name="M:Enemy.IsAlive">
+             <summary>
+             Check if the enemy is alive.
+             </summary>
+             <returns>True if alive (not dead).</returns>
+            </member>
+        <member name="M:Enemy.GetHealthPercentage">
+             <summary>
+             Get the enemy's current health percentage.
+             </summary>
+             <returns>Health percentage (0.0 to 1.0), or 1.0 if no health component.</returns>
+            </member>
+        <member name="T:Player">
+             <summary>
+             Player component that implements basic rigidbody movement for a top-down game.
              Handles player input, movement, and physics interactions.
              Requires a PhysicsComponent with a Capsule collider attached to the same entity.
              </summary>
             </member>
-        <member name="M:PlayerController.OnCreate">
+        <member name="M:Player.OnCreate">
              <summary>
              Called when the script is created. Initialize component references.
              </summary>
             </member>
-        <member name="M:PlayerController.OnStart">
+        <member name="M:Player.OnStart">
              <summary>
              Called when the script starts execution.
              </summary>
             </member>
-        <member name="M:PlayerController.OnUpdate">
+        <member name="M:Player.OnUpdate">
              <summary>
              Called every frame to handle input and movement.
              </summary>
             </member>
-        <member name="M:PlayerController.HandleInput">
+        <member name="M:Player.HandleInput">
              <summary>
              Handle player input for movement.
              </summary>
             </member>
-        <member name="M:PlayerController.HandlePhysicsMovement">
+        <member name="M:Player.HandlePhysicsMovement">
              <summary>
              Handle movement using physics forces with steering behavior (recommended for realistic physics).
              </summary>
             </member>
-        <member name="M:PlayerController.HandleDirectMovement">
+        <member name="M:Player.HandleDirectMovement">
              <summary>
              Handle movement by directly modifying transform (alternative method).
              </summary>
             </member>
-        <member name="M:PlayerController.GetInputDirection">
+        <member name="M:Player.GetInputDirection">
              <summary>
              Get the current movement input direction.
              </summary>
              <returns>The normalized input direction vector.</returns>
             </member>
-        <member name="M:PlayerController.GetVelocity">
+        <member name="M:Player.GetVelocity">
              <summary>
              Get the current movement velocity.
              </summary>
              <returns>The current velocity vector.</returns>
             </member>
-        <member name="M:PlayerController.IsMoving">
+        <member name="M:Player.IsMoving">
              <summary>
              Check if the player is currently moving.
              </summary>
              <returns>True if the player is moving, false otherwise.</returns>
             </member>
-        <member name="M:PlayerController.AddExternalForce(Vector3,Unravel.Core.ForceMode)">
+        <member name="M:Player.AddExternalForce(Vector3,Unravel.Core.ForceMode)">
              <summary>
              Add an external force to the player (useful for knockback, wind, etc.).
              </summary>
              <param name="force">The force to apply.</param>
              <param name="mode">The force mode to use.</param>
             </member>
-        <member name="M:PlayerController.OnCollisionEnter(Unravel.Core.Collision)">
+        <member name="M:Player.OnCollisionEnter(Unravel.Core.Collision)">
              <summary>
              Called when this entity begins a collision with another entity.
              Override this method to handle collision events.
              </summary>
              <param name="collision">Details of the collision.</param>
             </member>
-        <member name="M:PlayerController.OnSensorEnter(Unravel.Core.Entity)">
+        <member name="M:Player.OnSensorEnter(Unravel.Core.Entity)">
              <summary>
              Called when another entity enters a sensor attached to this entity.
              Useful for trigger zones, item pickup areas, etc.
              </summary>
              <param name="entity">The entity that entered the sensor.</param>
             </member>
-        <member name="T:TopDownCameraController">
+        <member name="M:Player.OnPlayerDamageTaken(System.Single)">
              <summary>
-             TopDownCameraController component that implements smooth camera following for a top-down game.
-             Handles camera positioning, smooth following, and optional boundaries.
-             Requires a CameraComponent attached to the same entity.
+             Called when the player takes damage.
+             </summary>
+             <param name="damageAmount">Amount of damage taken.</param>
+            </member>
+        <member name="M:Player.OnPlayerHealed(System.Single)">
+             <summary>
+             Called when the player is healed.
+             </summary>
+             <param name="healAmount">Amount healed.</param>
+            </member>
+        <member name="M:Player.OnPlayerDeath">
+             <summary>
+             Called when the player dies.
              </summary>
             </member>
-        <member name="M:TopDownCameraController.OnCreate">
+        <member name="M:Player.GetHealth">
              <summary>
-             Called when the script is created. Initialize component references.
+             Get the player's health component.
+             </summary>
+             <returns>Health if available, null otherwise.</returns>
+            </member>
+        <member name="M:Player.IsAlive">
+             <summary>
+             Check if the player is alive.
+             </summary>
+             <returns>True if alive (not dead).</returns>
+            </member>
+        <member name="M:Player.GetHealthPercentage">
+             <summary>
+             Get the player's current health percentage.
+             </summary>
+             <returns>Health percentage (0.0 to 1.0), or 1.0 if no health component.</returns>
+            </member>
+        <member name="M:Player.HealPlayer(System.Single)">
+             <summary>
+             Heal the player by a specific amount.
+             </summary>
+             <param name="healAmount">Amount to heal.</param>
+             <returns>Actual amount healed.</returns>
+            </member>
+        <member name="M:Player.DamagePlayer(System.Single,Unravel.Core.Entity)">
+             <summary>
+             Deal damage to the player.
+             </summary>
+             <param name="damage">Amount of damage to deal.</param>
+             <param name="source">Source of the damage.</param>
+             <returns>True if the player died from this damage.</returns>
+            </member>
+        <member name="M:Player.OnExperienceGained(System.Single)">
+             <summary>
+             Called when the player gains experience.
+             </summary>
+             <param name="experienceAmount">Amount of experience gained.</param>
+            </member>
+        <member name="M:Player.OnLevelUp(System.Int32,System.Int32)">
+             <summary>
+             Called when the player levels up.
+             </summary>
+             <param name="newLevel">New level.</param>
+             <param name="oldLevel">Previous level.</param>
+            </member>
+        <member name="M:Player.OnExperienceChanged(System.Single,System.Single)">
+             <summary>
+             Called when the player's experience changes.
+             </summary>
+             <param name="currentExp">Current experience amount.</param>
+             <param name="expToNextLevel">Experience needed for next level.</param>
+            </member>
+        <member name="M:Player.GetLevel">
+             <summary>
+             Get the player's current level.
+             </summary>
+             <returns>Current level, or 1 if no experience pickup component.</returns>
+            </member>
+        <member name="M:Player.GetExperience">
+             <summary>
+             Get the player's current experience.
+             </summary>
+             <returns>Current experience, or 0 if no experience pickup component.</returns>
+            </member>
+        <member name="M:Player.GetLevelProgress">
+             <summary>
+             Get the player's experience progress towards next level.
+             </summary>
+             <returns>Progress percentage (0.0 to 1.0).</returns>
+            </member>
+        <member name="T:Experience">
+             <summary>
+             Experience component that handles collecting experience orbs within pickup range.
+             Manages player experience, level progression, and orb attraction.
              </summary>
             </member>
-        <member name="M:TopDownCameraController.OnStart">
+        <member name="M:Experience.OnCreate">
+             <summary>
+             Called when the script is created.
+             </summary>
+            </member>
+        <member name="M:Experience.OnStart">
              <summary>
              Called when the script starts execution.
              </summary>
             </member>
-        <member name="M:TopDownCameraController.OnUpdate">
+        <member name="M:Experience.OnUpdate">
+             <summary>
+             Called every frame to update pickup logic.
+             </summary>
+            </member>
+        <member name="M:Experience.DetectNearbyOrbs">
+             <summary>
+             Detect and attract nearby experience orbs.
+             </summary>
+            </member>
+        <member name="M:Experience.CleanupAttractedOrbs">
+             <summary>
+             Clean up references to destroyed or invalid orbs.
+             </summary>
+            </member>
+        <member name="M:Experience.CollectExperience(System.Single,Unravel.Core.Entity)">
+             <summary>
+             Collect experience from an orb.
+             </summary>
+             <param name="experienceAmount">Amount of experience to add.</param>
+             <param name="orbEntity">The orb entity that was collected.</param>
+            </member>
+        <member name="M:Experience.CheckLevelUp(System.Int32)">
+             <summary>
+             Check if the player should level up and handle level progression.
+             </summary>
+             <param name="previousLevel">The player's previous level.</param>
+            </member>
+        <member name="M:Experience.GetExperienceRequiredForLevel(System.Int32)">
+             <summary>
+             Calculate experience required to reach a specific level.
+             </summary>
+             <param name="level">Target level.</param>
+             <returns>Total experience required to reach that level.</returns>
+            </member>
+        <member name="M:Experience.GetExperienceToNextLevel">
+             <summary>
+             Get experience required to reach the next level.
+             </summary>
+             <returns>Experience needed for next level.</returns>
+            </member>
+        <member name="M:Experience.GetLevelProgress">
+             <summary>
+             Get experience progress towards next level as a percentage.
+             </summary>
+             <returns>Progress percentage (0.0 to 1.0).</returns>
+            </member>
+        <member name="M:Experience.DrawDebugRange">
+             <summary>
+             Draw debug visualization for pickup range.
+             </summary>
+            </member>
+        <member name="M:Experience.GetCurrentExperience">
+             <summary>
+             Get the current experience amount.
+             </summary>
+             <returns>Current experience.</returns>
+            </member>
+        <member name="M:Experience.GetCurrentLevel">
+             <summary>
+             Get the current level.
+             </summary>
+             <returns>Current level.</returns>
+            </member>
+        <member name="M:Experience.SetPickupRange(System.Single)">
+             <summary>
+             Set the pickup range.
+             </summary>
+             <param name="newRange">New pickup range.</param>
+            </member>
+        <member name="M:Experience.AddExperience(System.Single)">
+             <summary>
+             Add experience directly (for testing or special cases).
+             </summary>
+             <param name="amount">Amount of experience to add.</param>
+            </member>
+        <member name="M:Experience.SetLevel(System.Int32,System.Boolean)">
+             <summary>
+             Set the player's level directly (for testing or loading save data).
+             </summary>
+             <param name="level">New level.</param>
+             <param name="adjustExperience">Whether to adjust experience to match the level.</param>
+            </member>
+        <member name="M:Experience.GetAttractedOrbCount">
+             <summary>
+             Get the number of orbs currently being attracted.
+             </summary>
+             <returns>Number of attracted orbs.</returns>
+            </member>
+        <member name="T:ExperienceOrb">
+             <summary>
+             ExperienceOrb component that represents a collectible experience point.
+             Handles attraction to player when in pickup range and provides experience value.
+             </summary>
+            </member>
+        <member name="M:ExperienceOrb.OnCreate">
+             <summary>
+             Called when the script is created.
+             </summary>
+            </member>
+        <member name="M:ExperienceOrb.OnStart">
+             <summary>
+             Called when the script starts execution.
+             </summary>
+            </member>
+        <member name="M:ExperienceOrb.OnUpdate">
+             <summary>
+             Called every frame to update orb behavior.
+             </summary>
+            </member>
+        <member name="M:ExperienceOrb.UpdateAttraction">
+             <summary>
+             Update attraction movement towards the player - simple MoveTowards.
+             </summary>
+            </member>
+        <member name="M:ExperienceOrb.UpdateFloating">
+             <summary>
+             Update floating animation when not being attracted.
+             </summary>
+            </member>
+        <member name="M:ExperienceOrb.StartAttraction(Unravel.Core.Entity)">
+             <summary>
+             Start attracting this orb to the specified player.
+             </summary>
+             <param name="player">Player entity to attract to.</param>
+            </member>
+        <member name="M:ExperienceOrb.StopAttraction">
+             <summary>
+             Stop attracting this orb to the player.
+             </summary>
+            </member>
+        <member name="M:ExperienceOrb.CollectOrb">
+             <summary>
+             Collect this orb and give experience to the player.
+             </summary>
+            </member>
+        <member name="M:ExperienceOrb.GetExperienceValue">
+             <summary>
+             Get the experience value of this orb.
+             </summary>
+             <returns>Experience value.</returns>
+            </member>
+        <member name="M:ExperienceOrb.SetExperienceValue(System.Single)">
+             <summary>
+             Set the experience value of this orb.
+             </summary>
+             <param name="value">New experience value.</param>
+            </member>
+        <member name="M:ExperienceOrb.IsBeingAttracted">
+             <summary>
+             Check if this orb is currently being attracted to a player.
+             </summary>
+             <returns>True if being attracted.</returns>
+            </member>
+        <member name="M:ExperienceOrb.GetTargetPlayer">
+             <summary>
+             Get the player this orb is being attracted to.
+             </summary>
+             <returns>Target player entity.</returns>
+            </member>
+        <member name="M:ExperienceOrb.GetTimeAlive">
+             <summary>
+             Get how long this orb has been alive.
+             </summary>
+             <returns>Time alive in seconds.</returns>
+            </member>
+        <member name="T:Health">
+             <summary>
+             Health that tracks entity health and handles damage/healing.
+             Provides simple methods like TakeDamage and Heal, and kills the entity when health drops below 0.
+             </summary>
+            </member>
+        <member name="M:Health.OnCreate">
+             <summary>
+             Called when the script is created.
+             </summary>
+            </member>
+        <member name="M:Health.OnStart">
+             <summary>
+             Called when the script starts execution.
+             </summary>
+            </member>
+        <member name="M:Health.TakeDamage(System.Single,Unravel.Core.Entity)">
+             <summary>
+             Deal damage to this entity.
+             </summary>
+             <param name="damage">Amount of damage to deal (positive value).</param>
+             <param name="source">Optional source entity that dealt the damage.</param>
+             <returns>True if the entity died from this damage.</returns>
+            </member>
+        <member name="M:Health.Heal(System.Single,Unravel.Core.Entity)">
+             <summary>
+             Heal this entity.
+             </summary>
+             <param name="healAmount">Amount of health to restore (positive value).</param>
+             <param name="source">Optional source entity that provided the healing.</param>
+             <returns>The actual amount healed (may be less if at max health).</returns>
+            </member>
+        <member name="M:Health.SetHealth(System.Single)">
+             <summary>
+             Set the entity's health to a specific value.
+             </summary>
+             <param name="newHealth">The new health value.</param>
+            </member>
+        <member name="M:Health.SetMaxHealth(System.Single,System.Boolean)">
+             <summary>
+             Set the maximum health and optionally adjust current health.
+             </summary>
+             <param name="newMaxHealth">The new maximum health value.</param>
+             <param name="adjustCurrentHealth">Whether to scale current health proportionally.</param>
+            </member>
+        <member name="M:Health.Kill">
+             <summary>
+             Kill the entity immediately.
+             </summary>
+            </member>
+        <member name="M:Health.Die">
+             <summary>
+             Handle entity death.
+             </summary>
+            </member>
+        <member name="M:Health.GetCurrentHealth">
+             <summary>
+             Get the current health value.
+             </summary>
+             <returns>Current health.</returns>
+            </member>
+        <member name="M:Health.GetMaxHealth">
+             <summary>
+             Get the maximum health value.
+             </summary>
+             <returns>Maximum health.</returns>
+            </member>
+        <member name="M:Health.GetHealthPercentage">
+             <summary>
+             Get the health as a percentage (0.0 to 1.0).
+             </summary>
+             <returns>Health percentage.</returns>
+            </member>
+        <member name="M:Health.IsDead">
+             <summary>
+             Check if the entity is dead.
+             </summary>
+             <returns>True if dead.</returns>
+            </member>
+        <member name="M:Health.IsAtFullHealth">
+             <summary>
+             Check if the entity is at full health.
+             </summary>
+             <returns>True if at full health.</returns>
+            </member>
+        <member name="M:Health.IsCriticallyInjured(System.Single)">
+             <summary>
+             Check if the entity is critically injured (below a certain threshold).
+             </summary>
+             <param name="threshold">Health percentage threshold (0.0 to 1.0).</param>
+             <returns>True if health is below the threshold.</returns>
+            </member>
+        <member name="M:Health.RestoreToFullHealth">
+             <summary>
+             Restore the entity to full health.
+             </summary>
+            </member>
+        <member name="T:TopDownCamera">
+             <summary>
+             TopDownCamera component that implements smooth camera following for a top-down game.
+             Handles camera positioning, smooth following, and optional boundaries.
+             Requires a CameraComponent attached to the same entity.
+             </summary>
+            </member>
+        <member name="M:TopDownCamera.OnCreate">
+             <summary>
+             Called when the script is created. Initialize component references.
+             </summary>
+            </member>
+        <member name="M:TopDownCamera.OnStart">
+             <summary>
+             Called when the script starts execution.
+             </summary>
+            </member>
+        <member name="M:TopDownCamera.OnUpdate">
              <summary>
              Called every frame to update camera position (when not using physics movement).
              </summary>
             </member>
-        <member name="M:TopDownCameraController.OnFixedUpdate">
+        <member name="M:TopDownCamera.OnFixedUpdate">
              <summary>
              Called at fixed intervals for physics-based camera movement.
              </summary>
             </member>
-        <member name="M:TopDownCameraController.UpdateCameraFollow">
+        <member name="M:TopDownCamera.UpdateCameraFollow">
              <summary>
              Update camera following logic.
              </summary>
             </member>
-        <member name="M:TopDownCameraController.UpdateCameraFollowPhysics">
+        <member name="M:TopDownCamera.UpdateCameraFollowPhysics">
              <summary>
              Update camera following logic for physics-based movement (uses Time.fixedDeltaTime).
              </summary>
             </member>
-        <member name="M:TopDownCameraController.CalculateTargetPosition">
+        <member name="M:TopDownCamera.CalculateTargetPosition">
              <summary>
              Calculate the target position based on the player's position and offset.
              </summary>
              <returns>The calculated target position.</returns>
             </member>
-        <member name="M:TopDownCameraController.ApplyLookAhead">
+        <member name="M:TopDownCamera.ApplyLookAhead">
              <summary>
              Apply look-ahead offset based on player movement.
              </summary>
             </member>
-        <member name="M:TopDownCameraController.ApplyBoundaries(Vector3)">
+        <member name="M:TopDownCamera.ApplyBoundaries(Vector3)">
              <summary>
              Apply boundary constraints to the target position.
              </summary>
              <param name="position">The position to constrain.</param>
              <returns>The constrained position.</returns>
             </member>
-        <member name="M:TopDownCameraController.FindPlayerTarget">
+        <member name="M:TopDownCamera.FindPlayerTarget">
              <summary>
              Automatically find the player entity to follow.
              </summary>
             </member>
-        <member name="M:TopDownCameraController.SetTarget(Unravel.Core.Entity)">
+        <member name="M:TopDownCamera.SetTarget(Unravel.Core.Entity)">
              <summary>
              Set the target entity to follow.
              </summary>
              <param name="newTarget">The new target entity.</param>
             </member>
-        <member name="M:TopDownCameraController.SnapToTarget">
+        <member name="M:TopDownCamera.SnapToTarget">
              <summary>
              Instantly snap the camera to the target position (no smooth movement).
              </summary>
+            </member>
+        <member name="T:DirectDamageEffect">
+             <summary>
+             DirectDamage effect that deals damage to entities with Health when projectiles collide.
+             </summary>
+            </member>
+        <member name="M:DirectDamageEffect.ApplyEffect(Unravel.Core.Entity,Unravel.Core.Entity,Unravel.Core.Collision)">
+             <summary>
+             Apply damage effect when projectile collides with target.
+             </summary>
+             <param name="projectile">The projectile entity.</param>
+             <param name="target">The target entity that was hit.</param>
+             <param name="collision">Collision details.</param>
+             <returns>True if damage was applied.</returns>
+            </member>
+        <member name="M:DirectDamageEffect.GetEffectName">
+             <summary>
+             Get the effect name for debugging.
+             </summary>
+             <returns>Effect name.</returns>
+            </member>
+        <member name="M:DirectDamageEffect.SetDamageAmount(System.Single)">
+             <summary>
+             Set the damage amount for this effect.
+             </summary>
+             <param name="newDamage">New damage amount.</param>
+            </member>
+        <member name="M:DirectDamageEffect.GetDamageAmount">
+             <summary>
+             Get the current damage amount.
+             </summary>
+             <returns>Current damage amount.</returns>
+            </member>
+        <member name="T:IWeaponEffect">
+             <summary>
+             Interface for projectile effects that can be applied when projectiles collide with targets.
+             </summary>
+            </member>
+        <member name="M:IWeaponEffect.ApplyEffect(Unravel.Core.Entity,Unravel.Core.Entity,Unravel.Core.Collision)">
+             <summary>
+             Apply the effect when the projectile collides with a target.
+             </summary>
+             <param name="projectile">The projectile entity that caused the collision.</param>
+             <param name="target">The target entity that was hit.</param>
+             <param name="collision">Details of the collision.</param>
+             <returns>True if the effect was successfully applied.</returns>
+            </member>
+        <member name="M:IWeaponEffect.GetEffectName">
+             <summary>
+             Get the name/type of this effect for debugging purposes.
+             </summary>
+             <returns>Effect name.</returns>
             </member>
         <member name="T:BaseMenu">
              <summary>

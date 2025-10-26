@@ -1,8 +1,8 @@
 {
- "entities_count": 8,
+ "entities_count": 9,
  "entities": [
   {
-   "id": 49283073,
+   "id": 20971521,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -58,11 +58,11 @@
        "y": 0
       },
       "viewport_size": {
-       "width": 640,
-       "height": 480
+       "width": 1390,
+       "height": 812
       },
       "orthographic_size": 5.0,
-      "aspect_ratio": 1.3333333730697632,
+      "aspect_ratio": 1.7118226289749146,
       "aspect_locked": false,
       "frustum_locked": false
      },
@@ -108,7 +108,7 @@
     },
     "has_ssr_component": true,
     "ssr_component": {
-     "enabled": true,
+     "enabled": false,
      "settings": {
       "fidelityfx": {
        "max_steps": 64,
@@ -144,7 +144,7 @@
     "script_component": {
      "script_components": [
       {
-       "type": "TopDownCameraController",
+       "type": "TopDownCamera",
        "target": {
         "flags": 2,
         "id": 4294967295
@@ -189,7 +189,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 49283075,
+   "id": 20971523,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -277,7 +277,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 49283077,
+   "id": 20971525,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -346,7 +346,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 49283079,
+   "id": 20971527,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -412,13 +412,13 @@
      },
      "children": [
       {
-       "id": 49283080
+       "id": 20971528
       },
       {
-       "id": 49283081
+       "id": 20971529
       },
       {
-       "id": 49283082
+       "id": 20971530
       }
      ],
      "active": true
@@ -449,7 +449,7 @@
    }
   },
   {
-   "id": 49283080,
+   "id": 20971528,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -492,7 +492,7 @@
       }
      },
      "parent": {
-      "id": 49283079
+      "id": 20971527
      },
      "children": [],
      "active": false
@@ -515,7 +515,7 @@
    }
   },
   {
-   "id": 49283081,
+   "id": 20971529,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -558,7 +558,7 @@
       }
      },
      "parent": {
-      "id": 49283079
+      "id": 20971527
      },
      "children": [],
      "active": false
@@ -581,7 +581,7 @@
    }
   },
   {
-   "id": 49283082,
+   "id": 20971530,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -624,7 +624,7 @@
       }
      },
      "parent": {
-      "id": 49283079
+      "id": 20971527
      },
      "children": [],
      "active": false
@@ -650,7 +650,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 42991628,
+   "id": 18874380,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -693,7 +693,7 @@
      },
      "children": [
       {
-       "id": 42991629
+       "id": 18874381
       }
      ],
      "active": true
@@ -701,7 +701,7 @@
    }
   },
   {
-   "id": 42991629,
+   "id": 18874381,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -740,7 +740,7 @@
       }
      },
      "parent": {
-      "id": 42991628
+      "id": 18874380
      },
      "children": [],
      "active": true
@@ -823,7 +823,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 42991631,
+   "id": 18874383,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -866,7 +866,7 @@
      },
      "children": [
       {
-       "id": 42991632
+       "id": 18874384
       }
      ],
      "active": true
@@ -918,14 +918,37 @@
     "script_component": {
      "script_components": [
       {
-       "type": "PlayerController",
-       "maxSpeed": 15.0,
+       "type": "Player",
+       "maxSpeed": 10.0,
        "maxAcceleration": 50.0,
        "maxDeceleration": 30.0,
        "usePhysicsMovement": true
       },
       {
-       "type": "WeaponComponent",
+       "type": "Health",
+       "maxHealth": 100.0,
+       "currentHealth": 100.0,
+       "allowOverheal": false,
+       "destroyOnDeath": true,
+       "destroyDelay": 0.0,
+       "debugHealth": false
+      },
+      {
+       "type": "Experience",
+       "levelUpEffect": {
+        "uid": "6920b1ec-83f4-9d4f-9cb7-18beb2d22594"
+       },
+       "pickupRange": 5.0,
+       "detectionInterval": 0.10000000149011612,
+       "currentExperience": 0.0,
+       "currentLevel": 1,
+       "baseExperienceRequired": 100.0,
+       "experienceMultiplier": 1.5,
+       "debugPickup": false,
+       "debugDrawRange": false
+      },
+      {
+       "type": "Weapon",
        "fireRate": 2.0,
        "range": 15.0,
        "damage": 25.0,
@@ -940,28 +963,6 @@
        "projectileLifetime": 5.0,
        "spread": 0.10000000149011612,
        "projectileCount": 1,
-       "autoDetectEnemies": true,
-       "requireLineOfSight": false,
-       "debugWeapon": false,
-       "debugDrawRanges": false
-      },
-      {
-       "type": "WeaponComponent",
-       "fireRate": 0.5,
-       "range": 15.0,
-       "damage": 25.0,
-       "projectile": {
-        "uid": "67f63796-4d3a-8f45-8eff-a40b0ed6302b"
-       },
-       "projectileContainer": {
-        "flags": 2,
-        "id": 4294967295
-       },
-       "projectileForce": 25.0,
-       "projectileLifetime": 5.0,
-       "spread": 0.10000000149011612,
-       "projectileCount": 1,
-       "autoDetectEnemies": true,
        "requireLineOfSight": false,
        "debugWeapon": false,
        "debugDrawRanges": false
@@ -971,7 +972,7 @@
    }
   },
   {
-   "id": 42991632,
+   "id": 18874384,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1010,7 +1011,7 @@
       }
      },
      "parent": {
-      "id": 42991631
+      "id": 18874383
      },
      "children": [],
      "active": true
@@ -1040,6 +1041,10 @@
        }
       ]
      }
+    },
+    "has_script_component": true,
+    "script_component": {
+     "script_components": []
     }
    }
   }
@@ -1047,7 +1052,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 42991634,
+   "id": 18874386,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1103,7 +1108,7 @@
        "minSpawnDistance": 5.0,
        "maxSpawnDistance": 15.0,
        "spawnYOffset": 0.0,
-       "debugSpawning": true,
+       "debugSpawning": false,
        "enemy": {
         "uid": "68769e46-ff2a-6440-8ab4-a3564a023ff8"
        },
@@ -1118,7 +1123,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 20971541,
+   "id": 18874388,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1161,7 +1166,7 @@
      },
      "children": [
       {
-       "id": 42991636
+       "id": 18874389
       }
      ],
      "active": true
@@ -1169,7 +1174,7 @@
    }
   },
   {
-   "id": 42991636,
+   "id": 18874389,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1208,7 +1213,7 @@
       }
      },
      "parent": {
-      "id": 20971541
+      "id": 18874388
      },
      "children": [],
      "active": true
@@ -1227,6 +1232,56 @@
      "clip": {
       "uid": "3d9a7ca2-e71b-c84f-b5f7-82b9e7884035"
      }
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 18874391,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "ProjectileContainer",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [],
+     "active": true
     }
    }
   }

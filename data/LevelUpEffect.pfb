@@ -1,0 +1,227 @@
+{
+ "entities": [
+  {
+   "prefab_uid": "30a8ac5d-16ea-9e47-8dc6-72a004fb3942",
+   "id": 1048577,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "LevelUpEffect",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "30a8ac5d-16ea-9e47-8dc6-72a004fb3942"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "00000000-0000-0000-0000-000000000000",
+      "id": 4294967295
+     },
+     "children": [],
+     "active": true
+    },
+    "has_particle_emitter_component": true,
+    "particle_emitter_component": {
+     "enabled": true,
+     "shape": 0,
+     "direction": 0,
+     "simulation_space": 1,
+     "max_particles": 200,
+     "emission_lifetime": {
+      "count": 2.0
+     },
+     "emission_shape_scale": {
+      "x": 1.0,
+      "y": 1.0,
+      "z": 1.0
+     },
+     "gravity_scale": 0.0,
+     "emission_rate": 2000.0,
+     "temporal_motion": 1.0,
+     "velocity_damping": 0.0,
+     "force_over_lifetime": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+     },
+     "size_by_speed_range": {
+      "min": 1.0,
+      "max": 1.0
+     },
+     "size_by_speed_velocity_range": {
+      "min": 0.0,
+      "max": 10.0
+     },
+     "color_by_speed_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": {
+         "r": 1.0,
+         "g": 1.0,
+         "b": 1.0,
+         "a": 1.0
+        }
+       },
+       {
+        "progress": 1.0,
+        "element": {
+         "r": 1.0,
+         "g": 1.0,
+         "b": 1.0,
+         "a": 1.0
+        }
+       }
+      ]
+     },
+     "color_by_speed_velocity_range": {
+      "min": 0.0,
+      "max": 10.0
+     },
+     "lifetime_by_emitter_speed_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": 1.0
+       },
+       {
+        "progress": 1.0,
+        "element": 1.0
+       }
+      ]
+     },
+     "lifetime_by_emitter_speed_range": {
+      "min": 0.0,
+      "max": 10.0
+     },
+     "lifetime": {
+      "count": 1.0
+     },
+     "velocity_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": {
+         "min": 0.0,
+         "max": 1.0
+        }
+       },
+       {
+        "progress": 1.0,
+        "element": {
+         "min": 2.0,
+         "max": 3.0
+        }
+       }
+      ]
+     },
+     "scale_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": {
+         "min": 1.4900000095367432,
+         "max": 1.4900000095367432
+        }
+       },
+       {
+        "progress": 1.0,
+        "element": {
+         "min": 1.840000033378601,
+         "max": 1.840000033378601
+        }
+       }
+      ]
+     },
+     "blend_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": {
+         "min": 0.800000011920929,
+         "max": 1.0
+        }
+       },
+       {
+        "progress": 1.0,
+        "element": {
+         "min": 0.0,
+         "max": 0.20000000298023225
+        }
+       }
+      ]
+     },
+     "blend_multiplier": 1.0,
+     "color_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": {
+         "r": 0.9917012453079224,
+         "g": 0.8191638588905335,
+         "b": 0.024689655750989915,
+         "a": 0.0
+        }
+       },
+       {
+        "progress": 0.49179086089134219,
+        "element": {
+         "r": 0.9834024906158447,
+         "g": 0.763630747795105,
+         "b": 0.020402539521455766,
+         "a": 1.0
+        }
+       },
+       {
+        "progress": 1.0,
+        "element": {
+         "r": 0.9419087171554565,
+         "g": 0.7376536130905151,
+         "b": 0.04690001532435417,
+         "a": 0.0
+        }
+       }
+      ]
+     },
+     "position_easing": 0,
+     "texture": {
+      "uid": "d4f5d8db-02bd-654e-9b98-61d070411c61"
+     },
+     "loop": false
+    }
+   }
+  }
+ ],
+ "version": "1.0.0"
+}
