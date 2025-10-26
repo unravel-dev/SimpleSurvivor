@@ -2,7 +2,7 @@
  "entities_count": 9,
  "entities": [
   {
-   "id": 20971521,
+   "id": 8388609,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -189,7 +189,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 20971523,
+   "id": 8388611,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -277,7 +277,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 20971525,
+   "id": 8388613,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -346,7 +346,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 20971527,
+   "id": 8388615,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -412,13 +412,13 @@
      },
      "children": [
       {
-       "id": 20971528
+       "id": 8388616
       },
       {
-       "id": 20971529
+       "id": 8388617
       },
       {
-       "id": 20971530
+       "id": 8388618
       }
      ],
      "active": true
@@ -449,7 +449,7 @@
    }
   },
   {
-   "id": 20971528,
+   "id": 8388616,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -492,7 +492,7 @@
       }
      },
      "parent": {
-      "id": 20971527
+      "id": 8388615
      },
      "children": [],
      "active": false
@@ -515,7 +515,7 @@
    }
   },
   {
-   "id": 20971529,
+   "id": 8388617,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -558,7 +558,7 @@
       }
      },
      "parent": {
-      "id": 20971527
+      "id": 8388615
      },
      "children": [],
      "active": false
@@ -581,7 +581,7 @@
    }
   },
   {
-   "id": 20971530,
+   "id": 8388618,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -624,7 +624,7 @@
       }
      },
      "parent": {
-      "id": 20971527
+      "id": 8388615
      },
      "children": [],
      "active": false
@@ -650,7 +650,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 18874380,
+   "id": 5242892,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -693,7 +693,7 @@
      },
      "children": [
       {
-       "id": 18874381
+       "id": 5242893
       }
      ],
      "active": true
@@ -701,7 +701,7 @@
    }
   },
   {
-   "id": 18874381,
+   "id": 5242893,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -740,7 +740,7 @@
       }
      },
      "parent": {
-      "id": 18874380
+      "id": 5242892
      },
      "children": [],
      "active": true
@@ -823,7 +823,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 18874383,
+   "id": 5242895,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -866,7 +866,7 @@
      },
      "children": [
       {
-       "id": 18874384
+       "id": 5242896
       }
      ],
      "active": true
@@ -972,7 +972,7 @@
    }
   },
   {
-   "id": 18874384,
+   "id": 5242896,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1011,7 +1011,7 @@
       }
      },
      "parent": {
-      "id": 18874383
+      "id": 5242895
      },
      "children": [],
      "active": true
@@ -1052,7 +1052,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 18874386,
+   "id": 5242898,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1114,6 +1114,10 @@
        },
        "spawnRate": 2.0,
        "enableAutoSpawning": true
+      },
+      {
+       "type": "EffectSystem",
+       "debugEffects": false
       }
      ]
     }
@@ -1123,7 +1127,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 18874388,
+   "id": 5242900,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1166,7 +1170,7 @@
      },
      "children": [
       {
-       "id": 18874389
+       "id": 5242901
       }
      ],
      "active": true
@@ -1174,7 +1178,7 @@
    }
   },
   {
-   "id": 18874389,
+   "id": 5242901,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1213,7 +1217,7 @@
       }
      },
      "parent": {
-      "id": 18874388
+      "id": 5242900
      },
      "children": [],
      "active": true
@@ -1239,7 +1243,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 18874391,
+   "id": 5242903,
    "components": {
     "has_tag_component": true,
     "tag_component": {

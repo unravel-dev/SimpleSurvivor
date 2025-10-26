@@ -26,9 +26,10 @@ public class Projectile : ScriptComponent
     private bool hasCollided = false;
     private Entity sourceEntity; // Entity that fired this projectile
     
-    // Effects list
-    private List<IWeaponEffect> effects = new List<IWeaponEffect>();
-    
+    // Weapon data
+    private WeaponEffectData[] weaponEffects = new WeaponEffectData[0];
+    private float weaponDamage = 25.0f;
+
     /// <summary>
     /// Called when the script is created.
     /// </summary>
@@ -36,24 +37,22 @@ public class Projectile : ScriptComponent
     {
         transformComponent = owner.GetComponent<TransformComponent>();
         physicsComponent = owner.GetComponent<PhysicsComponent>();
-        
+
         if (transformComponent == null)
         {
             Log.Error($"Projectile on {owner.name}: TransformComponent not found!");
         }
-        
+
         if (physicsComponent == null)
         {
             Log.Warning($"Projectile on {owner.name}: PhysicsComponent not found! Collision detection may not work properly.");
         }
-        
-        // Automatically find and add effect components
-        CollectEffectComponents();
-        
+
         if (debugProjectile)
         {
-            Log.Info($"Projectile initialized on {owner.name} with {effects.Count} effects");
+            Log.Info($"Projectile initialized on {owner.name}");
         }
+
     }
     
     /// <summary>
@@ -122,8 +121,8 @@ public class Projectile : ScriptComponent
             Log.Info($"Projectile {owner.name} collided with {target.name}");
         }
         
-        // Apply all effects
-        ApplyEffects(target, collision);
+        // Apply damage and effects
+        ApplyDamageAndEffects(target);
         
         // Destroy projectile if configured to do so
         if (destroyOnCollision)
@@ -133,60 +132,28 @@ public class Projectile : ScriptComponent
     }
     
     /// <summary>
-    /// Collect all effect components attached to this entity.
+    /// Apply damage and weapon effects to the target using the new systems.
     /// </summary>
-    private void CollectEffectComponents()
+    /// <param name="target">Target entity to damage.</param>
+    private void ApplyDamageAndEffects(Entity target)
     {
-        effects.Clear();
+        // Apply base damage using DamageSystem
+        bool targetDied = DamageSystem.ApplyDamage(target, weaponDamage, sourceEntity);
         
-        // Get all script components and check if they implement IProjectileEffect
-        var scriptComponents = owner.GetComponents<ScriptComponent>();
-        foreach (var component in scriptComponents)
+        // Apply weapon effects if target survived and we have effects
+        if (!targetDied && weaponEffects != null && weaponEffects.Length > 0)
         {
-            if (component is IWeaponEffect effect)
+            int effectsApplied = WeaponEffects.ApplyWeaponEffects(weaponEffects, target, sourceEntity);
+            
+            if (debugProjectile && effectsApplied > 0)
             {
-                effects.Add(effect);
-                
-                if (debugProjectile)
-                {
-                    Log.Info($"Projectile: Found effect {effect.GetEffectName()} on {owner.name}");
-                }
-            }
-        }
-    }
-    
-    /// <summary>
-    /// Apply all effects to the target.
-    /// </summary>
-    /// <param name="target">Target entity.</param>
-    /// <param name="collision">Collision details.</param>
-    private void ApplyEffects(Entity target, Collision collision)
-    {
-        int effectsApplied = 0;
-        
-        foreach (var effect in effects)
-        {
-            try
-            {
-                if (effect.ApplyEffect(owner, target, collision))
-                {
-                    effectsApplied++;
-                    
-                    if (debugProjectile)
-                    {
-                        Log.Info($"Projectile: Applied effect {effect.GetEffectName()} to {target.name}");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.Error($"Projectile: Error applying effect {effect.GetEffectName()}: {ex.Message}");
+                Log.Info($"Projectile: Applied {effectsApplied} weapon effects to {target.name}");
             }
         }
         
         if (debugProjectile)
         {
-            Log.Info($"Projectile: Applied {effectsApplied}/{effects.Count} effects to {target.name}");
+            Log.Info($"Projectile: Dealt {weaponDamage} damage to {target.name} (died: {targetDied})");
         }
     }
     
@@ -215,44 +182,40 @@ public class Projectile : ScriptComponent
     }
     
     /// <summary>
-    /// Add an effect to this projectile.
+    /// Set the weapon effects for this projectile.
     /// </summary>
-    /// <param name="effect">Effect to add.</param>
-    public void AddEffect(IWeaponEffect effect)
+    /// <param name="effects">Array of weapon effect data.</param>
+    public void SetWeaponEffects(WeaponEffectData[] effects)
     {
-        if (effect != null && !effects.Contains(effect))
+        weaponEffects = effects ?? new WeaponEffectData[0];
+        
+        if (debugProjectile)
         {
-            effects.Add(effect);
-            
-            if (debugProjectile)
-            {
-                Log.Info($"Projectile: Added effect {effect.GetEffectName()} to {owner.name}");
-            }
+            Log.Info($"Projectile: Set {weaponEffects.Length} weapon effects on {owner.name}");
         }
     }
     
     /// <summary>
-    /// Remove an effect from this projectile.
+    /// Set the weapon damage for this projectile.
     /// </summary>
-    /// <param name="effect">Effect to remove.</param>
-    public void RemoveEffect(IWeaponEffect effect)
+    /// <param name="damage">Damage amount.</param>
+    public void SetWeaponDamage(float damage)
     {
-        if (effects.Remove(effect))
+        weaponDamage = damage;
+        
+        if (debugProjectile)
         {
-            if (debugProjectile)
-            {
-                Log.Info($"Projectile: Removed effect {effect.GetEffectName()} from {owner.name}");
-            }
+            Log.Info($"Projectile: Set weapon damage to {weaponDamage} on {owner.name}");
         }
     }
     
     /// <summary>
-    /// Get the number of effects on this projectile.
+    /// Get the number of weapon effects on this projectile.
     /// </summary>
-    /// <returns>Number of effects.</returns>
+    /// <returns>Number of weapon effects.</returns>
     public int GetEffectCount()
     {
-        return effects.Count;
+        return weaponEffects?.Length ?? 0;
     }
     
     /// <summary>

@@ -34,6 +34,10 @@ public class Weapon : ScriptComponent
     [Tooltip("Require line of sight to target (raycast check)")]
     public bool requireLineOfSight = false;
     
+    //[Header("Weapon Effects")]
+    [Tooltip("Effects that this weapon can apply to targets")]
+    public WeaponEffectData[] weaponEffects = new WeaponEffectData[0];
+    
     //[Header("Debug Settings")]
     [Tooltip("Enable debug logging for weapon operations")]
     public bool debugWeapon = false;
@@ -66,7 +70,7 @@ public class Weapon : ScriptComponent
             Log.Warning($"Weapon on {owner.name}: No projectile prefab assigned!");
         }
     }
-    
+
     /// <summary>
     /// Called when the script starts execution.
     /// </summary>
@@ -78,7 +82,7 @@ public class Weapon : ScriptComponent
             Log.Error($"Weapon on {owner.name}: Missing required components. Disabling script.");
             return;
         }
-        
+
         // Auto-find projectile container if not assigned
         if (!projectileContainer)
         {
@@ -101,6 +105,9 @@ public class Weapon : ScriptComponent
             }
         }
         
+        
+        // ExampleWeaponConfigs.ConfigureWeapon(this, "poisondart");
+
     }
     
     /// <summary>
@@ -296,10 +303,14 @@ public class Weapon : ScriptComponent
             if (projectileComp != null)
             {
                 projectileComp.SetSourceEntity(owner);
+                
+                // Pass weapon effects to projectile
+                projectileComp.SetWeaponEffects(weaponEffects);
+                projectileComp.SetWeaponDamage(damage);
  
                 if (debugWeapon)
                 {
-                    Log.Info($"Weapon: Configured projectile {instance.name} with source {owner.name} and damage {damage}");
+                    Log.Info($"Weapon: Configured projectile {instance.name} with source {owner.name}, damage {damage}, and {weaponEffects.Length} effects");
                 }
             }
             else

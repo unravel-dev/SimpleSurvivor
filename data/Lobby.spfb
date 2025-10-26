@@ -2,7 +2,7 @@
  "entities_count": 4,
  "entities": [
   {
-   "id": 52428801,
+   "id": 7340033,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -146,7 +146,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 52428803,
+   "id": 7340035,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -168,10 +168,10 @@
        "z": 0.0
       },
       "rotation": {
-       "x": 0.10938166826963425,
-       "y": 0.8754260540008545,
-       "z": -0.4082179069519043,
-       "w": 0.2345697283744812
+       "x": 0.10938168317079544,
+       "y": 0.875426173210144,
+       "z": -0.40821796655654909,
+       "w": 0.2345697581768036
       },
       "scale": {
        "x": 1.0,
@@ -234,7 +234,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 50331653,
+   "id": 7340037,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -303,7 +303,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 50331655,
+   "id": 7340039,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -364,13 +364,13 @@
      },
      "children": [
       {
-       "id": 50331656
+       "id": 7340040
       },
       {
-       "id": 50331657
+       "id": 7340041
       },
       {
-       "id": 48234506
+       "id": 7340042
       }
      ],
      "active": true
@@ -401,7 +401,7 @@
    }
   },
   {
-   "id": 50331656,
+   "id": 7340040,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -444,7 +444,7 @@
       }
      },
      "parent": {
-      "id": 50331655
+      "id": 7340039
      },
      "children": [],
      "active": true
@@ -467,7 +467,7 @@
    }
   },
   {
-   "id": 50331657,
+   "id": 7340041,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -510,7 +510,7 @@
       }
      },
      "parent": {
-      "id": 50331655
+      "id": 7340039
      },
      "children": [],
      "active": false
@@ -533,7 +533,7 @@
    }
   },
   {
-   "id": 48234506,
+   "id": 7340042,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -576,7 +576,7 @@
       }
      },
      "parent": {
-      "id": 50331655
+      "id": 7340039
      },
      "children": [],
      "active": true

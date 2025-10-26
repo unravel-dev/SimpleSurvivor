@@ -247,6 +247,65 @@
              Handles the Exit button click - quits the application.
              </summary>
             </member>
+        <member name="T:DamageSystem">
+             <summary>
+             Centralized damage system for applying damage and managing death events.
+             Provides a single point of control for all damage-related operations.
+             </summary>
+            </member>
+        <member name="M:DamageSystem.ApplyDamage(Unravel.Core.Entity,System.Single,Unravel.Core.Entity)">
+             <summary>
+             Apply damage to an entity through its Health component.
+             </summary>
+             <param name="target">Entity to damage.</param>
+             <param name="damage">Amount of damage to deal.</param>
+             <param name="source">Entity that caused the damage.</param>
+             <returns>True if the target died from this damage.</returns>
+            </member>
+        <member name="M:DamageSystem.ApplyHealing(Unravel.Core.Entity,System.Single,Unravel.Core.Entity)">
+             <summary>
+             Apply healing to an entity through its Health component.
+             </summary>
+             <param name="target">Entity to heal.</param>
+             <param name="healAmount">Amount of healing to apply.</param>
+             <param name="source">Entity that provided the healing.</param>
+             <returns>Actual amount healed.</returns>
+            </member>
+        <member name="M:DamageSystem.KillEntity(Unravel.Core.Entity,Unravel.Core.Entity)">
+             <summary>
+             Kill an entity instantly.
+             </summary>
+             <param name="target">Entity to kill.</param>
+             <param name="source">Entity responsible for the kill.</param>
+            </member>
+        <member name="M:DamageSystem.CanTakeDamage(Unravel.Core.Entity)">
+             <summary>
+             Check if an entity can take damage.
+             </summary>
+             <param name="target">Entity to check.</param>
+             <returns>True if the entity can take damage.</returns>
+            </member>
+        <member name="M:DamageSystem.GetCurrentHealth(Unravel.Core.Entity)">
+             <summary>
+             Get the current health of an entity.
+             </summary>
+             <param name="target">Entity to check.</param>
+             <returns>Current health, or 0 if no health component.</returns>
+            </member>
+        <member name="M:DamageSystem.GetMaxHealth(Unravel.Core.Entity)">
+             <summary>
+             Get the maximum health of an entity.
+             </summary>
+             <param name="target">Entity to check.</param>
+             <returns>Maximum health, or 0 if no health component.</returns>
+            </member>
+        <member name="M:DamageSystem.GetHealthPercentage(Unravel.Core.Entity)">
+             <summary>
+             Get the health percentage of an entity.
+             </summary>
+             <param name="target">Entity to check.</param>
+             <returns>Health percentage (0.0 to 1.0).</returns>
+            </member>
         <member name="T:Projectile">
              <summary>
              Projectile that handles projectile behavior, collision detection, and effect application.
@@ -273,17 +332,11 @@
              </summary>
              <param name="collision">Collision details.</param>
             </member>
-        <member name="M:Projectile.CollectEffectComponents">
+        <member name="M:Projectile.ApplyDamageAndEffects(Unravel.Core.Entity)">
              <summary>
-             Collect all effect components attached to this entity.
+             Apply damage and weapon effects to the target using the new systems.
              </summary>
-            </member>
-        <member name="M:Projectile.ApplyEffects(Unravel.Core.Entity,Unravel.Core.Collision)">
-             <summary>
-             Apply all effects to the target.
-             </summary>
-             <param name="target">Target entity.</param>
-             <param name="collision">Collision details.</param>
+             <param name="target">Target entity to damage.</param>
             </member>
         <member name="M:Projectile.SetSourceEntity(Unravel.Core.Entity)">
              <summary>
@@ -297,23 +350,23 @@
              </summary>
              <returns>Source entity.</returns>
             </member>
-        <member name="M:Projectile.AddEffect(IWeaponEffect)">
+        <member name="M:Projectile.SetWeaponEffects(WeaponEffectData[])">
              <summary>
-             Add an effect to this projectile.
+             Set the weapon effects for this projectile.
              </summary>
-             <param name="effect">Effect to add.</param>
+             <param name="effects">Array of weapon effect data.</param>
             </member>
-        <member name="M:Projectile.RemoveEffect(IWeaponEffect)">
+        <member name="M:Projectile.SetWeaponDamage(System.Single)">
              <summary>
-             Remove an effect from this projectile.
+             Set the weapon damage for this projectile.
              </summary>
-             <param name="effect">Effect to remove.</param>
+             <param name="damage">Damage amount.</param>
             </member>
         <member name="M:Projectile.GetEffectCount">
              <summary>
-             Get the number of effects on this projectile.
+             Get the number of weapon effects on this projectile.
              </summary>
-             <returns>Number of effects.</returns>
+             <returns>Number of weapon effects.</returns>
             </member>
         <member name="M:Projectile.GetTimeAlive">
              <summary>
@@ -326,141 +379,6 @@
              Check if this projectile has collided with something.
              </summary>
              <returns>True if has collided.</returns>
-            </member>
-        <member name="T:Enemy">
-             <summary>
-             Simple enemy AI that moves towards the player's position.
-             Designed for top-down games with basic chase behavior.
-             </summary>
-            </member>
-        <member name="M:Enemy.OnCreate">
-             <summary>
-             Called when the script is created. Initialize component references.
-             </summary>
-            </member>
-        <member name="M:Enemy.OnStart">
-             <summary>
-             Called when the script starts execution.
-             </summary>
-            </member>
-        <member name="M:Enemy.OnUpdate">
-             <summary>
-             Called every frame to handle enemy AI decisions.
-             </summary>
-            </member>
-        <member name="M:Enemy.OnFixedUpdate">
-             <summary>
-             Called at fixed intervals for physics-based movement.
-             </summary>
-            </member>
-        <member name="M:Enemy.UpdateAI">
-             <summary>
-             Update enemy AI decisions (called every frame).
-             </summary>
-            </member>
-        <member name="M:Enemy.UpdatePhysicsMovement">
-             <summary>
-             Update physics-based movement using steering forces (called at fixed intervals).
-             </summary>
-            </member>
-        <member name="M:Enemy.MoveTowardsPlayer(Vector3,System.Single)">
-             <summary>
-             Move the enemy towards the player using direct transform movement.
-             Includes arrive behavior for smooth stopping.
-             </summary>
-             <param name="direction">Normalized direction to move.</param>
-             <param name="distance">Distance to the target.</param>
-            </member>
-        <member name="M:Enemy.RotateTowardsDirection(Vector3)">
-             <summary>
-             Rotate the enemy to face a specific direction.
-             </summary>
-             <param name="direction">Direction to face.</param>
-            </member>
-        <member name="M:Enemy.FindPlayer">
-             <summary>
-             Automatically find the player entity.
-             </summary>
-            </member>
-        <member name="M:Enemy.SetTarget(Unravel.Core.Entity)">
-             <summary>
-             Set the target entity to chase.
-             </summary>
-             <param name="newTarget">The new target entity.</param>
-            </member>
-        <member name="M:Enemy.SetMaxSpeed(System.Single)">
-             <summary>
-             Set the enemy's maximum movement speed.
-             </summary>
-             <param name="speed">The new maximum movement speed.</param>
-            </member>
-        <member name="M:Enemy.SetMaxAcceleration(System.Single)">
-             <summary>
-             Set the enemy's maximum acceleration.
-             </summary>
-             <param name="acceleration">The new maximum acceleration.</param>
-            </member>
-        <member name="M:Enemy.GetDistanceToTarget">
-             <summary>
-             Get the distance to the current target.
-             </summary>
-             <returns>Distance to target, or -1 if no target is set.</returns>
-            </member>
-        <member name="M:Enemy.IsChasing">
-             <summary>
-             Check if the enemy is currently chasing the player.
-             </summary>
-             <returns>True if chasing, false otherwise.</returns>
-            </member>
-        <member name="M:Enemy.IsTargetInRange">
-             <summary>
-             Check if the target is within chase range.
-             </summary>
-             <returns>True if target is in range, false otherwise.</returns>
-            </member>
-        <member name="M:Enemy.StopChasing">
-             <summary>
-             Stop chasing and remain stationary.
-             </summary>
-            </member>
-        <member name="M:Enemy.ResumeChasing">
-             <summary>
-             Resume chasing the target.
-             </summary>
-            </member>
-        <member name="M:Enemy.OnEnemyDamageTaken(System.Single)">
-             <summary>
-             Called when the enemy takes damage.
-             </summary>
-             <param name="damageAmount">Amount of damage taken.</param>
-            </member>
-        <member name="M:Enemy.OnEnemyDeath">
-             <summary>
-             Called when the enemy dies.
-             </summary>
-            </member>
-        <member name="M:Enemy.DropExperienceOrbs">
-             <summary>
-             Drop experience orbs when the enemy dies.
-             </summary>
-            </member>
-        <member name="M:Enemy.GetHealth">
-             <summary>
-             Get the enemy's health component.
-             </summary>
-             <returns>Health if available, null otherwise.</returns>
-            </member>
-        <member name="M:Enemy.IsAlive">
-             <summary>
-             Check if the enemy is alive.
-             </summary>
-             <returns>True if alive (not dead).</returns>
-            </member>
-        <member name="M:Enemy.GetHealthPercentage">
-             <summary>
-             Get the enemy's current health percentage.
-             </summary>
-             <returns>Health percentage (0.0 to 1.0), or 1.0 if no health component.</returns>
             </member>
         <member name="T:Player">
              <summary>
@@ -625,6 +543,345 @@
              Get the player's experience progress towards next level.
              </summary>
              <returns>Progress percentage (0.0 to 1.0).</returns>
+            </member>
+        <member name="T:DamageOverTimeComponent">
+             <summary>
+             Damage over time effect component - deals continuous damage.
+             </summary>
+            </member>
+        <member name="M:DamageOverTimeComponent.Initialize(System.Single,System.Single,Unravel.Core.Entity)">
+             <summary>
+             Initialize the DOT effect.
+             </summary>
+             <param name="dps">Damage per second.</param>
+             <param name="effectDuration">Duration of the effect.</param>
+             <param name="sourceEntity">Entity that applied this effect.</param>
+            </member>
+        <member name="T:SlowComponent">
+             <summary>
+             Slow effect component - reduces movement speed.
+             </summary>
+            </member>
+        <member name="M:SlowComponent.Initialize(System.Single,System.Single,System.Single)">
+             <summary>
+             Initialize the slow effect.
+             </summary>
+             <param name="multiplier">Speed multiplier.</param>
+             <param name="effectDuration">Duration of the effect.</param>
+             <param name="currentSpeed">Current speed to store as original.</param>
+            </member>
+        <member name="T:StunComponent">
+             <summary>
+             Stun effect component - disables entity movement and actions.
+             </summary>
+            </member>
+        <member name="M:StunComponent.Initialize(System.Single)">
+             <summary>
+             Initialize the stun effect.
+             </summary>
+             <param name="effectDuration">Duration of the stun.</param>
+            </member>
+        <member name="T:PoisonComponent">
+             <summary>
+             Poison effect component - deals damage over time with visual effects.
+             </summary>
+            </member>
+        <member name="M:PoisonComponent.Initialize(System.Single,System.Single,Unravel.Core.Entity)">
+             <summary>
+             Initialize the poison effect.
+             </summary>
+             <param name="dps">Damage per second.</param>
+             <param name="effectDuration">Duration of the effect.</param>
+             <param name="sourceEntity">Entity that applied this effect.</param>
+            </member>
+        <member name="T:EffectSystem">
+             <summary>
+             Centralized system for processing all entity effects efficiently.
+             Handles DOT, Slow, Stun, and other status effects in batches.
+             </summary>
+            </member>
+        <member name="M:EffectSystem.OnUpdate">
+             <summary>
+             Called every frame to process all active effects.
+             </summary>
+            </member>
+        <member name="M:EffectSystem.ProcessDamageOverTimeEffects">
+             <summary>
+             Process all damage over time effects.
+             </summary>
+            </member>
+        <member name="M:EffectSystem.ProcessPoisonEffects">
+             <summary>
+             Process all poison effects.
+             </summary>
+            </member>
+        <member name="M:EffectSystem.ProcessSlowEffects">
+             <summary>
+             Process all slow effects.
+             </summary>
+            </member>
+        <member name="M:EffectSystem.ProcessStunEffects">
+             <summary>
+             Process all stun effects.
+             </summary>
+            </member>
+        <member name="M:EffectSystem.CleanupExpiredEffects">
+             <summary>
+             Clean up expired effects and restore original values.
+             </summary>
+            </member>
+        <member name="T:ExampleWeaponConfigs">
+             <summary>
+             Example weapon configurations showing how to set up different weapon effects.
+             This is just for reference - you would configure these in the editor on actual weapon prefabs.
+             </summary>
+            </member>
+        <member name="F:ExampleWeaponConfigs.FlamethrowerEffects">
+             <summary>
+             Flamethrower configuration - high damage with burn effect.
+             </summary>
+            </member>
+        <member name="F:ExampleWeaponConfigs.IceGunEffects">
+             <summary>
+             Ice gun configuration - moderate damage with slow effect.
+             </summary>
+            </member>
+        <member name="F:ExampleWeaponConfigs.PoisonDartEffects">
+             <summary>
+             Poison dart configuration - low damage with strong poison.
+             </summary>
+            </member>
+        <member name="F:ExampleWeaponConfigs.StunBatonEffects">
+             <summary>
+             Stun baton configuration - moderate damage with stun.
+             </summary>
+            </member>
+        <member name="F:ExampleWeaponConfigs.MultiEffectWeaponEffects">
+             <summary>
+             Multi-effect weapon - combines multiple effects.
+             </summary>
+            </member>
+        <member name="M:ExampleWeaponConfigs.ConfigureWeapon(Weapon,System.String)">
+             <summary>
+             Example of how to configure a weapon programmatically.
+             </summary>
+             <param name="weapon">Weapon component to configure.</param>
+             <param name="weaponType">Type of weapon to configure.</param>
+            </member>
+        <member name="T:WeaponEffectType">
+             <summary>
+             Weapon effect types that can be applied to projectiles.
+             </summary>
+            </member>
+        <member name="T:WeaponEffectData">
+             <summary>
+             Configuration data for weapon effects.
+             </summary>
+            </member>
+        <member name="T:WeaponEffects">
+             <summary>
+             Static utility class for applying weapon effects to entities.
+             </summary>
+            </member>
+        <member name="M:WeaponEffects.ApplyBurnEffect(Unravel.Core.Entity,System.Single,System.Single,Unravel.Core.Entity)">
+             <summary>
+             Apply a burn effect (damage over time) to an entity.
+             </summary>
+             <param name="target">Entity to apply effect to.</param>
+             <param name="duration">Duration of the burn effect.</param>
+             <param name="damagePerSecond">Damage dealt per second.</param>
+             <param name="source">Entity that applied this effect.</param>
+            </member>
+        <member name="M:WeaponEffects.ApplyPoisonEffect(Unravel.Core.Entity,System.Single,System.Single,Unravel.Core.Entity)">
+             <summary>
+             Apply a poison effect (damage over time) to an entity.
+             </summary>
+             <param name="target">Entity to apply effect to.</param>
+             <param name="duration">Duration of the poison effect.</param>
+             <param name="damagePerSecond">Damage dealt per second.</param>
+             <param name="source">Entity that applied this effect.</param>
+            </member>
+        <member name="M:WeaponEffects.ApplySlowEffect(Unravel.Core.Entity,System.Single,System.Single)">
+             <summary>
+             Apply a slow effect to an entity.
+             </summary>
+             <param name="target">Entity to apply effect to.</param>
+             <param name="duration">Duration of the slow effect.</param>
+             <param name="speedMultiplier">Speed multiplier (0.5 = half speed).</param>
+            </member>
+        <member name="M:WeaponEffects.ApplyStunEffect(Unravel.Core.Entity,System.Single)">
+             <summary>
+             Apply a stun effect to an entity.
+             </summary>
+             <param name="target">Entity to apply effect to.</param>
+             <param name="duration">Duration of the stun effect.</param>
+            </member>
+        <member name="M:WeaponEffects.ApplyFreezeEffect(Unravel.Core.Entity,System.Single,System.Single)">
+             <summary>
+             Apply a freeze effect (slow + visual) to an entity.
+             </summary>
+             <param name="target">Entity to apply effect to.</param>
+             <param name="duration">Duration of the freeze effect.</param>
+             <param name="speedMultiplier">Speed multiplier for the slow component.</param>
+            </member>
+        <member name="M:WeaponEffects.ApplyWeaponEffect(WeaponEffectData,Unravel.Core.Entity,Unravel.Core.Entity)">
+             <summary>
+             Apply a weapon effect based on effect data.
+             </summary>
+             <param name="effectData">Effect configuration data.</param>
+             <param name="target">Entity to apply effect to.</param>
+             <param name="source">Entity that applied this effect.</param>
+             <returns>True if the effect was applied.</returns>
+            </member>
+        <member name="M:WeaponEffects.ApplyWeaponEffects(WeaponEffectData[],Unravel.Core.Entity,Unravel.Core.Entity)">
+             <summary>
+             Apply multiple weapon effects to a target.
+             </summary>
+             <param name="effects">Array of effect data to apply.</param>
+             <param name="target">Entity to apply effects to.</param>
+             <param name="source">Entity that applied these effects.</param>
+             <returns>Number of effects successfully applied.</returns>
+            </member>
+        <member name="M:WeaponEffects.RemoveAllEffects(Unravel.Core.Entity)">
+             <summary>
+             Remove all effects from an entity (useful for cleanse abilities).
+             </summary>
+             <param name="target">Entity to cleanse.</param>
+            </member>
+        <member name="T:Enemy">
+             <summary>
+             Simple enemy AI that moves towards the player's position.
+             Designed for top-down games with basic chase behavior.
+             </summary>
+            </member>
+        <member name="M:Enemy.OnCreate">
+             <summary>
+             Called when the script is created. Initialize component references.
+             </summary>
+            </member>
+        <member name="M:Enemy.OnStart">
+             <summary>
+             Called when the script starts execution.
+             </summary>
+            </member>
+        <member name="M:Enemy.OnUpdate">
+             <summary>
+             Called every frame to handle enemy AI decisions.
+             </summary>
+            </member>
+        <member name="M:Enemy.OnFixedUpdate">
+             <summary>
+             Called at fixed intervals for physics-based movement.
+             </summary>
+            </member>
+        <member name="M:Enemy.UpdateAI">
+             <summary>
+             Update enemy AI decisions (called every frame).
+             </summary>
+            </member>
+        <member name="M:Enemy.UpdatePhysicsMovement">
+             <summary>
+             Update physics-based movement using steering forces (called at fixed intervals).
+             </summary>
+            </member>
+        <member name="M:Enemy.MoveTowardsPlayer(Vector3,System.Single)">
+             <summary>
+             Move the enemy towards the player using direct transform movement.
+             Includes arrive behavior for smooth stopping.
+             </summary>
+             <param name="direction">Normalized direction to move.</param>
+             <param name="distance">Distance to the target.</param>
+            </member>
+        <member name="M:Enemy.RotateTowardsDirection(Vector3)">
+             <summary>
+             Rotate the enemy to face a specific direction.
+             </summary>
+             <param name="direction">Direction to face.</param>
+            </member>
+        <member name="M:Enemy.FindPlayer">
+             <summary>
+             Automatically find the player entity.
+             </summary>
+            </member>
+        <member name="M:Enemy.SetTarget(Unravel.Core.Entity)">
+             <summary>
+             Set the target entity to chase.
+             </summary>
+             <param name="newTarget">The new target entity.</param>
+            </member>
+        <member name="M:Enemy.SetMaxSpeed(System.Single)">
+             <summary>
+             Set the enemy's maximum movement speed.
+             </summary>
+             <param name="speed">The new maximum movement speed.</param>
+            </member>
+        <member name="M:Enemy.SetMaxAcceleration(System.Single)">
+             <summary>
+             Set the enemy's maximum acceleration.
+             </summary>
+             <param name="acceleration">The new maximum acceleration.</param>
+            </member>
+        <member name="M:Enemy.GetDistanceToTarget">
+             <summary>
+             Get the distance to the current target.
+             </summary>
+             <returns>Distance to target, or -1 if no target is set.</returns>
+            </member>
+        <member name="M:Enemy.IsChasing">
+             <summary>
+             Check if the enemy is currently chasing the player.
+             </summary>
+             <returns>True if chasing, false otherwise.</returns>
+            </member>
+        <member name="M:Enemy.IsTargetInRange">
+             <summary>
+             Check if the target is within chase range.
+             </summary>
+             <returns>True if target is in range, false otherwise.</returns>
+            </member>
+        <member name="M:Enemy.StopChasing">
+             <summary>
+             Stop chasing and remain stationary.
+             </summary>
+            </member>
+        <member name="M:Enemy.ResumeChasing">
+             <summary>
+             Resume chasing the target.
+             </summary>
+            </member>
+        <member name="M:Enemy.OnEnemyDamageTaken(System.Single)">
+             <summary>
+             Called when the enemy takes damage.
+             </summary>
+             <param name="damageAmount">Amount of damage taken.</param>
+            </member>
+        <member name="M:Enemy.OnEnemyDeath">
+             <summary>
+             Called when the enemy dies.
+             </summary>
+            </member>
+        <member name="M:Enemy.DropExperienceOrbs">
+             <summary>
+             Drop experience orbs when the enemy dies.
+             </summary>
+            </member>
+        <member name="M:Enemy.GetHealth">
+             <summary>
+             Get the enemy's health component.
+             </summary>
+             <returns>Health if available, null otherwise.</returns>
+            </member>
+        <member name="M:Enemy.IsAlive">
+             <summary>
+             Check if the enemy is alive.
+             </summary>
+             <returns>True if alive (not dead).</returns>
+            </member>
+        <member name="M:Enemy.GetHealthPercentage">
+             <summary>
+             Get the enemy's current health percentage.
+             </summary>
+             <returns>Health percentage (0.0 to 1.0), or 1.0 if no health component.</returns>
             </member>
         <member name="T:Experience">
              <summary>
@@ -975,58 +1232,6 @@
              <summary>
              Instantly snap the camera to the target position (no smooth movement).
              </summary>
-            </member>
-        <member name="T:DirectDamageEffect">
-             <summary>
-             DirectDamage effect that deals damage to entities with Health when projectiles collide.
-             </summary>
-            </member>
-        <member name="M:DirectDamageEffect.ApplyEffect(Unravel.Core.Entity,Unravel.Core.Entity,Unravel.Core.Collision)">
-             <summary>
-             Apply damage effect when projectile collides with target.
-             </summary>
-             <param name="projectile">The projectile entity.</param>
-             <param name="target">The target entity that was hit.</param>
-             <param name="collision">Collision details.</param>
-             <returns>True if damage was applied.</returns>
-            </member>
-        <member name="M:DirectDamageEffect.GetEffectName">
-             <summary>
-             Get the effect name for debugging.
-             </summary>
-             <returns>Effect name.</returns>
-            </member>
-        <member name="M:DirectDamageEffect.SetDamageAmount(System.Single)">
-             <summary>
-             Set the damage amount for this effect.
-             </summary>
-             <param name="newDamage">New damage amount.</param>
-            </member>
-        <member name="M:DirectDamageEffect.GetDamageAmount">
-             <summary>
-             Get the current damage amount.
-             </summary>
-             <returns>Current damage amount.</returns>
-            </member>
-        <member name="T:IWeaponEffect">
-             <summary>
-             Interface for projectile effects that can be applied when projectiles collide with targets.
-             </summary>
-            </member>
-        <member name="M:IWeaponEffect.ApplyEffect(Unravel.Core.Entity,Unravel.Core.Entity,Unravel.Core.Collision)">
-             <summary>
-             Apply the effect when the projectile collides with a target.
-             </summary>
-             <param name="projectile">The projectile entity that caused the collision.</param>
-             <param name="target">The target entity that was hit.</param>
-             <param name="collision">Details of the collision.</param>
-             <returns>True if the effect was successfully applied.</returns>
-            </member>
-        <member name="M:IWeaponEffect.GetEffectName">
-             <summary>
-             Get the name/type of this effect for debugging purposes.
-             </summary>
-             <returns>Effect name.</returns>
             </member>
         <member name="T:BaseMenu">
              <summary>
