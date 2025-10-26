@@ -1,0 +1,288 @@
+{
+ "entities": [
+  {
+   "prefab_uid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+   "id": 1048577,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Enemy",
+     "tag": "Enemy"
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 32
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 2.2108073234558107,
+       "y": 0.0,
+       "z": -9.590066909790039
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "00000000-0000-0000-0000-000000000000",
+      "id": 4294967295
+     },
+     "children": [
+      {
+       "prefab_uid": "181acae2-d0c5-004b-a243-c9486c8919ac",
+       "id": 1048578
+      },
+      {
+       "prefab_uid": "f394a2d3-fb82-604e-8a57-97d75348a99d",
+       "id": 1048579
+      }
+     ],
+     "active": true
+    },
+    "has_physics_component": true,
+    "physics_component": {
+     "is_using_gravity": false,
+     "is_kinematic": false,
+     "is_sensor": false,
+     "is_autoscaled": true,
+     "mass": 1.0,
+     "include_layers": {
+      "mask": -1
+     },
+     "exclude_layers": {
+      "mask": 32
+     },
+     "freeze_position": {
+      "x": false,
+      "y": true,
+      "z": false
+     },
+     "freeze_rotation": {
+      "x": true,
+      "y": true,
+      "z": true
+     },
+     "material": {
+      "uid": "00000000-0000-0000-0000-000000000000"
+     },
+     "shapes": [
+      {
+       "shape": {
+        "index": 2,
+        "data": {
+         "center": {
+          "x": 0.0,
+          "y": 1.5,
+          "z": 0.0
+         },
+         "radius": 0.5,
+         "length": 2.0
+        }
+       }
+      }
+     ]
+    },
+    "has_script_component": true,
+    "script_component": {
+     "script_components": [
+      {
+       "type": "Enemy",
+       "moveSpeed": 3.0,
+       "rotationSpeed": 180.0,
+       "stopDistance": 1.0,
+       "usePhysicsMovement": true,
+       "target": {
+        "flags": 2,
+        "prefab_uid": "00000000-0000-0000-0000-000000000000",
+        "id": 4294967295
+       },
+       "autoFindPlayer": true,
+       "maxChaseDistance": 0.0,
+       "debugMovement": false
+      }
+     ]
+    }
+   }
+  },
+  {
+   "prefab_uid": "181acae2-d0c5-004b-a243-c9486c8919ac",
+   "id": 1048578,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Mesh",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "181acae2-d0c5-004b-a243-c9486c8919ac"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 1.5,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+      "id": 1048577
+     },
+     "children": [],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "1cd3f186-4661-ae52-a40a-9685321b7c22"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "prefab_uid": "f394a2d3-fb82-604e-8a57-97d75348a99d",
+   "id": 1048579,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Sphere",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "f394a2d3-fb82-604e-8a57-97d75348a99d"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -9.5367431640625e-7,
+       "y": 3.344529628753662,
+       "z": -0.0000057220458984375
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 0.6300000548362732,
+       "y": 0.6300000548362732,
+       "z": 0.6300000548362732
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+      "id": 1048577
+     },
+     "children": [],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "b755a718-ef93-1552-bf79-f79c0e6973eb"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    }
+   }
+  }
+ ],
+ "version": "1.0.0"
+}

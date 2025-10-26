@@ -1,0 +1,11 @@
+*.user
+*.cache
+*.csproj
+*.temp
+
+[Bb]uild_*/
+[Bb]uild/
+[Bb]in/
+.vs/
+.vscode/
+.cache/

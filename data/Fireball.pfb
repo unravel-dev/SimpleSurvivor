@@ -1,0 +1,286 @@
+{
+ "entities": [
+  {
+   "prefab_uid": "10ef8358-c389-3a4b-896e-3f9e41e44097",
+   "id": 49283073,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Fireball",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 64
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "10ef8358-c389-3a4b-896e-3f9e41e44097"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.7011058330535889,
+       "y": 2.0096468925476076,
+       "z": 3.6948180198669435
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 0.5600001215934753,
+       "y": 0.5600001215934753,
+       "z": 0.5600001215934753
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "00000000-0000-0000-0000-000000000000",
+      "id": 4294967295
+     },
+     "children": [],
+     "active": true
+    },
+    "has_physics_component": true,
+    "physics_component": {
+     "is_using_gravity": true,
+     "is_kinematic": false,
+     "is_sensor": false,
+     "is_autoscaled": true,
+     "mass": 1.0,
+     "include_layers": {
+      "mask": -1
+     },
+     "exclude_layers": {
+      "mask": 80
+     },
+     "freeze_position": {
+      "x": false,
+      "y": false,
+      "z": false
+     },
+     "freeze_rotation": {
+      "x": false,
+      "y": false,
+      "z": false
+     },
+     "material": {
+      "uid": "00000000-0000-0000-0000-000000000000"
+     },
+     "shapes": [
+      {
+       "shape": {
+        "index": 1,
+        "data": {
+         "center": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+         },
+         "radius": 0.5
+        }
+       }
+      }
+     ]
+    },
+    "has_particle_emitter_component": true,
+    "particle_emitter_component": {
+     "enabled": true,
+     "shape": 0,
+     "direction": 1,
+     "simulation_space": 0,
+     "max_particles": 1024,
+     "emission_lifetime": {
+      "count": 2.0
+     },
+     "emission_shape_scale": {
+      "x": 1.0,
+      "y": 1.0,
+      "z": 1.0
+     },
+     "gravity_scale": 0.0,
+     "emission_rate": 510.5,
+     "temporal_motion": 1.0,
+     "velocity_damping": 0.0,
+     "force_over_lifetime": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+     },
+     "size_by_speed_range": {
+      "min": 1.0,
+      "max": 1.0
+     },
+     "size_by_speed_velocity_range": {
+      "min": 0.0,
+      "max": 10.0
+     },
+     "color_by_speed_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": {
+         "r": 1.0,
+         "g": 1.0,
+         "b": 1.0,
+         "a": 1.0
+        }
+       },
+       {
+        "progress": 1.0,
+        "element": {
+         "r": 1.0,
+         "g": 1.0,
+         "b": 1.0,
+         "a": 1.0
+        }
+       }
+      ]
+     },
+     "color_by_speed_velocity_range": {
+      "min": 0.0,
+      "max": 10.0
+     },
+     "lifetime_by_emitter_speed_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": 1.0
+       },
+       {
+        "progress": 1.0,
+        "element": 1.0
+       }
+      ]
+     },
+     "lifetime_by_emitter_speed_range": {
+      "min": 0.0,
+      "max": 10.0
+     },
+     "lifetime": {
+      "count": 0.5
+     },
+     "velocity_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": {
+         "min": 0.0,
+         "max": 0.25
+        }
+       },
+       {
+        "progress": 1.0,
+        "element": {
+         "min": 0.5,
+         "max": 1.2999999523162842
+        }
+       }
+      ]
+     },
+     "scale_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": {
+         "min": 0.10000000149011612,
+         "max": 0.20000000298023225
+        }
+       },
+       {
+        "progress": 1.0,
+        "element": {
+         "min": 0.4000000059604645,
+         "max": 1.340000033378601
+        }
+       }
+      ]
+     },
+     "blend_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": {
+         "min": 0.800000011920929,
+         "max": 1.0
+        }
+       },
+       {
+        "progress": 1.0,
+        "element": {
+         "min": 0.0,
+         "max": 0.20000000298023225
+        }
+       }
+      ]
+     },
+     "blend_multiplier": 1.0,
+     "color_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": {
+         "r": 0.12442966550588608,
+         "g": 0.908713698387146,
+         "b": 0.17649829387664796,
+         "a": 0.0
+        }
+       },
+       {
+        "progress": 0.25,
+        "element": {
+         "r": 0.2694125473499298,
+         "g": 0.8215767741203308,
+         "b": 0.10227096080780029,
+         "a": 1.0
+        }
+       },
+       {
+        "progress": 0.5,
+        "element": {
+         "r": 0.10535286366939545,
+         "g": 0.8755186796188355,
+         "b": 0.1948327273130417,
+         "a": 1.0
+        }
+       },
+       {
+        "progress": 0.75,
+        "element": {
+         "r": 0.06117318570613861,
+         "g": 0.8672199249267578,
+         "b": 0.355497270822525,
+         "a": 1.0
+        }
+       },
+       {
+        "progress": 1.0,
+        "element": {
+         "r": 0.47134172916412356,
+         "g": 0.9792531132698059,
+         "b": 0.5682874321937561,
+         "a": 0.0
+        }
+       }
+      ]
+     },
+     "position_easing": 0,
+     "texture": {
+      "uid": "5b249d5d-8cc1-2a4e-9b9b-b16ba4a53af1"
+     }
+    }
+   }
+  }
+ ],
+ "version": "1.0.0"
+}

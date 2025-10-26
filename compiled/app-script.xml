@@ -1,0 +1,844 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>app-script</name>
+    </assembly>
+    <members>
+        <member name="T:MainMenu">
+             <summary>
+             Main Menu script that handles the primary navigation buttons.
+             Uses LobbyUI for centralized navigation instead of direct menu manipulation.
+             Now inherits from BaseMenuController to eliminate code duplication.
+             </summary>
+            </member>
+        <member name="M:MainMenu.OnPlayButtonClick(Unravel.Core.UIPointerEvent)">
+             <summary>
+             Handles the Play button click - starts the game.
+             </summary>
+            </member>
+        <member name="M:MainMenu.OnSettingsButtonClick(Unravel.Core.UIPointerEvent)">
+             <summary>
+             Handles the Settings button click - opens settings menu.
+             </summary>
+            </member>
+        <member name="M:MainMenu.OnExitButtonClick(Unravel.Core.UIPointerEvent)">
+             <summary>
+             Handles the Exit button click - quits the application.
+             </summary>
+            </member>
+        <member name="T:WeaponComponent">
+             <summary>
+             WeaponComponent that automatically targets and shoots at enemies within range.
+             Handles automatic firing, enemy detection, and projectile spawning.
+             </summary>
+            </member>
+        <member name="M:WeaponComponent.OnCreate">
+             <summary>
+             Called when the script is created. Initialize component references.
+             </summary>
+            </member>
+        <member name="M:WeaponComponent.OnStart">
+             <summary>
+             Called when the script starts execution.
+             </summary>
+            </member>
+        <member name="M:WeaponComponent.OnUpdate">
+             <summary>
+             Called every frame to update weapon logic.
+             </summary>
+            </member>
+        <member name="M:WeaponComponent.CanFire">
+             <summary>
+             Check if the weapon can fire based on fire rate.
+             </summary>
+             <returns>True if weapon can fire.</returns>
+            </member>
+        <member name="M:WeaponComponent.FindClosestEnemy">
+             <summary>
+             Find the closest enemy within range using SphereOverlap.
+             </summary>
+             <returns>The closest enemy entity, or Entity.Invalid if none found.</returns>
+            </member>
+        <member name="M:WeaponComponent.IsEnemyEntity(Unravel.Core.Entity)">
+             <summary>
+             Check if an entity is considered an enemy.
+             </summary>
+             <param name="entity">The entity to check.</param>
+             <returns>True if the entity is an enemy.</returns>
+            </member>
+        <member name="M:WeaponComponent.HasLineOfSight(Unravel.Core.Entity)">
+             <summary>
+             Check if there's a clear line of sight to the target.
+             </summary>
+             <param name="target">The target entity.</param>
+             <returns>True if line of sight is clear.</returns>
+            </member>
+        <member name="M:WeaponComponent.CalculateShootDirection(Unravel.Core.Entity)">
+             <summary>
+             Calculate the shooting direction towards the target.
+             </summary>
+             <param name="target">The target entity.</param>
+             <returns>The normalized shooting direction.</returns>
+            </member>
+        <member name="M:WeaponComponent.FireWeapon(Vector3)">
+             <summary>
+             Fire the weapon in the specified direction.
+             </summary>
+             <param name="shootDirection">The direction to shoot.</param>
+            </member>
+        <member name="M:WeaponComponent.Shoot(Vector3,Vector3,System.Single,System.Int32)">
+             <summary>
+             Shoot projectiles in the specified direction.
+             </summary>
+             <param name="source">The source position for projectiles.</param>
+             <param name="shootDir">The shooting direction.</param>
+             <param name="spread">The spread angle for accuracy.</param>
+             <param name="count">The number of projectiles to spawn.</param>
+            </member>
+        <member name="M:WeaponComponent.DrawDebugRanges">
+             <summary>
+             Draw debug visualization for weapon ranges.
+             </summary>
+            </member>
+        <member name="M:WeaponComponent.GetCurrentTarget">
+             <summary>
+             Get the current target entity.
+             </summary>
+             <returns>The current target entity.</returns>
+            </member>
+        <member name="M:WeaponComponent.GetTimeUntilNextShot">
+             <summary>
+             Get the time until the next shot can be fired.
+             </summary>
+             <returns>Time in seconds until next shot.</returns>
+            </member>
+        <member name="M:WeaponComponent.IsReadyToFire">
+             <summary>
+             Check if the weapon is ready to fire.
+             </summary>
+             <returns>True if ready to fire.</returns>
+            </member>
+        <member name="M:WeaponComponent.SetFireRate(System.Single)">
+             <summary>
+             Set the fire rate of the weapon.
+             </summary>
+             <param name="newFireRate">New fire rate in shots per second.</param>
+            </member>
+        <member name="M:WeaponComponent.SetRange(System.Single)">
+             <summary>
+             Set the weapon range.
+             </summary>
+             <param name="newRange">New weapon range.</param>
+            </member>
+        <member name="M:WeaponComponent.SetDamage(System.Single)">
+             <summary>
+             Set the weapon damage.
+             </summary>
+             <param name="newDamage">New damage value.</param>
+            </member>
+        <member name="T:BasicLevelDirector">
+             <summary>
+             Level director that provides spawning functionality for a top-down game.
+             Spawns entities around the player at random positions within configurable ranges.
+             </summary>
+            </member>
+        <member name="M:BasicLevelDirector.OnCreate">
+             <summary>
+             Called when the script is created.
+             </summary>
+            </member>
+        <member name="M:BasicLevelDirector.OnStart">
+             <summary>
+             Called when the script starts execution.
+             </summary>
+            </member>
+        <member name="M:BasicLevelDirector.OnUpdate">
+             <summary>
+             Called every frame to handle automatic enemy spawning.
+             </summary>
+            </member>
+        <member name="M:BasicLevelDirector.SpawnAroundPlayer(Unravel.Core.Prefab)">
+             <summary>
+             Spawn a prefab around the player at a random position on the X,Z plane.
+             The Y position is maintained from the player with an optional offset.
+             </summary>
+             <param name="prefab">The prefab to spawn.</param>
+             <returns>The spawned entity, or invalid entity if spawn failed.</returns>
+            </member>
+        <member name="M:BasicLevelDirector.GenerateRandomSpawnPosition(Vector3)">
+             <summary>
+             Generate a random spawn position around the player on the X,Z plane.
+             </summary>
+             <param name="playerPosition">The player's current position.</param>
+             <returns>A random position around the player.</returns>
+            </member>
+        <member name="M:BasicLevelDirector.SpawnMultipleAroundPlayer(Unravel.Core.Prefab,System.Int32)">
+             <summary>
+             Spawn multiple entities around the player.
+             </summary>
+             <param name="prefab">The prefab to spawn.</param>
+             <param name="count">Number of entities to spawn.</param>
+             <returns>Array of spawned entities.</returns>
+            </member>
+        <member name="M:BasicLevelDirector.SetSpawnDistanceRange(System.Single,System.Single)">
+             <summary>
+             Set the spawn distance range.
+             </summary>
+             <param name="minDistance">Minimum spawn distance.</param>
+             <param name="maxDistance">Maximum spawn distance.</param>
+            </member>
+        <member name="M:BasicLevelDirector.GetSpawnDistanceRange">
+             <summary>
+             Get the current spawn distance range.
+             </summary>
+             <returns>A Vector2 with x = minDistance, y = maxDistance.</returns>
+            </member>
+        <member name="M:BasicLevelDirector.IsPositionInSpawnRange(Vector3)">
+             <summary>
+             Check if a position is within the spawn range of the player.
+             </summary>
+             <param name="position">The position to check.</param>
+             <returns>True if the position is within spawn range, false otherwise.</returns>
+            </member>
+        <member name="M:BasicLevelDirector.SetSpawnRate(System.Single)">
+             <summary>
+             Set the enemy spawn rate.
+             </summary>
+             <param name="newSpawnRate">Time in seconds between spawns.</param>
+            </member>
+        <member name="M:BasicLevelDirector.SetAutoSpawning(System.Boolean)">
+             <summary>
+             Enable or disable automatic enemy spawning.
+             </summary>
+             <param name="enabled">Whether to enable auto-spawning.</param>
+            </member>
+        <member name="M:BasicLevelDirector.ResetSpawnTimer">
+             <summary>
+             Reset the spawn timer to force immediate spawn on next update.
+             </summary>
+            </member>
+        <member name="M:BasicLevelDirector.GetTimeUntilNextSpawn">
+             <summary>
+             Get the time remaining until next spawn.
+             </summary>
+             <returns>Time in seconds until next spawn, or 0 if ready to spawn.</returns>
+            </member>
+        <member name="M:BasicLevelDirector.FindPlayer">
+             <summary>
+             Automatically find the player entity.
+             </summary>
+            </member>
+        <member name="M:BasicLevelDirector.GetPlayerPosition">
+             <summary>
+             Get the player's current position.
+             </summary>
+             <returns>The player's position, or Vector3.zero if no player is set.</returns>
+            </member>
+        <member name="M:BasicLevelDirector.IsPlayerValid">
+             <summary>
+             Check if the player is valid and available.
+             </summary>
+             <returns>True if player is valid, false otherwise.</returns>
+            </member>
+        <member name="M:BasicLevelDirector.SetPlayer(Unravel.Core.Entity)">
+             <summary>
+             Set the player entity manually.
+             </summary>
+             <param name="newPlayer">The new player entity.</param>
+            </member>
+        <member name="T:Enemy">
+             <summary>
+             Simple enemy AI that moves towards the player's position.
+             Designed for top-down games with basic chase behavior.
+             </summary>
+            </member>
+        <member name="M:Enemy.OnCreate">
+             <summary>
+             Called when the script is created. Initialize component references.
+             </summary>
+            </member>
+        <member name="M:Enemy.OnStart">
+             <summary>
+             Called when the script starts execution.
+             </summary>
+            </member>
+        <member name="M:Enemy.OnUpdate">
+             <summary>
+             Called every frame to handle enemy AI decisions.
+             </summary>
+            </member>
+        <member name="M:Enemy.OnFixedUpdate">
+             <summary>
+             Called at fixed intervals for physics-based movement.
+             </summary>
+            </member>
+        <member name="M:Enemy.UpdateAI">
+             <summary>
+             Update enemy AI decisions (called every frame).
+             </summary>
+            </member>
+        <member name="M:Enemy.UpdatePhysicsMovement">
+             <summary>
+             Update physics-based movement using steering forces (called at fixed intervals).
+             </summary>
+            </member>
+        <member name="M:Enemy.MoveTowardsPlayer(Vector3,System.Single)">
+             <summary>
+             Move the enemy towards the player using direct transform movement.
+             Includes arrive behavior for smooth stopping.
+             </summary>
+             <param name="direction">Normalized direction to move.</param>
+             <param name="distance">Distance to the target.</param>
+            </member>
+        <member name="M:Enemy.RotateTowardsDirection(Vector3)">
+             <summary>
+             Rotate the enemy to face a specific direction.
+             </summary>
+             <param name="direction">Direction to face.</param>
+            </member>
+        <member name="M:Enemy.FindPlayer">
+             <summary>
+             Automatically find the player entity.
+             </summary>
+            </member>
+        <member name="M:Enemy.SetTarget(Unravel.Core.Entity)">
+             <summary>
+             Set the target entity to chase.
+             </summary>
+             <param name="newTarget">The new target entity.</param>
+            </member>
+        <member name="M:Enemy.SetMaxSpeed(System.Single)">
+             <summary>
+             Set the enemy's maximum movement speed.
+             </summary>
+             <param name="speed">The new maximum movement speed.</param>
+            </member>
+        <member name="M:Enemy.SetMaxAcceleration(System.Single)">
+             <summary>
+             Set the enemy's maximum acceleration.
+             </summary>
+             <param name="acceleration">The new maximum acceleration.</param>
+            </member>
+        <member name="M:Enemy.GetDistanceToTarget">
+             <summary>
+             Get the distance to the current target.
+             </summary>
+             <returns>Distance to target, or -1 if no target is set.</returns>
+            </member>
+        <member name="M:Enemy.IsChasing">
+             <summary>
+             Check if the enemy is currently chasing the player.
+             </summary>
+             <returns>True if chasing, false otherwise.</returns>
+            </member>
+        <member name="M:Enemy.IsTargetInRange">
+             <summary>
+             Check if the target is within chase range.
+             </summary>
+             <returns>True if target is in range, false otherwise.</returns>
+            </member>
+        <member name="M:Enemy.StopChasing">
+             <summary>
+             Stop chasing and remain stationary.
+             </summary>
+            </member>
+        <member name="M:Enemy.ResumeChasing">
+             <summary>
+             Resume chasing the target.
+             </summary>
+            </member>
+        <member name="T:PlayerController">
+             <summary>
+             PlayerController component that implements basic rigidbody movement for a top-down game.
+             Handles player input, movement, and physics interactions.
+             Requires a PhysicsComponent with a Capsule collider attached to the same entity.
+             </summary>
+            </member>
+        <member name="M:PlayerController.OnCreate">
+             <summary>
+             Called when the script is created. Initialize component references.
+             </summary>
+            </member>
+        <member name="M:PlayerController.OnStart">
+             <summary>
+             Called when the script starts execution.
+             </summary>
+            </member>
+        <member name="M:PlayerController.OnUpdate">
+             <summary>
+             Called every frame to handle input and movement.
+             </summary>
+            </member>
+        <member name="M:PlayerController.HandleInput">
+             <summary>
+             Handle player input for movement.
+             </summary>
+            </member>
+        <member name="M:PlayerController.HandlePhysicsMovement">
+             <summary>
+             Handle movement using physics forces with steering behavior (recommended for realistic physics).
+             </summary>
+            </member>
+        <member name="M:PlayerController.HandleDirectMovement">
+             <summary>
+             Handle movement by directly modifying transform (alternative method).
+             </summary>
+            </member>
+        <member name="M:PlayerController.GetInputDirection">
+             <summary>
+             Get the current movement input direction.
+             </summary>
+             <returns>The normalized input direction vector.</returns>
+            </member>
+        <member name="M:PlayerController.GetVelocity">
+             <summary>
+             Get the current movement velocity.
+             </summary>
+             <returns>The current velocity vector.</returns>
+            </member>
+        <member name="M:PlayerController.IsMoving">
+             <summary>
+             Check if the player is currently moving.
+             </summary>
+             <returns>True if the player is moving, false otherwise.</returns>
+            </member>
+        <member name="M:PlayerController.AddExternalForce(Vector3,Unravel.Core.ForceMode)">
+             <summary>
+             Add an external force to the player (useful for knockback, wind, etc.).
+             </summary>
+             <param name="force">The force to apply.</param>
+             <param name="mode">The force mode to use.</param>
+            </member>
+        <member name="M:PlayerController.OnCollisionEnter(Unravel.Core.Collision)">
+             <summary>
+             Called when this entity begins a collision with another entity.
+             Override this method to handle collision events.
+             </summary>
+             <param name="collision">Details of the collision.</param>
+            </member>
+        <member name="M:PlayerController.OnSensorEnter(Unravel.Core.Entity)">
+             <summary>
+             Called when another entity enters a sensor attached to this entity.
+             Useful for trigger zones, item pickup areas, etc.
+             </summary>
+             <param name="entity">The entity that entered the sensor.</param>
+            </member>
+        <member name="T:TopDownCameraController">
+             <summary>
+             TopDownCameraController component that implements smooth camera following for a top-down game.
+             Handles camera positioning, smooth following, and optional boundaries.
+             Requires a CameraComponent attached to the same entity.
+             </summary>
+            </member>
+        <member name="M:TopDownCameraController.OnCreate">
+             <summary>
+             Called when the script is created. Initialize component references.
+             </summary>
+            </member>
+        <member name="M:TopDownCameraController.OnStart">
+             <summary>
+             Called when the script starts execution.
+             </summary>
+            </member>
+        <member name="M:TopDownCameraController.OnUpdate">
+             <summary>
+             Called every frame to update camera position (when not using physics movement).
+             </summary>
+            </member>
+        <member name="M:TopDownCameraController.OnFixedUpdate">
+             <summary>
+             Called at fixed intervals for physics-based camera movement.
+             </summary>
+            </member>
+        <member name="M:TopDownCameraController.UpdateCameraFollow">
+             <summary>
+             Update camera following logic.
+             </summary>
+            </member>
+        <member name="M:TopDownCameraController.UpdateCameraFollowPhysics">
+             <summary>
+             Update camera following logic for physics-based movement (uses Time.fixedDeltaTime).
+             </summary>
+            </member>
+        <member name="M:TopDownCameraController.CalculateTargetPosition">
+             <summary>
+             Calculate the target position based on the player's position and offset.
+             </summary>
+             <returns>The calculated target position.</returns>
+            </member>
+        <member name="M:TopDownCameraController.ApplyLookAhead">
+             <summary>
+             Apply look-ahead offset based on player movement.
+             </summary>
+            </member>
+        <member name="M:TopDownCameraController.ApplyBoundaries(Vector3)">
+             <summary>
+             Apply boundary constraints to the target position.
+             </summary>
+             <param name="position">The position to constrain.</param>
+             <returns>The constrained position.</returns>
+            </member>
+        <member name="M:TopDownCameraController.FindPlayerTarget">
+             <summary>
+             Automatically find the player entity to follow.
+             </summary>
+            </member>
+        <member name="M:TopDownCameraController.SetTarget(Unravel.Core.Entity)">
+             <summary>
+             Set the target entity to follow.
+             </summary>
+             <param name="newTarget">The new target entity.</param>
+            </member>
+        <member name="M:TopDownCameraController.SnapToTarget">
+             <summary>
+             Instantly snap the camera to the target position (no smooth movement).
+             </summary>
+            </member>
+        <member name="T:BaseMenu">
+             <summary>
+             Base class for all menu controllers that eliminates code duplication.
+             Handles common UI setup, button event registration, and audio callbacks.
+             Child classes only need to implement their specific button actions.
+             </summary>
+            </member>
+        <member name="M:BaseMenu.CacheUIElements">
+             <summary>
+             Cache UI elements. Override in child classes to cache specific elements.
+             </summary>
+            </member>
+        <member name="M:BaseMenu.CountValidElements">
+             <summary>
+             Count valid cached elements for logging. Override in child classes.
+             </summary>
+            </member>
+        <member name="M:BaseMenu.SetupInitialUI">
+             <summary>
+             Set up initial UI state. Override in child classes for specific setup.
+             </summary>
+            </member>
+        <member name="M:BaseMenu.RegisterEventHandlers">
+             <summary>
+             Register event handlers. Override in child classes to register specific buttons.
+             </summary>
+            </member>
+        <member name="M:BaseMenu.GetTitleElementId">
+             <summary>
+             Get the ID of the title element for this menu. Override in child classes.
+             </summary>
+            </member>
+        <member name="M:BaseMenu.RegisterButtonEvents(Unravel.Core.UIElement,System.String,System.Action{Unravel.Core.UIPointerEvent},System.Action{Unravel.Core.UIPointerEvent},System.Action{Unravel.Core.UIPointerEvent},System.Action{Unravel.Core.UIPointerEvent},System.Action{Unravel.Core.UIPointerEvent})">
+             <summary>
+             Register all standard button events for a button element.
+             </summary>
+             <param name="button">The button element to register events for</param>
+             <param name="buttonName">Name for logging purposes</param>
+             <param name="onDown">Mouse down handler</param>
+             <param name="onClick">Click handler</param>
+             <param name="onHover">Mouse hover handler</param>
+             <param name="onLeave">Mouse leave handler</param>
+             <param name="onRelease">Mouse release handler</param>
+            </member>
+        <member name="M:BaseMenu.OnButtonDown(Unravel.Core.UIElement,Unravel.Core.UIPointerEvent,System.String)">
+             <summary>
+             Standard button down handler with audio feedback.
+             </summary>
+            </member>
+        <member name="M:BaseMenu.OnButtonHover(Unravel.Core.UIElement,Unravel.Core.UIPointerEvent,System.String)">
+             <summary>
+             Standard button hover handler with audio feedback.
+             </summary>
+            </member>
+        <member name="M:BaseMenu.OnButtonLeave(Unravel.Core.UIElement,Unravel.Core.UIPointerEvent,System.String)">
+             <summary>
+             Standard button leave handler.
+             </summary>
+            </member>
+        <member name="M:BaseMenu.OnButtonRelease(Unravel.Core.UIElement,Unravel.Core.UIPointerEvent,System.String)">
+             <summary>
+             Standard button release handler.
+             </summary>
+            </member>
+        <member name="M:BaseMenu.PlayButtonClickSound(Unravel.Core.UIElement,Unravel.Core.UIPointerEvent)">
+             <summary>
+             Plays a button click sound effect.
+             Common callback used by all button click handlers.
+             </summary>
+             <param name="buttonElement">The button element that was clicked</param>
+             <param name="ev">The pointer event containing click information</param>
+            </member>
+        <member name="M:BaseMenu.PlayButtonHoverSound(Unravel.Core.UIElement,Unravel.Core.UIPointerEvent)">
+             <summary>
+             Plays a button hover sound effect.
+             Common callback used by all button hover handlers.
+             </summary>
+             <param name="buttonElement">The button element that was hovered</param>
+             <param name="ev">The pointer event containing hover information</param>
+            </member>
+        <member name="T:AudioPaths">
+             <summary>
+             Audio file path constants to avoid duplication and make changes easier.
+             </summary>
+            </member>
+        <member name="T:GameMenu">
+             <summary>
+             Game Menu script that handles in-game navigation buttons.
+             Uses GameUI for centralized navigation instead of direct menu manipulation.
+             Now inherits from BaseMenuController to eliminate code duplication.
+             </summary>
+            </member>
+        <member name="M:GameMenu.OnResumeButtonClick(Unravel.Core.UIPointerEvent)">
+             <summary>
+             Handles the Resume button click - resumes the game via GameUI.
+             </summary>
+            </member>
+        <member name="M:GameMenu.OnSettingsButtonClick(Unravel.Core.UIPointerEvent)">
+             <summary>
+             Handles the Settings button click - opens settings menu via GameUI.
+             </summary>
+            </member>
+        <member name="M:GameMenu.OnQuitButtonClick(Unravel.Core.UIPointerEvent)">
+             <summary>
+             Handles the Quit button click - returns to main menu via GameUI.
+             </summary>
+            </member>
+        <member name="T:GameUI">
+             <summary>
+             Game UI controller that handles in-game UI and menu functionality.
+             Manages ESC key input, game menu, and in-game UI elements.
+             Focused specifically on gameplay scene functionality.
+             </summary>
+            </member>
+        <member name="M:GameUI.OnCreate">
+             <summary>
+             OnCreate is called when the script is first loaded, or when an object it is attached to is instantiated
+             It only gets called once on each script, and only after other objects are initialised.
+             This means that it is safe to create references to other game objects and components in OnCreate.
+             </summary>
+            </member>
+        <member name="M:GameUI.OnStart">
+             <summary>
+             Start is called once, before any Update methods and after OnCreate.
+             It works in much the same way as OnCreate, with a few key differences.
+             Unlike OnCreate, Start will not be called if the script is disabled.
+             </summary>
+            </member>
+        <member name="M:GameUI.FindMenuReferences">
+             <summary>
+             Automatically find menu entity references if not manually assigned.
+             </summary>
+            </member>
+        <member name="M:GameUI.ValidateReferences">
+             <summary>
+             Validate that required references are set.
+             </summary>
+            </member>
+        <member name="M:GameUI.ToggleGameMenu">
+             <summary>
+             Toggle the game menu on/off and handle pause state.
+             </summary>
+            </member>
+        <member name="M:GameUI.OpenGameMenu">
+             <summary>
+             Open the game menu and pause the game.
+             </summary>
+            </member>
+        <member name="M:GameUI.CloseGameMenu">
+             <summary>
+             Close the game menu and resume the game.
+             </summary>
+            </member>
+        <member name="M:GameUI.GoToMainMenu">
+             <summary>
+             Navigate to the main menu (used by quit buttons).
+             </summary>
+            </member>
+        <member name="M:GameUI.ResumeGame">
+             <summary>
+             Resume the game (used by resume button).
+             </summary>
+            </member>
+        <member name="M:GameUI.OpenSettings">
+             <summary>
+             Open settings menu from game menu.
+             </summary>
+            </member>
+        <member name="M:GameUI.CloseSettings">
+             <summary>
+             Close settings and return to game menu.
+             </summary>
+            </member>
+        <member name="M:GameUI.QuitApplication">
+             <summary>
+             Quit the application (used by exit buttons).
+             </summary>
+            </member>
+        <member name="M:GameUI.ShowMenu(Unravel.Core.Entity,Unravel.Core.Entity)">
+             <summary>
+             Show a specific menu and hide others (internal helper method).
+             </summary>
+             <param name="menuToShow">The menu entity to show</param>
+             <param name="menuToHide">The menu entity to hide</param>
+            </member>
+        <member name="M:GameUI.FindInScene">
+             <summary>
+             Static helper method to find the GameUI controller in the current scene.
+             Can be used by menus to find the game controller.
+             </summary>
+            </member>
+        <member name="T:LobbyUI">
+             <summary>
+             Lobby UI controller that handles main menu navigation and scene transitions.
+             Manages the main menu, settings menu, and transitions to the game scene.
+             </summary>
+            </member>
+        <member name="M:LobbyUI.OnCreate">
+             <summary>
+             OnCreate is called when the script is first loaded, or when an object it is attached to is instantiated
+             It only gets called once on each script, and only after other objects are initialised.
+             This means that it is safe to create references to other game objects and components in OnCreate.
+             </summary>
+            </member>
+        <member name="M:LobbyUI.OnStart">
+             <summary>
+             Start is called once, before any Update methods and after OnCreate.
+             It works in much the same way as OnCreate, with a few key differences.
+             Unlike OnCreate, Start will not be called if the script is disabled.
+             </summary>
+            </member>
+        <member name="M:LobbyUI.FindMenuReferences">
+             <summary>
+             Automatically find menu entity references if not manually assigned.
+             </summary>
+            </member>
+        <member name="M:LobbyUI.ValidateReferences">
+             <summary>
+             Validate that required references are set.
+             </summary>
+            </member>
+        <member name="M:LobbyUI.StartGame">
+             <summary>
+             Start the game (used by play button).
+             </summary>
+            </member>
+        <member name="M:LobbyUI.OpenSettings">
+             <summary>
+             Open settings menu from main menu.
+             </summary>
+            </member>
+        <member name="M:LobbyUI.CloseSettings">
+             <summary>
+             Close settings and return to main menu.
+             </summary>
+            </member>
+        <member name="M:LobbyUI.QuitApplication">
+             <summary>
+             Quit the application (used by exit button).
+             </summary>
+            </member>
+        <member name="M:LobbyUI.ShowMenu(Unravel.Core.Entity,Unravel.Core.Entity)">
+             <summary>
+             Show a specific menu and hide others (internal helper method).
+             </summary>
+             <param name="menuToShow">The menu entity to show</param>
+             <param name="menuToHide">The menu entity to hide</param>
+            </member>
+        <member name="M:LobbyUI.FindInScene">
+             <summary>
+             Static helper method to find the LobbyUI controller in the current scene.
+             Can be used by menus to find the lobby controller.
+             </summary>
+            </member>
+        <!--FIXME: Invalid documentation markup was found for member T:SettingsMenu-->
+        <member name="M:SettingsMenu.SetPreviousMenu(Unravel.Core.Entity)">
+             <summary>
+             Set the previous menu for proper back navigation.
+             Called by GameUI when opening settings.
+             </summary>
+             <param name="fromMenu">The menu we came from</param>
+            </member>
+        <member name="M:SettingsMenu.SetGraphicsPresets(SettingsMenu.GraphicsPreset[])">
+             <summary>
+             Set custom graphics presets that will replace the HTML defaults.
+             Call this method before the menu is displayed to populate the dropdown dynamically.
+             </summary>
+             <param name="presets">Array of graphics presets to display</param>
+            </member>
+        <member name="M:SettingsMenu.GetGraphicsPresets">
+             <summary>
+             Get the current graphics presets (either custom or default HTML ones).
+             </summary>
+             <returns>Array of current graphics presets</returns>
+            </member>
+        <member name="M:SettingsMenu.GetDefaultGraphicsPresets">
+             <summary>
+             Get the default graphics presets that match the HTML options.
+             </summary>
+             <returns>Array of default graphics presets</returns>
+            </member>
+        <member name="M:SettingsMenu.OnVolumeSliderInput(Unravel.Core.UISliderEvent)">
+             <summary>
+             Handles the volume slider input event (real-time updates while dragging).
+             </summary>
+             <param name="ev">Input event containing slider value</param>
+            </member>
+        <member name="M:SettingsMenu.OnVolumeSliderChange(Unravel.Core.UISliderEvent)">
+             <summary>
+             Handles the volume slider change event (final value when released).
+             </summary>
+             <param name="ev">Input event containing final slider value</param>
+            </member>
+        <member name="M:SettingsMenu.OnGraphicsQualityChange(Unravel.Core.UIChangeEvent)">
+             <summary>
+             Handles the graphics quality dropdown change event.
+             </summary>
+             <param name="ev">Change event containing selected value</param>
+            </member>
+        <member name="M:SettingsMenu.OnBackButtonClick(Unravel.Core.UIPointerEvent)">
+             <summary>
+             Handles the Back button click - returns to previous menu.
+             </summary>
+            </member>
+        <member name="M:SettingsMenu.OnApplyButtonClick(Unravel.Core.UIPointerEvent)">
+             <summary>
+             Handles the Apply button click - applies all settings.
+             </summary>
+            </member>
+        <member name="M:SettingsMenu.PopulateGraphicsDropdown">
+             <summary>
+             Populates the graphics quality dropdown with custom presets, replacing HTML defaults.
+             </summary>
+            </member>
+        <member name="M:SettingsMenu.UpdateVolumeLabel">
+             <summary>
+             Updates the volume label to show current volume percentage.
+             </summary>
+            </member>
+        <member name="M:SettingsMenu.UpdateGraphicsQualityLabel">
+             <summary>
+             Updates the graphics quality label to show current selection.
+             </summary>
+            </member>
+        <member name="M:SettingsMenu.GetGraphicsQualityDisplayName(System.String)">
+             <summary>
+             Gets the display name for a graphics quality value, checking both custom presets and defaults.
+             </summary>
+             <param name="qualityValue">The graphics quality value to get display name for</param>
+             <returns>Display name for the quality value</returns>
+            </member>
+        <member name="M:SettingsMenu.ApplyVolumeSettings">
+             <summary>
+             Applies the current volume setting to the audio system.
+             </summary>
+            </member>
+        <member name="M:SettingsMenu.ApplyGraphicsQualitySettings">
+             <summary>
+             Applies the current graphics quality setting to the graphics system.
+             </summary>
+            </member>
+        <member name="M:SettingsMenu.ApplyAllSettings">
+             <summary>
+             Applies all current settings to the game systems.
+             </summary>
+            </member>
+    </members>
+</doc>
