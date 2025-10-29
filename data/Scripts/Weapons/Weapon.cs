@@ -37,7 +37,6 @@ public class Weapon : ScriptComponent
     //[Header("Weapon Effects")]
     [Tooltip("Effects that this weapon can apply to targets")]
     public WeaponEffectData[] weaponEffects = new WeaponEffectData[0];
-    
     //[Header("Debug Settings")]
     [Tooltip("Enable debug logging for weapon operations")]
     public bool debugWeapon = false;

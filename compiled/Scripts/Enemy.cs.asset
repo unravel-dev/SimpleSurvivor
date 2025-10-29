@@ -31,17 +31,9 @@ public class Enemy : ScriptComponent
     [Tooltip("Maximum distance to chase the player (0 = unlimited)")]
     public float maxChaseDistance = 0.0f;
     
-    //[Header("Experience Drop")]
-    [Tooltip("Experience orb prefab to drop when enemy dies")]
-    public Prefab experienceOrbPrefab;
-    [Tooltip("Base experience value to drop")]
-    public float baseExperienceValue = 10.0f;
-    [Tooltip("Random variance in experience value (±percentage)")]
-    public float experienceVariance = 0.2f;
-    [Tooltip("Number of experience orbs to drop")]
-    public int experienceOrbCount = 1;
-    [Tooltip("Spread radius for dropped orbs")]
-    public float dropSpreadRadius = 2.0f;
+    //[Header("Enemy Type")]
+    [Tooltip("Enemy type identifier for loot configuration (e.g., 'basic', 'elite', 'boss')")]
+    public string enemyType = "basic";
     
     //[Header("Debug")]
     [Tooltip("Enable debug logging for enemy behavior")]
@@ -492,71 +484,23 @@ public class Enemy : ScriptComponent
             physicsComponent.velocity = new Vector3(0, currentVelocity.y, 0);
         }
         
-        // Drop experience orbs
-        DropExperienceOrbs();
+        // Note: Loot drops are now handled automatically by the LootHandler
+        // which listens to DamageSystem.OnEntityDied events
         
         // Could add other death behaviors here, like:
         // - Play death sound/animation
-        // - Spawn other loot/items
         // - Add score points
         // - Trigger death effects
     }
     
     /// <summary>
-    /// Drop experience orbs when the enemy dies.
+    /// Get the enemy type for loot configuration.
+    /// Used by the LootHandler to determine appropriate loot drops.
     /// </summary>
-    private void DropExperienceOrbs()
+    /// <returns>Enemy type string.</returns>
+    public string GetEnemyType()
     {
-        if (experienceOrbPrefab == null || baseExperienceValue <= 0 || experienceOrbCount <= 0)
-        {
-            if (debugMovement && experienceOrbPrefab == null)
-            {
-                Log.Warning($"Enemy {owner.name}: No experience orb prefab assigned, cannot drop experience");
-            }
-            return;
-        }
-        
-        Vector3 dropPosition = transformComponent.position;
-        
-        for (int i = 0; i < experienceOrbCount; i++)
-        {
-            // Calculate random position within spread radius
-            Vector2 randomCircle = Random.insideUnitCircle * dropSpreadRadius;
-            Vector3 orbPosition = dropPosition + new Vector3(randomCircle.x, 0.5f, randomCircle.y);
-            
-            // Instantiate experience orb
-            var orbEntity = Scene.Instantiate(experienceOrbPrefab);
-            if (orbEntity)
-            {
-                orbEntity.transform.position = orbPosition;
-                
-                // Configure experience value with variance
-                var experienceOrb = orbEntity.GetComponent<ExperienceOrb>();
-                if (experienceOrb != null)
-                {
-                    float variance = Random.Range(-experienceVariance, experienceVariance);
-                    float finalExperienceValue = baseExperienceValue * (1.0f + variance);
-                    experienceOrb.SetExperienceValue(finalExperienceValue);
-                    
-                    if (debugMovement)
-                    {
-                        Log.Info($"Enemy {owner.name}: Dropped experience orb with value {finalExperienceValue:F1}");
-                    }
-                }
-                else
-                {
-                    if (debugMovement)
-                    {
-                        Log.Warning($"Enemy {owner.name}: Experience orb prefab missing ExperienceOrb component");
-                    }
-                }
-            }
-        }
-        
-        if (debugMovement)
-        {
-            Log.Info($"Enemy {owner.name}: Dropped {experienceOrbCount} experience orbs (base value: {baseExperienceValue})");
-        }
+        return enemyType;
     }
     
     /// <summary>

@@ -860,10 +860,12 @@
              Called when the enemy dies.
              </summary>
             </member>
-        <member name="M:Enemy.DropExperienceOrbs">
+        <member name="M:Enemy.GetEnemyType">
              <summary>
-             Drop experience orbs when the enemy dies.
+             Get the enemy type for loot configuration.
+             Used by the LootHandler to determine appropriate loot drops.
              </summary>
+             <returns>Enemy type string.</returns>
             </member>
         <member name="M:Enemy.GetHealth">
              <summary>
@@ -1160,6 +1162,161 @@
         <member name="M:Health.RestoreToFullHealth">
              <summary>
              Restore the entity to full health.
+             </summary>
+            </member>
+        <member name="T:LootHandler">
+             <summary>
+             Handles loot drops by listening to the DamageSystem's OnEntityDied event.
+             This provides centralized loot management without requiring individual entities to handle their own drops.
+             </summary>
+            </member>
+        <member name="M:LootHandler.OnCreate">
+             <summary>
+             Called when the script is created.
+             </summary>
+            </member>
+        <member name="M:LootHandler.OnDestroy">
+             <summary>
+             Called when the script is destroyed.
+             </summary>
+            </member>
+        <member name="M:LootHandler.HandleEntityDeath(Unravel.Core.Entity,Unravel.Core.Entity)">
+             <summary>
+             Handle entity death and determine if loot should be dropped.
+             </summary>
+             <param name="deadEntity">The entity that died.</param>
+             <param name="killer">The entity that killed it (could be player, weapon, etc.).</param>
+            </member>
+        <member name="M:LootHandler.ShouldDropLoot(Unravel.Core.Entity,Unravel.Core.Entity)">
+             <summary>
+             Determine if the dead entity should drop loot.
+             </summary>
+             <param name="deadEntity">The entity that died.</param>
+             <param name="killer">The entity that killed it.</param>
+             <returns>True if loot should be dropped.</returns>
+            </member>
+        <member name="M:LootHandler.HandleLootDrop(Unravel.Core.Entity,Unravel.Core.Entity)">
+             <summary>
+             Handle the actual loot drop for the dead entity.
+             </summary>
+             <param name="deadEntity">The entity that died.</param>
+             <param name="killer">The entity that killed it.</param>
+            </member>
+        <member name="M:LootHandler.GetEnemyLootConfig(Enemy)">
+             <summary>
+             Get the loot configuration from an enemy component based on its type.
+             This method creates different loot configs for different enemy types.
+             </summary>
+             <param name="enemy">The enemy component.</param>
+             <returns>Custom loot configuration, or null to use default.</returns>
+            </member>
+        <member name="T:LootSystem">
+             <summary>
+             Centralized loot system that handles all loot drops in the game.
+             Calculates loot based on factors like player level, time passed, enemy type, etc.
+             </summary>
+            </member>
+        <member name="P:LootSystem.Instance">
+             <summary>
+             Get the singleton instance of the loot system.
+             </summary>
+            </member>
+        <member name="M:LootSystem.OnStart">
+             <summary>
+             Called when the script is created.
+             </summary>
+            </member>
+        <member name="M:LootSystem.OnDestroy">
+             <summary>
+             Called when the script is destroyed.
+             </summary>
+            </member>
+        <member name="M:LootSystem.FindPlayerEntity">
+             <summary>
+             Find and cache the player entity and experience component.
+             </summary>
+            </member>
+        <member name="M:LootSystem.HandleEnemyDeath(Unravel.Core.Entity,Vector3,LootSystem.LootConfiguration)">
+             <summary>
+             Handle loot drop when an enemy dies.
+             </summary>
+             <param name="enemyEntity">The enemy that died.</param>
+             <param name="enemyPosition">Position where the enemy died.</param>
+             <param name="customConfig">Optional custom loot configuration for this enemy.</param>
+            </member>
+        <member name="M:LootSystem.CalculateExperienceValue(LootSystem.LootConfiguration,Unravel.Core.Entity)">
+             <summary>
+             Calculate experience value based on player level, time, and other factors.
+             </summary>
+             <param name="config">Loot configuration to use.</param>
+             <param name="enemyEntity">The enemy entity (for future enemy-specific modifiers).</param>
+             <returns>Calculated experience value.</returns>
+            </member>
+        <member name="M:LootSystem.DropExperienceOrbs(Vector3,System.Single,System.Int32)">
+             <summary>
+             Drop experience orbs at the specified location.
+             </summary>
+             <param name="dropPosition">Position to drop orbs at.</param>
+             <param name="totalExperience">Total experience to distribute across orbs.</param>
+             <param name="orbCount">Number of orbs to create.</param>
+            </member>
+        <member name="M:LootSystem.GetGameTime">
+             <summary>
+             Get current game time in seconds since start.
+             </summary>
+             <returns>Game time in seconds.</returns>
+            </member>
+        <member name="M:LootSystem.GetPlayerLevel">
+             <summary>
+             Get current player level for external use.
+             </summary>
+             <returns>Current player level or 1 if no player found.</returns>
+            </member>
+        <member name="M:LootSystem.CreateLootConfig(System.Single,System.Single,System.Int32)">
+             <summary>
+             Create a custom loot configuration for specific enemy types.
+             </summary>
+             <param name="baseExp">Base experience value.</param>
+             <param name="levelMultiplier">Experience per level multiplier.</param>
+             <param name="orbCount">Number of orbs to drop.</param>
+             <returns>New loot configuration.</returns>
+            </member>
+        <member name="T:LootSystemSetup">
+             <summary>
+             Example setup script showing how to configure the LootSystem.
+             This script should be attached to a GameObject in your scene.
+             </summary>
+            </member>
+        <member name="M:LootSystemSetup.OnCreate">
+             <summary>
+             Called when the script is created.
+             </summary>
+            </member>
+        <member name="M:LootSystemSetup.SetupLootSystem">
+             <summary>
+             Set up the loot system with default configuration.
+             </summary>
+            </member>
+        <member name="M:LootSystemSetup.SetupLootHandler">
+             <summary>
+             Set up the loot handler to connect DamageSystem with LootSystem.
+             </summary>
+            </member>
+        <member name="T:LootSystemUsage">
+             <summary>
+             Example usage and documentation for the LootSystem.
+             This file shows how to create custom loot configurations for different enemy types.
+             </summary>
+            </member>
+        <member name="M:LootSystemUsage.SetupEnemyLootConfigurations">
+             <summary>
+             Example of how to create custom loot configurations for different enemy types.
+             Call this method to set up different loot configs for various enemies.
+             </summary>
+            </member>
+        <member name="M:LootSystemUsage.ExplainLootCalculation">
+             <summary>
+             Example of how the loot system calculates experience based on various factors.
              </summary>
             </member>
         <member name="T:TopDownCamera">

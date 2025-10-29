@@ -2,7 +2,7 @@
  "entities_count": 9,
  "entities": [
   {
-   "id": 8388609,
+   "id": 6291457,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -189,7 +189,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 8388611,
+   "id": 6291459,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -277,7 +277,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 8388613,
+   "id": 6291461,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -346,7 +346,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 8388615,
+   "id": 6291463,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -412,13 +412,13 @@
      },
      "children": [
       {
-       "id": 8388616
+       "id": 6291464
       },
       {
-       "id": 8388617
+       "id": 6291465
       },
       {
-       "id": 8388618
+       "id": 6291466
       }
      ],
      "active": true
@@ -449,7 +449,7 @@
    }
   },
   {
-   "id": 8388616,
+   "id": 6291464,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -492,7 +492,7 @@
       }
      },
      "parent": {
-      "id": 8388615
+      "id": 6291463
      },
      "children": [],
      "active": false
@@ -515,7 +515,7 @@
    }
   },
   {
-   "id": 8388617,
+   "id": 6291465,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -558,7 +558,7 @@
       }
      },
      "parent": {
-      "id": 8388615
+      "id": 6291463
      },
      "children": [],
      "active": false
@@ -581,7 +581,7 @@
    }
   },
   {
-   "id": 8388618,
+   "id": 6291466,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -624,7 +624,7 @@
       }
      },
      "parent": {
-      "id": 8388615
+      "id": 6291463
      },
      "children": [],
      "active": false
@@ -650,7 +650,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 5242892,
+   "id": 4194316,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -693,7 +693,7 @@
      },
      "children": [
       {
-       "id": 5242893
+       "id": 4194317
       }
      ],
      "active": true
@@ -701,7 +701,7 @@
    }
   },
   {
-   "id": 5242893,
+   "id": 4194317,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -740,7 +740,7 @@
       }
      },
      "parent": {
-      "id": 5242892
+      "id": 4194316
      },
      "children": [],
      "active": true
@@ -823,7 +823,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 5242895,
+   "id": 4194319,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -866,7 +866,7 @@
      },
      "children": [
       {
-       "id": 5242896
+       "id": 4194320
       }
      ],
      "active": true
@@ -972,7 +972,7 @@
    }
   },
   {
-   "id": 5242896,
+   "id": 4194320,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1011,7 +1011,7 @@
       }
      },
      "parent": {
-      "id": 5242895
+      "id": 4194319
      },
      "children": [],
      "active": true
@@ -1052,7 +1052,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 5242898,
+   "id": 4194322,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1118,6 +1118,19 @@
       {
        "type": "EffectSystem",
        "debugEffects": false
+      },
+      {
+       "type": "LootHandler",
+       "debugLootHandler": false
+      },
+      {
+       "type": "LootSystem",
+       "experienceOrbPrefab": {
+        "uid": "ee3e6288-793f-d24e-9564-0d397931f5a6"
+       },
+       "dropSpreadRadius": 2.0,
+       "dropHeight": 0.5,
+       "debugLoot": false
       }
      ]
     }
@@ -1127,7 +1140,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 5242900,
+   "id": 4194324,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1170,7 +1183,7 @@
      },
      "children": [
       {
-       "id": 5242901
+       "id": 4194325
       }
      ],
      "active": true
@@ -1178,7 +1191,7 @@
    }
   },
   {
-   "id": 5242901,
+   "id": 4194325,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1217,7 +1230,7 @@
       }
      },
      "parent": {
-      "id": 5242900
+      "id": 4194324
      },
      "children": [],
      "active": true
@@ -1243,7 +1256,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 5242903,
+   "id": 4194327,
    "components": {
     "has_tag_component": true,
     "tag_component": {
