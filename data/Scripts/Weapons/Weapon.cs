@@ -259,7 +259,15 @@ public class Weapon : ScriptComponent
     private void FireWeapon(Vector3 shootDirection)
     {
         Vector3 weaponPosition = transformComponent.position + Vector3.up * 2.0f;
-        Shoot(weaponPosition, shootDirection, spread, projectileCount);
+        
+        // Ensure minimum spread for multiple projectiles to make them visually distinct
+        float effectiveSpread = spread;
+        if (projectileCount > 1 && spread < 10.0f)
+        {
+            effectiveSpread = 10.0f; // Minimum 10 degrees spread for multi-shot
+        }
+        
+        Shoot(weaponPosition, shootDirection, effectiveSpread, projectileCount);
     }
     
     /// <summary>
@@ -281,8 +289,8 @@ public class Weapon : ScriptComponent
                 instance.transform.parent = projectileContainer;
             }
             
-            // Calculate spread direction using angular deviation
-            Vector3 spreadDirection = CalculateSpreadDirection(shootDir, spread);
+            // Calculate spread direction using even distribution for multiple projectiles
+            Vector3 spreadDirection = CalculateSpreadDirection(shootDir, spread, i, count);
             
             // Set projectile position at source (no position spread, only angular)
             instance.transform.position = source;
@@ -321,21 +329,34 @@ public class Weapon : ScriptComponent
     }
     
     /// <summary>
-    /// Calculate a spread direction by applying random angular deviation on the horizontal plane (X,Z only).
+    /// Calculate a spread direction with even distribution for multiple projectiles.
     /// </summary>
     /// <param name="baseDirection">The base shooting direction.</param>
     /// <param name="spreadAngle">The maximum spread angle in degrees.</param>
+    /// <param name="projectileIndex">Index of current projectile (0-based).</param>
+    /// <param name="totalProjectiles">Total number of projectiles being fired.</param>
     /// <returns>A direction vector with applied horizontal spread.</returns>
-    private Vector3 CalculateSpreadDirection(Vector3 baseDirection, float spreadAngle)
+    private Vector3 CalculateSpreadDirection(Vector3 baseDirection, float spreadAngle, int projectileIndex, int totalProjectiles)
     {
-        if (spreadAngle <= 0)
+        if (spreadAngle <= 0 || totalProjectiles <= 1)
             return baseDirection;
             
         // Convert spread angle from degrees to radians
         float spreadRadians = spreadAngle * Mathf.Deg2Rad;
         
-        // Generate random deviation angle within the spread range
-        float randomDeviation = Random.Range(-spreadRadians, spreadRadians);
+        // Calculate even distribution of projectiles across the spread angle
+        float deviation;
+        if (totalProjectiles == 1)
+        {
+            deviation = 0; // Single projectile goes straight
+        }
+        else
+        {
+            // Distribute projectiles evenly across the spread range
+            // For example: 3 projectiles with 30° spread = -15°, 0°, +15°
+            float step = (2.0f * spreadRadians) / (totalProjectiles - 1);
+            deviation = -spreadRadians + (projectileIndex * step);
+        }
         
         // Project base direction onto XZ plane (remove Y component)
         Vector3 horizontalDirection = new Vector3(baseDirection.x, 0, baseDirection.z).normalized;
@@ -348,7 +369,7 @@ public class Weapon : ScriptComponent
         
         // Calculate the spread direction by rotating around the Y axis
         float currentAngle = Mathf.Atan2(horizontalDirection.z, horizontalDirection.x);
-        float newAngle = currentAngle + randomDeviation;
+        float newAngle = currentAngle + deviation;
         
         // Create the new horizontal direction
         Vector3 spreadDirection = new Vector3(
@@ -358,6 +379,18 @@ public class Weapon : ScriptComponent
         );
         
         return spreadDirection.normalized;
+    }
+    
+    /// <summary>
+    /// Calculate a spread direction by applying random angular deviation (legacy method for single projectiles).
+    /// </summary>
+    /// <param name="baseDirection">The base shooting direction.</param>
+    /// <param name="spreadAngle">The maximum spread angle in degrees.</param>
+    /// <returns>A direction vector with applied horizontal spread.</returns>
+    private Vector3 CalculateSpreadDirection(Vector3 baseDirection, float spreadAngle)
+    {
+        // For backward compatibility, use random spread for single projectile calls
+        return CalculateSpreadDirection(baseDirection, spreadAngle, 0, 1);
     }
     
     /// <summary>

@@ -176,9 +176,19 @@
              <param name="spread">The spread angle in degrees (cone angle).</param>
              <param name="count">The number of projectiles to spawn.</param>
             </member>
+        <member name="M:Weapon.CalculateSpreadDirection(Vector3,System.Single,System.Int32,System.Int32)">
+             <summary>
+             Calculate a spread direction with even distribution for multiple projectiles.
+             </summary>
+             <param name="baseDirection">The base shooting direction.</param>
+             <param name="spreadAngle">The maximum spread angle in degrees.</param>
+             <param name="projectileIndex">Index of current projectile (0-based).</param>
+             <param name="totalProjectiles">Total number of projectiles being fired.</param>
+             <returns>A direction vector with applied horizontal spread.</returns>
+            </member>
         <member name="M:Weapon.CalculateSpreadDirection(Vector3,System.Single)">
              <summary>
-             Calculate a spread direction by applying random angular deviation on the horizontal plane (X,Z only).
+             Calculate a spread direction by applying random angular deviation (legacy method for single projectiles).
              </summary>
              <param name="baseDirection">The base shooting direction.</param>
              <param name="spreadAngle">The maximum spread angle in degrees.</param>
@@ -519,6 +529,85 @@
              <param name="newLevel">New level.</param>
              <param name="oldLevel">Previous level.</param>
             </member>
+        <member name="M:Player.ShowLevelUpMenu(System.Int32)">
+             <summary>
+             Show the level-up menu with upgrade options.
+             </summary>
+             <param name="level">The new level the player reached</param>
+            </member>
+        <member name="M:Player.GenerateUpgradeOptions(System.Int32)">
+             <summary>
+             Generate three upgrade options for the given level.
+             This is a simple example - you could make this much more sophisticated.
+             </summary>
+             <param name="level">The level the player just reached</param>
+             <returns>Three upgrade options</returns>
+            </member>
+        <member name="M:Player.OnUpgradeSelected(System.Int32,System.String)">
+             <summary>
+             Called when the player selects an upgrade from the level-up menu.
+             </summary>
+             <param name="cardIndex">Index of the selected card (0, 1, or 2)</param>
+             <param name="upgradeText">The full upgrade text that was selected</param>
+            </member>
+        <member name="M:Player.ApplyUpgrade(System.String,System.Int32)">
+             <summary>
+             Apply the selected upgrade to the player.
+             </summary>
+             <param name="upgradeTitle">The title of the upgrade to apply</param>
+             <param name="cardIndex">The index of the card that was selected</param>
+            </member>
+        <member name="M:Player.ApplyHealthBoost">
+             <summary>
+             Apply Health Boost upgrade - increase maximum health by 25%.
+             </summary>
+            </member>
+        <member name="M:Player.ApplyRegeneration">
+             <summary>
+             Apply Regeneration upgrade - enable health regeneration over time.
+             </summary>
+            </member>
+        <member name="M:Player.ApplyDamageResistance">
+             <summary>
+             Apply Damage Resistance upgrade - reduce incoming damage by 10%.
+             </summary>
+            </member>
+        <member name="M:Player.ApplySpeedBoost">
+             <summary>
+             Apply Speed Boost upgrade - increase movement speed by 20%.
+             </summary>
+            </member>
+        <member name="M:Player.ApplyDashAbility">
+             <summary>
+             Apply Dash Ability upgrade - gain a short-range dash ability.
+             </summary>
+            </member>
+        <member name="M:Player.ApplyAgility">
+             <summary>
+             Apply Agility upgrade - increase acceleration and deceleration.
+             </summary>
+            </member>
+        <member name="M:Player.ApplyDamageBoost">
+             <summary>
+             Apply Damage Boost upgrade - increase weapon damage by 30%.
+             </summary>
+            </member>
+        <member name="M:Player.ApplyFireRate">
+             <summary>
+             Apply Fire Rate upgrade - increase weapon fire rate by 25%.
+             </summary>
+            </member>
+        <member name="M:Player.ApplyMultiShot">
+             <summary>
+             Apply Multi-Shot upgrade - fire additional projectiles.
+             </summary>
+            </member>
+        <member name="M:Player.GetPlayerWeapons">
+             <summary>
+             Get all weapon components attached to the player (including child entities).
+             </summary>
+             <returns>Array of weapon components found on player and children</returns>
+            </member>
         <member name="M:Player.OnExperienceChanged(System.Single,System.Single)">
              <summary>
              Called when the player's experience changes.
@@ -543,6 +632,17 @@
              Get the player's experience progress towards next level.
              </summary>
              <returns>Progress percentage (0.0 to 1.0).</returns>
+            </member>
+        <member name="M:Player.AddExperienceForTesting(System.Single)">
+             <summary>
+             Add experience directly to the player (for testing purposes).
+             </summary>
+             <param name="amount">Amount of experience to add</param>
+            </member>
+        <member name="M:Player.OnDestroy">
+             <summary>
+             Called when the script is destroyed. Clean up event subscriptions.
+             </summary>
             </member>
         <member name="T:DamageOverTimeComponent">
              <summary>
@@ -1390,6 +1490,20 @@
              Instantly snap the camera to the target position (no smooth movement).
              </summary>
             </member>
+        <member name="M:Test.OnCreate">
+             <summary>
+             OnCreate is called when the script is first loaded, or when an object it is attached to is instantiated
+             It only gets called once on each script, and only after other objects are initialised.
+             This means that it is safe to create references to other game objects and components in OnCreate.
+             </summary>
+            </member>
+        <member name="M:Test.OnStart">
+             <summary>
+             Start is called once, before any Update methods and after OnCreate.
+             It works in much the same way as OnCreate, with a few key differences.
+             Unlike OnCreate, Start will not be called if the script is disabled.
+             </summary>
+            </member>
         <member name="T:BaseMenu">
              <summary>
              Base class for all menu controllers that eliminates code duplication.
@@ -1580,6 +1694,139 @@
              Static helper method to find the GameUI controller in the current scene.
              Can be used by menus to find the game controller.
              </summary>
+            </member>
+        <member name="T:LevelUpMenu">
+             <summary>
+             Level Up Menu script that handles the card selection interface when the player levels up.
+             Displays 3 upgrade options and handles the selection logic.
+             Simple implementation without over-engineering - just handles the core functionality.
+             </summary>
+            </member>
+        <member name="M:LevelUpMenu.SetUpgradeOptions(System.String,System.String,System.String)">
+             <summary>
+             Set the upgrade options for the three cards.
+             </summary>
+             <param name="option1">Text for card 1</param>
+             <param name="option2">Text for card 2</param>
+             <param name="option3">Text for card 3</param>
+            </member>
+        <member name="M:LevelUpMenu.UpdateCardText">
+             <summary>
+             Update the card text elements with the current upgrade options.
+             </summary>
+            </member>
+        <member name="M:LevelUpMenu.ParseUpgradeText(System.String)">
+             <summary>
+             Parse upgrade text into title and description.
+             Expected format: "Title|Description" or just "Title" if no separator.
+             </summary>
+             <param name="upgradeText">The upgrade text to parse</param>
+             <returns>Parsed title and description</returns>
+            </member>
+        <member name="M:LevelUpMenu.OnCard1Click(Unravel.Core.UIPointerEvent)">
+             <summary>
+             Handle Card 1 click.
+             </summary>
+            </member>
+        <member name="M:LevelUpMenu.OnCard2Click(Unravel.Core.UIPointerEvent)">
+             <summary>
+             Handle Card 2 click.
+             </summary>
+            </member>
+        <member name="M:LevelUpMenu.OnCard3Click(Unravel.Core.UIPointerEvent)">
+             <summary>
+             Handle Card 3 click.
+             </summary>
+            </member>
+        <member name="M:LevelUpMenu.SelectCard(System.Int32)">
+             <summary>
+             Handle card selection logic.
+             </summary>
+             <param name="cardIndex">Index of the selected card (0, 1, or 2)</param>
+            </member>
+        <member name="M:LevelUpMenu.OnCardDown(Unravel.Core.UIElement,Unravel.Core.UIPointerEvent,System.String)">
+             <summary>
+             Handle card mouse down with visual feedback.
+             </summary>
+            </member>
+        <member name="M:LevelUpMenu.OnCardHover(Unravel.Core.UIElement,Unravel.Core.UIPointerEvent,System.String)">
+             <summary>
+             Handle card hover with visual feedback.
+             </summary>
+            </member>
+        <member name="M:LevelUpMenu.OnCardLeave(Unravel.Core.UIElement,Unravel.Core.UIPointerEvent,System.String)">
+             <summary>
+             Handle card leave.
+             </summary>
+            </member>
+        <member name="M:LevelUpMenu.OnCardRelease(Unravel.Core.UIElement,Unravel.Core.UIPointerEvent,System.String)">
+             <summary>
+             Handle card mouse release.
+             </summary>
+            </member>
+        <member name="T:LevelUpUI">
+             <summary>
+             Level Up UI controller that manages the level-up card selection flow.
+             Handles game pausing, showing the menu, and resuming after selection.
+             Simple implementation focused on core functionality.
+             </summary>
+            </member>
+        <member name="M:LevelUpUI.OnCreate">
+             <summary>
+             Called when the script is created.
+             </summary>
+            </member>
+        <member name="M:LevelUpUI.OnStart">
+             <summary>
+             Called when the script starts execution.
+             </summary>
+            </member>
+        <member name="M:LevelUpUI.FindMenuReferences">
+             <summary>
+             Automatically find menu entity references if not manually assigned.
+             </summary>
+            </member>
+        <member name="M:LevelUpUI.ShowLevelUpMenu(System.String,System.String,System.String)">
+             <summary>
+             Show the level-up menu with the given upgrade options.
+             This pauses the game and displays the card selection interface.
+             </summary>
+             <param name="option1">Text for upgrade option 1</param>
+             <param name="option2">Text for upgrade option 2</param>
+             <param name="option3">Text for upgrade option 3</param>
+            </member>
+        <member name="M:LevelUpUI.HideLevelUpMenu">
+             <summary>
+             Hide the level-up menu and resume the game.
+             </summary>
+            </member>
+        <member name="M:LevelUpUI.OnCardSelected(System.Int32)">
+             <summary>
+             Handle card selection from the level-up menu.
+             </summary>
+             <param name="cardIndex">Index of the selected card (0, 1, or 2)</param>
+            </member>
+        <member name="M:LevelUpUI.PauseGame">
+             <summary>
+             Pause the game when showing the level-up menu.
+             </summary>
+            </member>
+        <member name="M:LevelUpUI.ResumeGame">
+             <summary>
+             Resume the game after level-up selection.
+             </summary>
+            </member>
+        <member name="M:LevelUpUI.FindInScene">
+             <summary>
+             Static helper method to find the LevelUpUI controller in the current scene.
+             Can be used by other systems to trigger level-up menus.
+             </summary>
+            </member>
+        <member name="M:LevelUpUI.IsLevelUpActive">
+             <summary>
+             Check if the level-up menu is currently active.
+             </summary>
+             <returns>True if the level-up menu is active</returns>
             </member>
         <member name="T:LobbyUI">
              <summary>

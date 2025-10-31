@@ -322,5 +322,11 @@ public class Health : ScriptComponent
             Heal(healAmount, owner);
         }
     }
+
+    public void IncreaseMaxHealth(float amount)
+    {
+        maxHealth += amount;
+        SetMaxHealth(maxHealth, true);
+    }
 }
 

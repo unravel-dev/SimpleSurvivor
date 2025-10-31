@@ -1,0 +1,134 @@
+/* ---------- Level Up Menu Specific Styles ---------- */
+/* Extends CommonMenu.rcss with card-specific styling */
+
+/* ---------- Card Container ---------- */
+.card-container {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ---------- Upgrade Cards ---------- */
+.upgrade-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #1a2332;
+  border: 2px  #2a3a4d;
+  border-radius: 12px;
+  padding: 20px;
+  width: 280px;
+  min-height: 200px;
+  cursor: pointer;
+  transition: transform background-color border-color 0.3s cubic-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.upgrade-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: #2a73ff;
+  background-color: #1f2937;
+}
+
+.upgrade-card:active,
+.upgrade-card.selected {
+  transform: translateY(-4px) scale(1.01);
+  border-color: #1e5ce6;
+  background-color: #2a73ff1a;
+}
+
+/* ---------- Card Header ---------- */
+.card-header {
+  margin-bottom: 16px;
+  text-align: center;
+  border-bottom: 1px #3a4a5d;
+  padding-bottom: 12px;
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #2a73ff;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ---------- Card Body ---------- */
+.card-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.card-description {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #e9eef3;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* ---------- Card Animations ---------- */
+.upgrade-card:nth-child(1) {
+  animation: 0.6s 0.2s cubic-out fade-in-up both;
+}
+
+.upgrade-card:nth-child(2) {
+  animation: 0.6s 0.4s cubic-out fade-in-up both;
+}
+
+.upgrade-card:nth-child(3) {
+  animation: 0.6s 0.6s cubic-out fade-in-up both;
+}
+
+/* ---------- Light Theme Overrides ---------- */
+body.theme-light .upgrade-card {
+  background-color: #ffffff;
+  border-color: #cbd5e0;
+}
+
+body.theme-light .upgrade-card:hover {
+  border-color: #3182ce;
+  background-color: #f7fafc;
+}
+
+body.theme-light .upgrade-card:active,
+body.theme-light .upgrade-card.selected {
+  border-color: #2c5aa0;
+  background-color: #3182ce1a;
+}
+
+body.theme-light .card-header {
+  border-bottom-color: #e2e8f0;
+}
+
+body.theme-light .card-title {
+  color: #3182ce;
+}
+
+body.theme-light .card-description {
+  color: #2d3748;
+}
+
+/* ---------- Responsive Design ---------- */
+@media (max-width: 1000px) {
+  .card-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    max-width: 320px;
+  }
+  
+  .upgrade-card {
+    width: 100%;
+    min-height: 150px;
+  }
+}

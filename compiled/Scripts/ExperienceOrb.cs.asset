@@ -228,7 +228,8 @@ public class ExperienceOrb : ScriptComponent
                 Log.Warning($"ExperienceOrb {owner.name}: Player {targetPlayer.name} has no Experience component");
             }
         }
-        
+
+        StopAttraction();
         // Destroy the orb
         Scene.DestroyEntity(owner);
     }

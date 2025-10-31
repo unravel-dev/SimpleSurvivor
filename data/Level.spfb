@@ -1,8 +1,8 @@
 {
- "entities_count": 9,
+ "entities_count": 10,
  "entities": [
   {
-   "id": 6291457,
+   "id": 2097153,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -58,11 +58,11 @@
        "y": 0
       },
       "viewport_size": {
-       "width": 1390,
-       "height": 812
+       "width": 1444,
+       "height": 742
       },
       "orthographic_size": 5.0,
-      "aspect_ratio": 1.7118226289749146,
+      "aspect_ratio": 1.946091651916504,
       "aspect_locked": false,
       "frustum_locked": false
      },
@@ -189,7 +189,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 6291459,
+   "id": 2097155,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -277,7 +277,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 6291461,
+   "id": 2097157,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -346,7 +346,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 6291463,
+   "id": 2097159,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -412,13 +412,13 @@
      },
      "children": [
       {
-       "id": 6291464
+       "id": 2097160
       },
       {
-       "id": 6291465
+       "id": 2097161
       },
       {
-       "id": 6291466
+       "id": 2097162
       }
      ],
      "active": true
@@ -449,7 +449,7 @@
    }
   },
   {
-   "id": 6291464,
+   "id": 2097160,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -492,7 +492,7 @@
       }
      },
      "parent": {
-      "id": 6291463
+      "id": 2097159
      },
      "children": [],
      "active": false
@@ -515,7 +515,7 @@
    }
   },
   {
-   "id": 6291465,
+   "id": 2097161,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -558,7 +558,7 @@
       }
      },
      "parent": {
-      "id": 6291463
+      "id": 2097159
      },
      "children": [],
      "active": false
@@ -581,7 +581,7 @@
    }
   },
   {
-   "id": 6291466,
+   "id": 2097162,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -624,7 +624,7 @@
       }
      },
      "parent": {
-      "id": 6291463
+      "id": 2097159
      },
      "children": [],
      "active": false
@@ -650,7 +650,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 4194316,
+   "id": 12,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -693,7 +693,7 @@
      },
      "children": [
       {
-       "id": 4194317
+       "id": 13
       }
      ],
      "active": true
@@ -701,7 +701,7 @@
    }
   },
   {
-   "id": 4194317,
+   "id": 13,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -740,7 +740,7 @@
       }
      },
      "parent": {
-      "id": 4194316
+      "id": 12
      },
      "children": [],
      "active": true
@@ -823,7 +823,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 4194319,
+   "id": 15,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -866,7 +866,7 @@
      },
      "children": [
       {
-       "id": 4194320
+       "id": 16
       }
      ],
      "active": true
@@ -949,7 +949,7 @@
       },
       {
        "type": "Weapon",
-       "fireRate": 2.0,
+       "fireRate": 4.0,
        "range": 15.0,
        "damage": 25.0,
        "projectile": {
@@ -972,7 +972,7 @@
    }
   },
   {
-   "id": 4194320,
+   "id": 16,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1011,7 +1011,7 @@
       }
      },
      "parent": {
-      "id": 4194319
+      "id": 15
      },
      "children": [],
      "active": true
@@ -1052,7 +1052,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 4194322,
+   "id": 18,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1140,7 +1140,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 4194324,
+   "id": 20,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1183,7 +1183,7 @@
      },
      "children": [
       {
-       "id": 4194325
+       "id": 21
       }
      ],
      "active": true
@@ -1191,7 +1191,7 @@
    }
   },
   {
-   "id": 4194325,
+   "id": 21,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1230,7 +1230,7 @@
       }
      },
      "parent": {
-      "id": 4194324
+      "id": 20
      },
      "children": [],
      "active": true
@@ -1256,7 +1256,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 4194327,
+   "id": 23,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1299,6 +1299,134 @@
      },
      "children": [],
      "active": true
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 25,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "LevelUpUI",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [
+      {
+       "id": 26
+      }
+     ],
+     "active": true
+    },
+    "has_script_component": true,
+    "script_component": {
+     "script_components": [
+      {
+       "type": "LevelUpUI",
+       "LevelUpMenu": {
+        "flags": 2,
+        "id": 4294967295
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": 26,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "LevelUpMenu",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 25
+     },
+     "children": [],
+     "active": false
+    },
+    "has_script_component": true,
+    "script_component": {
+     "script_components": [
+      {
+       "type": "LevelUpMenu"
+      }
+     ]
+    },
+    "has_ui_document_component": true,
+    "ui_document_component": {
+     "enabled": true,
+     "asset": {
+      "uid": "d8405a10-19c5-4d44-8ced-9f41059b615e"
+     }
     }
    }
   }

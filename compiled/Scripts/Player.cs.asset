@@ -77,6 +77,9 @@ public class Player : ScriptComponent
             Experience.OnLevelUp += OnLevelUp;
             Experience.OnExperienceChanged += OnExperienceChanged;
         }
+        
+        // Subscribe to level-up upgrade selection events
+        LevelUpMenu.OnUpgradeSelected += OnUpgradeSelected;
     }
     
     /// <summary>
@@ -458,20 +461,289 @@ public override void OnFixedUpdate()
     {
         Log.Info($"Player LEVEL UP! {oldLevel} -> {newLevel}");
         
-        // Could add level up behaviors here, like:
-        // - Play level up sound/fanfare
-        // - Screen flash/effect
-        // - Show level up UI
-        // - Restore health
-        // - Unlock new abilities
-        // - Increase stats
-        
-        // Example: Restore health on level up
+        // Restore health on level up
         if (Health != null)
         {
             Health.RestoreToFullHealth();
             Log.Info("Player health restored on level up!");
         }
+        
+        // Show the level-up card selection menu
+        ShowLevelUpMenu(newLevel);
+    }
+    
+    /// <summary>
+    /// Show the level-up menu with upgrade options.
+    /// </summary>
+    /// <param name="level">The new level the player reached</param>
+    private void ShowLevelUpMenu(int level)
+    {
+        // Find the LevelUpUI entity in the scene
+        var levelUpUIEntity = Scene.FindEntityByName("LevelUpUI");
+        if (!levelUpUIEntity)
+        {
+            Log.Warning("Player: LevelUpUI entity not found in scene - cannot show level up menu");
+            return;
+        }
+        
+        // Get the LevelUpUI script component
+        var levelUpUIScript = levelUpUIEntity.GetComponent<LevelUpUI>();
+        
+        if (levelUpUIScript == null)
+        {
+            Log.Warning("Player: LevelUpUI script component not found - cannot show level up menu");
+            return;
+        }
+        
+        // Generate upgrade options based on the level
+        var upgradeOptions = GenerateUpgradeOptions(level);
+        
+        levelUpUIScript.ShowLevelUpMenu(upgradeOptions.option1, upgradeOptions.option2, upgradeOptions.option3);
+    }
+    
+    /// <summary>
+    /// Generate three upgrade options for the given level.
+    /// This is a simple example - you could make this much more sophisticated.
+    /// </summary>
+    /// <param name="level">The level the player just reached</param>
+    /// <returns>Three upgrade options</returns>
+    private (string option1, string option2, string option3) GenerateUpgradeOptions(int level)
+    {
+        // Simple example upgrade options - you can expand this significantly
+        string[] healthUpgrades = {
+            "Health Boost|Increase maximum health by 25%",
+            "Regeneration|Slowly regenerate health over time",
+            "Damage Resistance|Reduce incoming damage by 10%"
+        };
+        
+        string[] speedUpgrades = {
+            "Speed Boost|Increase movement speed by 20%",
+            "Dash Ability|Gain a short-range dash ability",
+            "Agility|Increase acceleration and deceleration"
+        };
+        
+        string[] weaponUpgrades = {
+            "Damage Boost|Increase weapon damage by 30%",
+            "Fire Rate|Increase weapon fire rate by 25%",
+            "Multi-Shot|Fire additional projectiles"
+        };
+        
+        // Randomly select one upgrade from each category
+        string option1 = healthUpgrades[Random.Range(0, healthUpgrades.Length)];
+        string option2 = speedUpgrades[Random.Range(0, speedUpgrades.Length)];
+        string option3 = weaponUpgrades[Random.Range(0, weaponUpgrades.Length)];
+        
+        return (option1, option2, option3);
+    }
+    
+    /// <summary>
+    /// Called when the player selects an upgrade from the level-up menu.
+    /// </summary>
+    /// <param name="cardIndex">Index of the selected card (0, 1, or 2)</param>
+    /// <param name="upgradeText">The full upgrade text that was selected</param>
+    private void OnUpgradeSelected(int cardIndex, string upgradeText)
+    {
+        Log.Info($"Player: Applying selected upgrade {cardIndex + 1}: {upgradeText}");
+        
+        // Parse the upgrade text to get the title
+        var parts = upgradeText.Split('|');
+        string upgradeTitle = parts.Length > 0 ? parts[0].Trim() : upgradeText;
+        
+        // Apply the upgrade based on the title
+        ApplyUpgrade(upgradeTitle, cardIndex);
+    }
+    
+    /// <summary>
+    /// Apply the selected upgrade to the player.
+    /// </summary>
+    /// <param name="upgradeTitle">The title of the upgrade to apply</param>
+    /// <param name="cardIndex">The index of the card that was selected</param>
+    private void ApplyUpgrade(string upgradeTitle, int cardIndex)
+    {
+        Log.Info($"Player: Applying upgrade '{upgradeTitle}'");
+        
+        // Apply upgrades based on the title
+        switch (upgradeTitle.ToLower())
+        {
+            // Health upgrades
+            case "health boost":
+                ApplyHealthBoost();
+                break;
+            case "regeneration":
+                ApplyRegeneration();
+                break;
+            case "damage resistance":
+                ApplyDamageResistance();
+                break;
+                
+            // Speed upgrades
+            case "speed boost":
+                ApplySpeedBoost();
+                break;
+            case "dash ability":
+                ApplyDashAbility();
+                break;
+            case "agility":
+                ApplyAgility();
+                break;
+                
+            // Weapon upgrades
+            case "damage boost":
+                ApplyDamageBoost();
+                break;
+            case "fire rate":
+                ApplyFireRate();
+                break;
+            case "multi-shot":
+                ApplyMultiShot();
+                break;
+                
+            default:
+                Log.Warning($"Player: Unknown upgrade '{upgradeTitle}' - no implementation found");
+                break;
+        }
+    }
+    
+    // ========== UPGRADE IMPLEMENTATIONS ==========
+    
+    /// <summary>
+    /// Apply Health Boost upgrade - increase maximum health by 25%.
+    /// </summary>
+    private void ApplyHealthBoost()
+    {
+        if (Health != null)
+        {
+            float currentMaxHealth = Health.GetMaxHealth();
+            float newMaxHealth = currentMaxHealth * 1.25f;
+            Health.SetMaxHealth(newMaxHealth);
+            Health.RestoreToFullHealth(); // Also heal to full
+            Log.Info($"Player: Health Boost applied - Max health increased from {currentMaxHealth} to {newMaxHealth}");
+        }
+    }
+    
+    /// <summary>
+    /// Apply Regeneration upgrade - enable health regeneration over time.
+    /// </summary>
+    private void ApplyRegeneration()
+    {
+        // This would require adding a regeneration system to the Health component
+        // For now, just log the upgrade
+        Log.Info("Player: Regeneration applied - Health will regenerate over time (not implemented yet)");
+    }
+    
+    /// <summary>
+    /// Apply Damage Resistance upgrade - reduce incoming damage by 10%.
+    /// </summary>
+    private void ApplyDamageResistance()
+    {
+        // This would require modifying the Health component to support damage reduction
+        // For now, just log the upgrade
+        Log.Info("Player: Damage Resistance applied - Incoming damage reduced by 10% (not implemented yet)");
+    }
+    
+    /// <summary>
+    /// Apply Speed Boost upgrade - increase movement speed by 20%.
+    /// </summary>
+    private void ApplySpeedBoost()
+    {
+        maxSpeed *= 1.2f;
+        Log.Info($"Player: Speed Boost applied - Max speed increased to {maxSpeed}");
+    }
+    
+    /// <summary>
+    /// Apply Dash Ability upgrade - gain a short-range dash ability.
+    /// </summary>
+    private void ApplyDashAbility()
+    {
+        // This would require implementing a dash system
+        // For now, just log the upgrade
+        Log.Info("Player: Dash Ability applied - Dash ability unlocked (not implemented yet)");
+    }
+    
+    /// <summary>
+    /// Apply Agility upgrade - increase acceleration and deceleration.
+    /// </summary>
+    private void ApplyAgility()
+    {
+        maxAcceleration *= 1.3f;
+        maxDeceleration *= 1.3f;
+        Log.Info($"Player: Agility applied - Acceleration: {maxAcceleration}, Deceleration: {maxDeceleration}");
+    }
+    
+    /// <summary>
+    /// Apply Damage Boost upgrade - increase weapon damage by 30%.
+    /// </summary>
+    private void ApplyDamageBoost()
+    {
+        var weapons = GetPlayerWeapons();
+        if (weapons.Length == 0)
+        {
+            Log.Warning("Player: No weapons found to apply Damage Boost upgrade");
+            return;
+        }
+        
+        foreach (var weapon in weapons)
+        {
+            float oldDamage = weapon.damage;
+            weapon.damage *= 1.3f; // Increase by 30%
+            Log.Info($"Player: Weapon '{weapon.owner.name}' damage increased from {oldDamage:F1} to {weapon.damage:F1}");
+        }
+        
+        Log.Info($"Player: Damage Boost applied to {weapons.Length} weapon(s) - All weapon damage increased by 30%");
+    }
+    
+    /// <summary>
+    /// Apply Fire Rate upgrade - increase weapon fire rate by 25%.
+    /// </summary>
+    private void ApplyFireRate()
+    {
+        var weapons = GetPlayerWeapons();
+        if (weapons.Length == 0)
+        {
+            Log.Warning("Player: No weapons found to apply Fire Rate upgrade");
+            return;
+        }
+        
+        foreach (var weapon in weapons)
+        {
+            float oldFireRate = weapon.fireRate;
+            weapon.fireRate *= 1.25f; // Increase by 25%
+            Log.Info($"Player: Weapon '{weapon.owner.name}' fire rate increased from {oldFireRate:F2} to {weapon.fireRate:F2} shots/sec");
+        }
+        
+        Log.Info($"Player: Fire Rate applied to {weapons.Length} weapon(s) - All weapon fire rate increased by 25%");
+    }
+    
+    /// <summary>
+    /// Apply Multi-Shot upgrade - fire additional projectiles.
+    /// </summary>
+    private void ApplyMultiShot()
+    {
+        var weapons = GetPlayerWeapons();
+        if (weapons.Length == 0)
+        {
+            Log.Warning("Player: No weapons found to apply Multi-Shot upgrade");
+            return;
+        }
+        
+        foreach (var weapon in weapons)
+        {
+            int oldProjectileCount = weapon.projectileCount;
+            weapon.projectileCount += 1; // Add one more projectile per shot
+            Log.Info($"Player: Weapon '{weapon.owner.name}' projectile count increased from {oldProjectileCount} to {weapon.projectileCount}");
+        }
+        
+        Log.Info($"Player: Multi-Shot applied to {weapons.Length} weapon(s) - All weapons now fire +1 additional projectile");
+    }
+    
+    /// <summary>
+    /// Get all weapon components attached to the player (including child entities).
+    /// </summary>
+    /// <returns>Array of weapon components found on player and children</returns>
+    private Weapon[] GetPlayerWeapons()
+    {
+        // GetComponentsInChildren searches both the current entity and all child entities
+        return owner.GetComponentsInChildren<Weapon>();
     }
     
     /// <summary>
@@ -522,5 +794,49 @@ public override void OnFixedUpdate()
             return 0;
             
         return Experience.GetLevelProgress();
+    }
+    
+    /// <summary>
+    /// Add experience directly to the player (for testing purposes).
+    /// </summary>
+    /// <param name="amount">Amount of experience to add</param>
+    public void AddExperienceForTesting(float amount)
+    {
+        if (Experience != null)
+        {
+            Experience.AddExperience(amount);
+            Log.Info($"Player: Added {amount} experience for testing");
+        }
+        else
+        {
+            Log.Warning("Player: Cannot add experience - Experience component not found");
+        }
+    }
+    
+    /// <summary>
+    /// Called when the script is destroyed. Clean up event subscriptions.
+    /// </summary>
+    public override void OnDestroy()
+    {
+        // Unsubscribe from health events
+        if (Health != null)
+        {
+            Health.OnDeath -= OnPlayerDeath;
+            Health.OnDamageTaken -= OnPlayerDamageTaken;
+            Health.OnHealed -= OnPlayerHealed;
+        }
+        
+        // Unsubscribe from experience events
+        if (Experience != null)
+        {
+            Experience.OnExperienceGained -= OnExperienceGained;
+            Experience.OnLevelUp -= OnLevelUp;
+            Experience.OnExperienceChanged -= OnExperienceChanged;
+        }
+        
+        // Unsubscribe from level-up upgrade selection events
+        LevelUpMenu.OnUpgradeSelected -= OnUpgradeSelected;
+        
+        Log.Info("Player script destroyed and events unsubscribed");
     }
 }
