@@ -1,5 +1,5 @@
 {
- "entities_count": 10,
+ "entities_count": 9,
  "entities": [
   {
    "id": 2097153,
@@ -58,11 +58,11 @@
        "y": 0
       },
       "viewport_size": {
-       "width": 1444,
-       "height": 742
+       "width": 1390,
+       "height": 812
       },
       "orthographic_size": 5.0,
-      "aspect_ratio": 1.946091651916504,
+      "aspect_ratio": 1.7118226289749146,
       "aspect_locked": false,
       "frustum_locked": false
      },
@@ -206,25 +206,25 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": 0.0,
-       "y": 1.0,
-       "z": 0.0
+       "x": -0.0000053429525905812629,
+       "y": 0.9999998807907105,
+       "z": -4.657312615563569e-7
       },
       "rotation": {
-       "x": 0.10938171297311783,
-       "y": 0.8754261136054993,
-       "z": -0.4082179069519043,
-       "w": 0.23456968367099763
+       "x": 0.10938173532485962,
+       "y": 0.8754260540008545,
+       "z": -0.40821805596351626,
+       "w": 0.23456971347332
       },
       "scale": {
-       "x": 1.0,
-       "y": 1.0,
-       "z": 0.9999998807907105
+       "x": 1.0000001192092896,
+       "y": 1.0000001192092896,
+       "z": 0.9999998211860657
       },
       "skew": {
-       "x": -5.960465188081798e-8,
-       "y": -2.543502830576472e-7,
-       "z": -2.602448034849658e-8
+       "x": 2.98023280720372e-7,
+       "y": -1.5177943168964703e-7,
+       "z": 1.4174362661378837e-7
       }
      },
      "parent": {
@@ -294,25 +294,25 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": 0.0,
-       "y": 0.10000000149011612,
-       "z": 0.0
+       "x": -1.3415224486834632e-7,
+       "y": 0.09999865293502808,
+       "z": -2.525538036479702e-7
       },
       "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
+       "x": -1.1920938902676426e-7,
+       "y": 1.4901168299275015e-8,
+       "z": -2.980232594040899e-8,
        "w": 1.0
       },
       "scale": {
        "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
+       "y": 0.9999998807907105,
+       "z": 1.000000238418579
       },
       "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
+       "x": -5.960487214906607e-8,
+       "y": -2.980337399094424e-8,
+       "z": -0.000005856123152625514
       }
      },
      "parent": {
@@ -374,6 +374,16 @@
        "entity_uuid": "7b2a12a5-b8bc-7749-9b5e-f9c9d0a9f337",
        "component_path": "script_component/script_components/GameUI/MainMenuScene",
        "pretty_component_path": "Script/Scripts/GameUI/MainMenuScene"
+      },
+      {
+       "entity_uuid": "531932bf-4358-1449-85fe-2d2ea88a54b6",
+       "component_path": "transform_component/active",
+       "pretty_component_path": "Transform/Active"
+      },
+      {
+       "entity_uuid": "466422c5-14ca-1e45-a119-ddc36d49af40",
+       "component_path": "transform_component/active",
+       "pretty_component_path": "Transform/Active"
       }
      ],
      "removed_entities": []
@@ -386,25 +396,25 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
+       "x": 4.6700768052687638e-7,
+       "y": -0.0000013820827007293702,
+       "z": -2.678904422737105e-7
       },
       "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
+       "x": -1.1920938902676426e-7,
+       "y": 1.4901168299275015e-8,
+       "z": -2.980232594040899e-8,
        "w": 1.0
       },
       "scale": {
        "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
+       "y": 0.9999998807907105,
+       "z": 1.000000238418579
       },
       "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
+       "x": -5.960487214906607e-8,
+       "y": -2.980337043823056e-8,
+       "z": -0.000005841220627189614
       }
      },
      "parent": {
@@ -419,6 +429,12 @@
       },
       {
        "id": 2097162
+      },
+      {
+       "id": 11
+      },
+      {
+       "id": 12
       }
      ],
      "active": true
@@ -436,12 +452,45 @@
         "flags": 2,
         "id": 4294967295
        },
+       "GameHub": {
+        "flags": 2,
+        "id": 4294967295
+       },
        "BackgroundAudioSource": {
         "flags": 2,
         "id": 4294967295
        },
        "LobbyScene": {
         "uid": "2daeef9e-33de-8840-9e1e-37fe857780dd"
+       }
+      },
+      {
+       "type": "LevelUpUI",
+       "LevelUpMenu": {
+        "flags": 2,
+        "id": 4294967295
+       }
+      },
+      {
+       "type": "GameUI",
+       "GameMenu": {
+        "flags": 2,
+        "id": 4294967295
+       },
+       "SettingsMenu": {
+        "flags": 2,
+        "id": 4294967295
+       },
+       "GameHub": {
+        "flags": 2,
+        "id": 4294967295
+       },
+       "BackgroundAudioSource": {
+        "flags": 2,
+        "id": 4294967295
+       },
+       "LobbyScene": {
+        "uid": "00000000-0000-0000-0000-000000000000"
        }
       }
      ]
@@ -645,16 +694,13 @@
      }
     }
    }
-  }
- ],
- "version": "1.0.0",
- "entities": [
+  },
   {
-   "id": 12,
+   "id": 11,
    "components": {
     "has_tag_component": true,
     "tag_component": {
-     "name": "Level",
+     "name": "LevelUpMenu",
      "tag": ""
     },
     "has_layer_component": true,
@@ -689,11 +735,138 @@
       }
      },
      "parent": {
+      "id": 2097159
+     },
+     "children": [],
+     "active": false
+    },
+    "has_script_component": true,
+    "script_component": {
+     "script_components": [
+      {
+       "type": "LevelUpMenu"
+      }
+     ]
+    },
+    "has_ui_document_component": true,
+    "ui_document_component": {
+     "enabled": true,
+     "asset": {
+      "uid": "d8405a10-19c5-4d44-8ced-9f41059b615e"
+     }
+    }
+   }
+  },
+  {
+   "id": 12,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "GameHub",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 2097159
+     },
+     "children": [],
+     "active": true
+    },
+    "has_script_component": true,
+    "script_component": {
+     "script_components": [
+      {
+       "type": "GameHub"
+      }
+     ]
+    },
+    "has_ui_document_component": true,
+    "ui_document_component": {
+     "enabled": true,
+     "asset": {
+      "uid": "235654ef-2577-f04c-89f3-a34f91d8c9b1"
+     }
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 14,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Level",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 4.6700768052687638e-7,
+       "y": -0.0000013820827007293702,
+       "z": -2.678904422737105e-7
+      },
+      "rotation": {
+       "x": -1.1920938902676426e-7,
+       "y": 1.4901168299275015e-8,
+       "z": -2.980232594040899e-8,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999998807907105,
+       "z": 1.000000238418579
+      },
+      "skew": {
+       "x": -5.960487214906607e-8,
+       "y": -2.980337043823056e-8,
+       "z": -0.000005841220627189614
+      }
+     },
+     "parent": {
       "id": 4294967295
      },
      "children": [
       {
-       "id": 13
+       "id": 15
       }
      ],
      "active": true
@@ -701,7 +874,7 @@
    }
   },
   {
-   "id": 13,
+   "id": 15,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -718,14 +891,14 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": 0.0,
+       "x": -4.2376768760732378e-11,
        "y": -0.4515101909637451,
-       "z": 0.0
+       "z": 2.7569058147491887e-12
       },
       "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
+       "x": 2.6645352591003757e-12,
+       "y": -2.6618909466397747e-27,
+       "z": -4.847401738733686e-16,
        "w": 1.0
       },
       "scale": {
@@ -734,13 +907,13 @@
        "z": 121.35012817382813
       },
       "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
+       "x": 1.098014821426796e-11,
+       "y": 5.1536404458513948e-18,
+       "z": 2.455538723744599e-11
       }
      },
      "parent": {
-      "id": 12
+      "id": 14
      },
      "children": [],
      "active": true
@@ -823,7 +996,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 15,
+   "id": 17,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -840,25 +1013,25 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
+       "x": 4.670094995162799e-7,
+       "y": -0.000004600723968906095,
+       "z": -2.6788805485011837e-7
       },
       "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
+       "x": -1.1920938902676426e-7,
+       "y": 1.4901168299275015e-8,
+       "z": -2.980232949312267e-8,
        "w": 1.0
       },
       "scale": {
        "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
+       "y": 0.9999998807907105,
+       "z": 1.000000238418579
       },
       "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
+       "x": -5.960487214906607e-8,
+       "y": -2.980337043823056e-8,
+       "z": -0.000005841399342898512
       }
      },
      "parent": {
@@ -866,7 +1039,7 @@
      },
      "children": [
       {
-       "id": 16
+       "id": 18
       }
      ],
      "active": true
@@ -943,7 +1116,7 @@
        "currentExperience": 0.0,
        "currentLevel": 1,
        "baseExperienceRequired": 100.0,
-       "experienceMultiplier": 1.5,
+       "experienceMultiplier": 1.0099999904632569,
        "debugPickup": false,
        "debugDrawRange": false
       },
@@ -972,7 +1145,7 @@
    }
   },
   {
-   "id": 16,
+   "id": 18,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -989,14 +1162,14 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": 0.0,
-       "y": 1.5,
-       "z": 0.0
+       "x": -5.066092967354052e-8,
+       "y": 1.4999998807907105,
+       "z": 4.0578512994216e-8
       },
       "rotation": {
        "x": 0.0,
        "y": 0.0,
-       "z": 0.0,
+       "z": -4.440889980918258e-16,
        "w": 1.0
       },
       "scale": {
@@ -1005,13 +1178,13 @@
        "z": 1.0
       },
       "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
+       "x": 4.263256414560601e-14,
+       "y": -7.993551567192503e-15,
+       "z": -4.470302883419208e-8
       }
      },
      "parent": {
-      "id": 15
+      "id": 17
      },
      "children": [],
      "active": true
@@ -1052,7 +1225,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 18,
+   "id": 20,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1069,25 +1242,25 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
+       "x": 4.6700768052687638e-7,
+       "y": -0.0000013820827007293702,
+       "z": -2.678904422737105e-7
       },
       "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
+       "x": -1.1920938902676426e-7,
+       "y": 1.4901168299275015e-8,
+       "z": -2.980232594040899e-8,
        "w": 1.0
       },
       "scale": {
        "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
+       "y": 0.9999998807907105,
+       "z": 1.000000238418579
       },
       "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
+       "x": -5.960487214906607e-8,
+       "y": -2.980337043823056e-8,
+       "z": -0.000005841220627189614
       }
      },
      "parent": {
@@ -1112,16 +1285,25 @@
        "enemy": {
         "uid": "68769e46-ff2a-6440-8ab4-a3564a023ff8"
        },
-       "spawnRate": 2.0,
-       "enableAutoSpawning": true
+       "baseSpawnsPerSecond": 1.0,
+       "baseMinEnemies": 20,
+       "enemiesPerLevel": 3,
+       "maxEnemies": 100,
+       "enableAutoSpawning": true,
+       "adaptationRate": 0.10000000149011612,
+       "maxSpawnRateMultiplier": 3.0,
+       "killRateWindow": 10.0,
+       "enableEnemyScaling": true,
+       "healthScalingPerMinute": 0.10000000149011612,
+       "speedScalingPerMinute": 0.05000000074505806,
+       "healthScalingPerLevel": 0.15000000596046449,
+       "speedScalingPerLevel": 0.07999999821186066,
+       "maxHealthScaling": 5.0,
+       "maxSpeedScaling": 3.0
       },
       {
        "type": "EffectSystem",
        "debugEffects": false
-      },
-      {
-       "type": "LootHandler",
-       "debugLootHandler": false
       },
       {
        "type": "LootSystem",
@@ -1140,7 +1322,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 20,
+   "id": 22,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1157,25 +1339,25 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
+       "x": 4.6700768052687638e-7,
+       "y": -0.0000013820827007293702,
+       "z": -2.678904422737105e-7
       },
       "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
+       "x": -1.1920938902676426e-7,
+       "y": 1.4901168299275015e-8,
+       "z": -2.980232594040899e-8,
        "w": 1.0
       },
       "scale": {
        "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
+       "y": 0.9999998807907105,
+       "z": 1.000000238418579
       },
       "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
+       "x": -5.960487214906607e-8,
+       "y": -2.980337043823056e-8,
+       "z": -0.000005841220627189614
       }
      },
      "parent": {
@@ -1183,7 +1365,7 @@
      },
      "children": [
       {
-       "id": 21
+       "id": 23
       }
      ],
      "active": true
@@ -1191,7 +1373,7 @@
    }
   },
   {
-   "id": 21,
+   "id": 23,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1230,7 +1412,7 @@
       }
      },
      "parent": {
-      "id": 20
+      "id": 22
      },
      "children": [],
      "active": true
@@ -1256,7 +1438,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 23,
+   "id": 25,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1273,25 +1455,25 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
+       "x": 4.6700768052687638e-7,
+       "y": -0.0000013820827007293702,
+       "z": -2.678904422737105e-7
       },
       "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
+       "x": -1.1920938902676426e-7,
+       "y": 1.4901168299275015e-8,
+       "z": -2.980232594040899e-8,
        "w": 1.0
       },
       "scale": {
        "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
+       "y": 0.9999998807907105,
+       "z": 1.000000238418579
       },
       "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
+       "x": -5.960487214906607e-8,
+       "y": -2.980337043823056e-8,
+       "z": -0.000005841220627189614
       }
      },
      "parent": {
@@ -1299,134 +1481,6 @@
      },
      "children": [],
      "active": true
-    }
-   }
-  }
- ],
- "version": "1.0.0",
- "entities": [
-  {
-   "id": 25,
-   "components": {
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "LevelUpUI",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      },
-      "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
-       "w": 1.0
-      },
-      "scale": {
-       "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
-      },
-      "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      }
-     },
-     "parent": {
-      "id": 4294967295
-     },
-     "children": [
-      {
-       "id": 26
-      }
-     ],
-     "active": true
-    },
-    "has_script_component": true,
-    "script_component": {
-     "script_components": [
-      {
-       "type": "LevelUpUI",
-       "LevelUpMenu": {
-        "flags": 2,
-        "id": 4294967295
-       }
-      }
-     ]
-    }
-   }
-  },
-  {
-   "id": 26,
-   "components": {
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "LevelUpMenu",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      },
-      "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
-       "w": 1.0
-      },
-      "scale": {
-       "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
-      },
-      "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      }
-     },
-     "parent": {
-      "id": 25
-     },
-     "children": [],
-     "active": false
-    },
-    "has_script_component": true,
-    "script_component": {
-     "script_components": [
-      {
-       "type": "LevelUpMenu"
-      }
-     ]
-    },
-    "has_ui_document_component": true,
-    "ui_document_component": {
-     "enabled": true,
-     "asset": {
-      "uid": "d8405a10-19c5-4d44-8ced-9f41059b615e"
-     }
     }
    }
   }

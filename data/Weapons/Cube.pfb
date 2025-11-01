@@ -2,7 +2,7 @@
  "entities": [
   {
    "prefab_uid": "927f4725-005a-864b-8e18-e5433d70b6fc",
-   "id": 138412033,
+   "id": 1,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -79,7 +79,7 @@
     },
     "has_physics_component": true,
     "physics_component": {
-     "is_using_gravity": true,
+     "is_using_gravity": false,
      "is_kinematic": false,
      "is_sensor": false,
      "is_autoscaled": true,
@@ -125,14 +125,7 @@
     },
     "has_script_component": true,
     "script_component": {
-     "script_components": [
-      {
-       "type": "DirectDamageEffect",
-       "damageAmount": 25.0,
-       "destroyProjectileOnHit": true,
-       "debugDamage": false
-      }
-     ]
+     "script_components": []
     }
    }
   }

@@ -320,11 +320,8 @@ public class Weapon : ScriptComponent
                     Log.Info($"Weapon: Configured projectile {instance.name} with source {owner.name}, damage {damage}, and {weaponEffects.Length} effects");
                 }
             }
-            else
-            {
-                // Fallback: Auto-destroy after lifetime if no Projectile
-                Scene.DestroyEntity(instance, projectileLifetime);
-            }
+            // Auto-destroy after lifetime if nothing gets hit
+            Scene.DestroyEntity(instance, projectileLifetime);
         }
     }
     

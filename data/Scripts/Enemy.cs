@@ -483,15 +483,9 @@ public class Enemy : ScriptComponent
             Vector3 currentVelocity = physicsComponent.velocity;
             physicsComponent.velocity = new Vector3(0, currentVelocity.y, 0);
         }
-        
-        // Note: Loot drops are now handled automatically by the LootHandler
-        // which listens to DamageSystem.OnEntityDied events
-        
-        // Could add other death behaviors here, like:
-        // - Play death sound/animation
-        // - Add score points
-        // - Trigger death effects
+
     }
+    
     
     /// <summary>
     /// Get the enemy type for loot configuration.

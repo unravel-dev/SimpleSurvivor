@@ -89,19 +89,19 @@ public class LevelUpUI : ScriptComponent
         
         Log.Info($"LevelUpUI: Showing level up menu with options: [{option1}], [{option2}], [{option3}]");
         
-        // Set the upgrade options
-        if (levelUpMenuScript != null)
-        {
-            levelUpMenuScript.SetUpgradeOptions(option1, option2, option3);
-        }
-        
-        // Pause the game
+        // Pause the game first
         PauseGame();
         
-        // Show the menu
+        // Show the menu (this triggers OnStart and caches UI elements)
         if (LevelUpMenu)
         {
             LevelUpMenu.SetActive(true);
+        }
+        
+        // Now set the upgrade options after the menu is active and elements are cached
+        if (levelUpMenuScript != null)
+        {
+            levelUpMenuScript.SetUpgradeOptions(option1, option2, option3);
         }
         
         isLevelUpActive = true;

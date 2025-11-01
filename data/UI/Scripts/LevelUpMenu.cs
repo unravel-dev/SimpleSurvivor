@@ -114,6 +114,9 @@ public class LevelUpMenu : BaseMenu
         upgradeOptions[1] = option2;
         upgradeOptions[2] = option3;
         
+        // Ensure UI elements are cached before trying to update them
+        EnsureInitialized();
+        
         // Update the UI text
         UpdateCardText();
         
@@ -121,16 +124,69 @@ public class LevelUpMenu : BaseMenu
     }
     
     /// <summary>
+    /// Ensure that UI elements are cached and ready to use.
+    /// This handles the case where the menu was inactive and OnStart() wasn't called.
+    /// </summary>
+    private void EnsureInitialized()
+    {
+        // If document is null, we haven't been initialized yet
+        if (document == null)
+        {
+            Log.Info("LevelUpMenu: UI not initialized yet, initializing now...");
+            
+            // Get the UI document component
+            var uiDoc = owner.GetComponent<UIDocumentComponent>();
+            if (uiDoc == null)
+            {
+                Log.Error("LevelUpMenu: No UIDocumentComponent found on entity");
+                return;
+            }
+
+            // Get the document wrapper
+            document = uiDoc.GetDocument();
+            if (document == null)
+            {
+                Log.Error("LevelUpMenu: Failed to get document wrapper - document may not be loaded");
+                return;
+            }
+
+            Log.Info($"LevelUpMenu: Got document wrapper: {document.Title}");
+
+            // Cache element wrappers
+            CacheUIElements();
+            
+            // Set up initial UI state
+            SetupInitialUI();
+            
+            // Register event handlers
+            RegisterEventHandlers();
+            
+            Log.Info("LevelUpMenu: Manual initialization completed");
+        }
+    }
+    
+    /// <summary>
     /// Update the card text elements with the current upgrade options.
     /// </summary>
     private void UpdateCardText()
     {
+        // Safety check: ensure we have valid elements before updating
+        if (document == null)
+        {
+            Log.Warning("LevelUpMenu: Cannot update card text - document not initialized");
+            return;
+        }
+        
         // Parse and set card 1
         if (card1Title != null && card1Description != null && !string.IsNullOrEmpty(upgradeOptions[0]))
         {
             var parts = ParseUpgradeText(upgradeOptions[0]);
             card1Title.InnerRml = (parts.title);
             card1Description.InnerRml = (parts.description);
+        }
+        else if (!string.IsNullOrEmpty(upgradeOptions[0]))
+        {
+            Log.Warning("LevelUpMenu: Card 1 elements not found, cannot set text");
         }
         
         // Parse and set card 2
@@ -140,6 +196,10 @@ public class LevelUpMenu : BaseMenu
             card2Title.InnerRml = (parts.title);
             card2Description.InnerRml = (parts.description);
         }
+        else if (!string.IsNullOrEmpty(upgradeOptions[1]))
+        {
+            Log.Warning("LevelUpMenu: Card 2 elements not found, cannot set text");
+        }
         
         // Parse and set card 3
         if (card3Title != null && card3Description != null && !string.IsNullOrEmpty(upgradeOptions[2]))
@@ -147,6 +207,10 @@ public class LevelUpMenu : BaseMenu
             var parts = ParseUpgradeText(upgradeOptions[2]);
             card3Title.InnerRml = (parts.title);
             card3Description.InnerRml = (parts.description);
+        }
+        else if (!string.IsNullOrEmpty(upgradeOptions[2]))
+        {
+            Log.Warning("LevelUpMenu: Card 3 elements not found, cannot set text");
         }
     }
     

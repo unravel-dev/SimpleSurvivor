@@ -22,7 +22,7 @@
             </member>
         <member name="M:BasicLevelDirector.OnUpdate">
              <summary>
-             Called every frame to handle automatic enemy spawning.
+             Called every frame to handle intelligent enemy spawning.
              </summary>
             </member>
         <member name="M:BasicLevelDirector.SpawnAroundPlayer(Unravel.Core.Prefab)">
@@ -70,9 +70,9 @@
             </member>
         <member name="M:BasicLevelDirector.SetSpawnRate(System.Single)">
              <summary>
-             Set the enemy spawn rate.
+             Set the base spawn rate (spawns per second).
              </summary>
-             <param name="newSpawnRate">Time in seconds between spawns.</param>
+             <param name="newSpawnsPerSecond">Number of spawns per second.</param>
             </member>
         <member name="M:BasicLevelDirector.SetAutoSpawning(System.Boolean)">
              <summary>
@@ -113,6 +113,130 @@
              Set the player entity manually.
              </summary>
              <param name="newPlayer">The new player entity.</param>
+            </member>
+        <member name="M:BasicLevelDirector.ApplyEnemyScaling(Unravel.Core.Entity)">
+             <summary>
+             Apply scaling to a newly spawned enemy based on game time and player level.
+             </summary>
+             <param name="enemy">The enemy entity to scale.</param>
+            </member>
+        <member name="M:BasicLevelDirector.CalculateHealthScaling">
+             <summary>
+             Calculate the health scaling multiplier based on game time and player level.
+             </summary>
+             <returns>Health scaling multiplier.</returns>
+            </member>
+        <member name="M:BasicLevelDirector.CalculateSpeedScaling">
+             <summary>
+             Calculate the speed scaling multiplier based on game time and player level.
+             </summary>
+             <returns>Speed scaling multiplier.</returns>
+            </member>
+        <member name="M:BasicLevelDirector.GetScalingInfo">
+             <summary>
+             Get the current enemy scaling information for debugging or UI display.
+             </summary>
+             <returns>A formatted string with current scaling values.</returns>
+            </member>
+        <member name="M:BasicLevelDirector.SetEnemyScaling(System.Boolean)">
+             <summary>
+             Enable or disable enemy scaling.
+             </summary>
+             <param name="enabled">Whether to enable enemy scaling.</param>
+            </member>
+        <member name="M:BasicLevelDirector.GetCurrentHealthScaling">
+             <summary>
+             Get the current health scaling multiplier.
+             </summary>
+             <returns>Current health scaling multiplier.</returns>
+            </member>
+        <member name="M:BasicLevelDirector.GetCurrentSpeedScaling">
+             <summary>
+             Get the current speed scaling multiplier.
+             </summary>
+             <returns>Current speed scaling multiplier.</returns>
+            </member>
+        <member name="M:BasicLevelDirector.InitializeKillTracking">
+             <summary>
+             Initialize the kill tracking system.
+             </summary>
+            </member>
+        <member name="M:BasicLevelDirector.SubscribeToEnemyDeaths">
+             <summary>
+             Subscribe to the DamageSystem's OnEntityDied event to track enemy kills.
+             </summary>
+            </member>
+        <member name="M:BasicLevelDirector.UpdateEnemyCount">
+             <summary>
+             Update the current enemy count by scanning for active enemies.
+             </summary>
+            </member>
+        <member name="M:BasicLevelDirector.GetTargetEnemyCount">
+             <summary>
+             Get the target number of enemies based on player level.
+             </summary>
+             <returns>Target enemy count</returns>
+            </member>
+        <member name="M:BasicLevelDirector.GetPlayerLevel">
+             <summary>
+             Get the player's current level.
+             </summary>
+             <returns>Player level, or 1 if not found</returns>
+            </member>
+        <member name="M:BasicLevelDirector.UpdateAdaptiveSpawnRate">
+             <summary>
+             Update the adaptive spawn rate based on recent kill rate.
+             </summary>
+            </member>
+        <member name="M:BasicLevelDirector.CalculateRecentKillRate">
+             <summary>
+             Calculate the recent kill rate (kills per second).
+             </summary>
+             <returns>Recent kill rate</returns>
+            </member>
+        <member name="M:BasicLevelDirector.HandleEntityDeath(Unravel.Core.Entity,Unravel.Core.Entity)">
+             <summary>
+             Handle entity death from the DamageSystem event.
+             Only tracks enemy deaths for adaptive spawning.
+             </summary>
+             <param name="deadEntity">The entity that died</param>
+             <param name="killer">The entity that killed it</param>
+            </member>
+        <member name="M:BasicLevelDirector.RecordEnemyKill(Unravel.Core.Entity,Unravel.Core.Entity)">
+             <summary>
+             Record an enemy kill for adaptive spawning.
+             </summary>
+             <param name="deadEnemy">The enemy that died</param>
+             <param name="killer">The entity that killed it</param>
+            </member>
+        <member name="M:BasicLevelDirector.RecordEnemyKill">
+             <summary>
+             Record an enemy kill for adaptive spawning (legacy method for backward compatibility).
+             </summary>
+            </member>
+        <member name="M:BasicLevelDirector.ShouldSpawnEnemy(System.Int32,System.Single)">
+             <summary>
+             Determine if we should spawn an enemy based on current conditions.
+             </summary>
+             <param name="targetCount">Target enemy count</param>
+             <param name="spawnInterval">Time between spawns</param>
+             <returns>True if we should spawn</returns>
+            </member>
+        <member name="M:BasicLevelDirector.GetSpawningStats">
+             <summary>
+             Get current spawning statistics for debugging/UI.
+             </summary>
+             <returns>Spawning stats</returns>
+            </member>
+        <member name="M:BasicLevelDirector.ForceSpawnToTarget">
+             <summary>
+             Force spawn enemies to reach target count immediately.
+             </summary>
+            </member>
+        <member name="M:BasicLevelDirector.OnDestroy">
+             <summary>
+             Called when the script is destroyed. Clean up event subscriptions.
+             </summary>
             </member>
         <member name="T:Weapon">
              <summary>
@@ -1264,52 +1388,6 @@
              Restore the entity to full health.
              </summary>
             </member>
-        <member name="T:LootHandler">
-             <summary>
-             Handles loot drops by listening to the DamageSystem's OnEntityDied event.
-             This provides centralized loot management without requiring individual entities to handle their own drops.
-             </summary>
-            </member>
-        <member name="M:LootHandler.OnCreate">
-             <summary>
-             Called when the script is created.
-             </summary>
-            </member>
-        <member name="M:LootHandler.OnDestroy">
-             <summary>
-             Called when the script is destroyed.
-             </summary>
-            </member>
-        <member name="M:LootHandler.HandleEntityDeath(Unravel.Core.Entity,Unravel.Core.Entity)">
-             <summary>
-             Handle entity death and determine if loot should be dropped.
-             </summary>
-             <param name="deadEntity">The entity that died.</param>
-             <param name="killer">The entity that killed it (could be player, weapon, etc.).</param>
-            </member>
-        <member name="M:LootHandler.ShouldDropLoot(Unravel.Core.Entity,Unravel.Core.Entity)">
-             <summary>
-             Determine if the dead entity should drop loot.
-             </summary>
-             <param name="deadEntity">The entity that died.</param>
-             <param name="killer">The entity that killed it.</param>
-             <returns>True if loot should be dropped.</returns>
-            </member>
-        <member name="M:LootHandler.HandleLootDrop(Unravel.Core.Entity,Unravel.Core.Entity)">
-             <summary>
-             Handle the actual loot drop for the dead entity.
-             </summary>
-             <param name="deadEntity">The entity that died.</param>
-             <param name="killer">The entity that killed it.</param>
-            </member>
-        <member name="M:LootHandler.GetEnemyLootConfig(Enemy)">
-             <summary>
-             Get the loot configuration from an enemy component based on its type.
-             This method creates different loot configs for different enemy types.
-             </summary>
-             <param name="enemy">The enemy component.</param>
-             <returns>Custom loot configuration, or null to use default.</returns>
-            </member>
         <member name="T:LootSystem">
              <summary>
              Centralized loot system that handles all loot drops in the game.
@@ -1335,6 +1413,41 @@
              <summary>
              Find and cache the player entity and experience component.
              </summary>
+            </member>
+        <member name="M:LootSystem.FindOrCreateExperienceContainer">
+             <summary>
+             Find or create the ExperienceContainer entity to parent all experience orbs.
+             </summary>
+            </member>
+        <member name="M:LootSystem.OnEntityDied(Unravel.Core.Entity,Unravel.Core.Entity)">
+             <summary>
+             Handle entity death events from DamageSystem.
+             </summary>
+             <param name="deadEntity">The entity that died.</param>
+             <param name="killer">The entity that killed it.</param>
+            </member>
+        <member name="M:LootSystem.ShouldDropLoot(Unravel.Core.Entity,Unravel.Core.Entity)">
+             <summary>
+             Determine if the dead entity should drop loot.
+             </summary>
+             <param name="deadEntity">The entity that died.</param>
+             <param name="killer">The entity that killed it.</param>
+             <returns>True if loot should be dropped.</returns>
+            </member>
+        <member name="M:LootSystem.ProcessLootDrop(Unravel.Core.Entity,Unravel.Core.Entity)">
+             <summary>
+             Process the loot drop for the dead entity.
+             </summary>
+             <param name="deadEntity">The entity that died.</param>
+             <param name="killer">The entity that killed it.</param>
+            </member>
+        <member name="M:LootSystem.GetEnemyLootConfig(Enemy)">
+             <summary>
+             Get the loot configuration from an enemy component based on its type.
+             This method creates different loot configs for different enemy types.
+             </summary>
+             <param name="enemy">The enemy component.</param>
+             <returns>Custom loot configuration, or null to use default.</returns>
             </member>
         <member name="M:LootSystem.HandleEnemyDeath(Unravel.Core.Entity,Vector3,LootSystem.LootConfiguration)">
              <summary>
@@ -1372,6 +1485,12 @@
              </summary>
              <returns>Current player level or 1 if no player found.</returns>
             </member>
+        <member name="M:LootSystem.GetExperienceContainer">
+             <summary>
+             Get the ExperienceContainer entity for external access.
+             </summary>
+             <returns>The ExperienceContainer entity, or null if not found/created.</returns>
+            </member>
         <member name="M:LootSystem.CreateLootConfig(System.Single,System.Single,System.Int32)">
              <summary>
              Create a custom loot configuration for specific enemy types.
@@ -1395,11 +1514,6 @@
         <member name="M:LootSystemSetup.SetupLootSystem">
              <summary>
              Set up the loot system with default configuration.
-             </summary>
-            </member>
-        <member name="M:LootSystemSetup.SetupLootHandler">
-             <summary>
-             Set up the loot handler to connect DamageSystem with LootSystem.
              </summary>
             </member>
         <member name="T:LootSystemUsage">
@@ -1490,20 +1604,6 @@
              Instantly snap the camera to the target position (no smooth movement).
              </summary>
             </member>
-        <member name="M:Test.OnCreate">
-             <summary>
-             OnCreate is called when the script is first loaded, or when an object it is attached to is instantiated
-             It only gets called once on each script, and only after other objects are initialised.
-             This means that it is safe to create references to other game objects and components in OnCreate.
-             </summary>
-            </member>
-        <member name="M:Test.OnStart">
-             <summary>
-             Start is called once, before any Update methods and after OnCreate.
-             It works in much the same way as OnCreate, with a few key differences.
-             Unlike OnCreate, Start will not be called if the script is disabled.
-             </summary>
-            </member>
         <member name="T:BaseMenu">
              <summary>
              Base class for all menu controllers that eliminates code duplication.
@@ -1587,6 +1687,107 @@
         <member name="T:AudioPaths">
              <summary>
              Audio file path constants to avoid duplication and make changes easier.
+             </summary>
+            </member>
+        <member name="T:GameHub">
+             <summary>
+             Game Hub HUD controller that displays player health and experience bars during gameplay.
+             Updates the progress bars via event subscriptions for optimal performance.
+             </summary>
+            </member>
+        <member name="M:GameHub.OnStart">
+             <summary>
+             Called when the script starts execution.
+             </summary>
+            </member>
+        <member name="M:GameHub.CacheUIElements">
+             <summary>
+             Cache UI element references for fast access.
+             </summary>
+            </member>
+        <member name="M:GameHub.FindPlayerAndSubscribeToEvents">
+             <summary>
+             Find the player entity in the scene and subscribe to health/experience events.
+             </summary>
+            </member>
+        <member name="M:GameHub.OnPlayerHealthChanged(System.Single,System.Single)">
+             <summary>
+             Event handler for when player health changes.
+             </summary>
+             <param name="currentHealth">Current health value</param>
+             <param name="maxHealth">Maximum health value</param>
+            </member>
+        <member name="M:GameHub.OnPlayerExperienceChanged(System.Single,System.Single)">
+             <summary>
+             Event handler for when player experience changes.
+             </summary>
+             <param name="currentExp">Current experience value</param>
+             <param name="expToNextLevel">Experience required for next level</param>
+            </member>
+        <member name="M:GameHub.OnUpdate">
+             <summary>
+             Update method called every frame.
+             </summary>
+            </member>
+        <member name="M:GameHub.UpdateProgressBars">
+             <summary>
+             Update the health and experience progress bars with current player data (initial load).
+             </summary>
+            </member>
+        <member name="M:GameHub.UpdateHealthBar(System.Single,System.Single)">
+             <summary>
+             Update the health bar display.
+             </summary>
+             <param name="currentHealth">Current health value</param>
+             <param name="maxHealth">Maximum health value</param>
+            </member>
+        <member name="M:GameHub.UpdateExperienceBar(System.Single,System.Single)">
+             <summary>
+             Update the experience bar display.
+             </summary>
+             <param name="currentExp">Current total experience value</param>
+             <param name="expToNextLevel">Experience still needed for next level</param>
+            </member>
+        <member name="M:GameHub.UpdateGameTimer">
+             <summary>
+             Update the game timer display.
+             </summary>
+            </member>
+        <member name="M:GameHub.OnEnable">
+             <summary>
+             Called when the component is enabled.
+             </summary>
+            </member>
+        <member name="M:GameHub.OnDisable">
+             <summary>
+             Called when the component is disabled.
+             </summary>
+            </member>
+        <member name="M:GameHub.OnDestroy">
+             <summary>
+             Called when the component is destroyed.
+             </summary>
+            </member>
+        <member name="M:GameHub.UnsubscribeFromEvents">
+             <summary>
+             Unsubscribe from all player events to prevent memory leaks.
+             </summary>
+            </member>
+        <member name="M:GameHub.GetHealthPercentage">
+             <summary>
+             Get the current health percentage for external access.
+             </summary>
+             <returns>Health percentage (0.0 to 1.0), or 0 if no player found.</returns>
+            </member>
+        <member name="M:GameHub.GetExperienceProgress">
+             <summary>
+             Get the current experience progress for external access.
+             </summary>
+             <returns>Experience progress (0.0 to 1.0), or 0 if no player found.</returns>
+            </member>
+        <member name="M:GameHub.RefreshProgressBars">
+             <summary>
+             Manually refresh the progress bars (useful for testing or external calls).
              </summary>
             </member>
         <member name="T:GameMenu">
@@ -1709,6 +1910,12 @@
              <param name="option1">Text for card 1</param>
              <param name="option2">Text for card 2</param>
              <param name="option3">Text for card 3</param>
+            </member>
+        <member name="M:LevelUpMenu.EnsureInitialized">
+             <summary>
+             Ensure that UI elements are cached and ready to use.
+             This handles the case where the menu was inactive and OnStart() wasn't called.
+             </summary>
             </member>
         <member name="M:LevelUpMenu.UpdateCardText">
              <summary>

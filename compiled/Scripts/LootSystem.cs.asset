@@ -71,6 +71,7 @@ public class LootSystem : ScriptComponent
     private Entity playerEntity;
     private Experience playerExperience;
     private float gameStartTime;
+    private Entity experienceContainer;
     
     /// <summary>
     /// Get the singleton instance of the loot system.
@@ -91,9 +92,15 @@ public class LootSystem : ScriptComponent
             // Find player entity
             FindPlayerEntity();
             
+            // Find or create experience container
+            FindOrCreateExperienceContainer();
+            
+            // Subscribe to death events directly
+            DamageSystem.OnEntityDied += OnEntityDied;
+            
             if (debugLoot)
             {
-                Log.Info("LootSystem: Initialized");
+                Log.Info("LootSystem: Initialized and subscribed to death events");
             }
         }
         else
@@ -108,9 +115,17 @@ public class LootSystem : ScriptComponent
     /// </summary>
     public override void OnDestroy()
     {
+        // Unsubscribe from death events
+        DamageSystem.OnEntityDied -= OnEntityDied;
+        
         if (instance == this)
         {
             instance = null;
+        }
+        
+        if (debugLoot)
+        {
+            Log.Info("LootSystem: Unsubscribed from death events and cleaned up");
         }
     }
     
@@ -137,6 +152,168 @@ public class LootSystem : ScriptComponent
             {
                 Log.Warning("LootSystem: No player entity found");
             }
+        }
+    }
+    
+    /// <summary>
+    /// Find or create the ExperienceContainer entity to parent all experience orbs.
+    /// </summary>
+    private void FindOrCreateExperienceContainer()
+    {
+        // First try to find existing container
+        experienceContainer = Scene.FindEntityByName("ExperienceContainer");
+        
+        if (!experienceContainer)
+        {
+            // Create new container entity
+            experienceContainer = Scene.CreateEntity("ExperienceContainer");
+            
+            if (experienceContainer)
+            {
+                // Position it at world origin
+                experienceContainer.transform.position = Vector3.zero;
+                
+                if (debugLoot)
+                {
+                    Log.Info("LootSystem: Created ExperienceContainer entity");
+                }
+            }
+            else
+            {
+                Log.Error("LootSystem: Failed to create ExperienceContainer entity");
+            }
+        }
+        else
+        {
+            if (debugLoot)
+            {
+                Log.Info("LootSystem: Found existing ExperienceContainer entity");
+            }
+        }
+    }
+    
+    /// <summary>
+    /// Handle entity death events from DamageSystem.
+    /// </summary>
+    /// <param name="deadEntity">The entity that died.</param>
+    /// <param name="killer">The entity that killed it.</param>
+    private void OnEntityDied(Entity deadEntity, Entity killer)
+    {
+        if (!deadEntity)
+            return;
+            
+        if (debugLoot)
+        {
+            string killerName = killer ? killer.name : "Unknown";
+            Log.Info($"LootSystem: Entity {deadEntity.name} died, killed by {killerName}");
+        }
+        
+        // Check if this entity should drop loot
+        if (ShouldDropLoot(deadEntity, killer))
+        {
+            ProcessLootDrop(deadEntity, killer);
+        }
+    }
+    
+    /// <summary>
+    /// Determine if the dead entity should drop loot.
+    /// </summary>
+    /// <param name="deadEntity">The entity that died.</param>
+    /// <param name="killer">The entity that killed it.</param>
+    /// <returns>True if loot should be dropped.</returns>
+    private bool ShouldDropLoot(Entity deadEntity, Entity killer)
+    {
+        // Only drop loot for enemies (entities with Enemy component)
+        var enemyComponent = deadEntity.GetComponent<Enemy>();
+        if (enemyComponent == null)
+        {
+            if (debugLoot)
+            {
+                Log.Info($"LootSystem: {deadEntity.name} is not an enemy, no loot drop");
+            }
+            return false;
+        }
+        
+        // Could add additional conditions here, such as:
+        // - Only drop loot if killed by player
+        // - Check if entity is in a "no loot" zone
+        // - Check if loot drops are enabled globally
+        // - Check entity-specific loot flags
+        
+        // For now, all enemies drop loot when they die
+        return true;
+    }
+    
+    /// <summary>
+    /// Process the loot drop for the dead entity.
+    /// </summary>
+    /// <param name="deadEntity">The entity that died.</param>
+    /// <param name="killer">The entity that killed it.</param>
+    private void ProcessLootDrop(Entity deadEntity, Entity killer)
+    {
+        // Get the enemy's position for loot drop
+        var transformComponent = deadEntity.GetComponent<TransformComponent>();
+        if (transformComponent == null)
+        {
+            if (debugLoot)
+            {
+                Log.Warning($"LootSystem: {deadEntity.name} has no TransformComponent, cannot determine drop position");
+            }
+            return;
+        }
+        
+        // Get custom loot configuration based on enemy type
+        var enemyComponent = deadEntity.GetComponent<Enemy>();
+        LootConfiguration customConfig = null;
+        
+        if (enemyComponent != null)
+        {
+            customConfig = GetEnemyLootConfig(enemyComponent);
+        }
+        
+        // Drop the loot
+        Vector3 dropPosition = transformComponent.position;
+        HandleEnemyDeath(deadEntity, dropPosition, customConfig);
+        
+        if (debugLoot)
+        {
+            Log.Info($"LootSystem: Processed loot drop for {deadEntity.name} at {dropPosition}");
+        }
+    }
+    
+    /// <summary>
+    /// Get the loot configuration from an enemy component based on its type.
+    /// This method creates different loot configs for different enemy types.
+    /// </summary>
+    /// <param name="enemy">The enemy component.</param>
+    /// <returns>Custom loot configuration, or null to use default.</returns>
+    private LootConfiguration GetEnemyLootConfig(Enemy enemy)
+    {
+        string enemyType = enemy.GetEnemyType().ToLower();
+        
+        // Create loot configs based on enemy type
+        switch (enemyType)
+        {
+            case "boss":
+                return CreateLootConfig(100.0f, 0.5f, 5); // Boss: 100 base XP, 50% per level, 5 orbs
+                
+            case "elite":
+                return CreateLootConfig(25.0f, 0.2f, 3); // Elite: 25 base XP, 20% per level, 3 orbs
+                
+            case "heavy":
+                return CreateLootConfig(18.0f, 0.15f, 2); // Heavy: 18 base XP, 15% per level, 2 orbs
+                
+            case "fast":
+                return CreateLootConfig(12.0f, 0.12f, 1); // Fast: 12 base XP, 12% per level, 1 orb
+                
+            case "weak":
+            case "small":
+                return CreateLootConfig(5.0f, 0.05f, 1); // Weak: 5 base XP, 5% per level, 1 orb
+                
+            case "basic":
+            default:
+                // Return null to use LootSystem's default configuration
+                return null;
         }
     }
     
@@ -253,6 +430,21 @@ public class LootSystem : ScriptComponent
             {
                 orbEntity.transform.position = orbPosition;
                 
+                // Parent the orb under the ExperienceContainer
+                if (experienceContainer)
+                {
+                    orbEntity.transform.SetParent(experienceContainer, true);
+                }
+                else
+                {
+                    // Try to find/create container if it doesn't exist
+                    FindOrCreateExperienceContainer();
+                    if (experienceContainer)
+                    {
+                        orbEntity.transform.SetParent(experienceContainer, true);
+                    }
+                }
+                
                 // Configure experience value
                 var experienceOrb = orbEntity.GetComponent<ExperienceOrb>();
                 if (experienceOrb != null)
@@ -295,6 +487,21 @@ public class LootSystem : ScriptComponent
             return playerExperience.GetCurrentLevel();
         }
         return 1;
+    }
+    
+    /// <summary>
+    /// Get the ExperienceContainer entity for external access.
+    /// </summary>
+    /// <returns>The ExperienceContainer entity, or null if not found/created.</returns>
+    public Entity GetExperienceContainer()
+    {
+        // Ensure container exists
+        if (!experienceContainer)
+        {
+            FindOrCreateExperienceContainer();
+        }
+        
+        return experienceContainer;
     }
     
     /// <summary>

@@ -20,8 +20,7 @@ public class LootSystemSetup : ScriptComponent
         // Create a LootSystem entity if one doesn't exist
         SetupLootSystem();
         
-        // Create a LootHandler to connect DamageSystem with LootSystem
-        SetupLootHandler();
+        // Note: LootHandler is no longer needed - LootSystem handles death events directly
     }
     
     /// <summary>
@@ -66,26 +65,4 @@ public class LootSystemSetup : ScriptComponent
         Log.Info("LootSystemSetup: Created and configured LootSystem");
     }
     
-    /// <summary>
-    /// Set up the loot handler to connect DamageSystem with LootSystem.
-    /// </summary>
-    private void SetupLootHandler()
-    {
-        // Check if LootHandler already exists
-        var existingLootHandlers = Scene.FindEntitiesWithComponent<LootHandler>();
-        if (existingLootHandlers != null && existingLootHandlers.Length > 0)
-        {
-            Log.Info("LootSystemSetup: LootHandler already exists");
-            return;
-        }
-        
-        // Create new LootHandler entity
-        var lootHandlerEntity = Scene.CreateEntity("LootHandler");
-        var lootHandler = lootHandlerEntity.AddComponent<LootHandler>();
-        
-        // Configure the loot handler
-        lootHandler.debugLootHandler = true; // Enable debug for testing
-        
-        Log.Info("LootSystemSetup: Created and configured LootHandler");
-    }
 }

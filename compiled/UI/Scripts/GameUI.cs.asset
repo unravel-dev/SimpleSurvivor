@@ -12,6 +12,7 @@ public class GameUI : ScriptComponent
 {
 	public Entity GameMenu;
 	public Entity SettingsMenu;
+	public Entity GameHub;
 
 	public Entity BackgroundAudioSource;
 
@@ -61,6 +62,12 @@ public class GameUI : ScriptComponent
 			if (settingsMenuEntity) SettingsMenu = settingsMenuEntity;
 		}
 
+		if (!GameHub)
+		{
+			var gameHubEntity = owner.transform.FindChild("GameHub", true);
+			if (gameHubEntity) GameHub = gameHubEntity;
+		}
+
 		if (!BackgroundAudioSource)
 		{
 			var backgroundAudioSourceEntity = owner.transform.FindChild("BackgroundAudioSource", true);
@@ -81,6 +88,11 @@ public class GameUI : ScriptComponent
 		if (!SettingsMenu)
 		{
 			Log.Warning("SettingsMenu reference not found - settings navigation may not work");
+		}
+
+		if (!GameHub)
+		{
+			Log.Warning("GameHub reference not found - health and experience bars may not work");
 		}
 
 		if (!BackgroundAudioSource)
@@ -161,6 +173,13 @@ public class GameUI : ScriptComponent
 			}
 			GameMenu.SetActive(true);
 			BackgroundAudioSource.SetActive(true);
+			
+			// Hide GameHub during menu
+			if (GameHub)
+			{
+				GameHub.SetActive(false);
+			}
+			
 			Time.timeScale = 0f;
 			IsGamePaused = true;
 			Log.Info("Game menu opened - game paused");
@@ -184,6 +203,12 @@ public class GameUI : ScriptComponent
 				}
 			}
 			ShowMenu(Entity.Invalid, GameMenu);
+
+			// Show GameHub when resuming gameplay
+			if (GameHub)
+			{
+				GameHub.SetActive(true);
+			}
 
 			BackgroundAudioSource.SetActive(false);
 			Time.timeScale = 1f;

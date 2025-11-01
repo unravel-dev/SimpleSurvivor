@@ -478,16 +478,16 @@ public override void OnFixedUpdate()
     /// <param name="level">The new level the player reached</param>
     private void ShowLevelUpMenu(int level)
     {
-        // Find the LevelUpUI entity in the scene
-        var levelUpUIEntity = Scene.FindEntityByName("LevelUpUI");
-        if (!levelUpUIEntity)
+        // Find the GameUI entity in the scene
+        var gameUIEntity = Scene.FindEntityByName("GameUI");
+        if (!gameUIEntity)
         {
-            Log.Warning("Player: LevelUpUI entity not found in scene - cannot show level up menu");
+            Log.Warning("Player: GameUI entity not found in scene - cannot show level up menu");
             return;
         }
         
         // Get the LevelUpUI script component
-        var levelUpUIScript = levelUpUIEntity.GetComponent<LevelUpUI>();
+        var levelUpUIScript = gameUIEntity.GetComponent<LevelUpUI>();
         
         if (levelUpUIScript == null)
         {

@@ -1,0 +1,44 @@
+<rml>
+  <head>
+    <title>Game Hub</title>
+    <link type="text/rcss" href="engine:/data/ui/rml.rcss" />
+    <link type="text/rcss" href="CommonMenu.rcss" />
+    <link type="text/rcss" href="GameHub.rcss" />
+  </head>
+
+  <body id="body" class="theme-dark">
+    <!-- Game Timer (using exact menu structure) -->
+    <div class="timer-container menu-container menu-container--top">
+      <header class="menu-header menu-header--medium">
+        <h1 class="menu-title menu-title--medium timer-title">
+          <span class="timer-icon">TIME</span>
+          <span id="game_timer" class="timer-text">00:00</span>
+        </h1>
+      </header>
+    </div>
+    
+    <div class="hud-container">
+      
+      <!-- Health Bar -->
+      <div class="stat-bar-container">
+        <div class="stat-bar-label">
+          <span class="health-icon">♥</span>
+          <span class="stat-text">HEALTH</span>
+          <span id="health_value" class="stat-value">100/100</span>
+        </div>
+        <progress id="health_bar" class="stat-progress health-progress" value="1.0" max="1.0"></progress>
+      </div>
+      
+      <!-- Experience Bar -->
+      <div class="stat-bar-container">
+        <div class="stat-bar-label">
+          <span class="experience-icon">★</span>
+          <span class="stat-text">EXPERIENCE</span>
+          <span id="level_value" class="stat-value">Level 1</span>
+        </div>
+        <progress id="experience_bar" class="stat-progress experience-progress" value="0.3" max="1.0"></progress>
+      </div>
+      
+    </div>
+  </body>
+</rml>
