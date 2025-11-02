@@ -2,7 +2,7 @@
  "entities": [
   {
    "prefab_uid": "10ef8358-c389-3a4b-896e-3f9e41e44097",
-   "id": 49283073,
+   "id": 1,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -98,7 +98,7 @@
      "enabled": true,
      "shape": 0,
      "direction": 1,
-     "simulation_space": 0,
+     "simulation_space": 1,
      "max_particles": 1024,
      "emission_lifetime": {
       "count": 2.0
@@ -277,7 +277,8 @@
      "position_easing": 0,
      "texture": {
       "uid": "5b249d5d-8cc1-2a4e-9b9b-b16ba4a53af1"
-     }
+     },
+     "loop": true
     }
    }
   }

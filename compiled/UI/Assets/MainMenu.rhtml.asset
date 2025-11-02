@@ -12,7 +12,7 @@
       
       <!-- Game Title -->
       <header class="menu-header menu-header--large">
-        <h1 id="main_title" class="menu-title menu-title--large">Game Title</h1>
+        <h1 id="main_title" class="menu-title menu-title--large">Simple Survivor</h1>
         <div class="menu-subtitle menu-subtitle--large">Welcome to the Adventure</div>
       </header>
 

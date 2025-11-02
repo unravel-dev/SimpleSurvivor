@@ -66,6 +66,9 @@ public class LootSystem : ScriptComponent
     [Tooltip("Enable debug logging")]
     public bool debugLoot = false;
     
+    [Tooltip("Speed multiplier for experience orbs relative to player speed")]
+    public float orbSpeedMultiplier = 1.5f;
+    
     // Cached references
     private static LootSystem instance;
     private Entity playerEntity;
@@ -450,10 +453,11 @@ public class LootSystem : ScriptComponent
                 if (experienceOrb != null)
                 {
                     experienceOrb.SetExperienceValue(experiencePerOrb);
+                    experienceOrb.SetPlayerSpeedMultiplier(orbSpeedMultiplier);
                     
                     if (debugLoot)
                     {
-                        Log.Info($"LootSystem: Spawned experience orb with value {experiencePerOrb:F1} at {orbPosition}");
+                        Log.Info($"LootSystem: Spawned experience orb with value {experiencePerOrb:F1} at {orbPosition}, speed multiplier: {orbSpeedMultiplier:F2}");
                     }
                 }
                 else
@@ -502,6 +506,29 @@ public class LootSystem : ScriptComponent
         }
         
         return experienceContainer;
+    }
+    
+    /// <summary>
+    /// Set the speed multiplier for experience orbs relative to player speed.
+    /// </summary>
+    /// <param name="multiplier">Speed multiplier (orbs will move at player speed * multiplier).</param>
+    public void SetOrbSpeedMultiplier(float multiplier)
+    {
+        orbSpeedMultiplier = Mathf.Max(1.0f, multiplier); // Ensure orbs are always at least as fast as player
+        
+        if (debugLoot)
+        {
+            Log.Info($"LootSystem: Orb speed multiplier set to {orbSpeedMultiplier:F2}");
+        }
+    }
+    
+    /// <summary>
+    /// Get the current orb speed multiplier.
+    /// </summary>
+    /// <returns>Current speed multiplier.</returns>
+    public float GetOrbSpeedMultiplier()
+    {
+        return orbSpeedMultiplier;
     }
     
     /// <summary>

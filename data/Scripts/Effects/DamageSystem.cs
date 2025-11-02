@@ -10,6 +10,7 @@ public static class DamageSystem
 {
     // Events for other systems to subscribe to
     public static System.Action<Entity, Entity, float> OnDamageApplied; // (target, source, damage)
+    public static System.Action<Entity, Entity, float> OnHealingApplied; // (target, source, healAmount)
     public static System.Action<Entity, Entity> OnEntityDied; // (deadEntity, killer)
     
     /// <summary>
@@ -63,7 +64,15 @@ public static class DamageSystem
         if (healthComponent == null)
             return 0;
             
-        return healthComponent.Heal(healAmount, source);
+        float actualHealAmount = healthComponent.Heal(healAmount, source);
+        
+        // Trigger healing event if healing was applied
+        if (actualHealAmount > 0)
+        {
+            OnHealingApplied?.Invoke(target, source, actualHealAmount);
+        }
+        
+        return actualHealAmount;
     }
     
     /// <summary>

@@ -12,23 +12,23 @@ body.theme-dark {
   /* Override default menu-container height to not take full screen */
   height: auto;
   /* Reduce padding for tighter top positioning */
-  padding: 20px 32px 0 32px;
+  padding: 20dp 32dp 0 32dp;
   /* Remove the menu background dimming for in-game HUD */
   background-color: transparent;
 }
 
 .timer-title {
   background-color: rgba(0, 0, 0, 200);
-  border: 2px rgba(255, 255, 255, 180);
-  border-radius: 20px;
-  padding: 8px 16px;
+  border: 2dp rgba(255, 255, 255, 180);
+  border-radius: 20dp;
+  padding: 8dp 16dp;
   display: inline-block;
-  font-size: 18px; /* Override the large title size */
+  font-size: 18dp; /* Override the large title size */
 }
 
 .timer-icon {
   color: #ffcc00;
-  margin-right: 8px;
+  margin-right: 8dp;
 }
 
 .timer-text {
@@ -39,26 +39,26 @@ body.theme-dark {
 /* Main HUD Container */
 .hud-container {
   position: absolute;
-  top: 30px; /* Back to original position since timer is now fixed */
-  left: 30px;
-  width: 300px;
+  top: 30dp; /* Back to original position since timer is now fixed */
+  left: 30dp;
+  width: 300dp;
 }
 
 /* Stat Bar Container */
 .stat-bar-container {
-  margin-bottom: 15px;
-  padding: 8px;
+  margin-bottom: 15dp;
+  padding: 8dp;
   background-color: rgba(0, 0, 0, 178);
-  border: 2px rgba(255, 255, 255, 102);
-  border-radius: 8px;
+  border: 2dp rgba(255, 255, 255, 102);
+  border-radius: 8dp;
 }
 
 /* Stat Bar Label */
 .stat-bar-label {
-  font-size: 16px;
+  font-size: 16dp;
   font-weight: bold;
   color: white;
-  margin-bottom: 5px;
+  margin-bottom: 5dp;
   text-align: left;
   display: flex;
   justify-content: space-between;
@@ -67,7 +67,7 @@ body.theme-dark {
 
 /* Stat Value Display */
 .stat-value {
-  font-size: 14px;
+  font-size: 14dp;
   font-weight: normal;
   color: rgba(255, 255, 255, 204);
   margin-left: auto;
@@ -83,15 +83,15 @@ body.theme-dark {
 }
 
 .stat-text {
-  margin-left: 8px;
+  margin-left: 8dp;
 }
 
 /* Progress Bar Base Styles - Much more visible */
 .stat-progress {
-  width: 280px;
-  height: 24px;
-  border: 3px white;
-  border-radius: 12px;
+  width: 280dp;
+  height: 24dp;
+  border: 3dp white;
+  border-radius: 12dp;
   background-color: rgba(40, 40, 40, 230);
   
 }

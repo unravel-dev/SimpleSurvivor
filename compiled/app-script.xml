@@ -381,65 +381,6 @@
              Handles the Exit button click - quits the application.
              </summary>
             </member>
-        <member name="T:DamageSystem">
-             <summary>
-             Centralized damage system for applying damage and managing death events.
-             Provides a single point of control for all damage-related operations.
-             </summary>
-            </member>
-        <member name="M:DamageSystem.ApplyDamage(Unravel.Core.Entity,System.Single,Unravel.Core.Entity)">
-             <summary>
-             Apply damage to an entity through its Health component.
-             </summary>
-             <param name="target">Entity to damage.</param>
-             <param name="damage">Amount of damage to deal.</param>
-             <param name="source">Entity that caused the damage.</param>
-             <returns>True if the target died from this damage.</returns>
-            </member>
-        <member name="M:DamageSystem.ApplyHealing(Unravel.Core.Entity,System.Single,Unravel.Core.Entity)">
-             <summary>
-             Apply healing to an entity through its Health component.
-             </summary>
-             <param name="target">Entity to heal.</param>
-             <param name="healAmount">Amount of healing to apply.</param>
-             <param name="source">Entity that provided the healing.</param>
-             <returns>Actual amount healed.</returns>
-            </member>
-        <member name="M:DamageSystem.KillEntity(Unravel.Core.Entity,Unravel.Core.Entity)">
-             <summary>
-             Kill an entity instantly.
-             </summary>
-             <param name="target">Entity to kill.</param>
-             <param name="source">Entity responsible for the kill.</param>
-            </member>
-        <member name="M:DamageSystem.CanTakeDamage(Unravel.Core.Entity)">
-             <summary>
-             Check if an entity can take damage.
-             </summary>
-             <param name="target">Entity to check.</param>
-             <returns>True if the entity can take damage.</returns>
-            </member>
-        <member name="M:DamageSystem.GetCurrentHealth(Unravel.Core.Entity)">
-             <summary>
-             Get the current health of an entity.
-             </summary>
-             <param name="target">Entity to check.</param>
-             <returns>Current health, or 0 if no health component.</returns>
-            </member>
-        <member name="M:DamageSystem.GetMaxHealth(Unravel.Core.Entity)">
-             <summary>
-             Get the maximum health of an entity.
-             </summary>
-             <param name="target">Entity to check.</param>
-             <returns>Maximum health, or 0 if no health component.</returns>
-            </member>
-        <member name="M:DamageSystem.GetHealthPercentage(Unravel.Core.Entity)">
-             <summary>
-             Get the health percentage of an entity.
-             </summary>
-             <param name="target">Entity to check.</param>
-             <returns>Health percentage (0.0 to 1.0).</returns>
-            </member>
         <member name="T:Projectile">
              <summary>
              Projectile that handles projectile behavior, collision detection, and effect application.
@@ -767,6 +708,285 @@
              <summary>
              Called when the script is destroyed. Clean up event subscriptions.
              </summary>
+            </member>
+        <member name="M:NewComponentTemplate.OnCreate">
+             <summary>
+             OnCreate is called when the script is first loaded, or when an object it is attached to is instantiated
+             It only gets called once on each script, and only after other objects are initialised.
+             This means that it is safe to create references to other game objects and components in OnCreate.
+             </summary>
+            </member>
+        <member name="M:NewComponentTemplate.OnStart">
+             <summary>
+             Start is called once, before any Update methods and after OnCreate.
+             It works in much the same way as OnCreate, with a few key differences.
+             Unlike OnCreate, Start will not be called if the script is disabled.
+             </summary>
+            </member>
+        <member name="T:DamageNumber">
+             <summary>
+             DamageNumber component that displays 3D damage text above entities.
+             Handles billboard behavior, floating animation, and automatic destruction.
+             </summary>
+            </member>
+        <member name="M:DamageNumber.OnCreate">
+             <summary>
+             Called when the script is created.
+             </summary>
+            </member>
+        <member name="M:DamageNumber.OnStart">
+             <summary>
+             Called when the script starts execution.
+             </summary>
+            </member>
+        <member name="M:DamageNumber.OnUpdate">
+             <summary>
+             Called every frame to update damage number behavior.
+             </summary>
+            </member>
+        <member name="M:DamageNumber.UpdateMovement">
+             <summary>
+             Update floating and drifting movement.
+             </summary>
+            </member>
+        <member name="M:DamageNumber.UpdateScale">
+             <summary>
+             Update scale animation.
+             </summary>
+            </member>
+        <member name="M:DamageNumber.UpdateBillboard">
+             <summary>
+             Update billboard rotation to face camera (top-down optimized).
+             </summary>
+            </member>
+        <member name="M:DamageNumber.UpdateOpacity">
+             <summary>
+             Update text opacity based on lifetime progress.
+             </summary>
+            </member>
+        <member name="M:DamageNumber.FindCamera">
+             <summary>
+             Find the main camera entity for billboard behavior.
+             </summary>
+            </member>
+        <member name="M:DamageNumber.SetDamageText(System.Single,System.String)">
+             <summary>
+             Set the damage text to display.
+             </summary>
+             <param name="damageAmount">Damage amount to display.</param>
+             <param name="damageType">Type of damage for color coding (optional).</param>
+            </member>
+        <member name="M:DamageNumber.SetDamageColor(System.String)">
+             <summary>
+             Set the color of the damage text based on damage type.
+             </summary>
+             <param name="damageType">Type of damage.</param>
+            </member>
+        <member name="M:DamageNumber.SetLifetime(System.Single)">
+             <summary>
+             Set custom lifetime for this damage number.
+             </summary>
+             <param name="newLifetime">New lifetime in seconds.</param>
+            </member>
+        <member name="M:DamageNumber.SetFloatSpeed(System.Single)">
+             <summary>
+             Set the floating speed for this damage number.
+             </summary>
+             <param name="speed">New floating speed.</param>
+            </member>
+        <member name="M:DamageNumber.GetRemainingLifetime">
+             <summary>
+             Get the remaining lifetime of this damage number.
+             </summary>
+             <returns>Remaining lifetime in seconds.</returns>
+            </member>
+        <member name="M:DamageNumber.IsAboutToExpire">
+             <summary>
+             Check if this damage number is about to expire.
+             </summary>
+             <returns>True if in the last 20% of lifetime.</returns>
+            </member>
+        <member name="T:DamageNumberSystem">
+             <summary>
+             DamageNumberSystem manages the spawning and lifecycle of 3D damage number entities.
+             Handles container management and provides a centralized system for damage number creation.
+             </summary>
+            </member>
+        <member name="P:DamageNumberSystem.Instance">
+             <summary>
+             Get the singleton instance of the damage number system.
+             </summary>
+            </member>
+        <member name="M:DamageNumberSystem.OnStart">
+             <summary>
+             Called when the script starts execution.
+             </summary>
+            </member>
+        <member name="M:DamageNumberSystem.OnDestroy">
+             <summary>
+             Called when the component is destroyed.
+             </summary>
+            </member>
+        <member name="M:DamageNumberSystem.FindOrCreateDamageContainer">
+             <summary>
+             Find or create the DamageContainer entity to parent all damage numbers.
+             </summary>
+            </member>
+        <member name="M:DamageNumberSystem.SubscribeToDamageEvents">
+             <summary>
+             Subscribe to damage events from the DamageSystem.
+             </summary>
+            </member>
+        <member name="M:DamageNumberSystem.UnsubscribeFromDamageEvents">
+             <summary>
+             Unsubscribe from damage events.
+             </summary>
+            </member>
+        <member name="M:DamageNumberSystem.OnDamageApplied(Unravel.Core.Entity,Unravel.Core.Entity,System.Single)">
+             <summary>
+             Handle entity damage events and spawn damage numbers.
+             </summary>
+             <param name="damagedEntity">The entity that took damage.</param>
+             <param name="damageSource">Entity that caused the damage.</param>
+             <param name="damageAmount">Amount of damage taken.</param>
+            </member>
+        <member name="M:DamageNumberSystem.OnHealingApplied(Unravel.Core.Entity,Unravel.Core.Entity,System.Single)">
+             <summary>
+             Handle entity healing events and spawn healing numbers.
+             </summary>
+             <param name="healedEntity">The entity that was healed.</param>
+             <param name="healSource">Entity that provided the healing.</param>
+             <param name="healAmount">Amount of healing applied.</param>
+            </member>
+        <member name="M:DamageNumberSystem.SpawnDamageNumber(Unravel.Core.Entity,System.Single,System.String)">
+             <summary>
+             Spawn a damage number above the specified entity.
+             </summary>
+             <param name="targetEntity">Entity to spawn damage number above.</param>
+             <param name="damageAmount">Damage amount to display.</param>
+             <param name="damageType">Type of damage for color coding.</param>
+             <returns>The spawned damage number entity.</returns>
+            </member>
+        <member name="M:DamageNumberSystem.CalculateSpawnPosition(Unravel.Core.Entity)">
+             <summary>
+             Calculate the spawn position for a damage number above the target entity.
+             </summary>
+             <param name="targetEntity">Target entity.</param>
+             <returns>Calculated spawn position.</returns>
+            </member>
+        <member name="M:DamageNumberSystem.CleanupOldDamageNumbers">
+             <summary>
+             Clean up old damage numbers to maintain performance.
+             </summary>
+            </member>
+        <member name="M:DamageNumberSystem.SpawnHealingNumber(Unravel.Core.Entity,System.Single)">
+             <summary>
+             Spawn a healing number (green text).
+             </summary>
+             <param name="targetEntity">Entity that was healed.</param>
+             <param name="healAmount">Amount of healing.</param>
+             <returns>The spawned healing number entity.</returns>
+            </member>
+        <member name="M:DamageNumberSystem.SpawnCriticalDamageNumber(Unravel.Core.Entity,System.Single)">
+             <summary>
+             Spawn a critical damage number (red text).
+             </summary>
+             <param name="targetEntity">Entity that took critical damage.</param>
+             <param name="damageAmount">Amount of critical damage.</param>
+             <returns>The spawned critical damage number entity.</returns>
+            </member>
+        <member name="M:DamageNumberSystem.GetDamageContainer">
+             <summary>
+             Get the DamageContainer entity for external access.
+             </summary>
+             <returns>The DamageContainer entity.</returns>
+            </member>
+        <member name="M:DamageNumberSystem.GetActiveDamageNumberCount">
+             <summary>
+             Get the current number of active damage numbers.
+             </summary>
+             <returns>Number of active damage numbers.</returns>
+            </member>
+        <member name="M:DamageNumberSystem.SetDefaultLifetime(System.Single)">
+             <summary>
+             Set the default lifetime for new damage numbers.
+             </summary>
+             <param name="lifetime">New default lifetime in seconds.</param>
+            </member>
+        <member name="M:DamageNumberSystem.ClearAllDamageNumbers">
+             <summary>
+             Clear all active damage numbers.
+             </summary>
+            </member>
+        <member name="T:DamageNumberSystemSetup">
+             <summary>
+             Setup script for the DamageNumberSystem.
+             Add this to an entity in your scene to automatically initialize the damage number system.
+             </summary>
+            </member>
+        <member name="M:DamageNumberSystemSetup.OnStart">
+             <summary>
+             Called when the script starts execution.
+             </summary>
+            </member>
+        <member name="T:DamageSystem">
+             <summary>
+             Centralized damage system for applying damage and managing death events.
+             Provides a single point of control for all damage-related operations.
+             </summary>
+            </member>
+        <member name="M:DamageSystem.ApplyDamage(Unravel.Core.Entity,System.Single,Unravel.Core.Entity)">
+             <summary>
+             Apply damage to an entity through its Health component.
+             </summary>
+             <param name="target">Entity to damage.</param>
+             <param name="damage">Amount of damage to deal.</param>
+             <param name="source">Entity that caused the damage.</param>
+             <returns>True if the target died from this damage.</returns>
+            </member>
+        <member name="M:DamageSystem.ApplyHealing(Unravel.Core.Entity,System.Single,Unravel.Core.Entity)">
+             <summary>
+             Apply healing to an entity through its Health component.
+             </summary>
+             <param name="target">Entity to heal.</param>
+             <param name="healAmount">Amount of healing to apply.</param>
+             <param name="source">Entity that provided the healing.</param>
+             <returns>Actual amount healed.</returns>
+            </member>
+        <member name="M:DamageSystem.KillEntity(Unravel.Core.Entity,Unravel.Core.Entity)">
+             <summary>
+             Kill an entity instantly.
+             </summary>
+             <param name="target">Entity to kill.</param>
+             <param name="source">Entity responsible for the kill.</param>
+            </member>
+        <member name="M:DamageSystem.CanTakeDamage(Unravel.Core.Entity)">
+             <summary>
+             Check if an entity can take damage.
+             </summary>
+             <param name="target">Entity to check.</param>
+             <returns>True if the entity can take damage.</returns>
+            </member>
+        <member name="M:DamageSystem.GetCurrentHealth(Unravel.Core.Entity)">
+             <summary>
+             Get the current health of an entity.
+             </summary>
+             <param name="target">Entity to check.</param>
+             <returns>Current health, or 0 if no health component.</returns>
+            </member>
+        <member name="M:DamageSystem.GetMaxHealth(Unravel.Core.Entity)">
+             <summary>
+             Get the maximum health of an entity.
+             </summary>
+             <param name="target">Entity to check.</param>
+             <returns>Maximum health, or 0 if no health component.</returns>
+            </member>
+        <member name="M:DamageSystem.GetHealthPercentage(Unravel.Core.Entity)">
+             <summary>
+             Get the health percentage of an entity.
+             </summary>
+             <param name="target">Entity to check.</param>
+             <returns>Health percentage (0.0 to 1.0).</returns>
             </member>
         <member name="T:DamageOverTimeComponent">
              <summary>
@@ -1237,8 +1457,14 @@
             </member>
         <member name="M:ExperienceOrb.UpdateAttraction">
              <summary>
-             Update attraction movement towards the player - simple MoveTowards.
+             Update attraction movement towards the player - dynamic speed based on player speed.
              </summary>
+            </member>
+        <member name="M:ExperienceOrb.CalculateDynamicAttractionSpeed">
+             <summary>
+             Calculate the dynamic attraction speed based on player's current speed.
+             </summary>
+             <returns>The calculated attraction speed.</returns>
             </member>
         <member name="M:ExperienceOrb.UpdateFloating">
              <summary>
@@ -1290,6 +1516,18 @@
              Get how long this orb has been alive.
              </summary>
              <returns>Time alive in seconds.</returns>
+            </member>
+        <member name="M:ExperienceOrb.GetCurrentAttractionSpeed">
+             <summary>
+             Get the current dynamic attraction speed.
+             </summary>
+             <returns>Current attraction speed being used.</returns>
+            </member>
+        <member name="M:ExperienceOrb.SetPlayerSpeedMultiplier(System.Single)">
+             <summary>
+             Set the player speed multiplier for dynamic speed calculation.
+             </summary>
+             <param name="multiplier">New speed multiplier.</param>
             </member>
         <member name="T:Health">
              <summary>
@@ -1490,6 +1728,18 @@
              Get the ExperienceContainer entity for external access.
              </summary>
              <returns>The ExperienceContainer entity, or null if not found/created.</returns>
+            </member>
+        <member name="M:LootSystem.SetOrbSpeedMultiplier(System.Single)">
+             <summary>
+             Set the speed multiplier for experience orbs relative to player speed.
+             </summary>
+             <param name="multiplier">Speed multiplier (orbs will move at player speed * multiplier).</param>
+            </member>
+        <member name="M:LootSystem.GetOrbSpeedMultiplier">
+             <summary>
+             Get the current orb speed multiplier.
+             </summary>
+             <returns>Current speed multiplier.</returns>
             </member>
         <member name="M:LootSystem.CreateLootConfig(System.Single,System.Single,System.Int32)">
              <summary>

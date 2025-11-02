@@ -5,30 +5,30 @@
 .settings-content {
   flex: 1;
   width: 100%;
-  max-width: 600px;
-  margin-bottom: 32px;
+  max-width: 600dp;
+  margin-bottom: 32dp;
 }
 
 .settings-section {
   display: block;
   background-color: rgba(42, 58, 77, 77);
-  border-radius: 12px;
-  padding: 24px;
-  margin-bottom: 24px;
-  border: 1px rgba(58, 74, 93, 128);
+  border-radius: 12dp;
+  padding: 24dp;
+  margin-bottom: 24dp;
+  border: 1dp rgba(58, 74, 93, 128);
   animation: fade-in-up 0.8s ease-out 0.2s both;
 }
 
 body.theme-light .settings-section {
   background-color: rgba(255, 255, 255, 204);
-  border: 1px rgba(203, 213, 224, 204);
+  border: 1dp rgba(203, 213, 224, 204);
 }
 
 .section-title {
-  font-size: 24px;
+  font-size: 24dp;
   font-weight: bold;
   color: #2a73ff;
-  margin: 0 0 20px 0;
+  margin: 0 0 20dp 0;
   text-align: left;
 }
 
@@ -40,16 +40,16 @@ body.theme-light .section-title {
 .setting-item {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-bottom: 20px;
+  gap: 12dp;
+  margin-bottom: 20dp;
   text-align: left;
 }
 
 .setting-label {
-  font-size: 16px;
+  font-size: 16dp;
   font-weight: bold;
   color: #e9eef3;
-  margin-bottom: 8px;
+  margin-bottom: 8dp;
 }
 
 body.theme-light .setting-label {
@@ -60,17 +60,17 @@ body.theme-light .setting-label {
 .slider-container {
   position: relative;
   width: 100%;
-  height: 24px;
+  height: 24dp;
   display: flex;
   align-items: center;
 }
 
 .volume-slider {
   width: 100%;
-  height: 8px;
+  height: 8dp;
   background-color: #2a3a4d;
-  border-radius: 4px;
-  border: 0px;
+  border-radius: 4dp;
+  border: 0dp;
   cursor: pointer;
   position: relative;
 }
@@ -91,19 +91,19 @@ body.theme-light .volume-slider {
 
 .graphics-dropdown {
   width: 100%;
-  padding: 12px 16px;
+  padding: 12dp 16dp;
   background-color: #2a3a4d;
   color: #e9eef3;
-  border: 2px rgba(58, 74, 93, 128);
-  border-radius: 8px;
-  font-size: 16px;
+  border: 2dp rgba(58, 74, 93, 128);
+  border-radius: 8dp;
+  font-size: 16dp;
   font-weight: bold;
   cursor: pointer;
 }
 
 .graphics-dropdown:hover {
   background-color: #3a4a5d;
-  border: 2px rgba(74, 90, 109, 128);
+  border: 2dp rgba(74, 90, 109, 128);
   transition: background-color border-color 0.2s cubic-in;
 
 }
@@ -112,28 +112,28 @@ body.theme-light .volume-slider {
 .graphics-dropdown option {
   background-color: #2a3a4d;
   color: #e9eef3;
-  padding: 8px 12px;
-  font-size: 16px;
+  padding: 8dp 12dp;
+  font-size: 16dp;
   font-weight: normal;
   margin: 0;
   line-height: 1.4;
-  border-top: 1px rgba(58, 74, 93, 64);
+  border-top: 1dp rgba(58, 74, 93, 64);
 }
 
 /* First option - rounded top corners and no top border */
 .graphics-dropdown option:first-child {
-  border-top: 0px;
-  border-radius: 8px 8px 0 0;
+  border-top: 0dp;
+  border-radius: 8dp 8dp 0 0;
 }
 
 /* Last option - rounded bottom corners */
 .graphics-dropdown option:last-child {
-  border-radius: 0 0 8px 8px;
+  border-radius: 0 0 8dp 8dp;
 }
 
 /* Single option (when only one exists) - all corners rounded */
 .graphics-dropdown option:only-child {
-  border-radius: 8px;
+  border-radius: 8dp;
 }
 
 /* Dropdown list container styling */
@@ -143,7 +143,7 @@ body.theme-light .volume-slider {
 
 /* When dropdown is open, remove bottom border radius from the select element */
 .graphics-dropdown:focus {
-  font-effect: outline(2px #2a73ff);
+  font-effect: outline(2dp #2a73ff);
   background-color: #3a4a5d;
 
 }
@@ -168,28 +168,28 @@ body.theme-light .volume-slider {
 body.theme-light .graphics-dropdown {
   background-color: #ffffff;
   color: #2d3748;
-  border: 2px rgba(203, 213, 224, 128);
+  border: 2dp rgba(203, 213, 224, 128);
 }
 
 body.theme-light .graphics-dropdown:hover {
   background-color: #f7fafc;
-  border: 2px rgba(160, 174, 192, 128);
+  border: 2dp rgba(160, 174, 192, 128);
 }
 
 body.theme-light .graphics-dropdown:focus {
-  font-effect: outline(2px #3182ce);
-  border-radius: 8px 8px 0 0;
+  font-effect: outline(2dp #3182ce);
+  border-radius: 8dp 8dp 0 0;
 }
 
 /* Light Theme Dropdown Options */
 body.theme-light .graphics-dropdown option {
   background-color: #ffffff;
   color: #2d3748;
-  border-top: 1px rgba(203, 213, 224, 128);
+  border-top: 1dp rgba(203, 213, 224, 128);
 }
 
 body.theme-light .graphics-dropdown option:first-child {
-  border-top: 0px;
+  border-top: 0dp;
 }
 
 body.theme-light .graphics-dropdown option:hover {
@@ -211,14 +211,14 @@ body.theme-light .graphics-dropdown option:checked {
 
 /* ---------- Placeholder Settings ---------- */
 .setting-placeholder {
-  padding: 12px;
+  padding: 12dp;
   background-color: rgba(42, 58, 77, 51);
-  border-radius: 8px;
-  border: 1px rgba(169, 187, 204, 77);
+  border-radius: 8dp;
+  border: 1dp rgba(169, 187, 204, 77);
 }
 
 .placeholder-text {
-  font-size: 14px;
+  font-size: 14dp;
   color: #a9bbcc;
   font-style: italic;
   opacity: 0.7;
@@ -226,7 +226,7 @@ body.theme-light .graphics-dropdown option:checked {
 
 body.theme-light .setting-placeholder {
   background-color: rgba(247, 250, 252, 204);
-  border: 1px rgba(160, 174, 192, 128);
+  border: 1dp rgba(160, 174, 192, 128);
 }
 
 body.theme-light .placeholder-text {
@@ -235,13 +235,13 @@ body.theme-light .placeholder-text {
 
 /* ---------- Settings Navigation ---------- */
 .settings-nav {
-  margin-bottom: 24px;
+  margin-bottom: 24dp;
 }
 
 .settings-buttons {
   display: flex;
   flex-direction: row;
-  gap: 16px;
+  gap: 16dp;
   justify-content: center;
   align-items: center;
 }

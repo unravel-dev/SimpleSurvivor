@@ -14,8 +14,14 @@ public class ExperienceOrb : ScriptComponent
     public float experienceValue = 10.0f;
     [Tooltip("Lifetime of the orb in seconds (0 = infinite)")]
     public float lifetime = 30.0f;
-    [Tooltip("Speed at which orb moves towards player when attracted")]
-    public float attractionSpeed = 15.0f;
+    [Tooltip("Base speed at which orb moves towards player when attracted")]
+    public float baseAttractionSpeed = 15.0f;
+    [Tooltip("Speed multiplier relative to player speed (orb speed = player speed * multiplier)")]
+    public float playerSpeedMultiplier = 1.5f;
+    [Tooltip("Minimum attraction speed regardless of player speed")]
+    public float minimumAttractionSpeed = 12.0f;
+    [Tooltip("Maximum attraction speed cap")]
+    public float maximumAttractionSpeed = 50.0f;
     [Tooltip("Acceleration when moving towards player")]
     public float attractionAcceleration = 30.0f;
     [Tooltip("Distance at which orb is considered collected")]
@@ -115,7 +121,7 @@ public class ExperienceOrb : ScriptComponent
     }
     
     /// <summary>
-    /// Update attraction movement towards the player - simple MoveTowards.
+    /// Update attraction movement towards the player - dynamic speed based on player speed.
     /// </summary>
     private void UpdateAttraction()
     {
@@ -136,14 +142,50 @@ public class ExperienceOrb : ScriptComponent
             return;
         }
         
+        // Calculate dynamic attraction speed based on player speed
+        float dynamicSpeed = CalculateDynamicAttractionSpeed();
+        
         // Move towards player using MoveTowards
-        float moveDistance = attractionSpeed * Time.deltaTime;
+        float moveDistance = dynamicSpeed * Time.deltaTime;
         transformComponent.position = Vector3.MoveTowards(orbPosition, playerPosition, moveDistance);
         
         if (debugOrb && Time.time % 1.0f < Time.deltaTime)
         {
-            Log.Info($"ExperienceOrb {owner.name}: Moving towards player - Distance: {distance:F2}");
+            Log.Info($"ExperienceOrb {owner.name}: Moving towards player - Distance: {distance:F2}, Speed: {dynamicSpeed:F1}");
         }
+    }
+    
+    /// <summary>
+    /// Calculate the dynamic attraction speed based on player's current speed.
+    /// </summary>
+    /// <returns>The calculated attraction speed.</returns>
+    private float CalculateDynamicAttractionSpeed()
+    {
+        if (!targetPlayer)
+            return baseAttractionSpeed;
+            
+        // Get player component to access speed information
+        var playerComponent = targetPlayer.GetComponent<Player>();
+        if (playerComponent == null)
+            return baseAttractionSpeed;
+            
+        // Get player's current velocity magnitude
+        Vector3 playerVelocity = playerComponent.GetVelocity();
+        float playerSpeed = new Vector3(playerVelocity.x, 0, playerVelocity.z).magnitude; // Ignore Y component for top-down
+        
+        // Calculate speed based on player's current speed
+        float targetSpeed = playerSpeed * playerSpeedMultiplier;
+        
+        // Use base speed if player is not moving or calculated speed is too low
+        if (playerSpeed < 0.1f || targetSpeed < baseAttractionSpeed)
+        {
+            targetSpeed = baseAttractionSpeed;
+        }
+        
+        // Clamp to min/max bounds
+        targetSpeed = Mathf.Clamp(targetSpeed, minimumAttractionSpeed, maximumAttractionSpeed);
+        
+        return targetSpeed;
     }
     
     /// <summary>
@@ -282,5 +324,28 @@ public class ExperienceOrb : ScriptComponent
     public float GetTimeAlive()
     {
         return timeAlive;
+    }
+    
+    /// <summary>
+    /// Get the current dynamic attraction speed.
+    /// </summary>
+    /// <returns>Current attraction speed being used.</returns>
+    public float GetCurrentAttractionSpeed()
+    {
+        return isBeingAttracted ? CalculateDynamicAttractionSpeed() : 0f;
+    }
+    
+    /// <summary>
+    /// Set the player speed multiplier for dynamic speed calculation.
+    /// </summary>
+    /// <param name="multiplier">New speed multiplier.</param>
+    public void SetPlayerSpeedMultiplier(float multiplier)
+    {
+        playerSpeedMultiplier = Mathf.Max(1.0f, multiplier); // Ensure orbs are always at least as fast as player
+        
+        if (debugOrb)
+        {
+            Log.Info($"ExperienceOrb {owner.name}: Player speed multiplier set to {playerSpeedMultiplier:F2}");
+        }
     }
 }

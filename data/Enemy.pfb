@@ -2,7 +2,7 @@
  "entities": [
   {
    "prefab_uid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
-   "id": 1,
+   "id": 1048577,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -51,11 +51,11 @@
      "children": [
       {
        "prefab_uid": "181acae2-d0c5-004b-a243-c9486c8919ac",
-       "id": 2
+       "id": 1048578
       },
       {
        "prefab_uid": "f394a2d3-fb82-604e-8a57-97d75348a99d",
-       "id": 3
+       "id": 1048579
       }
      ],
      "active": true
@@ -71,7 +71,7 @@
       "mask": -1
      },
      "exclude_layers": {
-      "mask": 32
+      "mask": 160
      },
      "freeze_position": {
       "x": false,
@@ -121,13 +121,7 @@
        },
        "autoFindPlayer": true,
        "maxChaseDistance": 0.0,
-       "experienceOrbPrefab": {
-        "uid": "ee3e6288-793f-d24e-9564-0d397931f5a6"
-       },
-       "baseExperienceValue": 10.0,
-       "experienceVariance": 0.20000000298023225,
-       "experienceOrbCount": 1,
-       "dropSpreadRadius": 2.0,
+       "enemyType": "basic",
        "debugMovement": false
       },
       {
@@ -138,12 +132,6 @@
        "destroyOnDeath": true,
        "destroyDelay": 0.0,
        "debugHealth": false
-      },
-      {
-       "type": "LootTable",
-       "dropSpreadRadius": 2.0,
-       "dropHeight": 0.5,
-       "debugLoot": false
       }
      ]
     }
@@ -151,7 +139,7 @@
   },
   {
    "prefab_uid": "181acae2-d0c5-004b-a243-c9486c8919ac",
-   "id": 2,
+   "id": 1048578,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -195,7 +183,7 @@
      },
      "parent": {
       "prefab_uid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
-      "id": 1
+      "id": 1048577
      },
      "children": [],
      "active": true
@@ -230,7 +218,7 @@
   },
   {
    "prefab_uid": "f394a2d3-fb82-604e-8a57-97d75348a99d",
-   "id": 3,
+   "id": 1048579,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -274,7 +262,7 @@
      },
      "parent": {
       "prefab_uid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
-      "id": 1
+      "id": 1048577
      },
      "children": [],
      "active": true
