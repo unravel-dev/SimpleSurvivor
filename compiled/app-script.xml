@@ -806,6 +806,11 @@
              </summary>
              <returns>True if in the last 20% of lifetime.</returns>
             </member>
+        <member name="M:DamageNumber.ResetDamageNumber">
+             <summary>
+             Reset the damage number to its initial state for reuse in object pooling.
+             </summary>
+            </member>
         <member name="T:DamageNumberSystem">
              <summary>
              DamageNumberSystem manages the spawning and lifecycle of 3D damage number entities.
@@ -825,6 +830,11 @@
         <member name="M:DamageNumberSystem.OnDestroy">
              <summary>
              Called when the component is destroyed.
+             </summary>
+            </member>
+        <member name="M:DamageNumberSystem.InitializeObjectPool">
+             <summary>
+             Initialize the object pool with pre-created damage number entities.
              </summary>
             </member>
         <member name="M:DamageNumberSystem.FindOrCreateDamageContainer">
@@ -860,7 +870,7 @@
             </member>
         <member name="M:DamageNumberSystem.SpawnDamageNumber(Unravel.Core.Entity,System.Single,System.String)">
              <summary>
-             Spawn a damage number above the specified entity.
+             Spawn a damage number above the specified entity using the object pool.
              </summary>
              <param name="targetEntity">Entity to spawn damage number above.</param>
              <param name="damageAmount">Damage amount to display.</param>
@@ -877,6 +887,7 @@
         <member name="M:DamageNumberSystem.CleanupOldDamageNumbers">
              <summary>
              Clean up old damage numbers to maintain performance.
+             Note: With object pooling, this method is no longer needed as entities are reused.
              </summary>
             </member>
         <member name="M:DamageNumberSystem.SpawnHealingNumber(Unravel.Core.Entity,System.Single)">
@@ -915,7 +926,7 @@
             </member>
         <member name="M:DamageNumberSystem.ClearAllDamageNumbers">
              <summary>
-             Clear all active damage numbers.
+             Clear all active damage numbers by deactivating pooled entities.
              </summary>
             </member>
         <member name="T:DamageNumberSystemSetup">

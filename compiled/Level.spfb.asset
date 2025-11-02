@@ -2,7 +2,7 @@
  "entities_count": 9,
  "entities": [
   {
-   "id": 7340033,
+   "id": 4194305,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -189,7 +189,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 7340035,
+   "id": 4194307,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -277,7 +277,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 7340037,
+   "id": 4194309,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -346,7 +346,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 7340039,
+   "id": 4194311,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -422,19 +422,19 @@
      },
      "children": [
       {
-       "id": 7340040
+       "id": 4194312
       },
       {
-       "id": 7340041
+       "id": 4194313
       },
       {
-       "id": 7340042
+       "id": 4194314
       },
       {
-       "id": 6291468
+       "id": 3145739
       },
       {
-       "id": 4194315
+       "id": 2097164
       }
      ],
      "active": true
@@ -498,7 +498,7 @@
    }
   },
   {
-   "id": 7340040,
+   "id": 4194312,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -541,7 +541,7 @@
       }
      },
      "parent": {
-      "id": 7340039
+      "id": 4194311
      },
      "children": [],
      "active": false
@@ -564,7 +564,7 @@
    }
   },
   {
-   "id": 7340041,
+   "id": 4194313,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -607,7 +607,7 @@
       }
      },
      "parent": {
-      "id": 7340039
+      "id": 4194311
      },
      "children": [],
      "active": false
@@ -630,7 +630,7 @@
    }
   },
   {
-   "id": 7340042,
+   "id": 4194314,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -673,7 +673,7 @@
       }
      },
      "parent": {
-      "id": 7340039
+      "id": 4194311
      },
      "children": [],
      "active": false
@@ -696,7 +696,7 @@
    }
   },
   {
-   "id": 6291468,
+   "id": 3145739,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -735,7 +735,7 @@
       }
      },
      "parent": {
-      "id": 7340039
+      "id": 4194311
      },
      "children": [],
      "active": false
@@ -758,7 +758,7 @@
    }
   },
   {
-   "id": 4194315,
+   "id": 2097164,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -797,7 +797,7 @@
       }
      },
      "parent": {
-      "id": 7340039
+      "id": 4194311
      },
      "children": [],
      "active": true
@@ -823,7 +823,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 3145742,
+   "id": 2097166,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -866,7 +866,7 @@
      },
      "children": [
       {
-       "id": 3145743
+       "id": 2097167
       }
      ],
      "active": true
@@ -874,7 +874,7 @@
    }
   },
   {
-   "id": 3145743,
+   "id": 2097167,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -891,29 +891,29 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": -1.7820411812863314e-11,
-       "y": -0.4515101909637451,
-       "z": 4.291678123991005e-12
+       "x": 2.397939624643186e-10,
+       "y": -0.4515100419521332,
+       "z": 4.220623850414995e-11
       },
       "rotation": {
-       "x": 2.6645352591003757e-12,
-       "y": -2.758696467143438e-27,
-       "z": -4.846251362112196e-16,
+       "x": 2.6361135496699717e-12,
+       "y": 5.229593613622491e-14,
+       "z": -7.70408585017146e-13,
        "w": 1.0
       },
       "scale": {
-       "x": 144.4027099609375,
-       "y": 1.0,
-       "z": 121.35012817382813
+       "x": 400.00006103515627,
+       "y": 1.0000001192092896,
+       "z": 400.0
       },
       "skew": {
-       "x": 1.138486700746899e-11,
-       "y": 2.6644899941228957e-18,
-       "z": -9.69249425389492e-16
+       "x": 2.748208778602379e-11,
+       "y": -1.0455779444291588e-13,
+       "z": -3.448750451884308e-10
       }
      },
      "parent": {
-      "id": 3145742
+      "id": 2097166
      },
      "children": [],
      "active": true
@@ -996,7 +996,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 3145745,
+   "id": 2097169,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1039,7 +1039,7 @@
      },
      "children": [
       {
-       "id": 3145746
+       "id": 2097170
       }
      ],
      "active": true
@@ -1145,7 +1145,7 @@
    }
   },
   {
-   "id": 3145746,
+   "id": 2097170,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1184,7 +1184,7 @@
       }
      },
      "parent": {
-      "id": 3145745
+      "id": 2097169
      },
      "children": [],
      "active": true
@@ -1225,7 +1225,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 3145748,
+   "id": 2097172,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1335,7 +1335,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 3145750,
+   "id": 2097174,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1378,7 +1378,7 @@
      },
      "children": [
       {
-       "id": 3145751
+       "id": 2097175
       }
      ],
      "active": true
@@ -1386,7 +1386,7 @@
    }
   },
   {
-   "id": 3145751,
+   "id": 2097175,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1425,7 +1425,7 @@
       }
      },
      "parent": {
-      "id": 3145750
+      "id": 2097174
      },
      "children": [],
      "active": true
@@ -1451,7 +1451,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 3145753,
+   "id": 2097177,
    "components": {
     "has_tag_component": true,
     "tag_component": {

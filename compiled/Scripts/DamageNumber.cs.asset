@@ -105,15 +105,16 @@ public class DamageNumber : ScriptComponent
         // Update lifetime
         timeAlive += Time.deltaTime;
         
-        // Check if should be destroyed
+        // Check if should be deactivated (for object pooling)
         if (timeAlive >= lifetime)
         {
             if (debugDamageNumber)
             {
-                Log.Info($"DamageNumber {owner.name} expired after {timeAlive:F2} seconds");
+                Log.Info($"DamageNumber {owner.name} expired after {timeAlive:F2} seconds - deactivating for reuse");
             }
             
-            Scene.DestroyEntity(owner);
+            // Deactivate instead of destroying for object pooling
+            owner.SetActive(false);
             return;
         }
         
@@ -354,5 +355,48 @@ public class DamageNumber : ScriptComponent
     public bool IsAboutToExpire()
     {
         return (timeAlive / lifetime) > 0.8f;
+    }
+    
+    /// <summary>
+    /// Reset the damage number to its initial state for reuse in object pooling.
+    /// </summary>
+    public void ResetDamageNumber()
+    {
+        timeAlive = 0.0f;
+        
+        if (transformComponent != null)
+        {
+            // Store the current position as the new initial position
+            initialPosition = transformComponent.position;
+            
+            // Reset to the original scale (before any scaling effects)
+            // We need to get the base scale without any multipliers
+            initialScale3D = Vector3.one; // Reset to unit scale as base
+            
+            // Generate new random drift direction
+            float randomAngle = Random.Range(0f, Mathf.PI * 2f);
+            driftDirection = new Vector3(Mathf.Cos(randomAngle), 0, Mathf.Sin(randomAngle)).normalized;
+            
+            // Set initial scale with the pop-in effect
+            transformComponent.scale = initialScale3D * initialScale;
+        }
+        
+        // Reset billboard timer
+        lastBillboardUpdate = 0.0f;
+        
+        // Reset text appearance to initial state
+        if (textComponent != null)
+        {
+            // Reset opacity to fully opaque
+            textComponent.opacity = 1.0f;
+            
+            // Reset outline width to initial value
+            textComponent.outlineWidth = 1.5f;
+        }
+        
+        if (debugDamageNumber)
+        {
+            Log.Info($"DamageNumber {owner.name}: Reset for reuse - position: {initialPosition}, scale reset");
+        }
     }
 }

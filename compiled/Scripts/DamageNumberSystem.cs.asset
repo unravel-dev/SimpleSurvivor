@@ -41,8 +41,10 @@ public class DamageNumberSystem : ScriptComponent
     // Container management
     private Entity damageContainer;
     
-    // Performance tracking
-    private int activeDamageNumberCount = 0;
+    // Object pooling with ring buffer
+    private Entity[] damageNumberPool;
+    private int currentPoolIndex = 0;
+    private bool poolInitialized = false;
     
     /// <summary>
     /// Get the singleton instance of the damage number system.
@@ -61,6 +63,9 @@ public class DamageNumberSystem : ScriptComponent
             
             // Find or create damage container
             FindOrCreateDamageContainer();
+            
+            // Initialize object pool
+            InitializeObjectPool();
             
             // Subscribe to damage events
             SubscribeToDamageEvents();
@@ -87,6 +92,63 @@ public class DamageNumberSystem : ScriptComponent
         {
             UnsubscribeFromDamageEvents();
             instance = null;
+        }
+    }
+    
+    /// <summary>
+    /// Initialize the object pool with pre-created damage number entities.
+    /// </summary>
+    private void InitializeObjectPool()
+    {
+        if (poolInitialized)
+            return;
+            
+        damageNumberPool = new Entity[maxActiveDamageNumbers];
+        
+        for (int i = 0; i < maxActiveDamageNumbers; i++)
+        {
+            // Create damage number entity
+            Entity pooledEntity = Scene.CreateEntity($"PooledDamageNumber_{i}");
+            
+            if (pooledEntity)
+            {
+                // Parent under damage container
+                if (damageContainer)
+                {
+                    pooledEntity.transform.SetParent(damageContainer, true);
+                }
+                
+                // Add TextComponent
+                pooledEntity.AddComponent<TextComponent>();
+                
+                // Add DamageNumber component
+                var damageNumberComponent = pooledEntity.AddComponent<DamageNumber>();
+                if (damageNumberComponent != null)
+                {
+                    // Configure default properties
+                    damageNumberComponent.lifetime = defaultLifetime;
+                    damageNumberComponent.floatSpeed = defaultFloatSpeed;
+                    damageNumberComponent.enableBillboard = enableBillboard;
+                    damageNumberComponent.debugDamageNumber = debugDamageSystem;
+                }
+                
+                // Disable the entity initially
+                pooledEntity.SetActive(false);
+                
+                damageNumberPool[i] = pooledEntity;
+            }
+            else
+            {
+                Log.Error($"DamageNumberSystem: Failed to create pooled entity {i}");
+            }
+        }
+        
+        poolInitialized = true;
+        currentPoolIndex = 0;
+        
+        if (debugDamageSystem)
+        {
+            Log.Info($"DamageNumberSystem: Initialized object pool with {maxActiveDamageNumbers} entities");
         }
     }
     
@@ -194,7 +256,7 @@ public class DamageNumberSystem : ScriptComponent
     }
     
     /// <summary>
-    /// Spawn a damage number above the specified entity.
+    /// Spawn a damage number above the specified entity using the object pool.
     /// </summary>
     /// <param name="targetEntity">Entity to spawn damage number above.</param>
     /// <param name="damageAmount">Damage amount to display.</param>
@@ -208,52 +270,32 @@ public class DamageNumberSystem : ScriptComponent
             return Entity.Invalid;
         }
         
-        // Check performance limits
-        if (activeDamageNumberCount >= maxActiveDamageNumbers)
+        if (!poolInitialized)
         {
-            if (enableAutoCleanup)
-            {
-                CleanupOldDamageNumbers();
-            }
-            else
-            {
-                if (debugDamageSystem)
-                {
-                    Log.Warning($"DamageNumberSystem: Maximum damage numbers reached ({maxActiveDamageNumbers})");
-                }
-                return Entity.Invalid;
-            }
+            Log.Error("DamageNumberSystem: Object pool not initialized");
+            return Entity.Invalid;
+        }
+        
+        // Get the next entity from the ring buffer
+        Entity damageNumberEntity = damageNumberPool[currentPoolIndex];
+        
+        if (!damageNumberEntity)
+        {
+            Log.Error($"DamageNumberSystem: Pooled entity at index {currentPoolIndex} is invalid");
+            return Entity.Invalid;
         }
         
         // Calculate spawn position
         Vector3 spawnPosition = CalculateSpawnPosition(targetEntity);
         
-        // Create damage number entity
-        Entity damageNumberEntity = Scene.CreateEntity($"DamageNumber_{damageAmount:F0}");
-        
-        if (!damageNumberEntity)
-        {
-            Log.Error("DamageNumberSystem: Failed to create damage number entity");
-            return Entity.Invalid;
-        }
-        
         // Set position
         damageNumberEntity.transform.position = spawnPosition;
         
-        // Parent under damage container
-        if (damageContainer)
-        {
-            damageNumberEntity.transform.SetParent(damageContainer, true);
-        }
-        
-        // Add TextComponent
-        var textComponent = damageNumberEntity.AddComponent<TextComponent>();
-        
-        // Add DamageNumber component
-        var damageNumberComponent = damageNumberEntity.AddComponent<DamageNumber>();
+        // Get the DamageNumber component
+        var damageNumberComponent = damageNumberEntity.GetComponent<DamageNumber>();
         if (damageNumberComponent != null)
         {
-            // Configure damage number properties
+            // Reset and configure damage number properties
             damageNumberComponent.lifetime = defaultLifetime;
             damageNumberComponent.floatSpeed = defaultFloatSpeed;
             damageNumberComponent.enableBillboard = enableBillboard;
@@ -261,14 +303,20 @@ public class DamageNumberSystem : ScriptComponent
             
             // Set damage text
             damageNumberComponent.SetDamageText(damageAmount, damageType);
+            
+            // Reset the component state
+            damageNumberComponent.ResetDamageNumber();
         }
         
-        // Track active damage numbers
-        activeDamageNumberCount++;
+        // Activate the entity
+        damageNumberEntity.SetActive(true);
+        
+        // Move to next index in ring buffer
+        currentPoolIndex = (currentPoolIndex + 1) % maxActiveDamageNumbers;
         
         if (debugDamageSystem)
         {
-            Log.Info($"DamageNumberSystem: Spawned damage number '{damageAmount:F0}' at {spawnPosition} (Active: {activeDamageNumberCount})");
+            Log.Info($"DamageNumberSystem: Spawned pooled damage number '{damageAmount:F0}' at {spawnPosition} (Pool index: {(currentPoolIndex - 1 + maxActiveDamageNumbers) % maxActiveDamageNumbers})");
         }
         
         return damageNumberEntity;
@@ -298,44 +346,15 @@ public class DamageNumberSystem : ScriptComponent
     
     /// <summary>
     /// Clean up old damage numbers to maintain performance.
+    /// Note: With object pooling, this method is no longer needed as entities are reused.
     /// </summary>
     private void CleanupOldDamageNumbers()
     {
-        if (!damageContainer)
-            return;
-            
-        // Find all damage number entities
-        var damageNumbers = Scene.FindEntitiesWithComponent<DamageNumber>();
-        if (damageNumbers == null || damageNumbers.Length == 0)
+        // With object pooling, cleanup is handled automatically by the ring buffer
+        // Old entities are simply deactivated when they expire and reused when needed
+        if (debugDamageSystem)
         {
-            activeDamageNumberCount = 0;
-            return;
-        }
-        
-        int cleanedUp = 0;
-        
-        // Remove damage numbers that are about to expire
-        foreach (var entity in damageNumbers)
-        {
-            if (!entity) continue;
-            
-            var damageNumber = entity.GetComponent<DamageNumber>();
-            if (damageNumber != null && damageNumber.IsAboutToExpire())
-            {
-                Scene.DestroyEntity(entity);
-                cleanedUp++;
-                
-                if (cleanedUp >= 5) // Limit cleanup per frame
-                    break;
-            }
-        }
-        
-        // Update count
-        activeDamageNumberCount = Mathf.Max(0, activeDamageNumberCount - cleanedUp);
-        
-        if (debugDamageSystem && cleanedUp > 0)
-        {
-            Log.Info($"DamageNumberSystem: Cleaned up {cleanedUp} old damage numbers (Active: {activeDamageNumberCount})");
+            Log.Info("DamageNumberSystem: Cleanup called, but using object pooling - no action needed");
         }
     }
     
@@ -381,7 +400,19 @@ public class DamageNumberSystem : ScriptComponent
     /// <returns>Number of active damage numbers.</returns>
     public int GetActiveDamageNumberCount()
     {
-        return activeDamageNumberCount;
+        if (!poolInitialized || damageNumberPool == null)
+            return 0;
+            
+        int activeCount = 0;
+        for (int i = 0; i < damageNumberPool.Length; i++)
+        {
+            if (damageNumberPool[i] && damageNumberPool[i].active)
+            {
+                activeCount++;
+            }
+        }
+        
+        return activeCount;
     }
     
     /// <summary>
@@ -399,27 +430,29 @@ public class DamageNumberSystem : ScriptComponent
     }
     
     /// <summary>
-    /// Clear all active damage numbers.
+    /// Clear all active damage numbers by deactivating pooled entities.
     /// </summary>
     public void ClearAllDamageNumbers()
     {
-        var damageNumbers = Scene.FindEntitiesWithComponent<DamageNumber>();
-        if (damageNumbers != null)
+        if (!poolInitialized || damageNumberPool == null)
+            return;
+            
+        int deactivatedCount = 0;
+        for (int i = 0; i < damageNumberPool.Length; i++)
         {
-            foreach (var entity in damageNumbers)
+            if (damageNumberPool[i] && damageNumberPool[i].active)
             {
-                if (entity)
-                {
-                    Scene.DestroyEntity(entity);
-                }
+                damageNumberPool[i].SetActive(false);
+                deactivatedCount++;
             }
         }
         
-        activeDamageNumberCount = 0;
+        // Reset pool index
+        currentPoolIndex = 0;
         
         if (debugDamageSystem)
         {
-            Log.Info("DamageNumberSystem: Cleared all damage numbers");
+            Log.Info($"DamageNumberSystem: Deactivated {deactivatedCount} pooled damage numbers");
         }
     }
 }
