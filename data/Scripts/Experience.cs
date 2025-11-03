@@ -27,9 +27,6 @@ public class Experience : ScriptComponent
     [Tooltip("Multiplier for experience required per level")]
     public float experienceMultiplier = 1.5f;
     
-    //[Header("Debug")]
-    [Tooltip("Enable debug logging for experience pickup events")]
-    public bool debugPickup = false;
     [Tooltip("Draw debug sphere for pickup range")]
     public bool debugDrawRange = false;
     
@@ -56,11 +53,6 @@ public class Experience : ScriptComponent
         {
             Log.Error($"Experience on {owner.name}: TransformComponent not found!");
         }
-        
-        if (debugPickup)
-        {
-            Log.Info($"Experience initialized on {owner.name}");
-        }
     }
     
     /// <summary>
@@ -70,11 +62,6 @@ public class Experience : ScriptComponent
     {
         lastDetectionTime = 0.0f;
         attractedOrbs.Clear();
-        
-        if (debugPickup)
-        {
-            Log.Info($"Experience started on {owner.name} - Level: {currentLevel}, XP: {currentExperience}");
-        }
     }
     
     /// <summary>
@@ -134,16 +121,6 @@ public class Experience : ScriptComponent
             experienceOrb.StartAttraction(owner);
             attractedOrbs.Add(experienceOrb);
             orbsAttracted++;
-            
-            if (debugPickup)
-            {
-                Log.Info($"Experience: Started attracting orb {entity.name} (value: {experienceOrb.GetExperienceValue()})");
-            }
-        }
-        
-        if (debugPickup && orbsFound > 0)
-        {
-            Log.Info($"Experience: Found {orbsFound} orbs, attracted {orbsAttracted} new orbs");
         }
     }
     
@@ -176,12 +153,6 @@ public class Experience : ScriptComponent
         
         // Add experience
         currentExperience += experienceAmount;
-        
-        if (debugPickup)
-        {
-            string orbInfo = orbEntity ? $" from {orbEntity.name}" : "";
-            Log.Info($"Experience: Gained {experienceAmount} XP{orbInfo} - Total: {currentExperience}");
-        }
         
         // Trigger experience gained event
         OnExperienceGained?.Invoke(experienceAmount);
@@ -220,11 +191,6 @@ public class Experience : ScriptComponent
             effect.transform.position = transformComponent.position;
             effect.transform.SetParent(owner, true);
             Scene.DestroyEntity(effect, 2.0f);
-
-            if (debugPickup)
-            {
-                Log.Info($"Experience: LEVEL UP! {previousLevel} -> {currentLevel}");
-            }
             
             // Trigger level up event
             OnLevelUp?.Invoke(currentLevel, previousLevel);
@@ -287,16 +253,7 @@ public class Experience : ScriptComponent
     /// </summary>
     private void DrawDebugRange()
     {
-        // This would typically use a debug drawing system
-        // For now, we'll just log the range periodically
-        if (Time.time % 2.0f < Time.deltaTime) // Every 2 seconds
-        {
-            if (debugPickup)
-            {
-                Vector3 playerPosition = transformComponent.position;
-                Log.Info($"Experience Debug - Range: {pickupRange}, Position: {playerPosition}, Attracted Orbs: {attractedOrbs.Count}");
-            }
-        }
+        Gizmos.AddSphere(Color.red, transformComponent.position, pickupRange);
     }
     
     /// <summary>
@@ -324,11 +281,6 @@ public class Experience : ScriptComponent
     public void SetPickupRange(float newRange)
     {
         pickupRange = Mathf.Max(0.1f, newRange);
-        
-        if (debugPickup)
-        {
-            Log.Info($"Experience: Pickup range set to {pickupRange}");
-        }
     }
     
     /// <summary>
@@ -354,11 +306,7 @@ public class Experience : ScriptComponent
         {
             currentExperience = GetExperienceRequiredForLevel(currentLevel);
         }
-        
-        if (debugPickup)
-        {
-            Log.Info($"Experience: Level set to {currentLevel} (XP: {currentExperience})");
-        }
+    
         
         OnLevelUp?.Invoke(currentLevel, previousLevel);
         OnExperienceChanged?.Invoke(currentExperience, GetExperienceToNextLevel());

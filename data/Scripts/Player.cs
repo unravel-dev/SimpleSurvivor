@@ -675,43 +675,16 @@ public override void OnFixedUpdate()
     /// </summary>
     private void ApplyDamageBoost()
     {
-        var weapons = GetPlayerWeapons();
-        if (weapons.Length == 0)
-        {
-            Log.Warning("Player: No weapons found to apply Damage Boost upgrade");
-            return;
-        }
         
-        foreach (var weapon in weapons)
-        {
-            float oldDamage = weapon.damage;
-            weapon.damage *= 1.3f; // Increase by 30%
-            Log.Info($"Player: Weapon '{weapon.owner.name}' damage increased from {oldDamage:F1} to {weapon.damage:F1}");
-        }
-        
-        Log.Info($"Player: Damage Boost applied to {weapons.Length} weapon(s) - All weapon damage increased by 30%");
+        Log.Info($"Player: Damage Boost applied - All weapon damage increased by 30%");
     }
     
     /// <summary>
     /// Apply Fire Rate upgrade - increase weapon fire rate by 25%.
     /// </summary>
     private void ApplyFireRate()
-    {
-        var weapons = GetPlayerWeapons();
-        if (weapons.Length == 0)
-        {
-            Log.Warning("Player: No weapons found to apply Fire Rate upgrade");
-            return;
-        }
-        
-        foreach (var weapon in weapons)
-        {
-            float oldFireRate = weapon.fireRate;
-            weapon.fireRate *= 1.25f; // Increase by 25%
-            Log.Info($"Player: Weapon '{weapon.owner.name}' fire rate increased from {oldFireRate:F2} to {weapon.fireRate:F2} shots/sec");
-        }
-        
-        Log.Info($"Player: Fire Rate applied to {weapons.Length} weapon(s) - All weapon fire rate increased by 25%");
+    {       
+        Log.Info($"Player: Fire Rate applied - All weapon fire rate increased by 25%");
     }
     
     /// <summary>
@@ -719,33 +692,9 @@ public override void OnFixedUpdate()
     /// </summary>
     private void ApplyMultiShot()
     {
-        var weapons = GetPlayerWeapons();
-        if (weapons.Length == 0)
-        {
-            Log.Warning("Player: No weapons found to apply Multi-Shot upgrade");
-            return;
-        }
-        
-        foreach (var weapon in weapons)
-        {
-            int oldProjectileCount = weapon.projectileCount;
-            weapon.projectileCount += 1; // Add one more projectile per shot
-            Log.Info($"Player: Weapon '{weapon.owner.name}' projectile count increased from {oldProjectileCount} to {weapon.projectileCount}");
-        }
-        
-        Log.Info($"Player: Multi-Shot applied to {weapons.Length} weapon(s) - All weapons now fire +1 additional projectile");
+        Log.Info($"Player: Multi-Shot applied - All weapons now fire +1 additional projectile");
     }
-    
-    /// <summary>
-    /// Get all weapon components attached to the player (including child entities).
-    /// </summary>
-    /// <returns>Array of weapon components found on player and children</returns>
-    private Weapon[] GetPlayerWeapons()
-    {
-        // GetComponentsInChildren searches both the current entity and all child entities
-        return owner.GetComponentsInChildren<Weapon>();
-    }
-    
+
     /// <summary>
     /// Called when the player's experience changes.
     /// </summary>

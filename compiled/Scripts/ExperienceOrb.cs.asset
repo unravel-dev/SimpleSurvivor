@@ -35,10 +35,6 @@ public class ExperienceOrb : ScriptComponent
     [Tooltip("Floating animation amplitude")]
     public float floatAmplitude = 0.3f;
     
-    //[Header("Debug")]
-    [Tooltip("Enable debug logging for experience orb events")]
-    public bool debugOrb = false;
-    
     // Component references
     private TransformComponent transformComponent;
     private PhysicsComponent physicsComponent;
@@ -63,11 +59,6 @@ public class ExperienceOrb : ScriptComponent
         {
             Log.Error($"ExperienceOrb on {owner.name}: TransformComponent not found!");
         }
-        
-        if (debugOrb)
-        {
-            Log.Info($"ExperienceOrb created on {owner.name} with value {experienceValue}");
-        }
     }
     
     /// <summary>
@@ -79,11 +70,7 @@ public class ExperienceOrb : ScriptComponent
         isBeingAttracted = false;
         initialPosition = transformComponent.position;
         floatOffset = Random.Range(0f, Mathf.PI * 2f); // Random phase for floating animation
-        
-        if (debugOrb)
-        {
-            Log.Info($"ExperienceOrb started on {owner.name}");
-        }
+
     }
     
     /// <summary>
@@ -100,10 +87,6 @@ public class ExperienceOrb : ScriptComponent
         // Check if orb should expire
         if (lifetime > 0 && timeAlive >= lifetime)
         {
-            if (debugOrb)
-            {
-                Log.Info($"ExperienceOrb {owner.name} expired after {timeAlive:F2} seconds");
-            }
             
             Scene.DestroyEntity(owner);
             return;
@@ -148,11 +131,6 @@ public class ExperienceOrb : ScriptComponent
         // Move towards player using MoveTowards
         float moveDistance = dynamicSpeed * Time.deltaTime;
         transformComponent.position = Vector3.MoveTowards(orbPosition, playerPosition, moveDistance);
-        
-        if (debugOrb && Time.time % 1.0f < Time.deltaTime)
-        {
-            Log.Info($"ExperienceOrb {owner.name}: Moving towards player - Distance: {distance:F2}, Speed: {dynamicSpeed:F1}");
-        }
     }
     
     /// <summary>
@@ -216,11 +194,6 @@ public class ExperienceOrb : ScriptComponent
         targetPlayer = player;
         isBeingAttracted = true;
         currentVelocity = Vector3.zero;
-        
-        if (debugOrb)
-        {
-            Log.Info($"ExperienceOrb {owner.name}: Started attraction to {player.name}");
-        }
     }
     
     /// <summary>
@@ -237,11 +210,6 @@ public class ExperienceOrb : ScriptComponent
         {
             initialPosition = transformComponent.position;
         }
-        
-        if (debugOrb)
-        {
-            Log.Info($"ExperienceOrb {owner.name}: Stopped attraction");
-        }
     }
     
     /// <summary>
@@ -257,18 +225,6 @@ public class ExperienceOrb : ScriptComponent
         if (Experience != null)
         {
             Experience.CollectExperience(experienceValue, owner);
-            
-            if (debugOrb)
-            {
-                Log.Info($"ExperienceOrb {owner.name}: Collected by {targetPlayer.name} for {experienceValue} XP");
-            }
-        }
-        else
-        {
-            if (debugOrb)
-            {
-                Log.Warning($"ExperienceOrb {owner.name}: Player {targetPlayer.name} has no Experience component");
-            }
         }
 
         StopAttraction();
@@ -292,11 +248,6 @@ public class ExperienceOrb : ScriptComponent
     public void SetExperienceValue(float value)
     {
         experienceValue = Mathf.Max(0, value);
-        
-        if (debugOrb)
-        {
-            Log.Info($"ExperienceOrb {owner.name}: Experience value set to {experienceValue}");
-        }
     }
     
     /// <summary>
@@ -342,10 +293,5 @@ public class ExperienceOrb : ScriptComponent
     public void SetPlayerSpeedMultiplier(float multiplier)
     {
         playerSpeedMultiplier = Mathf.Max(1.0f, multiplier); // Ensure orbs are always at least as fast as player
-        
-        if (debugOrb)
-        {
-            Log.Info($"ExperienceOrb {owner.name}: Player speed multiplier set to {playerSpeedMultiplier:F2}");
-        }
     }
 }

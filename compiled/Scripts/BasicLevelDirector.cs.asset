@@ -20,8 +20,6 @@ public class BasicLevelDirector : ScriptComponent
     public float maxSpawnDistance = 15.0f;
     [Tooltip("Y position offset for spawned entities (relative to player Y)")]
     public float spawnYOffset = 0.0f;
-    [Tooltip("Enable debug logging for spawn operations")]
-    public bool debugSpawning = false;
     
     //[Header("Enemy Spawning")]
     [Tooltip("Enemy prefab to spawn automatically")]
@@ -106,11 +104,6 @@ public class BasicLevelDirector : ScriptComponent
         
         // Subscribe to enemy death events to track kills
         SubscribeToEnemyDeaths();
-        
-        if (debugSpawning)
-        {
-            Log.Info($"BasicLevelDirector: Started - Auto-spawning: {enableAutoSpawning}, Enemy prefab: {(enemy != null ? "Set" : "None")}, Scaling: {enableEnemyScaling}");
-        }
     }
     
     /// <summary>
@@ -157,11 +150,6 @@ public class BasicLevelDirector : ScriptComponent
                 // Reset timer and increment count
                 timeSinceLastSpawn = 0.0f;
                 currentEnemyCount++;
-                
-                if (debugSpawning)
-                {
-                    Log.Info($"BasicLevelDirector: Spawned enemy - Count: {currentEnemyCount}/{targetEnemyCount}, Rate: {currentSpawnsPerSecond:F2}/sec");
-                }
             }
         }
     }
@@ -204,11 +192,6 @@ public class BasicLevelDirector : ScriptComponent
         
         // Set the spawned entity's position
         spawnedEntity.transform.position = spawnPosition;
-        
-        if (debugSpawning)
-        {
-            Log.Info($"BasicLevelDirector: Spawned entity at position {spawnPosition} (distance from player: {Vector3.Distance(playerPosition, spawnPosition):F2})");
-        }
         
         return spawnedEntity;
     }
@@ -267,11 +250,6 @@ public class BasicLevelDirector : ScriptComponent
             }
         }
         
-        if (debugSpawning)
-        {
-            Log.Info($"BasicLevelDirector: Successfully spawned {successfulSpawns}/{count} entities");
-        }
-        
         // Resize array to only include successful spawns
         if (successfulSpawns < count)
         {
@@ -309,11 +287,7 @@ public class BasicLevelDirector : ScriptComponent
         
         minSpawnDistance = minDistance;
         maxSpawnDistance = maxDistance;
-        
-        if (debugSpawning)
-        {
-            Log.Info($"BasicLevelDirector: Spawn distance range set to {minSpawnDistance} - {maxSpawnDistance}");
-        }
+
     }
     
     /// <summary>
@@ -348,11 +322,7 @@ public class BasicLevelDirector : ScriptComponent
     public void SetSpawnRate(float newSpawnsPerSecond)
     {
         baseSpawnsPerSecond = Mathf.Max(0.1f, newSpawnsPerSecond); // Minimum 0.1 spawns per second
-        
-        if (debugSpawning)
-        {
-            Log.Info($"BasicLevelDirector: Base spawn rate set to {baseSpawnsPerSecond:F2} spawns/sec");
-        }
+
     }
     
     /// <summary>
@@ -362,11 +332,6 @@ public class BasicLevelDirector : ScriptComponent
     public void SetAutoSpawning(bool enabled)
     {
         enableAutoSpawning = enabled;
-        
-        if (debugSpawning)
-        {
-            Log.Info($"BasicLevelDirector: Auto-spawning {(enabled ? "enabled" : "disabled")}");
-        }
     }
     
     /// <summary>
@@ -375,11 +340,6 @@ public class BasicLevelDirector : ScriptComponent
     public void ResetSpawnTimer()
     {
         timeSinceLastSpawn = 1.0f / baseSpawnsPerSecond; // Set to spawn interval to trigger immediate spawn
-        
-        if (debugSpawning)
-        {
-            Log.Info("BasicLevelDirector: Spawn timer reset - will spawn immediately");
-        }
     }
     
     /// <summary>
@@ -475,11 +435,6 @@ public class BasicLevelDirector : ScriptComponent
             float originalMaxHealth = healthComponent.GetMaxHealth();
             float scaledMaxHealth = originalMaxHealth * healthMultiplier;
             healthComponent.SetMaxHealth(scaledMaxHealth, true); // Adjust current health proportionally
-            
-            if (debugSpawning)
-            {
-                Log.Info($"BasicLevelDirector: Scaled enemy health from {originalMaxHealth:F0} to {scaledMaxHealth:F0} (x{healthMultiplier:F2})");
-            }
         }
         
         // Apply speed scaling
@@ -494,11 +449,7 @@ public class BasicLevelDirector : ScriptComponent
             float originalAcceleration = enemyComponent.maxAcceleration;
             float scaledAcceleration = originalAcceleration * speedMultiplier;
             enemyComponent.SetMaxAcceleration(scaledAcceleration);
-            
-            if (debugSpawning)
-            {
-                Log.Info($"BasicLevelDirector: Scaled enemy speed from {originalMaxSpeed:F1} to {scaledMaxSpeed:F1} (x{speedMultiplier:F2})");
-            }
+
         }
     }
     
@@ -576,11 +527,6 @@ public class BasicLevelDirector : ScriptComponent
     public void SetEnemyScaling(bool enabled)
     {
         enableEnemyScaling = enabled;
-        
-        if (debugSpawning)
-        {
-            Log.Info($"BasicLevelDirector: Enemy scaling {(enabled ? "enabled" : "disabled")}");
-        }
     }
     
     /// <summary>
@@ -616,11 +562,6 @@ public class BasicLevelDirector : ScriptComponent
         }
         killTimeIndex = 0;
         currentSpawnRateMultiplier = 1.0f;
-        
-        if (debugSpawning)
-        {
-            Log.Info("BasicLevelDirector: Kill tracking initialized");
-        }
     }
     
     /// <summary>
@@ -630,11 +571,6 @@ public class BasicLevelDirector : ScriptComponent
     {
         // Subscribe to the centralized death event system
         DamageSystem.OnEntityDied += HandleEntityDeath;
-        
-        if (debugSpawning)
-        {
-            Log.Info("BasicLevelDirector: Subscribed to DamageSystem OnEntityDied event");
-        }
     }
     
     /// <summary>
@@ -700,11 +636,6 @@ public class BasicLevelDirector : ScriptComponent
         
         // Smoothly adapt to the desired multiplier
         currentSpawnRateMultiplier = Mathf.Lerp(currentSpawnRateMultiplier, desiredMultiplier, adaptationRate * Time.deltaTime);
-        
-        if (debugSpawning && Time.time % 2.0f < Time.deltaTime) // Log every 2 seconds
-        {
-            Log.Info($"BasicLevelDirector: Kill rate: {currentKillRate:F2}/sec, Spawn multiplier: {currentSpawnRateMultiplier:F2}");
-        }
     }
     
     /// <summary>
@@ -759,12 +690,6 @@ public class BasicLevelDirector : ScriptComponent
         recentKillTimes[killTimeIndex] = Time.time;
         killTimeIndex = (killTimeIndex + 1) % recentKillTimes.Length;
         currentEnemyCount = Mathf.Max(0, currentEnemyCount - 1);
-        
-        if (debugSpawning)
-        {
-            string killerName = killer ? killer.name : "Unknown";
-            Log.Info($"BasicLevelDirector: Enemy {deadEnemy.name} killed by {killerName} - Count now: {currentEnemyCount}");
-        }
     }
     
     /// <summary>
@@ -775,11 +700,6 @@ public class BasicLevelDirector : ScriptComponent
         recentKillTimes[killTimeIndex] = Time.time;
         killTimeIndex = (killTimeIndex + 1) % recentKillTimes.Length;
         currentEnemyCount = Mathf.Max(0, currentEnemyCount - 1);
-        
-        if (debugSpawning)
-        {
-            Log.Info($"BasicLevelDirector: Enemy killed (legacy call) - Count now: {currentEnemyCount}");
-        }
     }
     
     /// <summary>
@@ -840,11 +760,6 @@ public class BasicLevelDirector : ScriptComponent
         {
             var spawned = SpawnMultipleAroundPlayer(enemy, enemiesToSpawn);
             currentEnemyCount += spawned.Length;
-            
-            if (debugSpawning)
-            {
-                Log.Info($"BasicLevelDirector: Force spawned {spawned.Length} enemies to reach target");
-            }
         }
     }
     
@@ -855,11 +770,6 @@ public class BasicLevelDirector : ScriptComponent
     {
         // Unsubscribe from the DamageSystem event to prevent memory leaks
         DamageSystem.OnEntityDied -= HandleEntityDeath;
-        
-        if (debugSpawning)
-        {
-            Log.Info("BasicLevelDirector: Unsubscribed from DamageSystem OnEntityDied event");
-        }
     }
 
 }

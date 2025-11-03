@@ -1,0 +1,3737 @@
+{
+ "entities_count": 16,
+ "entities": [
+  {
+   "id": 41943041,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Main Camera",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 1.0,
+       "z": -10.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [],
+     "active": true
+    },
+    "has_camera_component": true,
+    "camera_component": {
+     "camera": {
+      "projection_mode": 0,
+      "field_of_view": 60.0,
+      "near_clip": 0.10000000149011612,
+      "far_clip": 1000.0,
+      "viewport_position": {
+       "x": 0,
+       "y": 0
+      },
+      "viewport_size": {
+       "width": 1891,
+       "height": 969
+      },
+      "orthographic_size": 5.0,
+      "aspect_ratio": 1.9514963626861573,
+      "aspect_locked": false,
+      "frustum_locked": false
+     },
+     "render_include_layers": {
+      "mask": -1
+     },
+     "render_exclude_layers": {
+      "mask": 0
+     }
+    },
+    "has_assao_component": true,
+    "assao_component": {
+     "enabled": true,
+     "settings": {
+      "radius": 1.2000000476837159,
+      "shadow_multiplier": 1.0,
+      "shadow_power": 1.0,
+      "shadow_clamp": 0.9800000190734863,
+      "horizon_angle_threshold": 0.05999999865889549,
+      "fade_out_from": 50.0,
+      "fade_out_to": 200.0,
+      "quality_level": 3,
+      "adaptive_quality_limit": 0.44999998807907107,
+      "blur_pass_count": 2,
+      "sharpness": 0.9800000190734863,
+      "temporal_supersampling_angle_offset": 0.0,
+      "temporal_supersampling_radius_offset": 1.0,
+      "detail_shadow_strength": 0.5,
+      "generate_normals": false
+     }
+    },
+    "has_tonemapping_component": true,
+    "tonemapping_component": {
+     "enabled": true,
+     "settings": {
+      "exposure": 1.0,
+      "method": 6
+     }
+    },
+    "has_fxaa_component": true,
+    "fxaa_component": {
+     "enabled": true
+    },
+    "has_ssr_component": true,
+    "ssr_component": {
+     "enabled": false,
+     "settings": {
+      "fidelityfx": {
+       "max_steps": 64,
+       "max_rays": 8,
+       "depth_tolerance": 0.10000000149011612,
+       "brightness": 1.0,
+       "facing_reflections_fading": 0.10000000149011612,
+       "roughness_depth_tolerance": 1.0,
+       "fade_in_start": 0.10000000149011612,
+       "fade_in_end": 0.20000000298023225,
+       "enable_half_res": false,
+       "enable_cone_tracing": false,
+       "cone_tracing": {
+        "cone_angle_bias": 0.05000000074505806,
+        "max_mip_level": 6,
+        "blur_base_sigma": 1.0
+       },
+       "enable_temporal_accumulation": true,
+       "temporal": {
+        "history_strength": 0.8999999761581421,
+        "depth_threshold": 0.009999999776482582,
+        "roughness_sensitivity": 0.30000001192092898,
+        "motion_scale_pixels": 120.0,
+        "normal_dot_threshold": 0.949999988079071,
+        "max_accum_frames": 8
+       }
+      }
+     }
+    },
+    "has_audio_listener_component": true,
+    "audio_listener_component": {},
+    "has_script_component": true,
+    "script_component": {
+     "script_components": [
+      {
+       "type": "TopDownCamera",
+       "target": {
+        "flags": 2,
+        "id": 4294967295
+       },
+       "offset": {
+        "x": 0.0,
+        "y": 20.0,
+        "z": -10.0
+       },
+       "autoFindPlayer": true,
+       "usePhysicsMovement": true,
+       "smoothFollow": true,
+       "followSpeed": 5.0,
+       "smoothTime": 0.30000001192092898,
+       "maxFollowSpeed": 20.0,
+       "lockRotation": true,
+       "cameraRotation": {
+        "x": 65.0,
+        "y": 0.0,
+        "z": 0.0
+       },
+       "useBoundaries": false,
+       "minBounds": {
+        "x": -50.0,
+        "y": 0.0,
+        "z": -50.0
+       },
+       "maxBounds": {
+        "x": 50.0,
+        "y": 20.0,
+        "z": 50.0
+       },
+       "useLookAhead": true,
+       "lookAheadDistance": 3.0,
+       "lookAheadSpeed": 2.0
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 41943043,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Sky & Directional Light",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.0000053429525905812629,
+       "y": 0.9999998807907105,
+       "z": -4.657312615563569e-7
+      },
+      "rotation": {
+       "x": 0.10938173532485962,
+       "y": 0.8754260540008545,
+       "z": -0.40821805596351626,
+       "w": 0.23456971347332
+      },
+      "scale": {
+       "x": 1.0000001192092896,
+       "y": 1.0000001192092896,
+       "z": 0.9999998211860657
+      },
+      "skew": {
+       "x": 2.98023280720372e-7,
+       "y": -1.5177943168964703e-7,
+       "z": 1.4174362661378837e-7
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [],
+     "active": true
+    },
+    "has_light_component": true,
+    "light_component": {
+     "light": {
+      "type": 2,
+      "intensity": 2.5,
+      "ambient_intensity": 0.05000000074505806,
+      "color": {
+       "r": 1.0,
+       "g": 0.9568628072738648,
+       "b": 0.8392157554626465,
+       "a": 1.0
+      },
+      "casts_shadows": true,
+      "shadow_params": {
+       "type": 1,
+       "depth": 0,
+       "resolution": 2,
+       "bias": 0.0010999999940395356,
+       "normal_bias": 0.014999999664723874,
+       "near_plane": 0.20000000298023225,
+       "far_plane": 550.0
+      },
+      "directional_data": {},
+      "directional_shadow_params": {
+       "num_splits": 4,
+       "split_distribution": 0.800000011920929,
+       "stabilize": true
+      }
+     }
+    },
+    "has_skylight_component": true,
+    "skylight_component": {
+     "mode": 1,
+     "turbidity": 1.899999976158142,
+     "cubemap": {
+      "uid": "00000000-0000-0000-0000-000000000000"
+     }
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 41943045,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Envinroment Probe",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -1.3415224486834632e-7,
+       "y": 0.09999865293502808,
+       "z": -2.525538036479702e-7
+      },
+      "rotation": {
+       "x": -1.1920938902676426e-7,
+       "y": 1.4901168299275015e-8,
+       "z": -2.980232594040899e-8,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999998807907105,
+       "z": 1.000000238418579
+      },
+      "skew": {
+       "x": -5.960487214906607e-8,
+       "y": -2.980337399094424e-8,
+       "z": -0.000005856123152625514
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [],
+     "active": true
+    },
+    "has_tonemapping_component": true,
+    "tonemapping_component": {
+     "enabled": true,
+     "settings": {
+      "exposure": 1.0,
+      "method": 6
+     }
+    },
+    "has_reflection_probe_component": true,
+    "reflection_probe_component": {
+     "probe": {
+      "type": 1,
+      "method": 0,
+      "intensity": 1.0,
+      "range": 1000.0
+     },
+     "faces_per_frame": 1,
+     "apply_prefilter": false
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 41943047,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "GameUI",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_component": true,
+    "prefab_component": {
+     "source": {
+      "uid": "6e59541b-a348-6248-9685-aba84bc78076"
+     },
+     "property_overrides": [
+      {
+       "entity_uuid": "7b2a12a5-b8bc-7749-9b5e-f9c9d0a9f337",
+       "component_path": "script_component/script_components/GameUI/LobbyScene",
+       "pretty_component_path": "Script/Scripts/GameUI/LobbyScene"
+      },
+      {
+       "entity_uuid": "7b2a12a5-b8bc-7749-9b5e-f9c9d0a9f337",
+       "component_path": "script_component/script_components/GameUI/MainMenuScene",
+       "pretty_component_path": "Script/Scripts/GameUI/MainMenuScene"
+      },
+      {
+       "entity_uuid": "531932bf-4358-1449-85fe-2d2ea88a54b6",
+       "component_path": "transform_component/active",
+       "pretty_component_path": "Transform/Active"
+      },
+      {
+       "entity_uuid": "466422c5-14ca-1e45-a119-ddc36d49af40",
+       "component_path": "transform_component/active",
+       "pretty_component_path": "Transform/Active"
+      }
+     ],
+     "removed_entities": []
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "7b2a12a5-b8bc-7749-9b5e-f9c9d0a9f337"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 4.6700768052687638e-7,
+       "y": -0.0000013820827007293702,
+       "z": -2.678904422737105e-7
+      },
+      "rotation": {
+       "x": -1.1920938902676426e-7,
+       "y": 1.4901168299275015e-8,
+       "z": -2.980232594040899e-8,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [
+      {
+       "id": 41943048
+      },
+      {
+       "id": 41943049
+      },
+      {
+       "id": 41943050
+      },
+      {
+       "id": 37748747
+      },
+      {
+       "id": 37748748
+      }
+     ],
+     "active": true
+    },
+    "has_script_component": true,
+    "script_component": {
+     "script_components": [
+      {
+       "type": "GameUI",
+       "GameMenu": {
+        "flags": 2,
+        "id": 4294967295
+       },
+       "SettingsMenu": {
+        "flags": 2,
+        "id": 4294967295
+       },
+       "GameHub": {
+        "flags": 2,
+        "id": 4294967295
+       },
+       "BackgroundAudioSource": {
+        "flags": 2,
+        "id": 4294967295
+       },
+       "LobbyScene": {
+        "uid": "2daeef9e-33de-8840-9e1e-37fe857780dd"
+       }
+      },
+      {
+       "type": "LevelUpUI",
+       "LevelUpMenu": {
+        "flags": 2,
+        "id": 4294967295
+       }
+      },
+      {
+       "type": "GameUI",
+       "GameMenu": {
+        "flags": 2,
+        "id": 4294967295
+       },
+       "SettingsMenu": {
+        "flags": 2,
+        "id": 4294967295
+       },
+       "GameHub": {
+        "flags": 2,
+        "id": 4294967295
+       },
+       "BackgroundAudioSource": {
+        "flags": 2,
+        "id": 4294967295
+       },
+       "LobbyScene": {
+        "uid": "00000000-0000-0000-0000-000000000000"
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": 41943048,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "GameMenu",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "466422c5-14ca-1e45-a119-ddc36d49af40"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 41943047
+     },
+     "children": [],
+     "active": false
+    },
+    "has_script_component": true,
+    "script_component": {
+     "script_components": [
+      {
+       "type": "GameMenu"
+      }
+     ]
+    },
+    "has_ui_document_component": true,
+    "ui_document_component": {
+     "enabled": true,
+     "asset": {
+      "uid": "0c134efa-1af1-554b-9754-f3e7742d05fd"
+     }
+    }
+   }
+  },
+  {
+   "id": 41943049,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "SettingsMenu",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "531932bf-4358-1449-85fe-2d2ea88a54b6"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 41943047
+     },
+     "children": [],
+     "active": false
+    },
+    "has_script_component": true,
+    "script_component": {
+     "script_components": [
+      {
+       "type": "SettingsMenu"
+      }
+     ]
+    },
+    "has_ui_document_component": true,
+    "ui_document_component": {
+     "enabled": true,
+     "asset": {
+      "uid": "a3e52d6a-a8d4-e340-9430-116f9818c5e9"
+     }
+    }
+   }
+  },
+  {
+   "id": 41943050,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "BackgroundAudioSource",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "153132be-843d-fa4e-b15c-c0077f1bac98"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 41943047
+     },
+     "children": [],
+     "active": false
+    },
+    "has_audio_source_component": true,
+    "audio_source_component": {
+     "auto_play": true,
+     "loop": true,
+     "volume": 0.4050000011920929,
+     "pitch": 1.0,
+     "volume_rolloff": 0.0,
+     "range": {
+      "min": 1.0,
+      "max": 20.0
+     },
+     "clip": {
+      "uid": "c3015e55-b5cc-3c4c-a695-821016c5d381"
+     }
+    }
+   }
+  },
+  {
+   "id": 37748747,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "LevelUpMenu",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 41943047
+     },
+     "children": [],
+     "active": false
+    },
+    "has_script_component": true,
+    "script_component": {
+     "script_components": [
+      {
+       "type": "LevelUpMenu"
+      }
+     ]
+    },
+    "has_ui_document_component": true,
+    "ui_document_component": {
+     "enabled": true,
+     "asset": {
+      "uid": "d8405a10-19c5-4d44-8ced-9f41059b615e"
+     }
+    }
+   }
+  },
+  {
+   "id": 37748748,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "GameHub",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 41943047
+     },
+     "children": [],
+     "active": true
+    },
+    "has_script_component": true,
+    "script_component": {
+     "script_components": [
+      {
+       "type": "GameHub"
+      }
+     ]
+    },
+    "has_ui_document_component": true,
+    "ui_document_component": {
+     "enabled": true,
+     "asset": {
+      "uid": "235654ef-2577-f04c-89f3-a34f91d8c9b1"
+     }
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 37748750,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Level",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 4.6700768052687638e-7,
+       "y": -0.0000013820827007293702,
+       "z": -2.678904422737105e-7
+      },
+      "rotation": {
+       "x": -1.1920938902676426e-7,
+       "y": 1.4901168299275015e-8,
+       "z": -2.980232594040899e-8,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999998807907105,
+       "z": 1.000000238418579
+      },
+      "skew": {
+       "x": -5.960487214906607e-8,
+       "y": -2.980337043823056e-8,
+       "z": -0.000005841220627189614
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [
+      {
+       "id": 37748751
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "id": 37748751,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Ground",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -2.177188207497238e-9,
+       "y": -0.4515100419521332,
+       "z": 2.5298163564002609e-10
+      },
+      "rotation": {
+       "x": 2.6361135496699717e-12,
+       "y": 5.366017959834712e-13,
+       "z": -1.5961235805272979e-11,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 400.00006103515627,
+       "y": 1.0000001192092896,
+       "z": 400.0
+      },
+      "skew": {
+       "x": 1.4697150441111973e-10,
+       "y": -1.0725703094779937e-12,
+       "z": -6.726614265595288e-10
+      }
+     },
+     "parent": {
+      "id": 37748750
+     },
+     "children": [],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "790e9074-e0a4-605b-baab-e3bff1339e45"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "63e1b2b1-7cf0-164f-8abe-7a0580de2af1"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    },
+    "has_physics_component": true,
+    "physics_component": {
+     "is_using_gravity": false,
+     "is_kinematic": true,
+     "is_sensor": false,
+     "is_autoscaled": true,
+     "mass": 1.0,
+     "include_layers": {
+      "mask": -1
+     },
+     "exclude_layers": {
+      "mask": 0
+     },
+     "freeze_position": {
+      "x": false,
+      "y": false,
+      "z": false
+     },
+     "freeze_rotation": {
+      "x": false,
+      "y": false,
+      "z": false
+     },
+     "material": {
+      "uid": "00000000-0000-0000-0000-000000000000"
+     },
+     "shapes": [
+      {
+       "shape": {
+        "index": 0,
+        "data": {
+         "center": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+         },
+         "extends": {
+          "x": 1.0,
+          "y": 1.0,
+          "z": 1.0
+         }
+        }
+       }
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 37748753,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Player",
+     "tag": "Player"
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 16
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 4.670094995162799e-7,
+       "y": -0.000004600723968906095,
+       "z": -2.674824770565465e-7
+      },
+      "rotation": {
+       "x": -1.1920938902676426e-7,
+       "y": 1.4901168299275015e-8,
+       "z": -2.980232949312267e-8,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999998807907105,
+       "z": 1.000000238418579
+      },
+      "skew": {
+       "x": -5.960487214906607e-8,
+       "y": -2.980337399094424e-8,
+       "z": -0.000005847888587595662
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [
+      {
+       "id": 37748754
+      }
+     ],
+     "active": true
+    },
+    "has_physics_component": true,
+    "physics_component": {
+     "is_using_gravity": false,
+     "is_kinematic": false,
+     "is_sensor": false,
+     "is_autoscaled": true,
+     "mass": 1.0,
+     "include_layers": {
+      "mask": -1
+     },
+     "exclude_layers": {
+      "mask": 0
+     },
+     "freeze_position": {
+      "x": false,
+      "y": true,
+      "z": false
+     },
+     "freeze_rotation": {
+      "x": true,
+      "y": true,
+      "z": true
+     },
+     "material": {
+      "uid": "00000000-0000-0000-0000-000000000000"
+     },
+     "shapes": [
+      {
+       "shape": {
+        "index": 2,
+        "data": {
+         "center": {
+          "x": 0.0,
+          "y": 1.5,
+          "z": 0.0
+         },
+         "radius": 0.5,
+         "length": 2.0
+        }
+       }
+      }
+     ]
+    },
+    "has_script_component": true,
+    "script_component": {
+     "script_components": [
+      {
+       "type": "Player",
+       "maxSpeed": 10.0,
+       "maxAcceleration": 50.0,
+       "maxDeceleration": 30.0,
+       "usePhysicsMovement": true
+      },
+      {
+       "type": "Health",
+       "maxHealth": 100.0,
+       "currentHealth": 100.0,
+       "allowOverheal": false,
+       "destroyOnDeath": true,
+       "destroyDelay": 0.0
+      },
+      {
+       "type": "Experience",
+       "levelUpEffect": {
+        "uid": "6920b1ec-83f4-9d4f-9cb7-18beb2d22594"
+       },
+       "pickupRange": 5.0,
+       "detectionInterval": 0.10000000149011612,
+       "currentExperience": 0.0,
+       "currentLevel": 1,
+       "baseExperienceRequired": 100.0,
+       "experienceMultiplier": 1.2000000476837159,
+       "debugDrawRange": false
+      },
+      {
+       "type": "ExampleAbility",
+       "projectilePrefab": {
+        "uid": "1358a16d-f4d6-7441-b828-c740325db14b"
+       },
+       "damage": 25,
+       "maxRange": 10.0,
+       "projectileSpeed": 15.0,
+       "requireLineOfSight": false,
+       "spawnOffset": {
+        "x": 0.0,
+        "y": 1.0,
+        "z": 0.0
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": 37748754,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Mesh",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -5.066092967354052e-8,
+       "y": 1.4999998807907105,
+       "z": 4.0578512994216e-8
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": -4.440889980918258e-16,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 4.263256414560601e-14,
+       "y": -7.993551567192503e-15,
+       "z": -4.470302883419208e-8
+      }
+     },
+     "parent": {
+      "id": 37748753
+     },
+     "children": [],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "1cd3f186-4661-ae52-a40a-9685321b7c22"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    },
+    "has_script_component": true,
+    "script_component": {
+     "script_components": []
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 37748756,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "LevelDirector",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 4.6700768052687638e-7,
+       "y": -0.000001380874778078578,
+       "z": -2.6758846161101248e-7
+      },
+      "rotation": {
+       "x": -1.1920938902676426e-7,
+       "y": 1.4901168299275015e-8,
+       "z": -2.980232949312267e-8,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999998807907105,
+       "z": 1.000000238418579
+      },
+      "skew": {
+       "x": -5.960487214906607e-8,
+       "y": -2.980337043823056e-8,
+       "z": -0.0000058460523177927829
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [],
+     "active": true
+    },
+    "has_script_component": true,
+    "script_component": {
+     "script_components": [
+      {
+       "type": "LootSystem",
+       "experienceOrbPrefab": {
+        "uid": "ee3e6288-793f-d24e-9564-0d397931f5a6"
+       },
+       "dropSpreadRadius": 2.0,
+       "dropHeight": 0.5,
+       "orbSpeedMultiplier": 1.5
+      },
+      {
+       "type": "DamageNumberSystem",
+       "defaultLifetime": 1.5,
+       "defaultFloatSpeed": 2.0,
+       "spawnHeightOffset": 3.5,
+       "spawnSpreadRadius": 0.5,
+       "defaultTextSize": 1.0,
+       "enableBillboard": true,
+       "maxActiveDamageNumbers": 50,
+       "enableAutoCleanup": true
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 37748758,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "GameAudio",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 4.6700768052687638e-7,
+       "y": -0.0000013820827007293702,
+       "z": -2.678904422737105e-7
+      },
+      "rotation": {
+       "x": -1.1920938902676426e-7,
+       "y": 1.4901168299275015e-8,
+       "z": -2.980232594040899e-8,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999998807907105,
+       "z": 1.000000238418579
+      },
+      "skew": {
+       "x": -5.960487214906607e-8,
+       "y": -2.980337043823056e-8,
+       "z": -0.000005841220627189614
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [
+      {
+       "id": 37748759
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "id": 37748759,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Background",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 37748758
+     },
+     "children": [],
+     "active": true
+    },
+    "has_audio_source_component": true,
+    "audio_source_component": {
+     "auto_play": true,
+     "loop": true,
+     "volume": 1.0,
+     "pitch": 1.0,
+     "volume_rolloff": 1.0,
+     "range": {
+      "min": 1.0,
+      "max": 20.0
+     },
+     "clip": {
+      "uid": "3d9a7ca2-e71b-c84f-b5f7-82b9e7884035"
+     }
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 37748761,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "ProjectileContainer",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 4.6700768052687638e-7,
+       "y": -0.0000013820827007293702,
+       "z": -2.678904422737105e-7
+      },
+      "rotation": {
+       "x": -1.1920938902676426e-7,
+       "y": 1.4901168299275015e-8,
+       "z": -2.980232594040899e-8,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999998807907105,
+       "z": 1.000000238418579
+      },
+      "skew": {
+       "x": -5.960487214906607e-8,
+       "y": -2.980337043823056e-8,
+       "z": -0.000005841220627189614
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [],
+     "active": true
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 37748763,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Enemy1",
+     "tag": "Enemy"
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 32
+     }
+    },
+    "has_prefab_component": true,
+    "prefab_component": {
+     "source": {
+      "uid": "68769e46-ff2a-6440-8ab4-a3564a023ff8"
+     },
+     "property_overrides": [
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "physics_component/is_kinematic",
+       "pretty_component_path": "Physics/Is Kinematic"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components/Enemy/autoFindPlayer",
+       "pretty_component_path": "Script/Scripts/Enemy/autoFindPlayer"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components/Health/currentHealth",
+       "pretty_component_path": "Script/Scripts/Health/currentHealth"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components/Health/maxHealth",
+       "pretty_component_path": "Script/Scripts/Health/maxHealth"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "tag_component/name",
+       "pretty_component_path": "Tag/Name"
+      }
+     ],
+     "removed_entities": []
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 9.231635093688965,
+       "y": 0.0,
+       "z": 19.676258087158204
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [
+      {
+       "id": 37748764
+      },
+      {
+       "id": 38797347
+      }
+     ],
+     "active": true
+    },
+    "has_physics_component": true,
+    "physics_component": {
+     "is_using_gravity": false,
+     "is_kinematic": true,
+     "is_sensor": false,
+     "is_autoscaled": true,
+     "mass": 1.0,
+     "include_layers": {
+      "mask": -1
+     },
+     "exclude_layers": {
+      "mask": 160
+     },
+     "freeze_position": {
+      "x": false,
+      "y": true,
+      "z": false
+     },
+     "freeze_rotation": {
+      "x": true,
+      "y": true,
+      "z": true
+     },
+     "material": {
+      "uid": "00000000-0000-0000-0000-000000000000"
+     },
+     "shapes": [
+      {
+       "shape": {
+        "index": 2,
+        "data": {
+         "center": {
+          "x": 0.0,
+          "y": 1.5,
+          "z": 0.0
+         },
+         "radius": 0.5,
+         "length": 2.0
+        }
+       }
+      }
+     ]
+    },
+    "has_script_component": true,
+    "script_component": {
+     "script_components": [
+      {
+       "type": "Enemy",
+       "maxSpeed": 6.0,
+       "maxAcceleration": 20.0,
+       "slowRadius": 5.0,
+       "arriveRadius": 0.6000000238418579,
+       "rotationSpeed": 180.0,
+       "usePhysicsMovement": true,
+       "target": {
+        "flags": 2,
+        "id": 4294967295
+       },
+       "autoFindPlayer": false,
+       "maxChaseDistance": 0.0,
+       "enemyType": "basic"
+      },
+      {
+       "type": "Health",
+       "maxHealth": 100000.0,
+       "currentHealth": 100000.0,
+       "allowOverheal": false,
+       "destroyOnDeath": true,
+       "destroyDelay": 0.0
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": 37748764,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Mesh",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "181acae2-d0c5-004b-a243-c9486c8919ac"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 1.5,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 37748763
+     },
+     "children": [],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "1cd3f186-4661-ae52-a40a-9685321b7c22"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "id": 38797347,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Sphere",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "f394a2d3-fb82-604e-8a57-97d75348a99d"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -9.5367431640625e-7,
+       "y": 3.344529628753662,
+       "z": -0.0000057220458984375
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 0.6300000548362732,
+       "y": 0.6300000548362732,
+       "z": 0.6300000548362732
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 37748763
+     },
+     "children": [],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "b755a718-ef93-1552-bf79-f79c0e6973eb"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 38797348,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Enemy2",
+     "tag": "Enemy"
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 32
+     }
+    },
+    "has_prefab_component": true,
+    "prefab_component": {
+     "source": {
+      "uid": "68769e46-ff2a-6440-8ab4-a3564a023ff8"
+     },
+     "property_overrides": [
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "physics_component/is_kinematic",
+       "pretty_component_path": "Physics/Is Kinematic"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components/Enemy/autoFindPlayer",
+       "pretty_component_path": "Script/Scripts/Enemy/autoFindPlayer"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components/Health/currentHealth",
+       "pretty_component_path": "Script/Scripts/Health/currentHealth"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components/Health/maxHealth",
+       "pretty_component_path": "Script/Scripts/Health/maxHealth"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "tag_component/name",
+       "pretty_component_path": "Tag/Name"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "transform_component/local_transform/position",
+       "pretty_component_path": "Transform/Local/Position"
+      }
+     ],
+     "removed_entities": []
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 1.2316350936889649,
+       "y": 0.0,
+       "z": 19.676258087158204
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [
+      {
+       "id": 38797344
+      },
+      {
+       "id": 38797346
+      }
+     ],
+     "active": true
+    },
+    "has_physics_component": true,
+    "physics_component": {
+     "is_using_gravity": false,
+     "is_kinematic": true,
+     "is_sensor": false,
+     "is_autoscaled": true,
+     "mass": 1.0,
+     "include_layers": {
+      "mask": -1
+     },
+     "exclude_layers": {
+      "mask": 160
+     },
+     "freeze_position": {
+      "x": false,
+      "y": true,
+      "z": false
+     },
+     "freeze_rotation": {
+      "x": true,
+      "y": true,
+      "z": true
+     },
+     "material": {
+      "uid": "00000000-0000-0000-0000-000000000000"
+     },
+     "shapes": [
+      {
+       "shape": {
+        "index": 2,
+        "data": {
+         "center": {
+          "x": 0.0,
+          "y": 1.5,
+          "z": 0.0
+         },
+         "radius": 0.5,
+         "length": 2.0
+        }
+       }
+      }
+     ]
+    },
+    "has_script_component": true,
+    "script_component": {
+     "script_components": [
+      {
+       "type": "Enemy",
+       "maxSpeed": 6.0,
+       "maxAcceleration": 20.0,
+       "slowRadius": 5.0,
+       "arriveRadius": 0.6000000238418579,
+       "rotationSpeed": 180.0,
+       "usePhysicsMovement": true,
+       "target": {
+        "flags": 2,
+        "id": 4294967295
+       },
+       "autoFindPlayer": false,
+       "maxChaseDistance": 0.0,
+       "enemyType": "basic"
+      },
+      {
+       "type": "Health",
+       "maxHealth": 100000.0,
+       "currentHealth": 100000.0,
+       "allowOverheal": false,
+       "destroyOnDeath": true,
+       "destroyDelay": 0.0
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": 38797344,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Mesh",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "181acae2-d0c5-004b-a243-c9486c8919ac"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 1.5,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 38797348
+     },
+     "children": [],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "1cd3f186-4661-ae52-a40a-9685321b7c22"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "id": 38797346,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Sphere",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "f394a2d3-fb82-604e-8a57-97d75348a99d"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -9.5367431640625e-7,
+       "y": 3.344529628753662,
+       "z": -0.0000057220458984375
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 0.6300000548362732,
+       "y": 0.6300000548362732,
+       "z": 0.6300000548362732
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 38797348
+     },
+     "children": [],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "b755a718-ef93-1552-bf79-f79c0e6973eb"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 38797341,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Enemy3",
+     "tag": "Enemy"
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 32
+     }
+    },
+    "has_prefab_component": true,
+    "prefab_component": {
+     "source": {
+      "uid": "68769e46-ff2a-6440-8ab4-a3564a023ff8"
+     },
+     "property_overrides": [
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "physics_component/is_kinematic",
+       "pretty_component_path": "Physics/Is Kinematic"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components/Enemy/autoFindPlayer",
+       "pretty_component_path": "Script/Scripts/Enemy/autoFindPlayer"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components/Health/currentHealth",
+       "pretty_component_path": "Script/Scripts/Health/currentHealth"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components/Health/maxHealth",
+       "pretty_component_path": "Script/Scripts/Health/maxHealth"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "tag_component/name",
+       "pretty_component_path": "Tag/Name"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "transform_component/local_transform/position",
+       "pretty_component_path": "Transform/Local/Position"
+      }
+     ],
+     "removed_entities": []
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -4.768364906311035,
+       "y": 0.0,
+       "z": 16.676258087158204
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [
+      {
+       "id": 38797343
+      },
+      {
+       "id": 38797342
+      }
+     ],
+     "active": true
+    },
+    "has_physics_component": true,
+    "physics_component": {
+     "is_using_gravity": false,
+     "is_kinematic": true,
+     "is_sensor": false,
+     "is_autoscaled": true,
+     "mass": 1.0,
+     "include_layers": {
+      "mask": -1
+     },
+     "exclude_layers": {
+      "mask": 160
+     },
+     "freeze_position": {
+      "x": false,
+      "y": true,
+      "z": false
+     },
+     "freeze_rotation": {
+      "x": true,
+      "y": true,
+      "z": true
+     },
+     "material": {
+      "uid": "00000000-0000-0000-0000-000000000000"
+     },
+     "shapes": [
+      {
+       "shape": {
+        "index": 2,
+        "data": {
+         "center": {
+          "x": 0.0,
+          "y": 1.5,
+          "z": 0.0
+         },
+         "radius": 0.5,
+         "length": 2.0
+        }
+       }
+      }
+     ]
+    },
+    "has_script_component": true,
+    "script_component": {
+     "script_components": [
+      {
+       "type": "Enemy",
+       "maxSpeed": 6.0,
+       "maxAcceleration": 20.0,
+       "slowRadius": 5.0,
+       "arriveRadius": 0.6000000238418579,
+       "rotationSpeed": 180.0,
+       "usePhysicsMovement": true,
+       "target": {
+        "flags": 2,
+        "id": 4294967295
+       },
+       "autoFindPlayer": false,
+       "maxChaseDistance": 0.0,
+       "enemyType": "basic"
+      },
+      {
+       "type": "Health",
+       "maxHealth": 100000.0,
+       "currentHealth": 100000.0,
+       "allowOverheal": false,
+       "destroyOnDeath": true,
+       "destroyDelay": 0.0
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": 38797343,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Mesh",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "181acae2-d0c5-004b-a243-c9486c8919ac"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 1.5,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 38797341
+     },
+     "children": [],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "1cd3f186-4661-ae52-a40a-9685321b7c22"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "id": 38797342,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Sphere",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "f394a2d3-fb82-604e-8a57-97d75348a99d"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -9.5367431640625e-7,
+       "y": 3.344529628753662,
+       "z": -0.0000057220458984375
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 0.6300000548362732,
+       "y": 0.6300000548362732,
+       "z": 0.6300000548362732
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 38797341
+     },
+     "children": [],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "b755a718-ef93-1552-bf79-f79c0e6973eb"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 37748775,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Enemy4",
+     "tag": "Enemy"
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 32
+     }
+    },
+    "has_prefab_component": true,
+    "prefab_component": {
+     "source": {
+      "uid": "68769e46-ff2a-6440-8ab4-a3564a023ff8"
+     },
+     "property_overrides": [
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "physics_component/is_kinematic",
+       "pretty_component_path": "Physics/Is Kinematic"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components/Enemy/autoFindPlayer",
+       "pretty_component_path": "Script/Scripts/Enemy/autoFindPlayer"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components/Health/currentHealth",
+       "pretty_component_path": "Script/Scripts/Health/currentHealth"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components/Health/maxHealth",
+       "pretty_component_path": "Script/Scripts/Health/maxHealth"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "tag_component/name",
+       "pretty_component_path": "Tag/Name"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "transform_component/local_transform/position",
+       "pretty_component_path": "Transform/Local/Position"
+      }
+     ],
+     "removed_entities": []
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 14.231635093688965,
+       "y": 0.0,
+       "z": 14.676258087158204
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [
+      {
+       "id": 37748776
+      },
+      {
+       "id": 37748777
+      }
+     ],
+     "active": true
+    },
+    "has_physics_component": true,
+    "physics_component": {
+     "is_using_gravity": false,
+     "is_kinematic": true,
+     "is_sensor": false,
+     "is_autoscaled": true,
+     "mass": 1.0,
+     "include_layers": {
+      "mask": -1
+     },
+     "exclude_layers": {
+      "mask": 160
+     },
+     "freeze_position": {
+      "x": false,
+      "y": true,
+      "z": false
+     },
+     "freeze_rotation": {
+      "x": true,
+      "y": true,
+      "z": true
+     },
+     "material": {
+      "uid": "00000000-0000-0000-0000-000000000000"
+     },
+     "shapes": [
+      {
+       "shape": {
+        "index": 2,
+        "data": {
+         "center": {
+          "x": 0.0,
+          "y": 1.5,
+          "z": 0.0
+         },
+         "radius": 0.5,
+         "length": 2.0
+        }
+       }
+      }
+     ]
+    },
+    "has_script_component": true,
+    "script_component": {
+     "script_components": [
+      {
+       "type": "Enemy",
+       "maxSpeed": 6.0,
+       "maxAcceleration": 20.0,
+       "slowRadius": 5.0,
+       "arriveRadius": 0.6000000238418579,
+       "rotationSpeed": 180.0,
+       "usePhysicsMovement": true,
+       "target": {
+        "flags": 2,
+        "id": 4294967295
+       },
+       "autoFindPlayer": false,
+       "maxChaseDistance": 0.0,
+       "enemyType": "basic"
+      },
+      {
+       "type": "Health",
+       "maxHealth": 100000.0,
+       "currentHealth": 100000.0,
+       "allowOverheal": false,
+       "destroyOnDeath": true,
+       "destroyDelay": 0.0
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": 37748776,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Mesh",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "181acae2-d0c5-004b-a243-c9486c8919ac"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 1.5,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 37748775
+     },
+     "children": [],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "1cd3f186-4661-ae52-a40a-9685321b7c22"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "id": 37748777,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Sphere",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "f394a2d3-fb82-604e-8a57-97d75348a99d"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -9.5367431640625e-7,
+       "y": 3.344529628753662,
+       "z": -0.0000057220458984375
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 0.6300000548362732,
+       "y": 0.6300000548362732,
+       "z": 0.6300000548362732
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 37748775
+     },
+     "children": [],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "b755a718-ef93-1552-bf79-f79c0e6973eb"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 37748779,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Enemy5",
+     "tag": "Enemy"
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 32
+     }
+    },
+    "has_prefab_component": true,
+    "prefab_component": {
+     "source": {
+      "uid": "68769e46-ff2a-6440-8ab4-a3564a023ff8"
+     },
+     "property_overrides": [
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "physics_component/is_kinematic",
+       "pretty_component_path": "Physics/Is Kinematic"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components/Enemy/autoFindPlayer",
+       "pretty_component_path": "Script/Scripts/Enemy/autoFindPlayer"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components/Health/currentHealth",
+       "pretty_component_path": "Script/Scripts/Health/currentHealth"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components/Health/maxHealth",
+       "pretty_component_path": "Script/Scripts/Health/maxHealth"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "tag_component/name",
+       "pretty_component_path": "Tag/Name"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "transform_component/local_transform/position",
+       "pretty_component_path": "Transform/Local/Position"
+      }
+     ],
+     "removed_entities": []
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 17.23163604736328,
+       "y": 0.0,
+       "z": 19.676258087158204
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [
+      {
+       "id": 37748780
+      },
+      {
+       "id": 37748781
+      }
+     ],
+     "active": true
+    },
+    "has_physics_component": true,
+    "physics_component": {
+     "is_using_gravity": false,
+     "is_kinematic": true,
+     "is_sensor": false,
+     "is_autoscaled": true,
+     "mass": 1.0,
+     "include_layers": {
+      "mask": -1
+     },
+     "exclude_layers": {
+      "mask": 160
+     },
+     "freeze_position": {
+      "x": false,
+      "y": true,
+      "z": false
+     },
+     "freeze_rotation": {
+      "x": true,
+      "y": true,
+      "z": true
+     },
+     "material": {
+      "uid": "00000000-0000-0000-0000-000000000000"
+     },
+     "shapes": [
+      {
+       "shape": {
+        "index": 2,
+        "data": {
+         "center": {
+          "x": 0.0,
+          "y": 1.5,
+          "z": 0.0
+         },
+         "radius": 0.5,
+         "length": 2.0
+        }
+       }
+      }
+     ]
+    },
+    "has_script_component": true,
+    "script_component": {
+     "script_components": [
+      {
+       "type": "Enemy",
+       "maxSpeed": 6.0,
+       "maxAcceleration": 20.0,
+       "slowRadius": 5.0,
+       "arriveRadius": 0.6000000238418579,
+       "rotationSpeed": 180.0,
+       "usePhysicsMovement": true,
+       "target": {
+        "flags": 2,
+        "id": 4294967295
+       },
+       "autoFindPlayer": false,
+       "maxChaseDistance": 0.0,
+       "enemyType": "basic"
+      },
+      {
+       "type": "Health",
+       "maxHealth": 100000.0,
+       "currentHealth": 100000.0,
+       "allowOverheal": false,
+       "destroyOnDeath": true,
+       "destroyDelay": 0.0
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": 37748780,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Mesh",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "181acae2-d0c5-004b-a243-c9486c8919ac"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 1.5,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 37748779
+     },
+     "children": [],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "1cd3f186-4661-ae52-a40a-9685321b7c22"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "id": 37748781,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Sphere",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "f394a2d3-fb82-604e-8a57-97d75348a99d"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -9.5367431640625e-7,
+       "y": 3.344529628753662,
+       "z": -0.0000057220458984375
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 0.6300000548362732,
+       "y": 0.6300000548362732,
+       "z": 0.6300000548362732
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 37748779
+     },
+     "children": [],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "b755a718-ef93-1552-bf79-f79c0e6973eb"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 37748783,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Enemy6",
+     "tag": "Enemy"
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 32
+     }
+    },
+    "has_prefab_component": true,
+    "prefab_component": {
+     "source": {
+      "uid": "68769e46-ff2a-6440-8ab4-a3564a023ff8"
+     },
+     "property_overrides": [
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "physics_component/is_kinematic",
+       "pretty_component_path": "Physics/Is Kinematic"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components/Enemy/autoFindPlayer",
+       "pretty_component_path": "Script/Scripts/Enemy/autoFindPlayer"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components/Health/currentHealth",
+       "pretty_component_path": "Script/Scripts/Health/currentHealth"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components/Health/maxHealth",
+       "pretty_component_path": "Script/Scripts/Health/maxHealth"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "tag_component/name",
+       "pretty_component_path": "Tag/Name"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "transform_component/local_transform/position",
+       "pretty_component_path": "Transform/Local/Position"
+      }
+     ],
+     "removed_entities": []
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 13.231635093688965,
+       "y": 0.0,
+       "z": 21.676258087158204
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [
+      {
+       "id": 37748784
+      },
+      {
+       "id": 37748785
+      }
+     ],
+     "active": true
+    },
+    "has_physics_component": true,
+    "physics_component": {
+     "is_using_gravity": false,
+     "is_kinematic": true,
+     "is_sensor": false,
+     "is_autoscaled": true,
+     "mass": 1.0,
+     "include_layers": {
+      "mask": -1
+     },
+     "exclude_layers": {
+      "mask": 160
+     },
+     "freeze_position": {
+      "x": false,
+      "y": true,
+      "z": false
+     },
+     "freeze_rotation": {
+      "x": true,
+      "y": true,
+      "z": true
+     },
+     "material": {
+      "uid": "00000000-0000-0000-0000-000000000000"
+     },
+     "shapes": [
+      {
+       "shape": {
+        "index": 2,
+        "data": {
+         "center": {
+          "x": 0.0,
+          "y": 1.5,
+          "z": 0.0
+         },
+         "radius": 0.5,
+         "length": 2.0
+        }
+       }
+      }
+     ]
+    },
+    "has_script_component": true,
+    "script_component": {
+     "script_components": [
+      {
+       "type": "Enemy",
+       "maxSpeed": 6.0,
+       "maxAcceleration": 20.0,
+       "slowRadius": 5.0,
+       "arriveRadius": 0.6000000238418579,
+       "rotationSpeed": 180.0,
+       "usePhysicsMovement": true,
+       "target": {
+        "flags": 2,
+        "id": 4294967295
+       },
+       "autoFindPlayer": false,
+       "maxChaseDistance": 0.0,
+       "enemyType": "basic"
+      },
+      {
+       "type": "Health",
+       "maxHealth": 100000.0,
+       "currentHealth": 100000.0,
+       "allowOverheal": false,
+       "destroyOnDeath": true,
+       "destroyDelay": 0.0
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": 37748784,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Mesh",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "181acae2-d0c5-004b-a243-c9486c8919ac"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 1.5,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 37748783
+     },
+     "children": [],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "1cd3f186-4661-ae52-a40a-9685321b7c22"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "id": 37748785,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Sphere",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "f394a2d3-fb82-604e-8a57-97d75348a99d"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -9.5367431640625e-7,
+       "y": 3.344529628753662,
+       "z": -0.0000057220458984375
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 0.6300000548362732,
+       "y": 0.6300000548362732,
+       "z": 0.6300000548362732
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 37748783
+     },
+     "children": [],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "b755a718-ef93-1552-bf79-f79c0e6973eb"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 37748787,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Enemy7",
+     "tag": "Enemy"
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 32
+     }
+    },
+    "has_prefab_component": true,
+    "prefab_component": {
+     "source": {
+      "uid": "68769e46-ff2a-6440-8ab4-a3564a023ff8"
+     },
+     "property_overrides": [
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "physics_component/is_kinematic",
+       "pretty_component_path": "Physics/Is Kinematic"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components/Enemy/autoFindPlayer",
+       "pretty_component_path": "Script/Scripts/Enemy/autoFindPlayer"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components/Health/currentHealth",
+       "pretty_component_path": "Script/Scripts/Health/currentHealth"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components/Health/maxHealth",
+       "pretty_component_path": "Script/Scripts/Health/maxHealth"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "tag_component/name",
+       "pretty_component_path": "Tag/Name"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "transform_component/local_transform/position",
+       "pretty_component_path": "Transform/Local/Position"
+      }
+     ],
+     "removed_entities": []
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 5.067094802856445,
+       "y": 0.0000019796004835370697,
+       "z": 22.886764526367189
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [
+      {
+       "id": 37748788
+      },
+      {
+       "id": 36700213
+      }
+     ],
+     "active": true
+    },
+    "has_physics_component": true,
+    "physics_component": {
+     "is_using_gravity": false,
+     "is_kinematic": true,
+     "is_sensor": false,
+     "is_autoscaled": true,
+     "mass": 1.0,
+     "include_layers": {
+      "mask": -1
+     },
+     "exclude_layers": {
+      "mask": 160
+     },
+     "freeze_position": {
+      "x": false,
+      "y": true,
+      "z": false
+     },
+     "freeze_rotation": {
+      "x": true,
+      "y": true,
+      "z": true
+     },
+     "material": {
+      "uid": "00000000-0000-0000-0000-000000000000"
+     },
+     "shapes": [
+      {
+       "shape": {
+        "index": 2,
+        "data": {
+         "center": {
+          "x": 0.0,
+          "y": 1.5,
+          "z": 0.0
+         },
+         "radius": 0.5,
+         "length": 2.0
+        }
+       }
+      }
+     ]
+    },
+    "has_script_component": true,
+    "script_component": {
+     "script_components": [
+      {
+       "type": "Enemy",
+       "maxSpeed": 6.0,
+       "maxAcceleration": 20.0,
+       "slowRadius": 5.0,
+       "arriveRadius": 0.6000000238418579,
+       "rotationSpeed": 180.0,
+       "usePhysicsMovement": true,
+       "target": {
+        "flags": 2,
+        "id": 4294967295
+       },
+       "autoFindPlayer": false,
+       "maxChaseDistance": 0.0,
+       "enemyType": "basic"
+      },
+      {
+       "type": "Health",
+       "maxHealth": 100000.0,
+       "currentHealth": 100000.0,
+       "allowOverheal": false,
+       "destroyOnDeath": true,
+       "destroyDelay": 0.0
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": 37748788,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Mesh",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "181acae2-d0c5-004b-a243-c9486c8919ac"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 1.5,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 37748787
+     },
+     "children": [],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "1cd3f186-4661-ae52-a40a-9685321b7c22"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "id": 36700213,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Sphere",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "f394a2d3-fb82-604e-8a57-97d75348a99d"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -9.5367431640625e-7,
+       "y": 3.344529628753662,
+       "z": -0.0000057220458984375
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 0.6300000548362732,
+       "y": 0.6300000548362732,
+       "z": 0.6300000548362732
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 37748787
+     },
+     "children": [],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "b755a718-ef93-1552-bf79-f79c0e6973eb"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    }
+   }
+  }
+ ],
+ "version": "1.0.0"
+}

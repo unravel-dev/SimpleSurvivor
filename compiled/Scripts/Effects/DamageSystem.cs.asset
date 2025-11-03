@@ -17,10 +17,10 @@ public static class DamageSystem
     /// Apply damage to an entity through its Health component.
     /// </summary>
     /// <param name="target">Entity to damage.</param>
-    /// <param name="damage">Amount of damage to deal.</param>
     /// <param name="source">Entity that caused the damage.</param>
+    /// <param name="damage">Amount of damage to deal.</param>
     /// <returns>True if the target died from this damage.</returns>
-    public static bool ApplyDamage(Entity target, float damage, Entity source)
+    public static bool ApplyDamage(Entity target, Entity source, float damage)
     {
         if (!target || damage <= 0)
             return false;

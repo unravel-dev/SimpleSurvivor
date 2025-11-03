@@ -29,10 +29,6 @@ public class DamageNumber : ScriptComponent
     [Tooltip("Billboard update frequency (0 = every frame)")]
     public float billboardUpdateInterval = 0.1f;
     
-    //[Header("Debug")]
-    [Tooltip("Enable debug logging")]
-    public bool debugDamageNumber = false;
-    
     // Component references
     private TransformComponent transformComponent;
     private TextComponent textComponent;
@@ -62,11 +58,6 @@ public class DamageNumber : ScriptComponent
         {
             Log.Error($"DamageNumber on {owner.name}: TextComponent not found!");
         }
-        
-        if (debugDamageNumber)
-        {
-            Log.Info($"DamageNumber created on {owner.name}");
-        }
     }
     
     /// <summary>
@@ -87,11 +78,6 @@ public class DamageNumber : ScriptComponent
         
         // Set initial scale
         transformComponent.scale = initialScale3D * initialScale;
-        
-        if (debugDamageNumber)
-        {
-            Log.Info($"DamageNumber started on {owner.name} - Lifetime: {lifetime}s");
-        }
     }
     
     /// <summary>
@@ -108,11 +94,6 @@ public class DamageNumber : ScriptComponent
         // Check if should be deactivated (for object pooling)
         if (timeAlive >= lifetime)
         {
-            if (debugDamageNumber)
-            {
-                Log.Info($"DamageNumber {owner.name} expired after {timeAlive:F2} seconds - deactivating for reuse");
-            }
-            
             // Deactivate instead of destroying for object pooling
             owner.SetActive(false);
             return;
@@ -241,18 +222,6 @@ public class DamageNumber : ScriptComponent
                 cameraEntity = cameraEntities[0];
             }
         }
-        
-        if (debugDamageNumber)
-        {
-            if (cameraEntity)
-            {
-                Log.Info($"DamageNumber: Found camera entity {cameraEntity.name}");
-            }
-            else
-            {
-                Log.Warning("DamageNumber: No camera entity found for billboard behavior");
-            }
-        }
     }
     
     /// <summary>
@@ -273,11 +242,7 @@ public class DamageNumber : ScriptComponent
         textComponent.fontSize = 6;
         // Set color based on damage type
         SetDamageColor(damageType);
-        
-        if (debugDamageNumber)
-        {
-            Log.Info($"DamageNumber {owner.name}: Set damage text to '{damageText}' (type: {damageType})");
-        }
+
     }
     
     /// <summary>
@@ -318,11 +283,6 @@ public class DamageNumber : ScriptComponent
     public void SetLifetime(float newLifetime)
     {
         lifetime = Mathf.Max(0.1f, newLifetime);
-        
-        if (debugDamageNumber)
-        {
-            Log.Info($"DamageNumber {owner.name}: Lifetime set to {lifetime:F2} seconds");
-        }
     }
     
     /// <summary>
@@ -332,11 +292,6 @@ public class DamageNumber : ScriptComponent
     public void SetFloatSpeed(float speed)
     {
         floatSpeed = Mathf.Max(0f, speed);
-        
-        if (debugDamageNumber)
-        {
-            Log.Info($"DamageNumber {owner.name}: Float speed set to {floatSpeed:F2}");
-        }
     }
     
     /// <summary>
@@ -393,10 +348,6 @@ public class DamageNumber : ScriptComponent
             // Reset outline width to initial value
             textComponent.outlineWidth = 1.5f;
         }
-        
-        if (debugDamageNumber)
-        {
-            Log.Info($"DamageNumber {owner.name}: Reset for reuse - position: {initialPosition}, scale reset");
-        }
+
     }
 }

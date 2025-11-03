@@ -34,10 +34,7 @@ public class Enemy : ScriptComponent
     //[Header("Enemy Type")]
     [Tooltip("Enemy type identifier for loot configuration (e.g., 'basic', 'elite', 'boss')")]
     public string enemyType = "basic";
-    
-    //[Header("Debug")]
-    [Tooltip("Enable debug logging for enemy behavior")]
-    public bool debugMovement = false;
+
     
     // Component references
     private TransformComponent transformComponent;
@@ -197,22 +194,10 @@ public class Enemy : ScriptComponent
                 
                 isChasing = true;
                 lastPlayerPosition = playerPosition;
-                
-                if (debugMovement)
-                {
-                    Log.Info($"Enemy {owner.name}: Chasing player (distance: {distanceToPlayer:F2})");
-                }
             }
         }
         else
         {
-            if (isChasing && debugMovement)
-            {
-                if (shouldStop)
-                    Log.Info($"Enemy {owner.name}: Arrived at player");
-                else
-                    Log.Info($"Enemy {owner.name}: Stopped chasing - player out of range");
-            }
             
             isChasing = false;
         }
@@ -266,11 +251,6 @@ public class Enemy : ScriptComponent
         // Convert velocity change back to acceleration by dividing by deltaTime
         Vector3 accelerationForce = steering / Time.fixedDeltaTime;
         physicsComponent.ApplyForce(accelerationForce, ForceMode.Acceleration);
-        
-        if (debugMovement)
-        {
-            Log.Info($"Enemy {owner.name}: Applying force {accelerationForce.magnitude:F2}, target speed: {targetSpeed:F2}");
-        }
     }
     
     /// <summary>
@@ -356,11 +336,6 @@ public class Enemy : ScriptComponent
     public void SetMaxSpeed(float speed)
     {
         maxSpeed = Mathf.Max(0, speed);
-        
-        if (debugMovement)
-        {
-            Log.Info($"Enemy {owner.name}: Max speed set to {maxSpeed:F2}");
-        }
     }
     
     /// <summary>
@@ -370,11 +345,6 @@ public class Enemy : ScriptComponent
     public void SetMaxAcceleration(float acceleration)
     {
         maxAcceleration = Mathf.Max(0, acceleration);
-        
-        if (debugMovement)
-        {
-            Log.Info($"Enemy {owner.name}: Max acceleration set to {maxAcceleration:F2}");
-        }
     }
     
     /// <summary>
@@ -423,11 +393,7 @@ public class Enemy : ScriptComponent
         
         // Stop physics movement if using physics
         // Note: Physics velocity will be stopped in OnFixedUpdate when isChasing = false
-        
-        if (debugMovement)
-        {
-            Log.Info($"Enemy {owner.name}: Stopped chasing");
-        }
+
     }
     
     /// <summary>
@@ -438,11 +404,6 @@ public class Enemy : ScriptComponent
         if (target && (Health == null || !Health.IsDead()))
         {
             isChasing = true;
-            
-            if (debugMovement)
-            {
-                Log.Info($"Enemy {owner.name}: Resumed chasing");
-            }
         }
     }
     
@@ -452,10 +413,6 @@ public class Enemy : ScriptComponent
     /// <param name="damageAmount">Amount of damage taken.</param>
     private void OnEnemyDamageTaken(float damageAmount)
     {
-        if (debugMovement)
-        {
-            Log.Info($"Enemy {owner.name}: Took {damageAmount} damage - Health: {Health.GetCurrentHealth()}/{Health.GetMaxHealth()}");
-        }
         
         // Could add damage reaction behaviors here, like:
         // - Play damage sound/animation
@@ -469,10 +426,6 @@ public class Enemy : ScriptComponent
     /// </summary>
     private void OnEnemyDeath()
     {
-        if (debugMovement)
-        {
-            Log.Info($"Enemy {owner.name}: Died");
-        }
         
         // Stop all movement
         isChasing = false;

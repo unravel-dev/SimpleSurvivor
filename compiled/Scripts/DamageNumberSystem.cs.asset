@@ -31,10 +31,6 @@ public class DamageNumberSystem : ScriptComponent
     [Tooltip("Enable automatic cleanup of old damage numbers")]
     public bool enableAutoCleanup = true;
     
-    //[Header("Debug")]
-    [Tooltip("Enable debug logging")]
-    public bool debugDamageSystem = false;
-    
     // Singleton instance
     private static DamageNumberSystem instance;
     
@@ -69,11 +65,6 @@ public class DamageNumberSystem : ScriptComponent
             
             // Subscribe to damage events
             SubscribeToDamageEvents();
-            
-            if (debugDamageSystem)
-            {
-                Log.Info("DamageNumberSystem: Initialized and ready");
-            }
         }
         else
         {
@@ -129,7 +120,6 @@ public class DamageNumberSystem : ScriptComponent
                     damageNumberComponent.lifetime = defaultLifetime;
                     damageNumberComponent.floatSpeed = defaultFloatSpeed;
                     damageNumberComponent.enableBillboard = enableBillboard;
-                    damageNumberComponent.debugDamageNumber = debugDamageSystem;
                 }
                 
                 // Disable the entity initially
@@ -145,11 +135,6 @@ public class DamageNumberSystem : ScriptComponent
         
         poolInitialized = true;
         currentPoolIndex = 0;
-        
-        if (debugDamageSystem)
-        {
-            Log.Info($"DamageNumberSystem: Initialized object pool with {maxActiveDamageNumbers} entities");
-        }
     }
     
     /// <summary>
@@ -169,22 +154,10 @@ public class DamageNumberSystem : ScriptComponent
             {
                 // Position it at world origin
                 damageContainer.transform.position = Vector3.zero;
-                
-                if (debugDamageSystem)
-                {
-                    Log.Info("DamageNumberSystem: Created DamageContainer entity");
-                }
             }
             else
             {
                 Log.Error("DamageNumberSystem: Failed to create DamageContainer entity");
-            }
-        }
-        else
-        {
-            if (debugDamageSystem)
-            {
-                Log.Info("DamageNumberSystem: Found existing DamageContainer entity");
             }
         }
     }
@@ -197,11 +170,6 @@ public class DamageNumberSystem : ScriptComponent
         // Subscribe to the centralized damage and healing event systems
         DamageSystem.OnDamageApplied += OnDamageApplied;
         DamageSystem.OnHealingApplied += OnHealingApplied;
-        
-        if (debugDamageSystem)
-        {
-            Log.Info("DamageNumberSystem: Subscribed to damage and healing events");
-        }
     }
     
     /// <summary>
@@ -217,11 +185,6 @@ public class DamageNumberSystem : ScriptComponent
         if (DamageSystem.OnHealingApplied != null)
         {
             DamageSystem.OnHealingApplied -= OnHealingApplied;
-        }
-        
-        if (debugDamageSystem)
-        {
-            Log.Info("DamageNumberSystem: Unsubscribed from damage and healing events");
         }
     }
     
@@ -299,7 +262,6 @@ public class DamageNumberSystem : ScriptComponent
             damageNumberComponent.lifetime = defaultLifetime;
             damageNumberComponent.floatSpeed = defaultFloatSpeed;
             damageNumberComponent.enableBillboard = enableBillboard;
-            damageNumberComponent.debugDamageNumber = debugDamageSystem;
             
             // Set damage text
             damageNumberComponent.SetDamageText(damageAmount, damageType);
@@ -313,12 +275,7 @@ public class DamageNumberSystem : ScriptComponent
         
         // Move to next index in ring buffer
         currentPoolIndex = (currentPoolIndex + 1) % maxActiveDamageNumbers;
-        
-        if (debugDamageSystem)
-        {
-            Log.Info($"DamageNumberSystem: Spawned pooled damage number '{damageAmount:F0}' at {spawnPosition} (Pool index: {(currentPoolIndex - 1 + maxActiveDamageNumbers) % maxActiveDamageNumbers})");
-        }
-        
+
         return damageNumberEntity;
     }
     
@@ -350,12 +307,7 @@ public class DamageNumberSystem : ScriptComponent
     /// </summary>
     private void CleanupOldDamageNumbers()
     {
-        // With object pooling, cleanup is handled automatically by the ring buffer
-        // Old entities are simply deactivated when they expire and reused when needed
-        if (debugDamageSystem)
-        {
-            Log.Info("DamageNumberSystem: Cleanup called, but using object pooling - no action needed");
-        }
+
     }
     
     /// <summary>
@@ -422,11 +374,6 @@ public class DamageNumberSystem : ScriptComponent
     public void SetDefaultLifetime(float lifetime)
     {
         defaultLifetime = Mathf.Max(0.1f, lifetime);
-        
-        if (debugDamageSystem)
-        {
-            Log.Info($"DamageNumberSystem: Default lifetime set to {defaultLifetime:F2} seconds");
-        }
     }
     
     /// <summary>
@@ -449,10 +396,5 @@ public class DamageNumberSystem : ScriptComponent
         
         // Reset pool index
         currentPoolIndex = 0;
-        
-        if (debugDamageSystem)
-        {
-            Log.Info($"DamageNumberSystem: Deactivated {deactivatedCount} pooled damage numbers");
-        }
     }
 }

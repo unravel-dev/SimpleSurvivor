@@ -62,9 +62,7 @@ public class LootSystem : ScriptComponent
     
     [Tooltip("Height offset for dropped loot")]
     public float dropHeight = 0.5f;
-    
-    [Tooltip("Enable debug logging")]
-    public bool debugLoot = false;
+
     
     [Tooltip("Speed multiplier for experience orbs relative to player speed")]
     public float orbSpeedMultiplier = 1.5f;
@@ -100,11 +98,6 @@ public class LootSystem : ScriptComponent
             
             // Subscribe to death events directly
             DamageSystem.OnEntityDied += OnEntityDied;
-            
-            if (debugLoot)
-            {
-                Log.Info("LootSystem: Initialized and subscribed to death events");
-            }
         }
         else
         {
@@ -125,11 +118,7 @@ public class LootSystem : ScriptComponent
         {
             instance = null;
         }
-        
-        if (debugLoot)
-        {
-            Log.Info("LootSystem: Unsubscribed from death events and cleaned up");
-        }
+
     }
     
     /// <summary>
@@ -143,18 +132,7 @@ public class LootSystem : ScriptComponent
         {
             playerEntity = playerEntities[0];
             playerExperience = playerEntity.GetComponent<Experience>();
-            
-            if (debugLoot)
-            {
-                Log.Info($"LootSystem: Found player entity {playerEntity.name}");
-            }
-        }
-        else
-        {
-            if (debugLoot)
-            {
-                Log.Warning("LootSystem: No player entity found");
-            }
+
         }
     }
     
@@ -175,24 +153,14 @@ public class LootSystem : ScriptComponent
             {
                 // Position it at world origin
                 experienceContainer.transform.position = Vector3.zero;
-                
-                if (debugLoot)
-                {
-                    Log.Info("LootSystem: Created ExperienceContainer entity");
-                }
+
             }
             else
             {
                 Log.Error("LootSystem: Failed to create ExperienceContainer entity");
             }
         }
-        else
-        {
-            if (debugLoot)
-            {
-                Log.Info("LootSystem: Found existing ExperienceContainer entity");
-            }
-        }
+
     }
     
     /// <summary>
@@ -204,12 +172,7 @@ public class LootSystem : ScriptComponent
     {
         if (!deadEntity)
             return;
-            
-        if (debugLoot)
-        {
-            string killerName = killer ? killer.name : "Unknown";
-            Log.Info($"LootSystem: Entity {deadEntity.name} died, killed by {killerName}");
-        }
+
         
         // Check if this entity should drop loot
         if (ShouldDropLoot(deadEntity, killer))
@@ -230,10 +193,6 @@ public class LootSystem : ScriptComponent
         var enemyComponent = deadEntity.GetComponent<Enemy>();
         if (enemyComponent == null)
         {
-            if (debugLoot)
-            {
-                Log.Info($"LootSystem: {deadEntity.name} is not an enemy, no loot drop");
-            }
             return false;
         }
         
@@ -258,10 +217,6 @@ public class LootSystem : ScriptComponent
         var transformComponent = deadEntity.GetComponent<TransformComponent>();
         if (transformComponent == null)
         {
-            if (debugLoot)
-            {
-                Log.Warning($"LootSystem: {deadEntity.name} has no TransformComponent, cannot determine drop position");
-            }
             return;
         }
         
@@ -277,11 +232,6 @@ public class LootSystem : ScriptComponent
         // Drop the loot
         Vector3 dropPosition = transformComponent.position;
         HandleEnemyDeath(deadEntity, dropPosition, customConfig);
-        
-        if (debugLoot)
-        {
-            Log.Info($"LootSystem: Processed loot drop for {deadEntity.name} at {dropPosition}");
-        }
     }
     
     /// <summary>
@@ -330,10 +280,6 @@ public class LootSystem : ScriptComponent
     {
         if (experienceOrbPrefab == null)
         {
-            if (debugLoot)
-            {
-                Log.Warning("LootSystem: No experience orb prefab assigned");
-            }
             return;
         }
         
@@ -343,10 +289,6 @@ public class LootSystem : ScriptComponent
             FindPlayerEntity();
             if (playerEntity == null || playerExperience == null)
             {
-                if (debugLoot)
-                {
-                    Log.Warning("LootSystem: Cannot drop loot - no player found");
-                }
                 return;
             }
         }
@@ -359,11 +301,6 @@ public class LootSystem : ScriptComponent
         
         // Drop experience orbs
         DropExperienceOrbs(enemyPosition, experienceValue, config.orbCount);
-        
-        if (debugLoot)
-        {
-            Log.Info($"LootSystem: Dropped loot for {enemyEntity.name} - Experience: {experienceValue:F1}");
-        }
     }
     
     /// <summary>
@@ -402,11 +339,6 @@ public class LootSystem : ScriptComponent
         
         // Apply min/max constraints
         finalValue = Mathf.Clamp(finalValue, config.minimumExperience, config.maximumExperience);
-        
-        if (debugLoot)
-        {
-            Log.Info($"LootSystem: Experience calculation - Base: {baseValue:F1}, Level: x{levelMultiplier:F2}, Time: x{timeMultiplier:F2}, Bonus: +{bonusExperience:F1}, Final: {finalValue:F1}");
-        }
         
         return finalValue;
     }
@@ -454,19 +386,9 @@ public class LootSystem : ScriptComponent
                 {
                     experienceOrb.SetExperienceValue(experiencePerOrb);
                     experienceOrb.SetPlayerSpeedMultiplier(orbSpeedMultiplier);
-                    
-                    if (debugLoot)
-                    {
-                        Log.Info($"LootSystem: Spawned experience orb with value {experiencePerOrb:F1} at {orbPosition}, speed multiplier: {orbSpeedMultiplier:F2}");
-                    }
+
                 }
-                else
-                {
-                    if (debugLoot)
-                    {
-                        Log.Warning("LootSystem: Experience orb prefab missing ExperienceOrb component");
-                    }
-                }
+
             }
         }
     }
@@ -515,11 +437,7 @@ public class LootSystem : ScriptComponent
     public void SetOrbSpeedMultiplier(float multiplier)
     {
         orbSpeedMultiplier = Mathf.Max(1.0f, multiplier); // Ensure orbs are always at least as fast as player
-        
-        if (debugLoot)
-        {
-            Log.Info($"LootSystem: Orb speed multiplier set to {orbSpeedMultiplier:F2}");
-        }
+
     }
     
     /// <summary>

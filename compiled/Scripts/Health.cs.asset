@@ -21,9 +21,6 @@ public class Health : ScriptComponent
     [Tooltip("Delay before destroying entity after death (in seconds)")]
     public float destroyDelay = 0.0f;
 
-    //[Header("Events")]
-    [Tooltip("Enable debug logging for health events")]
-    public bool debugHealth = false;
 
     // Health state
     private bool isDead = false;
@@ -50,11 +47,6 @@ public class Health : ScriptComponent
         {
             currentHealth = maxHealth;
         }
-
-        if (debugHealth)
-        {
-            Log.Info($"Health initialized on {owner.name} - Health: {currentHealth}/{maxHealth}");
-        }
     }
 
     /// <summary>
@@ -62,10 +54,7 @@ public class Health : ScriptComponent
     /// </summary>
     public override void OnStart()
     {
-        if (debugHealth)
-        {
-            Log.Info($"Health started on {owner.name}");
-        }
+
     }
 
     /// <summary>
@@ -81,12 +70,6 @@ public class Health : ScriptComponent
 
         float previousHealth = currentHealth;
         currentHealth = Mathf.Max(0, currentHealth - damage);
-
-        if (debugHealth)
-        {
-            string sourceInfo = source ? $" from {source.name}" : "";
-            Log.Info($"{owner.name} took {damage} damage{sourceInfo} - Health: {currentHealth}/{maxHealth}");
-        }
 
         // Trigger damage event
         OnDamageTaken?.Invoke(damage);
@@ -127,11 +110,6 @@ public class Health : ScriptComponent
 
         if (actualHealAmount > 0)
         {
-            if (debugHealth)
-            {
-                string sourceInfo = source ? $" from {source.name}" : "";
-                Log.Info($"{owner.name} healed for {actualHealAmount}{sourceInfo} - Health: {currentHealth}/{maxHealth}");
-            }
 
             // Trigger heal event
             OnHealed?.Invoke(actualHealAmount);
@@ -157,11 +135,6 @@ public class Health : ScriptComponent
         if (!allowOverheal && currentHealth > maxHealth)
         {
             currentHealth = maxHealth;
-        }
-
-        if (debugHealth)
-        {
-            Log.Info($"{owner.name} health set to {currentHealth}/{maxHealth}");
         }
 
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
@@ -198,10 +171,6 @@ public class Health : ScriptComponent
             currentHealth = maxHealth;
         }
 
-        if (debugHealth)
-        {
-            Log.Info($"{owner.name} max health set to {maxHealth} - Current health: {currentHealth}");
-        }
 
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
@@ -227,11 +196,6 @@ public class Health : ScriptComponent
             return;
 
         isDead = true;
-
-        if (debugHealth)
-        {
-            Log.Info($"{owner.name} has died");
-        }
 
         // Trigger death event
         OnDeath?.Invoke();
