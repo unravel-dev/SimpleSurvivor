@@ -2,7 +2,7 @@
  "entities_count": 16,
  "entities": [
   {
-   "id": 41943041,
+   "id": 14680065,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -189,7 +189,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 41943043,
+   "id": 14680067,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -277,7 +277,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 41943045,
+   "id": 14680069,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -346,7 +346,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 41943047,
+   "id": 14680071,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -422,19 +422,19 @@
      },
      "children": [
       {
-       "id": 41943048
+       "id": 14680072
       },
       {
-       "id": 41943049
+       "id": 14680073
       },
       {
-       "id": 41943050
+       "id": 14680074
       },
       {
-       "id": 37748747
+       "id": 12582923
       },
       {
-       "id": 37748748
+       "id": 12582924
       }
      ],
      "active": true
@@ -498,7 +498,7 @@
    }
   },
   {
-   "id": 41943048,
+   "id": 14680072,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -541,7 +541,7 @@
       }
      },
      "parent": {
-      "id": 41943047
+      "id": 14680071
      },
      "children": [],
      "active": false
@@ -564,7 +564,7 @@
    }
   },
   {
-   "id": 41943049,
+   "id": 14680073,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -607,7 +607,7 @@
       }
      },
      "parent": {
-      "id": 41943047
+      "id": 14680071
      },
      "children": [],
      "active": false
@@ -630,7 +630,7 @@
    }
   },
   {
-   "id": 41943050,
+   "id": 14680074,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -673,7 +673,7 @@
       }
      },
      "parent": {
-      "id": 41943047
+      "id": 14680071
      },
      "children": [],
      "active": false
@@ -696,7 +696,7 @@
    }
   },
   {
-   "id": 37748747,
+   "id": 12582923,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -735,7 +735,7 @@
       }
      },
      "parent": {
-      "id": 41943047
+      "id": 14680071
      },
      "children": [],
      "active": false
@@ -758,7 +758,7 @@
    }
   },
   {
-   "id": 37748748,
+   "id": 12582924,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -797,7 +797,7 @@
       }
      },
      "parent": {
-      "id": 41943047
+      "id": 14680071
      },
      "children": [],
      "active": true
@@ -823,7 +823,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 37748750,
+   "id": 12582926,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -866,7 +866,7 @@
      },
      "children": [
       {
-       "id": 37748751
+       "id": 12582927
       }
      ],
      "active": true
@@ -874,7 +874,7 @@
    }
   },
   {
-   "id": 37748751,
+   "id": 12582927,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -913,7 +913,7 @@
       }
      },
      "parent": {
-      "id": 37748750
+      "id": 12582926
      },
      "children": [],
      "active": true
@@ -996,7 +996,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 37748753,
+   "id": 12582929,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1015,10 +1015,10 @@
       "position": {
        "x": 4.670094995162799e-7,
        "y": -0.000004600723968906095,
-       "z": -2.674824770565465e-7
+       "z": -2.3768015466885118e-7
       },
       "rotation": {
-       "x": -1.1920938902676426e-7,
+       "x": -1.1920940323761898e-7,
        "y": 1.4901168299275015e-8,
        "z": -2.980232949312267e-8,
        "w": 1.0
@@ -1029,9 +1029,9 @@
        "z": 1.000000238418579
       },
       "skew": {
-       "x": -5.960487214906607e-8,
-       "y": -2.980337399094424e-8,
-       "z": -0.000005847888587595662
+       "x": -5.96049005707755e-8,
+       "y": -2.9803622680901756e-8,
+       "z": -0.000006648791440966306
       }
      },
      "parent": {
@@ -1039,7 +1039,7 @@
      },
      "children": [
       {
-       "id": 37748754
+       "id": 12582930
       }
      ],
      "active": true
@@ -1121,12 +1121,11 @@
       {
        "type": "ExampleAbility",
        "projectilePrefab": {
-        "uid": "1358a16d-f4d6-7441-b828-c740325db14b"
+        "uid": "67f63796-4d3a-8f45-8eff-a40b0ed6302b"
        },
        "damage": 25,
        "maxRange": 10.0,
-       "projectileSpeed": 15.0,
-       "requireLineOfSight": false,
+       "projectileSpeed": 60.0,
        "spawnOffset": {
         "x": 0.0,
         "y": 1.0,
@@ -1138,7 +1137,7 @@
    }
   },
   {
-   "id": 37748754,
+   "id": 12582930,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1177,7 +1176,7 @@
       }
      },
      "parent": {
-      "id": 37748753
+      "id": 12582929
      },
      "children": [],
      "active": true
@@ -1218,7 +1217,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 37748756,
+   "id": 12582932,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1293,7 +1292,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 37748758,
+   "id": 12582934,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1336,7 +1335,7 @@
      },
      "children": [
       {
-       "id": 37748759
+       "id": 12582935
       }
      ],
      "active": true
@@ -1344,7 +1343,7 @@
    }
   },
   {
-   "id": 37748759,
+   "id": 12582935,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1383,7 +1382,7 @@
       }
      },
      "parent": {
-      "id": 37748758
+      "id": 12582934
      },
      "children": [],
      "active": true
@@ -1409,7 +1408,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 37748761,
+   "id": 12582937,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1459,7 +1458,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 37748763,
+   "id": 12582939,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1540,10 +1539,10 @@
      },
      "children": [
       {
-       "id": 37748764
+       "id": 12582940
       },
       {
-       "id": 38797347
+       "id": 12582941
       }
      ],
      "active": true
@@ -1623,7 +1622,7 @@
    }
   },
   {
-   "id": 37748764,
+   "id": 12582940,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1666,7 +1665,7 @@
       }
      },
      "parent": {
-      "id": 37748763
+      "id": 12582939
      },
      "children": [],
      "active": true
@@ -1685,7 +1684,7 @@
       ],
       "materials": [
        {
-        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+        "uid": "e75a078a-9378-3441-82f7-face1da69416"
        }
       ],
       "material_instances": [],
@@ -1700,7 +1699,7 @@
    }
   },
   {
-   "id": 38797347,
+   "id": 12582941,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1743,7 +1742,7 @@
       }
      },
      "parent": {
-      "id": 37748763
+      "id": 12582939
      },
      "children": [],
      "active": true
@@ -1762,7 +1761,7 @@
       ],
       "materials": [
        {
-        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+        "uid": "e75a078a-9378-3441-82f7-face1da69416"
        }
       ],
       "material_instances": [],
@@ -1780,7 +1779,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 38797348,
+   "id": 12582943,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1866,10 +1865,10 @@
      },
      "children": [
       {
-       "id": 38797344
+       "id": 12582944
       },
       {
-       "id": 38797346
+       "id": 12582945
       }
      ],
      "active": true
@@ -1949,7 +1948,7 @@
    }
   },
   {
-   "id": 38797344,
+   "id": 12582944,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1992,7 +1991,7 @@
       }
      },
      "parent": {
-      "id": 38797348
+      "id": 12582943
      },
      "children": [],
      "active": true
@@ -2011,7 +2010,7 @@
       ],
       "materials": [
        {
-        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+        "uid": "e75a078a-9378-3441-82f7-face1da69416"
        }
       ],
       "material_instances": [],
@@ -2026,7 +2025,7 @@
    }
   },
   {
-   "id": 38797346,
+   "id": 12582945,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2069,7 +2068,7 @@
       }
      },
      "parent": {
-      "id": 38797348
+      "id": 12582943
      },
      "children": [],
      "active": true
@@ -2088,7 +2087,7 @@
       ],
       "materials": [
        {
-        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+        "uid": "e75a078a-9378-3441-82f7-face1da69416"
        }
       ],
       "material_instances": [],
@@ -2106,7 +2105,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 38797341,
+   "id": 12582947,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2192,10 +2191,10 @@
      },
      "children": [
       {
-       "id": 38797343
+       "id": 12582948
       },
       {
-       "id": 38797342
+       "id": 12582949
       }
      ],
      "active": true
@@ -2275,7 +2274,7 @@
    }
   },
   {
-   "id": 38797343,
+   "id": 12582948,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2318,7 +2317,7 @@
       }
      },
      "parent": {
-      "id": 38797341
+      "id": 12582947
      },
      "children": [],
      "active": true
@@ -2337,7 +2336,7 @@
       ],
       "materials": [
        {
-        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+        "uid": "e75a078a-9378-3441-82f7-face1da69416"
        }
       ],
       "material_instances": [],
@@ -2352,7 +2351,7 @@
    }
   },
   {
-   "id": 38797342,
+   "id": 12582949,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2395,7 +2394,7 @@
       }
      },
      "parent": {
-      "id": 38797341
+      "id": 12582947
      },
      "children": [],
      "active": true
@@ -2414,7 +2413,7 @@
       ],
       "materials": [
        {
-        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+        "uid": "e75a078a-9378-3441-82f7-face1da69416"
        }
       ],
       "material_instances": [],
@@ -2432,7 +2431,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 37748775,
+   "id": 12582951,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2518,10 +2517,10 @@
      },
      "children": [
       {
-       "id": 37748776
+       "id": 12582952
       },
       {
-       "id": 37748777
+       "id": 12582953
       }
      ],
      "active": true
@@ -2601,7 +2600,7 @@
    }
   },
   {
-   "id": 37748776,
+   "id": 12582952,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2644,7 +2643,7 @@
       }
      },
      "parent": {
-      "id": 37748775
+      "id": 12582951
      },
      "children": [],
      "active": true
@@ -2663,7 +2662,7 @@
       ],
       "materials": [
        {
-        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+        "uid": "e75a078a-9378-3441-82f7-face1da69416"
        }
       ],
       "material_instances": [],
@@ -2678,7 +2677,7 @@
    }
   },
   {
-   "id": 37748777,
+   "id": 12582953,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2721,7 +2720,7 @@
       }
      },
      "parent": {
-      "id": 37748775
+      "id": 12582951
      },
      "children": [],
      "active": true
@@ -2740,7 +2739,7 @@
       ],
       "materials": [
        {
-        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+        "uid": "e75a078a-9378-3441-82f7-face1da69416"
        }
       ],
       "material_instances": [],
@@ -2758,7 +2757,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 37748779,
+   "id": 12582955,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2844,10 +2843,10 @@
      },
      "children": [
       {
-       "id": 37748780
+       "id": 12582956
       },
       {
-       "id": 37748781
+       "id": 12582957
       }
      ],
      "active": true
@@ -2927,7 +2926,7 @@
    }
   },
   {
-   "id": 37748780,
+   "id": 12582956,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2970,7 +2969,7 @@
       }
      },
      "parent": {
-      "id": 37748779
+      "id": 12582955
      },
      "children": [],
      "active": true
@@ -2989,7 +2988,7 @@
       ],
       "materials": [
        {
-        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+        "uid": "e75a078a-9378-3441-82f7-face1da69416"
        }
       ],
       "material_instances": [],
@@ -3004,7 +3003,7 @@
    }
   },
   {
-   "id": 37748781,
+   "id": 12582957,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3047,7 +3046,7 @@
       }
      },
      "parent": {
-      "id": 37748779
+      "id": 12582955
      },
      "children": [],
      "active": true
@@ -3066,7 +3065,7 @@
       ],
       "materials": [
        {
-        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+        "uid": "e75a078a-9378-3441-82f7-face1da69416"
        }
       ],
       "material_instances": [],
@@ -3084,7 +3083,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 37748783,
+   "id": 12582959,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3170,10 +3169,10 @@
      },
      "children": [
       {
-       "id": 37748784
+       "id": 12582960
       },
       {
-       "id": 37748785
+       "id": 12582961
       }
      ],
      "active": true
@@ -3253,7 +3252,7 @@
    }
   },
   {
-   "id": 37748784,
+   "id": 12582960,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3296,7 +3295,7 @@
       }
      },
      "parent": {
-      "id": 37748783
+      "id": 12582959
      },
      "children": [],
      "active": true
@@ -3315,7 +3314,7 @@
       ],
       "materials": [
        {
-        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+        "uid": "e75a078a-9378-3441-82f7-face1da69416"
        }
       ],
       "material_instances": [],
@@ -3330,7 +3329,7 @@
    }
   },
   {
-   "id": 37748785,
+   "id": 12582961,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3373,7 +3372,7 @@
       }
      },
      "parent": {
-      "id": 37748783
+      "id": 12582959
      },
      "children": [],
      "active": true
@@ -3392,7 +3391,7 @@
       ],
       "materials": [
        {
-        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+        "uid": "e75a078a-9378-3441-82f7-face1da69416"
        }
       ],
       "material_instances": [],
@@ -3410,7 +3409,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 37748787,
+   "id": 12582963,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3496,10 +3495,10 @@
      },
      "children": [
       {
-       "id": 37748788
+       "id": 12582964
       },
       {
-       "id": 36700213
+       "id": 12582965
       }
      ],
      "active": true
@@ -3579,7 +3578,7 @@
    }
   },
   {
-   "id": 37748788,
+   "id": 12582964,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3622,7 +3621,7 @@
       }
      },
      "parent": {
-      "id": 37748787
+      "id": 12582963
      },
      "children": [],
      "active": true
@@ -3641,7 +3640,7 @@
       ],
       "materials": [
        {
-        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+        "uid": "e75a078a-9378-3441-82f7-face1da69416"
        }
       ],
       "material_instances": [],
@@ -3656,7 +3655,7 @@
    }
   },
   {
-   "id": 36700213,
+   "id": 12582965,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3699,7 +3698,7 @@
       }
      },
      "parent": {
-      "id": 37748787
+      "id": 12582963
      },
      "children": [],
      "active": true
@@ -3718,7 +3717,7 @@
       ],
       "materials": [
        {
-        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+        "uid": "e75a078a-9378-3441-82f7-face1da69416"
        }
       ],
       "material_instances": [],
