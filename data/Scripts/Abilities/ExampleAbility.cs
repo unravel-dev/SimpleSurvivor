@@ -118,12 +118,12 @@ public class ExampleAbility : Ability
             //     pierceComponent.pierceCount = 1;
             // }
 
-            var bounceComponent = projectileEntity.AddComponent<BounceComponent>();
-            if (bounceComponent != null)
+            var chainComponent = projectileEntity.AddComponent<ChainComponent>();
+            if (chainComponent != null)
             {
-                bounceComponent.bounceCount = 22;
-                bounceComponent.bounceRange = maxRange;
-                bounceComponent.bounceOffset = spawnOffset;
+                chainComponent.chainCount = 5;
+                chainComponent.chainRange = maxRange;
+                chainComponent.chainOffset = spawnOffset;
             }
 
 

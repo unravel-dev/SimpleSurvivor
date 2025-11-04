@@ -1,4 +1,6 @@
 using System.Runtime.CompilerServices;
+using System.Collections.Generic;
+
 using Unravel.Core;
 
 
@@ -7,6 +9,15 @@ public enum ContactResult
     Success = 0,
     Failure = 1,
     Exhausted,
+}
+
+
+public struct QueryClosestTarget
+{
+    public Entity source;
+    public float maxRange;
+
+    public List<Entity> visitedTargets;
 }
 /// <summary>
 /// System that handles contact between entities and determines what effects to apply
@@ -35,6 +46,9 @@ public static class ContactSystem
         Entity closestEnemy = Entity.Invalid;
         float closestDistance = float.MaxValue;
 
+        Entity closestNonVisitedEnemy = Entity.Invalid;
+        float closestNonVisitedDistance = float.MaxValue;
+
         // Find the closest valid enemy
         foreach (var entity in overlaps)
         {
@@ -51,9 +65,23 @@ public static class ContactSystem
             {
                 closestDistance = distance;
                 closestEnemy = entity;
+
+            }
+
+            if(query.visitedTargets != null)
+            {
+                if (distance < closestNonVisitedDistance && !query.visitedTargets.Contains(entity))
+                {
+                    closestNonVisitedDistance = distance;
+                    closestNonVisitedEnemy = entity;
+                }
             }
         }
 
+        if(closestNonVisitedEnemy != Entity.Invalid)
+        {
+            return closestNonVisitedEnemy;
+        }
         return closestEnemy;
     }
     /// <summary>
@@ -75,10 +103,10 @@ public static class ContactSystem
         }
 
 
-        // Handle bounce
+        // Handle chain
         {
-            ContactResult bounceResult = HandleBounce(source, target);
-            if (bounceResult == ContactResult.Exhausted)
+            ContactResult chainResult = HandleChain(source, target);
+            if (chainResult == ContactResult.Exhausted)
             {
                 return;
             }
@@ -87,7 +115,6 @@ public static class ContactSystem
         // Handle physical damage
         HandlePhysicalDamage(source, target);
         // Handle other contact effects (can be extended)
-        // HandleBounce(source, target);
         // HandleStatusEffects(source, target);
         // etc.
     }
@@ -120,49 +147,59 @@ public static class ContactSystem
     /// </summary>
     /// <param name="source">Source entity (e.g., projectile).</param>
     /// <param name="target">Target entity that was hit.</param>
-    private static ContactResult HandleBounce(Entity source, Entity target)
+    private static ContactResult HandleChain(Entity source, Entity target)
     {
         // Check for BounceComponent on source
-        var bounceComponent = source.GetComponent<BounceComponent>();
-        if (bounceComponent == null)
+        var chainComponent = source.GetComponent<ChainComponent>();
+        if (chainComponent == null)
         {
             return ContactResult.Failure; // No bounce to apply
         }
         // Redirect projectile to new target
         // Reduce bounce count, etc.    
-        if(bounceComponent.bounceCount <= 0)
+        if(chainComponent.chainCount <= 0)
         {
             return ContactResult.Exhausted; // No bounce to apply
         }
 
         // Apply bounce through the DamageSystem
-        bounceComponent.bounceCount--;
+        chainComponent.chainCount--;
 
-
-        if (bounceComponent.bounceCount <= 0)
+        if (chainComponent.chainCount <= 0)
         {
             Scene.DestroyEntity(source);
         }
         else
         {
-            var sourcePosition = bounceComponent.owner.transform.position;
+            chainComponent.visitedTargets.Add(target);
+
+            var sourcePosition = chainComponent.owner.transform.position;
 
             QueryClosestTarget query = new QueryClosestTarget();
             query.source = target;
-            query.maxRange = bounceComponent.bounceRange;
+            query.maxRange = chainComponent.chainRange;
+            query.visitedTargets = chainComponent.visitedTargets;
             Entity newTarget = FindClosestEnemy(query);
 
             if (!newTarget)
             {
-                bounceComponent.bounceCount = 0;
+                chainComponent.chainCount = 0;
                 Scene.DestroyEntity(source);
                 return ContactResult.Exhausted; // No new target to bounce to
             }
-            var targetPosition = newTarget.transform.position + bounceComponent.bounceOffset;
-            var direction = (targetPosition - sourcePosition).normalized;
-            bounceComponent.owner.transform.forward = direction;
 
-            var iphysics = bounceComponent.owner.GetComponent<PhysicsComponent>();
+            // if the new target is already in the visited targets list, we looped back to the same target, so we clear the visited targets list
+            if (chainComponent.visitedTargets.Contains(newTarget))
+            {
+                chainComponent.visitedTargets.Clear();
+            }
+
+
+            var targetPosition = newTarget.transform.position + chainComponent.chainOffset;
+            var direction = (targetPosition - sourcePosition).normalized;
+            chainComponent.owner.transform.forward = direction;
+
+            var iphysics = chainComponent.owner.GetComponent<PhysicsComponent>();
             if (iphysics != null)
             {
                 var velocity = iphysics.velocity;

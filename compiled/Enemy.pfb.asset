@@ -2,7 +2,7 @@
  "entities": [
   {
    "prefab_uid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
-   "id": 1048577,
+   "id": 3,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -51,11 +51,11 @@
      "children": [
       {
        "prefab_uid": "181acae2-d0c5-004b-a243-c9486c8919ac",
-       "id": 1048578
+       "id": 4
       },
       {
        "prefab_uid": "f394a2d3-fb82-604e-8a57-97d75348a99d",
-       "id": 1048579
+       "id": 5
       }
      ],
      "active": true
@@ -121,8 +121,7 @@
        },
        "autoFindPlayer": true,
        "maxChaseDistance": 0.0,
-       "enemyType": "basic",
-       "debugMovement": false
+       "enemyType": "basic"
       },
       {
        "type": "Health",
@@ -130,8 +129,7 @@
        "currentHealth": 100.0,
        "allowOverheal": false,
        "destroyOnDeath": true,
-       "destroyDelay": 0.0,
-       "debugHealth": false
+       "destroyDelay": 0.0
       }
      ]
     }
@@ -139,7 +137,7 @@
   },
   {
    "prefab_uid": "181acae2-d0c5-004b-a243-c9486c8919ac",
-   "id": 1048578,
+   "id": 4,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -183,7 +181,7 @@
      },
      "parent": {
       "prefab_uid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
-      "id": 1048577
+      "id": 3
      },
      "children": [],
      "active": true
@@ -202,7 +200,7 @@
       ],
       "materials": [
        {
-        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+        "uid": "e75a078a-9378-3441-82f7-face1da69416"
        }
       ],
       "material_instances": [],
@@ -218,7 +216,7 @@
   },
   {
    "prefab_uid": "f394a2d3-fb82-604e-8a57-97d75348a99d",
-   "id": 1048579,
+   "id": 5,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -262,7 +260,7 @@
      },
      "parent": {
       "prefab_uid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
-      "id": 1048577
+      "id": 3
      },
      "children": [],
      "active": true
@@ -281,7 +279,7 @@
       ],
       "materials": [
        {
-        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+        "uid": "e75a078a-9378-3441-82f7-face1da69416"
        }
       ],
       "material_instances": [],

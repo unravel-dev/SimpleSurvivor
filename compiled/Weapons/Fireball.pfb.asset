@@ -2,7 +2,7 @@
  "entities": [
   {
    "prefab_uid": "10ef8358-c389-3a4b-896e-3f9e41e44097",
-   "id": 1,
+   "id": 2097153,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -53,16 +53,16 @@
     },
     "has_physics_component": true,
     "physics_component": {
-     "is_using_gravity": true,
+     "is_using_gravity": false,
      "is_kinematic": false,
-     "is_sensor": false,
+     "is_sensor": true,
      "is_autoscaled": true,
      "mass": 1.0,
      "include_layers": {
-      "mask": -1
+      "mask": 32
      },
      "exclude_layers": {
-      "mask": 80
+      "mask": 0
      },
      "freeze_position": {
       "x": false,
@@ -97,8 +97,8 @@
     "particle_emitter_component": {
      "enabled": true,
      "shape": 0,
-     "direction": 1,
-     "simulation_space": 1,
+     "direction": 0,
+     "simulation_space": 0,
      "max_particles": 1024,
      "emission_lifetime": {
       "count": 2.0
@@ -239,9 +239,9 @@
        {
         "progress": 0.25,
         "element": {
-         "r": 0.2694125473499298,
+         "r": 0.10227096080780029,
          "g": 0.8215767741203308,
-         "b": 0.10227096080780029,
+         "b": 0.1321176141500473,
          "a": 1.0
         }
        },
@@ -276,7 +276,7 @@
      },
      "position_easing": 0,
      "texture": {
-      "uid": "5b249d5d-8cc1-2a4e-9b9b-b16ba4a53af1"
+      "uid": "4124b193-3b63-b246-a59b-3cd6ef50d701"
      },
      "loop": true
     }

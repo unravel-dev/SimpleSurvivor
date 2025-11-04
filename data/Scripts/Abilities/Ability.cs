@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unravel.Core;
 
-public struct QueryClosestTarget
-{
-    public Entity source;
-    public float maxRange;}
 /// <summary>
 /// Base class for all ability types. Handles cooldown management and provides
 /// virtual methods for derived classes to implement specific ability behavior.
