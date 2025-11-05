@@ -27,7 +27,122 @@ public struct QueryClosestTarget
 public static class ContactSystem
 {
     
+    // Define the order of effect execution
+    static readonly System.Func<Entity, Entity, ContactResult>[] effectHandlers = 
+    {
+        HandlePierce,
+        HandleChain,
+        // Add new effects here in order of priority
+        // HandleBounce,
+        // HandleSplit,
+        // etc.
+    };
     
+    // Static collections to avoid allocations per call
+    private static readonly List<(Entity entity, float distance, bool isVisited)> tempEnemyList = new List<(Entity, float, bool)>(64);
+    private static readonly List<Entity> tempResultList = new List<Entity>(64);
+    
+
+    
+    /// <summary>
+    /// Find multiple enemies within range, sorted by distance with non-visited prioritized over visited.
+    /// Optimized for frequent calls - uses static collections to avoid allocations.
+    /// </summary>
+    /// <param name="query">Query parameters including source, range, and visited targets.</param>
+    /// <param name="results">Output list that will be populated with sorted entities.</param>
+    /// <returns>Number of entities found.</returns>
+    public static int FindClosestEnemies(QueryClosestTarget query, List<Entity> results)
+    {
+        results.Clear();
+        
+        var sourcePosition = query.source.transform.position;
+        // Perform sphere overlap to find potential targets
+        var overlaps = Physics.SphereOverlap(sourcePosition, query.maxRange, LayerMask.GetMask("Enemy"));
+
+        if (overlaps == null || overlaps.Length == 0)
+        {
+            return 0;
+        }
+
+        // Clear and reuse static collections
+        tempEnemyList.Clear();
+        
+        // Use squared distance to avoid expensive sqrt calculations
+        float maxRangeSquared = query.maxRange * query.maxRange;
+
+        // Collect valid enemies with their squared distances and visited status
+        for (int i = 0; i < overlaps.Length; i++)
+        {
+            var entity = overlaps[i];
+            if (!entity) continue;
+
+            // Skip self
+            if (entity == query.source) continue;
+
+            // Calculate squared distance (faster than Vector3.Distance)
+            var deltaPos = entity.transform.position - sourcePosition;
+            float distanceSquared = Vector3.Dot(deltaPos, deltaPos);
+            // Early distance check
+            if (distanceSquared > maxRangeSquared) continue;
+
+            // Check if this entity has been visited
+            bool isVisited = query.visitedTargets != null && query.visitedTargets.Contains(entity);
+
+            tempEnemyList.Add((entity, distanceSquared, isVisited));
+        }
+
+        if (tempEnemyList.Count == 0)
+        {
+            return 0;
+        }
+
+        // Sort by priority: non-visited first (isVisited = false), then by squared distance
+        tempEnemyList.Sort((a, b) =>
+        {
+            // First priority: non-visited targets come before visited targets
+            if (a.isVisited != b.isVisited)
+            {
+                return a.isVisited.CompareTo(b.isVisited); // false (non-visited) < true (visited)
+            }
+            
+            // Second priority: sort by squared distance within the same visited status
+            return a.distance.CompareTo(b.distance);
+        });
+
+        // Populate results list directly
+        for (int i = 0; i < tempEnemyList.Count; i++)
+        {
+            results.Add(tempEnemyList[i].entity);
+        }
+
+        return tempEnemyList.Count;
+    }
+    
+    /// <summary>
+    /// Find multiple enemies within range, sorted by distance with non-visited prioritized over visited.
+    /// Convenience method that allocates and returns an array (use sparingly for performance).
+    /// </summary>
+    /// <param name="query">Query parameters including source, range, and visited targets.</param>
+    /// <returns>Array of entities sorted by priority (non-visited first) then by distance.</returns>
+    public static Entity[] FindClosestEnemies(QueryClosestTarget query)
+    {
+        tempResultList.Clear();
+        int count = FindClosestEnemies(query, tempResultList);
+        
+        if (count == 0)
+        {
+            return new Entity[0];
+        }
+        
+        var result = new Entity[count];
+        for (int i = 0; i < count; i++)
+        {
+            result[i] = tempResultList[i];
+        }
+        
+        return result;
+    }
+
     /// <summary>
     /// Find the closest enemy within range using SphereOverlap.
     /// </summary>
@@ -68,7 +183,7 @@ public static class ContactSystem
 
             }
 
-            if(query.visitedTargets != null)
+            if (query.visitedTargets != null)
             {
                 if (distance < closestNonVisitedDistance && !query.visitedTargets.Contains(entity))
                 {
@@ -78,7 +193,7 @@ public static class ContactSystem
             }
         }
 
-        if(closestNonVisitedEnemy != Entity.Invalid)
+        if (closestNonVisitedEnemy != Entity.Invalid)
         {
             return closestNonVisitedEnemy;
         }
@@ -86,37 +201,44 @@ public static class ContactSystem
     }
     /// <summary>
     /// Apply contact effects between a source entity and target entity.
-    /// Checks components on both entities to determine what should happen.
+    /// Processes effects in order and determines if the projectile should be destroyed.
     /// </summary>
     /// <param name="source">The entity initiating contact (e.g., projectile, weapon).</param>
     /// <param name="target">The entity being contacted (e.g., enemy, player).</param>
     public static void ApplyContact(Entity source, Entity target)
     {
 
-        // Handle pierce
+        
+        bool shouldExtendLifetime = false;
+        
+        // Execute effects in order until one succeeds
+        foreach (var handler in effectHandlers)
         {
-            ContactResult pierceResult = HandlePierce(source, target);
-            if (pierceResult == ContactResult.Exhausted)
+            ContactResult result = handler(source, target);
+            
+            if (result == ContactResult.Success)
             {
-                return;
+                shouldExtendLifetime = true;
+                break; // Stop processing further effects
             }
+            
+            // If result is Exhausted, continue to next effect
+            // If result is Failure, continue to next effect
         }
-
-
-        // Handle chain
-        {
-            ContactResult chainResult = HandleChain(source, target);
-            if (chainResult == ContactResult.Exhausted)
-            {
-                return;
-            }
-        }
-
-        // Handle physical damage
+        
+        // Always handle damage regardless of other effects
         HandlePhysicalDamage(source, target);
-        // Handle other contact effects (can be extended)
-        // HandleStatusEffects(source, target);
-        // etc.
+        
+
+        if (!shouldExtendLifetime)
+        {
+            // Probably check for an auto destroy component
+            var autoDestroyComponent = source.GetComponent<AutoDestroyComponent>();
+            if (autoDestroyComponent != null)
+            {
+                Scene.DestroyEntity(source);
+            }
+        }
     }
     
     
@@ -157,20 +279,9 @@ public static class ContactSystem
         }
         // Redirect projectile to new target
         // Reduce bounce count, etc.    
-        if(chainComponent.chainCount <= 0)
+        if (chainComponent.chainCount > 0)
         {
-            return ContactResult.Exhausted; // No bounce to apply
-        }
-
-        // Apply bounce through the DamageSystem
-        chainComponent.chainCount--;
-
-        if (chainComponent.chainCount <= 0)
-        {
-            Scene.DestroyEntity(source);
-        }
-        else
-        {
+            chainComponent.chainCount--;
             chainComponent.visitedTargets.Add(target);
 
             var sourcePosition = chainComponent.owner.transform.position;
@@ -184,7 +295,7 @@ public static class ContactSystem
             if (!newTarget)
             {
                 chainComponent.chainCount = 0;
-                Scene.DestroyEntity(source);
+                // Scene.DestroyEntity(source);
                 return ContactResult.Exhausted; // No new target to bounce to
             }
 
@@ -206,7 +317,15 @@ public static class ContactSystem
                 velocity = direction * velocity.magnitude;
                 iphysics.velocity = velocity;
             }
+
         }
+
+        // Check exhaust condition
+        if (chainComponent.chainCount <= 0)
+        {
+            return ContactResult.Exhausted;
+        }
+
         return ContactResult.Success;
     }
 
@@ -219,17 +338,18 @@ public static class ContactSystem
             return ContactResult.Failure; // No pierce to apply
         }
 
-        if(pierceComponent.pierceCount <= 0)
+        if(pierceComponent.pierceCount >= 0)
         {
-            return ContactResult.Exhausted; // No pierce to apply
+            // apply pierce
+            pierceComponent.pierceCount--;
         }
 
-        // Apply pierce through the DamageSystem
-        pierceComponent.pierceCount--;
-        if (pierceComponent.pierceCount <= 0)
+        // Check exhaust condition
+        if (pierceComponent.pierceCount < 0)
         {
-            Scene.DestroyEntity(source);
+            return ContactResult.Exhausted;
         }
+
         return ContactResult.Success;
     }
 }

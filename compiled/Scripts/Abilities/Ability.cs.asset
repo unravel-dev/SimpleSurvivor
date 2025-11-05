@@ -72,9 +72,9 @@ public abstract class Ability : ScriptComponent
         }
 
         // Gather targets for the ability
-        List<Entity> targets = GatherTargets();
+        var targets = GatherTargets();
 
-        if (targets == null || targets.Count == 0)
+        if (targets == null || targets.Length == 0)
         {
             return false;
         }
@@ -109,13 +109,13 @@ public abstract class Ability : ScriptComponent
     /// Virtual method for derived classes to implement target gathering logic.
     /// </summary>
     /// <returns>List of entities that this ability should affect.</returns>
-    protected abstract List<Entity> GatherTargets();
+    protected abstract Entity[] GatherTargets();
 
     /// <summary>
     /// Virtual method for derived classes to implement the actual ability effect.
     /// </summary>
     /// <param name="targets">List of target entities to affect.</param>
-    protected abstract void OnTriggerAbility(List<Entity> targets);
+    protected abstract void OnTriggerAbility(Entity[] targets);
 
     /// <summary>
     /// Virtual method called when the ability starts (can be overridden for setup).
@@ -124,6 +124,5 @@ public abstract class Ability : ScriptComponent
     {
 
     }
-    
     
 }

@@ -2,7 +2,7 @@
  "entities_count": 9,
  "entities": [
   {
-   "id": 4194305,
+   "id": 73400321,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -189,7 +189,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 4194307,
+   "id": 73400323,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -277,7 +277,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 4194309,
+   "id": 73400325,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -346,7 +346,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 4194311,
+   "id": 73400327,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -422,19 +422,19 @@
      },
      "children": [
       {
-       "id": 4194312
+       "id": 73400328
       },
       {
-       "id": 4194313
+       "id": 73400329
       },
       {
-       "id": 4194314
+       "id": 73400330
       },
       {
-       "id": 3145739
+       "id": 71303179
       },
       {
-       "id": 2097164
+       "id": 71303180
       }
      ],
      "active": true
@@ -498,7 +498,7 @@
    }
   },
   {
-   "id": 4194312,
+   "id": 73400328,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -541,7 +541,7 @@
       }
      },
      "parent": {
-      "id": 4194311
+      "id": 73400327
      },
      "children": [],
      "active": false
@@ -564,7 +564,7 @@
    }
   },
   {
-   "id": 4194313,
+   "id": 73400329,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -607,7 +607,7 @@
       }
      },
      "parent": {
-      "id": 4194311
+      "id": 73400327
      },
      "children": [],
      "active": false
@@ -630,7 +630,7 @@
    }
   },
   {
-   "id": 4194314,
+   "id": 73400330,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -673,7 +673,7 @@
       }
      },
      "parent": {
-      "id": 4194311
+      "id": 73400327
      },
      "children": [],
      "active": false
@@ -696,7 +696,7 @@
    }
   },
   {
-   "id": 3145739,
+   "id": 71303179,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -735,7 +735,7 @@
       }
      },
      "parent": {
-      "id": 4194311
+      "id": 73400327
      },
      "children": [],
      "active": false
@@ -758,7 +758,7 @@
    }
   },
   {
-   "id": 2097164,
+   "id": 71303180,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -797,7 +797,7 @@
       }
      },
      "parent": {
-      "id": 4194311
+      "id": 73400327
      },
      "children": [],
      "active": true
@@ -823,7 +823,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 2097166,
+   "id": 71303182,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -866,7 +866,7 @@
      },
      "children": [
       {
-       "id": 2097167
+       "id": 71303183
       }
      ],
      "active": true
@@ -874,7 +874,7 @@
    }
   },
   {
-   "id": 2097167,
+   "id": 71303183,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -913,7 +913,7 @@
       }
      },
      "parent": {
-      "id": 2097166
+      "id": 71303182
      },
      "children": [],
      "active": true
@@ -996,7 +996,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 2097169,
+   "id": 71303185,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1015,7 +1015,7 @@
       "position": {
        "x": 4.670094995162799e-7,
        "y": -0.000004600723968906095,
-       "z": -2.678648058918043e-7
+       "z": -2.678315240700613e-7
       },
       "rotation": {
        "x": -1.1920938902676426e-7,
@@ -1031,7 +1031,7 @@
       "skew": {
        "x": -5.960487214906607e-8,
        "y": -2.980337043823056e-8,
-       "z": -0.000005841771326231537
+       "z": -0.0000058423038353794258
       }
      },
      "parent": {
@@ -1039,7 +1039,7 @@
      },
      "children": [
       {
-       "id": 2097170
+       "id": 71303186
       }
      ],
      "active": true
@@ -1103,8 +1103,7 @@
        "currentHealth": 100.0,
        "allowOverheal": false,
        "destroyOnDeath": true,
-       "destroyDelay": 0.0,
-       "debugHealth": false
+       "destroyDelay": 0.0
       },
       {
        "type": "Experience",
@@ -1117,35 +1116,28 @@
        "currentLevel": 1,
        "baseExperienceRequired": 100.0,
        "experienceMultiplier": 1.2000000476837159,
-       "debugPickup": false,
        "debugDrawRange": false
       },
       {
-       "type": "Weapon",
-       "fireRate": 4.0,
-       "range": 15.0,
-       "damage": 25.0,
-       "projectile": {
-        "uid": "1358a16d-f4d6-7441-b828-c740325db14b"
+       "type": "ExampleAbility",
+       "projectilePrefab": {
+        "uid": "67f63796-4d3a-8f45-8eff-a40b0ed6302b"
        },
-       "projectileContainer": {
-        "flags": 2,
-        "id": 4294967295
-       },
-       "projectileForce": 25.0,
-       "projectileLifetime": 5.0,
-       "spread": 0.10000000149011612,
-       "projectileCount": 1,
-       "requireLineOfSight": false,
-       "debugWeapon": false,
-       "debugDrawRanges": false
+       "damage": 25,
+       "maxRange": 10.0,
+       "projectileSpeed": 50.0,
+       "spawnOffset": {
+        "x": 0.0,
+        "y": 1.0,
+        "z": 0.0
+       }
       }
      ]
     }
    }
   },
   {
-   "id": 2097170,
+   "id": 71303186,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1184,7 +1176,7 @@
       }
      },
      "parent": {
-      "id": 2097169
+      "id": 71303185
      },
      "children": [],
      "active": true
@@ -1225,7 +1217,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 2097172,
+   "id": 71303188,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1281,7 +1273,6 @@
        "minSpawnDistance": 20.0,
        "maxSpawnDistance": 40.0,
        "spawnYOffset": 0.0,
-       "debugSpawning": false,
        "enemy": {
         "uid": "68769e46-ff2a-6440-8ab4-a3564a023ff8"
        },
@@ -1302,17 +1293,12 @@
        "maxSpeedScaling": 3.0
       },
       {
-       "type": "EffectSystem",
-       "debugEffects": false
-      },
-      {
        "type": "LootSystem",
        "experienceOrbPrefab": {
         "uid": "ee3e6288-793f-d24e-9564-0d397931f5a6"
        },
        "dropSpreadRadius": 2.0,
        "dropHeight": 0.5,
-       "debugLoot": false,
        "orbSpeedMultiplier": 1.5
       },
       {
@@ -1324,8 +1310,7 @@
        "defaultTextSize": 1.0,
        "enableBillboard": true,
        "maxActiveDamageNumbers": 50,
-       "enableAutoCleanup": true,
-       "debugDamageSystem": false
+       "enableAutoCleanup": true
       }
      ]
     }
@@ -1335,7 +1320,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 2097174,
+   "id": 71303190,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1378,7 +1363,7 @@
      },
      "children": [
       {
-       "id": 2097175
+       "id": 71303191
       }
      ],
      "active": true
@@ -1386,7 +1371,7 @@
    }
   },
   {
-   "id": 2097175,
+   "id": 71303191,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1425,7 +1410,7 @@
       }
      },
      "parent": {
-      "id": 2097174
+      "id": 71303190
      },
      "children": [],
      "active": true
@@ -1451,7 +1436,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 2097177,
+   "id": 71303193,
    "components": {
     "has_tag_component": true,
     "tag_component": {

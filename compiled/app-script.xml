@@ -10,6 +10,23 @@
              based on the components attached to the source and target entities.
              </summary>
             </member>
+        <member name="M:ContactSystem.FindClosestEnemies(QueryClosestTarget,System.Collections.Generic.List{Unravel.Core.Entity})">
+             <summary>
+             Find multiple enemies within range, sorted by distance with non-visited prioritized over visited.
+             Optimized for frequent calls - uses static collections to avoid allocations.
+             </summary>
+             <param name="query">Query parameters including source, range, and visited targets.</param>
+             <param name="results">Output list that will be populated with sorted entities.</param>
+             <returns>Number of entities found.</returns>
+            </member>
+        <member name="M:ContactSystem.FindClosestEnemies(QueryClosestTarget)">
+             <summary>
+             Find multiple enemies within range, sorted by distance with non-visited prioritized over visited.
+             Convenience method that allocates and returns an array (use sparingly for performance).
+             </summary>
+             <param name="query">Query parameters including source, range, and visited targets.</param>
+             <returns>Array of entities sorted by priority (non-visited first) then by distance.</returns>
+            </member>
         <member name="M:ContactSystem.FindClosestEnemy(QueryClosestTarget)">
              <summary>
              Find the closest enemy within range using SphereOverlap.
@@ -19,7 +36,7 @@
         <member name="M:ContactSystem.ApplyContact(Unravel.Core.Entity,Unravel.Core.Entity)">
              <summary>
              Apply contact effects between a source entity and target entity.
-             Checks components on both entities to determine what should happen.
+             Processes effects in order and determines if the projectile should be destroyed.
              </summary>
              <param name="source">The entity initiating contact (e.g., projectile, weapon).</param>
              <param name="target">The entity being contacted (e.g., enemy, player).</param>
@@ -50,7 +67,7 @@
              </summary>
              <returns>List containing the closest enemy, or empty list if none found.</returns>
             </member>
-        <member name="M:ExampleAbility.OnTriggerAbility(System.Collections.Generic.List{Unravel.Core.Entity})">
+        <member name="M:ExampleAbility.OnTriggerAbility(Unravel.Core.Entity[])">
              <summary>
              Execute the ability by creating a projectile aimed at the target.
              </summary>
@@ -108,7 +125,7 @@
              </summary>
              <returns>List of entities that this ability should affect.</returns>
             </member>
-        <member name="M:Ability.OnTriggerAbility(System.Collections.Generic.List{Unravel.Core.Entity})">
+        <member name="M:Ability.OnTriggerAbility(Unravel.Core.Entity[])">
              <summary>
              Virtual method for derived classes to implement the actual ability effect.
              </summary>
@@ -2167,6 +2184,12 @@
         <member name="M:SettingsMenu.ApplyAllSettings">
              <summary>
              Applies all current settings to the game systems.
+             </summary>
+            </member>
+        <member name="T:AutoDestroyComponent">
+             <summary>
+             Component that defines physical damage properties for entities.
+             Used by the ContactSystem to determine damage amounts.
              </summary>
             </member>
     </members>

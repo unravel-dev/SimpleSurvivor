@@ -2,7 +2,7 @@
  "entities": [
   {
    "prefab_uid": "b46d51d1-fea8-b14f-9a3a-0347104fe3a3",
-   "id": 5242881,
+   "id": 3145731,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -23,8 +23,8 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": 5.188956260681152,
-       "y": 1.724479079246521,
+       "x": 0.0,
+       "y": 0.0,
        "z": 0.0
       },
       "rotation": {
@@ -34,9 +34,9 @@
        "w": 1.0
       },
       "scale": {
-       "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
+       "x": 0.6055000424385071,
+       "y": 0.6055000424385071,
+       "z": 0.6055000424385071
       },
       "skew": {
        "x": 0.0,
@@ -189,13 +189,15 @@
        "type": "ExperienceOrb",
        "experienceValue": 10.0,
        "lifetime": 30.0,
-       "attractionSpeed": 15.0,
+       "baseAttractionSpeed": 15.0,
+       "playerSpeedMultiplier": 1.5,
+       "minimumAttractionSpeed": 12.0,
+       "maximumAttractionSpeed": 50.0,
        "attractionAcceleration": 30.0,
        "collectDistance": 1.0,
        "enableFloating": true,
        "floatSpeed": 2.0,
-       "floatAmplitude": 0.30000001192092898,
-       "debugOrb": false
+       "floatAmplitude": 0.30000001192092898
       }
      ]
     }

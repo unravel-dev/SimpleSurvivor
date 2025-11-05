@@ -46,46 +46,39 @@ public class ExampleAbility : Ability
     /// Gather targets for this ability. Finds all enemies within range and returns the closest one.
     /// </summary>
     /// <returns>List containing the closest enemy, or empty list if none found.</returns>
-    protected override List<Entity> GatherTargets()
+    protected override Entity[] GatherTargets()
     {
-        List<Entity> targets = new List<Entity>();
-
         QueryClosestTarget query = new QueryClosestTarget();
         query.source = owner;
         query.maxRange = maxRange;
-        Entity closestEnemy = ContactSystem.FindClosestEnemy(query);
-
-        // Add closest enemy to targets if found
-        if (closestEnemy)
-        {
-            targets.Add(closestEnemy);
-        }
-
-        return targets;
+        return ContactSystem.FindClosestEnemies(query);
     }
     
     /// <summary>
     /// Execute the ability by creating a projectile aimed at the target.
     /// </summary>
     /// <param name="targets">List of target entities (should contain one enemy).</param>
-    protected override void OnTriggerAbility(List<Entity> targets)
-    {
-        if (targets == null || targets.Count == 0)
-        {
-            return;
-        }
-                
+    protected override void OnTriggerAbility(Entity[] targets)
+    {                
         if (projectilePrefab == null)
         {
             Log.Error("ExampleAbility: No projectile prefab assigned!");
             return;
         }
+
+        int maxTargets = 2;
+        int i = 0;
         foreach (var target in targets)
         {
-        
+
+            if (i >= maxTargets)
+            {
+                break;
+            }
+            i++;
             // Calculate spawn position
             Vector3 sourcePosition = transformComponent.position + spawnOffset;
-            
+
             // Calculate direction to target
             Vector3 targetPosition = target.transform.position + spawnOffset;
             Vector3 direction = (targetPosition - sourcePosition).normalized;
@@ -101,7 +94,7 @@ public class ExampleAbility : Ability
 
             projectileEntity.transform.position = sourcePosition;
             projectileEntity.transform.forward = direction;
-                    
+
             // Configure the projectile
 
             // If no Projectile component, add one
@@ -111,6 +104,8 @@ public class ExampleAbility : Ability
                 projectileComponent.speed = projectileSpeed;
                 projectileComponent.SetSource(owner);
             }
+
+            projectileEntity.AddComponent<AutoDestroyComponent>();
 
             // var pierceComponent = projectileEntity.AddComponent<PierceComponent>();
             // if (pierceComponent != null)
