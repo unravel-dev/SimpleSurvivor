@@ -111,7 +111,10 @@ public static class UpgradeCardGenerator
                 CooldownReductionUpgrade.Generate(UpgradeRarity.Normal)),
                 
             () => new UpgradeCard("Spark", UpgradeRarity.Normal, 
-                ChainUpgrade.Generate(UpgradeRarity.Normal))
+                ChainUpgrade.Generate(UpgradeRarity.Normal)),
+                
+            () => new UpgradeCard("Double Shot", UpgradeRarity.Normal, 
+                ProjectileCountUpgrade.Generate(UpgradeRarity.Normal))
         };
     }
     
@@ -129,6 +132,9 @@ public static class UpgradeCardGenerator
                 
             () => new UpgradeCard("Lightning Arc", UpgradeRarity.Common, 
                 ChainUpgrade.Generate(UpgradeRarity.Common)),
+                
+            () => new UpgradeCard("Multi-Shot", UpgradeRarity.Common, 
+                ProjectileCountUpgrade.Generate(UpgradeRarity.Common)),
                 
             // Dual upgrade cards
             () => new UpgradeCard("Combat Training", UpgradeRarity.Common, 
@@ -150,6 +156,13 @@ public static class UpgradeCardGenerator
                 {
                     PierceUpgrade.Generate(UpgradeRarity.Common),
                     DamageUpgrade.Generate(UpgradeRarity.Common)
+                }),
+                
+            () => new UpgradeCard("Barrage Master", UpgradeRarity.Common, 
+                new List<Upgrade>
+                {
+                    ProjectileCountUpgrade.Generate(UpgradeRarity.Common),
+                    CooldownReductionUpgrade.Generate(UpgradeRarity.Common)
                 })
         };
     }
@@ -193,6 +206,16 @@ public static class UpgradeCardGenerator
                 {
                     ChainUpgrade.Generate(UpgradeRarity.Epic),
                     CooldownReductionUpgrade.Generate(UpgradeRarity.Epic)
+                }),
+                
+            () => new UpgradeCard("Projectile Storm", UpgradeRarity.Epic, 
+                ProjectileCountUpgrade.Generate(UpgradeRarity.Epic)),
+                
+            () => new UpgradeCard("Artillery Barrage", UpgradeRarity.Epic, 
+                new List<Upgrade>
+                {
+                    ProjectileCountUpgrade.Generate(UpgradeRarity.Epic),
+                    DamageUpgrade.Generate(UpgradeRarity.Epic)
                 })
         };
     }
@@ -235,6 +258,20 @@ public static class UpgradeCardGenerator
                 {
                     DamageUpgrade.Generate(UpgradeRarity.Legendary),
                     MaxHealthUpgrade.Generate(UpgradeRarity.Legendary)
+                }),
+                
+            () => new UpgradeCard("Omnislash Master", UpgradeRarity.Legendary, 
+                new List<Upgrade>
+                {
+                    ProjectileCountUpgrade.Generate(UpgradeRarity.Legendary),
+                    PierceUpgrade.Generate(UpgradeRarity.Legendary)
+                }),
+                
+            () => new UpgradeCard("Divine Arsenal", UpgradeRarity.Legendary, 
+                new List<Upgrade>
+                {
+                    ProjectileCountUpgrade.Generate(UpgradeRarity.Legendary),
+                    ChainUpgrade.Generate(UpgradeRarity.Legendary)
                 })
         };
     }

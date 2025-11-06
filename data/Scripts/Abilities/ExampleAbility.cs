@@ -24,6 +24,10 @@ public class ExampleAbility : Ability
     public float projectileSpeed = 15.0f;
 
 
+    [Tooltip("Number of projectiles to fire")]
+    public int projectileCount = 1;
+
+
     [Tooltip("Spawn offset from the caster")]
     public Vector3 spawnOffset = Vector3.up;
     
@@ -66,12 +70,12 @@ public class ExampleAbility : Ability
             return;
         }
 
-        int maxTargets = 6;
+        int maxProjectiles = UpgradeSystem.ApplyProjectileCountUpgrade(projectileCount);
         int i = 0;
         foreach (var target in targets)
         {
 
-            if (i >= maxTargets)
+            if (i >= maxProjectiles)
             {
                 break;
             }
@@ -110,13 +114,13 @@ public class ExampleAbility : Ability
             var pierceComponent = projectileEntity.AddComponent<PierceComponent>();
             if (pierceComponent != null)
             {
-                pierceComponent.pierceCount = 0;
+                pierceComponent.pierceCount = UpgradeSystem.ApplyPierceUpgrade(0);
             }
 
             var chainComponent = projectileEntity.AddComponent<ChainComponent>();
             if (chainComponent != null)
             {
-                chainComponent.chainCount = 5;
+                chainComponent.chainCount = UpgradeSystem.ApplyChainUpgrade(0);
                 chainComponent.chainRange = maxRange;
                 chainComponent.chainOffset = spawnOffset;
             }

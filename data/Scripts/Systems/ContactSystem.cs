@@ -208,7 +208,6 @@ public static class ContactSystem
     public static void ApplyContact(Entity source, Entity target)
     {
 
-        
         bool shouldExtendLifetime = false;
         
         // Execute effects in order until one succeeds
@@ -345,7 +344,7 @@ public static class ContactSystem
         }
 
         // Check exhaust condition
-        if (pierceComponent.pierceCount < 0)
+        if (pierceComponent.pierceCount <= 0)
         {
             return ContactResult.Exhausted;
         }

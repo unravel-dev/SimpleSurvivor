@@ -2485,5 +2485,23 @@
              Applies all current settings to the game systems.
              </summary>
             </member>
+        <member name="T:ProjectileCountUpgrade">
+             <summary>
+             Upgrade that increases the number of projectiles fired by abilities
+             </summary>
+            </member>
+        <member name="M:ProjectileCountUpgrade.Generate(UpgradeRarity)">
+             <summary>
+             Generates a random ProjectileCountUpgrade based on rarity
+             </summary>
+             <param name="rarity">The rarity level determining the upgrade power</param>
+             <returns>A new ProjectileCountUpgrade with random values</returns>
+            </member>
+        <member name="M:ProjectileCountUpgrade.GetProjectileCount">
+             <summary>
+             Gets the additional projectile count
+             </summary>
+             <returns>Number of additional projectiles to fire</returns>
+            </member>
     </members>
 </doc>

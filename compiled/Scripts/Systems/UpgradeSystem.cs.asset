@@ -185,6 +185,18 @@ public static class UpgradeSystem
         return Mathf.RoundToInt((float)baseDamage * (1.0f + damageMultiplier / 100.0f));
     }
 
+    public static int ApplyProjectileCountUpgrade(int baseProjectileCount)
+    {
+        int newProjectileCount = baseProjectileCount;
+        foreach (var upgrade in activeUpgrades)
+        {
+            if (upgrade is ProjectileCountUpgrade projectileCountUpgrade)
+            {
+                newProjectileCount += projectileCountUpgrade.ProjectileCount;
+            }
+        }
+        return newProjectileCount;
+    }
     public static int ApplyPierceUpgrade(int basePierceCount)
     {
         int newPierceCount = basePierceCount;
