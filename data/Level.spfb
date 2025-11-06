@@ -2,7 +2,7 @@
  "entities_count": 9,
  "entities": [
   {
-   "id": 73400321,
+   "id": 2097153,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -189,7 +189,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 73400323,
+   "id": 2097155,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -277,7 +277,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 73400325,
+   "id": 2097157,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -346,7 +346,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 73400327,
+   "id": 2097159,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -422,19 +422,19 @@
      },
      "children": [
       {
-       "id": 73400328
+       "id": 2097160
       },
       {
-       "id": 73400329
+       "id": 2097161
       },
       {
-       "id": 73400330
+       "id": 2097162
       },
       {
-       "id": 71303179
+       "id": 11
       },
       {
-       "id": 71303180
+       "id": 12
       }
      ],
      "active": true
@@ -498,7 +498,7 @@
    }
   },
   {
-   "id": 73400328,
+   "id": 2097160,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -541,7 +541,7 @@
       }
      },
      "parent": {
-      "id": 73400327
+      "id": 2097159
      },
      "children": [],
      "active": false
@@ -564,7 +564,7 @@
    }
   },
   {
-   "id": 73400329,
+   "id": 2097161,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -607,7 +607,7 @@
       }
      },
      "parent": {
-      "id": 73400327
+      "id": 2097159
      },
      "children": [],
      "active": false
@@ -630,7 +630,7 @@
    }
   },
   {
-   "id": 73400330,
+   "id": 2097162,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -673,7 +673,7 @@
       }
      },
      "parent": {
-      "id": 73400327
+      "id": 2097159
      },
      "children": [],
      "active": false
@@ -696,7 +696,7 @@
    }
   },
   {
-   "id": 71303179,
+   "id": 11,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -735,7 +735,7 @@
       }
      },
      "parent": {
-      "id": 73400327
+      "id": 2097159
      },
      "children": [],
      "active": false
@@ -758,7 +758,7 @@
    }
   },
   {
-   "id": 71303180,
+   "id": 12,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -797,7 +797,7 @@
       }
      },
      "parent": {
-      "id": 73400327
+      "id": 2097159
      },
      "children": [],
      "active": true
@@ -823,7 +823,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 71303182,
+   "id": 14,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -866,7 +866,7 @@
      },
      "children": [
       {
-       "id": 71303183
+       "id": 15
       }
      ],
      "active": true
@@ -874,7 +874,7 @@
    }
   },
   {
-   "id": 71303183,
+   "id": 15,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -913,7 +913,7 @@
       }
      },
      "parent": {
-      "id": 71303182
+      "id": 14
      },
      "children": [],
      "active": true
@@ -996,7 +996,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 71303185,
+   "id": 17,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1015,7 +1015,7 @@
       "position": {
        "x": 4.670094995162799e-7,
        "y": -0.000004600723968906095,
-       "z": -2.678315240700613e-7
+       "z": -2.6782711870509959e-7
       },
       "rotation": {
        "x": -1.1920938902676426e-7,
@@ -1031,7 +1031,7 @@
       "skew": {
        "x": -5.960487214906607e-8,
        "y": -2.980337043823056e-8,
-       "z": -0.0000058423038353794258
+       "z": -0.000005842374321218813
       }
      },
      "parent": {
@@ -1039,7 +1039,7 @@
      },
      "children": [
       {
-       "id": 71303186
+       "id": 18
       }
      ],
      "active": true
@@ -1099,8 +1099,8 @@
       },
       {
        "type": "Health",
-       "maxHealth": 100.0,
-       "currentHealth": 100.0,
+       "maxHealth": 100,
+       "currentHealth": 100,
        "allowOverheal": false,
        "destroyOnDeath": true,
        "destroyDelay": 0.0
@@ -1137,7 +1137,7 @@
    }
   },
   {
-   "id": 71303186,
+   "id": 18,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1154,14 +1154,14 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": -5.066092967354052e-8,
-       "y": 1.4999998807907105,
-       "z": 4.0578512994216e-8
+       "x": -5.093636445963057e-8,
+       "y": 1.4999823570251465,
+       "z": 4.0574349213784447e-8
       },
       "rotation": {
        "x": 0.0,
-       "y": 0.0,
-       "z": -4.440889980918258e-16,
+       "y": -1.8490899618380518e-27,
+       "z": -8.881782079418884e-16,
        "w": 1.0
       },
       "scale": {
@@ -1170,13 +1170,13 @@
        "z": 1.0
       },
       "skew": {
-       "x": 4.263256414560601e-14,
-       "y": -7.993551567192503e-15,
-       "z": -4.470302883419208e-8
+       "x": 4.163780431554187e-12,
+       "y": -1.8648700883224304e-17,
+       "z": -1.3369749751745986e-10
       }
      },
      "parent": {
-      "id": 71303185
+      "id": 17
      },
      "children": [],
      "active": true
@@ -1217,7 +1217,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 71303188,
+   "id": 20,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1320,7 +1320,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 71303190,
+   "id": 22,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1363,7 +1363,7 @@
      },
      "children": [
       {
-       "id": 71303191
+       "id": 23
       }
      ],
      "active": true
@@ -1371,7 +1371,7 @@
    }
   },
   {
-   "id": 71303191,
+   "id": 23,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1410,7 +1410,7 @@
       }
      },
      "parent": {
-      "id": 71303190
+      "id": 22
      },
      "children": [],
      "active": true
@@ -1436,7 +1436,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 71303193,
+   "id": 25,
    "components": {
     "has_tag_component": true,
     "tag_component": {

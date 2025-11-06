@@ -18,30 +18,33 @@
       <!-- Card Selection Area -->
       <nav class="menu-nav">
         <div class="card-container">
-          <div id="card1" class="upgrade-card">
+          <div id="card1" class="upgrade-card rarity-normal">
             <div class="card-header">
               <h3 id="card1_title" class="card-title">Upgrade 1</h3>
+              <div id="card1_rarity" class="card-rarity">Normal</div>
             </div>
             <div class="card-body">
-              <p id="card1_description" class="card-description">Description for upgrade 1</p>
+              <div id="card1_description" class="card-description">Description for upgrade 1</div>
             </div>
           </div>
           
-          <div id="card2" class="upgrade-card">
+          <div id="card2" class="upgrade-card rarity-normal">
             <div class="card-header">
               <h3 id="card2_title" class="card-title">Upgrade 2</h3>
+              <div id="card2_rarity" class="card-rarity">Normal</div>
             </div>
             <div class="card-body">
-              <p id="card2_description" class="card-description">Description for upgrade 2</p>
+              <div id="card2_description" class="card-description">Description for upgrade 2</div>
             </div>
           </div>
           
-          <div id="card3" class="upgrade-card">
+          <div id="card3" class="upgrade-card rarity-normal">
             <div class="card-header">
               <h3 id="card3_title" class="card-title">Upgrade 3</h3>
+              <div id="card3_rarity" class="card-rarity">Normal</div>
             </div>
             <div class="card-body">
-              <p id="card3_description" class="card-description">Description for upgrade 3</p>
+              <div id="card3_description" class="card-description">Description for upgrade 3</div>
             </div>
           </div>
         </div>

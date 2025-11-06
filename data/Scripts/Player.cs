@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unravel.Core;
 
@@ -32,6 +33,9 @@ public class Player : ScriptComponent
     private Vector3 inputDirection;
     private Vector3 currentVelocity;
     private Vector3 targetVelocity;
+    
+    // Level up upgrade cards
+    private List<UpgradeCard> currentUpgradeOptions;
     
     /// <summary>
     /// Called when the script is created. Initialize component references.
@@ -334,7 +338,7 @@ public override void OnFixedUpdate()
     /// Called when the player takes damage.
     /// </summary>
     /// <param name="damageAmount">Amount of damage taken.</param>
-    private void OnPlayerDamageTaken(float damageAmount)
+    private void OnPlayerDamageTaken(int damageAmount)
     {
         Log.Info($"Player took {damageAmount} damage - Health: {Health.GetCurrentHealth()}/{Health.GetMaxHealth()}");
         
@@ -350,7 +354,7 @@ public override void OnFixedUpdate()
     /// Called when the player is healed.
     /// </summary>
     /// <param name="healAmount">Amount healed.</param>
-    private void OnPlayerHealed(float healAmount)
+    private void OnPlayerHealed(int healAmount)
     {
         Log.Info($"Player healed for {healAmount} - Health: {Health.GetCurrentHealth()}/{Health.GetMaxHealth()}");
         
@@ -415,7 +419,7 @@ public override void OnFixedUpdate()
     /// </summary>
     /// <param name="healAmount">Amount to heal.</param>
     /// <returns>Actual amount healed.</returns>
-    public float HealPlayer(float healAmount)
+    public int HealPlayer(int healAmount)
     {
         if (Health == null)
             return 0;
@@ -429,7 +433,7 @@ public override void OnFixedUpdate()
     /// <param name="damage">Amount of damage to deal.</param>
     /// <param name="source">Source of the damage.</param>
     /// <returns>True if the player died from this damage.</returns>
-    public bool DamagePlayer(float damage, Entity source)
+    public bool DamagePlayer(int damage, Entity source)
     {
         if (Health == null)
             return false;
@@ -495,205 +499,58 @@ public override void OnFixedUpdate()
             return;
         }
         
-        // Generate upgrade options based on the level
-        var upgradeOptions = GenerateUpgradeOptions(level);
+        // Generate upgrade card options using the new system
+        currentUpgradeOptions = UpgradeCardGenerator.GenerateCardSelection(3);
         
-        levelUpUIScript.ShowLevelUpMenu(upgradeOptions.option1, upgradeOptions.option2, upgradeOptions.option3);
+        // Pass cards directly to the UI
+        levelUpUIScript.ShowLevelUpMenu(currentUpgradeOptions[0], currentUpgradeOptions[1], currentUpgradeOptions[2]);
     }
     
     /// <summary>
-    /// Generate three upgrade options for the given level.
-    /// This is a simple example - you could make this much more sophisticated.
+    /// Get the color scheme for a given upgrade rarity (for UI reference).
     /// </summary>
-    /// <param name="level">The level the player just reached</param>
-    /// <returns>Three upgrade options</returns>
-    private (string option1, string option2, string option3) GenerateUpgradeOptions(int level)
+    /// <param name="rarity">The upgrade rarity</param>
+    /// <returns>Color description string</returns>
+    public static string GetRarityColorScheme(UpgradeRarity rarity)
     {
-        // Simple example upgrade options - you can expand this significantly
-        string[] healthUpgrades = {
-            "Health Boost|Increase maximum health by 25%",
-            "Regeneration|Slowly regenerate health over time",
-            "Damage Resistance|Reduce incoming damage by 10%"
-        };
-        
-        string[] speedUpgrades = {
-            "Speed Boost|Increase movement speed by 20%",
-            "Dash Ability|Gain a short-range dash ability",
-            "Agility|Increase acceleration and deceleration"
-        };
-        
-        string[] weaponUpgrades = {
-            "Damage Boost|Increase weapon damage by 30%",
-            "Fire Rate|Increase weapon fire rate by 25%",
-            "Multi-Shot|Fire additional projectiles"
-        };
-        
-        // Randomly select one upgrade from each category
-        string option1 = healthUpgrades[Random.Range(0, healthUpgrades.Length)];
-        string option2 = speedUpgrades[Random.Range(0, speedUpgrades.Length)];
-        string option3 = weaponUpgrades[Random.Range(0, weaponUpgrades.Length)];
-        
-        return (option1, option2, option3);
+        switch (rarity)
+        {
+            case UpgradeRarity.Normal:
+                return "White-grayish";
+            case UpgradeRarity.Common:
+                return "Blue-ish";
+            case UpgradeRarity.Epic:
+                return "Purple-ish";
+            case UpgradeRarity.Legendary:
+                return "Gold-orange";
+            default:
+                return "White-grayish";
+        }
     }
     
     /// <summary>
     /// Called when the player selects an upgrade from the level-up menu.
     /// </summary>
-    /// <param name="cardIndex">Index of the selected card (0, 1, or 2)</param>
-    /// <param name="upgradeText">The full upgrade text that was selected</param>
-    private void OnUpgradeSelected(int cardIndex, string upgradeText)
+    /// <param name="selectedCard">The selected upgrade card</param>
+    private void OnUpgradeSelected(UpgradeCard selectedCard)
     {
-        Log.Info($"Player: Applying selected upgrade {cardIndex + 1}: {upgradeText}");
-        
-        // Parse the upgrade text to get the title
-        var parts = upgradeText.Split('|');
-        string upgradeTitle = parts.Length > 0 ? parts[0].Trim() : upgradeText;
-        
-        // Apply the upgrade based on the title
-        ApplyUpgrade(upgradeTitle, cardIndex);
-    }
-    
-    /// <summary>
-    /// Apply the selected upgrade to the player.
-    /// </summary>
-    /// <param name="upgradeTitle">The title of the upgrade to apply</param>
-    /// <param name="cardIndex">The index of the card that was selected</param>
-    private void ApplyUpgrade(string upgradeTitle, int cardIndex)
-    {
-        Log.Info($"Player: Applying upgrade '{upgradeTitle}'");
-        
-        // Apply upgrades based on the title
-        switch (upgradeTitle.ToLower())
+        if (selectedCard == null)
         {
-            // Health upgrades
-            case "health boost":
-                ApplyHealthBoost();
-                break;
-            case "regeneration":
-                ApplyRegeneration();
-                break;
-            case "damage resistance":
-                ApplyDamageResistance();
-                break;
-                
-            // Speed upgrades
-            case "speed boost":
-                ApplySpeedBoost();
-                break;
-            case "dash ability":
-                ApplyDashAbility();
-                break;
-            case "agility":
-                ApplyAgility();
-                break;
-                
-            // Weapon upgrades
-            case "damage boost":
-                ApplyDamageBoost();
-                break;
-            case "fire rate":
-                ApplyFireRate();
-                break;
-            case "multi-shot":
-                ApplyMultiShot();
-                break;
-                
-            default:
-                Log.Warning($"Player: Unknown upgrade '{upgradeTitle}' - no implementation found");
-                break;
+            Log.Error("Player: Selected card is null");
+            return;
         }
-    }
-    
-    // ========== UPGRADE IMPLEMENTATIONS ==========
-    
-    /// <summary>
-    /// Apply Health Boost upgrade - increase maximum health by 25%.
-    /// </summary>
-    private void ApplyHealthBoost()
-    {
-        if (Health != null)
-        {
-            float currentMaxHealth = Health.GetMaxHealth();
-            float newMaxHealth = currentMaxHealth * 1.25f;
-            Health.SetMaxHealth(newMaxHealth);
-            Health.RestoreToFullHealth(); // Also heal to full
-            Log.Info($"Player: Health Boost applied - Max health increased from {currentMaxHealth} to {newMaxHealth}");
-        }
-    }
-    
-    /// <summary>
-    /// Apply Regeneration upgrade - enable health regeneration over time.
-    /// </summary>
-    private void ApplyRegeneration()
-    {
-        // This would require adding a regeneration system to the Health component
-        // For now, just log the upgrade
-        Log.Info("Player: Regeneration applied - Health will regenerate over time (not implemented yet)");
-    }
-    
-    /// <summary>
-    /// Apply Damage Resistance upgrade - reduce incoming damage by 10%.
-    /// </summary>
-    private void ApplyDamageResistance()
-    {
-        // This would require modifying the Health component to support damage reduction
-        // For now, just log the upgrade
-        Log.Info("Player: Damage Resistance applied - Incoming damage reduced by 10% (not implemented yet)");
-    }
-    
-    /// <summary>
-    /// Apply Speed Boost upgrade - increase movement speed by 20%.
-    /// </summary>
-    private void ApplySpeedBoost()
-    {
-        maxSpeed *= 1.2f;
-        Log.Info($"Player: Speed Boost applied - Max speed increased to {maxSpeed}");
-    }
-    
-    /// <summary>
-    /// Apply Dash Ability upgrade - gain a short-range dash ability.
-    /// </summary>
-    private void ApplyDashAbility()
-    {
-        // This would require implementing a dash system
-        // For now, just log the upgrade
-        Log.Info("Player: Dash Ability applied - Dash ability unlocked (not implemented yet)");
-    }
-    
-    /// <summary>
-    /// Apply Agility upgrade - increase acceleration and deceleration.
-    /// </summary>
-    private void ApplyAgility()
-    {
-        maxAcceleration *= 1.3f;
-        maxDeceleration *= 1.3f;
-        Log.Info($"Player: Agility applied - Acceleration: {maxAcceleration}, Deceleration: {maxDeceleration}");
-    }
-    
-    /// <summary>
-    /// Apply Damage Boost upgrade - increase weapon damage by 30%.
-    /// </summary>
-    private void ApplyDamageBoost()
-    {
         
-        Log.Info($"Player: Damage Boost applied - All weapon damage increased by 30%");
+        Log.Info($"Player: Selected card '{selectedCard.Name}' with {selectedCard.Upgrades.Count} upgrades");
+        
+        // Apply all upgrades from the selected card
+        selectedCard.ApplyUpgrades();
+        
+        // Clear the current options
+        currentUpgradeOptions = null;
+        
+        Log.Info($"Player: Successfully applied upgrades from card '{selectedCard.Name}'");
     }
     
-    /// <summary>
-    /// Apply Fire Rate upgrade - increase weapon fire rate by 25%.
-    /// </summary>
-    private void ApplyFireRate()
-    {       
-        Log.Info($"Player: Fire Rate applied - All weapon fire rate increased by 25%");
-    }
-    
-    /// <summary>
-    /// Apply Multi-Shot upgrade - fire additional projectiles.
-    /// </summary>
-    private void ApplyMultiShot()
-    {
-        Log.Info($"Player: Multi-Shot applied - All weapons now fire +1 additional projectile");
-    }
 
     /// <summary>
     /// Called when the player's experience changes.

@@ -59,6 +59,15 @@
   letter-spacing: 1dp;
 }
 
+.card-rarity {
+  font-size: 12dp;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5dp;
+  margin-top: 4dp;
+  opacity: 0.8;
+}
+
 /* ---------- Card Body ---------- */
 .card-body {
   flex: 1;
@@ -74,6 +83,7 @@
   color: #e9eef3;
   margin: 0;
   opacity: 0.9;
+  white-space: pre-line;
 }
 
 /* ---------- Card Animations ---------- */
@@ -87,6 +97,116 @@
 
 .upgrade-card:nth-child(3) {
   animation: 0.6s 0.6s cubic-out fade-in-up both;
+}
+
+/* ---------- Rarity-Based Styling ---------- */
+
+/* Normal Rarity - White-grayish */
+.upgrade-card.rarity-normal {
+  background-color: #1a2332;
+  border-color: #adb5bd;
+}
+
+.upgrade-card.rarity-normal:hover {
+  border-color: #dee2e6;
+  background-color: #1f2937;
+}
+
+.upgrade-card.rarity-normal .card-title {
+  color: #e9ecef;
+}
+
+.upgrade-card.rarity-normal .card-rarity {
+  color: #adb5bd;
+}
+
+.upgrade-card.rarity-normal .card-header {
+  border-bottom-color: #495057;
+}
+
+.upgrade-card.rarity-normal .card-description {
+  color: #ced4da;
+}
+
+/* Common Rarity - Blue-ish */
+.upgrade-card.rarity-common {
+  background-color: #1a2332;
+  border-color: #2196f3;
+}
+
+.upgrade-card.rarity-common:hover {
+  border-color: #42a5f5;
+  background-color: #1f2937;
+}
+
+.upgrade-card.rarity-common .card-title {
+  color: #64b5f6;
+}
+
+.upgrade-card.rarity-common .card-rarity {
+  color: #2196f3;
+}
+
+.upgrade-card.rarity-common .card-header {
+  border-bottom-color: #1976d2;
+}
+
+.upgrade-card.rarity-common .card-description {
+  color: #bbdefb;
+}
+
+/* Epic Rarity - Purple-ish */
+.upgrade-card.rarity-epic {
+  background-color: #1a2332;
+  border-color: #9c27b0;
+}
+
+.upgrade-card.rarity-epic:hover {
+  border-color: #ba68c8;
+  background-color: #1f2937;
+}
+
+.upgrade-card.rarity-epic .card-title {
+  color: #ce93d8;
+}
+
+.upgrade-card.rarity-epic .card-rarity {
+  color: #ab47bc;
+}
+
+.upgrade-card.rarity-epic .card-header {
+  border-bottom-color: #7b1fa2;
+}
+
+.upgrade-card.rarity-epic .card-description {
+  color: #e1bee7;
+}
+
+/* Legendary Rarity - Gold-orange */
+.upgrade-card.rarity-legendary {
+  background-color: #1a2332;
+  border-color: #ff9800;
+}
+
+.upgrade-card.rarity-legendary:hover {
+  border-color: #ffb74d;
+  background-color: #1f2937;
+}
+
+.upgrade-card.rarity-legendary .card-title {
+  color: #ffcc02;
+}
+
+.upgrade-card.rarity-legendary .card-rarity {
+  color: #ffa726;
+}
+
+.upgrade-card.rarity-legendary .card-header {
+  border-bottom-color: #f57c00;
+}
+
+.upgrade-card.rarity-legendary .card-description {
+  color: #ffe082;
 }
 
 /* ---------- Light Theme Overrides ---------- */

@@ -432,8 +432,8 @@ public class BasicLevelDirector : ScriptComponent
         var healthComponent = enemy.GetComponent<Health>();
         if (healthComponent != null)
         {
-            float originalMaxHealth = healthComponent.GetMaxHealth();
-            float scaledMaxHealth = originalMaxHealth * healthMultiplier;
+            int originalMaxHealth = healthComponent.GetMaxHealth();
+            int scaledMaxHealth = Mathf.RoundToInt(originalMaxHealth * healthMultiplier);
             healthComponent.SetMaxHealth(scaledMaxHealth, true); // Adjust current health proportionally
         }
         

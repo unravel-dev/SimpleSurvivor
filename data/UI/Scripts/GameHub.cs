@@ -159,7 +159,7 @@ public class GameHub : ScriptComponent
     /// </summary>
     /// <param name="currentHealth">Current health value</param>
     /// <param name="maxHealth">Maximum health value</param>
-    private void OnPlayerHealthChanged(float currentHealth, float maxHealth)
+    private void OnPlayerHealthChanged(int currentHealth, int maxHealth)
     {
         UpdateHealthBar(currentHealth, maxHealth);
     }
@@ -219,18 +219,18 @@ public class GameHub : ScriptComponent
     /// </summary>
     /// <param name="currentHealth">Current health value</param>
     /// <param name="maxHealth">Maximum health value</param>
-    private void UpdateHealthBar(float currentHealth, float maxHealth)
+    private void UpdateHealthBar(int currentHealth, int maxHealth)
     {
         if (healthBar?.IsValid() != true || maxHealth <= 0)
             return;
             
-        float healthPercentage = currentHealth / maxHealth;
+        float healthPercentage = (float)currentHealth / (float)maxHealth;
         healthBar.SetAttribute("value", healthPercentage.ToString("F3"));
         
         // Update health value text
         if (healthValue?.IsValid() == true)
         {
-            string healthText = $"{(int)currentHealth}/{(int)maxHealth}";
+            string healthText = $"{currentHealth}/{maxHealth}";
             healthValue.InnerRml = healthText;
         }
         

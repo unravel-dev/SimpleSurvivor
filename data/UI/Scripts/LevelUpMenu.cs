@@ -17,19 +17,22 @@ public class LevelUpMenu : BaseMenu
     // Card text elements
     private UIElement card1Title;
     private UIElement card1Description;
+    private UIElement card1Rarity;
     private UIElement card2Title;
     private UIElement card2Description;
+    private UIElement card2Rarity;
     private UIElement card3Title;
     private UIElement card3Description;
+    private UIElement card3Rarity;
     
-    // Current upgrade options
-    private string[] upgradeOptions = new string[3];
+    // Current upgrade cards
+    private UpgradeCard[] upgradeCards = new UpgradeCard[3];
     
     // Events
-    public System.Action<int> OnCardSelected; // (cardIndex) - 0, 1, or 2
+    public System.Action<UpgradeCard> OnCardSelected; // (selectedCard)
     
     // Static event for global subscription (Player can subscribe to this)
-    public static System.Action<int, string> OnUpgradeSelected; // (cardIndex, upgradeText)
+    public static System.Action<UpgradeCard> OnUpgradeSelected; // (selectedCard)
     
     protected override string GetTitleElementId()
     {
@@ -49,10 +52,13 @@ public class LevelUpMenu : BaseMenu
         // Cache text elements
         card1Title = document.GetElementById("card1_title");
         card1Description = document.GetElementById("card1_description");
+        card1Rarity = document.GetElementById("card1_rarity");
         card2Title = document.GetElementById("card2_title");
         card2Description = document.GetElementById("card2_description");
+        card2Rarity = document.GetElementById("card2_rarity");
         card3Title = document.GetElementById("card3_title");
         card3Description = document.GetElementById("card3_description");
+        card3Rarity = document.GetElementById("card3_rarity");
     }
     
     protected override int CountValidElements()
@@ -60,9 +66,9 @@ public class LevelUpMenu : BaseMenu
         int count = base.CountValidElements();
         var elements = new UIElement[] { 
             card1, card2, card3,
-            card1Title, card1Description,
-            card2Title, card2Description,
-            card3Title, card3Description
+            card1Title, card1Description, card1Rarity,
+            card2Title, card2Description, card2Rarity,
+            card3Title, card3Description, card3Rarity
         };
         
         foreach (var element in elements)
@@ -103,24 +109,24 @@ public class LevelUpMenu : BaseMenu
     }
     
     /// <summary>
-    /// Set the upgrade options for the three cards.
+    /// Set the upgrade cards for the three card slots.
     /// </summary>
-    /// <param name="option1">Text for card 1</param>
-    /// <param name="option2">Text for card 2</param>
-    /// <param name="option3">Text for card 3</param>
-    public void SetUpgradeOptions(string option1, string option2, string option3)
+    /// <param name="card1">Upgrade card for slot 1</param>
+    /// <param name="card2">Upgrade card for slot 2</param>
+    /// <param name="card3">Upgrade card for slot 3</param>
+    public void SetUpgradeCards(UpgradeCard card1, UpgradeCard card2, UpgradeCard card3)
     {
-        upgradeOptions[0] = option1;
-        upgradeOptions[1] = option2;
-        upgradeOptions[2] = option3;
+        upgradeCards[0] = card1;
+        upgradeCards[1] = card2;
+        upgradeCards[2] = card3;
         
         // Ensure UI elements are cached before trying to update them
         EnsureInitialized();
         
-        // Update the UI text
-        UpdateCardText();
+        // Update the UI text and styling
+        UpdateCardDisplay();
         
-        Log.Info($"LevelUpMenu: Set upgrade options - [{option1}], [{option2}], [{option3}]");
+        Log.Info($"LevelUpMenu: Set upgrade cards - [{card1?.Name}], [{card2?.Name}], [{card3?.Name}]");
     }
     
     /// <summary>
@@ -166,75 +172,95 @@ public class LevelUpMenu : BaseMenu
     }
     
     /// <summary>
-    /// Update the card text elements with the current upgrade options.
+    /// Update the card display with the current upgrade cards.
     /// </summary>
-    private void UpdateCardText()
+    private void UpdateCardDisplay()
     {
         // Safety check: ensure we have valid elements before updating
         if (document == null)
         {
-            Log.Warning("LevelUpMenu: Cannot update card text - document not initialized");
+            Log.Warning("LevelUpMenu: Cannot update card display - document not initialized");
             return;
         }
         
-        // Parse and set card 1
-        if (card1Title != null && card1Description != null && !string.IsNullOrEmpty(upgradeOptions[0]))
+        // Update card 1
+        UpdateSingleCard(0, card1, card1Title, card1Description, card1Rarity, upgradeCards[0]);
+        
+        // Update card 2
+        UpdateSingleCard(1, card2, card2Title, card2Description, card2Rarity, upgradeCards[1]);
+        
+        // Update card 3
+        UpdateSingleCard(2, card3, card3Title, card3Description, card3Rarity, upgradeCards[2]);
+    }
+    
+    /// <summary>
+    /// Update a single card's display with the given upgrade card data.
+    /// </summary>
+    /// <param name="cardIndex">Index of the card (0, 1, or 2)</param>
+    /// <param name="cardElement">The card container element</param>
+    /// <param name="titleElement">The card title element</param>
+    /// <param name="descriptionElement">The card description element</param>
+    /// <param name="rarityElement">The card rarity element</param>
+    /// <param name="upgradeCard">The upgrade card data</param>
+    private void UpdateSingleCard(int cardIndex, UIElement cardElement, UIElement titleElement, UIElement descriptionElement, UIElement rarityElement, UpgradeCard upgradeCard)
+    {
+        if (upgradeCard == null)
         {
-            var parts = ParseUpgradeText(upgradeOptions[0]);
-            card1Title.InnerRml = (parts.title);
-            card1Description.InnerRml = (parts.description);
-        }
-        else if (!string.IsNullOrEmpty(upgradeOptions[0]))
-        {
-            Log.Warning("LevelUpMenu: Card 1 elements not found, cannot set text");
+            Log.Warning($"LevelUpMenu: Card {cardIndex + 1} is null, cannot update display");
+            return;
         }
         
-        // Parse and set card 2
-        if (card2Title != null && card2Description != null && !string.IsNullOrEmpty(upgradeOptions[1]))
+        // Update text content
+        if (titleElement != null && descriptionElement != null && rarityElement != null)
         {
-            var parts = ParseUpgradeText(upgradeOptions[1]);
-            card2Title.InnerRml = (parts.title);
-            card2Description.InnerRml = (parts.description);
+            titleElement.InnerRml = upgradeCard.Name;
+            descriptionElement.InnerRml = upgradeCard.GetDescription();
+            rarityElement.InnerRml = upgradeCard.Rarity.ToString();
         }
-        else if (!string.IsNullOrEmpty(upgradeOptions[1]))
+        else
         {
-            Log.Warning("LevelUpMenu: Card 2 elements not found, cannot set text");
+            Log.Warning($"LevelUpMenu: Card {cardIndex + 1} elements not found, cannot set text");
         }
         
-        // Parse and set card 3
-        if (card3Title != null && card3Description != null && !string.IsNullOrEmpty(upgradeOptions[2]))
+        // Apply rarity styling
+        if (cardElement != null)
         {
-            var parts = ParseUpgradeText(upgradeOptions[2]);
-            card3Title.InnerRml = (parts.title);
-            card3Description.InnerRml = (parts.description);
-        }
-        else if (!string.IsNullOrEmpty(upgradeOptions[2]))
-        {
-            Log.Warning("LevelUpMenu: Card 3 elements not found, cannot set text");
+            // Remove existing rarity classes
+            cardElement.SetClass("rarity-normal", false);
+            cardElement.SetClass("rarity-common", false);
+            cardElement.SetClass("rarity-epic", false);
+            cardElement.SetClass("rarity-legendary", false);
+            
+            // Add the appropriate rarity class
+            string rarityClass = GetRarityClass(upgradeCard.Rarity);
+            cardElement.SetClass(rarityClass, true);
+            
+            Log.Info($"LevelUpMenu: Applied rarity class '{rarityClass}' to card {cardIndex + 1}");
         }
     }
     
     /// <summary>
-    /// Parse upgrade text into title and description.
-    /// Expected format: "Title|Description" or just "Title" if no separator.
+    /// Get the CSS class name for a given rarity.
     /// </summary>
-    /// <param name="upgradeText">The upgrade text to parse</param>
-    /// <returns>Parsed title and description</returns>
-    private (string title, string description) ParseUpgradeText(string upgradeText)
+    /// <param name="rarity">The upgrade rarity</param>
+    /// <returns>CSS class name for the rarity</returns>
+    private string GetRarityClass(UpgradeRarity rarity)
     {
-        if (string.IsNullOrEmpty(upgradeText))
-            return ("Unknown", "No description");
-        
-        var parts = upgradeText.Split('|');
-        if (parts.Length >= 2)
+        switch (rarity)
         {
-            return (parts[0].Trim(), parts[1].Trim());
-        }
-        else
-        {
-            return (upgradeText.Trim(), "Select this upgrade");
+            case UpgradeRarity.Normal:
+                return "rarity-normal";
+            case UpgradeRarity.Common:
+                return "rarity-common";
+            case UpgradeRarity.Epic:
+                return "rarity-epic";
+            case UpgradeRarity.Legendary:
+                return "rarity-legendary";
+            default:
+                return "rarity-normal";
         }
     }
+    
     
     // ========== CARD CLICK HANDLERS ==========
     
@@ -277,14 +303,20 @@ public class LevelUpMenu : BaseMenu
             return;
         }
         
-        string selectedUpgrade = upgradeOptions[cardIndex];
-        Log.Info($"LevelUpMenu: Selected upgrade {cardIndex + 1}: {selectedUpgrade}");
+        UpgradeCard selectedCard = upgradeCards[cardIndex];
+        if (selectedCard == null)
+        {
+            Log.Warning($"LevelUpMenu: No card available at index {cardIndex}");
+            return;
+        }
+        
+        Log.Info($"LevelUpMenu: Selected card {cardIndex + 1}: {selectedCard.Name}");
         
         // Trigger the local selection event (for LevelUpUI)
-        OnCardSelected?.Invoke(cardIndex);
+        OnCardSelected?.Invoke(selectedCard);
         
         // Trigger the global selection event (for Player to subscribe to)
-        OnUpgradeSelected?.Invoke(cardIndex, selectedUpgrade);
+        OnUpgradeSelected?.Invoke(selectedCard);
     }
     
     // ========== CARD EVENT HANDLERS ==========

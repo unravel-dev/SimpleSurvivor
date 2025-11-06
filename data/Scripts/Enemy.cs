@@ -73,9 +73,9 @@ public class Enemy : ScriptComponent
         {
             // Subscribe to health events
             Health.OnDeath += OnEnemyDeath;
-            Health.OnDamageTaken += OnEnemyDamageTaken;
         }
     }
+    
     
     /// <summary>
     /// Called when the script starts execution.
@@ -88,19 +88,19 @@ public class Enemy : ScriptComponent
             Log.Error($"Enemy on {owner.name}: Missing TransformComponent. Disabling script.");
             return;
         }
-        
+
         // Auto-find player if enabled
         if (autoFindPlayer && !target)
         {
             FindPlayer();
         }
-        
+
         // Initialize last known player position
         if (target)
         {
             lastPlayerPosition = target.transform.position;
         }
-        
+
     }
     
     /// <summary>
@@ -405,20 +405,6 @@ public class Enemy : ScriptComponent
         {
             isChasing = true;
         }
-    }
-    
-    /// <summary>
-    /// Called when the enemy takes damage.
-    /// </summary>
-    /// <param name="damageAmount">Amount of damage taken.</param>
-    private void OnEnemyDamageTaken(float damageAmount)
-    {
-        
-        // Could add damage reaction behaviors here, like:
-        // - Play damage sound/animation
-        // - Briefly stop moving
-        // - Change color/material
-        // - Increase aggression
     }
     
     /// <summary>

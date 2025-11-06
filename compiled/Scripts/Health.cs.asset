@@ -11,9 +11,9 @@ public class Health : ScriptComponent
 {
     //[Header("Health Settings")]
     [Tooltip("Maximum health value")]
-    public float maxHealth = 100.0f;
+    public int maxHealth = 100;
     [Tooltip("Current health value")]
-    public float currentHealth = 100.0f;
+    public int currentHealth = 100;
     [Tooltip("Whether the entity can be healed above max health")]
     public bool allowOverheal = false;
     [Tooltip("Destroy the entity when health reaches 0")]
@@ -26,9 +26,9 @@ public class Health : ScriptComponent
     private bool isDead = false;
 
     // Events (using System.Action for simplicity)
-    public System.Action<float, float> OnHealthChanged; // (currentHealth, maxHealth)
-    public System.Action<float> OnDamageTaken; // (damageAmount)
-    public System.Action<float> OnHealed; // (healAmount)
+    public System.Action<int, int> OnHealthChanged; // (currentHealth, maxHealth)
+    public System.Action<int> OnDamageTaken; // (damageAmount)
+    public System.Action<int> OnHealed; // (healAmount)
     public System.Action OnDeath;
 
     /// <summary>
@@ -63,12 +63,12 @@ public class Health : ScriptComponent
     /// <param name="damage">Amount of damage to deal (positive value).</param>
     /// <param name="source">Optional source entity that dealt the damage.</param>
     /// <returns>True if the entity died from this damage.</returns>
-    public bool TakeDamage(float damage, Entity source)
+    public bool TakeDamage(int damage, Entity source)
     {
         if (isDead || damage <= 0)
             return false;
 
-        float previousHealth = currentHealth;
+        int previousHealth = currentHealth;
         currentHealth = Mathf.Max(0, currentHealth - damage);
 
         // Trigger damage event
@@ -91,13 +91,13 @@ public class Health : ScriptComponent
     /// <param name="healAmount">Amount of health to restore (positive value).</param>
     /// <param name="source">Optional source entity that provided the healing.</param>
     /// <returns>The actual amount healed (may be less if at max health).</returns>
-    public float Heal(float healAmount, Entity source)
+    public int Heal(int healAmount, Entity source)
     {
         if (isDead || healAmount <= 0)
             return 0;
 
-        float previousHealth = currentHealth;
-        float targetHealth = currentHealth + healAmount;
+        int previousHealth = currentHealth;
+        int targetHealth = currentHealth + healAmount;
 
         // Clamp to max health unless overheal is allowed
         if (!allowOverheal)
@@ -106,7 +106,7 @@ public class Health : ScriptComponent
         }
 
         currentHealth = targetHealth;
-        float actualHealAmount = currentHealth - previousHealth;
+        int actualHealAmount = currentHealth - previousHealth;
 
         if (actualHealAmount > 0)
         {
@@ -123,12 +123,12 @@ public class Health : ScriptComponent
     /// Set the entity's health to a specific value.
     /// </summary>
     /// <param name="newHealth">The new health value.</param>
-    public void SetHealth(float newHealth)
+    public void SetHealth(int newHealth)
     {
         if (isDead)
             return;
 
-        float previousHealth = currentHealth;
+        int previousHealth = currentHealth;
         currentHealth = Mathf.Max(0, newHealth);
 
         // Clamp to max health unless overheal is allowed
@@ -146,12 +146,13 @@ public class Health : ScriptComponent
         }
     }
 
-    /// <summary>
+
+        /// <summary>
     /// Set the maximum health and optionally adjust current health.
     /// </summary>
     /// <param name="newMaxHealth">The new maximum health value.</param>
     /// <param name="adjustCurrentHealth">Whether to scale current health proportionally.</param>
-    public void SetMaxHealth(float newMaxHealth, bool adjustCurrentHealth = false)
+    public void SetMaxHealth(int newMaxHealth, bool adjustCurrentHealth = false)
     {
         if (newMaxHealth <= 0)
         {
@@ -159,12 +160,12 @@ public class Health : ScriptComponent
             return;
         }
 
-        float healthRatio = currentHealth / maxHealth;
+        float healthRatio = (float)currentHealth / (float)maxHealth;
         maxHealth = newMaxHealth;
 
         if (adjustCurrentHealth)
         {
-            currentHealth = maxHealth * healthRatio;
+            currentHealth = Mathf.RoundToInt((float)maxHealth * healthRatio);
         }
         else if (!allowOverheal && currentHealth > maxHealth)
         {
@@ -218,7 +219,7 @@ public class Health : ScriptComponent
     /// Get the current health value.
     /// </summary>
     /// <returns>Current health.</returns>
-    public float GetCurrentHealth()
+    public int GetCurrentHealth()
     {
         return currentHealth;
     }
@@ -227,7 +228,7 @@ public class Health : ScriptComponent
     /// Get the maximum health value.
     /// </summary>
     /// <returns>Maximum health.</returns>
-    public float GetMaxHealth()
+    public int GetMaxHealth()
     {
         return maxHealth;
     }
@@ -239,9 +240,9 @@ public class Health : ScriptComponent
     public float GetHealthPercentage()
     {
         if (maxHealth <= 0)
-            return 0;
+            return 0.0f;
 
-        return currentHealth / maxHealth;
+        return (float)currentHealth / (float)maxHealth;
     }
 
     /// <summary>
@@ -280,14 +281,14 @@ public class Health : ScriptComponent
         if (isDead)
             return;
 
-        float healAmount = maxHealth - currentHealth;
+        int healAmount = maxHealth - currentHealth;
         if (healAmount > 0)
         {
             Heal(healAmount, owner);
         }
     }
 
-    public void IncreaseMaxHealth(float amount)
+    public void IncreaseMaxHealth(int amount)
     {
         maxHealth += amount;
         SetMaxHealth(maxHealth, true);

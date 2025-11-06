@@ -73,13 +73,13 @@ public class LevelUpUI : ScriptComponent
     }
     
     /// <summary>
-    /// Show the level-up menu with the given upgrade options.
+    /// Show the level-up menu with the given upgrade cards.
     /// This pauses the game and displays the card selection interface.
     /// </summary>
-    /// <param name="option1">Text for upgrade option 1</param>
-    /// <param name="option2">Text for upgrade option 2</param>
-    /// <param name="option3">Text for upgrade option 3</param>
-    public void ShowLevelUpMenu(string option1, string option2, string option3)
+    /// <param name="card1">Upgrade card for option 1</param>
+    /// <param name="card2">Upgrade card for option 2</param>
+    /// <param name="card3">Upgrade card for option 3</param>
+    public void ShowLevelUpMenu(UpgradeCard card1, UpgradeCard card2, UpgradeCard card3)
     {
         if (isLevelUpActive)
         {
@@ -87,7 +87,7 @@ public class LevelUpUI : ScriptComponent
             return;
         }
         
-        Log.Info($"LevelUpUI: Showing level up menu with options: [{option1}], [{option2}], [{option3}]");
+        Log.Info($"LevelUpUI: Showing level up menu with cards: [{card1?.Name}], [{card2?.Name}], [{card3?.Name}]");
         
         // Pause the game first
         PauseGame();
@@ -98,10 +98,10 @@ public class LevelUpUI : ScriptComponent
             LevelUpMenu.SetActive(true);
         }
         
-        // Now set the upgrade options after the menu is active and elements are cached
+        // Now set the upgrade cards after the menu is active and elements are cached
         if (levelUpMenuScript != null)
         {
-            levelUpMenuScript.SetUpgradeOptions(option1, option2, option3);
+            levelUpMenuScript.SetUpgradeCards(card1, card2, card3);
         }
         
         isLevelUpActive = true;
@@ -134,10 +134,10 @@ public class LevelUpUI : ScriptComponent
     /// <summary>
     /// Handle card selection from the level-up menu.
     /// </summary>
-    /// <param name="cardIndex">Index of the selected card (0, 1, or 2)</param>
-    private void OnCardSelected(int cardIndex)
+    /// <param name="selectedCard">The selected upgrade card</param>
+    private void OnCardSelected(UpgradeCard selectedCard)
     {
-        Log.Info($"LevelUpUI: Card {cardIndex + 1} selected - hiding menu and resuming game");
+        Log.Info($"LevelUpUI: Card '{selectedCard?.Name}' selected - hiding menu and resuming game");
         
         // Hide the menu and resume the game
         // The Player will handle the actual upgrade application via the static event

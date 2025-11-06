@@ -66,7 +66,7 @@ public class ExampleAbility : Ability
             return;
         }
 
-        int maxTargets = 2;
+        int maxTargets = 6;
         int i = 0;
         foreach (var target in targets)
         {
@@ -107,11 +107,11 @@ public class ExampleAbility : Ability
 
             projectileEntity.AddComponent<AutoDestroyComponent>();
 
-            // var pierceComponent = projectileEntity.AddComponent<PierceComponent>();
-            // if (pierceComponent != null)
-            // {
-            //     pierceComponent.pierceCount = 1;
-            // }
+            var pierceComponent = projectileEntity.AddComponent<PierceComponent>();
+            if (pierceComponent != null)
+            {
+                pierceComponent.pierceCount = 0;
+            }
 
             var chainComponent = projectileEntity.AddComponent<ChainComponent>();
             if (chainComponent != null)
@@ -126,7 +126,7 @@ public class ExampleAbility : Ability
             var damageComponent = projectileEntity.AddComponent<PhysicalDamageComponent>();
             if (damageComponent != null)
             {
-                damageComponent.SetDamage(damage);
+                damageComponent.SetDamage(UpgradeSystem.ApplyDamageUpgrade(damage));
             }
 
             // Apply physics force in the spread direction
@@ -138,16 +138,5 @@ public class ExampleAbility : Ability
         }
     }
    
-    
-    /// <summary>
-    /// Update method to automatically trigger the ability when possible.
-    /// </summary>
-    public override void OnUpdate()
-    {
-        // Automatically trigger the ability when it's ready
-        if (CanTriggerAbility())
-        {
-            TriggerAbility();
-        }
-    }
+
 }

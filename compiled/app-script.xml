@@ -73,11 +73,6 @@
              </summary>
              <param name="targets">List of target entities (should contain one enemy).</param>
             </member>
-        <member name="M:ExampleAbility.OnUpdate">
-             <summary>
-             Update method to automatically trigger the ability when possible.
-             </summary>
-            </member>
         <member name="T:Ability">
              <summary>
              Base class for all ability types. Handles cooldown management and provides
@@ -134,6 +129,11 @@
         <member name="M:Ability.OnStart">
              <summary>
              Virtual method called when the ability starts (can be overridden for setup).
+             </summary>
+            </member>
+        <member name="M:Ability.OnUpdate">
+             <summary>
+             Update method to automatically trigger the ability when possible.
              </summary>
             </member>
         <member name="T:MainMenu">
@@ -234,13 +234,13 @@
              </summary>
              <param name="entity">The entity that entered the sensor.</param>
             </member>
-        <member name="M:Player.OnPlayerDamageTaken(System.Single)">
+        <member name="M:Player.OnPlayerDamageTaken(System.Int32)">
              <summary>
              Called when the player takes damage.
              </summary>
              <param name="damageAmount">Amount of damage taken.</param>
             </member>
-        <member name="M:Player.OnPlayerHealed(System.Single)">
+        <member name="M:Player.OnPlayerHealed(System.Int32)">
              <summary>
              Called when the player is healed.
              </summary>
@@ -269,14 +269,14 @@
              </summary>
              <returns>Health percentage (0.0 to 1.0), or 1.0 if no health component.</returns>
             </member>
-        <member name="M:Player.HealPlayer(System.Single)">
+        <member name="M:Player.HealPlayer(System.Int32)">
              <summary>
              Heal the player by a specific amount.
              </summary>
              <param name="healAmount">Amount to heal.</param>
              <returns>Actual amount healed.</returns>
             </member>
-        <member name="M:Player.DamagePlayer(System.Single,Unravel.Core.Entity)">
+        <member name="M:Player.DamagePlayer(System.Int32,Unravel.Core.Entity)">
              <summary>
              Deal damage to the player.
              </summary>
@@ -303,72 +303,18 @@
              </summary>
              <param name="level">The new level the player reached</param>
             </member>
-        <member name="M:Player.GenerateUpgradeOptions(System.Int32)">
+        <member name="M:Player.GetRarityColorScheme(UpgradeRarity)">
              <summary>
-             Generate three upgrade options for the given level.
-             This is a simple example - you could make this much more sophisticated.
+             Get the color scheme for a given upgrade rarity (for UI reference).
              </summary>
-             <param name="level">The level the player just reached</param>
-             <returns>Three upgrade options</returns>
+             <param name="rarity">The upgrade rarity</param>
+             <returns>Color description string</returns>
             </member>
-        <member name="M:Player.OnUpgradeSelected(System.Int32,System.String)">
+        <member name="M:Player.OnUpgradeSelected(UpgradeCard)">
              <summary>
              Called when the player selects an upgrade from the level-up menu.
              </summary>
-             <param name="cardIndex">Index of the selected card (0, 1, or 2)</param>
-             <param name="upgradeText">The full upgrade text that was selected</param>
-            </member>
-        <member name="M:Player.ApplyUpgrade(System.String,System.Int32)">
-             <summary>
-             Apply the selected upgrade to the player.
-             </summary>
-             <param name="upgradeTitle">The title of the upgrade to apply</param>
-             <param name="cardIndex">The index of the card that was selected</param>
-            </member>
-        <member name="M:Player.ApplyHealthBoost">
-             <summary>
-             Apply Health Boost upgrade - increase maximum health by 25%.
-             </summary>
-            </member>
-        <member name="M:Player.ApplyRegeneration">
-             <summary>
-             Apply Regeneration upgrade - enable health regeneration over time.
-             </summary>
-            </member>
-        <member name="M:Player.ApplyDamageResistance">
-             <summary>
-             Apply Damage Resistance upgrade - reduce incoming damage by 10%.
-             </summary>
-            </member>
-        <member name="M:Player.ApplySpeedBoost">
-             <summary>
-             Apply Speed Boost upgrade - increase movement speed by 20%.
-             </summary>
-            </member>
-        <member name="M:Player.ApplyDashAbility">
-             <summary>
-             Apply Dash Ability upgrade - gain a short-range dash ability.
-             </summary>
-            </member>
-        <member name="M:Player.ApplyAgility">
-             <summary>
-             Apply Agility upgrade - increase acceleration and deceleration.
-             </summary>
-            </member>
-        <member name="M:Player.ApplyDamageBoost">
-             <summary>
-             Apply Damage Boost upgrade - increase weapon damage by 30%.
-             </summary>
-            </member>
-        <member name="M:Player.ApplyFireRate">
-             <summary>
-             Apply Fire Rate upgrade - increase weapon fire rate by 25%.
-             </summary>
-            </member>
-        <member name="M:Player.ApplyMultiShot">
-             <summary>
-             Apply Multi-Shot upgrade - fire additional projectiles.
-             </summary>
+             <param name="selectedCard">The selected upgrade card</param>
             </member>
         <member name="M:Player.OnExperienceChanged(System.Single,System.Single)">
              <summary>
@@ -640,6 +586,12 @@
              Called when the script is destroyed. Clean up event subscriptions.
              </summary>
             </member>
+        <member name="T:AutoDestroyComponent">
+             <summary>
+             Component that defines physical damage properties for entities.
+             Used by the ContactSystem to determine damage amounts.
+             </summary>
+            </member>
         <member name="T:ChainComponent">
              <summary>
              Component that defines physical damage properties for entities.
@@ -888,7 +840,7 @@
              Provides a single point of control for all damage-related operations.
              </summary>
             </member>
-        <member name="M:DamageSystem.ApplyDamage(Unravel.Core.Entity,Unravel.Core.Entity,System.Single)">
+        <member name="M:DamageSystem.ApplyDamage(Unravel.Core.Entity,Unravel.Core.Entity,System.Int32)">
              <summary>
              Apply damage to an entity through its Health component.
              </summary>
@@ -897,7 +849,7 @@
              <param name="damage">Amount of damage to deal.</param>
              <returns>True if the target died from this damage.</returns>
             </member>
-        <member name="M:DamageSystem.ApplyHealing(Unravel.Core.Entity,System.Single,Unravel.Core.Entity)">
+        <member name="M:DamageSystem.ApplyHealing(Unravel.Core.Entity,System.Int32,Unravel.Core.Entity)">
              <summary>
              Apply healing to an entity through its Health component.
              </summary>
@@ -1041,12 +993,6 @@
              <summary>
              Resume chasing the target.
              </summary>
-            </member>
-        <member name="M:Enemy.OnEnemyDamageTaken(System.Single)">
-             <summary>
-             Called when the enemy takes damage.
-             </summary>
-             <param name="damageAmount">Amount of damage taken.</param>
             </member>
         <member name="M:Enemy.OnEnemyDeath">
              <summary>
@@ -1294,7 +1240,7 @@
              Called when the script starts execution.
              </summary>
             </member>
-        <member name="M:Health.TakeDamage(System.Single,Unravel.Core.Entity)">
+        <member name="M:Health.TakeDamage(System.Int32,Unravel.Core.Entity)">
              <summary>
              Deal damage to this entity.
              </summary>
@@ -1302,7 +1248,7 @@
              <param name="source">Optional source entity that dealt the damage.</param>
              <returns>True if the entity died from this damage.</returns>
             </member>
-        <member name="M:Health.Heal(System.Single,Unravel.Core.Entity)">
+        <member name="M:Health.Heal(System.Int32,Unravel.Core.Entity)">
              <summary>
              Heal this entity.
              </summary>
@@ -1310,13 +1256,13 @@
              <param name="source">Optional source entity that provided the healing.</param>
              <returns>The actual amount healed (may be less if at max health).</returns>
             </member>
-        <member name="M:Health.SetHealth(System.Single)">
+        <member name="M:Health.SetHealth(System.Int32)">
              <summary>
              Set the entity's health to a specific value.
              </summary>
              <param name="newHealth">The new health value.</param>
             </member>
-        <member name="M:Health.SetMaxHealth(System.Single,System.Boolean)">
+        <member name="M:Health.SetMaxHealth(System.Int32,System.Boolean)">
              <summary>
              Set the maximum health and optionally adjust current health.
              </summary>
@@ -1529,6 +1475,69 @@
              </summary>
              <returns>Source entity, or null if none set.</returns>
             </member>
+        <member name="T:UpgradeSystem">
+             <summary>
+             Centralized static system for managing all player upgrades. Simple list-based storage
+             with type-based categorization using actual C# types.
+             </summary>
+            </member>
+        <member name="P:UpgradeSystem.TotalUpgradeCount">
+             <summary>
+             Get the total number of active upgrades.
+             </summary>
+            </member>
+        <member name="M:UpgradeSystem.AddUpgrade(Upgrade)">
+             <summary>
+             Add an upgrade to the system.
+             </summary>
+             <param name="upgrade">The upgrade to add.</param>
+            </member>
+        <member name="M:UpgradeSystem.RemoveUpgrade(Upgrade)">
+             <summary>
+             Remove an upgrade from the system.
+             </summary>
+             <param name="upgrade">The upgrade to remove.</param>
+             <returns>True if the upgrade was successfully removed.</returns>
+            </member>
+        <member name="M:UpgradeSystem.GetUpgradesByType``1">
+             <summary>
+             Get all upgrades of a specific C# type.
+             </summary>
+             <typeparam name="T">The upgrade type to get.</typeparam>
+             <returns>List of upgrades of the specified type.</returns>
+            </member>
+        <member name="M:UpgradeSystem.GetUpgradesByType(System.Type)">
+             <summary>
+             Get all upgrades of a specific C# type (non-generic version).
+             </summary>
+             <param name="upgradeType">The upgrade type to get.</param>
+             <returns>List of upgrades of the specified type.</returns>
+            </member>
+        <member name="M:UpgradeSystem.GetUpgradeCount``1">
+             <summary>
+             Get the count of upgrades of a specific type.
+             </summary>
+             <typeparam name="T">The upgrade type to count.</typeparam>
+             <returns>Number of upgrades of the specified type.</returns>
+            </member>
+        <member name="M:UpgradeSystem.HasUpgradeOfType``1">
+             <summary>
+             Check if any upgrade of a specific type is active.
+             </summary>
+             <typeparam name="T">The upgrade type to check for.</typeparam>
+             <returns>True if at least one upgrade of the specified type is active.</returns>
+            </member>
+        <member name="M:UpgradeSystem.GetAllUpgrades">
+             <summary>
+             Get all active upgrades.
+             </summary>
+             <returns>Read-only list of all active upgrades.</returns>
+            </member>
+        <member name="M:UpgradeSystem.ClearAllUpgrades">
+             <summary>
+             Clear all upgrades from the system.
+             </summary>
+            </member>
         <member name="T:TopDownCamera">
              <summary>
              TopDownCamera component that implements smooth camera following for a top-down game.
@@ -1599,6 +1608,286 @@
              <summary>
              Instantly snap the camera to the target position (no smooth movement).
              </summary>
+            </member>
+        <member name="T:ChainUpgrade">
+             <summary>
+             Upgrade that increases chain count for projectiles.
+             Allows projectiles to jump between multiple enemies.
+             </summary>
+            </member>
+        <member name="P:ChainUpgrade.ChainCount">
+             <summary>
+             Additional chain count this upgrade provides.
+             </summary>
+            </member>
+        <member name="M:ChainUpgrade.#ctor(System.Int32)">
+             <summary>
+             Create a new chain upgrade with specified parameters.
+             </summary>
+             <param name="chainCount">Additional chain count to add.</param>
+            </member>
+        <member name="M:ChainUpgrade.Generate(UpgradeRarity)">
+             <summary>
+             Generate a new ChainUpgrade with random values based on rarity.
+             </summary>
+             <param name="rarity">The rarity level determining the value ranges.</param>
+             <returns>A new ChainUpgrade with randomized values.</returns>
+            </member>
+        <member name="T:CooldownReductionUpgrade">
+             <summary>
+             Upgrade that reduces ability cooldowns by a percentage.
+             Affects all abilities with cooldown timers.
+             </summary>
+            </member>
+        <member name="P:CooldownReductionUpgrade.ReductionPercent">
+             <summary>
+             Percentage cooldown reduction this upgrade provides.
+             </summary>
+            </member>
+        <member name="M:CooldownReductionUpgrade.#ctor(System.Single)">
+             <summary>
+             Create a new cooldown reduction upgrade with specified parameters.
+             </summary>
+             <param name="reductionPercent">Percentage cooldown reduction (e.g., 10 for 10%).</param>
+            </member>
+        <member name="M:CooldownReductionUpgrade.Generate(UpgradeRarity)">
+             <summary>
+             Generate a new CooldownReductionUpgrade with random values based on rarity.
+             </summary>
+             <param name="rarity">The rarity level determining the value ranges.</param>
+             <returns>A new CooldownReductionUpgrade with randomized values.</returns>
+            </member>
+        <member name="T:UpgradeRarity">
+             <summary>
+             Defines the rarity levels for upgrades, affecting their availability and power.
+             </summary>
+            </member>
+        <member name="T:DamageUpgrade">
+             <summary>
+             Example upgrade that increases damage output.
+             Demonstrates how to create a specific upgrade type.
+             </summary>
+            </member>
+        <member name="P:DamageUpgrade.DamagePercent">
+             <summary>
+             Percentage damage increase this upgrade provides.
+             </summary>
+            </member>
+        <member name="M:DamageUpgrade.#ctor(System.Single)">
+             <summary>
+             Create a new damage upgrade with specified parameters.
+             </summary>
+             <param name="damagePercent">Percentage damage increase (e.g., 10 for 10%).</param>
+            </member>
+        <member name="M:DamageUpgrade.Generate(UpgradeRarity)">
+             <summary>
+             Generate a new DamageUpgrade with random values based on rarity.
+             </summary>
+             <param name="rarity">The rarity level determining the value ranges.</param>
+             <returns>A new DamageUpgrade with randomized values.</returns>
+            </member>
+        <member name="T:MaxHealthUpgrade">
+             <summary>
+             Upgrade that increases the player's maximum health.
+             Provides additional survivability in combat.
+             </summary>
+            </member>
+        <member name="P:MaxHealthUpgrade.HealthIncrease">
+             <summary>
+             Additional health points this upgrade provides.
+             </summary>
+            </member>
+        <member name="M:MaxHealthUpgrade.#ctor(System.Int32)">
+             <summary>
+             Create a new max health upgrade with specified parameters.
+             </summary>
+             <param name="healthIncrease">Additional health points to add.</param>
+            </member>
+        <member name="M:MaxHealthUpgrade.Generate(UpgradeRarity)">
+             <summary>
+             Generate a new MaxHealthUpgrade with random values based on rarity.
+             </summary>
+             <param name="rarity">The rarity level determining the value ranges.</param>
+             <returns>A new MaxHealthUpgrade with randomized values.</returns>
+            </member>
+        <member name="T:MovementSpeedUpgrade">
+             <summary>
+             Upgrade that increases the player's movement speed.
+             Improves mobility and ability to dodge attacks.
+             </summary>
+            </member>
+        <member name="P:MovementSpeedUpgrade.SpeedPercent">
+             <summary>
+             Percentage movement speed increase this upgrade provides.
+             </summary>
+            </member>
+        <member name="M:MovementSpeedUpgrade.#ctor(System.Single)">
+             <summary>
+             Create a new movement speed upgrade with specified parameters.
+             </summary>
+             <param name="speedPercent">Percentage movement speed increase (e.g., 15 for 15%).</param>
+            </member>
+        <member name="M:MovementSpeedUpgrade.Generate(UpgradeRarity)">
+             <summary>
+             Generate a new MovementSpeedUpgrade with random values based on rarity.
+             </summary>
+             <param name="rarity">The rarity level determining the value ranges.</param>
+             <returns>A new MovementSpeedUpgrade with randomized values.</returns>
+            </member>
+        <member name="T:PierceUpgrade">
+             <summary>
+             Example upgrade that increases pierce count for projectiles.
+             Demonstrates how to create upgrades that affect projectile behavior.
+             </summary>
+            </member>
+        <member name="P:PierceUpgrade.PierceCount">
+             <summary>
+             Additional pierce count this upgrade provides.
+             </summary>
+            </member>
+        <member name="M:PierceUpgrade.#ctor(System.Int32)">
+             <summary>
+             Create a new pierce upgrade with specified parameters.
+             </summary>
+             <param name="pierceCount">Additional pierce count to add.</param>
+            </member>
+        <member name="M:PierceUpgrade.Generate(UpgradeRarity)">
+             <summary>
+             Generate a new PierceUpgrade with random values based on rarity.
+             </summary>
+             <param name="rarity">The rarity level determining the value ranges.</param>
+             <returns>A new PierceUpgrade with randomized values.</returns>
+            </member>
+        <member name="M:PierceUpgrade.GetPierceCount">
+             <summary>
+             Get the additional pierce count this upgrade provides.
+             </summary>
+             <returns>Additional pierce count.</returns>
+            </member>
+        <member name="T:Upgrade">
+             <summary>
+             Base class for all upgrades in the game. Abstract class that defines
+             common properties for upgrades. Derived classes define their own specific values.
+             </summary>
+            </member>
+        <member name="P:Upgrade.Name">
+             <summary>
+             Display name of the upgrade.
+             </summary>
+            </member>
+        <member name="P:Upgrade.Description">
+             <summary>
+             Description of what this upgrade does.
+             </summary>
+            </member>
+        <member name="M:Upgrade.#ctor(System.String,System.String)">
+             <summary>
+             Constructor for creating upgrades with basic properties.
+             </summary>
+             <param name="name">Display name of the upgrade.</param>
+             <param name="description">Description of the upgrade effect.</param>
+            </member>
+        <member name="M:Upgrade.GetUpgradeType">
+             <summary>
+             Get the type of this upgrade as a string.
+             </summary>
+             <returns>The C# type name of this upgrade.</returns>
+            </member>
+        <member name="T:UpgradeCard">
+             <summary>
+             Represents a card that contains one or more upgrades and has its own rarity.
+             Used for the upgrade selection system where players choose cards containing upgrades.
+             </summary>
+            </member>
+        <member name="P:UpgradeCard.Name">
+             <summary>
+             Display name of the upgrade card.
+             </summary>
+            </member>
+        <member name="P:UpgradeCard.Rarity">
+             <summary>
+             Rarity level of this upgrade card.
+             </summary>
+            </member>
+        <member name="P:UpgradeCard.Upgrades">
+             <summary>
+             List of upgrades that this card provides when selected.
+             </summary>
+            </member>
+        <member name="M:UpgradeCard.#ctor(System.String,UpgradeRarity,System.Collections.Generic.List{Upgrade})">
+             <summary>
+             Create a new upgrade card with specified upgrades and rarity.
+             </summary>
+             <param name="name">Display name of the card.</param>
+             <param name="rarity">Rarity level of the card.</param>
+             <param name="upgrades">List of upgrades this card provides.</param>
+            </member>
+        <member name="M:UpgradeCard.#ctor(System.String,UpgradeRarity,Upgrade)">
+             <summary>
+             Create a new upgrade card with a single upgrade.
+             </summary>
+             <param name="name">Display name of the card.</param>
+             <param name="rarity">Rarity level of the card.</param>
+             <param name="upgrade">Single upgrade this card provides.</param>
+            </member>
+        <member name="M:UpgradeCard.GetDescription">
+             <summary>
+             Get the combined description of all upgrades in this card.
+             Each upgrade description is on a new line.
+             </summary>
+             <returns>Combined description string.</returns>
+            </member>
+        <member name="M:UpgradeCard.ApplyUpgrades">
+             <summary>
+             Apply all upgrades from this card to the upgrade system.
+             </summary>
+            </member>
+        <member name="M:UpgradeCard.GetUpgradeCount">
+             <summary>
+             Get the number of upgrades in this card.
+             </summary>
+             <returns>Number of upgrades.</returns>
+            </member>
+        <member name="T:UpgradeCardGenerator">
+             <summary>
+             Static class for generating predefined upgrade cards with thematic combinations.
+             Provides various card types with 1-2 upgrades each based on rarity.
+             </summary>
+            </member>
+        <member name="M:UpgradeCardGenerator.GenerateRandomCard(UpgradeRarity)">
+             <summary>
+             Generate a random upgrade card of the specified rarity.
+             </summary>
+             <param name="rarity">The rarity level of the card to generate.</param>
+             <returns>A randomly selected upgrade card of the specified rarity.</returns>
+            </member>
+        <member name="M:UpgradeCardGenerator.GenerateRandomCards(System.Int32,UpgradeRarity)">
+             <summary>
+             Generate multiple random upgrade cards.
+             </summary>
+             <param name="count">Number of cards to generate.</param>
+             <param name="rarity">Rarity level for all cards.</param>
+             <returns>List of randomly generated upgrade cards.</returns>
+            </member>
+        <member name="M:UpgradeCardGenerator.GenerateCardSelection(System.Int32)">
+             <summary>
+             Generate a selection of cards with mixed rarities for player choice.
+             </summary>
+             <param name="cardCount">Number of cards to generate (default 3).</param>
+             <returns>List of upgrade cards with varied rarities.</returns>
+            </member>
+        <member name="M:UpgradeCardGenerator.GetRandomWeightedRarity">
+             <summary>
+             Get a weighted random rarity (more common cards, fewer legendary).
+             </summary>
+             <returns>Randomly selected rarity with weighted distribution.</returns>
+            </member>
+        <member name="M:UpgradeCardGenerator.GetAvailableCards(UpgradeRarity)">
+             <summary>
+             Get list of available card generators for the specified rarity.
+             </summary>
+             <param name="rarity">The rarity level.</param>
+             <returns>List of functions that generate cards of the specified rarity.</returns>
             </member>
         <member name="T:BaseMenu">
              <summary>
@@ -1706,7 +1995,7 @@
              Find the player entity in the scene and subscribe to health/experience events.
              </summary>
             </member>
-        <member name="M:GameHub.OnPlayerHealthChanged(System.Single,System.Single)">
+        <member name="M:GameHub.OnPlayerHealthChanged(System.Int32,System.Int32)">
              <summary>
              Event handler for when player health changes.
              </summary>
@@ -1730,7 +2019,7 @@
              Update the health and experience progress bars with current player data (initial load).
              </summary>
             </member>
-        <member name="M:GameHub.UpdateHealthBar(System.Single,System.Single)">
+        <member name="M:GameHub.UpdateHealthBar(System.Int32,System.Int32)">
              <summary>
              Update the health bar display.
              </summary>
@@ -1899,13 +2188,13 @@
              Simple implementation without over-engineering - just handles the core functionality.
              </summary>
             </member>
-        <member name="M:LevelUpMenu.SetUpgradeOptions(System.String,System.String,System.String)">
+        <member name="M:LevelUpMenu.SetUpgradeCards(UpgradeCard,UpgradeCard,UpgradeCard)">
              <summary>
-             Set the upgrade options for the three cards.
+             Set the upgrade cards for the three card slots.
              </summary>
-             <param name="option1">Text for card 1</param>
-             <param name="option2">Text for card 2</param>
-             <param name="option3">Text for card 3</param>
+             <param name="card1">Upgrade card for slot 1</param>
+             <param name="card2">Upgrade card for slot 2</param>
+             <param name="card3">Upgrade card for slot 3</param>
             </member>
         <member name="M:LevelUpMenu.EnsureInitialized">
              <summary>
@@ -1913,18 +2202,28 @@
              This handles the case where the menu was inactive and OnStart() wasn't called.
              </summary>
             </member>
-        <member name="M:LevelUpMenu.UpdateCardText">
+        <member name="M:LevelUpMenu.UpdateCardDisplay">
              <summary>
-             Update the card text elements with the current upgrade options.
+             Update the card display with the current upgrade cards.
              </summary>
             </member>
-        <member name="M:LevelUpMenu.ParseUpgradeText(System.String)">
+        <member name="M:LevelUpMenu.UpdateSingleCard(System.Int32,Unravel.Core.UIElement,Unravel.Core.UIElement,Unravel.Core.UIElement,Unravel.Core.UIElement,UpgradeCard)">
              <summary>
-             Parse upgrade text into title and description.
-             Expected format: "Title|Description" or just "Title" if no separator.
+             Update a single card's display with the given upgrade card data.
              </summary>
-             <param name="upgradeText">The upgrade text to parse</param>
-             <returns>Parsed title and description</returns>
+             <param name="cardIndex">Index of the card (0, 1, or 2)</param>
+             <param name="cardElement">The card container element</param>
+             <param name="titleElement">The card title element</param>
+             <param name="descriptionElement">The card description element</param>
+             <param name="rarityElement">The card rarity element</param>
+             <param name="upgradeCard">The upgrade card data</param>
+            </member>
+        <member name="M:LevelUpMenu.GetRarityClass(UpgradeRarity)">
+             <summary>
+             Get the CSS class name for a given rarity.
+             </summary>
+             <param name="rarity">The upgrade rarity</param>
+             <returns>CSS class name for the rarity</returns>
             </member>
         <member name="M:LevelUpMenu.OnCard1Click(Unravel.Core.UIPointerEvent)">
              <summary>
@@ -1989,25 +2288,25 @@
              Automatically find menu entity references if not manually assigned.
              </summary>
             </member>
-        <member name="M:LevelUpUI.ShowLevelUpMenu(System.String,System.String,System.String)">
+        <member name="M:LevelUpUI.ShowLevelUpMenu(UpgradeCard,UpgradeCard,UpgradeCard)">
              <summary>
-             Show the level-up menu with the given upgrade options.
+             Show the level-up menu with the given upgrade cards.
              This pauses the game and displays the card selection interface.
              </summary>
-             <param name="option1">Text for upgrade option 1</param>
-             <param name="option2">Text for upgrade option 2</param>
-             <param name="option3">Text for upgrade option 3</param>
+             <param name="card1">Upgrade card for option 1</param>
+             <param name="card2">Upgrade card for option 2</param>
+             <param name="card3">Upgrade card for option 3</param>
             </member>
         <member name="M:LevelUpUI.HideLevelUpMenu">
              <summary>
              Hide the level-up menu and resume the game.
              </summary>
             </member>
-        <member name="M:LevelUpUI.OnCardSelected(System.Int32)">
+        <member name="M:LevelUpUI.OnCardSelected(UpgradeCard)">
              <summary>
              Handle card selection from the level-up menu.
              </summary>
-             <param name="cardIndex">Index of the selected card (0, 1, or 2)</param>
+             <param name="selectedCard">The selected upgrade card</param>
             </member>
         <member name="M:LevelUpUI.PauseGame">
              <summary>
@@ -2184,12 +2483,6 @@
         <member name="M:SettingsMenu.ApplyAllSettings">
              <summary>
              Applies all current settings to the game systems.
-             </summary>
-            </member>
-        <member name="T:AutoDestroyComponent">
-             <summary>
-             Component that defines physical damage properties for entities.
-             Used by the ContactSystem to determine damage amounts.
              </summary>
             </member>
     </members>

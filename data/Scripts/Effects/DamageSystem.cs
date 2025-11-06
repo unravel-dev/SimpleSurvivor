@@ -20,7 +20,7 @@ public static class DamageSystem
     /// <param name="source">Entity that caused the damage.</param>
     /// <param name="damage">Amount of damage to deal.</param>
     /// <returns>True if the target died from this damage.</returns>
-    public static bool ApplyDamage(Entity target, Entity source, float damage)
+    public static bool ApplyDamage(Entity target, Entity source, int damage)
     {
         if (!target || damage <= 0)
             return false;
@@ -48,6 +48,7 @@ public static class DamageSystem
         return died;
     }
     
+    
     /// <summary>
     /// Apply healing to an entity through its Health component.
     /// </summary>
@@ -55,23 +56,23 @@ public static class DamageSystem
     /// <param name="healAmount">Amount of healing to apply.</param>
     /// <param name="source">Entity that provided the healing.</param>
     /// <returns>Actual amount healed.</returns>
-    public static float ApplyHealing(Entity target, float healAmount, Entity source)
+    public static int ApplyHealing(Entity target, int healAmount, Entity source)
     {
         if (!target || healAmount <= 0)
             return 0;
-            
+
         var healthComponent = target.GetComponent<Health>();
         if (healthComponent == null)
             return 0;
-            
-        float actualHealAmount = healthComponent.Heal(healAmount, source);
-        
+
+        int actualHealAmount = healthComponent.Heal(healAmount, source);
+
         // Trigger healing event if healing was applied
         if (actualHealAmount > 0)
         {
             OnHealingApplied?.Invoke(target, source, actualHealAmount);
         }
-        
+
         return actualHealAmount;
     }
     
@@ -117,7 +118,7 @@ public static class DamageSystem
     /// </summary>
     /// <param name="target">Entity to check.</param>
     /// <returns>Current health, or 0 if no health component.</returns>
-    public static float GetCurrentHealth(Entity target)
+    public static int GetCurrentHealth(Entity target)
     {
         if (!target)
             return 0;
@@ -131,7 +132,7 @@ public static class DamageSystem
     /// </summary>
     /// <param name="target">Entity to check.</param>
     /// <returns>Maximum health, or 0 if no health component.</returns>
-    public static float GetMaxHealth(Entity target)
+    public static int GetMaxHealth(Entity target)
     {
         if (!target)
             return 0;
@@ -151,6 +152,6 @@ public static class DamageSystem
             return 0;
             
         var healthComponent = target.GetComponent<Health>();
-        return healthComponent?.GetHealthPercentage() ?? 0;
+        return healthComponent?.GetHealthPercentage() ?? 0.0f;
     }
 }

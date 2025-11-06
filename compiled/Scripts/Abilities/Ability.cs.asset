@@ -13,6 +13,7 @@ public abstract class Ability : ScriptComponent
     [Tooltip("Cooldown time in seconds between ability triggers")]
     public float cooldown = 1.0f;
 
+    private float modifiedCooldown = 0f;
     // Internal state
     private float lastTriggerTime = -1f;
 
@@ -29,7 +30,7 @@ public abstract class Ability : ScriptComponent
         }
 
         float timeSinceLastTrigger = Time.time - lastTriggerTime;
-        bool canTrigger = timeSinceLastTrigger >= cooldown;
+        bool canTrigger = timeSinceLastTrigger >= modifiedCooldown;
 
         return canTrigger;
     }
@@ -44,7 +45,7 @@ public abstract class Ability : ScriptComponent
             return 0f;
 
         float timeSinceLastTrigger = Time.time - lastTriggerTime;
-        return Mathf.Max(0f, cooldown - timeSinceLastTrigger);
+        return Mathf.Max(0f, modifiedCooldown - timeSinceLastTrigger);
     }
 
     /// <summary>
@@ -53,11 +54,11 @@ public abstract class Ability : ScriptComponent
     /// <returns>Cooldown progress where 1 = ready, 0 = just triggered.</returns>
     public float GetCooldownProgress()
     {
-        if (lastTriggerTime < 0 || cooldown <= 0)
+        if (lastTriggerTime < 0 || modifiedCooldown <= 0)
             return 1f;
 
         float timeSinceLastTrigger = Time.time - lastTriggerTime;
-        return Mathf.Clamp01(timeSinceLastTrigger / cooldown);
+        return Mathf.Clamp01(timeSinceLastTrigger / modifiedCooldown);
     }
 
     /// <summary>
@@ -102,7 +103,7 @@ public abstract class Ability : ScriptComponent
     /// <param name="remainingTime">Remaining cooldown time in seconds.</param>
     public void SetRemainingCooldown(float remainingTime)
     {
-        lastTriggerTime = Time.time - (cooldown - remainingTime);
+        lastTriggerTime = Time.time - (modifiedCooldown - remainingTime);
     }
 
     /// <summary>
@@ -123,6 +124,20 @@ public abstract class Ability : ScriptComponent
     public override void OnStart()
     {
 
+    }
+
+        
+    /// <summary>
+    /// Update method to automatically trigger the ability when possible.
+    /// </summary>
+    public override void OnUpdate()
+    {
+        modifiedCooldown = UpgradeSystem.ApplyCooldownReductionUpgrade(cooldown);
+        // Automatically trigger the ability when it's ready
+        if (CanTriggerAbility())
+        {
+            TriggerAbility();
+        }
     }
     
 }

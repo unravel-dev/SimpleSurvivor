@@ -2,7 +2,7 @@
  "entities_count": 16,
  "entities": [
   {
-   "id": 47185921,
+   "id": 3145729,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -189,7 +189,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 47185923,
+   "id": 3145731,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -277,7 +277,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 47185925,
+   "id": 3145733,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -346,7 +346,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 47185927,
+   "id": 3145735,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -422,19 +422,19 @@
      },
      "children": [
       {
-       "id": 47185928
+       "id": 3145736
       },
       {
-       "id": 47185929
+       "id": 3145737
       },
       {
-       "id": 47185930
+       "id": 3145738
       },
       {
-       "id": 45088779
+       "id": 1048587
       },
       {
-       "id": 45088780
+       "id": 1048588
       }
      ],
      "active": true
@@ -498,7 +498,7 @@
    }
   },
   {
-   "id": 47185928,
+   "id": 3145736,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -541,7 +541,7 @@
       }
      },
      "parent": {
-      "id": 47185927
+      "id": 3145735
      },
      "children": [],
      "active": false
@@ -564,7 +564,7 @@
    }
   },
   {
-   "id": 47185929,
+   "id": 3145737,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -607,7 +607,7 @@
       }
      },
      "parent": {
-      "id": 47185927
+      "id": 3145735
      },
      "children": [],
      "active": false
@@ -630,7 +630,7 @@
    }
   },
   {
-   "id": 47185930,
+   "id": 3145738,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -673,7 +673,7 @@
       }
      },
      "parent": {
-      "id": 47185927
+      "id": 3145735
      },
      "children": [],
      "active": false
@@ -696,7 +696,7 @@
    }
   },
   {
-   "id": 45088779,
+   "id": 1048587,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -735,7 +735,7 @@
       }
      },
      "parent": {
-      "id": 47185927
+      "id": 3145735
      },
      "children": [],
      "active": false
@@ -758,7 +758,7 @@
    }
   },
   {
-   "id": 45088780,
+   "id": 1048588,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -797,7 +797,7 @@
       }
      },
      "parent": {
-      "id": 47185927
+      "id": 3145735
      },
      "children": [],
      "active": true
@@ -823,7 +823,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 45088782,
+   "id": 1048590,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -866,7 +866,7 @@
      },
      "children": [
       {
-       "id": 45088783
+       "id": 1048591
       }
      ],
      "active": true
@@ -874,7 +874,7 @@
    }
   },
   {
-   "id": 45088783,
+   "id": 1048591,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -913,7 +913,7 @@
       }
      },
      "parent": {
-      "id": 45088782
+      "id": 1048590
      },
      "children": [],
      "active": true
@@ -996,7 +996,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 45088785,
+   "id": 1048593,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1039,7 +1039,7 @@
      },
      "children": [
       {
-       "id": 45088786
+       "id": 1048594
       }
      ],
      "active": true
@@ -1099,8 +1099,8 @@
       },
       {
        "type": "Health",
-       "maxHealth": 100.0,
-       "currentHealth": 100.0,
+       "maxHealth": 100,
+       "currentHealth": 100,
        "allowOverheal": false,
        "destroyOnDeath": true,
        "destroyDelay": 0.0
@@ -1137,7 +1137,7 @@
    }
   },
   {
-   "id": 45088786,
+   "id": 1048594,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1176,7 +1176,7 @@
       }
      },
      "parent": {
-      "id": 45088785
+      "id": 1048593
      },
      "children": [],
      "active": true
@@ -1217,7 +1217,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 45088788,
+   "id": 1048596,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1292,7 +1292,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 45088790,
+   "id": 1048598,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1335,7 +1335,7 @@
      },
      "children": [
       {
-       "id": 45088791
+       "id": 1048599
       }
      ],
      "active": true
@@ -1343,7 +1343,7 @@
    }
   },
   {
-   "id": 45088791,
+   "id": 1048599,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1382,7 +1382,7 @@
       }
      },
      "parent": {
-      "id": 45088790
+      "id": 1048598
      },
      "children": [],
      "active": true
@@ -1408,7 +1408,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 45088793,
+   "id": 1048601,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1458,7 +1458,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 45088795,
+   "id": 27,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1539,10 +1539,10 @@
      },
      "children": [
       {
-       "id": 45088796
+       "id": 28
       },
       {
-       "id": 45088797
+       "id": 29
       }
      ],
      "active": true
@@ -1611,8 +1611,8 @@
       },
       {
        "type": "Health",
-       "maxHealth": 100000.0,
-       "currentHealth": 100000.0,
+       "maxHealth": 100,
+       "currentHealth": 100,
        "allowOverheal": false,
        "destroyOnDeath": true,
        "destroyDelay": 0.0
@@ -1622,7 +1622,7 @@
    }
   },
   {
-   "id": 45088796,
+   "id": 28,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1665,7 +1665,7 @@
       }
      },
      "parent": {
-      "id": 45088795
+      "id": 27
      },
      "children": [],
      "active": true
@@ -1699,7 +1699,7 @@
    }
   },
   {
-   "id": 45088797,
+   "id": 29,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1742,7 +1742,7 @@
       }
      },
      "parent": {
-      "id": 45088795
+      "id": 27
      },
      "children": [],
      "active": true
@@ -1779,7 +1779,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 45088799,
+   "id": 31,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1865,10 +1865,10 @@
      },
      "children": [
       {
-       "id": 45088800
+       "id": 32
       },
       {
-       "id": 45088801
+       "id": 33
       }
      ],
      "active": true
@@ -1937,8 +1937,8 @@
       },
       {
        "type": "Health",
-       "maxHealth": 100000.0,
-       "currentHealth": 100000.0,
+       "maxHealth": 100,
+       "currentHealth": 100,
        "allowOverheal": false,
        "destroyOnDeath": true,
        "destroyDelay": 0.0
@@ -1948,7 +1948,7 @@
    }
   },
   {
-   "id": 45088800,
+   "id": 32,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1991,7 +1991,7 @@
       }
      },
      "parent": {
-      "id": 45088799
+      "id": 31
      },
      "children": [],
      "active": true
@@ -2025,7 +2025,7 @@
    }
   },
   {
-   "id": 45088801,
+   "id": 33,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2068,7 +2068,7 @@
       }
      },
      "parent": {
-      "id": 45088799
+      "id": 31
      },
      "children": [],
      "active": true
@@ -2105,7 +2105,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 45088803,
+   "id": 35,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2191,10 +2191,10 @@
      },
      "children": [
       {
-       "id": 45088804
+       "id": 36
       },
       {
-       "id": 45088805
+       "id": 37
       }
      ],
      "active": true
@@ -2263,8 +2263,8 @@
       },
       {
        "type": "Health",
-       "maxHealth": 100000.0,
-       "currentHealth": 100000.0,
+       "maxHealth": 100,
+       "currentHealth": 100,
        "allowOverheal": false,
        "destroyOnDeath": true,
        "destroyDelay": 0.0
@@ -2274,7 +2274,7 @@
    }
   },
   {
-   "id": 45088804,
+   "id": 36,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2317,7 +2317,7 @@
       }
      },
      "parent": {
-      "id": 45088803
+      "id": 35
      },
      "children": [],
      "active": true
@@ -2351,7 +2351,7 @@
    }
   },
   {
-   "id": 45088805,
+   "id": 37,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2394,7 +2394,7 @@
       }
      },
      "parent": {
-      "id": 45088803
+      "id": 35
      },
      "children": [],
      "active": true
@@ -2431,7 +2431,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 45088807,
+   "id": 39,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2517,10 +2517,10 @@
      },
      "children": [
       {
-       "id": 45088808
+       "id": 40
       },
       {
-       "id": 45088809
+       "id": 41
       }
      ],
      "active": true
@@ -2589,8 +2589,8 @@
       },
       {
        "type": "Health",
-       "maxHealth": 100000.0,
-       "currentHealth": 100000.0,
+       "maxHealth": 100,
+       "currentHealth": 100,
        "allowOverheal": false,
        "destroyOnDeath": true,
        "destroyDelay": 0.0
@@ -2600,7 +2600,7 @@
    }
   },
   {
-   "id": 45088808,
+   "id": 40,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2643,7 +2643,7 @@
       }
      },
      "parent": {
-      "id": 45088807
+      "id": 39
      },
      "children": [],
      "active": true
@@ -2677,7 +2677,7 @@
    }
   },
   {
-   "id": 45088809,
+   "id": 41,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2720,7 +2720,7 @@
       }
      },
      "parent": {
-      "id": 45088807
+      "id": 39
      },
      "children": [],
      "active": true
@@ -2757,7 +2757,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 45088811,
+   "id": 43,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2843,10 +2843,10 @@
      },
      "children": [
       {
-       "id": 45088812
+       "id": 44
       },
       {
-       "id": 45088813
+       "id": 45
       }
      ],
      "active": true
@@ -2915,8 +2915,8 @@
       },
       {
        "type": "Health",
-       "maxHealth": 100000.0,
-       "currentHealth": 100000.0,
+       "maxHealth": 100,
+       "currentHealth": 100,
        "allowOverheal": false,
        "destroyOnDeath": true,
        "destroyDelay": 0.0
@@ -2926,7 +2926,7 @@
    }
   },
   {
-   "id": 45088812,
+   "id": 44,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2969,7 +2969,7 @@
       }
      },
      "parent": {
-      "id": 45088811
+      "id": 43
      },
      "children": [],
      "active": true
@@ -3003,7 +3003,7 @@
    }
   },
   {
-   "id": 45088813,
+   "id": 45,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3046,7 +3046,7 @@
       }
      },
      "parent": {
-      "id": 45088811
+      "id": 43
      },
      "children": [],
      "active": true
@@ -3083,7 +3083,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 45088815,
+   "id": 47,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3169,10 +3169,10 @@
      },
      "children": [
       {
-       "id": 45088816
+       "id": 48
       },
       {
-       "id": 45088817
+       "id": 49
       }
      ],
      "active": true
@@ -3241,8 +3241,8 @@
       },
       {
        "type": "Health",
-       "maxHealth": 100000.0,
-       "currentHealth": 100000.0,
+       "maxHealth": 100,
+       "currentHealth": 100,
        "allowOverheal": false,
        "destroyOnDeath": true,
        "destroyDelay": 0.0
@@ -3252,7 +3252,7 @@
    }
   },
   {
-   "id": 45088816,
+   "id": 48,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3295,7 +3295,7 @@
       }
      },
      "parent": {
-      "id": 45088815
+      "id": 47
      },
      "children": [],
      "active": true
@@ -3329,7 +3329,7 @@
    }
   },
   {
-   "id": 45088817,
+   "id": 49,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3372,7 +3372,7 @@
       }
      },
      "parent": {
-      "id": 45088815
+      "id": 47
      },
      "children": [],
      "active": true
@@ -3409,7 +3409,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 45088819,
+   "id": 51,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3495,10 +3495,10 @@
      },
      "children": [
       {
-       "id": 45088820
+       "id": 52
       },
       {
-       "id": 45088821
+       "id": 53
       }
      ],
      "active": true
@@ -3567,8 +3567,8 @@
       },
       {
        "type": "Health",
-       "maxHealth": 100000.0,
-       "currentHealth": 100000.0,
+       "maxHealth": 100,
+       "currentHealth": 100,
        "allowOverheal": false,
        "destroyOnDeath": true,
        "destroyDelay": 0.0
@@ -3578,7 +3578,7 @@
    }
   },
   {
-   "id": 45088820,
+   "id": 52,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3621,7 +3621,7 @@
       }
      },
      "parent": {
-      "id": 45088819
+      "id": 51
      },
      "children": [],
      "active": true
@@ -3655,7 +3655,7 @@
    }
   },
   {
-   "id": 45088821,
+   "id": 53,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3698,7 +3698,7 @@
       }
      },
      "parent": {
-      "id": 45088819
+      "id": 51
      },
      "children": [],
      "active": true
