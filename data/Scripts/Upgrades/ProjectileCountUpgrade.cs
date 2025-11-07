@@ -5,7 +5,7 @@ using Unravel.Core;
 /// </summary>
 public class ProjectileCountUpgrade : Upgrade
 {
-    public int ProjectileCount { get; private set; }
+    public int ProjectileCount { get; set; }
 
     public ProjectileCountUpgrade(int projectileCount = 1) 
         : base("Multi-Shot", $"Fire {projectileCount} additional projectile{(projectileCount > 1 ? "s" : "")}")
@@ -46,11 +46,14 @@ public class ProjectileCountUpgrade : Upgrade
     }
 
     /// <summary>
-    /// Gets the additional projectile count
+    /// Generate a new ProjectileCountUpgrade with a value from the specified range.
     /// </summary>
-    /// <returns>Number of additional projectiles to fire</returns>
-    public int GetProjectileCount()
+    /// <param name="minCount">Minimum projectile count value.</param>
+    /// <param name="maxCount">Maximum projectile count value.</param>
+    /// <returns>A new ProjectileCountUpgrade with a random value from the range.</returns>
+    public static ProjectileCountUpgrade Generate(int minCount, int maxCount)
     {
-        return ProjectileCount;
+        int projectileCount = Random.Range(minCount, maxCount);
+        return new ProjectileCountUpgrade(projectileCount);
     }
 }

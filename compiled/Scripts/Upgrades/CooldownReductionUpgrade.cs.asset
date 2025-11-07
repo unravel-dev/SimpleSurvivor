@@ -9,7 +9,7 @@ public class CooldownReductionUpgrade : Upgrade
     /// <summary>
     /// Percentage cooldown reduction this upgrade provides.
     /// </summary>
-    public float ReductionPercent { get; private set; }
+    public float ReductionPercent { get; set; }
     
     /// <summary>
     /// Create a new cooldown reduction upgrade with specified parameters.
@@ -52,4 +52,24 @@ public class CooldownReductionUpgrade : Upgrade
         return new CooldownReductionUpgrade(reductionPercent);
     }
 
+    /// <summary>
+    /// Generate a new CooldownReductionUpgrade with a value from the specified range.
+    /// </summary>
+    /// <param name="minPercent">Minimum reduction percent value.</param>
+    /// <param name="maxPercent">Maximum reduction percent value.</param>
+    /// <returns>A new CooldownReductionUpgrade with a random value from the range.</returns>
+    public static CooldownReductionUpgrade Generate(float minPercent, float maxPercent)
+    {
+        float reductionPercent = Random.Range(minPercent, maxPercent);
+        return new CooldownReductionUpgrade(reductionPercent);
+    }
+
+    /// <summary>
+    /// Get the cooldown multiplier (1.0 - percentage/100).
+    /// </summary>
+    /// <returns>Cooldown multiplier value.</returns>
+    public float GetCooldownMultiplier()
+    {
+        return 1.0f - (ReductionPercent / 100.0f);
+    }
 }

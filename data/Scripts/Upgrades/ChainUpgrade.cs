@@ -9,7 +9,7 @@ public class ChainUpgrade : Upgrade
     /// <summary>
     /// Additional chain count this upgrade provides.
     /// </summary>
-    public int ChainCount { get; private set; }
+    public int ChainCount { get; set; }
     
     /// <summary>
     /// Create a new chain upgrade with specified parameters.
@@ -52,4 +52,15 @@ public class ChainUpgrade : Upgrade
         return new ChainUpgrade(chainCount);
     }
 
+    /// <summary>
+    /// Generate a new ChainUpgrade with a value from the specified range.
+    /// </summary>
+    /// <param name="minCount">Minimum chain count value.</param>
+    /// <param name="maxCount">Maximum chain count value.</param>
+    /// <returns>A new ChainUpgrade with a random value from the range.</returns>
+    public static ChainUpgrade Generate(int minCount, int maxCount)
+    {
+        int chainCount = Random.Range(minCount, maxCount);
+        return new ChainUpgrade(chainCount);
+    }
 }

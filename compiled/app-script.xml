@@ -1538,6 +1538,11 @@
              Clear all upgrades from the system.
              </summary>
             </member>
+        <member name="M:UpgradeSystem.RecalculateAccumulatedUpgrades">
+             <summary>
+             Recalculate all accumulated upgrade values from active upgrades
+             </summary>
+            </member>
         <member name="T:TopDownCamera">
              <summary>
              TopDownCamera component that implements smooth camera following for a top-down game.
@@ -1633,6 +1638,14 @@
              <param name="rarity">The rarity level determining the value ranges.</param>
              <returns>A new ChainUpgrade with randomized values.</returns>
             </member>
+        <member name="M:ChainUpgrade.Generate(System.Int32,System.Int32)">
+             <summary>
+             Generate a new ChainUpgrade with a value from the specified range.
+             </summary>
+             <param name="minCount">Minimum chain count value.</param>
+             <param name="maxCount">Maximum chain count value.</param>
+             <returns>A new ChainUpgrade with a random value from the range.</returns>
+            </member>
         <member name="T:CooldownReductionUpgrade">
              <summary>
              Upgrade that reduces ability cooldowns by a percentage.
@@ -1656,6 +1669,20 @@
              </summary>
              <param name="rarity">The rarity level determining the value ranges.</param>
              <returns>A new CooldownReductionUpgrade with randomized values.</returns>
+            </member>
+        <member name="M:CooldownReductionUpgrade.Generate(System.Single,System.Single)">
+             <summary>
+             Generate a new CooldownReductionUpgrade with a value from the specified range.
+             </summary>
+             <param name="minPercent">Minimum reduction percent value.</param>
+             <param name="maxPercent">Maximum reduction percent value.</param>
+             <returns>A new CooldownReductionUpgrade with a random value from the range.</returns>
+            </member>
+        <member name="M:CooldownReductionUpgrade.GetCooldownMultiplier">
+             <summary>
+             Get the cooldown multiplier (1.0 - percentage/100).
+             </summary>
+             <returns>Cooldown multiplier value.</returns>
             </member>
         <member name="T:UpgradeRarity">
              <summary>
@@ -1686,6 +1713,20 @@
              <param name="rarity">The rarity level determining the value ranges.</param>
              <returns>A new DamageUpgrade with randomized values.</returns>
             </member>
+        <member name="M:DamageUpgrade.Generate(System.Single,System.Single)">
+             <summary>
+             Generate a new DamageUpgrade with a value from the specified range.
+             </summary>
+             <param name="minPercent">Minimum damage percent value.</param>
+             <param name="maxPercent">Maximum damage percent value.</param>
+             <returns>A new DamageUpgrade with a random value from the range.</returns>
+            </member>
+        <member name="M:DamageUpgrade.GetDamageMultiplier">
+             <summary>
+             Gets the damage multiplier (1.0 + percentage/100).
+             </summary>
+             <returns>Damage multiplier value.</returns>
+            </member>
         <member name="T:MaxHealthUpgrade">
              <summary>
              Upgrade that increases the player's maximum health.
@@ -1709,6 +1750,14 @@
              </summary>
              <param name="rarity">The rarity level determining the value ranges.</param>
              <returns>A new MaxHealthUpgrade with randomized values.</returns>
+            </member>
+        <member name="M:MaxHealthUpgrade.Generate(System.Int32,System.Int32)">
+             <summary>
+             Generate a new MaxHealthUpgrade with a value from the specified range.
+             </summary>
+             <param name="minHealth">Minimum health increase value.</param>
+             <param name="maxHealth">Maximum health increase value.</param>
+             <returns>A new MaxHealthUpgrade with a random value from the range.</returns>
             </member>
         <member name="T:MovementSpeedUpgrade">
              <summary>
@@ -1734,6 +1783,20 @@
              <param name="rarity">The rarity level determining the value ranges.</param>
              <returns>A new MovementSpeedUpgrade with randomized values.</returns>
             </member>
+        <member name="M:MovementSpeedUpgrade.Generate(System.Single,System.Single)">
+             <summary>
+             Generate a new MovementSpeedUpgrade with a value from the specified range.
+             </summary>
+             <param name="minPercent">Minimum speed percent value.</param>
+             <param name="maxPercent">Maximum speed percent value.</param>
+             <returns>A new MovementSpeedUpgrade with a random value from the range.</returns>
+            </member>
+        <member name="M:MovementSpeedUpgrade.GetSpeedMultiplier">
+             <summary>
+             Get the speed multiplier (1.0 + percentage/100).
+             </summary>
+             <returns>Speed multiplier value.</returns>
+            </member>
         <member name="T:PierceUpgrade">
              <summary>
              Example upgrade that increases pierce count for projectiles.
@@ -1758,11 +1821,33 @@
              <param name="rarity">The rarity level determining the value ranges.</param>
              <returns>A new PierceUpgrade with randomized values.</returns>
             </member>
-        <member name="M:PierceUpgrade.GetPierceCount">
+        <member name="M:PierceUpgrade.Generate(System.Int32,System.Int32)">
              <summary>
-             Get the additional pierce count this upgrade provides.
+             Generate a new PierceUpgrade with a value from the specified range.
              </summary>
-             <returns>Additional pierce count.</returns>
+             <param name="minCount">Minimum pierce count value.</param>
+             <param name="maxCount">Maximum pierce count value.</param>
+             <returns>A new PierceUpgrade with a random value from the range.</returns>
+            </member>
+        <member name="T:ProjectileCountUpgrade">
+             <summary>
+             Upgrade that increases the number of projectiles fired by abilities
+             </summary>
+            </member>
+        <member name="M:ProjectileCountUpgrade.Generate(UpgradeRarity)">
+             <summary>
+             Generates a random ProjectileCountUpgrade based on rarity
+             </summary>
+             <param name="rarity">The rarity level determining the upgrade power</param>
+             <returns>A new ProjectileCountUpgrade with random values</returns>
+            </member>
+        <member name="M:ProjectileCountUpgrade.Generate(System.Int32,System.Int32)">
+             <summary>
+             Generate a new ProjectileCountUpgrade with a value from the specified range.
+             </summary>
+             <param name="minCount">Minimum projectile count value.</param>
+             <param name="maxCount">Maximum projectile count value.</param>
+             <returns>A new ProjectileCountUpgrade with a random value from the range.</returns>
             </member>
         <member name="T:Upgrade">
              <summary>
@@ -2485,23 +2570,11 @@
              Applies all current settings to the game systems.
              </summary>
             </member>
-        <member name="T:ProjectileCountUpgrade">
+        <member name="T:DestroyedComponent">
              <summary>
-             Upgrade that increases the number of projectiles fired by abilities
+             Component that defines physical damage properties for entities.
+             Used by the ContactSystem to determine damage amounts.
              </summary>
-            </member>
-        <member name="M:ProjectileCountUpgrade.Generate(UpgradeRarity)">
-             <summary>
-             Generates a random ProjectileCountUpgrade based on rarity
-             </summary>
-             <param name="rarity">The rarity level determining the upgrade power</param>
-             <returns>A new ProjectileCountUpgrade with random values</returns>
-            </member>
-        <member name="M:ProjectileCountUpgrade.GetProjectileCount">
-             <summary>
-             Gets the additional projectile count
-             </summary>
-             <returns>Number of additional projectiles to fire</returns>
             </member>
     </members>
 </doc>

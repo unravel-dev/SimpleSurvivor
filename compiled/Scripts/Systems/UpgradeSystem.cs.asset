@@ -16,6 +16,15 @@ public static class UpgradeSystem
 
     // Dictionary for fast lookup by C# type
     private static readonly Dictionary<System.Type, List<Upgrade>> upgradesByType = new Dictionary<System.Type, List<Upgrade>>();
+    
+    // Static accumulated upgrade instances - direct access, no searches needed
+    private static readonly DamageUpgrade accumulatedDamageUpgrade = new DamageUpgrade(0.0f);
+    private static readonly ProjectileCountUpgrade accumulatedProjectileCountUpgrade = new ProjectileCountUpgrade(0);
+    private static readonly PierceUpgrade accumulatedPierceUpgrade = new PierceUpgrade(0);
+    private static readonly ChainUpgrade accumulatedChainUpgrade = new ChainUpgrade(0);
+    private static readonly CooldownReductionUpgrade accumulatedCooldownReductionUpgrade = new CooldownReductionUpgrade(0.0f);
+    private static readonly MovementSpeedUpgrade accumulatedMovementSpeedUpgrade = new MovementSpeedUpgrade(0.0f);
+    private static readonly MaxHealthUpgrade accumulatedMaxHealthUpgrade = new MaxHealthUpgrade(0);
 
     /// <summary>
     /// Get the total number of active upgrades.
@@ -44,6 +53,9 @@ public static class UpgradeSystem
             upgradesByType[upgradeType] = new List<Upgrade>();
         }
         upgradesByType[upgradeType].Add(upgrade);
+
+        // Recalculate accumulated upgrade values
+        RecalculateAccumulatedUpgrades();
 
         if (DebugUpgrades)
         {
@@ -78,6 +90,9 @@ public static class UpgradeSystem
                     upgradesByType.Remove(upgradeType);
                 }
             }
+
+            // Recalculate accumulated upgrade values
+            RecalculateAccumulatedUpgrades();
 
             if (DebugUpgrades)
             {
@@ -164,6 +179,9 @@ public static class UpgradeSystem
     {
         activeUpgrades.Clear();
         upgradesByType.Clear();
+        
+        // Reset all accumulated upgrade instances
+        RecalculateAccumulatedUpgrades();
 
         if (DebugUpgrades)
         {
@@ -171,95 +189,111 @@ public static class UpgradeSystem
         }
     }
 
+    /// <summary>
+    /// Recalculate all accumulated upgrade values from active upgrades
+    /// </summary>
+    private static void RecalculateAccumulatedUpgrades()
+    {
+        // Reset all accumulated values
+        accumulatedDamageUpgrade.DamagePercent = 0.0f;
+        accumulatedProjectileCountUpgrade.ProjectileCount = 0;
+        accumulatedPierceUpgrade.PierceCount = 0;
+        accumulatedChainUpgrade.ChainCount = 0;
+        accumulatedCooldownReductionUpgrade.ReductionPercent = 0.0f;
+        accumulatedMovementSpeedUpgrade.SpeedPercent = 0.0f;
+        accumulatedMaxHealthUpgrade.HealthIncrease = 0;
+        
+        // Accumulate values from all active upgrades
+        float totalDamagePercent = 0.0f;
+        int totalProjectileCount = 0;
+        int totalPierceCount = 0;
+        int totalChainCount = 0;
+        float totalCooldownReduction = 0.0f;
+        float totalMovementSpeed = 0.0f;
+        int totalHealthIncrease = 0;
+        
+        
+        foreach (var upgrade in activeUpgrades)
+        {
+            if (upgrade is DamageUpgrade)
+            {
+                DamageUpgrade damageUpgrade = (DamageUpgrade)upgrade;
+                totalDamagePercent += damageUpgrade.DamagePercent;
+            }
+            else if (upgrade is ProjectileCountUpgrade)
+            {
+                ProjectileCountUpgrade projectileUpgrade = (ProjectileCountUpgrade)upgrade;
+                totalProjectileCount += projectileUpgrade.ProjectileCount;
+            }
+            else if (upgrade is PierceUpgrade)
+            {
+                PierceUpgrade pierceUpgrade = (PierceUpgrade)upgrade;
+                totalPierceCount += pierceUpgrade.PierceCount;
+            }
+            else if (upgrade is ChainUpgrade)
+            {
+                ChainUpgrade chainUpgrade = (ChainUpgrade)upgrade;
+                totalChainCount += chainUpgrade.ChainCount;
+            }
+            else if (upgrade is CooldownReductionUpgrade)
+            {
+                CooldownReductionUpgrade cooldownUpgrade = (CooldownReductionUpgrade)upgrade;
+                totalCooldownReduction += cooldownUpgrade.ReductionPercent;
+            }
+            else if (upgrade is MovementSpeedUpgrade)
+            {
+                MovementSpeedUpgrade speedUpgrade = (MovementSpeedUpgrade)upgrade;
+                totalMovementSpeed += speedUpgrade.SpeedPercent;
+            }
+            else if (upgrade is MaxHealthUpgrade)
+            {
+                MaxHealthUpgrade healthUpgrade = (MaxHealthUpgrade)upgrade;
+                totalHealthIncrease += healthUpgrade.HealthIncrease;
+            }
+        }
+        
+        // Update all accumulated upgrade instances
+        accumulatedDamageUpgrade.DamagePercent = totalDamagePercent;
+        accumulatedProjectileCountUpgrade.ProjectileCount = totalProjectileCount;
+        accumulatedPierceUpgrade.PierceCount = totalPierceCount;
+        accumulatedChainUpgrade.ChainCount = totalChainCount;
+        accumulatedCooldownReductionUpgrade.ReductionPercent = totalCooldownReduction;
+        accumulatedMovementSpeedUpgrade.SpeedPercent = totalMovementSpeed;
+        accumulatedMaxHealthUpgrade.HealthIncrease = totalHealthIncrease;
+    }
 
     public static int ApplyDamageUpgrade(int baseDamage)
     {
-        float damageMultiplier = 1.0f;
-        foreach (var upgrade in activeUpgrades)
-        {
-            if (upgrade is DamageUpgrade damageUpgrade)
-            {
-                damageMultiplier += damageUpgrade.DamagePercent;
-            }
-        }
-        return Mathf.RoundToInt((float)baseDamage * (1.0f + damageMultiplier / 100.0f));
+        return Mathf.RoundToInt((float)baseDamage * accumulatedDamageUpgrade.GetDamageMultiplier());
     }
 
     public static int ApplyProjectileCountUpgrade(int baseProjectileCount)
     {
-        int newProjectileCount = baseProjectileCount;
-        foreach (var upgrade in activeUpgrades)
-        {
-            if (upgrade is ProjectileCountUpgrade projectileCountUpgrade)
-            {
-                newProjectileCount += projectileCountUpgrade.ProjectileCount;
-            }
-        }
-        return newProjectileCount;
+        return baseProjectileCount + accumulatedProjectileCountUpgrade.ProjectileCount;
     }
+    
     public static int ApplyPierceUpgrade(int basePierceCount)
     {
-        int newPierceCount = basePierceCount;
-        foreach (var upgrade in activeUpgrades)
-        {
-            if (upgrade is PierceUpgrade pierceUpgrade)
-            {
-                newPierceCount += pierceUpgrade.PierceCount;
-            }
-        }
-        return newPierceCount;
+        return basePierceCount + accumulatedPierceUpgrade.PierceCount;
     }
-
 
     public static int ApplyChainUpgrade(int baseChainCount)
     {
-        int newChainCount = baseChainCount;
-        foreach (var upgrade in activeUpgrades)
-        {
-            if (upgrade is ChainUpgrade chainUpgrade)
-            {
-                newChainCount += chainUpgrade.ChainCount;
-            }
-        }
-        return newChainCount;
+        return baseChainCount + accumulatedChainUpgrade.ChainCount;
     }
 
     public static float ApplyCooldownReductionUpgrade(float baseCooldown)
     {
-        float cooldownReduction = 0.0f;
-        foreach (var upgrade in activeUpgrades)
-        {
-            if (upgrade is CooldownReductionUpgrade cooldownReductionUpgrade)
-            {
-                cooldownReduction += cooldownReductionUpgrade.ReductionPercent;
-            }
-        }
-
-        return baseCooldown * (1.0f - cooldownReduction / 100.0f);
+        return baseCooldown * accumulatedCooldownReductionUpgrade.GetCooldownMultiplier();
     }
+
     public static float ApplyMovementSpeedUpgrade(float baseMovementSpeed)
     {
-        float movementSpeedIncrease = 0.0f;
-        foreach (var upgrade in activeUpgrades)
-        {
-            if (upgrade is MovementSpeedUpgrade movementSpeedUpgrade)
-            {
-                movementSpeedIncrease += movementSpeedUpgrade.SpeedPercent;
-            }
-        }
-        return baseMovementSpeed * (1.0f + movementSpeedIncrease / 100.0f);
+        return baseMovementSpeed * accumulatedMovementSpeedUpgrade.GetSpeedMultiplier();
     }
     
     public static int ApplyMaxHealthUpgrade(int baseMaxHealth)
     {
-        int newMaxHealth = baseMaxHealth;
-        foreach (var upgrade in activeUpgrades)
-        {
-            if (upgrade is MaxHealthUpgrade maxHealthUpgrade)
-            {
-                newMaxHealth += maxHealthUpgrade.HealthIncrease;
-            }
-        }
-        return newMaxHealth;
+        return baseMaxHealth + accumulatedMaxHealthUpgrade.HealthIncrease;
     }
 }

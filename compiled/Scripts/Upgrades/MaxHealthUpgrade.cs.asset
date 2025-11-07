@@ -9,7 +9,7 @@ public class MaxHealthUpgrade : Upgrade
     /// <summary>
     /// Additional health points this upgrade provides.
     /// </summary>
-    public int HealthIncrease { get; private set; }
+    public int HealthIncrease { get; set; }
     
     /// <summary>
     /// Create a new max health upgrade with specified parameters.
@@ -52,4 +52,15 @@ public class MaxHealthUpgrade : Upgrade
         return new MaxHealthUpgrade(healthIncrease);
     }
 
+    /// <summary>
+    /// Generate a new MaxHealthUpgrade with a value from the specified range.
+    /// </summary>
+    /// <param name="minHealth">Minimum health increase value.</param>
+    /// <param name="maxHealth">Maximum health increase value.</param>
+    /// <returns>A new MaxHealthUpgrade with a random value from the range.</returns>
+    public static MaxHealthUpgrade Generate(int minHealth, int maxHealth)
+    {
+        int healthIncrease = Random.Range(minHealth, maxHealth);
+        return new MaxHealthUpgrade(healthIncrease);
+    }
 }

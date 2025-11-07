@@ -9,7 +9,7 @@ public class MovementSpeedUpgrade : Upgrade
     /// <summary>
     /// Percentage movement speed increase this upgrade provides.
     /// </summary>
-    public float SpeedPercent { get; private set; }
+    public float SpeedPercent { get; set; }
     
     /// <summary>
     /// Create a new movement speed upgrade with specified parameters.
@@ -52,4 +52,24 @@ public class MovementSpeedUpgrade : Upgrade
         return new MovementSpeedUpgrade(speedPercent);
     }
 
+    /// <summary>
+    /// Generate a new MovementSpeedUpgrade with a value from the specified range.
+    /// </summary>
+    /// <param name="minPercent">Minimum speed percent value.</param>
+    /// <param name="maxPercent">Maximum speed percent value.</param>
+    /// <returns>A new MovementSpeedUpgrade with a random value from the range.</returns>
+    public static MovementSpeedUpgrade Generate(float minPercent, float maxPercent)
+    {
+        float speedPercent = Random.Range(minPercent, maxPercent);
+        return new MovementSpeedUpgrade(speedPercent);
+    }
+
+    /// <summary>
+    /// Get the speed multiplier (1.0 + percentage/100).
+    /// </summary>
+    /// <returns>Speed multiplier value.</returns>
+    public float GetSpeedMultiplier()
+    {
+        return 1.0f + (SpeedPercent / 100.0f);
+    }
 }

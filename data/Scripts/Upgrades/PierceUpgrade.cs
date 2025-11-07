@@ -9,7 +9,7 @@ public class PierceUpgrade : Upgrade
     /// <summary>
     /// Additional pierce count this upgrade provides.
     /// </summary>
-    public int PierceCount { get; private set; }
+    public int PierceCount { get; set; }
     
     /// <summary>
     /// Create a new pierce upgrade with specified parameters.
@@ -51,13 +51,16 @@ public class PierceUpgrade : Upgrade
         
         return new PierceUpgrade(pierceCount);
     }
-    
+
     /// <summary>
-    /// Get the additional pierce count this upgrade provides.
+    /// Generate a new PierceUpgrade with a value from the specified range.
     /// </summary>
-    /// <returns>Additional pierce count.</returns>
-    public int GetPierceCount()
+    /// <param name="minCount">Minimum pierce count value.</param>
+    /// <param name="maxCount">Maximum pierce count value.</param>
+    /// <returns>A new PierceUpgrade with a random value from the range.</returns>
+    public static PierceUpgrade Generate(int minCount, int maxCount)
     {
-        return PierceCount;
+        int pierceCount = Random.Range(minCount, maxCount);
+        return new PierceUpgrade(pierceCount);
     }
 }

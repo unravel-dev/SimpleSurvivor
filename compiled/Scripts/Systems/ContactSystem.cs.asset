@@ -208,6 +208,10 @@ public static class ContactSystem
     public static void ApplyContact(Entity source, Entity target)
     {
 
+        if(source.HasComponent<DestroyedComponent>())
+        {
+            return;
+        }
         bool shouldExtendLifetime = false;
         
         // Execute effects in order until one succeeds
@@ -235,6 +239,7 @@ public static class ContactSystem
             var autoDestroyComponent = source.GetComponent<AutoDestroyComponent>();
             if (autoDestroyComponent != null)
             {
+                source.AddComponent<DestroyedComponent>();
                 Scene.DestroyEntity(source);
             }
         }
