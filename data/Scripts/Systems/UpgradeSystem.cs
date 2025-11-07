@@ -25,6 +25,8 @@ public static class UpgradeSystem
     private static readonly CooldownReductionUpgrade accumulatedCooldownReductionUpgrade = new CooldownReductionUpgrade(0.0f);
     private static readonly MovementSpeedUpgrade accumulatedMovementSpeedUpgrade = new MovementSpeedUpgrade(0.0f);
     private static readonly MaxHealthUpgrade accumulatedMaxHealthUpgrade = new MaxHealthUpgrade(0);
+    private static readonly CriticalChanceUpgrade accumulatedCriticalChanceUpgrade = new CriticalChanceUpgrade(0.0f);
+    private static readonly CriticalDamageUpgrade accumulatedCriticalDamageUpgrade = new CriticalDamageUpgrade(0.0f);
 
     /// <summary>
     /// Get the total number of active upgrades.
@@ -202,6 +204,8 @@ public static class UpgradeSystem
         accumulatedCooldownReductionUpgrade.ReductionPercent = 0.0f;
         accumulatedMovementSpeedUpgrade.SpeedPercent = 0.0f;
         accumulatedMaxHealthUpgrade.HealthIncrease = 0;
+        accumulatedCriticalChanceUpgrade.ChancePercent = 0.0f;
+        accumulatedCriticalDamageUpgrade.DamagePercent = 0.0f;
         
         // Accumulate values from all active upgrades
         float totalDamagePercent = 0.0f;
@@ -211,6 +215,8 @@ public static class UpgradeSystem
         float totalCooldownReduction = 0.0f;
         float totalMovementSpeed = 0.0f;
         int totalHealthIncrease = 0;
+        float totalCriticalChance = 0.0f;
+        float totalCriticalDamage = 0.0f;
         
         
         foreach (var upgrade in activeUpgrades)
@@ -250,6 +256,16 @@ public static class UpgradeSystem
                 MaxHealthUpgrade healthUpgrade = (MaxHealthUpgrade)upgrade;
                 totalHealthIncrease += healthUpgrade.HealthIncrease;
             }
+            else if (upgrade is CriticalChanceUpgrade)
+            {
+                CriticalChanceUpgrade criticalChanceUpgrade = (CriticalChanceUpgrade)upgrade;
+                totalCriticalChance += criticalChanceUpgrade.ChancePercent;
+            }
+            else if (upgrade is CriticalDamageUpgrade)
+            {
+                CriticalDamageUpgrade criticalDamageUpgrade = (CriticalDamageUpgrade)upgrade;
+                totalCriticalDamage += criticalDamageUpgrade.DamagePercent;
+            }
         }
         
         // Update all accumulated upgrade instances
@@ -260,6 +276,8 @@ public static class UpgradeSystem
         accumulatedCooldownReductionUpgrade.ReductionPercent = totalCooldownReduction;
         accumulatedMovementSpeedUpgrade.SpeedPercent = totalMovementSpeed;
         accumulatedMaxHealthUpgrade.HealthIncrease = totalHealthIncrease;
+        accumulatedCriticalChanceUpgrade.ChancePercent = totalCriticalChance;
+        accumulatedCriticalDamageUpgrade.DamagePercent = totalCriticalDamage;
     }
 
     public static int ApplyDamageUpgrade(int baseDamage)
@@ -295,5 +313,45 @@ public static class UpgradeSystem
     public static int ApplyMaxHealthUpgrade(int baseMaxHealth)
     {
         return baseMaxHealth + accumulatedMaxHealthUpgrade.HealthIncrease;
+    }
+
+    public static float ApplyCriticalChanceUpgrade(float baseCriticalChance)
+    {
+        return baseCriticalChance + accumulatedCriticalChanceUpgrade.ChancePercent;
+    }
+
+    public static float ApplyCriticalDamageUpgrade(float baseCriticalDamage)
+    {
+        return baseCriticalDamage * accumulatedCriticalDamageUpgrade.GetCriticalDamageMultiplier();
+    }
+
+    /// <summary>
+    /// Calculate final damage applying damage upgrades and critical strike mechanics.
+    /// </summary>
+    /// <param name="baseDamage">Base damage value before any upgrades.</param>
+    /// <param name="baseCriticalChance">Base critical chance percentage (0-100).</param>
+    /// <param name="baseCriticalMultiplier">Base critical damage multiplier (e.g., 2.0 for 200% damage).</param>
+    /// <returns>Final damage value after applying all upgrades and critical strike calculation.</returns>
+    public static int CalculateDamage(int baseDamage, float baseCriticalChance = 0.0f, float baseCriticalMultiplier = 2.0f)
+    {
+        // Apply damage upgrades first
+        int upgradedDamage = ApplyDamageUpgrade(baseDamage);
+        
+        // Calculate final critical chance
+        float finalCriticalChance = ApplyCriticalChanceUpgrade(baseCriticalChance);
+        
+        // Calculate final critical multiplier
+        float finalCriticalMultiplier = ApplyCriticalDamageUpgrade(baseCriticalMultiplier);
+        
+        // Roll for critical hit
+        bool isCritical = Random.Range(0f, 100f) < finalCriticalChance;
+        
+        // Apply critical multiplier if it's a critical hit
+        if (isCritical)
+        {
+            return Mathf.RoundToInt((float)upgradedDamage * finalCriticalMultiplier);
+        }
+        
+        return upgradedDamage;
     }
 }

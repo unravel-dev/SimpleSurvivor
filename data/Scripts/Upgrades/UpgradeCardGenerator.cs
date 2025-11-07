@@ -114,7 +114,13 @@ public static class UpgradeCardGenerator
                 ChainUpgrade.Generate(UpgradeRarity.Normal)),
                 
             () => new UpgradeCard("Double Shot", UpgradeRarity.Normal, 
-                ProjectileCountUpgrade.Generate(UpgradeRarity.Normal))
+                ProjectileCountUpgrade.Generate(UpgradeRarity.Normal)),
+                
+            () => new UpgradeCard("Lucky Strike", UpgradeRarity.Normal, 
+                CriticalChanceUpgrade.Generate(UpgradeRarity.Normal)),
+                
+            () => new UpgradeCard("Sharp Edge", UpgradeRarity.Normal, 
+                CriticalDamageUpgrade.Generate(UpgradeRarity.Normal))
         };
     }
     
@@ -135,6 +141,12 @@ public static class UpgradeCardGenerator
                 
             () => new UpgradeCard("Multi-Shot", UpgradeRarity.Common, 
                 ProjectileCountUpgrade.Generate(UpgradeRarity.Common)),
+                
+            () => new UpgradeCard("Critical Focus", UpgradeRarity.Common, 
+                CriticalChanceUpgrade.Generate(UpgradeRarity.Common)),
+                
+            () => new UpgradeCard("Devastating Strike", UpgradeRarity.Common, 
+                CriticalDamageUpgrade.Generate(UpgradeRarity.Common)),
                 
             // Dual upgrade cards
             () => new UpgradeCard("Combat Training", UpgradeRarity.Common, 
@@ -163,6 +175,13 @@ public static class UpgradeCardGenerator
                 {
                     ProjectileCountUpgrade.Generate(UpgradeRarity.Common),
                     CooldownReductionUpgrade.Generate(UpgradeRarity.Common)
+                }),
+                
+            () => new UpgradeCard("Critical Mastery", UpgradeRarity.Common, 
+                new List<Upgrade>
+                {
+                    CriticalChanceUpgrade.Generate(UpgradeRarity.Common),
+                    CriticalDamageUpgrade.Generate(UpgradeRarity.Common)
                 })
         };
     }
@@ -216,6 +235,13 @@ public static class UpgradeCardGenerator
                 {
                     ProjectileCountUpgrade.Generate(UpgradeRarity.Epic),
                     DamageUpgrade.Generate(UpgradeRarity.Epic)
+                }),
+                
+            () => new UpgradeCard("Assassin's Edge", UpgradeRarity.Epic, 
+                new List<Upgrade>
+                {
+                    CriticalChanceUpgrade.Generate(UpgradeRarity.Epic),
+                    CriticalDamageUpgrade.Generate(UpgradeRarity.Epic)
                 })
         };
     }
@@ -272,6 +298,13 @@ public static class UpgradeCardGenerator
                 {
                     ProjectileCountUpgrade.Generate(UpgradeRarity.Legendary),
                     ChainUpgrade.Generate(UpgradeRarity.Legendary)
+                }),
+                
+            () => new UpgradeCard("Godslayer", UpgradeRarity.Legendary, 
+                new List<Upgrade>
+                {
+                    CriticalChanceUpgrade.Generate(UpgradeRarity.Legendary),
+                    CriticalDamageUpgrade.Generate(UpgradeRarity.Legendary)
                 })
         };
     }

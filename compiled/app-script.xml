@@ -598,6 +598,12 @@
              Used by the ContactSystem to determine damage amounts.
              </summary>
             </member>
+        <member name="T:DestroyedComponent">
+             <summary>
+             Component that defines physical damage properties for entities.
+             Used by the ContactSystem to determine damage amounts.
+             </summary>
+            </member>
         <member name="T:PhysicalDamageComponent">
              <summary>
              Component that defines physical damage properties for entities.
@@ -1543,6 +1549,15 @@
              Recalculate all accumulated upgrade values from active upgrades
              </summary>
             </member>
+        <member name="M:UpgradeSystem.CalculateDamage(System.Int32,System.Single,System.Single)">
+             <summary>
+             Calculate final damage applying damage upgrades and critical strike mechanics.
+             </summary>
+             <param name="baseDamage">Base damage value before any upgrades.</param>
+             <param name="baseCriticalChance">Base critical chance percentage (0-100).</param>
+             <param name="baseCriticalMultiplier">Base critical damage multiplier (e.g., 2.0 for 200% damage).</param>
+             <returns>Final damage value after applying all upgrades and critical strike calculation.</returns>
+            </member>
         <member name="T:TopDownCamera">
              <summary>
              TopDownCamera component that implements smooth camera following for a top-down game.
@@ -1683,6 +1698,76 @@
              Get the cooldown multiplier (1.0 - percentage/100).
              </summary>
              <returns>Cooldown multiplier value.</returns>
+            </member>
+        <member name="T:CriticalChanceUpgrade">
+             <summary>
+             Upgrade that increases critical strike chance by a percentage.
+             Affects the probability of dealing critical hits.
+             </summary>
+            </member>
+        <member name="P:CriticalChanceUpgrade.ChancePercent">
+             <summary>
+             Percentage critical chance increase this upgrade provides.
+             </summary>
+            </member>
+        <member name="M:CriticalChanceUpgrade.#ctor(System.Single)">
+             <summary>
+             Create a new critical chance upgrade with specified parameters.
+             </summary>
+             <param name="chancePercent">Percentage critical chance increase (e.g., 5 for 5%).</param>
+            </member>
+        <member name="M:CriticalChanceUpgrade.Generate(UpgradeRarity)">
+             <summary>
+             Generate a new CriticalChanceUpgrade with random values based on rarity.
+             </summary>
+             <param name="rarity">The rarity level determining the value ranges.</param>
+             <returns>A new CriticalChanceUpgrade with randomized values.</returns>
+            </member>
+        <member name="M:CriticalChanceUpgrade.Generate(System.Single,System.Single)">
+             <summary>
+             Generate a new CriticalChanceUpgrade with a value from the specified range.
+             </summary>
+             <param name="minPercent">Minimum critical chance percent value.</param>
+             <param name="maxPercent">Maximum critical chance percent value.</param>
+             <returns>A new CriticalChanceUpgrade with a random value from the range.</returns>
+            </member>
+        <member name="T:CriticalDamageUpgrade">
+             <summary>
+             Upgrade that increases critical strike damage multiplier.
+             Affects the damage multiplier when a critical hit occurs.
+             </summary>
+            </member>
+        <member name="P:CriticalDamageUpgrade.DamagePercent">
+             <summary>
+             Percentage critical damage increase this upgrade provides.
+             </summary>
+            </member>
+        <member name="M:CriticalDamageUpgrade.#ctor(System.Single)">
+             <summary>
+             Create a new critical damage upgrade with specified parameters.
+             </summary>
+             <param name="damagePercent">Percentage critical damage increase (e.g., 25 for 25%).</param>
+            </member>
+        <member name="M:CriticalDamageUpgrade.Generate(UpgradeRarity)">
+             <summary>
+             Generate a new CriticalDamageUpgrade with random values based on rarity.
+             </summary>
+             <param name="rarity">The rarity level determining the value ranges.</param>
+             <returns>A new CriticalDamageUpgrade with randomized values.</returns>
+            </member>
+        <member name="M:CriticalDamageUpgrade.Generate(System.Single,System.Single)">
+             <summary>
+             Generate a new CriticalDamageUpgrade with a value from the specified range.
+             </summary>
+             <param name="minPercent">Minimum critical damage percent value.</param>
+             <param name="maxPercent">Maximum critical damage percent value.</param>
+             <returns>A new CriticalDamageUpgrade with a random value from the range.</returns>
+            </member>
+        <member name="M:CriticalDamageUpgrade.GetCriticalDamageMultiplier">
+             <summary>
+             Gets the critical damage multiplier (1.0 + percentage/100).
+             </summary>
+             <returns>Critical damage multiplier value.</returns>
             </member>
         <member name="T:UpgradeRarity">
              <summary>
@@ -2568,12 +2653,6 @@
         <member name="M:SettingsMenu.ApplyAllSettings">
              <summary>
              Applies all current settings to the game systems.
-             </summary>
-            </member>
-        <member name="T:DestroyedComponent">
-             <summary>
-             Component that defines physical damage properties for entities.
-             Used by the ContactSystem to determine damage amounts.
              </summary>
             </member>
     </members>

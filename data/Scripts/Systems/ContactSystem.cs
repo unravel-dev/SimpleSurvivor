@@ -264,7 +264,8 @@ public static class ContactSystem
         int damageAmount = damageComponent.GetDamage();
         if (damageAmount > 0)
         {
-            DamageSystem.ApplyDamage(target, source, damageAmount);
+            int finalDamage = UpgradeSystem.CalculateDamage(damageAmount);
+            DamageSystem.ApplyDamage(target, source, finalDamage);
         }
     }
     
@@ -349,7 +350,7 @@ public static class ContactSystem
         }
 
         // Check exhaust condition
-        if (pierceComponent.pierceCount <= 0)
+        if (pierceComponent.pierceCount < 0)
         {
             return ContactResult.Exhausted;
         }
