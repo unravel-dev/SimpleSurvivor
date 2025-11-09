@@ -48,11 +48,11 @@ public class Player : ScriptComponent
     private bool initialUpdate = true;
     
     /// <summary>
-    /// Called when the script is created. Initialize component references.
+    /// Called when the script is created. Cache component references.
     /// </summary>
     public override void OnCreate()
     {
-        // Get required components
+        // Cache required components
         physicsComponent = owner.GetComponent<PhysicsComponent>();
         transformComponent = owner.GetComponent<TransformComponent>();
         Health = owner.GetComponent<Health>();
@@ -72,32 +72,15 @@ public class Player : ScriptComponent
         {
             Log.Warning($"Player on {owner.name}: Health not found! Player will not be able to take damage or heal.");
         }
-        else
-        {
-            // Subscribe to health events
-            Health.OnDeath += OnPlayerDeath;
-            Health.OnDamageTaken += OnPlayerDamageTaken;
-            Health.OnHealed += OnPlayerHealed;
-        }
 
         if (Experience == null)
         {
             Log.Warning($"Player on {owner.name}: Experience not found! Player will not be able to collect experience.");
         }
-        else
-        {
-            // Subscribe to experience events
-            Experience.OnExperienceGained += OnExperienceGained;
-            Experience.OnLevelUp += OnLevelUp;
-            Experience.OnExperienceChanged += OnExperienceChanged;
-        }
-
-        // Subscribe to level-up upgrade selection events
-        LevelUpMenu.OnUpgradeSelected += OnUpgradeSelected;
     }
     
     /// <summary>
-    /// Called when the script starts execution.
+    /// Called when the script starts execution. Initialize state and values.
     /// </summary>
     public override void OnStart()
     {
@@ -118,9 +101,58 @@ public class Player : ScriptComponent
         // Initialize pickup range with base pickup range + upgrades
         InitializePickupRange();
         
-        // Initialize abilities display
-        UpdateAbilities();
+        // Note: Don't call UpdateAbilities() here - player has no abilities yet
+        // Abilities will be updated after initial ability selection in OnUpgradeSelected
+    }
     
+    /// <summary>
+    /// Called when the script is enabled. Subscribe to events.
+    /// </summary>
+    public override void OnEnable()
+    {
+        // Subscribe to health events
+        if (Health != null)
+        {
+            Health.OnDeath += OnPlayerDeath;
+            Health.OnDamageTaken += OnPlayerDamageTaken;
+            Health.OnHealed += OnPlayerHealed;
+        }
+
+        // Subscribe to experience events
+        if (Experience != null)
+        {
+            Experience.OnExperienceGained += OnExperienceGained;
+            Experience.OnLevelUp += OnLevelUp;
+            Experience.OnExperienceChanged += OnExperienceChanged;
+        }
+
+        // Subscribe to level-up upgrade selection events
+        LevelUpMenu.OnUpgradeSelected += OnUpgradeSelected;
+    }
+    
+    /// <summary>
+    /// Called when the script is disabled. Unsubscribe from events.
+    /// </summary>
+    public override void OnDisable()
+    {
+        // Unsubscribe from health events
+        if (Health != null)
+        {
+            Health.OnDeath -= OnPlayerDeath;
+            Health.OnDamageTaken -= OnPlayerDamageTaken;
+            Health.OnHealed -= OnPlayerHealed;
+        }
+        
+        // Unsubscribe from experience events
+        if (Experience != null)
+        {
+            Experience.OnExperienceGained -= OnExperienceGained;
+            Experience.OnLevelUp -= OnLevelUp;
+            Experience.OnExperienceChanged -= OnExperienceChanged;
+        }
+        
+        // Unsubscribe from level-up upgrade selection events
+        LevelUpMenu.OnUpgradeSelected -= OnUpgradeSelected;
     }
     
     /// <summary>
@@ -801,29 +833,11 @@ public override void OnFixedUpdate()
     }
     
     /// <summary>
-    /// Called when the script is destroyed. Clean up event subscriptions.
+    /// Called when the script is destroyed. Final cleanup.
     /// </summary>
     public override void OnDestroy()
     {
-        // Unsubscribe from health events
-        if (Health != null)
-        {
-            Health.OnDeath -= OnPlayerDeath;
-            Health.OnDamageTaken -= OnPlayerDamageTaken;
-            Health.OnHealed -= OnPlayerHealed;
-        }
-        
-        // Unsubscribe from experience events
-        if (Experience != null)
-        {
-            Experience.OnExperienceGained -= OnExperienceGained;
-            Experience.OnLevelUp -= OnLevelUp;
-            Experience.OnExperienceChanged -= OnExperienceChanged;
-        }
-        
-        // Unsubscribe from level-up upgrade selection events
-        LevelUpMenu.OnUpgradeSelected -= OnUpgradeSelected;
-        
-        Log.Info("Player script destroyed and events unsubscribed");
+        // OnDisable already handles event unsubscription
+        Log.Info("Player script destroyed");
     }
 }

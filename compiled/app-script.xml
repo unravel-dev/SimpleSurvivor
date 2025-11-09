@@ -176,12 +176,22 @@
             </member>
         <member name="M:Player.OnCreate">
              <summary>
-             Called when the script is created. Initialize component references.
+             Called when the script is created. Cache component references.
              </summary>
             </member>
         <member name="M:Player.OnStart">
              <summary>
-             Called when the script starts execution.
+             Called when the script starts execution. Initialize state and values.
+             </summary>
+            </member>
+        <member name="M:Player.OnEnable">
+             <summary>
+             Called when the script is enabled. Subscribe to events.
+             </summary>
+            </member>
+        <member name="M:Player.OnDisable">
+             <summary>
+             Called when the script is disabled. Unsubscribe from events.
              </summary>
             </member>
         <member name="M:Player.OnUpdate">
@@ -400,7 +410,7 @@
             </member>
         <member name="M:Player.OnDestroy">
              <summary>
-             Called when the script is destroyed. Clean up event subscriptions.
+             Called when the script is destroyed. Final cleanup.
              </summary>
             </member>
         <member name="T:MulticastUpgrade">
@@ -2511,9 +2521,14 @@
              Updates the progress bars via event subscriptions for optimal performance.
              </summary>
             </member>
+        <member name="M:GameHub.OnCreate">
+             <summary>
+             Called when the script is created. Cache all references.
+             </summary>
+            </member>
         <member name="M:GameHub.OnStart">
              <summary>
-             Called when the script starts execution.
+             Called when the script starts execution. Initialize state.
              </summary>
             </member>
         <member name="M:GameHub.CacheUIElements">
@@ -2581,7 +2596,7 @@
             </member>
         <member name="M:GameHub.OnEnable">
              <summary>
-             Called when the component is enabled.
+             Called when the component is enabled. Subscribe to events.
              </summary>
             </member>
         <member name="M:GameHub.OnDisable">

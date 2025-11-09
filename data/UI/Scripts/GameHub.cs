@@ -33,15 +33,35 @@ public class GameHub : ScriptComponent
     private float lastTimerUpdate = 0f;
     
     /// <summary>
-    /// Called when the script starts execution.
+    /// Called when the script is created. Cache all references.
+    /// </summary>
+    public override void OnCreate()
+    {
+        // Cache UI document and elements
+        CacheUIElements();
+        
+        // Cache ability slot elements
+        CacheAbilitySlotElements();
+        
+        // Find player references
+        FindPlayerReferences();
+    }
+    
+    /// <summary>
+    /// Called when the script starts execution. Initialize state.
     /// </summary>
     public override void OnStart()
     {
-
-        
         // Initialize timer
         gameStartTime = Time.time;
         lastTimerUpdate = Time.time;
+        
+        // Initialize displays with current values
+        UpdateProgressBars();
+        UpdateGameTimer();
+        
+        // Initialize ability slots (will be empty initially, updated when player gets abilities)
+        InitializeAbilitySlots();
     }
     
     /// <summary>
@@ -49,14 +69,13 @@ public class GameHub : ScriptComponent
     /// </summary>
     private void CacheUIElements()
     {
-                // Get the UI document component
+        // Get the UI document component
         var uiDoc = owner.GetComponent<UIDocumentComponent>();
         if (uiDoc == null)
         {
             Log.Error("GameHub: No UIDocumentComponent found on entity");
             return;
         }
-
 
         // Get the document wrapper
         document = uiDoc.GetDocument();
@@ -97,11 +116,6 @@ public class GameHub : ScriptComponent
         {
             Log.Error("GameHub: Level value element not found or invalid");
         }
-        
-        // Cache ability slot elements
-        CacheAbilitySlotElements();
-        
-        // Log.Info($"GameHub: Cached UI elements - Health: {healthBar?.IsValid()}, Experience: {experienceBar?.IsValid()}, Timer: {gameTimer?.IsValid()}, HealthValue: {healthValue?.IsValid()}, LevelValue: {levelValue?.IsValid()}");
     }
     
     /// <summary>
@@ -149,7 +163,7 @@ public class GameHub : ScriptComponent
                 Log.Info("GameHub: Found player component");
                 
                 // Get health and experience components
-                playerHealth = player.GetHealth();
+                playerHealth = playerEntity.GetComponent<Health>();
                 playerExperience = playerEntity.GetComponent<Experience>();
                 
                 if (playerHealth == null)
@@ -353,23 +367,12 @@ public class GameHub : ScriptComponent
     }
     
     /// <summary>
-    /// Called when the component is enabled.
+    /// Called when the component is enabled. Subscribe to events.
     /// </summary>
     public override void OnEnable()
     {     
-        
-        // Cache UI elements
-        CacheUIElements();
-        
-        // Find player reference (but don't subscribe yet - that happens in OnEnable)
-        FindPlayerReferences();   
-        // Subscribe to events
+        // Subscribe to player events
         SubscribeToPlayerEvents();
-        
-        // Update displays
-        UpdateProgressBars();
-        UpdateGameTimer();
-        InitializeAbilitySlots();
     }
     
     /// <summary>
@@ -445,7 +448,7 @@ public class GameHub : ScriptComponent
             SetAbilitySlotEmpty(i);
         }
         
-        if (player?.owner == null)
+        if (player == null)
         {
             Log.Warning("GameHub: Player not found, cannot initialize ability slots");
             return;
