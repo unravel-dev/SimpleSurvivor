@@ -2,6 +2,8 @@
 *.cache
 *.csproj
 *.temp
+settings.cfg
+app-script.*
 
 [Bb]uild_*/
 [Bb]uild/
