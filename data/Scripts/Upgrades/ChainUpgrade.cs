@@ -21,36 +21,6 @@ public class ChainUpgrade : Upgrade
         ChainCount = chainCount;
     }
     
-    /// <summary>
-    /// Generate a new ChainUpgrade with random values based on rarity.
-    /// </summary>
-    /// <param name="rarity">The rarity level determining the value ranges.</param>
-    /// <returns>A new ChainUpgrade with randomized values.</returns>
-    public static ChainUpgrade Generate(UpgradeRarity rarity)
-    {
-        int chainCount;
-        
-        switch (rarity)
-        {
-            case UpgradeRarity.Normal:
-                chainCount = Random.Range(1, 3);        // 1-2 chains
-                break;
-            case UpgradeRarity.Common:
-                chainCount = Random.Range(2, 4);        // 2-3 chains
-                break;
-            case UpgradeRarity.Epic:
-                chainCount = Random.Range(3, 6);        // 3-5 chains
-                break;
-            case UpgradeRarity.Legendary:
-                chainCount = Random.Range(5, 9);        // 5-8 chains
-                break;
-            default:
-                chainCount = 2;
-                break;
-        }
-        
-        return new ChainUpgrade(chainCount);
-    }
 
     /// <summary>
     /// Generate a new ChainUpgrade with a value from the specified range.

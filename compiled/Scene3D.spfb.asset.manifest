@@ -1,9 +1,7 @@
 {
- "source_path": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/Scene3D.spfb",
- "source_sha": "830ad2c5595866d4166d2895be6853fbe85a395e",
+ "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/Scene3D.spfb",
+ "source_sha": "70775c5c090eba7fcbfbbc67b0427595ccba747f",
  "source_timestamp": {
-  "time_since_epoch": {
-   "count": 134065768594761895
-  }
+  "count": -5040167214233362116
  }
 }

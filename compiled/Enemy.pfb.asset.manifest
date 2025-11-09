@@ -1,9 +1,7 @@
 {
- "source_path": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/Enemy.pfb",
- "source_sha": "29bad850ab07d21d8559f7a4551c0c5b5531805e",
+ "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/Enemy.pfb",
+ "source_sha": "22a7ee7b228ec7eac19ce9028f0173574f36eb9f",
  "source_timestamp": {
-  "time_since_epoch": {
-   "count": 134069706653805957
-  }
+  "count": -5039773408328955916
  }
 }

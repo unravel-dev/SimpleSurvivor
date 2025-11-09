@@ -231,6 +231,7 @@ public static class ContactSystem
         
         // Always handle damage regardless of other effects
         HandlePhysicalDamage(source, target);
+        HandleAreaDamage(source, target);
         
 
         if (!shouldExtendLifetime)
@@ -240,7 +241,14 @@ public static class ContactSystem
             if (autoDestroyComponent != null)
             {
                 source.AddComponent<DestroyedComponent>();
-                Scene.DestroyEntity(source);
+
+
+                var particleEmitter = source.GetComponent<ParticleEmitterComponent>();
+                if (particleEmitter != null)
+                {
+                    particleEmitter.Stop();
+                }
+                Scene.DestroyEntity(source, 1.0f);
             }
         }
     }
@@ -264,9 +272,55 @@ public static class ContactSystem
         int damageAmount = damageComponent.GetDamage();
         if (damageAmount > 0)
         {
-            int finalDamage = UpgradeSystem.CalculateDamage(damageAmount);
-            DamageSystem.ApplyDamage(target, source, finalDamage);
+            DamageBreakdown breakdown = UpgradeSystem.CalculateDamage(damageAmount);
+            DamageSystem.ApplyDamage(target, source, breakdown);
         }
+    }
+    
+    /// <summary>
+    /// Handle area damage application from source at the impact location.
+    /// </summary>
+    /// <param name="source">Source entity with potential AreaDamageComponent.</param>
+    /// <param name="target">Target entity that was hit (used for impact location).</param>
+    private static void HandleAreaDamage(Entity source, Entity target)
+    {
+        // Check if source has area damage component
+        var areaDamageComponent = source.GetComponent<AreaDamageComponent>();
+        if (areaDamageComponent == null)
+        {
+            return; // No area damage to apply
+        }
+
+
+        QueryClosestTarget query = new QueryClosestTarget();
+        query.source = source;
+        query.maxRange = areaDamageComponent.GetExplosionRadius();
+        var enemies = FindClosestEnemies(query);
+
+        // Vector3 explosionCenter = source.transform.position;
+        // float explosionRadius = areaDamageComponent.GetExplosionRadius();
+        int baseDamage = areaDamageComponent.GetDamage();
+        // LayerMask damageLayerMask = areaDamageComponent.damageLayerMask;
+        bool excludeOriginalTarget = areaDamageComponent.excludeOriginalTarget;
+
+        
+        foreach (var entity in enemies)
+        {
+            // Skip the original target to avoid double damage
+            if (excludeOriginalTarget && entity == target)
+                continue;
+            
+            // Skip entities without health or that are already dead
+            var healthComponent = entity.GetComponent<Health>();
+            if (healthComponent == null || healthComponent.IsDead())
+                continue;
+            
+            // Apply upgraded damage through DamageSystem
+            DamageBreakdown breakdown = UpgradeSystem.CalculateDamage(baseDamage);
+            DamageSystem.ApplyDamage(entity, source, breakdown);
+            
+        }
+
     }
     
     /// <summary>
@@ -300,7 +354,6 @@ public static class ContactSystem
             if (!newTarget)
             {
                 chainComponent.chainCount = 0;
-                // Scene.DestroyEntity(source);
                 return ContactResult.Exhausted; // No new target to bounce to
             }
 

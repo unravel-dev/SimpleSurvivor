@@ -1,9 +1,7 @@
 {
- "source_path": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/Scripts/Upgrades/MovementSpeedUpgrade.cs",
- "source_sha": "75855b6ce3f00958c34552d2b77c604a719752fd",
+ "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/Scripts/Upgrades/MovementSpeedUpgrade.cs",
+ "source_sha": "e5abd1cc6d798a728f37a80536111d84222d2495",
  "source_timestamp": {
-  "time_since_epoch": {
-   "count": 134069704915930071
-  }
+  "count": -5039626629881964016
  }
 }

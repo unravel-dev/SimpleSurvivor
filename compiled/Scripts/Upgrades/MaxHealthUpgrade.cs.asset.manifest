@@ -1,9 +1,7 @@
 {
- "source_path": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/Scripts/Upgrades/MaxHealthUpgrade.cs",
- "source_sha": "1ecf546f86a900177bcc8d1d1525aebeab30af12",
+ "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/Scripts/Upgrades/MaxHealthUpgrade.cs",
+ "source_sha": "97b001bd96a506e5307f4e31117d96fc12cda6a4",
  "source_timestamp": {
-  "time_since_epoch": {
-   "count": 134069705068760088
-  }
+  "count": -5039626629882067116
  }
 }

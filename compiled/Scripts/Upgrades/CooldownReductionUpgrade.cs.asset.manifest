@@ -1,9 +1,7 @@
 {
- "source_path": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/Scripts/Upgrades/CooldownReductionUpgrade.cs",
- "source_sha": "f75b0ae911f952631baa1feb8960ceefc6ab9db0",
+ "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/Scripts/Upgrades/CooldownReductionUpgrade.cs",
+ "source_sha": "3f4bac148718941de2cedbffe508a0c2ef4b30eb",
  "source_timestamp": {
-  "time_since_epoch": {
-   "count": 134069704894583258
-  }
+  "count": -5039626629882462416
  }
 }

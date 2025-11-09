@@ -21,36 +21,6 @@ public class DamageUpgrade : Upgrade
         DamagePercent = damagePercent;
     }
     
-    /// <summary>
-    /// Generate a new DamageUpgrade with random values based on rarity.
-    /// </summary>
-    /// <param name="rarity">The rarity level determining the value ranges.</param>
-    /// <returns>A new DamageUpgrade with randomized values.</returns>
-    public static DamageUpgrade Generate(UpgradeRarity rarity)
-    {
-        float damagePercent;
-        
-        switch (rarity)
-        {
-            case UpgradeRarity.Normal:
-                damagePercent = Random.Range(5.0f, 10.0f);
-                break;
-            case UpgradeRarity.Common:
-                damagePercent = Random.Range(8.0f, 15.0f);
-                break;
-            case UpgradeRarity.Epic:
-                damagePercent = Random.Range(12.0f, 20.0f);
-                break;
-            case UpgradeRarity.Legendary:
-                damagePercent = Random.Range(18.0f, 30.0f);
-                break;
-            default:
-                damagePercent = 10.0f;
-                break;
-        }
-        
-        return new DamageUpgrade(damagePercent);
-    }
 
     /// <summary>
     /// Generate a new DamageUpgrade with a value from the specified range.

@@ -21,36 +21,6 @@ public class PierceUpgrade : Upgrade
         PierceCount = pierceCount;
     }
     
-    /// <summary>
-    /// Generate a new PierceUpgrade with random values based on rarity.
-    /// </summary>
-    /// <param name="rarity">The rarity level determining the value ranges.</param>
-    /// <returns>A new PierceUpgrade with randomized values.</returns>
-    public static PierceUpgrade Generate(UpgradeRarity rarity)
-    {
-        int pierceCount;
-        
-        switch (rarity)
-        {
-            case UpgradeRarity.Normal:
-                pierceCount = Random.Range(1, 2);      // 1 pierce
-                break;
-            case UpgradeRarity.Common:
-                pierceCount = Random.Range(1, 3);      // 1-2 pierce
-                break;
-            case UpgradeRarity.Epic:
-                pierceCount = Random.Range(2, 4);      // 2-3 pierce
-                break;
-            case UpgradeRarity.Legendary:
-                pierceCount = Random.Range(3, 6);      // 3-5 pierce
-                break;
-            default:
-                pierceCount = 1;
-                break;
-        }
-        
-        return new PierceUpgrade(pierceCount);
-    }
 
     /// <summary>
     /// Generate a new PierceUpgrade with a value from the specified range.

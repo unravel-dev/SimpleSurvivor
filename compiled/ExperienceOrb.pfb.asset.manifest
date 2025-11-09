@@ -1,9 +1,7 @@
 {
- "source_path": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/ExperienceOrb.pfb",
- "source_sha": "feac1922b6f433e9ddf14daefa9c5413b3be6f79",
+ "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/ExperienceOrb.pfb",
+ "source_sha": "41e88292773bb9fefa770f7cce56a91349467c7c",
  "source_timestamp": {
-  "time_since_epoch": {
-   "count": 134067654167478877
-  }
+  "count": -5039978656961663916
  }
 }

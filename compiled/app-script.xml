@@ -48,6 +48,13 @@
              <param name="source">Source entity with potential PhysicalDamageComponent.</param>
              <param name="target">Target entity to receive damage.</param>
             </member>
+        <member name="M:ContactSystem.HandleAreaDamage(Unravel.Core.Entity,Unravel.Core.Entity)">
+             <summary>
+             Handle area damage application from source at the impact location.
+             </summary>
+             <param name="source">Source entity with potential AreaDamageComponent.</param>
+             <param name="target">Target entity that was hit (used for impact location).</param>
+            </member>
         <member name="M:ContactSystem.HandleChain(Unravel.Core.Entity,Unravel.Core.Entity)">
              <summary>
              Example method for handling bounce effects (placeholder for future implementation).
@@ -55,23 +62,10 @@
              <param name="source">Source entity (e.g., projectile).</param>
              <param name="target">Target entity that was hit.</param>
             </member>
-        <member name="T:ExampleAbility">
+        <member name="T:AbilityDisplayInfo">
              <summary>
-             Example ability that targets the closest enemy and fires a projectile at them.
-             Demonstrates how to use the new ability system.
+             Structure to hold ability display information for UI.
              </summary>
-            </member>
-        <member name="M:ExampleAbility.GatherTargets">
-             <summary>
-             Gather targets for this ability. Finds all enemies within range and returns the closest one.
-             </summary>
-             <returns>List containing the closest enemy, or empty list if none found.</returns>
-            </member>
-        <member name="M:ExampleAbility.OnTriggerAbility(Unravel.Core.Entity[])">
-             <summary>
-             Execute the ability by creating a projectile aimed at the target.
-             </summary>
-             <param name="targets">List of target entities (should contain one enemy).</param>
             </member>
         <member name="T:Ability">
              <summary>
@@ -100,6 +94,7 @@
         <member name="M:Ability.TriggerAbility">
              <summary>
              Attempt to trigger the ability. Checks cooldown and calls OnTriggerAbility if ready.
+             Handles multicast upgrades automatically.
              </summary>
              <returns>True if ability was successfully triggered.</returns>
             </member>
@@ -114,13 +109,27 @@
              </summary>
              <param name="remainingTime">Remaining cooldown time in seconds.</param>
             </member>
+        <member name="M:Ability.GetBaseMulticastPercent">
+             <summary>
+             Virtual method for derived classes to define base multicast percentage.
+             Override this to give abilities inherent multicast chance.
+             </summary>
+             <returns>Base multicast percentage (default 0%).</returns>
+            </member>
+        <member name="M:Ability.GetDisplayInfo">
+             <summary>
+             Virtual method for derived classes to provide display information for UI.
+             Override this to customize how the ability appears in the UI.
+             </summary>
+             <returns>Display information for the ability.</returns>
+            </member>
         <member name="M:Ability.GatherTargets">
              <summary>
              Virtual method for derived classes to implement target gathering logic.
              </summary>
              <returns>List of entities that this ability should affect.</returns>
             </member>
-        <member name="M:Ability.OnTriggerAbility(Unravel.Core.Entity[])">
+        <member name="M:Ability.OnTriggerAbility(Unravel.Core.Entity[],System.Int32)">
              <summary>
              Virtual method for derived classes to implement the actual ability effect.
              </summary>
@@ -297,6 +306,11 @@
              <param name="newLevel">New level.</param>
              <param name="oldLevel">Previous level.</param>
             </member>
+        <member name="M:Player.ShowInitialAbilitySelection">
+             <summary>
+             Show the initial ability selection menu at game start.
+             </summary>
+            </member>
         <member name="M:Player.ShowLevelUpMenu(System.Int32)">
              <summary>
              Show the level-up menu with upgrade options.
@@ -335,6 +349,43 @@
              </summary>
              <returns>Current experience, or 0 if no experience pickup component.</returns>
             </member>
+        <member name="M:Player.GetCurrentLuck">
+             <summary>
+             Get the player's current luck (base luck + upgrades).
+             </summary>
+             <returns>Current total luck value.</returns>
+            </member>
+        <member name="M:Player.GetCurrentPickupRange">
+             <summary>
+             Get the player's current pickup range (base pickup range + upgrades).
+             </summary>
+             <returns>Current total pickup range value.</returns>
+            </member>
+        <member name="M:Player.InitializeHealth">
+             <summary>
+             Initialize the Health component with base max health + upgrades.
+             </summary>
+            </member>
+        <member name="M:Player.UpdateMaxHealth">
+             <summary>
+             Update the Health component's max health based on current upgrades.
+             </summary>
+            </member>
+        <member name="M:Player.InitializePickupRange">
+             <summary>
+             Initialize the Experience component with base pickup range + upgrades.
+             </summary>
+            </member>
+        <member name="M:Player.UpdatePickupRange">
+             <summary>
+             Update the Experience component's pickup range based on current upgrades.
+             </summary>
+            </member>
+        <member name="M:Player.UpdateAbilities">
+             <summary>
+             Update the GameHub ability slots based on current player abilities.
+             </summary>
+            </member>
         <member name="M:Player.GetLevelProgress">
              <summary>
              Get the player's experience progress towards next level.
@@ -351,6 +402,103 @@
              <summary>
              Called when the script is destroyed. Clean up event subscriptions.
              </summary>
+            </member>
+        <member name="T:MulticastUpgrade">
+             <summary>
+             Upgrade that provides a chance to trigger abilities multiple times (multicast).
+             Each 100% multicast chance guarantees one additional cast, with remainder as probability.
+             </summary>
+            </member>
+        <member name="P:MulticastUpgrade.MulticastPercent">
+             <summary>
+             Percentage chance for multicast. 100% = 1 guaranteed extra cast, 150% = 1 guaranteed + 50% chance for another.
+             </summary>
+            </member>
+        <member name="M:MulticastUpgrade.#ctor(System.Single)">
+             <summary>
+             Create a new multicast upgrade with specified parameters.
+             </summary>
+             <param name="multicastPercent">Percentage multicast chance (e.g., 150 for 150%).</param>
+            </member>
+        <member name="M:MulticastUpgrade.Generate(System.Single,System.Single)">
+             <summary>
+             Generate a new MulticastUpgrade with a value from the specified range.
+             </summary>
+             <param name="minPercent">Minimum multicast percent value.</param>
+             <param name="maxPercent">Maximum multicast percent value.</param>
+             <returns>A new MulticastUpgrade with a random value from the range.</returns>
+            </member>
+        <member name="M:MulticastUpgrade.CalculateAdditionalCasts">
+             <summary>
+             Calculate the number of additional casts based on multicast percentage.
+             </summary>
+             <returns>Number of additional casts to perform</returns>
+            </member>
+        <member name="M:MulticastUpgrade.GetMulticastMultiplier">
+             <summary>
+             Gets the multicast multiplier for display purposes.
+             </summary>
+             <returns>Multicast multiplier value</returns>
+            </member>
+        <member name="T:FireballAbility">
+             <summary>
+             Example fireball ability that demonstrates how to create custom abilities for AbilityCard.
+             Fires a fireball projectile at the nearest enemy with area damage.
+             </summary>
+            </member>
+        <member name="M:FireballAbility.ConfigureAbility(FireballAbility)">
+             <summary>
+             Configure a Fireball ability with default values.
+             </summary>
+             <param name="ability">The ability instance to configure.</param>
+            </member>
+        <member name="M:FireballAbility.GatherTargets">
+             <summary>
+             Gather targets for the fireball ability (finds closest enemy).
+             </summary>
+             <returns>List containing the closest enemy, or empty list if none found</returns>
+            </member>
+        <member name="M:FireballAbility.OnTriggerAbility(Unravel.Core.Entity[],System.Int32)">
+             <summary>
+             Trigger the fireball ability - launch fireball at target.
+             </summary>
+             <param name="targets">List of targets (should contain one enemy)</param>
+            </member>
+        <member name="M:FireballAbility.GetDisplayInfo">
+             <summary>
+             Get display information for the Fireball ability.
+             </summary>
+             <returns>Display information for UI.</returns>
+            </member>
+        <member name="T:LightningBoltAbility">
+             <summary>
+             Lightning bolt ability that targets the closest enemy and fires a lightning projectile at them.
+             Fast-moving electric projectile with chain lightning capabilities.
+             </summary>
+            </member>
+        <member name="M:LightningBoltAbility.ConfigureAbility(LightningBoltAbility)">
+             <summary>
+             Configure a Lightning Bolt ability with default values.
+             </summary>
+             <param name="ability">The ability instance to configure.</param>
+            </member>
+        <member name="M:LightningBoltAbility.GatherTargets">
+             <summary>
+             Gather targets for this ability. Finds all enemies within range and returns the closest one.
+             </summary>
+             <returns>List containing the closest enemy, or empty list if none found.</returns>
+            </member>
+        <member name="M:LightningBoltAbility.OnTriggerAbility(Unravel.Core.Entity[],System.Int32)">
+             <summary>
+             Execute the ability by creating a projectile aimed at the target.
+             </summary>
+             <param name="targets">List of target entities (should contain one enemy).</param>
+            </member>
+        <member name="M:LightningBoltAbility.GetDisplayInfo">
+             <summary>
+             Get display information for the Lightning Bolt ability.
+             </summary>
+             <returns>Display information for UI.</returns>
             </member>
         <member name="T:BasicLevelDirector">
              <summary>
@@ -586,6 +734,36 @@
              Called when the script is destroyed. Clean up event subscriptions.
              </summary>
             </member>
+        <member name="T:AreaDamageComponent">
+             <summary>
+             Component that defines area damage properties for explosions and area effects.
+             The actual damage logic is handled by ContactSystem for consistency.
+             </summary>
+            </member>
+        <member name="M:AreaDamageComponent.GetDamage">
+             <summary>
+             Get the current damage value.
+             </summary>
+             <returns>Base damage value</returns>
+            </member>
+        <member name="M:AreaDamageComponent.SetDamage(System.Int32)">
+             <summary>
+             Set the damage value.
+             </summary>
+             <param name="newDamage">New damage value</param>
+            </member>
+        <member name="M:AreaDamageComponent.GetExplosionRadius">
+             <summary>
+             Get the explosion radius.
+             </summary>
+             <returns>Explosion radius</returns>
+            </member>
+        <member name="M:AreaDamageComponent.SetExplosionRadius(System.Single)">
+             <summary>
+             Set the explosion radius.
+             </summary>
+             <param name="newRadius">New explosion radius</param>
+            </member>
         <member name="T:AutoDestroyComponent">
              <summary>
              Component that defines physical damage properties for entities.
@@ -597,6 +775,37 @@
              Component that defines physical damage properties for entities.
              Used by the ContactSystem to determine damage amounts.
              </summary>
+            </member>
+        <member name="T:LuckUpgrade">
+             <summary>
+             Upgrade that increases luck for better loot drops and rare item chances.
+             Affects the probability of finding better items and experience bonuses.
+             </summary>
+            </member>
+        <member name="P:LuckUpgrade.LuckPercent">
+             <summary>
+             Percentage luck increase this upgrade provides.
+             </summary>
+            </member>
+        <member name="M:LuckUpgrade.#ctor(System.Single)">
+             <summary>
+             Create a new luck upgrade with specified parameters.
+             </summary>
+             <param name="luckPercent">Percentage luck increase (e.g., 15 for 15%).</param>
+            </member>
+        <member name="M:LuckUpgrade.Generate(System.Single,System.Single)">
+             <summary>
+             Generate a new LuckUpgrade with a value from the specified range.
+             </summary>
+             <param name="minPercent">Minimum luck percent value.</param>
+             <param name="maxPercent">Maximum luck percent value.</param>
+             <returns>A new LuckUpgrade with a random value from the range.</returns>
+            </member>
+        <member name="M:LuckUpgrade.GetLuckMultiplier">
+             <summary>
+             Gets the luck multiplier (1.0 + percentage/100).
+             </summary>
+             <returns>Luck multiplier value.</returns>
             </member>
         <member name="T:DestroyedComponent">
              <summary>
@@ -680,14 +889,14 @@
              Find the main camera entity for billboard behavior.
              </summary>
             </member>
-        <member name="M:DamageNumber.SetDamageText(System.Single,System.String)">
+        <member name="M:DamageNumber.SetDamageText(DamageBreakdown)">
              <summary>
              Set the damage text to display.
              </summary>
              <param name="damageAmount">Damage amount to display.</param>
              <param name="damageType">Type of damage for color coding (optional).</param>
             </member>
-        <member name="M:DamageNumber.SetDamageColor(System.String)">
+        <member name="M:DamageNumber.SetDamageColor(DamageBreakdown)">
              <summary>
              Set the color of the damage text based on damage type.
              </summary>
@@ -763,7 +972,7 @@
              Unsubscribe from damage events.
              </summary>
             </member>
-        <member name="M:DamageNumberSystem.OnDamageApplied(Unravel.Core.Entity,Unravel.Core.Entity,System.Single)">
+        <member name="M:DamageNumberSystem.OnDamageApplied(Unravel.Core.Entity,Unravel.Core.Entity,DamageBreakdown)">
              <summary>
              Handle entity damage events and spawn damage numbers.
              </summary>
@@ -779,7 +988,7 @@
              <param name="healSource">Entity that provided the healing.</param>
              <param name="healAmount">Amount of healing applied.</param>
             </member>
-        <member name="M:DamageNumberSystem.SpawnDamageNumber(Unravel.Core.Entity,System.Single,System.String)">
+        <member name="M:DamageNumberSystem.SpawnDamageNumber(Unravel.Core.Entity,DamageBreakdown)">
              <summary>
              Spawn a damage number above the specified entity using the object pool.
              </summary>
@@ -800,22 +1009,6 @@
              Clean up old damage numbers to maintain performance.
              Note: With object pooling, this method is no longer needed as entities are reused.
              </summary>
-            </member>
-        <member name="M:DamageNumberSystem.SpawnHealingNumber(Unravel.Core.Entity,System.Single)">
-             <summary>
-             Spawn a healing number (green text).
-             </summary>
-             <param name="targetEntity">Entity that was healed.</param>
-             <param name="healAmount">Amount of healing.</param>
-             <returns>The spawned healing number entity.</returns>
-            </member>
-        <member name="M:DamageNumberSystem.SpawnCriticalDamageNumber(Unravel.Core.Entity,System.Single)">
-             <summary>
-             Spawn a critical damage number (red text).
-             </summary>
-             <param name="targetEntity">Entity that took critical damage.</param>
-             <param name="damageAmount">Amount of critical damage.</param>
-             <returns>The spawned critical damage number entity.</returns>
             </member>
         <member name="M:DamageNumberSystem.GetDamageContainer">
              <summary>
@@ -839,65 +1032,6 @@
              <summary>
              Clear all active damage numbers by deactivating pooled entities.
              </summary>
-            </member>
-        <member name="T:DamageSystem">
-             <summary>
-             Centralized damage system for applying damage and managing death events.
-             Provides a single point of control for all damage-related operations.
-             </summary>
-            </member>
-        <member name="M:DamageSystem.ApplyDamage(Unravel.Core.Entity,Unravel.Core.Entity,System.Int32)">
-             <summary>
-             Apply damage to an entity through its Health component.
-             </summary>
-             <param name="target">Entity to damage.</param>
-             <param name="source">Entity that caused the damage.</param>
-             <param name="damage">Amount of damage to deal.</param>
-             <returns>True if the target died from this damage.</returns>
-            </member>
-        <member name="M:DamageSystem.ApplyHealing(Unravel.Core.Entity,System.Int32,Unravel.Core.Entity)">
-             <summary>
-             Apply healing to an entity through its Health component.
-             </summary>
-             <param name="target">Entity to heal.</param>
-             <param name="healAmount">Amount of healing to apply.</param>
-             <param name="source">Entity that provided the healing.</param>
-             <returns>Actual amount healed.</returns>
-            </member>
-        <member name="M:DamageSystem.KillEntity(Unravel.Core.Entity,Unravel.Core.Entity)">
-             <summary>
-             Kill an entity instantly.
-             </summary>
-             <param name="target">Entity to kill.</param>
-             <param name="source">Entity responsible for the kill.</param>
-            </member>
-        <member name="M:DamageSystem.CanTakeDamage(Unravel.Core.Entity)">
-             <summary>
-             Check if an entity can take damage.
-             </summary>
-             <param name="target">Entity to check.</param>
-             <returns>True if the entity can take damage.</returns>
-            </member>
-        <member name="M:DamageSystem.GetCurrentHealth(Unravel.Core.Entity)">
-             <summary>
-             Get the current health of an entity.
-             </summary>
-             <param name="target">Entity to check.</param>
-             <returns>Current health, or 0 if no health component.</returns>
-            </member>
-        <member name="M:DamageSystem.GetMaxHealth(Unravel.Core.Entity)">
-             <summary>
-             Get the maximum health of an entity.
-             </summary>
-             <param name="target">Entity to check.</param>
-             <returns>Maximum health, or 0 if no health component.</returns>
-            </member>
-        <member name="M:DamageSystem.GetHealthPercentage(Unravel.Core.Entity)">
-             <summary>
-             Get the health percentage of an entity.
-             </summary>
-             <param name="target">Entity to check.</param>
-             <returns>Health percentage (0.0 to 1.0).</returns>
             </member>
         <member name="T:Enemy">
              <summary>
@@ -1481,6 +1615,65 @@
              </summary>
              <returns>Source entity, or null if none set.</returns>
             </member>
+        <member name="T:DamageSystem">
+             <summary>
+             Centralized damage system for applying damage and managing death events.
+             Provides a single point of control for all damage-related operations.
+             </summary>
+            </member>
+        <member name="M:DamageSystem.ApplyDamage(Unravel.Core.Entity,Unravel.Core.Entity,DamageBreakdown)">
+             <summary>
+             Apply damage to an entity through its Health component.
+             </summary>
+             <param name="target">Entity to damage.</param>
+             <param name="source">Entity that caused the damage.</param>
+             <param name="damage">Amount of damage to deal.</param>
+             <returns>True if the target died from this damage.</returns>
+            </member>
+        <member name="M:DamageSystem.ApplyHealing(Unravel.Core.Entity,System.Int32,Unravel.Core.Entity)">
+             <summary>
+             Apply healing to an entity through its Health component.
+             </summary>
+             <param name="target">Entity to heal.</param>
+             <param name="healAmount">Amount of healing to apply.</param>
+             <param name="source">Entity that provided the healing.</param>
+             <returns>Actual amount healed.</returns>
+            </member>
+        <member name="M:DamageSystem.KillEntity(Unravel.Core.Entity,Unravel.Core.Entity)">
+             <summary>
+             Kill an entity instantly.
+             </summary>
+             <param name="target">Entity to kill.</param>
+             <param name="source">Entity responsible for the kill.</param>
+            </member>
+        <member name="M:DamageSystem.CanTakeDamage(Unravel.Core.Entity)">
+             <summary>
+             Check if an entity can take damage.
+             </summary>
+             <param name="target">Entity to check.</param>
+             <returns>True if the entity can take damage.</returns>
+            </member>
+        <member name="M:DamageSystem.GetCurrentHealth(Unravel.Core.Entity)">
+             <summary>
+             Get the current health of an entity.
+             </summary>
+             <param name="target">Entity to check.</param>
+             <returns>Current health, or 0 if no health component.</returns>
+            </member>
+        <member name="M:DamageSystem.GetMaxHealth(Unravel.Core.Entity)">
+             <summary>
+             Get the maximum health of an entity.
+             </summary>
+             <param name="target">Entity to check.</param>
+             <returns>Maximum health, or 0 if no health component.</returns>
+            </member>
+        <member name="M:DamageSystem.GetHealthPercentage(Unravel.Core.Entity)">
+             <summary>
+             Get the health percentage of an entity.
+             </summary>
+             <param name="target">Entity to check.</param>
+             <returns>Health percentage (0.0 to 1.0).</returns>
+            </member>
         <member name="T:UpgradeSystem">
              <summary>
              Centralized static system for managing all player upgrades. Simple list-based storage
@@ -1549,6 +1742,12 @@
              Recalculate all accumulated upgrade values from active upgrades
              </summary>
             </member>
+        <member name="M:UpgradeSystem.GetEffectiveCooldownReduction">
+             <summary>
+             Get the effective cooldown reduction percentage after diminishing returns.
+             </summary>
+             <returns>Effective cooldown reduction percentage (0-100)</returns>
+            </member>
         <member name="M:UpgradeSystem.CalculateDamage(System.Int32,System.Single,System.Single)">
              <summary>
              Calculate final damage applying damage upgrades and critical strike mechanics.
@@ -1557,6 +1756,66 @@
              <param name="baseCriticalChance">Base critical chance percentage (0-100).</param>
              <param name="baseCriticalMultiplier">Base critical damage multiplier (e.g., 2.0 for 200% damage).</param>
              <returns>Final damage value after applying all upgrades and critical strike calculation.</returns>
+            </member>
+        <member name="M:UpgradeSystem.GetAccumulatedDamagePercent">
+             <summary>
+             Get the accumulated damage percentage.
+             </summary>
+            </member>
+        <member name="M:UpgradeSystem.GetAccumulatedMulticastPercent">
+             <summary>
+             Get the accumulated multicast percentage.
+             </summary>
+            </member>
+        <member name="M:UpgradeSystem.GetAccumulatedPierceCount">
+             <summary>
+             Get the accumulated pierce count.
+             </summary>
+            </member>
+        <member name="M:UpgradeSystem.GetAccumulatedChainCount">
+             <summary>
+             Get the accumulated chain count.
+             </summary>
+            </member>
+        <member name="M:UpgradeSystem.GetAccumulatedCooldownReductionPercent">
+             <summary>
+             Get the accumulated cooldown reduction percentage.
+             </summary>
+            </member>
+        <member name="M:UpgradeSystem.GetAccumulatedMovementSpeedPercent">
+             <summary>
+             Get the accumulated movement speed percentage.
+             </summary>
+            </member>
+        <member name="M:UpgradeSystem.GetAccumulatedMaxHealthIncrease">
+             <summary>
+             Get the accumulated max health increase.
+             </summary>
+            </member>
+        <member name="M:UpgradeSystem.GetAccumulatedCriticalChancePercent">
+             <summary>
+             Get the accumulated critical chance percentage.
+             </summary>
+            </member>
+        <member name="M:UpgradeSystem.GetAccumulatedCriticalDamagePercent">
+             <summary>
+             Get the accumulated critical damage percentage.
+             </summary>
+            </member>
+        <member name="M:UpgradeSystem.GetAccumulatedPickupRadiusPercent">
+             <summary>
+             Get the accumulated pickup radius percentage.
+             </summary>
+            </member>
+        <member name="M:UpgradeSystem.GetAccumulatedLuckPercent">
+             <summary>
+             Get the accumulated luck percentage.
+             </summary>
+            </member>
+        <member name="M:UpgradeSystem.GetAccumulatedAreaOfEffectPercent">
+             <summary>
+             Get the accumulated area of effect percentage.
+             </summary>
             </member>
         <member name="T:TopDownCamera">
              <summary>
@@ -1629,6 +1888,120 @@
              Instantly snap the camera to the target position (no smooth movement).
              </summary>
             </member>
+        <member name="T:AbilityCard">
+             <summary>
+             Special upgrade card that can grant new abilities to the player.
+             Extends UpgradeCard to also add ability components when applied.
+             </summary>
+            </member>
+        <member name="P:AbilityCard.AbilityType">
+             <summary>
+             Type of ability component to add to the player.
+             </summary>
+            </member>
+        <member name="P:AbilityCard.ConfigureAbility">
+             <summary>
+             Optional configuration action to set up the ability after it's added.
+             </summary>
+            </member>
+        <member name="M:AbilityCard.#ctor(System.String,System.String,UpgradeRarity,Upgrade,System.Type,System.Action{Unravel.Core.ScriptComponent})">
+             <summary>
+             Create a new ability card with a single upgrade and an ability.
+             </summary>
+             <param name="name">Name of the card</param>
+             <param name="rarity">Rarity of the card</param>
+             <param name="upgrade">Single upgrade to apply</param>
+             <param name="abilityType">Type of ability component to add</param>
+             <param name="configureAbility">Optional configuration action for the ability</param>
+            </member>
+        <member name="M:AbilityCard.#ctor(System.String,System.String,UpgradeRarity,System.Collections.Generic.List{Upgrade},System.Type,System.Action{Unravel.Core.ScriptComponent})">
+             <summary>
+             Create a new ability card with multiple upgrades and an ability.
+             </summary>
+             <param name="name">Name of the card</param>
+             <param name="rarity">Rarity of the card</param>
+             <param name="upgrades">List of upgrades to apply</param>
+             <param name="abilityType">Type of ability component to add</param>
+             <param name="configureAbility">Optional configuration action for the ability</param>
+            </member>
+        <member name="M:AbilityCard.ValidateAbilityType(System.Type)">
+             <summary>
+             Validate that the ability type is a valid ScriptComponent.
+             </summary>
+             <param name="abilityType">Type to validate</param>
+            </member>
+        <member name="M:AbilityCard.ApplyUpgrades">
+             <summary>
+             Apply all upgrades and add the new ability to the player.
+             </summary>
+            </member>
+        <member name="M:AbilityCard.AddAbilityToPlayer">
+             <summary>
+             Add the ability component to the player entity.
+             </summary>
+            </member>
+        <member name="M:AbilityCard.PlayerHasAbility">
+             <summary>
+             Check if the player already has this ability type.
+             </summary>
+             <returns>True if the player already has this ability</returns>
+            </member>
+        <member name="T:CriticalChanceUpgrade">
+             <summary>
+             Upgrade that increases critical strike chance by a percentage.
+             Affects the probability of dealing critical hits.
+             </summary>
+            </member>
+        <member name="P:CriticalChanceUpgrade.ChancePercent">
+             <summary>
+             Percentage critical chance increase this upgrade provides.
+             </summary>
+            </member>
+        <member name="M:CriticalChanceUpgrade.#ctor(System.Single)">
+             <summary>
+             Create a new critical chance upgrade with specified parameters.
+             </summary>
+             <param name="chancePercent">Percentage critical chance increase (e.g., 5 for 5%).</param>
+            </member>
+        <member name="M:CriticalChanceUpgrade.Generate(System.Single,System.Single)">
+             <summary>
+             Generate a new CriticalChanceUpgrade with a value from the specified range.
+             </summary>
+             <param name="minPercent">Minimum critical chance percent value.</param>
+             <param name="maxPercent">Maximum critical chance percent value.</param>
+             <returns>A new CriticalChanceUpgrade with a random value from the range.</returns>
+            </member>
+        <member name="T:AreaOfEffectUpgrade">
+             <summary>
+             Upgrade that increases the area of effect radius for abilities.
+             Improves coverage and ability to hit multiple enemies.
+             </summary>
+            </member>
+        <member name="P:AreaOfEffectUpgrade.AoePercent">
+             <summary>
+             Percentage area of effect increase this upgrade provides.
+             </summary>
+            </member>
+        <member name="M:AreaOfEffectUpgrade.#ctor(System.Single)">
+             <summary>
+             Create a new area of effect upgrade with specified parameters.
+             </summary>
+             <param name="aoePercent">Percentage AOE increase (e.g., 20 for 20%).</param>
+            </member>
+        <member name="M:AreaOfEffectUpgrade.Generate(System.Single,System.Single)">
+             <summary>
+             Generate a new AreaOfEffectUpgrade with a value from the specified range.
+             </summary>
+             <param name="minPercent">Minimum AOE percent value.</param>
+             <param name="maxPercent">Maximum AOE percent value.</param>
+             <returns>A new AreaOfEffectUpgrade with a random value from the range.</returns>
+            </member>
+        <member name="M:AreaOfEffectUpgrade.GetAoeMultiplier">
+             <summary>
+             Get the AOE multiplier (1.0 + percentage/100).
+             </summary>
+             <returns>AOE multiplier value.</returns>
+            </member>
         <member name="T:ChainUpgrade">
              <summary>
              Upgrade that increases chain count for projectiles.
@@ -1645,13 +2018,6 @@
              Create a new chain upgrade with specified parameters.
              </summary>
              <param name="chainCount">Additional chain count to add.</param>
-            </member>
-        <member name="M:ChainUpgrade.Generate(UpgradeRarity)">
-             <summary>
-             Generate a new ChainUpgrade with random values based on rarity.
-             </summary>
-             <param name="rarity">The rarity level determining the value ranges.</param>
-             <returns>A new ChainUpgrade with randomized values.</returns>
             </member>
         <member name="M:ChainUpgrade.Generate(System.Int32,System.Int32)">
              <summary>
@@ -1678,13 +2044,6 @@
              </summary>
              <param name="reductionPercent">Percentage cooldown reduction (e.g., 10 for 10%).</param>
             </member>
-        <member name="M:CooldownReductionUpgrade.Generate(UpgradeRarity)">
-             <summary>
-             Generate a new CooldownReductionUpgrade with random values based on rarity.
-             </summary>
-             <param name="rarity">The rarity level determining the value ranges.</param>
-             <returns>A new CooldownReductionUpgrade with randomized values.</returns>
-            </member>
         <member name="M:CooldownReductionUpgrade.Generate(System.Single,System.Single)">
              <summary>
              Generate a new CooldownReductionUpgrade with a value from the specified range.
@@ -1692,44 +2051,6 @@
              <param name="minPercent">Minimum reduction percent value.</param>
              <param name="maxPercent">Maximum reduction percent value.</param>
              <returns>A new CooldownReductionUpgrade with a random value from the range.</returns>
-            </member>
-        <member name="M:CooldownReductionUpgrade.GetCooldownMultiplier">
-             <summary>
-             Get the cooldown multiplier (1.0 - percentage/100).
-             </summary>
-             <returns>Cooldown multiplier value.</returns>
-            </member>
-        <member name="T:CriticalChanceUpgrade">
-             <summary>
-             Upgrade that increases critical strike chance by a percentage.
-             Affects the probability of dealing critical hits.
-             </summary>
-            </member>
-        <member name="P:CriticalChanceUpgrade.ChancePercent">
-             <summary>
-             Percentage critical chance increase this upgrade provides.
-             </summary>
-            </member>
-        <member name="M:CriticalChanceUpgrade.#ctor(System.Single)">
-             <summary>
-             Create a new critical chance upgrade with specified parameters.
-             </summary>
-             <param name="chancePercent">Percentage critical chance increase (e.g., 5 for 5%).</param>
-            </member>
-        <member name="M:CriticalChanceUpgrade.Generate(UpgradeRarity)">
-             <summary>
-             Generate a new CriticalChanceUpgrade with random values based on rarity.
-             </summary>
-             <param name="rarity">The rarity level determining the value ranges.</param>
-             <returns>A new CriticalChanceUpgrade with randomized values.</returns>
-            </member>
-        <member name="M:CriticalChanceUpgrade.Generate(System.Single,System.Single)">
-             <summary>
-             Generate a new CriticalChanceUpgrade with a value from the specified range.
-             </summary>
-             <param name="minPercent">Minimum critical chance percent value.</param>
-             <param name="maxPercent">Maximum critical chance percent value.</param>
-             <returns>A new CriticalChanceUpgrade with a random value from the range.</returns>
             </member>
         <member name="T:CriticalDamageUpgrade">
              <summary>
@@ -1747,13 +2068,6 @@
              Create a new critical damage upgrade with specified parameters.
              </summary>
              <param name="damagePercent">Percentage critical damage increase (e.g., 25 for 25%).</param>
-            </member>
-        <member name="M:CriticalDamageUpgrade.Generate(UpgradeRarity)">
-             <summary>
-             Generate a new CriticalDamageUpgrade with random values based on rarity.
-             </summary>
-             <param name="rarity">The rarity level determining the value ranges.</param>
-             <returns>A new CriticalDamageUpgrade with randomized values.</returns>
             </member>
         <member name="M:CriticalDamageUpgrade.Generate(System.Single,System.Single)">
              <summary>
@@ -1790,13 +2104,6 @@
              Create a new damage upgrade with specified parameters.
              </summary>
              <param name="damagePercent">Percentage damage increase (e.g., 10 for 10%).</param>
-            </member>
-        <member name="M:DamageUpgrade.Generate(UpgradeRarity)">
-             <summary>
-             Generate a new DamageUpgrade with random values based on rarity.
-             </summary>
-             <param name="rarity">The rarity level determining the value ranges.</param>
-             <returns>A new DamageUpgrade with randomized values.</returns>
             </member>
         <member name="M:DamageUpgrade.Generate(System.Single,System.Single)">
              <summary>
@@ -1861,13 +2168,6 @@
              </summary>
              <param name="speedPercent">Percentage movement speed increase (e.g., 15 for 15%).</param>
             </member>
-        <member name="M:MovementSpeedUpgrade.Generate(UpgradeRarity)">
-             <summary>
-             Generate a new MovementSpeedUpgrade with random values based on rarity.
-             </summary>
-             <param name="rarity">The rarity level determining the value ranges.</param>
-             <returns>A new MovementSpeedUpgrade with randomized values.</returns>
-            </member>
         <member name="M:MovementSpeedUpgrade.Generate(System.Single,System.Single)">
              <summary>
              Generate a new MovementSpeedUpgrade with a value from the specified range.
@@ -1881,6 +2181,37 @@
              Get the speed multiplier (1.0 + percentage/100).
              </summary>
              <returns>Speed multiplier value.</returns>
+            </member>
+        <member name="T:PickupRadiusUpgrade">
+             <summary>
+             Upgrade that increases pickup radius for items and experience orbs.
+             Affects the distance at which items are automatically collected.
+             </summary>
+            </member>
+        <member name="P:PickupRadiusUpgrade.RadiusPercent">
+             <summary>
+             Percentage pickup radius increase this upgrade provides.
+             </summary>
+            </member>
+        <member name="M:PickupRadiusUpgrade.#ctor(System.Single)">
+             <summary>
+             Create a new pickup radius upgrade with specified parameters.
+             </summary>
+             <param name="radiusPercent">Percentage pickup radius increase (e.g., 20 for 20%).</param>
+            </member>
+        <member name="M:PickupRadiusUpgrade.Generate(System.Single,System.Single)">
+             <summary>
+             Generate a new PickupRadiusUpgrade with a value from the specified range.
+             </summary>
+             <param name="minPercent">Minimum radius percent value.</param>
+             <param name="maxPercent">Maximum radius percent value.</param>
+             <returns>A new PickupRadiusUpgrade with a random value from the range.</returns>
+            </member>
+        <member name="M:PickupRadiusUpgrade.GetRadiusMultiplier">
+             <summary>
+             Gets the radius multiplier (1.0 + percentage/100).
+             </summary>
+             <returns>Radius multiplier value.</returns>
             </member>
         <member name="T:PierceUpgrade">
              <summary>
@@ -1899,13 +2230,6 @@
              </summary>
              <param name="pierceCount">Additional pierce count to add.</param>
             </member>
-        <member name="M:PierceUpgrade.Generate(UpgradeRarity)">
-             <summary>
-             Generate a new PierceUpgrade with random values based on rarity.
-             </summary>
-             <param name="rarity">The rarity level determining the value ranges.</param>
-             <returns>A new PierceUpgrade with randomized values.</returns>
-            </member>
         <member name="M:PierceUpgrade.Generate(System.Int32,System.Int32)">
              <summary>
              Generate a new PierceUpgrade with a value from the specified range.
@@ -1913,26 +2237,6 @@
              <param name="minCount">Minimum pierce count value.</param>
              <param name="maxCount">Maximum pierce count value.</param>
              <returns>A new PierceUpgrade with a random value from the range.</returns>
-            </member>
-        <member name="T:ProjectileCountUpgrade">
-             <summary>
-             Upgrade that increases the number of projectiles fired by abilities
-             </summary>
-            </member>
-        <member name="M:ProjectileCountUpgrade.Generate(UpgradeRarity)">
-             <summary>
-             Generates a random ProjectileCountUpgrade based on rarity
-             </summary>
-             <param name="rarity">The rarity level determining the upgrade power</param>
-             <returns>A new ProjectileCountUpgrade with random values</returns>
-            </member>
-        <member name="M:ProjectileCountUpgrade.Generate(System.Int32,System.Int32)">
-             <summary>
-             Generate a new ProjectileCountUpgrade with a value from the specified range.
-             </summary>
-             <param name="minCount">Minimum projectile count value.</param>
-             <param name="maxCount">Maximum projectile count value.</param>
-             <returns>A new ProjectileCountUpgrade with a random value from the range.</returns>
             </member>
         <member name="T:Upgrade">
              <summary>
@@ -1972,6 +2276,11 @@
         <member name="P:UpgradeCard.Name">
              <summary>
              Display name of the upgrade card.
+             </summary>
+            </member>
+        <member name="P:UpgradeCard.Description">
+             <summary>
+             Description of the upgrade card.
              </summary>
             </member>
         <member name="P:UpgradeCard.Rarity">
@@ -2020,8 +2329,8 @@
             </member>
         <member name="T:UpgradeCardGenerator">
              <summary>
-             Static class for generating predefined upgrade cards with thematic combinations.
-             Provides various card types with 1-2 upgrades each based on rarity.
+             Static class for generating balanced upgrade cards with proper rarity distribution.
+             Uses range-based generation for better control over upgrade values.
              </summary>
             </member>
         <member name="M:UpgradeCardGenerator.GenerateRandomCard(UpgradeRarity)">
@@ -2039,12 +2348,26 @@
              <param name="rarity">Rarity level for all cards.</param>
              <returns>List of randomly generated upgrade cards.</returns>
             </member>
-        <member name="M:UpgradeCardGenerator.GenerateCardSelection(System.Int32)">
+        <member name="M:UpgradeCardGenerator.GenerateCardSelection(System.Int32,System.Single)">
              <summary>
              Generate a selection of cards with mixed rarities for player choice.
              </summary>
              <param name="cardCount">Number of cards to generate (default 3).</param>
+             <param name="playerLuck">Player's current luck value (default 0 for no luck bonus).</param>
              <returns>List of upgrade cards with varied rarities.</returns>
+            </member>
+        <member name="M:UpgradeCardGenerator.GenerateAbilityOnlySelection(System.Int32)">
+             <summary>
+             Generate a selection of ability cards only (for initial ability pickup).
+             </summary>
+             <param name="cardCount">Number of cards to generate (default 3).</param>
+             <returns>List of ability upgrade cards.</returns>
+            </member>
+        <member name="M:UpgradeCardGenerator.GetAvailableAbilityCards">
+             <summary>
+             Get list of all available ability card generators (basic versions without upgrades).
+             </summary>
+             <returns>List of functions that generate ability cards.</returns>
             </member>
         <member name="M:UpgradeCardGenerator.GetRandomWeightedRarity">
              <summary>
@@ -2052,12 +2375,50 @@
              </summary>
              <returns>Randomly selected rarity with weighted distribution.</returns>
             </member>
+        <member name="M:UpgradeCardGenerator.GetRandomWeightedRarity(System.Single)">
+             <summary>
+             Get a weighted random rarity affected by player luck.
+             Higher luck increases chances of better rarities.
+             </summary>
+             <param name="playerLuck">Player's current luck value.</param>
+             <returns>Randomly selected rarity with luck-modified distribution.</returns>
+            </member>
         <member name="M:UpgradeCardGenerator.GetAvailableCards(UpgradeRarity)">
              <summary>
              Get list of available card generators for the specified rarity.
              </summary>
              <param name="rarity">The rarity level.</param>
              <returns>List of functions that generate cards of the specified rarity.</returns>
+            </member>
+        <member name="M:UpgradeCardGenerator.GenerateBasicLightningBoltAbilityCard">
+             <summary>
+             Generate a basic lightning bolt ability card without additional upgrades (for initial selection).
+             </summary>
+             <returns>AbilityCard with basic LightningBoltAbility</returns>
+            </member>
+        <member name="M:UpgradeCardGenerator.GenerateBasicFireballAbilityCard">
+             <summary>
+             Generate a basic fireball ability card without additional upgrades (for initial selection).
+             </summary>
+             <returns>AbilityCard with basic FireballAbility</returns>
+            </member>
+        <member name="M:UpgradeCardGenerator.GenerateLightningBoltAbilityCard">
+             <summary>
+             Generate a lightning bolt ability card for Epic rarity.
+             </summary>
+             <returns>AbilityCard with LightningBoltAbility</returns>
+            </member>
+        <member name="M:UpgradeCardGenerator.GenerateFireballAbilityCard">
+             <summary>
+             Generate a fireball ability card for Epic rarity.
+             </summary>
+             <returns>AbilityCard with FireballAbility</returns>
+            </member>
+        <member name="M:UpgradeCardGenerator.GenerateLegendaryAbilityCard">
+             <summary>
+             Generate a legendary ability card with powerful configuration.
+             </summary>
+             <returns>AbilityCard with enhanced LightningBoltAbility</returns>
             </member>
         <member name="T:BaseMenu">
              <summary>
@@ -2160,9 +2521,19 @@
              Cache UI element references for fast access.
              </summary>
             </member>
-        <member name="M:GameHub.FindPlayerAndSubscribeToEvents">
+        <member name="M:GameHub.CacheAbilitySlotElements">
              <summary>
-             Find the player entity in the scene and subscribe to health/experience events.
+             Cache ability slot UI element references.
+             </summary>
+            </member>
+        <member name="M:GameHub.FindPlayerReferences">
+             <summary>
+             Find the player entity in the scene and cache component references.
+             </summary>
+            </member>
+        <member name="M:GameHub.SubscribeToPlayerEvents">
+             <summary>
+             Subscribe to player health and experience events.
              </summary>
             </member>
         <member name="M:GameHub.OnPlayerHealthChanged(System.Int32,System.Int32)">
@@ -2186,7 +2557,7 @@
             </member>
         <member name="M:GameHub.UpdateProgressBars">
              <summary>
-             Update the health and experience progress bars with current player data (initial load).
+             Update the health and experience progress bars with current player data.
              </summary>
             </member>
         <member name="M:GameHub.UpdateHealthBar(System.Int32,System.Int32)">
@@ -2245,11 +2616,55 @@
              Manually refresh the progress bars (useful for testing or external calls).
              </summary>
             </member>
+        <member name="M:GameHub.InitializeAbilitySlots">
+             <summary>
+             Initialize ability slots with default empty state.
+             </summary>
+            </member>
+        <member name="M:GameHub.SetAbilitySlot(System.Int32,System.String,System.String,System.String)">
+             <summary>
+             Set an ability slot to display a specific ability.
+             </summary>
+             <param name="slotIndex">Slot index (0-3)</param>
+             <param name="abilityType">Type of ability (fireball, spark, cube, etc.)</param>
+             <param name="abilityName">Display name of the ability</param>
+             <param name="iconText">Text to display in the icon (optional)</param>
+            </member>
+        <member name="M:GameHub.SetAbilitySlotEmpty(System.Int32)">
+             <summary>
+             Set an ability slot to empty state.
+             </summary>
+             <param name="slotIndex">Slot index (0-3)</param>
+            </member>
+        <member name="M:GameHub.SetAbilityCooldown(System.Int32,System.Single)">
+             <summary>
+             Set cooldown display for an ability slot.
+             </summary>
+             <param name="slotIndex">Slot index (0-3)</param>
+             <param name="cooldownTime">Remaining cooldown time in seconds (0 to hide cooldown)</param>
+            </member>
+        <member name="M:GameHub.SetAbilityActive(System.Int32,System.Boolean)">
+             <summary>
+             Set active state for an ability slot (when ability is being used).
+             </summary>
+             <param name="slotIndex">Slot index (0-3)</param>
+             <param name="isActive">Whether the ability is currently active</param>
+            </member>
+        <member name="M:GameHub.UpdateAbilityCooldowns">
+             <summary>
+             Update ability cooldown displays based on current ability states.
+             </summary>
+            </member>
         <member name="T:GameMenu">
              <summary>
              Game Menu script that handles in-game navigation buttons.
              Uses GameUI for centralized navigation instead of direct menu manipulation.
              Now inherits from BaseMenuController to eliminate code duplication.
+             </summary>
+            </member>
+        <member name="M:GameMenu.UpdateUpgradeDisplay">
+             <summary>
+             Updates the upgrade display with current accumulated values from UpgradeSystem.
              </summary>
             </member>
         <member name="M:GameMenu.OnResumeButtonClick(Unravel.Core.UIPointerEvent)">
@@ -2365,12 +2780,6 @@
              <param name="card1">Upgrade card for slot 1</param>
              <param name="card2">Upgrade card for slot 2</param>
              <param name="card3">Upgrade card for slot 3</param>
-            </member>
-        <member name="M:LevelUpMenu.EnsureInitialized">
-             <summary>
-             Ensure that UI elements are cached and ready to use.
-             This handles the case where the menu was inactive and OnStart() wasn't called.
-             </summary>
             </member>
         <member name="M:LevelUpMenu.UpdateCardDisplay">
              <summary>

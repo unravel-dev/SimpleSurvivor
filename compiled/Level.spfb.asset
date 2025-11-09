@@ -2,7 +2,7 @@
  "entities_count": 9,
  "entities": [
   {
-   "id": 2097153,
+   "id": 19922945,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -58,11 +58,11 @@
        "y": 0
       },
       "viewport_size": {
-       "width": 1891,
-       "height": 969
+       "width": 1444,
+       "height": 742
       },
       "orthographic_size": 5.0,
-      "aspect_ratio": 1.9514963626861573,
+      "aspect_ratio": 1.946091651916504,
       "aspect_locked": false,
       "frustum_locked": false
      },
@@ -189,7 +189,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 2097155,
+   "id": 19922947,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -277,7 +277,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 2097157,
+   "id": 19922949,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -346,7 +346,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 2097159,
+   "id": 19922951,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -398,12 +398,12 @@
       "position": {
        "x": 4.6700768052687638e-7,
        "y": -0.0000013820827007293702,
-       "z": -2.678904422737105e-7
+       "z": -2.6788242735165115e-7
       },
       "rotation": {
        "x": -1.1920938902676426e-7,
        "y": 1.4901168299275015e-8,
-       "z": -2.980232594040899e-8,
+       "z": -2.980232949312267e-8,
        "w": 1.0
       },
       "scale": {
@@ -422,19 +422,19 @@
      },
      "children": [
       {
-       "id": 2097160
+       "id": 19922952
       },
       {
-       "id": 2097161
+       "id": 19922953
       },
       {
-       "id": 2097162
+       "id": 19922954
       },
       {
-       "id": 11
+       "id": 17825803
       },
       {
-       "id": 12
+       "id": 17825804
       }
      ],
      "active": true
@@ -498,7 +498,7 @@
    }
   },
   {
-   "id": 2097160,
+   "id": 19922952,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -541,10 +541,17 @@
       }
      },
      "parent": {
-      "id": 2097159
+      "id": 19922951
      },
      "children": [],
      "active": false
+    },
+    "has_ui_document_component": true,
+    "ui_document_component": {
+     "enabled": true,
+     "asset": {
+      "uid": "0c134efa-1af1-554b-9754-f3e7742d05fd"
+     }
     },
     "has_script_component": true,
     "script_component": {
@@ -553,18 +560,11 @@
        "type": "GameMenu"
       }
      ]
-    },
-    "has_ui_document_component": true,
-    "ui_document_component": {
-     "enabled": true,
-     "asset": {
-      "uid": "0c134efa-1af1-554b-9754-f3e7742d05fd"
-     }
     }
    }
   },
   {
-   "id": 2097161,
+   "id": 19922953,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -607,10 +607,17 @@
       }
      },
      "parent": {
-      "id": 2097159
+      "id": 19922951
      },
      "children": [],
      "active": false
+    },
+    "has_ui_document_component": true,
+    "ui_document_component": {
+     "enabled": true,
+     "asset": {
+      "uid": "a3e52d6a-a8d4-e340-9430-116f9818c5e9"
+     }
     },
     "has_script_component": true,
     "script_component": {
@@ -619,18 +626,11 @@
        "type": "SettingsMenu"
       }
      ]
-    },
-    "has_ui_document_component": true,
-    "ui_document_component": {
-     "enabled": true,
-     "asset": {
-      "uid": "a3e52d6a-a8d4-e340-9430-116f9818c5e9"
-     }
     }
    }
   },
   {
-   "id": 2097162,
+   "id": 19922954,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -673,7 +673,7 @@
       }
      },
      "parent": {
-      "id": 2097159
+      "id": 19922951
      },
      "children": [],
      "active": false
@@ -696,7 +696,7 @@
    }
   },
   {
-   "id": 11,
+   "id": 17825803,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -735,10 +735,17 @@
       }
      },
      "parent": {
-      "id": 2097159
+      "id": 19922951
      },
      "children": [],
      "active": false
+    },
+    "has_ui_document_component": true,
+    "ui_document_component": {
+     "enabled": true,
+     "asset": {
+      "uid": "d8405a10-19c5-4d44-8ced-9f41059b615e"
+     }
     },
     "has_script_component": true,
     "script_component": {
@@ -747,18 +754,11 @@
        "type": "LevelUpMenu"
       }
      ]
-    },
-    "has_ui_document_component": true,
-    "ui_document_component": {
-     "enabled": true,
-     "asset": {
-      "uid": "d8405a10-19c5-4d44-8ced-9f41059b615e"
-     }
     }
    }
   },
   {
-   "id": 12,
+   "id": 17825804,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -797,10 +797,17 @@
       }
      },
      "parent": {
-      "id": 2097159
+      "id": 19922951
      },
      "children": [],
      "active": true
+    },
+    "has_ui_document_component": true,
+    "ui_document_component": {
+     "enabled": true,
+     "asset": {
+      "uid": "235654ef-2577-f04c-89f3-a34f91d8c9b1"
+     }
     },
     "has_script_component": true,
     "script_component": {
@@ -809,13 +816,6 @@
        "type": "GameHub"
       }
      ]
-    },
-    "has_ui_document_component": true,
-    "ui_document_component": {
-     "enabled": true,
-     "asset": {
-      "uid": "235654ef-2577-f04c-89f3-a34f91d8c9b1"
-     }
     }
    }
   }
@@ -823,7 +823,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 14,
+   "id": 17825806,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -866,7 +866,7 @@
      },
      "children": [
       {
-       "id": 15
+       "id": 17825807
       }
      ],
      "active": true
@@ -874,7 +874,7 @@
    }
   },
   {
-   "id": 15,
+   "id": 17825807,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -891,29 +891,29 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": 2.397939624643186e-10,
+       "x": 6.620268777624005e-10,
        "y": -0.4515100419521332,
-       "z": 4.220623850414995e-11
+       "z": 1.3528733688872308e-10
       },
       "rotation": {
-       "x": 2.6361135496699717e-12,
-       "y": 5.229593613622491e-14,
-       "z": -7.70408585017146e-13,
+       "x": 4.433786671143025e-12,
+       "y": 5.093170351612442e-13,
+       "z": -7.079437947324352e-13,
        "w": 1.0
       },
       "scale": {
-       "x": 400.00006103515627,
+       "x": 1500.0,
        "y": 1.0000001192092896,
-       "z": 400.0
+       "z": 1500.0
       },
       "skew": {
-       "x": 2.748208778602379e-11,
-       "y": -1.0455779444291588e-13,
-       "z": -3.448750451884308e-10
+       "x": 3.360582992439909e-11,
+       "y": -1.0187105065756485e-12,
+       "z": -1.3588365987970974e-9
       }
      },
      "parent": {
-      "id": 14
+      "id": 17825806
      },
      "children": [],
      "active": true
@@ -996,7 +996,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 17,
+   "id": 17825809,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1015,7 +1015,7 @@
       "position": {
        "x": 4.670094995162799e-7,
        "y": -0.000004600723968906095,
-       "z": -2.6782711870509959e-7
+       "z": -2.673349968063121e-7
       },
       "rotation": {
        "x": -1.1920938902676426e-7,
@@ -1030,8 +1030,8 @@
       },
       "skew": {
        "x": -5.960487214906607e-8,
-       "y": -2.980337043823056e-8,
-       "z": -0.000005842374321218813
+       "y": -2.980337399094424e-8,
+       "z": -0.000005850248271599412
       }
      },
      "parent": {
@@ -1039,7 +1039,7 @@
      },
      "children": [
       {
-       "id": 18
+       "id": 17825810
       }
      ],
      "active": true
@@ -1092,10 +1092,13 @@
      "script_components": [
       {
        "type": "Player",
-       "maxSpeed": 10.0,
+       "baseMaxSpeed": 10.0,
        "maxAcceleration": 50.0,
        "maxDeceleration": 30.0,
-       "usePhysicsMovement": true
+       "usePhysicsMovement": true,
+       "baseMaxHealth": 100,
+       "basePickupRange": 5.0,
+       "baseLuck": 0.0
       },
       {
        "type": "Health",
@@ -1117,27 +1120,13 @@
        "baseExperienceRequired": 100.0,
        "experienceMultiplier": 1.2000000476837159,
        "debugDrawRange": false
-      },
-      {
-       "type": "ExampleAbility",
-       "projectilePrefab": {
-        "uid": "67f63796-4d3a-8f45-8eff-a40b0ed6302b"
-       },
-       "damage": 25,
-       "maxRange": 10.0,
-       "projectileSpeed": 50.0,
-       "spawnOffset": {
-        "x": 0.0,
-        "y": 1.0,
-        "z": 0.0
-       }
       }
      ]
     }
    }
   },
   {
-   "id": 18,
+   "id": 17825810,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1176,7 +1165,7 @@
       }
      },
      "parent": {
-      "id": 17
+      "id": 17825809
      },
      "children": [],
      "active": true
@@ -1217,7 +1206,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 20,
+   "id": 17825812,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1320,7 +1309,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 22,
+   "id": 17825814,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1363,7 +1352,7 @@
      },
      "children": [
       {
-       "id": 23
+       "id": 17825815
       }
      ],
      "active": true
@@ -1371,7 +1360,7 @@
    }
   },
   {
-   "id": 23,
+   "id": 17825815,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1410,7 +1399,7 @@
       }
      },
      "parent": {
-      "id": 22
+      "id": 17825814
      },
      "children": [],
      "active": true
@@ -1436,7 +1425,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 25,
+   "id": 17825817,
    "components": {
     "has_tag_component": true,
     "tag_component": {

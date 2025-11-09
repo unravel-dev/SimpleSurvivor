@@ -11,10 +11,8 @@ public abstract class BaseMenu : ScriptComponent
 	// Cached UI wrapper objects
 	protected UIDocument document;
 	
-	// Title element (common to all menus)
-	protected UIElement titleElement;
 
-	public override void OnStart()
+	public override void OnCreate()
 	{
 		// Get the UI document component
 		var uiDoc = owner.GetComponent<UIDocumentComponent>();
@@ -36,6 +34,13 @@ public abstract class BaseMenu : ScriptComponent
 
 		// Cache element wrappers - these hold direct C++ pointers for fast access
 		CacheUIElements();
+	
+	}
+	// Title element (common to all menus)
+	protected UIElement titleElement;
+
+	public override void OnStart()
+	{
 		
 		// Set up initial UI state
 		SetupInitialUI();

@@ -1,15 +1,93 @@
 /* ---------- Game Menu Specific Styles ---------- */
 /* All common styles are now inherited from CommonMenu.rcss */
 
-/* No additional styles needed - everything is handled by the unified classes:
- * - .menu-container.menu-container--centered
- * - .menu-header.menu-header--large  
- * - .menu-title.menu-title--large
- * - .menu-subtitle.menu-subtitle--large
- * - .menu-btn.menu-btn--large
- * - .menu-footer (from CommonMenu.rcss)
- */
+/* Game Menu Layout with Upgrade Panel */
+.game-menu-layout {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
 
-.test {
-  
+/* Main menu content takes up most of the space */
+.game-menu-layout .menu-container {
+  flex: 1;
+  position: relative;
+}
+
+/* ---------- Upgrade Panel Styles ---------- */
+.upgrade-panel {
+  width: 320dp;
+  height: 100%;
+  background-color: rgba(20, 25, 31, 220);
+  border-left: 2dp rgba(64, 78, 94, 255);
+  padding: 24dp;
+  box-sizing: border-box;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.upgrade-panel-title {
+  color: #e9eef3;
+  font-size: 22dp;
+  font-weight: bold;
+  margin-bottom: 20dp;
+  text-align: center;
+  border-bottom: 1dp rgba(64, 78, 94, 255);
+  padding-bottom: 12dp;
+}
+
+.upgrade-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8dp;
+}
+
+.upgrade-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8dp 12dp;
+  background-color: rgba(30, 35, 41, 180);
+  border-radius: 6dp;
+  border: 1dp rgba(64, 78, 94, 128);
+  transition: background-color 0.2s;
+}
+
+.upgrade-item:hover {
+  background-color: rgba(40, 45, 51, 200);
+  border-color: rgba(74, 88, 104, 180);
+}
+
+.upgrade-label {
+  color: #cbd5e0;
+  font-size: 16dp;
+  font-weight: 500;
+  flex: 1;
+  text-align: left;
+}
+
+.upgrade-value {
+  color: #68d391;
+  font-size: 16dp;
+  font-weight: bold;
+  text-align: right;
+  min-width: 60dp;
+}
+
+/* Special color for negative values (like cooldown reduction) */
+.upgrade-value:contains("-") {
+  color: #63b3ed;
+}
+
+/* Special color for zero values */
+.upgrade-value:contains("+0") {
+  color: #a0aec0;
+}
+
+.upgrade-value:contains("-0") {
+  color: #a0aec0;
 }

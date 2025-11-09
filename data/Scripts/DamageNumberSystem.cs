@@ -194,13 +194,13 @@ public class DamageNumberSystem : ScriptComponent
     /// <param name="damagedEntity">The entity that took damage.</param>
     /// <param name="damageSource">Entity that caused the damage.</param>
     /// <param name="damageAmount">Amount of damage taken.</param>
-    private void OnDamageApplied(Entity damagedEntity, Entity damageSource, float damageAmount)
+    private void OnDamageApplied(Entity damagedEntity, Entity damageSource, DamageBreakdown breakdown)
     {
-        if (!damagedEntity || damageAmount <= 0)
+        if (!damagedEntity || breakdown.amount <= 0)
             return;
             
         // Spawn damage number above the damaged entity
-        SpawnDamageNumber(damagedEntity, damageAmount, "normal");
+        SpawnDamageNumber(damagedEntity, breakdown);
     }
     
     /// <summary>
@@ -215,7 +215,7 @@ public class DamageNumberSystem : ScriptComponent
             return;
             
         // Spawn healing number above the healed entity
-        SpawnDamageNumber(healedEntity, healAmount, "heal");
+        // SpawnDamageNumber(healedEntity, healAmount, "heal");
     }
     
     /// <summary>
@@ -225,7 +225,7 @@ public class DamageNumberSystem : ScriptComponent
     /// <param name="damageAmount">Damage amount to display.</param>
     /// <param name="damageType">Type of damage for color coding.</param>
     /// <returns>The spawned damage number entity.</returns>
-    public Entity SpawnDamageNumber(Entity targetEntity, float damageAmount, string damageType = "normal")
+    public Entity SpawnDamageNumber(Entity targetEntity, DamageBreakdown breakdown)
     {
         if (!targetEntity)
         {
@@ -262,12 +262,14 @@ public class DamageNumberSystem : ScriptComponent
             damageNumberComponent.lifetime = defaultLifetime;
             damageNumberComponent.floatSpeed = defaultFloatSpeed;
             damageNumberComponent.enableBillboard = enableBillboard;
-            
-            // Set damage text
-            damageNumberComponent.SetDamageText(damageAmount, damageType);
-            
+
             // Reset the component state
             damageNumberComponent.ResetDamageNumber();
+
+                        
+            // Set damage text
+            damageNumberComponent.SetDamageText(breakdown);
+            
         }
         
         // Activate the entity
@@ -309,28 +311,7 @@ public class DamageNumberSystem : ScriptComponent
     {
 
     }
-    
-    /// <summary>
-    /// Spawn a healing number (green text).
-    /// </summary>
-    /// <param name="targetEntity">Entity that was healed.</param>
-    /// <param name="healAmount">Amount of healing.</param>
-    /// <returns>The spawned healing number entity.</returns>
-    public Entity SpawnHealingNumber(Entity targetEntity, float healAmount)
-    {
-        return SpawnDamageNumber(targetEntity, healAmount, "heal");
-    }
-    
-    /// <summary>
-    /// Spawn a critical damage number (red text).
-    /// </summary>
-    /// <param name="targetEntity">Entity that took critical damage.</param>
-    /// <param name="damageAmount">Amount of critical damage.</param>
-    /// <returns>The spawned critical damage number entity.</returns>
-    public Entity SpawnCriticalDamageNumber(Entity targetEntity, float damageAmount)
-    {
-        return SpawnDamageNumber(targetEntity, damageAmount, "critical");
-    }
+
     
     /// <summary>
     /// Get the DamageContainer entity for external access.

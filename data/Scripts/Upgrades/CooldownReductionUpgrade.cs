@@ -21,36 +21,6 @@ public class CooldownReductionUpgrade : Upgrade
         ReductionPercent = reductionPercent;
     }
     
-    /// <summary>
-    /// Generate a new CooldownReductionUpgrade with random values based on rarity.
-    /// </summary>
-    /// <param name="rarity">The rarity level determining the value ranges.</param>
-    /// <returns>A new CooldownReductionUpgrade with randomized values.</returns>
-    public static CooldownReductionUpgrade Generate(UpgradeRarity rarity)
-    {
-        float reductionPercent;
-        
-        switch (rarity)
-        {
-            case UpgradeRarity.Normal:
-                reductionPercent = Random.Range(5.0f, 10.0f);
-                break;
-            case UpgradeRarity.Common:
-                reductionPercent = Random.Range(8.0f, 15.0f);
-                break;
-            case UpgradeRarity.Epic:
-                reductionPercent = Random.Range(12.0f, 20.0f);
-                break;
-            case UpgradeRarity.Legendary:
-                reductionPercent = Random.Range(18.0f, 25.0f);
-                break;
-            default:
-                reductionPercent = 10.0f;
-                break;
-        }
-        
-        return new CooldownReductionUpgrade(reductionPercent);
-    }
 
     /// <summary>
     /// Generate a new CooldownReductionUpgrade with a value from the specified range.
@@ -64,12 +34,4 @@ public class CooldownReductionUpgrade : Upgrade
         return new CooldownReductionUpgrade(reductionPercent);
     }
 
-    /// <summary>
-    /// Get the cooldown multiplier (1.0 - percentage/100).
-    /// </summary>
-    /// <returns>Cooldown multiplier value.</returns>
-    public float GetCooldownMultiplier()
-    {
-        return 1.0f - (ReductionPercent / 100.0f);
-    }
 }

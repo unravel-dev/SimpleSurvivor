@@ -1,9 +1,7 @@
 {
- "source_path": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/Scripts/Components/DestroyedComponent.cs",
- "source_sha": "0a4f12425c7dc723a868d6be7de0357c934eb569",
+ "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/Scripts/Components/DestroyedComponent.cs",
+ "source_sha": "bf0c46f72c21bf915258118712cc7bab5e0802ff",
  "source_timestamp": {
-  "time_since_epoch": {
-   "count": 134069705841115572
-  }
+  "count": -5039626629883904416
  }
 }

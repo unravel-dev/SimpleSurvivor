@@ -126,3 +126,127 @@ body.theme-dark {
 .health-progress.low-health fill {
   background-color: rgb(255, 30, 30);
 }
+
+/* ---------- Ability Bar Styles ---------- */
+/* Bottom center ability slots similar to survival games */
+
+.ability-bar-container {
+  position: absolute;
+  bottom: 40dp;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+.ability-bar {
+  display: flex;
+  gap: 8dp;
+  padding: 12dp;
+  background-color: rgba(0, 0, 0, 200);
+  border: 2dp rgba(255, 255, 255, 150);
+  border-radius: 12dp;
+  box-shadow: 0 4dp 12dp rgba(0, 0, 0, 180);
+}
+
+.ability-slot {
+  position: relative;
+  width: 64dp;
+  height: 64dp;
+  background-color: rgba(40, 40, 40, 220);
+  border: 2dp rgba(100, 100, 100, 180);
+  border-radius: 8dp;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ability-slot:hover {
+  background-color: rgba(60, 60, 60, 240);
+  border-color: rgba(150, 150, 150, 220);
+  transform: scale(1.05);
+}
+
+.ability-slot.active {
+  border-color: rgba(255, 215, 0, 255);
+  background-color: rgba(60, 50, 20, 220);
+  box-shadow: 0 0 8dp rgba(255, 215, 0, 128);
+}
+
+.ability-slot.on-cooldown {
+  border-color: rgba(255, 100, 100, 180);
+}
+
+.ability-icon {
+  width: 48dp;
+  height: 48dp;
+  background-color: rgba(80, 80, 80, 180);
+  border-radius: 4dp;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24dp;
+  color: rgba(200, 200, 200, 255);
+  font-weight: bold;
+}
+
+.ability-icon.has-ability {
+  background-color: rgba(100, 150, 200, 180);
+  color: white;
+}
+
+.ability-cooldown {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8dp;
+  background-color: rgba(0, 0, 0, 200);
+  color: white;
+  font-size: 24dp;
+  font-weight: bold;
+  text-align: center;
+  line-height: 64dp;
+}
+
+
+.ability-key {
+  position: absolute;
+  bottom: -2dp;
+  right: -2dp;
+  width: 18dp;
+  height: 18dp;
+  background-color: rgba(0, 0, 0, 220);
+  border: 1dp rgba(255, 255, 255, 180);
+  border-radius: 9dp;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12dp;
+  color: white;
+  font-weight: bold;
+}
+
+/* Ability slot states for different ability types */
+.ability-slot.fireball .ability-icon {
+  background-color: rgba(255, 100, 50, 180);
+  color: white;
+}
+
+.ability-slot.spark .ability-icon {
+  background-color: rgba(100, 150, 255, 180);
+  color: white;
+}
+
+.ability-slot.cube .ability-icon {
+  background-color: rgba(150, 100, 255, 180);
+  color: white;
+}
+
+.ability-slot.empty .ability-icon {
+  background-color: rgba(60, 60, 60, 120);
+  border: 2dp rgba(100, 100, 100, 80);
+  color: rgba(150, 150, 150, 180);
+}

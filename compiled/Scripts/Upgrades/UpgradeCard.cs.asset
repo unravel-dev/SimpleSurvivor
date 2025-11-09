@@ -10,17 +10,23 @@ public class UpgradeCard
     /// <summary>
     /// Display name of the upgrade card.
     /// </summary>
-    public string Name { get; private set; }
+    public string Name { get; protected set; }
+
+
+    /// <summary>
+    /// Description of the upgrade card.
+    /// </summary>
+    public string Description { get; protected set; }
     
     /// <summary>
     /// Rarity level of this upgrade card.
     /// </summary>
-    public UpgradeRarity Rarity { get; private set; }
+    public UpgradeRarity Rarity { get; protected set; }
     
     /// <summary>
     /// List of upgrades that this card provides when selected.
     /// </summary>
-    public List<Upgrade> Upgrades { get; private set; }
+    public List<Upgrade> Upgrades { get; protected set; }
     
     /// <summary>
     /// Create a new upgrade card with specified upgrades and rarity.
@@ -33,6 +39,7 @@ public class UpgradeCard
         Name = name;
         Rarity = rarity;
         Upgrades = upgrades ?? new List<Upgrade>();
+        Description = GetDescription();
     }
     
     /// <summary>
@@ -46,6 +53,7 @@ public class UpgradeCard
         Name = name;
         Rarity = rarity;
         Upgrades = new List<Upgrade> { upgrade };
+        Description = GetDescription();
     }
     
     /// <summary>
@@ -53,11 +61,11 @@ public class UpgradeCard
     /// Each upgrade description is on a new line.
     /// </summary>
     /// <returns>Combined description string.</returns>
-    public string GetDescription()
+    private string GetDescription()
     {
         if (Upgrades == null || Upgrades.Count == 0)
         {
-            return "No upgrades available.";
+            return "";
         }
         
         var description = new StringBuilder();
@@ -80,7 +88,7 @@ public class UpgradeCard
     /// <summary>
     /// Apply all upgrades from this card to the upgrade system.
     /// </summary>
-    public void ApplyUpgrades()
+    public virtual void ApplyUpgrades()
     {
         if (Upgrades == null) return;
         

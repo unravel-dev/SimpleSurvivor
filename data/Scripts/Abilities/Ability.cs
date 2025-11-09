@@ -4,6 +4,17 @@ using System.Runtime.CompilerServices;
 using Unravel.Core;
 
 /// <summary>
+/// Structure to hold ability display information for UI.
+/// </summary>
+public struct AbilityDisplayInfo
+{
+    public string type;
+    public string name;
+    public string icon;
+    public string color;
+}
+
+/// <summary>
 /// Base class for all ability types. Handles cooldown management and provides
 /// virtual methods for derived classes to implement specific ability behavior.
 /// </summary>
@@ -63,6 +74,7 @@ public abstract class Ability : ScriptComponent
 
     /// <summary>
     /// Attempt to trigger the ability. Checks cooldown and calls OnTriggerAbility if ready.
+    /// Handles multicast upgrades automatically.
     /// </summary>
     /// <returns>True if ability was successfully triggered.</returns>
     public bool TriggerAbility()
@@ -72,21 +84,29 @@ public abstract class Ability : ScriptComponent
             return false;
         }
 
-        // Gather targets for the ability
-        var targets = GatherTargets();
+        // Calculate number of additional casts from multicast upgrades
+        float baseMulticastPercent = GetBaseMulticastPercent();
+        int additionalCasts = UpgradeSystem.ApplyMulticastUpgrade(baseMulticastPercent);
+        int totalCasts = 1 + additionalCasts; // Base cast + additional casts
 
-        if (targets == null || targets.Length == 0)
+        // Update cooldown timer (only once, regardless of multicast)
+        lastTriggerTime = Time.time;
+        bool anySuccessful = false;
+        var targets = GatherTargets();
+        if (targets != null && targets.Length > 0)
         {
-            return false;
+            // Perform all casts
+            for (int i = 0; i < totalCasts; i++)
+            {
+                // Gather targets for each cast (allows for dynamic targeting)
+            
+                // Execute the ability
+                OnTriggerAbility(targets, i);
+                anySuccessful = true;
+            }
         }
 
-        // Update cooldown timer
-        lastTriggerTime = Time.time;
-
-        // Execute the ability
-        OnTriggerAbility(targets);
-
-        return true;
+        return anySuccessful;
     }
 
     /// <summary>
@@ -107,6 +127,33 @@ public abstract class Ability : ScriptComponent
     }
 
     /// <summary>
+    /// Virtual method for derived classes to define base multicast percentage.
+    /// Override this to give abilities inherent multicast chance.
+    /// </summary>
+    /// <returns>Base multicast percentage (default 0%).</returns>
+    protected virtual float GetBaseMulticastPercent()
+    {
+        return 0.0f;
+    }
+
+    /// <summary>
+    /// Virtual method for derived classes to provide display information for UI.
+    /// Override this to customize how the ability appears in the UI.
+    /// </summary>
+    /// <returns>Display information for the ability.</returns>
+    public virtual AbilityDisplayInfo GetDisplayInfo()
+    {
+        // Default implementation - uses class name
+        string typeName = GetType().Name;
+        AbilityDisplayInfo info = new AbilityDisplayInfo();
+        info.type = typeName.ToLower().Replace("ability", "");
+        info.name = typeName.Replace("Ability", "");
+        info.icon = info.name.Length > 0 ? info.name[0].ToString() : "?";
+        info.color = "rgba(150, 150, 150, 180)"; // Gray
+        return info;
+    }
+
+    /// <summary>
     /// Virtual method for derived classes to implement target gathering logic.
     /// </summary>
     /// <returns>List of entities that this ability should affect.</returns>
@@ -116,7 +163,7 @@ public abstract class Ability : ScriptComponent
     /// Virtual method for derived classes to implement the actual ability effect.
     /// </summary>
     /// <param name="targets">List of target entities to affect.</param>
-    protected abstract void OnTriggerAbility(Entity[] targets);
+    protected abstract void OnTriggerAbility(Entity[] targets, int castIndex);
 
     /// <summary>
     /// Virtual method called when the ability starts (can be overridden for setup).

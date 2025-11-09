@@ -229,19 +229,19 @@ public class DamageNumber : ScriptComponent
     /// </summary>
     /// <param name="damageAmount">Damage amount to display.</param>
     /// <param name="damageType">Type of damage for color coding (optional).</param>
-    public void SetDamageText(float damageAmount, string damageType = "normal")
+    public void SetDamageText(DamageBreakdown breakdown)
     {
         if (textComponent == null)
             return;
             
         // Format damage number
-        string damageText = Mathf.RoundToInt(damageAmount).ToString();
+        string damageText = Mathf.RoundToInt(breakdown.amount).ToString();
         textComponent.text = damageText;
         
         textComponent.alignment = Alignment.Center | Alignment.Middle;
         textComponent.fontSize = 6;
         // Set color based on damage type
-        SetDamageColor(damageType);
+        SetDamageColor(breakdown);
 
     }
     
@@ -249,31 +249,24 @@ public class DamageNumber : ScriptComponent
     /// Set the color of the damage text based on damage type.
     /// </summary>
     /// <param name="damageType">Type of damage.</param>
-    private void SetDamageColor(string damageType)
+    private void SetDamageColor(DamageBreakdown breakdown)
     {
         if (textComponent == null)
             return;
             
         // Color coding for different damage types
-        switch (damageType.ToLower())
+        if (breakdown.isCritical)
         {
-            case "critical":
-                // Red for critical damage
-                textComponent.color = Color.red;
-                textComponent.outlineColor = Color.red;
-                initialScale = 3.5f;
-                break;
-            case "heal":
-                // Green for healing
-                textComponent.color = Color.green;
-                break;
-            case "normal":
-            default:
-                // White/yellow for normal damage
-                textComponent.color = Color.red;
-                textComponent.outlineColor = Color.red;
-                break;
+            textComponent.color = Color.red;
+            textComponent.outlineColor = Color.red;
+            initialScale = 3.5f;
         }
+        else
+        {
+            textComponent.color = Color.cyan;
+            textComponent.outlineColor = Color.cyan;
+        }
+
     }
     
     /// <summary>

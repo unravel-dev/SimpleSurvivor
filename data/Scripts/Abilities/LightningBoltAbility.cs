@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 using Unravel.Core;
 
 /// <summary>
-/// Example ability that targets the closest enemy and fires a projectile at them.
-/// Demonstrates how to use the new ability system.
+/// Lightning bolt ability that targets the closest enemy and fires a lightning projectile at them.
+/// Fast-moving electric projectile with chain lightning capabilities.
 /// </summary>
 [ScriptSourceFile]
-public class ExampleAbility : Ability
+public class LightningBoltAbility : Ability
 {
     [Tooltip("Prefab to instantiate as projectile")]
     public Prefab projectilePrefab;
@@ -21,11 +21,15 @@ public class ExampleAbility : Ability
     public float maxRange = 10.0f;
     
     [Tooltip("Speed of the projectile")]
-    public float projectileSpeed = 15.0f;
+    public float projectileSpeed = 35.0f;
 
 
     [Tooltip("Number of projectiles to fire")]
     public int projectileCount = 1;
+
+
+    [Tooltip("Number of times the projectile can chain")]
+    public int chainCount = 0;
 
 
     [Tooltip("Spawn offset from the caster")]
@@ -35,13 +39,31 @@ public class ExampleAbility : Ability
     private TransformComponent transformComponent;
     
      
+    /// <summary>
+    /// Configure a Lightning Bolt ability with default values.
+    /// </summary>
+    /// <param name="ability">The ability instance to configure.</param>
+    public static void ConfigureAbility(LightningBoltAbility ability)
+    {
+        if (ability == null)
+            return;
+            
+        ability.damage = 30;
+        ability.cooldown = 1.0f;
+        ability.maxRange = 10.0f;
+        ability.projectileSpeed = 55.0f;
+        ability.projectileCount = 1;
+        ability.chainCount = 2;
+        ability.spawnOffset = Vector3.up;
+    }
     public override void OnStart()
     {
         transformComponent = owner.GetComponent<TransformComponent>();
         
         if (projectilePrefab == null)
         {
-            Log.Warning($"ExampleAbility on {owner.name}: No projectile prefab assigned!");
+            //Log.Warning($"LightningBoltAbility on {owner.name}: No projectile prefab assigned!");
+            projectilePrefab = Assets.GetAsset<Prefab>("app:/data/Abilities/Spark.pfb");
         }
     }
 
@@ -54,7 +76,7 @@ public class ExampleAbility : Ability
     {
         QueryClosestTarget query = new QueryClosestTarget();
         query.source = owner;
-        query.maxRange = maxRange;
+        query.maxRange = UpgradeSystem.ApplyAreaOfEffectUpgrade(maxRange);
         return ContactSystem.FindClosestEnemies(query);
     }
     
@@ -62,24 +84,22 @@ public class ExampleAbility : Ability
     /// Execute the ability by creating a projectile aimed at the target.
     /// </summary>
     /// <param name="targets">List of target entities (should contain one enemy).</param>
-    protected override void OnTriggerAbility(Entity[] targets)
+    protected override void OnTriggerAbility(Entity[] targets, int castIndex)
     {                
         if (projectilePrefab == null)
         {
-            Log.Error("ExampleAbility: No projectile prefab assigned!");
+            Log.Error("LightningBoltAbility: No projectile prefab assigned!");
             return;
         }
 
-        int maxProjectiles = UpgradeSystem.ApplyProjectileCountUpgrade(projectileCount);
-        int i = 0;
-        foreach (var target in targets)
+        if(castIndex >= targets.Length)
         {
+            castIndex = 0;
+        }
 
-            if (i >= maxProjectiles)
-            {
-                break;
-            }
-            i++;
+        var target = targets[castIndex];
+
+        {
             // Calculate spawn position
             Vector3 sourcePosition = transformComponent.position + spawnOffset;
 
@@ -92,7 +112,7 @@ public class ExampleAbility : Ability
 
             if (!projectileEntity)
             {
-                Log.Error("ExampleAbility: Failed to instantiate projectile!");
+                Log.Error("LightningBoltAbility: Failed to instantiate projectile!");
                 return;
             }
 
@@ -111,17 +131,17 @@ public class ExampleAbility : Ability
 
             projectileEntity.AddComponent<AutoDestroyComponent>();
 
-            var pierceComponent = projectileEntity.AddComponent<PierceComponent>();
-            if (pierceComponent != null)
-            {
-                pierceComponent.pierceCount = UpgradeSystem.ApplyPierceUpgrade(0);
-            }
+            // var pierceComponent = projectileEntity.AddComponent<PierceComponent>();
+            // if (pierceComponent != null)
+            // {
+            //     pierceComponent.pierceCount = UpgradeSystem.ApplyPierceUpgrade(0);
+            // }
 
             var chainComponent = projectileEntity.AddComponent<ChainComponent>();
             if (chainComponent != null)
             {
-                chainComponent.chainCount = UpgradeSystem.ApplyChainUpgrade(0);
-                chainComponent.chainRange = maxRange;
+                chainComponent.chainCount = UpgradeSystem.ApplyChainUpgrade(chainCount);
+                chainComponent.chainRange = UpgradeSystem.ApplyAreaOfEffectUpgrade(maxRange);
                 chainComponent.chainOffset = spawnOffset;
             }
 
@@ -141,6 +161,24 @@ public class ExampleAbility : Ability
             }
         }
     }
-   
 
+    /// <summary>
+    /// Get display information for the Lightning Bolt ability.
+    /// </summary>
+    /// <returns>Display information for UI.</returns>
+    public override AbilityDisplayInfo GetDisplayInfo()
+    {
+        AbilityDisplayInfo info = new AbilityDisplayInfo();
+        info.type = "spark";
+        info.name = "Lightning Bolt";
+        info.icon = "L";
+        info.color = "rgba(100, 150, 255, 180)"; // Blue
+        return info;
+    }
+
+    public static string GetDescription()
+    {
+        return "Shoots a lightning bolt at the nearest enemy, dealing damage and causing a chain reaction.";
+    }
 }
+

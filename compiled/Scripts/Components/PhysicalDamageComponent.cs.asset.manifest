@@ -1,9 +1,7 @@
 {
- "source_path": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/Scripts/Components/PhysicalDamageComponent.cs",
- "source_sha": "333b3b5a54ec9a1a4fd66945101407d3dcffa790",
+ "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/Scripts/Components/PhysicalDamageComponent.cs",
+ "source_sha": "fcb468d2d5388939ee9820cd34ddf1454b7ec514",
  "source_timestamp": {
-  "time_since_epoch": {
-   "count": 134068633666067660
-  }
+  "count": -5039626629883812416
  }
 }

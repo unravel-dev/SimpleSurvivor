@@ -19,7 +19,7 @@ public static class UpgradeSystem
     
     // Static accumulated upgrade instances - direct access, no searches needed
     private static readonly DamageUpgrade accumulatedDamageUpgrade = new DamageUpgrade(0.0f);
-    private static readonly ProjectileCountUpgrade accumulatedProjectileCountUpgrade = new ProjectileCountUpgrade(0);
+    private static readonly MulticastUpgrade accumulatedMulticastUpgrade = new MulticastUpgrade(0.0f);
     private static readonly PierceUpgrade accumulatedPierceUpgrade = new PierceUpgrade(0);
     private static readonly ChainUpgrade accumulatedChainUpgrade = new ChainUpgrade(0);
     private static readonly CooldownReductionUpgrade accumulatedCooldownReductionUpgrade = new CooldownReductionUpgrade(0.0f);
@@ -27,6 +27,9 @@ public static class UpgradeSystem
     private static readonly MaxHealthUpgrade accumulatedMaxHealthUpgrade = new MaxHealthUpgrade(0);
     private static readonly CriticalChanceUpgrade accumulatedCriticalChanceUpgrade = new CriticalChanceUpgrade(0.0f);
     private static readonly CriticalDamageUpgrade accumulatedCriticalDamageUpgrade = new CriticalDamageUpgrade(0.0f);
+    private static readonly PickupRadiusUpgrade accumulatedPickupRadiusUpgrade = new PickupRadiusUpgrade(0.0f);
+    private static readonly LuckUpgrade accumulatedLuckUpgrade = new LuckUpgrade(0.0f);
+    private static readonly AreaOfEffectUpgrade accumulatedAreaOfEffectUpgrade = new AreaOfEffectUpgrade(0.0f);
 
     /// <summary>
     /// Get the total number of active upgrades.
@@ -198,7 +201,7 @@ public static class UpgradeSystem
     {
         // Reset all accumulated values
         accumulatedDamageUpgrade.DamagePercent = 0.0f;
-        accumulatedProjectileCountUpgrade.ProjectileCount = 0;
+        accumulatedMulticastUpgrade.MulticastPercent = 0.0f;
         accumulatedPierceUpgrade.PierceCount = 0;
         accumulatedChainUpgrade.ChainCount = 0;
         accumulatedCooldownReductionUpgrade.ReductionPercent = 0.0f;
@@ -206,10 +209,13 @@ public static class UpgradeSystem
         accumulatedMaxHealthUpgrade.HealthIncrease = 0;
         accumulatedCriticalChanceUpgrade.ChancePercent = 0.0f;
         accumulatedCriticalDamageUpgrade.DamagePercent = 0.0f;
+        accumulatedPickupRadiusUpgrade.RadiusPercent = 0.0f;
+        accumulatedLuckUpgrade.LuckPercent = 0.0f;
+        accumulatedAreaOfEffectUpgrade.AoePercent = 0.0f;
         
         // Accumulate values from all active upgrades
         float totalDamagePercent = 0.0f;
-        int totalProjectileCount = 0;
+        float totalMulticastPercent = 0.0f;
         int totalPierceCount = 0;
         int totalChainCount = 0;
         float totalCooldownReduction = 0.0f;
@@ -217,6 +223,9 @@ public static class UpgradeSystem
         int totalHealthIncrease = 0;
         float totalCriticalChance = 0.0f;
         float totalCriticalDamage = 0.0f;
+        float totalPickupRadius = 0.0f;
+        float totalLuck = 0.0f;
+        float totalAreaOfEffect = 0.0f;
         
         
         foreach (var upgrade in activeUpgrades)
@@ -226,10 +235,10 @@ public static class UpgradeSystem
                 DamageUpgrade damageUpgrade = (DamageUpgrade)upgrade;
                 totalDamagePercent += damageUpgrade.DamagePercent;
             }
-            else if (upgrade is ProjectileCountUpgrade)
+            else if (upgrade is MulticastUpgrade)
             {
-                ProjectileCountUpgrade projectileUpgrade = (ProjectileCountUpgrade)upgrade;
-                totalProjectileCount += projectileUpgrade.ProjectileCount;
+                MulticastUpgrade multicastUpgrade = (MulticastUpgrade)upgrade;
+                totalMulticastPercent += multicastUpgrade.MulticastPercent;
             }
             else if (upgrade is PierceUpgrade)
             {
@@ -266,11 +275,26 @@ public static class UpgradeSystem
                 CriticalDamageUpgrade criticalDamageUpgrade = (CriticalDamageUpgrade)upgrade;
                 totalCriticalDamage += criticalDamageUpgrade.DamagePercent;
             }
+            else if (upgrade is PickupRadiusUpgrade)
+            {
+                PickupRadiusUpgrade pickupRadiusUpgrade = (PickupRadiusUpgrade)upgrade;
+                totalPickupRadius += pickupRadiusUpgrade.RadiusPercent;
+            }
+            else if (upgrade is LuckUpgrade)
+            {
+                LuckUpgrade luckUpgrade = (LuckUpgrade)upgrade;
+                totalLuck += luckUpgrade.LuckPercent;
+            }
+            else if (upgrade is AreaOfEffectUpgrade)
+            {
+                AreaOfEffectUpgrade aoeUpgrade = (AreaOfEffectUpgrade)upgrade;
+                totalAreaOfEffect += aoeUpgrade.AoePercent;
+            }
         }
         
         // Update all accumulated upgrade instances
         accumulatedDamageUpgrade.DamagePercent = totalDamagePercent;
-        accumulatedProjectileCountUpgrade.ProjectileCount = totalProjectileCount;
+        accumulatedMulticastUpgrade.MulticastPercent = totalMulticastPercent;
         accumulatedPierceUpgrade.PierceCount = totalPierceCount;
         accumulatedChainUpgrade.ChainCount = totalChainCount;
         accumulatedCooldownReductionUpgrade.ReductionPercent = totalCooldownReduction;
@@ -278,6 +302,9 @@ public static class UpgradeSystem
         accumulatedMaxHealthUpgrade.HealthIncrease = totalHealthIncrease;
         accumulatedCriticalChanceUpgrade.ChancePercent = totalCriticalChance;
         accumulatedCriticalDamageUpgrade.DamagePercent = totalCriticalDamage;
+        accumulatedPickupRadiusUpgrade.RadiusPercent = totalPickupRadius;
+        accumulatedLuckUpgrade.LuckPercent = totalLuck;
+        accumulatedAreaOfEffectUpgrade.AoePercent = totalAreaOfEffect;
     }
 
     public static int ApplyDamageUpgrade(int baseDamage)
@@ -285,9 +312,26 @@ public static class UpgradeSystem
         return Mathf.RoundToInt((float)baseDamage * accumulatedDamageUpgrade.GetDamageMultiplier());
     }
 
-    public static int ApplyProjectileCountUpgrade(int baseProjectileCount)
+    public static int ApplyMulticastUpgrade(float baseMulticastPercent)
     {
-        return baseProjectileCount + accumulatedProjectileCountUpgrade.ProjectileCount;
+        float totalMulticastPercent = baseMulticastPercent + accumulatedMulticastUpgrade.MulticastPercent;
+        
+        if (totalMulticastPercent <= 0)
+            return 0;
+        
+        // Guaranteed additional casts (every 100%)
+        int guaranteedCasts = Mathf.FloorToInt(totalMulticastPercent / 100.0f);
+        
+        // Probability for one more cast (remainder percentage)
+        float remainderPercent = totalMulticastPercent % 100.0f;
+        int probabilityCast = (Random.Range(0f, 100f) < remainderPercent) ? 1 : 0;
+        
+        return guaranteedCasts + probabilityCast;
+    }
+    
+    public static float GetMulticastPercent(float baseMulticastPercent)
+    {
+        return baseMulticastPercent + accumulatedMulticastUpgrade.MulticastPercent;
     }
     
     public static int ApplyPierceUpgrade(int basePierceCount)
@@ -302,7 +346,30 @@ public static class UpgradeSystem
 
     public static float ApplyCooldownReductionUpgrade(float baseCooldown)
     {
-        return baseCooldown * accumulatedCooldownReductionUpgrade.GetCooldownMultiplier();
+        float reductionPercent = accumulatedCooldownReductionUpgrade.ReductionPercent;
+        
+        // Apply diminishing returns formula to prevent performance issues
+        // Formula: finalReduction = reductionPercent / (reductionPercent + 100)
+        // This approaches 100% but never reaches it
+        float effectiveReduction = reductionPercent / (reductionPercent + 100.0f);
+        
+        // Calculate final cooldown with effective reduction
+        float reducedCooldown = baseCooldown * (1.0f - effectiveReduction);
+        
+        // Enforce minimum cooldown to prevent performance issues
+        const float minimumCooldown = 0.05f; // 50ms minimum
+        return Mathf.Max(reducedCooldown, minimumCooldown);
+    }
+    
+    /// <summary>
+    /// Get the effective cooldown reduction percentage after diminishing returns.
+    /// </summary>
+    /// <returns>Effective cooldown reduction percentage (0-100)</returns>
+    public static float GetEffectiveCooldownReduction()
+    {
+        float reductionPercent = accumulatedCooldownReductionUpgrade.ReductionPercent;
+        float effectiveReduction = reductionPercent / (reductionPercent + 100.0f);
+        return effectiveReduction * 100.0f;
     }
 
     public static float ApplyMovementSpeedUpgrade(float baseMovementSpeed)
@@ -325,6 +392,21 @@ public static class UpgradeSystem
         return baseCriticalDamage * accumulatedCriticalDamageUpgrade.GetCriticalDamageMultiplier();
     }
 
+    public static float ApplyPickupRadiusUpgrade(float basePickupRadius)
+    {
+        return basePickupRadius * accumulatedPickupRadiusUpgrade.GetRadiusMultiplier();
+    }
+
+    public static float ApplyLuckUpgrade(float baseLuck)
+    {
+        return baseLuck * accumulatedLuckUpgrade.GetLuckMultiplier();
+    }
+
+    public static float ApplyAreaOfEffectUpgrade(float baseAoe)
+    {
+        return baseAoe * accumulatedAreaOfEffectUpgrade.GetAoeMultiplier();
+    }
+
     /// <summary>
     /// Calculate final damage applying damage upgrades and critical strike mechanics.
     /// </summary>
@@ -332,10 +414,11 @@ public static class UpgradeSystem
     /// <param name="baseCriticalChance">Base critical chance percentage (0-100).</param>
     /// <param name="baseCriticalMultiplier">Base critical damage multiplier (e.g., 2.0 for 200% damage).</param>
     /// <returns>Final damage value after applying all upgrades and critical strike calculation.</returns>
-    public static int CalculateDamage(int baseDamage, float baseCriticalChance = 0.0f, float baseCriticalMultiplier = 2.0f)
+    public static DamageBreakdown CalculateDamage(int baseDamage, float baseCriticalChance = 0.0f, float baseCriticalMultiplier = 2.0f)
     {
+        DamageBreakdown damageInfo = new DamageBreakdown();
         // Apply damage upgrades first
-        int upgradedDamage = ApplyDamageUpgrade(baseDamage);
+        damageInfo.amount = ApplyDamageUpgrade(baseDamage);
         
         // Calculate final critical chance
         float finalCriticalChance = ApplyCriticalChanceUpgrade(baseCriticalChance);
@@ -344,14 +427,113 @@ public static class UpgradeSystem
         float finalCriticalMultiplier = ApplyCriticalDamageUpgrade(baseCriticalMultiplier);
         
         // Roll for critical hit
-        bool isCritical = Random.Range(0f, 100f) < finalCriticalChance;
+        damageInfo.isCritical = Random.Range(0f, 100f) < finalCriticalChance;
         
         // Apply critical multiplier if it's a critical hit
-        if (isCritical)
+        if (damageInfo.isCritical)
         {
-            return Mathf.RoundToInt((float)upgradedDamage * finalCriticalMultiplier);
+            damageInfo.amount = Mathf.RoundToInt((float)damageInfo.amount * finalCriticalMultiplier);
         }
         
-        return upgradedDamage;
+        return damageInfo;
+    }
+
+    // ========== PUBLIC GETTERS FOR ACCUMULATED VALUES ==========
+    // These methods provide access to accumulated upgrade values for UI display
+
+    /// <summary>
+    /// Get the accumulated damage percentage.
+    /// </summary>
+    public static float GetAccumulatedDamagePercent()
+    {
+        return accumulatedDamageUpgrade.DamagePercent;
+    }
+
+    /// <summary>
+    /// Get the accumulated multicast percentage.
+    /// </summary>
+    public static float GetAccumulatedMulticastPercent()
+    {
+        return accumulatedMulticastUpgrade.MulticastPercent;
+    }
+
+    /// <summary>
+    /// Get the accumulated pierce count.
+    /// </summary>
+    public static int GetAccumulatedPierceCount()
+    {
+        return accumulatedPierceUpgrade.PierceCount;
+    }
+
+    /// <summary>
+    /// Get the accumulated chain count.
+    /// </summary>
+    public static int GetAccumulatedChainCount()
+    {
+        return accumulatedChainUpgrade.ChainCount;
+    }
+
+    /// <summary>
+    /// Get the accumulated cooldown reduction percentage.
+    /// </summary>
+    public static float GetAccumulatedCooldownReductionPercent()
+    {
+        return accumulatedCooldownReductionUpgrade.ReductionPercent;
+    }
+
+    /// <summary>
+    /// Get the accumulated movement speed percentage.
+    /// </summary>
+    public static float GetAccumulatedMovementSpeedPercent()
+    {
+        return accumulatedMovementSpeedUpgrade.SpeedPercent;
+    }
+
+    /// <summary>
+    /// Get the accumulated max health increase.
+    /// </summary>
+    public static int GetAccumulatedMaxHealthIncrease()
+    {
+        return accumulatedMaxHealthUpgrade.HealthIncrease;
+    }
+
+    /// <summary>
+    /// Get the accumulated critical chance percentage.
+    /// </summary>
+    public static float GetAccumulatedCriticalChancePercent()
+    {
+        return accumulatedCriticalChanceUpgrade.ChancePercent;
+    }
+
+    /// <summary>
+    /// Get the accumulated critical damage percentage.
+    /// </summary>
+    public static float GetAccumulatedCriticalDamagePercent()
+    {
+        return accumulatedCriticalDamageUpgrade.DamagePercent;
+    }
+
+    /// <summary>
+    /// Get the accumulated pickup radius percentage.
+    /// </summary>
+    public static float GetAccumulatedPickupRadiusPercent()
+    {
+        return accumulatedPickupRadiusUpgrade.RadiusPercent;
+    }
+
+    /// <summary>
+    /// Get the accumulated luck percentage.
+    /// </summary>
+    public static float GetAccumulatedLuckPercent()
+    {
+        return accumulatedLuckUpgrade.LuckPercent;
+    }
+
+    /// <summary>
+    /// Get the accumulated area of effect percentage.
+    /// </summary>
+    public static float GetAccumulatedAreaOfEffectPercent()
+    {
+        return accumulatedAreaOfEffectUpgrade.AoePercent;
     }
 }

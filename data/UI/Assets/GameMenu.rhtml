@@ -7,39 +7,99 @@
   </head>
 
   <body id="body" class="theme-dark">
-    <div class="menu-container menu-container--centered">
+    <div class="game-menu-layout">
       
-      <!-- Game Title -->
-      <header class="menu-header menu-header--large">
-        <h1 id="game_title" class="menu-title menu-title--large">Game Paused</h1>
-        <div class="menu-subtitle menu-subtitle--large">Choose your next action</div>
-      </header>
+      <!-- Main Menu Content -->
+      <div class="menu-container menu-container--centered">
+        
+        <!-- Game Title -->
+        <header class="menu-header menu-header--large">
+          <h1 id="game_title" class="menu-title menu-title--large">Game Paused</h1>
+          <div class="menu-subtitle menu-subtitle--large">Choose your next action</div>
+        </header>
 
-      <!-- Game Menu Buttons -->
-      <nav class="menu-nav">
-        <div class="menu-buttons">
-          <button id="resume_btn" class="menu-btn menu-btn--large menu-btn-primary">
-            <span class="btn-icon"></span>
-            <span class="btn-text">Resume</span>
-          </button>
-          
-          <button id="settings_btn" class="menu-btn menu-btn--large menu-btn-secondary">
-            <span class="btn-icon"></span>
-            <span class="btn-text">Settings</span>
-          </button>
-          
-          <button id="quit_btn" class="menu-btn menu-btn--large menu-btn-danger">
-            <span class="btn-icon"></span>
-            <span class="btn-text">Quit</span>
-          </button>
+        <!-- Game Menu Buttons -->
+        <nav class="menu-nav">
+          <div class="menu-buttons">
+            <button id="resume_btn" class="menu-btn menu-btn--large menu-btn-primary">
+              <span class="btn-icon"></span>
+              <span class="btn-text">Resume</span>
+            </button>
+            
+            <button id="settings_btn" class="menu-btn menu-btn--large menu-btn-secondary">
+              <span class="btn-icon"></span>
+              <span class="btn-text">Settings</span>
+            </button>
+            
+            <button id="quit_btn" class="menu-btn menu-btn--large menu-btn-danger">
+              <span class="btn-icon"></span>
+              <span class="btn-text">Quit</span>
+            </button>
+          </div>
+        </nav>
+
+        <!-- Footer Info -->
+        <footer class="menu-footer">
+          <div class="version-info">Game Menu</div>
+          <div class="copyright">Press ESC to resume</div>
+        </footer>
+
+      </div>
+
+      <!-- Upgrade Display Panel -->
+      <div id="upgrade_list_container" class="upgrade-panel">
+        <h2 class="upgrade-panel-title">Current Upgrades</h2>
+        <div class="upgrade-list">
+          <div class="upgrade-item">
+            <span class="upgrade-label">Damage:</span>
+            <span id="damage_value" class="upgrade-value">+0.0%</span>
+          </div>
+          <div class="upgrade-item">
+            <span class="upgrade-label">Multicast:</span>
+            <span id="multicast_value" class="upgrade-value">+0.0%</span>
+          </div>
+          <div class="upgrade-item">
+            <span class="upgrade-label">Pierce:</span>
+            <span id="pierce_value" class="upgrade-value">+0</span>
+          </div>
+          <div class="upgrade-item">
+            <span class="upgrade-label">Chain:</span>
+            <span id="chain_value" class="upgrade-value">+0</span>
+          </div>
+          <div class="upgrade-item">
+            <span class="upgrade-label">Cooldown Reduction:</span>
+            <span id="cooldown_value" class="upgrade-value">-0.0%</span>
+          </div>
+          <div class="upgrade-item">
+            <span class="upgrade-label">Movement Speed:</span>
+            <span id="speed_value" class="upgrade-value">+0.0%</span>
+          </div>
+          <div class="upgrade-item">
+            <span class="upgrade-label">Max Health:</span>
+            <span id="health_value" class="upgrade-value">+0</span>
+          </div>
+          <div class="upgrade-item">
+            <span class="upgrade-label">Critical Chance:</span>
+            <span id="crit_chance_value" class="upgrade-value">+0.0%</span>
+          </div>
+          <div class="upgrade-item">
+            <span class="upgrade-label">Critical Damage:</span>
+            <span id="crit_damage_value" class="upgrade-value">+0.0%</span>
+          </div>
+          <div class="upgrade-item">
+            <span class="upgrade-label">Pickup Radius:</span>
+            <span id="pickup_radius_value" class="upgrade-value">+0.0%</span>
+          </div>
+          <div class="upgrade-item">
+            <span class="upgrade-label">Luck:</span>
+            <span id="luck_value" class="upgrade-value">+0.0%</span>
+          </div>
+          <div class="upgrade-item">
+            <span class="upgrade-label">Area of Effect:</span>
+            <span id="aoe_value" class="upgrade-value">+0.0%</span>
+          </div>
         </div>
-      </nav>
-
-      <!-- Footer Info -->
-      <footer class="menu-footer">
-        <div class="version-info">Game Menu</div>
-        <div class="copyright">Press ESC to resume</div>
-      </footer>
+      </div>
 
     </div>
   </body>

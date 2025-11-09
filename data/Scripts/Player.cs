@@ -12,8 +12,8 @@ using Unravel.Core;
 public class Player : ScriptComponent
 {
     //[Header("Movement Settings")]
-    [Tooltip("Maximum movement speed in units per second")]
-    public float maxSpeed = 10.0f;
+    [Tooltip("Base maximum movement speed in units per second (before upgrades)")]
+    public float baseMaxSpeed = 10.0f;
     [Tooltip("Maximum acceleration in units per second squared")]
     public float maxAcceleration = 50.0f;
     [Tooltip("Maximum deceleration when no input (higher = stops faster)")]
@@ -22,6 +22,14 @@ public class Player : ScriptComponent
     //[Header("Physics Settings")]
     [Tooltip("Use physics-based movement (recommended) vs direct transform movement")]
     public bool usePhysicsMovement = true;
+    
+    //[Header("Player Stats")]
+    [Tooltip("Base maximum health (before upgrades)")]
+    public int baseMaxHealth = 100;
+    [Tooltip("Base pickup range for experience and items (before upgrades)")]
+    public float basePickupRange = 5.0f;
+    [Tooltip("Base luck value for better upgrade card rarities")]
+    public float baseLuck = 0.0f;
     
     // Component references
     private PhysicsComponent physicsComponent;
@@ -36,6 +44,8 @@ public class Player : ScriptComponent
     
     // Level up upgrade cards
     private List<UpgradeCard> currentUpgradeOptions;
+
+    private bool initialUpdate = true;
     
     /// <summary>
     /// Called when the script is created. Initialize component references.
@@ -47,17 +57,17 @@ public class Player : ScriptComponent
         transformComponent = owner.GetComponent<TransformComponent>();
         Health = owner.GetComponent<Health>();
         Experience = owner.GetComponent<Experience>();
-        
+
         if (physicsComponent == null)
         {
             Log.Error($"Player on {owner.name}: PhysicsComponent not found! Please attach a PhysicsComponent with a Capsule collider.");
         }
-        
+
         if (transformComponent == null)
         {
             Log.Error($"Player on {owner.name}: TransformComponent not found!");
         }
-        
+
         if (Health == null)
         {
             Log.Warning($"Player on {owner.name}: Health not found! Player will not be able to take damage or heal.");
@@ -69,7 +79,7 @@ public class Player : ScriptComponent
             Health.OnDamageTaken += OnPlayerDamageTaken;
             Health.OnHealed += OnPlayerHealed;
         }
-        
+
         if (Experience == null)
         {
             Log.Warning($"Player on {owner.name}: Experience not found! Player will not be able to collect experience.");
@@ -81,7 +91,7 @@ public class Player : ScriptComponent
             Experience.OnLevelUp += OnLevelUp;
             Experience.OnExperienceChanged += OnExperienceChanged;
         }
-        
+
         // Subscribe to level-up upgrade selection events
         LevelUpMenu.OnUpgradeSelected += OnUpgradeSelected;
     }
@@ -101,6 +111,16 @@ public class Player : ScriptComponent
             Log.Error($"Player on {owner.name}: Missing required components. Disabling script.");
             return;
         }
+        
+        // Initialize health with base max health + upgrades
+        InitializeHealth();
+        
+        // Initialize pickup range with base pickup range + upgrades
+        InitializePickupRange();
+        
+        // Initialize abilities display
+        UpdateAbilities();
+    
     }
     
     /// <summary>
@@ -108,6 +128,13 @@ public class Player : ScriptComponent
     /// </summary>
     public override void OnUpdate()
     {
+        if (initialUpdate)
+        {
+            ShowInitialAbilitySelection();
+            initialUpdate = false;
+            return;
+        }
+
         if (physicsComponent == null || transformComponent == null)
             return;
             
@@ -178,8 +205,9 @@ public override void OnFixedUpdate()
             inputDirection = inputDirection.normalized;
         }
 
-        // Calculate target velocity
-        targetVelocity = inputDirection * maxSpeed;
+        // Calculate target velocity using upgraded max speed
+        float currentMaxSpeed = UpgradeSystem.ApplyMovementSpeedUpgrade(baseMaxSpeed);
+        targetVelocity = inputDirection * currentMaxSpeed;
         
 
         if (Input.IsDown(KeyCode.Q))
@@ -447,7 +475,7 @@ public override void OnFixedUpdate()
     /// <param name="experienceAmount">Amount of experience gained.</param>
     private void OnExperienceGained(float experienceAmount)
     {
-        Log.Info($"Player gained {experienceAmount} experience!");
+        // Log.Info($"Player gained {experienceAmount} experience!");
         
         // Could add experience gain behaviors here, like:
         // - Play experience gain sound/effect
@@ -477,6 +505,37 @@ public override void OnFixedUpdate()
     }
     
     /// <summary>
+    /// Show the initial ability selection menu at game start.
+    /// </summary>
+    private void ShowInitialAbilitySelection()
+    {
+        // Find the GameUI entity in the scene
+        var gameUIEntity = Scene.FindEntityByName("GameUI");
+        if (!gameUIEntity)
+        {
+            Log.Warning("Player: GameUI entity not found in scene - cannot show initial ability menu");
+            return;
+        }
+        
+        // Get the LevelUpUI script component
+        var levelUpUIScript = gameUIEntity.GetComponent<LevelUpUI>();
+        
+        if (levelUpUIScript == null)
+        {
+            Log.Warning("Player: LevelUpUI script component not found - cannot show initial ability menu");
+            return;
+        }
+        
+        // Generate ability-only card options for initial selection
+        currentUpgradeOptions = UpgradeCardGenerator.GenerateAbilityOnlySelection(3);
+        
+        // Pass cards directly to the UI
+        levelUpUIScript.ShowLevelUpMenu(currentUpgradeOptions[0], currentUpgradeOptions[1], currentUpgradeOptions[2]);
+        
+        Log.Info("Player: Showing initial ability selection menu");
+    }
+    
+    /// <summary>
     /// Show the level-up menu with upgrade options.
     /// </summary>
     /// <param name="level">The new level the player reached</param>
@@ -499,8 +558,8 @@ public override void OnFixedUpdate()
             return;
         }
         
-        // Generate upgrade card options using the new system
-        currentUpgradeOptions = UpgradeCardGenerator.GenerateCardSelection(3);
+        // Generate upgrade card options using the new system with player luck
+        currentUpgradeOptions = UpgradeCardGenerator.GenerateCardSelection(3, baseLuck);
         
         // Pass cards directly to the UI
         levelUpUIScript.ShowLevelUpMenu(currentUpgradeOptions[0], currentUpgradeOptions[1], currentUpgradeOptions[2]);
@@ -545,6 +604,15 @@ public override void OnFixedUpdate()
         // Apply all upgrades from the selected card
         selectedCard.ApplyUpgrades();
         
+        // Update max health based on new upgrades
+        UpdateMaxHealth();
+        
+        // Update pickup range based on new upgrades
+        UpdatePickupRange();
+        
+        // Update abilities display
+        UpdateAbilities();
+        
         // Clear the current options
         currentUpgradeOptions = null;
         
@@ -588,6 +656,119 @@ public override void OnFixedUpdate()
             return 0;
             
         return Experience.GetCurrentExperience();
+    }
+    
+    /// <summary>
+    /// Get the player's current luck (base luck + upgrades).
+    /// </summary>
+    /// <returns>Current total luck value.</returns>
+    public float GetCurrentLuck()
+    {
+        return UpgradeSystem.ApplyLuckUpgrade(baseLuck);
+    }
+    
+    /// <summary>
+    /// Get the player's current pickup range (base pickup range + upgrades).
+    /// </summary>
+    /// <returns>Current total pickup range value.</returns>
+    public float GetCurrentPickupRange()
+    {
+        return UpgradeSystem.ApplyPickupRadiusUpgrade(basePickupRange);
+    }
+    
+    /// <summary>
+    /// Initialize the Health component with base max health + upgrades.
+    /// </summary>
+    private void InitializeHealth()
+    {
+        if (Health == null)
+            return;
+            
+        int upgradedMaxHealth = UpgradeSystem.ApplyMaxHealthUpgrade(baseMaxHealth);
+        Health.SetMaxHealth(upgradedMaxHealth);
+        
+        // If current health is 0 or less, set it to max health
+        if (Health.GetCurrentHealth() <= 0)
+        {
+            Health.SetHealth(upgradedMaxHealth);
+        }
+        
+        Log.Info($"Player health initialized: {Health.GetCurrentHealth()}/{Health.GetMaxHealth()}");
+    }
+    
+    /// <summary>
+    /// Update the Health component's max health based on current upgrades.
+    /// </summary>
+    private void UpdateMaxHealth()
+    {
+        if (Health == null)
+            return;
+            
+        int upgradedMaxHealth = UpgradeSystem.ApplyMaxHealthUpgrade(baseMaxHealth);
+        int oldMaxHealth = Health.GetMaxHealth();
+        int oldCurrentHealth = Health.GetCurrentHealth();
+        
+        // Calculate health percentage before change
+        float healthPercentage = (float)oldCurrentHealth / (float)oldMaxHealth;
+        
+        // Update max health
+        Health.SetMaxHealth(upgradedMaxHealth, true);
+    }
+    
+    /// <summary>
+    /// Initialize the Experience component with base pickup range + upgrades.
+    /// </summary>
+    private void InitializePickupRange()
+    {
+        if (Experience == null)
+            return;
+            
+        float upgradedPickupRange = UpgradeSystem.ApplyPickupRadiusUpgrade(basePickupRange);
+        Experience.SetPickupRange(upgradedPickupRange);
+        
+        Log.Info($"Player pickup range initialized: {upgradedPickupRange}");
+    }
+    
+    /// <summary>
+    /// Update the Experience component's pickup range based on current upgrades.
+    /// </summary>
+    private void UpdatePickupRange()
+    {
+        if (Experience == null)
+            return;
+            
+        float upgradedPickupRange = UpgradeSystem.ApplyPickupRadiusUpgrade(basePickupRange);
+        Experience.SetPickupRange(upgradedPickupRange);
+        
+        Log.Info($"Player pickup range updated: {upgradedPickupRange}");
+    }
+    
+    /// <summary>
+    /// Update the GameHub ability slots based on current player abilities.
+    /// </summary>
+    private void UpdateAbilities()
+    {
+        // Find the GameHub entity in the scene
+        var gameHubEntity = Scene.FindEntityByName("GameHub");
+        if (!gameHubEntity)
+        {
+            Log.Warning("Player: GameUI entity not found in scene - cannot update abilities display");
+            return;
+        }
+        
+        // Get the GameHub script component
+        var gameHubScript = gameHubEntity.GetComponent<GameHub>();
+        
+        if (gameHubScript == null)
+        {
+            Log.Warning("Player: GameHub script component not found - cannot update abilities display");
+            return;
+        }
+        
+        // Call GameHub to initialize ability slots with current player abilities
+        gameHubScript.InitializeAbilitySlots();
+        
+        Log.Info("Player: Updated abilities display in GameHub");
     }
     
     /// <summary>

@@ -20,37 +20,7 @@ public class CriticalChanceUpgrade : Upgrade
     {
         ChancePercent = chancePercent;
     }
-    
-    /// <summary>
-    /// Generate a new CriticalChanceUpgrade with random values based on rarity.
-    /// </summary>
-    /// <param name="rarity">The rarity level determining the value ranges.</param>
-    /// <returns>A new CriticalChanceUpgrade with randomized values.</returns>
-    public static CriticalChanceUpgrade Generate(UpgradeRarity rarity)
-    {
-        float chancePercent;
-        
-        switch (rarity)
-        {
-            case UpgradeRarity.Normal:
-                chancePercent = Random.Range(2.0f, 5.0f);
-                break;
-            case UpgradeRarity.Common:
-                chancePercent = Random.Range(4.0f, 8.0f);
-                break;
-            case UpgradeRarity.Epic:
-                chancePercent = Random.Range(6.0f, 12.0f);
-                break;
-            case UpgradeRarity.Legendary:
-                chancePercent = Random.Range(10.0f, 18.0f);
-                break;
-            default:
-                chancePercent = 5.0f;
-                break;
-        }
-        
-        return new CriticalChanceUpgrade(chancePercent);
-    }
+
 
     /// <summary>
     /// Generate a new CriticalChanceUpgrade with a value from the specified range.

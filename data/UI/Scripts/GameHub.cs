@@ -17,6 +17,11 @@ public class GameHub : ScriptComponent
     private UIElement healthValue;
     private UIElement levelValue;
     
+    // Ability slot elements
+    private UIElement[] abilitySlots = new UIElement[4];
+    private UIElement[] abilityIcons = new UIElement[4];
+    private UIElement[] abilityCooldowns = new UIElement[4];
+    
     // Player and component references
     private Player player;
     private Health playerHealth;
@@ -32,13 +37,26 @@ public class GameHub : ScriptComponent
     /// </summary>
     public override void OnStart()
     {
-        // Get the UI document component
+
+        
+        // Initialize timer
+        gameStartTime = Time.time;
+        lastTimerUpdate = Time.time;
+    }
+    
+    /// <summary>
+    /// Cache UI element references for fast access.
+    /// </summary>
+    private void CacheUIElements()
+    {
+                // Get the UI document component
         var uiDoc = owner.GetComponent<UIDocumentComponent>();
         if (uiDoc == null)
         {
             Log.Error("GameHub: No UIDocumentComponent found on entity");
             return;
         }
+
 
         // Get the document wrapper
         document = uiDoc.GetDocument();
@@ -49,27 +67,6 @@ public class GameHub : ScriptComponent
         }
 
         Log.Info($"GameHub: Got document wrapper: {document.Title}");
-
-        // Cache UI elements
-        CacheUIElements();
-        
-        // Find player reference and subscribe to events
-        FindPlayerAndSubscribeToEvents();
-        
-        // Initialize timer
-        gameStartTime = Time.time;
-        lastTimerUpdate = Time.time;
-        
-        // Initial update
-        UpdateProgressBars();
-        UpdateGameTimer();
-    }
-    
-    /// <summary>
-    /// Cache UI element references for fast access.
-    /// </summary>
-    private void CacheUIElements()
-    {
         healthBar = document.GetElementById("health_bar");
         experienceBar = document.GetElementById("experience_bar");
         gameTimer = document.GetElementById("game_timer");
@@ -101,13 +98,47 @@ public class GameHub : ScriptComponent
             Log.Error("GameHub: Level value element not found or invalid");
         }
         
-        Log.Info($"GameHub: Cached UI elements - Health: {healthBar?.IsValid()}, Experience: {experienceBar?.IsValid()}, Timer: {gameTimer?.IsValid()}, HealthValue: {healthValue?.IsValid()}, LevelValue: {levelValue?.IsValid()}");
+        // Cache ability slot elements
+        CacheAbilitySlotElements();
+        
+        // Log.Info($"GameHub: Cached UI elements - Health: {healthBar?.IsValid()}, Experience: {experienceBar?.IsValid()}, Timer: {gameTimer?.IsValid()}, HealthValue: {healthValue?.IsValid()}, LevelValue: {levelValue?.IsValid()}");
     }
     
     /// <summary>
-    /// Find the player entity in the scene and subscribe to health/experience events.
+    /// Cache ability slot UI element references.
     /// </summary>
-    private void FindPlayerAndSubscribeToEvents()
+    private void CacheAbilitySlotElements()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            int slotNumber = i + 1;
+            abilitySlots[i] = document.GetElementById($"ability_slot_{slotNumber}");
+            abilityIcons[i] = document.GetElementById($"ability_icon_{slotNumber}");
+            abilityCooldowns[i] = document.GetElementById($"ability_cooldown_{slotNumber}");
+            
+            if (abilitySlots[i]?.IsValid() != true)
+            {
+                Log.Warning($"GameHub: Ability slot {slotNumber} element not found or invalid");
+            }
+            
+            if (abilityIcons[i]?.IsValid() != true)
+            {
+                Log.Warning($"GameHub: Ability icon {slotNumber} element not found or invalid");
+            }
+            
+            if (abilityCooldowns[i]?.IsValid() != true)
+            {
+                Log.Warning($"GameHub: Ability cooldown {slotNumber} element not found or invalid");
+            }
+        }
+        
+        Log.Info("GameHub: Cached ability slot elements");
+    }
+    
+    /// <summary>
+    /// Find the player entity in the scene and cache component references.
+    /// </summary>
+    private void FindPlayerReferences()
     {
         var playerEntity = Scene.FindEntityByName("Player");
         if (playerEntity)
@@ -121,24 +152,12 @@ public class GameHub : ScriptComponent
                 playerHealth = player.GetHealth();
                 playerExperience = playerEntity.GetComponent<Experience>();
                 
-                // Subscribe to health events
-                if (playerHealth != null)
-                {
-                    playerHealth.OnHealthChanged += OnPlayerHealthChanged;
-                    Log.Info("GameHub: Subscribed to health events");
-                }
-                else
+                if (playerHealth == null)
                 {
                     Log.Warning("GameHub: Player health component not found");
                 }
                 
-                // Subscribe to experience events
-                if (playerExperience != null)
-                {
-                    playerExperience.OnExperienceChanged += OnPlayerExperienceChanged;
-                    Log.Info("GameHub: Subscribed to experience events");
-                }
-                else
+                if (playerExperience == null)
                 {
                     Log.Warning("GameHub: Player experience component not found");
                 }
@@ -151,6 +170,26 @@ public class GameHub : ScriptComponent
         else
         {
             Log.Warning("GameHub: Player entity not found in scene");
+        }
+    }
+    
+    /// <summary>
+    /// Subscribe to player health and experience events.
+    /// </summary>
+    private void SubscribeToPlayerEvents()
+    {
+        // Subscribe to health events
+        if (playerHealth != null)
+        {
+            playerHealth.OnHealthChanged += OnPlayerHealthChanged;
+            Log.Info("GameHub: Subscribed to health events");
+        }
+        
+        // Subscribe to experience events
+        if (playerExperience != null)
+        {
+            playerExperience.OnExperienceChanged += OnPlayerExperienceChanged;
+            Log.Info("GameHub: Subscribed to experience events");
         }
     }
     
@@ -185,27 +224,26 @@ public class GameHub : ScriptComponent
             UpdateGameTimer();
             lastTimerUpdate = Time.time;
         }
+        
+        // Update ability cooldowns
+        UpdateAbilityCooldowns();
     }
     
     /// <summary>
-    /// Update the health and experience progress bars with current player data (initial load).
+    /// Update the health and experience progress bars with current player data.
     /// </summary>
     private void UpdateProgressBars()
     {
         if (player == null)
-        {
-            // Try to find player again if not found initially
-            FindPlayerAndSubscribeToEvents();
             return;
-        }
         
-        // Initial health bar update
+        // Update health bar
         if (playerHealth != null)
         {
             UpdateHealthBar(playerHealth.GetCurrentHealth(), playerHealth.GetMaxHealth());
         }
         
-        // Initial experience bar update
+        // Update experience bar
         if (playerExperience != null)
         {
             float currentExp = playerExperience.GetCurrentExperience();
@@ -244,7 +282,7 @@ public class GameHub : ScriptComponent
             healthBar.SetClass("low-health", false);
         }
         
-        Log.Info($"GameHub: Health updated - {currentHealth}/{maxHealth} ({healthPercentage:P0})");
+        // Log.Info($"GameHub: Health updated - {currentHealth}/{maxHealth} ({healthPercentage:P0})");
     }
     
     /// <summary>
@@ -293,7 +331,7 @@ public class GameHub : ScriptComponent
             levelValue.InnerRml = levelText;
         }
         
-        Log.Info($"GameHub: Experience updated - Level {currentLevel}, Progress: {expProgress:P0} (Need {expToNextLevel} more XP for next level)");
+        // Log.Info($"GameHub: Experience updated - Level {currentLevel}, Progress: {expProgress:P0} (Need {expToNextLevel} more XP for next level)");
     }
     
     /// <summary>
@@ -318,17 +356,20 @@ public class GameHub : ScriptComponent
     /// Called when the component is enabled.
     /// </summary>
     public override void OnEnable()
-    {
-        // Ensure we have fresh references when enabled
-        if (document == null)
-        {
-            OnStart();
-        }
-        else
-        {
-            UpdateProgressBars();
-            UpdateGameTimer();
-        }
+    {     
+        
+        // Cache UI elements
+        CacheUIElements();
+        
+        // Find player reference (but don't subscribe yet - that happens in OnEnable)
+        FindPlayerReferences();   
+        // Subscribe to events
+        SubscribeToPlayerEvents();
+        
+        // Update displays
+        UpdateProgressBars();
+        UpdateGameTimer();
+        InitializeAbilitySlots();
     }
     
     /// <summary>
@@ -389,5 +430,201 @@ public class GameHub : ScriptComponent
     public void RefreshProgressBars()
     {
         UpdateProgressBars();
+    }
+    
+    // ========== ABILITY SLOT MANAGEMENT ==========
+    
+    /// <summary>
+    /// Initialize ability slots with default empty state.
+    /// </summary>
+    public void InitializeAbilitySlots()
+    {
+        // Clear all slots first
+        for (int i = 0; i < 4; i++)
+        {
+            SetAbilitySlotEmpty(i);
+        }
+        
+        if (player?.owner == null)
+        {
+            Log.Warning("GameHub: Player not found, cannot initialize ability slots");
+            return;
+        }
+        
+        // Get all ability components from the player
+        var abilities = player.owner.GetComponents<Ability>();
+        
+        int slotIndex = 0;
+        foreach (var ability in abilities)
+        {
+            if (slotIndex >= 4) break; // Only 4 slots available
+            
+            if (ability != null)
+            {
+                var abilityInfo = ability.GetDisplayInfo();
+                SetAbilitySlot(slotIndex, abilityInfo.type, abilityInfo.name, abilityInfo.icon);
+                slotIndex++;
+            }
+        }
+        
+        Log.Info($"GameHub: Initialized {slotIndex} ability slots");
+    }
+    
+    /// <summary>
+    /// Set an ability slot to display a specific ability.
+    /// </summary>
+    /// <param name="slotIndex">Slot index (0-3)</param>
+    /// <param name="abilityType">Type of ability (fireball, spark, cube, etc.)</param>
+    /// <param name="abilityName">Display name of the ability</param>
+    /// <param name="iconText">Text to display in the icon (optional)</param>
+    public void SetAbilitySlot(int slotIndex, string abilityType, string abilityName, string iconText = "")
+    {
+        if (slotIndex < 0 || slotIndex >= 4)
+        {
+            Log.Warning($"GameHub: Invalid ability slot index: {slotIndex}");
+            return;
+        }
+        
+        var slot = abilitySlots[slotIndex];
+        var icon = abilityIcons[slotIndex];
+        
+        if (slot?.IsValid() != true || icon?.IsValid() != true)
+        {
+            Log.Warning($"GameHub: Ability slot {slotIndex + 1} elements not valid");
+            return;
+        }
+        
+        // Remove all ability type classes
+        slot.SetClass("empty", false);
+        slot.SetClass("fireball", false);
+        slot.SetClass("spark", false);
+        slot.SetClass("cube", false);
+        
+        // Add the specific ability type class
+        slot.SetClass(abilityType, true);
+        icon.SetClass("has-ability", true);
+        
+        // Set icon text content
+        if (!string.IsNullOrEmpty(iconText))
+        {
+            icon.InnerRml = iconText;
+        }
+        
+        // Set tooltip or title attribute for accessibility
+        slot.SetAttribute("title", abilityName);
+        
+        Log.Info($"GameHub: Set ability slot {slotIndex + 1} to {abilityType} ({abilityName})");
+    }
+    
+    /// <summary>
+    /// Set an ability slot to empty state.
+    /// </summary>
+    /// <param name="slotIndex">Slot index (0-3)</param>
+    public void SetAbilitySlotEmpty(int slotIndex)
+    {
+        if (slotIndex < 0 || slotIndex >= 4)
+        {
+            Log.Warning($"GameHub: Invalid ability slot index: {slotIndex}");
+            return;
+        }
+        
+        var slot = abilitySlots[slotIndex];
+        var icon = abilityIcons[slotIndex];
+        
+        if (slot?.IsValid() != true || icon?.IsValid() != true)
+        {
+            Log.Warning($"GameHub: Ability slot {slotIndex + 1} elements not valid");
+            return;
+        }
+        
+        // Remove all ability type classes and set to empty
+        slot.SetClass("fireball", false);
+        slot.SetClass("spark", false);
+        slot.SetClass("cube", false);
+        slot.SetClass("empty", true);
+        icon.SetClass("has-ability", false);
+        
+        // Clear icon text and set placeholder
+        icon.InnerRml = "?";
+        
+        // Clear tooltip
+        slot.SetAttribute("title", "Empty Slot");
+    }
+    
+    /// <summary>
+    /// Set cooldown display for an ability slot.
+    /// </summary>
+    /// <param name="slotIndex">Slot index (0-3)</param>
+    /// <param name="cooldownTime">Remaining cooldown time in seconds (0 to hide cooldown)</param>
+    public void SetAbilityCooldown(int slotIndex, float cooldownTime)
+    {
+        if (slotIndex < 0 || slotIndex >= 4)
+        {
+            Log.Warning($"GameHub: Invalid ability slot index: {slotIndex}");
+            return;
+        }
+        
+        var slot = abilitySlots[slotIndex];
+        var cooldownElement = abilityCooldowns[slotIndex];
+        
+        if (slot?.IsValid() != true || cooldownElement?.IsValid() != true)
+        {
+            Log.Warning($"GameHub: Ability slot {slotIndex + 1} cooldown elements not valid");
+            return;
+        }
+        
+        bool onCooldown = cooldownTime > 0;
+        slot.SetClass("on-cooldown", onCooldown);
+        cooldownElement.SetClass("active", onCooldown);
+        cooldownElement.InnerRml = $"{cooldownTime:F1}s";
+    }
+    
+    /// <summary>
+    /// Set active state for an ability slot (when ability is being used).
+    /// </summary>
+    /// <param name="slotIndex">Slot index (0-3)</param>
+    /// <param name="isActive">Whether the ability is currently active</param>
+    public void SetAbilityActive(int slotIndex, bool isActive)
+    {
+        if (slotIndex < 0 || slotIndex >= 4)
+        {
+            Log.Warning($"GameHub: Invalid ability slot index: {slotIndex}");
+            return;
+        }
+        
+        var slot = abilitySlots[slotIndex];
+        
+        if (slot?.IsValid() != true)
+        {
+            Log.Warning($"GameHub: Ability slot {slotIndex + 1} element not valid");
+            return;
+        }
+        
+        slot.SetClass("active", isActive);
+    }
+    
+    /// <summary>
+    /// Update ability cooldown displays based on current ability states.
+    /// </summary>
+    private void UpdateAbilityCooldowns()
+    {
+        if (player?.owner == null)
+            return;
+            
+        // Get all ability components from the player
+        var abilities = player.owner.GetComponents<Ability>();
+        
+        int slotIndex = 0;
+        foreach (var ability in abilities)
+        {
+            if (slotIndex >= 4) break; // Only 4 slots available
+            
+            if (ability != null)
+            {
+                float remainingCooldown = ability.GetRemainingCooldown();
+                SetAbilityCooldown(slotIndex, remainingCooldown);
+                slotIndex++;
+            }
+        }
     }
 }

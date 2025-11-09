@@ -20,37 +20,7 @@ public class CriticalDamageUpgrade : Upgrade
     {
         DamagePercent = damagePercent;
     }
-    
-    /// <summary>
-    /// Generate a new CriticalDamageUpgrade with random values based on rarity.
-    /// </summary>
-    /// <param name="rarity">The rarity level determining the value ranges.</param>
-    /// <returns>A new CriticalDamageUpgrade with randomized values.</returns>
-    public static CriticalDamageUpgrade Generate(UpgradeRarity rarity)
-    {
-        float damagePercent;
-        
-        switch (rarity)
-        {
-            case UpgradeRarity.Normal:
-                damagePercent = Random.Range(15.0f, 25.0f);
-                break;
-            case UpgradeRarity.Common:
-                damagePercent = Random.Range(20.0f, 35.0f);
-                break;
-            case UpgradeRarity.Epic:
-                damagePercent = Random.Range(30.0f, 50.0f);
-                break;
-            case UpgradeRarity.Legendary:
-                damagePercent = Random.Range(45.0f, 75.0f);
-                break;
-            default:
-                damagePercent = 25.0f;
-                break;
-        }
-        
-        return new CriticalDamageUpgrade(damagePercent);
-    }
+
 
     /// <summary>
     /// Generate a new CriticalDamageUpgrade with a value from the specified range.

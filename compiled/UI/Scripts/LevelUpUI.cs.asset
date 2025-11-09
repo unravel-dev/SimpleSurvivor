@@ -14,7 +14,7 @@ public class LevelUpUI : ScriptComponent
     // State
     private bool isLevelUpActive = false;
     private LevelUpMenu levelUpMenuScript;
-    
+
     /// <summary>
     /// Called when the script is created.
     /// </summary>
@@ -22,14 +22,8 @@ public class LevelUpUI : ScriptComponent
     {
         // Find menu references if not assigned
         FindMenuReferences();
-    }
-    
-    /// <summary>
-    /// Called when the script starts execution.
-    /// </summary>
-    public override void OnStart()
-    {
-        // Get the LevelUpMenu script component
+        
+                // Get the LevelUpMenu script component
         if (LevelUpMenu)
         {
             levelUpMenuScript = LevelUpMenu.GetComponent<LevelUpMenu>();
@@ -44,6 +38,14 @@ public class LevelUpUI : ScriptComponent
                 Log.Warning("LevelUpUI: LevelUpMenu script component not found");
             }
         }
+    }
+    
+    /// <summary>
+    /// Called when the script starts execution.
+    /// </summary>
+    public override void OnStart()
+    {
+
         
         // Initially hide the level up menu
         if (LevelUpMenu)

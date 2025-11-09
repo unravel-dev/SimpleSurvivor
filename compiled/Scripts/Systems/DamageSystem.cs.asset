@@ -2,6 +2,13 @@ using System;
 using System.Runtime.CompilerServices;
 using Unravel.Core;
 
+
+public struct DamageBreakdown
+{
+    public int amount;
+    public bool isCritical;
+
+}
 /// <summary>
 /// Centralized damage system for applying damage and managing death events.
 /// Provides a single point of control for all damage-related operations.
@@ -9,10 +16,10 @@ using Unravel.Core;
 public static class DamageSystem
 {
     // Events for other systems to subscribe to
-    public static System.Action<Entity, Entity, float> OnDamageApplied; // (target, source, damage)
+    public static System.Action<Entity, Entity, DamageBreakdown> OnDamageApplied; // (target, source, damage)
     public static System.Action<Entity, Entity, float> OnHealingApplied; // (target, source, healAmount)
     public static System.Action<Entity, Entity> OnEntityDied; // (deadEntity, killer)
-    
+
     /// <summary>
     /// Apply damage to an entity through its Health component.
     /// </summary>
@@ -20,35 +27,35 @@ public static class DamageSystem
     /// <param name="source">Entity that caused the damage.</param>
     /// <param name="damage">Amount of damage to deal.</param>
     /// <returns>True if the target died from this damage.</returns>
-    public static bool ApplyDamage(Entity target, Entity source, int damage)
+    public static bool ApplyDamage(Entity target, Entity source, DamageBreakdown breakdown)
     {
-        if (!target || damage <= 0)
+        if (!target || breakdown.amount <= 0)
             return false;
-            
+
         var healthComponent = target.GetComponent<Health>();
         if (healthComponent == null)
             return false;
-            
+
         // Store health before damage
         float healthBefore = healthComponent.GetCurrentHealth();
         bool wasAlive = !healthComponent.IsDead();
-        
+
         // Apply damage
-        bool died = healthComponent.TakeDamage(damage, source);
-        
+        bool died = healthComponent.TakeDamage(breakdown.amount, source);
+
         // Trigger damage event
-        OnDamageApplied?.Invoke(target, source, damage);
-        
+        OnDamageApplied?.Invoke(target, source, breakdown);
+
         // Check if entity died from this damage
         if (died && wasAlive)
         {
             OnEntityDied?.Invoke(target, source);
         }
-        
+
         return died;
     }
-    
-    
+
+
     /// <summary>
     /// Apply healing to an entity through its Health component.
     /// </summary>
@@ -75,7 +82,7 @@ public static class DamageSystem
 
         return actualHealAmount;
     }
-    
+
     /// <summary>
     /// Kill an entity instantly.
     /// </summary>
@@ -85,20 +92,20 @@ public static class DamageSystem
     {
         if (!target)
             return;
-            
+
         var healthComponent = target.GetComponent<Health>();
         if (healthComponent == null)
             return;
-            
+
         bool wasAlive = !healthComponent.IsDead();
         healthComponent.Kill();
-        
+
         if (wasAlive)
         {
             OnEntityDied?.Invoke(target, source);
         }
     }
-    
+
     /// <summary>
     /// Check if an entity can take damage.
     /// </summary>
@@ -108,11 +115,11 @@ public static class DamageSystem
     {
         if (!target)
             return false;
-            
+
         var healthComponent = target.GetComponent<Health>();
         return healthComponent != null && !healthComponent.IsDead();
     }
-    
+
     /// <summary>
     /// Get the current health of an entity.
     /// </summary>
@@ -122,11 +129,11 @@ public static class DamageSystem
     {
         if (!target)
             return 0;
-            
+
         var healthComponent = target.GetComponent<Health>();
         return healthComponent?.GetCurrentHealth() ?? 0;
     }
-    
+
     /// <summary>
     /// Get the maximum health of an entity.
     /// </summary>
@@ -136,11 +143,11 @@ public static class DamageSystem
     {
         if (!target)
             return 0;
-            
+
         var healthComponent = target.GetComponent<Health>();
         return healthComponent?.GetMaxHealth() ?? 0;
     }
-    
+
     /// <summary>
     /// Get the health percentage of an entity.
     /// </summary>
@@ -150,7 +157,7 @@ public static class DamageSystem
     {
         if (!target)
             return 0;
-            
+
         var healthComponent = target.GetComponent<Health>();
         return healthComponent?.GetHealthPercentage() ?? 0.0f;
     }

@@ -1,9 +1,7 @@
 {
- "source_path": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/Scripts/Components/AutoDestroyComponent.cs",
- "source_sha": "6181019d2047ff853531945030256fbc34e537a8",
+ "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/Scripts/Components/AutoDestroyComponent.cs",
+ "source_sha": "a6fcec233a90584dcbdfe360c82df13a18c566bd",
  "source_timestamp": {
-  "time_since_epoch": {
-   "count": 134068633666065770
-  }
+  "count": -5039626629884187216
  }
 }

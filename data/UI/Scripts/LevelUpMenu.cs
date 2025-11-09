@@ -120,57 +120,11 @@ public class LevelUpMenu : BaseMenu
         upgradeCards[1] = card2;
         upgradeCards[2] = card3;
         
-        // Ensure UI elements are cached before trying to update them
-        EnsureInitialized();
-        
         // Update the UI text and styling
         UpdateCardDisplay();
         
         Log.Info($"LevelUpMenu: Set upgrade cards - [{card1?.Name}], [{card2?.Name}], [{card3?.Name}]");
     }
-    
-    /// <summary>
-    /// Ensure that UI elements are cached and ready to use.
-    /// This handles the case where the menu was inactive and OnStart() wasn't called.
-    /// </summary>
-    private void EnsureInitialized()
-    {
-        // If document is null, we haven't been initialized yet
-        if (document == null)
-        {
-            Log.Info("LevelUpMenu: UI not initialized yet, initializing now...");
-            
-            // Get the UI document component
-            var uiDoc = owner.GetComponent<UIDocumentComponent>();
-            if (uiDoc == null)
-            {
-                Log.Error("LevelUpMenu: No UIDocumentComponent found on entity");
-                return;
-            }
-
-            // Get the document wrapper
-            document = uiDoc.GetDocument();
-            if (document == null)
-            {
-                Log.Error("LevelUpMenu: Failed to get document wrapper - document may not be loaded");
-                return;
-            }
-
-            Log.Info($"LevelUpMenu: Got document wrapper: {document.Title}");
-
-            // Cache element wrappers
-            CacheUIElements();
-            
-            // Set up initial UI state
-            SetupInitialUI();
-            
-            // Register event handlers
-            RegisterEventHandlers();
-            
-            Log.Info("LevelUpMenu: Manual initialization completed");
-        }
-    }
-    
     /// <summary>
     /// Update the card display with the current upgrade cards.
     /// </summary>
@@ -214,7 +168,7 @@ public class LevelUpMenu : BaseMenu
         if (titleElement != null && descriptionElement != null && rarityElement != null)
         {
             titleElement.InnerRml = upgradeCard.Name;
-            descriptionElement.InnerRml = upgradeCard.GetDescription();
+            descriptionElement.InnerRml = upgradeCard.Description;
             rarityElement.InnerRml = upgradeCard.Rarity.ToString();
         }
         else
