@@ -8,8 +8,6 @@ using Unravel.Core;
 [ScriptSourceFile]
 public class Projectile : ScriptComponent
 {
-    [Tooltip("Speed of the projectile")]
-    public float speed = 10.0f;
     
     [Tooltip("Lifetime of the projectile in seconds")]
     public float lifetime = 5.0f;

@@ -124,7 +124,6 @@ public class FireballAbility : Ability
         }
 
         projectile.SetSource(owner);
-        projectile.speed = projectileSpeed;
         projectile.lifetime = UpgradeSystem.ApplyAreaOfEffectUpgrade(maxRange) / projectileSpeed; // Lifetime based on range
 
         fireballEntity.AddComponent<AutoDestroyComponent>();

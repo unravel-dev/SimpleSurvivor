@@ -125,7 +125,6 @@ public class LightningBoltAbility : Ability
             var projectileComponent = projectileEntity.AddComponent<Projectile>();
             if (projectileComponent != null)
             {
-                projectileComponent.speed = projectileSpeed;
                 projectileComponent.SetSource(owner);
             }
 

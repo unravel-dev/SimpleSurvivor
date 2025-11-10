@@ -2,11 +2,11 @@
  "entities": [
   {
    "prefab_uid": "10ef8358-c389-3a4b-896e-3f9e41e44097",
-   "id": 71303169,
+   "id": 2097155,
    "components": {
     "has_tag_component": true,
     "tag_component": {
-     "name": "Fireball",
+     "name": "Meteor",
      "tag": ""
     },
     "has_layer_component": true,
@@ -23,9 +23,9 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": -0.03352319821715355,
-       "y": 0.0,
-       "z": 0.0
+       "x": 0.22321078181266786,
+       "y": 0.8980264663696289,
+       "z": 0.0000021057976482552478
       },
       "rotation": {
        "x": 0.0,
@@ -159,7 +159,7 @@
        },
        {
         "progress": 1.0,
-        "element": 0.18000000715255738
+        "element": 0.5400000214576721
        }
       ]
      },
@@ -193,15 +193,15 @@
        {
         "progress": 0.0,
         "element": {
-         "min": 1.7400000095367432,
-         "max": 2.5799999237060549
+         "min": 3.130000114440918,
+         "max": 4.150000095367432
         }
        },
        {
         "progress": 1.0,
         "element": {
-         "min": 0.28999999165534975,
-         "max": 0.6299999952316284
+         "min": 1.8600000143051148,
+         "max": 5.760000228881836
         }
        }
       ]

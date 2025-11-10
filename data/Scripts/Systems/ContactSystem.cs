@@ -297,11 +297,10 @@ public static class ContactSystem
         query.maxRange = areaDamageComponent.GetExplosionRadius();
         var enemies = FindClosestEnemies(query);
 
-        // Vector3 explosionCenter = source.transform.position;
-        // float explosionRadius = areaDamageComponent.GetExplosionRadius();
+        Vector3 explosionCenter = source.transform.position;
         int baseDamage = areaDamageComponent.GetDamage();
-        // LayerMask damageLayerMask = areaDamageComponent.damageLayerMask;
         bool excludeOriginalTarget = areaDamageComponent.excludeOriginalTarget;
+        float knockbackForce = areaDamageComponent.knockbackForce;
 
         
         foreach (var entity in enemies)
@@ -319,6 +318,17 @@ public static class ContactSystem
             DamageBreakdown breakdown = UpgradeSystem.CalculateDamage(baseDamage);
             DamageSystem.ApplyDamage(entity, source, breakdown);
             
+            // Apply knockback if specified
+            if (knockbackForce > 0.0f)
+            {
+                var enemyPhysics = entity.GetComponent<PhysicsComponent>();
+                if (enemyPhysics != null)
+                {
+                    Vector3 knockbackDirection = (entity.transform.position - explosionCenter).normalized;
+                    knockbackDirection.y = 0.5f; // Add slight upward component
+                    enemyPhysics.ApplyForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
+                }
+            }
         }
 
     }

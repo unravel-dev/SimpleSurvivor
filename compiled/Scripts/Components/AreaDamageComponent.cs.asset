@@ -21,6 +21,9 @@ public class AreaDamageComponent : ScriptComponent
     [Tooltip("Whether to exclude the original target from area damage")]
     public bool excludeOriginalTarget = true;
     
+    [Tooltip("Knockback force applied to enemies (0 = no knockback)")]
+    public float knockbackForce = 0.0f;
+    
     /// <summary>
     /// Get the current damage value.
     /// </summary>

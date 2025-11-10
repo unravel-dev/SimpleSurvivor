@@ -84,7 +84,9 @@ public static class UpgradeCardGenerator
         return new List<System.Func<UpgradeCard>>
         {
             () => GenerateBasicLightningBoltAbilityCard(),
-            () => GenerateBasicFireballAbilityCard()
+            // () => GenerateBasicFireballAbilityCard(),
+            () => GenerateBasicBoomerangBladeAbilityCard(),
+            () => GenerateBasicMeteorShowerAbilityCard()
         };
     }
     
@@ -311,6 +313,8 @@ public static class UpgradeCardGenerator
             // First ability cards
             () => GenerateLightningBoltAbilityCard(),
             () => GenerateFireballAbilityCard(),
+            () => GenerateBoomerangBladeAbilityCard(),
+            () => GenerateMeteorShowerAbilityCard(),
                 
             // Powerful dual combinations
             () => new UpgradeCard("Berserker's Fury", UpgradeRarity.Epic, 
@@ -528,6 +532,102 @@ public static class UpgradeCardGenerator
                 if (fireballAbility != null)
                 {
                     FireballAbility.ConfigureAbility(fireballAbility);
+                }
+            }
+        );
+    }
+    
+    /// <summary>
+    /// Generate a basic boomerang blade ability card without additional upgrades (for initial selection).
+    /// </summary>
+    /// <returns>AbilityCard with basic BoomerangBladeAbility</returns>
+    private static AbilityCard GenerateBasicBoomerangBladeAbilityCard()
+    {
+        return new AbilityCard(
+            "Boomerang Blade", 
+            BoomerangBladeAbility.GetDescription(),
+            UpgradeRarity.Common,
+            new List<Upgrade>(),
+            typeof(BoomerangBladeAbility),
+            (ability) => {
+                var boomerangAbility = ability as BoomerangBladeAbility;
+                if (boomerangAbility != null)
+                {
+                    BoomerangBladeAbility.ConfigureAbility(boomerangAbility);
+                }
+            }
+        );
+    }
+    
+    /// <summary>
+    /// Generate a boomerang blade ability card for Epic rarity.
+    /// </summary>
+    /// <returns>AbilityCard with BoomerangBladeAbility</returns>
+    private static AbilityCard GenerateBoomerangBladeAbilityCard()
+    {
+        return new AbilityCard(
+            "Boomerang Blade Mastery", 
+            BoomerangBladeAbility.GetDescription(),
+            UpgradeRarity.Epic,
+            new List<Upgrade>
+            {
+                AreaOfEffectUpgrade.Generate(30.0f, 50.0f),
+                PierceUpgrade.Generate(2, 4)
+            },
+            typeof(BoomerangBladeAbility),
+            (ability) => {
+                var boomerangAbility = ability as BoomerangBladeAbility;
+                if (boomerangAbility != null)
+                {
+                    BoomerangBladeAbility.ConfigureAbility(boomerangAbility);
+                }
+            }
+        );
+    }
+    
+    /// <summary>
+    /// Generate a basic meteor shower ability card without additional upgrades (for initial selection).
+    /// </summary>
+    /// <returns>AbilityCard with basic MeteorShowerAbility</returns>
+    private static AbilityCard GenerateBasicMeteorShowerAbilityCard()
+    {
+        return new AbilityCard(
+            "Meteor Shower", 
+            MeteorShowerAbility.GetDescription(),
+            UpgradeRarity.Common,
+            new List<Upgrade>(),
+            typeof(MeteorShowerAbility),
+            (ability) => {
+                var meteorAbility = ability as MeteorShowerAbility;
+                if (meteorAbility != null)
+                {
+                    MeteorShowerAbility.ConfigureAbility(meteorAbility);
+                }
+            }
+        );
+    }
+    
+    /// <summary>
+    /// Generate a meteor shower ability card for Epic rarity.
+    /// </summary>
+    /// <returns>AbilityCard with MeteorShowerAbility</returns>
+    private static AbilityCard GenerateMeteorShowerAbilityCard()
+    {
+        return new AbilityCard(
+            "Meteor Shower Mastery", 
+            MeteorShowerAbility.GetDescription(),
+            UpgradeRarity.Epic,
+            new List<Upgrade>
+            {
+                DamageUpgrade.Generate(25.0f, 40.0f),
+                AreaOfEffectUpgrade.Generate(40.0f, 60.0f)
+            },
+            typeof(MeteorShowerAbility),
+            (ability) => {
+                var meteorAbility = ability as MeteorShowerAbility;
+                if (meteorAbility != null)
+                {
+                    MeteorShowerAbility.ConfigureAbility(meteorAbility);
                 }
             }
         );

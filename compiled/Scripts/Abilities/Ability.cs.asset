@@ -24,6 +24,9 @@ public abstract class Ability : ScriptComponent
     [Tooltip("Cooldown time in seconds between ability triggers")]
     public float cooldown = 1.0f;
 
+    [Tooltip("Base multicast percentage")]
+    public float multicastPercent = 0.0f;
+
     private float modifiedCooldown = 0f;
     // Internal state
     private float lastTriggerTime = -1f;
@@ -85,8 +88,7 @@ public abstract class Ability : ScriptComponent
         }
 
         // Calculate number of additional casts from multicast upgrades
-        float baseMulticastPercent = GetBaseMulticastPercent();
-        int additionalCasts = UpgradeSystem.ApplyMulticastUpgrade(baseMulticastPercent);
+        int additionalCasts = UpgradeSystem.ApplyMulticastUpgrade(multicastPercent);
         int totalCasts = 1 + additionalCasts; // Base cast + additional casts
 
         // Update cooldown timer (only once, regardless of multicast)
@@ -126,15 +128,6 @@ public abstract class Ability : ScriptComponent
         lastTriggerTime = Time.time - (modifiedCooldown - remainingTime);
     }
 
-    /// <summary>
-    /// Virtual method for derived classes to define base multicast percentage.
-    /// Override this to give abilities inherent multicast chance.
-    /// </summary>
-    /// <returns>Base multicast percentage (default 0%).</returns>
-    protected virtual float GetBaseMulticastPercent()
-    {
-        return 0.0f;
-    }
 
     /// <summary>
     /// Virtual method for derived classes to provide display information for UI.
