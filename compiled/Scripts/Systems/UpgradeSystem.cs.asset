@@ -30,6 +30,7 @@ public static class UpgradeSystem
     private static readonly PickupRadiusUpgrade accumulatedPickupRadiusUpgrade = new PickupRadiusUpgrade(0.0f);
     private static readonly LuckUpgrade accumulatedLuckUpgrade = new LuckUpgrade(0.0f);
     private static readonly AreaOfEffectUpgrade accumulatedAreaOfEffectUpgrade = new AreaOfEffectUpgrade(0.0f);
+    private static readonly DurationUpgrade accumulatedDurationUpgrade = new DurationUpgrade(0.0f);
 
     /// <summary>
     /// Get the total number of active upgrades.
@@ -212,6 +213,7 @@ public static class UpgradeSystem
         accumulatedPickupRadiusUpgrade.RadiusPercent = 0.0f;
         accumulatedLuckUpgrade.LuckPercent = 0.0f;
         accumulatedAreaOfEffectUpgrade.AoePercent = 0.0f;
+        accumulatedDurationUpgrade.DurationPercent = 0.0f;
         
         // Accumulate values from all active upgrades
         float totalDamagePercent = 0.0f;
@@ -226,6 +228,7 @@ public static class UpgradeSystem
         float totalPickupRadius = 0.0f;
         float totalLuck = 0.0f;
         float totalAreaOfEffect = 0.0f;
+        float totalDuration = 0.0f;
         
         
         foreach (var upgrade in activeUpgrades)
@@ -290,6 +293,11 @@ public static class UpgradeSystem
                 AreaOfEffectUpgrade aoeUpgrade = (AreaOfEffectUpgrade)upgrade;
                 totalAreaOfEffect += aoeUpgrade.AoePercent;
             }
+            else if (upgrade is DurationUpgrade)
+            {
+                DurationUpgrade durationUpgrade = (DurationUpgrade)upgrade;
+                totalDuration += durationUpgrade.DurationPercent;
+            }
         }
         
         // Update all accumulated upgrade instances
@@ -305,6 +313,7 @@ public static class UpgradeSystem
         accumulatedPickupRadiusUpgrade.RadiusPercent = totalPickupRadius;
         accumulatedLuckUpgrade.LuckPercent = totalLuck;
         accumulatedAreaOfEffectUpgrade.AoePercent = totalAreaOfEffect;
+        accumulatedDurationUpgrade.DurationPercent = totalDuration;
     }
 
     public static int ApplyDamageUpgrade(int baseDamage)
@@ -405,6 +414,11 @@ public static class UpgradeSystem
     public static float ApplyAreaOfEffectUpgrade(float baseAoe)
     {
         return baseAoe * accumulatedAreaOfEffectUpgrade.GetAoeMultiplier();
+    }
+
+    public static float ApplyDurationUpgrade(float baseDuration)
+    {
+        return baseDuration * accumulatedDurationUpgrade.GetDurationMultiplier();
     }
 
     /// <summary>
@@ -535,5 +549,13 @@ public static class UpgradeSystem
     public static float GetAccumulatedAreaOfEffectPercent()
     {
         return accumulatedAreaOfEffectUpgrade.AoePercent;
+    }
+
+    /// <summary>
+    /// Get the accumulated duration percentage.
+    /// </summary>
+    public static float GetAccumulatedDurationPercent()
+    {
+        return accumulatedDurationUpgrade.DurationPercent;
     }
 }

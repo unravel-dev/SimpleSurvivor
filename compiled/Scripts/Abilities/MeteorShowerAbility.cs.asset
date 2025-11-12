@@ -12,6 +12,9 @@ public class MeteorShowerAbility : Ability
     [Tooltip("Prefab to instantiate as the meteor")]
     public Prefab meteorPrefab;
 
+    [Tooltip("Prefab to instantiate as ground indicator")]
+    public Prefab indicatorPrefab;
+
     [Tooltip("Base damage per meteor impact")]
     public int damage = 50;
 
@@ -29,6 +32,9 @@ public class MeteorShowerAbility : Ability
 
     [Tooltip("Knockback force applied to enemies")]
     public float knockbackForce = 10.0f;
+
+    [Tooltip("Delay before meteor spawns (indicator warning time)")]
+    public float spawnDelay = 0.8f;
 
     private TransformComponent transformComponent;
 
@@ -49,6 +55,7 @@ public class MeteorShowerAbility : Ability
         ability.projectileSpeed = 40.0f;
         ability.knockbackForce = 5.0f;
         ability.multicastPercent = 600.0f;
+        ability.spawnDelay = 0.8f;
     }
 
     public override void OnStart()
@@ -63,6 +70,17 @@ public class MeteorShowerAbility : Ability
             if (meteorPrefab == null)
             {
                 Log.Warning($"MeteorShowerAbility on {owner.name}: No meteor prefab assigned and default not found!");
+            }
+        }
+
+        if (indicatorPrefab == null)
+        {
+            // Try to load a default indicator prefab
+            indicatorPrefab = Assets.GetAsset<Prefab>("app:/data/Abilities/MeteorIndicator.pfb");
+            
+            if (indicatorPrefab == null)
+            {
+                Log.Warning($"MeteorShowerAbility on {owner.name}: No indicator prefab assigned and default not found!");
             }
         }
 
@@ -117,54 +135,95 @@ public class MeteorShowerAbility : Ability
         // Calculate impact position (where target currently is)
         Vector3 impactPosition = targetTransform.position;
         
-        // Spawn meteor high above the impact point
-        Vector3 spawnPosition = impactPosition + new Vector3(0, spawnHeight, 0);
-
-        // Instantiate the meteor
-        Entity meteorEntity = Scene.Instantiate(meteorPrefab);
-        if (!meteorEntity)
+        // Calculate fall time for indicator lifetime
+        float fallTime = spawnHeight / projectileSpeed;
+        
+        // Calculate total warning time (indicator shows for delay + fall time)
+        float totalWarningTime = spawnDelay + fallTime;
+        
+        // Spawn ground indicator at impact position
+        if (indicatorPrefab != null)
         {
-            Log.Error("MeteorShowerAbility: Failed to instantiate meteor prefab");
-            return;
+            Entity indicatorEntity = Scene.Instantiate(indicatorPrefab);
+            if (indicatorEntity)
+            {
+                // Add ground indicator component
+                var indicator = indicatorEntity.AddComponent<GroundIndicatorComponent>();
+                if (indicator != null)
+                {
+                    indicator.lifetime = totalWarningTime; // Shows during delay + fall
+                    indicator.radius = UpgradeSystem.ApplyAreaOfEffectUpgrade(impactRadius);
+                    indicator.enablePulse = true;
+                    indicator.pulseSpeed = 3.0f;
+                }
+
+                // Scale the indicator to match impact radius
+                float upgradedRadius = UpgradeSystem.ApplyAreaOfEffectUpgrade(impactRadius);
+                indicatorEntity.transform.scale = new Vector3(upgradedRadius * 2, 0.1f, upgradedRadius * 2);
+                indicatorEntity.transform.position = impactPosition;
+            }
         }
+        
+        // Create a delayed spawner entity (empty entity to hold the delayed spawn component)
+        Entity spawnerEntity = Scene.CreateEntity();
+        spawnerEntity.name = "MeteorSpawner";
 
-        meteorEntity.transform.position = spawnPosition;
-        meteorEntity.transform.forward = Vector3.down; // Point downward
-
-        // Add projectile component
-        var projectileComponent = meteorEntity.AddComponent<Projectile>();
-        if (projectileComponent != null)
+        // Add delayed spawn component
+        var delayedSpawn = spawnerEntity.AddComponent<DelayedSpawnComponent>();
+        if (delayedSpawn != null)
         {
-            projectileComponent.SetSource(owner);
-            projectileComponent.lifetime = spawnHeight / projectileSpeed + 1.0f; // Calculate lifetime based on fall distance
-        }
+            delayedSpawn.prefabToSpawn = meteorPrefab;
+            delayedSpawn.spawnDelay = spawnDelay;
+            delayedSpawn.spawnPosition = impactPosition + new Vector3(0, spawnHeight, 0);
+            delayedSpawn.spawnDirection = Vector3.down;
+            delayedSpawn.destroyAfterSpawn = true;
 
-        // Add auto-destroy component
-        meteorEntity.AddComponent<AutoDestroyComponent>();
-
-        // Add damage component
-        var damageComponent = meteorEntity.AddComponent<PhysicalDamageComponent>();
-        if (damageComponent != null)
-        {
+            // Store values for the callback
             int upgradedDamage = UpgradeSystem.ApplyDamageUpgrade(damage);
-            damageComponent.SetDamage(upgradedDamage);
-        }
+            float upgradedRadius = UpgradeSystem.ApplyAreaOfEffectUpgrade(impactRadius);
+            float meteorLifetime = fallTime + 1.0f;
+            Entity sourceEntity = owner;
+            float meteorSpeed = projectileSpeed;
+            float meteorKnockback = knockbackForce;
 
-        // Add area damage component with knockback
-        var areaDamageComponent = meteorEntity.AddComponent<AreaDamageComponent>();
-        if (areaDamageComponent != null)
-        {
-            areaDamageComponent.explosionRadius = UpgradeSystem.ApplyAreaOfEffectUpgrade(impactRadius);
-            areaDamageComponent.damage = UpgradeSystem.ApplyDamageUpgrade(damage);
-            areaDamageComponent.damageLayerMask = LayerMask.GetMask("Enemy");
-            areaDamageComponent.knockbackForce = knockbackForce;
-        }
+            // Set up callback to configure the meteor when it spawns
+            delayedSpawn.onSpawnCallback = (Entity meteorEntity) =>
+            {
+                // Add projectile component
+                var projectileComponent = meteorEntity.AddComponent<Projectile>();
+                if (projectileComponent != null)
+                {
+                    projectileComponent.SetSource(sourceEntity);
+                    projectileComponent.lifetime = meteorLifetime;
+                }
 
-        // Apply physics velocity downward
-        var meteorPhysics = meteorEntity.GetComponent<PhysicsComponent>();
-        if (meteorPhysics != null)
-        {
-            meteorPhysics.velocity = Vector3.down * projectileSpeed;
+                // Add auto-destroy component
+                meteorEntity.AddComponent<AutoDestroyComponent>();
+
+                // Add damage component
+                var damageComponent = meteorEntity.AddComponent<PhysicalDamageComponent>();
+                if (damageComponent != null)
+                {
+                    damageComponent.SetDamage(upgradedDamage);
+                }
+
+                // Add area damage component with knockback
+                var areaDamageComponent = meteorEntity.AddComponent<AreaDamageComponent>();
+                if (areaDamageComponent != null)
+                {
+                    areaDamageComponent.explosionRadius = upgradedRadius;
+                    areaDamageComponent.damage = upgradedDamage;
+                    areaDamageComponent.damageLayerMask = LayerMask.GetMask("Enemy");
+                    areaDamageComponent.knockbackForce = meteorKnockback;
+                }
+
+                // Apply physics velocity downward
+                var meteorPhysics = meteorEntity.GetComponent<PhysicsComponent>();
+                if (meteorPhysics != null)
+                {
+                    meteorPhysics.velocity = Vector3.down * meteorSpeed;
+                }
+            };
         }
     }
 

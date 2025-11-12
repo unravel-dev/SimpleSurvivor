@@ -84,7 +84,7 @@ public static class UpgradeCardGenerator
         return new List<System.Func<UpgradeCard>>
         {
             () => GenerateBasicLightningBoltAbilityCard(),
-            // () => GenerateBasicFireballAbilityCard(),
+            () => GenerateBasicFireballAbilityCard(),
             () => GenerateBasicBoomerangBladeAbilityCard(),
             () => GenerateBasicMeteorShowerAbilityCard()
         };
@@ -238,6 +238,9 @@ public static class UpgradeCardGenerator
             () => new UpgradeCard("Devastating Strike", UpgradeRarity.Common, 
                 CriticalDamageUpgrade.Generate(30.0f, 45.0f)),
                 
+            () => new UpgradeCard("Lasting Power", UpgradeRarity.Common, 
+                DurationUpgrade.Generate(15.0f, 25.0f)),
+                
             // Dual upgrade combinations
             () => new UpgradeCard("Combat Training", UpgradeRarity.Common, 
                 new List<Upgrade>
@@ -309,6 +312,9 @@ public static class UpgradeCardGenerator
                 
             () => new UpgradeCard("Chain Lightning", UpgradeRarity.Epic, 
                 ChainUpgrade.Generate(1, 3)),
+                
+            () => new UpgradeCard("Enduring Power", UpgradeRarity.Epic, 
+                DurationUpgrade.Generate(30.0f, 50.0f)),
                 
             // First ability cards
             () => GenerateLightningBoltAbilityCard(),
