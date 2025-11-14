@@ -2,7 +2,7 @@
  "entities_count": 9,
  "entities": [
   {
-   "id": 2097153,
+   "id": 33554433,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -189,7 +189,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 2097155,
+   "id": 33554435,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -277,7 +277,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 2097157,
+   "id": 33554437,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -346,7 +346,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 2097159,
+   "id": 33554439,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -422,19 +422,19 @@
      },
      "children": [
       {
-       "id": 2097160
+       "id": 33554440
       },
       {
-       "id": 2097161
+       "id": 33554441
       },
       {
-       "id": 2097162
+       "id": 33554442
       },
       {
-       "id": 11
+       "id": 31457291
       },
       {
-       "id": 12
+       "id": 31457292
       }
      ],
      "active": true
@@ -498,7 +498,7 @@
    }
   },
   {
-   "id": 2097160,
+   "id": 33554440,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -541,7 +541,7 @@
       }
      },
      "parent": {
-      "id": 2097159
+      "id": 33554439
      },
      "children": [],
      "active": false
@@ -564,7 +564,7 @@
    }
   },
   {
-   "id": 2097161,
+   "id": 33554441,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -607,7 +607,7 @@
       }
      },
      "parent": {
-      "id": 2097159
+      "id": 33554439
      },
      "children": [],
      "active": false
@@ -630,7 +630,7 @@
    }
   },
   {
-   "id": 2097162,
+   "id": 33554442,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -673,7 +673,7 @@
       }
      },
      "parent": {
-      "id": 2097159
+      "id": 33554439
      },
      "children": [],
      "active": false
@@ -696,7 +696,7 @@
    }
   },
   {
-   "id": 11,
+   "id": 31457291,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -735,7 +735,7 @@
       }
      },
      "parent": {
-      "id": 2097159
+      "id": 33554439
      },
      "children": [],
      "active": false
@@ -758,7 +758,7 @@
    }
   },
   {
-   "id": 12,
+   "id": 31457292,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -797,7 +797,7 @@
       }
      },
      "parent": {
-      "id": 2097159
+      "id": 33554439
      },
      "children": [],
      "active": true
@@ -823,7 +823,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 14,
+   "id": 31457294,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -866,7 +866,7 @@
      },
      "children": [
       {
-       "id": 15
+       "id": 31457295
       }
      ],
      "active": true
@@ -874,7 +874,7 @@
    }
   },
   {
-   "id": 15,
+   "id": 31457295,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -891,9 +891,9 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": 6.620268777624005e-10,
+       "x": 6.622542514378438e-10,
        "y": -0.4515100419521332,
-       "z": 1.3528733688872308e-10
+       "z": 1.4347278920467944e-10
       },
       "rotation": {
        "x": 4.433786671143025e-12,
@@ -909,11 +909,11 @@
       "skew": {
        "x": 3.360582992439909e-11,
        "y": -1.0187105065756485e-12,
-       "z": -1.3588365987970974e-9
+       "z": -1.4243201063024458e-9
       }
      },
      "parent": {
-      "id": 14
+      "id": 31457294
      },
      "children": [],
      "active": true
@@ -996,7 +996,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 17,
+   "id": 25166059,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1039,7 +1039,7 @@
      },
      "children": [
       {
-       "id": 18
+       "id": 29360312
       }
      ],
      "active": true
@@ -1126,7 +1126,7 @@
    }
   },
   {
-   "id": 18,
+   "id": 29360312,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1165,7 +1165,7 @@
       }
      },
      "parent": {
-      "id": 17
+      "id": 25166059
      },
      "children": [],
      "active": true
@@ -1206,7 +1206,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 20,
+   "id": 31457300,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1309,7 +1309,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 22,
+   "id": 31457302,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1352,7 +1352,7 @@
      },
      "children": [
       {
-       "id": 23
+       "id": 31457303
       }
      ],
      "active": true
@@ -1360,7 +1360,7 @@
    }
   },
   {
-   "id": 23,
+   "id": 31457303,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1399,7 +1399,7 @@
       }
      },
      "parent": {
-      "id": 22
+      "id": 31457302
      },
      "children": [],
      "active": true
@@ -1425,7 +1425,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 25,
+   "id": 31457305,
    "components": {
     "has_tag_component": true,
     "tag_component": {

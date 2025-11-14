@@ -2,7 +2,7 @@
  "entities": [
   {
    "prefab_uid": "aa09c5ba-97b1-6942-94ab-063ef2d7ed07",
-   "id": 3,
+   "id": 1048579,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -57,7 +57,7 @@
      "shape": 2,
      "direction": 1,
      "simulation_space": 0,
-     "max_particles": 200,
+     "max_particles": 838,
      "emission_lifetime": {
       "count": 2.0
      },
@@ -67,7 +67,7 @@
       "z": 0.20000000298023225
      },
      "gravity_scale": 0.0,
-     "emission_rate": 1000.0,
+     "emission_rate": 10000.0,
      "temporal_motion": 1.0,
      "velocity_damping": 0.0,
      "force_over_lifetime": {

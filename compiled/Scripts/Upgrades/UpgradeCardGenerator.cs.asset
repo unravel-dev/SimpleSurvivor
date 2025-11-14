@@ -9,14 +9,33 @@ public static class UpgradeCardGenerator
 {
     /// <summary>
     /// Generate a random upgrade card of the specified rarity.
+    /// Automatically filters out cards with 0 remaining picks.
     /// </summary>
     /// <param name="rarity">The rarity level of the card to generate.</param>
     /// <returns>A randomly selected upgrade card of the specified rarity.</returns>
     public static UpgradeCard GenerateRandomCard(UpgradeRarity rarity)
     {
         var availableCards = GetAvailableCards(rarity);
-        int randomIndex = Random.Range(0, availableCards.Count);
-        return availableCards[randomIndex]();
+        
+        // Filter out cards with 0 remaining picks
+        var validCards = new List<System.Func<UpgradeCard>>();
+        foreach (var cardGenerator in availableCards)
+        {
+            UpgradeCard testCard = cardGenerator();
+            if (testCard.GetRemainingPicks() != 0) // -1 (unlimited) or >0 (has picks left)
+            {
+                validCards.Add(cardGenerator);
+            }
+        }
+        
+        // If no valid cards, fall back to all available cards
+        if (validCards.Count == 0)
+        {
+            validCards = availableCards;
+        }
+        
+        int randomIndex = Random.Range(0, validCards.Count);
+        return validCards[randomIndex]();
     }
     
     /// <summary>
@@ -51,7 +70,7 @@ public static class UpgradeCardGenerator
             UpgradeRarity rarity = GetRandomWeightedRarity(playerLuck);
             cards.Add(GenerateRandomCard(rarity));
         }
-        
+   
         return cards;
     }
     
@@ -86,7 +105,8 @@ public static class UpgradeCardGenerator
             () => GenerateBasicLightningBoltAbilityCard(),
             () => GenerateBasicFireballAbilityCard(),
             () => GenerateBasicBoomerangBladeAbilityCard(),
-            () => GenerateBasicMeteorShowerAbilityCard()
+            () => GenerateBasicMeteorShowerAbilityCard(),
+            () => GenerateBasicBlackHoleAbilityCard()
         };
     }
     
@@ -280,7 +300,14 @@ public static class UpgradeCardGenerator
                 {
                     AreaOfEffectUpgrade.Generate(20.0f, 30.0f),
                     DamageUpgrade.Generate(10.0f, 15.0f)
-                })
+                }),
+                
+            // Boomerang Blade upgrades (Common) - Limited to 1 pick each
+            () => new UpgradeCard("Multiple Blades", UpgradeRarity.Common, 
+                MultipleBladesUpgrade.Generate(1, 2), 1),
+                
+            () => new UpgradeCard("Faster Rotation", UpgradeRarity.Common, 
+                FasterRotationUpgrade.Generate(50.0f, 75.0f), 1)
         };
     }
     
@@ -321,6 +348,7 @@ public static class UpgradeCardGenerator
             () => GenerateFireballAbilityCard(),
             () => GenerateBoomerangBladeAbilityCard(),
             () => GenerateMeteorShowerAbilityCard(),
+            () => GenerateBlackHoleAbilityCard(),
                 
             // Powerful dual combinations
             () => new UpgradeCard("Berserker's Fury", UpgradeRarity.Epic, 
@@ -361,7 +389,26 @@ public static class UpgradeCardGenerator
                 {
                     AreaOfEffectUpgrade.Generate(40.0f, 60.0f),
                     MulticastUpgrade.Generate(50.0f, 100.0f)
-                })
+                }),
+                
+            // Boomerang Blade upgrades (Epic) - Limited to 1 pick each
+            () => new UpgradeCard("Ping-Pong Orbit", UpgradeRarity.Epic, 
+                PingPongOrbitUpgrade.Generate(50.0f, 100.0f, 50.0f, 100.0f), 1),
+                
+            () => new UpgradeCard("Dual Orbit", UpgradeRarity.Epic, 
+                new DualOrbitUpgrade(), 1),
+                
+            () => new UpgradeCard("Returning Blade", UpgradeRarity.Epic, 
+                ReturningBladeUpgrade.Generate(), 1),
+                
+            () => new UpgradeCard("Spinning Slash", UpgradeRarity.Epic, 
+                SpinningSlashUpgrade.Generate(75.0f, 125.0f, 20.0f, 35.0f), 1),
+                
+            () => new UpgradeCard("Multiple Blades+", UpgradeRarity.Epic, 
+                MultipleBladesUpgrade.Generate(2, 4), 1),
+                
+            () => new UpgradeCard("Faster Rotation+", UpgradeRarity.Epic, 
+                FasterRotationUpgrade.Generate(75.0f, 125.0f), 1)
         };
     }
     
@@ -443,7 +490,24 @@ public static class UpgradeCardGenerator
                 }),
                 
             // Legendary ability cards
-            () => GenerateLegendaryAbilityCard()
+            () => GenerateLegendaryAbilityCard(),
+            
+            // Boomerang Blade upgrades (Legendary) - Limited to 1 pick each
+            () => new UpgradeCard("Master Bladesman", UpgradeRarity.Legendary, 
+                new List<Upgrade>
+                {
+                    MultipleBladesUpgrade.Generate(3, 5),
+                    FasterRotationUpgrade.Generate(100.0f, 150.0f),
+                    SpinningSlashUpgrade.Generate(100.0f, 150.0f, 30.0f, 50.0f)
+                }, 1),
+                
+            () => new UpgradeCard("Perfect Orbit", UpgradeRarity.Legendary, 
+                new List<Upgrade>
+                {
+                    PingPongOrbitUpgrade.Generate(100.0f, 150.0f, 100.0f, 150.0f),
+                    new DualOrbitUpgrade(),
+                    ReturningBladeUpgrade.Generate()
+                }, 1)
         };
     }
     
@@ -634,6 +698,54 @@ public static class UpgradeCardGenerator
                 if (meteorAbility != null)
                 {
                     MeteorShowerAbility.ConfigureAbility(meteorAbility);
+                }
+            }
+        );
+    }
+    
+    /// <summary>
+    /// Generate a basic black hole ability card without additional upgrades (for initial selection).
+    /// </summary>
+    /// <returns>AbilityCard with basic BlackHoleAbility</returns>
+    private static AbilityCard GenerateBasicBlackHoleAbilityCard()
+    {
+        return new AbilityCard(
+            "Black Hole", 
+            BlackHoleAbility.GetDescription(),
+            UpgradeRarity.Common,
+            new List<Upgrade>(),
+            typeof(BlackHoleAbility),
+            (ability) => {
+                var blackHoleAbility = ability as BlackHoleAbility;
+                if (blackHoleAbility != null)
+                {
+                    BlackHoleAbility.ConfigureAbility(blackHoleAbility);
+                }
+            }
+        );
+    }
+    
+    /// <summary>
+    /// Generate a black hole ability card for Epic rarity.
+    /// </summary>
+    /// <returns>AbilityCard with BlackHoleAbility</returns>
+    private static AbilityCard GenerateBlackHoleAbilityCard()
+    {
+        return new AbilityCard(
+            "Black Hole Mastery", 
+            BlackHoleAbility.GetDescription(),
+            UpgradeRarity.Epic,
+            new List<Upgrade>
+            {
+                AreaOfEffectUpgrade.Generate(30.0f, 50.0f),
+                DurationUpgrade.Generate(20.0f, 40.0f)
+            },
+            typeof(BlackHoleAbility),
+            (ability) => {
+                var blackHoleAbility = ability as BlackHoleAbility;
+                if (blackHoleAbility != null)
+                {
+                    BlackHoleAbility.ConfigureAbility(blackHoleAbility);
                 }
             }
         );

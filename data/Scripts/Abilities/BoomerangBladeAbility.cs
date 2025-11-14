@@ -91,12 +91,55 @@ public class BoomerangBladeAbility : Ability
             return;
         }
 
-        // Calculate starting angle offset for this cast (spreads multiple blades evenly)
-        float angleOffset = castIndex * (360.0f / Mathf.Max(1, castIndex + 1));
+        // Get upgrade values
+        int totalBladeCount = UpgradeSystem.GetBoomerangBladeCount();
+        float rotationSpeedMultiplier = UpgradeSystem.GetBoomerangRotationSpeedMultiplier();
+        bool hasDualOrbit = UpgradeSystem.HasDualOrbit();
+        bool hasPingPongOrbit = UpgradeSystem.HasPingPongOrbit();
+        bool hasReturningBlade = UpgradeSystem.HasReturningBlade();
+        float spinSpeedMultiplier = UpgradeSystem.GetBoomerangSpinSpeedMultiplier();
+        float spinningSlashDamageMultiplier = UpgradeSystem.GetBoomerangSpinningSlashDamageMultiplier();
+        float pingPongMaxRadiusMultiplier = UpgradeSystem.GetBoomerangPingPongMaxRadiusMultiplier();
+        float pingPongSpeedMultiplier = UpgradeSystem.GetBoomerangPingPongSpeedMultiplier();
 
         // Apply area of effect upgrade to orbit radius
         float upgradedRadius = UpgradeSystem.ApplyAreaOfEffectUpgrade(orbitRadius);
+        float baseRotationSpeed = rotationSpeed * rotationSpeedMultiplier;
 
+        // Spawn blades
+        for (int bladeIndex = 0; bladeIndex < totalBladeCount; bladeIndex++)
+        {
+            // Calculate starting angle offset
+            // For multiple blades, spread them evenly around the circle
+            float angleStep = 360.0f / totalBladeCount;
+            float baseAngleOffset = bladeIndex * angleStep;
+            
+            // Add cast index offset for multicast
+            float angleOffset = baseAngleOffset + (castIndex * (360.0f / Mathf.Max(1, castIndex + 1)));
+
+            // Apply dual orbit - alternate blades rotate in opposite direction
+            float directionMultiplier = 1.0f;
+            if (hasDualOrbit && bladeIndex % 2 == 1)
+            {
+                directionMultiplier = -1.0f;
+            }
+
+            SpawnBlade(angleOffset, upgradedRadius, baseRotationSpeed * directionMultiplier, 
+                      spawnOffset.y, hasPingPongOrbit, hasReturningBlade, 
+                      spinSpeedMultiplier, spinningSlashDamageMultiplier, 
+                      pingPongMaxRadiusMultiplier, pingPongSpeedMultiplier);
+        }
+    }
+
+    /// <summary>
+    /// Spawn a single blade with the specified parameters.
+    /// </summary>
+    private void SpawnBlade(float angleOffset, float radius, float rotationSpeed, 
+                           float heightOffset, bool hasPingPongOrbit, 
+                           bool hasReturningBlade, float spinSpeedMultiplier, 
+                           float spinningSlashDamageMultiplier, 
+                           float pingPongMaxRadiusMultiplier, float pingPongSpeedMultiplier)
+    {
         // Spawn the blade
         Entity bladeEntity = Scene.Instantiate(bladePrefab);
         if (!bladeEntity)
@@ -106,34 +149,42 @@ public class BoomerangBladeAbility : Ability
         }
 
         // Position blade at starting angle
-        Vector3 playerPosition = transformComponent.position + spawnOffset;
+        Vector3 playerPosition = transformComponent.position + new Vector3(0, heightOffset, 0);
         float startAngleRad = angleOffset * Mathf.Deg2Rad;
         Vector3 offset = new Vector3(
-            Mathf.Cos(startAngleRad) * upgradedRadius,
+            Mathf.Cos(startAngleRad) * radius,
             0,
-            Mathf.Sin(startAngleRad) * upgradedRadius
+            Mathf.Sin(startAngleRad) * radius
         );
         bladeEntity.transform.position = playerPosition + offset;
-
-        // var abilityComponent = bladeEntity.AddComponent<LightningBoltAbility>();
-        // if(abilityComponent != null)
-        // {
-        //     LightningBoltAbility.ConfigureAbility(abilityComponent);
-        // }
 
         // Add the orbital movement component
         var orbitalComponent = bladeEntity.AddComponent<OrbitalMovementComponent>();
         if (orbitalComponent != null)
         {
             orbitalComponent.centerEntity = owner;
-            orbitalComponent.orbitRadius = upgradedRadius;
+            orbitalComponent.orbitRadius = radius;
             orbitalComponent.rotationSpeed = rotationSpeed;
             orbitalComponent.currentAngle = angleOffset;
-            orbitalComponent.heightOffset = spawnOffset.y;
+            orbitalComponent.heightOffset = heightOffset;
+            
+            // Configure ping-pong orbit
             orbitalComponent.enableRadiusPingPong = true;
             orbitalComponent.minRadius = 1.0f;
-            orbitalComponent.maxRadius = upgradedRadius;
-            orbitalComponent.radiusPingPongSpeed = 1.0f;
+            
+            // Apply ping-pong upgrades if active
+            if (hasPingPongOrbit)
+            {
+                orbitalComponent.maxRadius = radius * pingPongMaxRadiusMultiplier;
+                orbitalComponent.radiusPingPongSpeed = 1.0f * pingPongSpeedMultiplier;
+            }
+            else
+            {
+                orbitalComponent.maxRadius = radius;
+                orbitalComponent.radiusPingPongSpeed = 1.0f;
+            }
+            
+            orbitalComponent.visualSpinSpeed = orbitalComponent.visualSpinSpeed * spinSpeedMultiplier;
         }
 
         // Add projectile component for lifetime management
@@ -154,16 +205,28 @@ public class BoomerangBladeAbility : Ability
             pierceComponent.pierceCount = UpgradeSystem.ApplyPierceUpgrade(999); // High base pierce for orbital
         }
 
-
         // Add damage component with upgraded damage
         var damageComponent = bladeEntity.AddComponent<PhysicalDamageComponent>();
         if (damageComponent != null)
         {
-            int upgradedDamage = UpgradeSystem.ApplyDamageUpgrade(damage);
-            damageComponent.SetDamage(upgradedDamage);
+            int baseUpgradedDamage = UpgradeSystem.ApplyDamageUpgrade(damage);
+            // Apply spinning slash damage multiplier
+            int finalDamage = Mathf.RoundToInt(baseUpgradedDamage * spinningSlashDamageMultiplier);
+            damageComponent.SetDamage(finalDamage);
         }
 
-        
+        // Add returning blade component if upgrade is active
+        if (hasReturningBlade)
+        {
+            var returningBlade = bladeEntity.AddComponent<ReturningBladeComponent>();
+            if (returningBlade != null)
+            {
+                returningBlade.targetEntity = owner;
+                returningBlade.returnSpeed = 15.0f;
+                returningBlade.returnDistanceThreshold = 1.0f;
+                returningBlade.returnPierceCount = 999; // High pierce for return journey
+            }
+        }
 
         // Make blade spin visually
         bladeEntity.transform.forward = Vector3.up;

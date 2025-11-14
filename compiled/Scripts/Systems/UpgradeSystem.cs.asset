@@ -558,4 +558,122 @@ public static class UpgradeSystem
     {
         return accumulatedDurationUpgrade.DurationPercent;
     }
+
+    // ========== BOOMERANG BLADE UPGRADE HELPERS ==========
+
+    /// <summary>
+    /// Get the total number of blades to spawn (1 + all MultipleBladesUpgrade bonuses).
+    /// </summary>
+    public static int GetBoomerangBladeCount()
+    {
+        int totalBlades = 1; // Base blade
+        var upgrades = GetUpgradesByType<MultipleBladesUpgrade>();
+        foreach (var upgrade in upgrades)
+        {
+            totalBlades += upgrade.AdditionalBladeCount;
+        }
+        return totalBlades;
+    }
+
+    /// <summary>
+    /// Get the rotation speed multiplier from all FasterRotationUpgrade bonuses.
+    /// </summary>
+    public static float GetBoomerangRotationSpeedMultiplier()
+    {
+        float multiplier = 1.0f;
+        var upgrades = GetUpgradesByType<FasterRotationUpgrade>();
+        foreach (var upgrade in upgrades)
+        {
+            multiplier *= upgrade.GetRotationSpeedMultiplier();
+        }
+        return multiplier;
+    }
+
+    /// <summary>
+    /// Check if DualOrbitUpgrade is active.
+    /// </summary>
+    public static bool HasDualOrbit()
+    {
+        return HasUpgradeOfType<DualOrbitUpgrade>();
+    }
+
+    /// <summary>
+    /// Check if PingPongOrbitUpgrade is active.
+    /// </summary>
+    public static bool HasPingPongOrbit()
+    {
+        return HasUpgradeOfType<PingPongOrbitUpgrade>();
+    }
+
+    /// <summary>
+    /// Get the maximum radius multiplier from all PingPongOrbitUpgrade bonuses.
+    /// </summary>
+    public static float GetBoomerangPingPongMaxRadiusMultiplier()
+    {
+        float multiplier = 1.0f;
+        var upgrades = GetUpgradesByType<PingPongOrbitUpgrade>();
+        foreach (var upgrade in upgrades)
+        {
+            multiplier *= upgrade.GetMaxRadiusMultiplier();
+        }
+        return multiplier;
+    }
+
+    /// <summary>
+    /// Get the ping-pong speed multiplier from all PingPongOrbitUpgrade bonuses.
+    /// </summary>
+    public static float GetBoomerangPingPongSpeedMultiplier()
+    {
+        float multiplier = 1.0f;
+        var upgrades = GetUpgradesByType<PingPongOrbitUpgrade>();
+        foreach (var upgrade in upgrades)
+        {
+            multiplier *= upgrade.GetPingPongSpeedMultiplier();
+        }
+        return multiplier;
+    }
+
+    /// <summary>
+    /// Check if ReturningBladeUpgrade is active.
+    /// </summary>
+    public static bool HasReturningBlade()
+    {
+        return HasUpgradeOfType<ReturningBladeUpgrade>();
+    }
+
+    /// <summary>
+    /// Check if SpinningSlashUpgrade is active.
+    /// </summary>
+    public static bool HasSpinningSlash()
+    {
+        return HasUpgradeOfType<SpinningSlashUpgrade>();
+    }
+
+    /// <summary>
+    /// Get the visual spin speed multiplier from SpinningSlashUpgrade.
+    /// </summary>
+    public static float GetBoomerangSpinSpeedMultiplier()
+    {
+        float multiplier = 1.0f;
+        var upgrades = GetUpgradesByType<SpinningSlashUpgrade>();
+        foreach (var upgrade in upgrades)
+        {
+            multiplier *= upgrade.GetSpinSpeedMultiplier();
+        }
+        return multiplier;
+    }
+
+    /// <summary>
+    /// Get the damage multiplier from SpinningSlashUpgrade.
+    /// </summary>
+    public static float GetBoomerangSpinningSlashDamageMultiplier()
+    {
+        float multiplier = 1.0f;
+        var upgrades = GetUpgradesByType<SpinningSlashUpgrade>();
+        foreach (var upgrade in upgrades)
+        {
+            multiplier *= upgrade.GetDamageMultiplier();
+        }
+        return multiplier;
+    }
 }

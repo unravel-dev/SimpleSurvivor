@@ -2,7 +2,7 @@
  "entities_count": 16,
  "entities": [
   {
-   "id": 3145729,
+   "id": 35651585,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -189,7 +189,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 3145731,
+   "id": 35651587,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -277,7 +277,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 3145733,
+   "id": 35651589,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -346,7 +346,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 3145735,
+   "id": 35651591,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -398,12 +398,12 @@
       "position": {
        "x": 4.6700768052687638e-7,
        "y": -0.0000013820827007293702,
-       "z": -2.678904422737105e-7
+       "z": -2.6788924856191445e-7
       },
       "rotation": {
        "x": -1.1920938902676426e-7,
        "y": 1.4901168299275015e-8,
-       "z": -2.980232594040899e-8,
+       "z": -2.980232949312267e-8,
        "w": 1.0
       },
       "scale": {
@@ -413,8 +413,8 @@
       },
       "skew": {
        "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
+       "y": -1.5246593050577406e-20,
+       "z": -7.105427357601002e-15
       }
      },
      "parent": {
@@ -422,19 +422,19 @@
      },
      "children": [
       {
-       "id": 3145736
+       "id": 35651592
       },
       {
-       "id": 3145737
+       "id": 35651593
       },
       {
-       "id": 3145738
+       "id": 35651594
       },
       {
-       "id": 1048587
+       "id": 34603019
       },
       {
-       "id": 1048588
+       "id": 33554444
       }
      ],
      "active": true
@@ -498,7 +498,7 @@
    }
   },
   {
-   "id": 3145736,
+   "id": 35651592,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -541,10 +541,17 @@
       }
      },
      "parent": {
-      "id": 3145735
+      "id": 35651591
      },
      "children": [],
      "active": false
+    },
+    "has_ui_document_component": true,
+    "ui_document_component": {
+     "enabled": true,
+     "asset": {
+      "uid": "0c134efa-1af1-554b-9754-f3e7742d05fd"
+     }
     },
     "has_script_component": true,
     "script_component": {
@@ -553,18 +560,11 @@
        "type": "GameMenu"
       }
      ]
-    },
-    "has_ui_document_component": true,
-    "ui_document_component": {
-     "enabled": true,
-     "asset": {
-      "uid": "0c134efa-1af1-554b-9754-f3e7742d05fd"
-     }
     }
    }
   },
   {
-   "id": 3145737,
+   "id": 35651593,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -607,10 +607,17 @@
       }
      },
      "parent": {
-      "id": 3145735
+      "id": 35651591
      },
      "children": [],
      "active": false
+    },
+    "has_ui_document_component": true,
+    "ui_document_component": {
+     "enabled": true,
+     "asset": {
+      "uid": "a3e52d6a-a8d4-e340-9430-116f9818c5e9"
+     }
     },
     "has_script_component": true,
     "script_component": {
@@ -619,18 +626,11 @@
        "type": "SettingsMenu"
       }
      ]
-    },
-    "has_ui_document_component": true,
-    "ui_document_component": {
-     "enabled": true,
-     "asset": {
-      "uid": "a3e52d6a-a8d4-e340-9430-116f9818c5e9"
-     }
     }
    }
   },
   {
-   "id": 3145738,
+   "id": 35651594,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -673,7 +673,7 @@
       }
      },
      "parent": {
-      "id": 3145735
+      "id": 35651591
      },
      "children": [],
      "active": false
@@ -696,7 +696,7 @@
    }
   },
   {
-   "id": 1048587,
+   "id": 34603019,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -735,10 +735,17 @@
       }
      },
      "parent": {
-      "id": 3145735
+      "id": 35651591
      },
      "children": [],
      "active": false
+    },
+    "has_ui_document_component": true,
+    "ui_document_component": {
+     "enabled": true,
+     "asset": {
+      "uid": "d8405a10-19c5-4d44-8ced-9f41059b615e"
+     }
     },
     "has_script_component": true,
     "script_component": {
@@ -747,18 +754,11 @@
        "type": "LevelUpMenu"
       }
      ]
-    },
-    "has_ui_document_component": true,
-    "ui_document_component": {
-     "enabled": true,
-     "asset": {
-      "uid": "d8405a10-19c5-4d44-8ced-9f41059b615e"
-     }
     }
    }
   },
   {
-   "id": 1048588,
+   "id": 33554444,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -797,10 +797,17 @@
       }
      },
      "parent": {
-      "id": 3145735
+      "id": 35651591
      },
      "children": [],
      "active": true
+    },
+    "has_ui_document_component": true,
+    "ui_document_component": {
+     "enabled": true,
+     "asset": {
+      "uid": "235654ef-2577-f04c-89f3-a34f91d8c9b1"
+     }
     },
     "has_script_component": true,
     "script_component": {
@@ -809,13 +816,6 @@
        "type": "GameHub"
       }
      ]
-    },
-    "has_ui_document_component": true,
-    "ui_document_component": {
-     "enabled": true,
-     "asset": {
-      "uid": "235654ef-2577-f04c-89f3-a34f91d8c9b1"
-     }
     }
    }
   }
@@ -823,7 +823,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 1048590,
+   "id": 33554446,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -866,7 +866,7 @@
      },
      "children": [
       {
-       "id": 1048591
+       "id": 33554447
       }
      ],
      "active": true
@@ -874,7 +874,7 @@
    }
   },
   {
-   "id": 1048591,
+   "id": 33554447,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -891,14 +891,14 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": -2.177188207497238e-9,
+       "x": -2.1774155811726816e-9,
        "y": -0.4515100419521332,
-       "z": 2.5298163564002609e-10
+       "z": 5.809681624668883e-10
       },
       "rotation": {
        "x": 2.6361135496699717e-12,
        "y": 5.366017959834712e-13,
-       "z": -1.5961235805272979e-11,
+       "z": -2.908070312335198e-11,
        "w": 1.0
       },
       "scale": {
@@ -907,13 +907,13 @@
        "z": 400.0
       },
       "skew": {
-       "x": 1.4697150441111973e-10,
-       "y": -1.0725703094779937e-12,
-       "z": -6.726614265595288e-10
+       "x": 2.5192720132238835e-10,
+       "y": -1.07198332242181e-12,
+       "z": -6.989003265012173e-10
       }
      },
      "parent": {
-      "id": 1048590
+      "id": 33554446
      },
      "children": [],
      "active": true
@@ -996,7 +996,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 1048593,
+   "id": 33554449,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1031,7 +1031,7 @@
       "skew": {
        "x": -5.96049005707755e-8,
        "y": -2.9803622680901756e-8,
-       "z": -0.000006648791440966306
+       "z": -0.000006649291663052281
       }
      },
      "parent": {
@@ -1039,7 +1039,7 @@
      },
      "children": [
       {
-       "id": 1048594
+       "id": 33554450
       }
      ],
      "active": true
@@ -1092,10 +1092,13 @@
      "script_components": [
       {
        "type": "Player",
-       "maxSpeed": 10.0,
+       "baseMaxSpeed": 10.0,
        "maxAcceleration": 50.0,
        "maxDeceleration": 30.0,
-       "usePhysicsMovement": true
+       "usePhysicsMovement": true,
+       "baseMaxHealth": 100,
+       "basePickupRange": 5.0,
+       "baseLuck": 0.0
       },
       {
        "type": "Health",
@@ -1117,27 +1120,13 @@
        "baseExperienceRequired": 100.0,
        "experienceMultiplier": 1.2000000476837159,
        "debugDrawRange": false
-      },
-      {
-       "type": "ExampleAbility",
-       "projectilePrefab": {
-        "uid": "67f63796-4d3a-8f45-8eff-a40b0ed6302b"
-       },
-       "damage": 25,
-       "maxRange": 10.0,
-       "projectileSpeed": 60.0,
-       "spawnOffset": {
-        "x": 0.0,
-        "y": 1.0,
-        "z": 0.0
-       }
       }
      ]
     }
    }
   },
   {
-   "id": 1048594,
+   "id": 33554450,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1176,7 +1165,7 @@
       }
      },
      "parent": {
-      "id": 1048593
+      "id": 33554449
      },
      "children": [],
      "active": true
@@ -1217,7 +1206,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 1048596,
+   "id": 33554452,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1292,7 +1281,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 1048598,
+   "id": 33554454,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1335,7 +1324,7 @@
      },
      "children": [
       {
-       "id": 1048599
+       "id": 33554455
       }
      ],
      "active": true
@@ -1343,7 +1332,7 @@
    }
   },
   {
-   "id": 1048599,
+   "id": 33554455,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1382,7 +1371,7 @@
       }
      },
      "parent": {
-      "id": 1048598
+      "id": 33554454
      },
      "children": [],
      "active": true
@@ -1408,7 +1397,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 1048601,
+   "id": 33554457,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1458,7 +1447,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 27,
+   "id": 29360225,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1491,6 +1480,11 @@
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
        "component_path": "script_component/script_components/Health/currentHealth",
        "pretty_component_path": "Script/Scripts/Health/currentHealth"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components/Health/destroyOnDeath",
+       "pretty_component_path": "Script/Scripts/Health/destroyOnDeath"
       },
       {
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
@@ -1539,10 +1533,10 @@
      },
      "children": [
       {
-       "id": 28
+       "id": 29360227
       },
       {
-       "id": 29
+       "id": 35651619
       }
      ],
      "active": true
@@ -1558,7 +1552,7 @@
       "mask": -1
      },
      "exclude_layers": {
-      "mask": 160
+      "mask": 128
      },
      "freeze_position": {
       "x": false,
@@ -1611,10 +1605,10 @@
       },
       {
        "type": "Health",
-       "maxHealth": 100,
-       "currentHealth": 100,
+       "maxHealth": 100000,
+       "currentHealth": 100000,
        "allowOverheal": false,
-       "destroyOnDeath": true,
+       "destroyOnDeath": false,
        "destroyDelay": 0.0
       }
      ]
@@ -1622,7 +1616,7 @@
    }
   },
   {
-   "id": 28,
+   "id": 29360227,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1665,7 +1659,7 @@
       }
      },
      "parent": {
-      "id": 27
+      "id": 29360225
      },
      "children": [],
      "active": true
@@ -1699,7 +1693,7 @@
    }
   },
   {
-   "id": 29,
+   "id": 35651619,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1742,7 +1736,7 @@
       }
      },
      "parent": {
-      "id": 27
+      "id": 29360225
      },
      "children": [],
      "active": true
@@ -1779,7 +1773,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 31,
+   "id": 29360228,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1812,6 +1806,11 @@
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
        "component_path": "script_component/script_components/Health/currentHealth",
        "pretty_component_path": "Script/Scripts/Health/currentHealth"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components/Health/destroyOnDeath",
+       "pretty_component_path": "Script/Scripts/Health/destroyOnDeath"
       },
       {
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
@@ -1865,10 +1864,10 @@
      },
      "children": [
       {
-       "id": 32
+       "id": 29360230
       },
       {
-       "id": 33
+       "id": 29360226
       }
      ],
      "active": true
@@ -1884,7 +1883,7 @@
       "mask": -1
      },
      "exclude_layers": {
-      "mask": 160
+      "mask": 128
      },
      "freeze_position": {
       "x": false,
@@ -1937,10 +1936,10 @@
       },
       {
        "type": "Health",
-       "maxHealth": 100,
-       "currentHealth": 100,
+       "maxHealth": 100000,
+       "currentHealth": 100000,
        "allowOverheal": false,
-       "destroyOnDeath": true,
+       "destroyOnDeath": false,
        "destroyDelay": 0.0
       }
      ]
@@ -1948,7 +1947,7 @@
    }
   },
   {
-   "id": 32,
+   "id": 29360230,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1991,7 +1990,7 @@
       }
      },
      "parent": {
-      "id": 31
+      "id": 29360228
      },
      "children": [],
      "active": true
@@ -2025,7 +2024,7 @@
    }
   },
   {
-   "id": 33,
+   "id": 29360226,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2068,7 +2067,7 @@
       }
      },
      "parent": {
-      "id": 31
+      "id": 29360228
      },
      "children": [],
      "active": true
@@ -2105,7 +2104,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 35,
+   "id": 29360233,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2138,6 +2137,11 @@
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
        "component_path": "script_component/script_components/Health/currentHealth",
        "pretty_component_path": "Script/Scripts/Health/currentHealth"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components/Health/destroyOnDeath",
+       "pretty_component_path": "Script/Scripts/Health/destroyOnDeath"
       },
       {
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
@@ -2191,10 +2195,10 @@
      },
      "children": [
       {
-       "id": 36
+       "id": 30408814
       },
       {
-       "id": 37
+       "id": 29360224
       }
      ],
      "active": true
@@ -2210,7 +2214,7 @@
       "mask": -1
      },
      "exclude_layers": {
-      "mask": 160
+      "mask": 128
      },
      "freeze_position": {
       "x": false,
@@ -2263,10 +2267,10 @@
       },
       {
        "type": "Health",
-       "maxHealth": 100,
-       "currentHealth": 100,
+       "maxHealth": 100000,
+       "currentHealth": 100000,
        "allowOverheal": false,
-       "destroyOnDeath": true,
+       "destroyOnDeath": false,
        "destroyDelay": 0.0
       }
      ]
@@ -2274,7 +2278,7 @@
    }
   },
   {
-   "id": 36,
+   "id": 30408814,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2317,7 +2321,7 @@
       }
      },
      "parent": {
-      "id": 35
+      "id": 29360233
      },
      "children": [],
      "active": true
@@ -2351,7 +2355,7 @@
    }
   },
   {
-   "id": 37,
+   "id": 29360224,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2394,7 +2398,7 @@
       }
      },
      "parent": {
-      "id": 35
+      "id": 29360233
      },
      "children": [],
      "active": true
@@ -2431,7 +2435,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 39,
+   "id": 33554545,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2464,6 +2468,11 @@
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
        "component_path": "script_component/script_components/Health/currentHealth",
        "pretty_component_path": "Script/Scripts/Health/currentHealth"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components/Health/destroyOnDeath",
+       "pretty_component_path": "Script/Scripts/Health/destroyOnDeath"
       },
       {
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
@@ -2517,10 +2526,10 @@
      },
      "children": [
       {
-       "id": 40
+       "id": 35651691
       },
       {
-       "id": 41
+       "id": 39845999
       }
      ],
      "active": true
@@ -2536,7 +2545,7 @@
       "mask": -1
      },
      "exclude_layers": {
-      "mask": 160
+      "mask": 128
      },
      "freeze_position": {
       "x": false,
@@ -2589,10 +2598,10 @@
       },
       {
        "type": "Health",
-       "maxHealth": 100,
-       "currentHealth": 100,
+       "maxHealth": 100000,
+       "currentHealth": 100000,
        "allowOverheal": false,
-       "destroyOnDeath": true,
+       "destroyOnDeath": false,
        "destroyDelay": 0.0
       }
      ]
@@ -2600,7 +2609,7 @@
    }
   },
   {
-   "id": 40,
+   "id": 35651691,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2643,7 +2652,7 @@
       }
      },
      "parent": {
-      "id": 39
+      "id": 33554545
      },
      "children": [],
      "active": true
@@ -2677,7 +2686,7 @@
    }
   },
   {
-   "id": 41,
+   "id": 39845999,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2720,7 +2729,7 @@
       }
      },
      "parent": {
-      "id": 39
+      "id": 33554545
      },
      "children": [],
      "active": true
@@ -2757,7 +2766,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 43,
+   "id": 30408747,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2790,6 +2799,11 @@
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
        "component_path": "script_component/script_components/Health/currentHealth",
        "pretty_component_path": "Script/Scripts/Health/currentHealth"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components/Health/destroyOnDeath",
+       "pretty_component_path": "Script/Scripts/Health/destroyOnDeath"
       },
       {
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
@@ -2843,10 +2857,10 @@
      },
      "children": [
       {
-       "id": 44
+       "id": 30408748
       },
       {
-       "id": 45
+       "id": 30408749
       }
      ],
      "active": true
@@ -2862,7 +2876,7 @@
       "mask": -1
      },
      "exclude_layers": {
-      "mask": 160
+      "mask": 128
      },
      "freeze_position": {
       "x": false,
@@ -2915,10 +2929,10 @@
       },
       {
        "type": "Health",
-       "maxHealth": 100,
-       "currentHealth": 100,
+       "maxHealth": 100000,
+       "currentHealth": 100000,
        "allowOverheal": false,
-       "destroyOnDeath": true,
+       "destroyOnDeath": false,
        "destroyDelay": 0.0
       }
      ]
@@ -2926,7 +2940,7 @@
    }
   },
   {
-   "id": 44,
+   "id": 30408748,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2969,7 +2983,7 @@
       }
      },
      "parent": {
-      "id": 43
+      "id": 30408747
      },
      "children": [],
      "active": true
@@ -3003,7 +3017,7 @@
    }
   },
   {
-   "id": 45,
+   "id": 30408749,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3046,7 +3060,7 @@
       }
      },
      "parent": {
-      "id": 43
+      "id": 30408747
      },
      "children": [],
      "active": true
@@ -3083,7 +3097,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 47,
+   "id": 38797418,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3116,6 +3130,11 @@
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
        "component_path": "script_component/script_components/Health/currentHealth",
        "pretty_component_path": "Script/Scripts/Health/currentHealth"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components/Health/destroyOnDeath",
+       "pretty_component_path": "Script/Scripts/Health/destroyOnDeath"
       },
       {
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
@@ -3169,10 +3188,10 @@
      },
      "children": [
       {
-       "id": 48
+       "id": 29360223
       },
       {
-       "id": 49
+       "id": 35651635
       }
      ],
      "active": true
@@ -3188,7 +3207,7 @@
       "mask": -1
      },
      "exclude_layers": {
-      "mask": 160
+      "mask": 128
      },
      "freeze_position": {
       "x": false,
@@ -3241,10 +3260,10 @@
       },
       {
        "type": "Health",
-       "maxHealth": 100,
-       "currentHealth": 100,
+       "maxHealth": 100000,
+       "currentHealth": 100000,
        "allowOverheal": false,
-       "destroyOnDeath": true,
+       "destroyOnDeath": false,
        "destroyDelay": 0.0
       }
      ]
@@ -3252,7 +3271,7 @@
    }
   },
   {
-   "id": 48,
+   "id": 29360223,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3295,7 +3314,7 @@
       }
      },
      "parent": {
-      "id": 47
+      "id": 38797418
      },
      "children": [],
      "active": true
@@ -3329,7 +3348,7 @@
    }
   },
   {
-   "id": 49,
+   "id": 35651635,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3372,7 +3391,7 @@
       }
      },
      "parent": {
-      "id": 47
+      "id": 38797418
      },
      "children": [],
      "active": true
@@ -3409,7 +3428,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 51,
+   "id": 29360232,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3442,6 +3461,11 @@
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
        "component_path": "script_component/script_components/Health/currentHealth",
        "pretty_component_path": "Script/Scripts/Health/currentHealth"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components/Health/destroyOnDeath",
+       "pretty_component_path": "Script/Scripts/Health/destroyOnDeath"
       },
       {
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
@@ -3495,10 +3519,10 @@
      },
      "children": [
       {
-       "id": 52
+       "id": 29360231
       },
       {
-       "id": 53
+       "id": 29360229
       }
      ],
      "active": true
@@ -3514,7 +3538,7 @@
       "mask": -1
      },
      "exclude_layers": {
-      "mask": 160
+      "mask": 128
      },
      "freeze_position": {
       "x": false,
@@ -3567,10 +3591,10 @@
       },
       {
        "type": "Health",
-       "maxHealth": 100,
-       "currentHealth": 100,
+       "maxHealth": 100000,
+       "currentHealth": 100000,
        "allowOverheal": false,
-       "destroyOnDeath": true,
+       "destroyOnDeath": false,
        "destroyDelay": 0.0
       }
      ]
@@ -3578,7 +3602,7 @@
    }
   },
   {
-   "id": 52,
+   "id": 29360231,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3621,7 +3645,7 @@
       }
      },
      "parent": {
-      "id": 51
+      "id": 29360232
      },
      "children": [],
      "active": true
@@ -3655,7 +3679,7 @@
    }
   },
   {
-   "id": 53,
+   "id": 29360229,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3698,7 +3722,7 @@
       }
      },
      "parent": {
-      "id": 51
+      "id": 29360232
      },
      "children": [],
      "active": true

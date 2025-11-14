@@ -50,7 +50,7 @@ public class MeteorShowerAbility : Ability
         ability.damage = 5;
         ability.cooldown = 5.0f;
         ability.impactRadius = 5.0f;
-        ability.maxRange = 20.0f;
+        ability.maxRange = 8.0f;
         ability.spawnHeight = 15.0f;
         ability.projectileSpeed = 40.0f;
         ability.knockbackForce = 5.0f;
@@ -97,10 +97,11 @@ public class MeteorShowerAbility : Ability
     /// <returns>Array of enemies to target with meteors</returns>
     protected override Entity[] GatherTargets()
     {
-        QueryClosestTarget query = new QueryClosestTarget();
-        query.source = owner;
-        query.maxRange = UpgradeSystem.ApplyAreaOfEffectUpgrade(maxRange);
-        return ContactSystem.FindClosestEnemies(query);
+        // QueryClosestTarget query = new QueryClosestTarget();
+        // query.source = owner;
+        // query.maxRange = UpgradeSystem.ApplyAreaOfEffectUpgrade(maxRange);
+        // return ContactSystem.FindClosestEnemies(query);
+        return new Entity[] { Entity.Invalid };
     }
 
     /// <summary>
@@ -115,25 +116,22 @@ public class MeteorShowerAbility : Ability
             Log.Warning("MeteorShowerAbility: No meteor prefab assigned - cannot spawn meteor!");
             return;
         }
-
-        if (targets.Length == 0)
-        {
-            return;
-        }
-
+        Vector2 randomCircle = Random.insideUnitCircle * maxRange;
+        Vector3 randomPosition = new Vector3(randomCircle.x, 0, randomCircle.y);
         // Select random target
-        int randomIndex = Random.Range(0, targets.Length);
-        Entity target = targets[randomIndex];
+        // int randomIndex = Random.Range(0, targets.Length);
+        // Entity target = targets[randomIndex];
         
-        var targetTransform = target.GetComponent<TransformComponent>();
-        if (targetTransform == null)
-        {
-            Log.Warning("MeteorShowerAbility: Target has no TransformComponent");
-            return;
-        }
+        // var targetTransform = target.GetComponent<TransformComponent>();
+        // if (targetTransform == null)
+        // {
+        //     Log.Warning("MeteorShowerAbility: Target has no TransformComponent");
+        //     return;
+        // }
 
         // Calculate impact position (where target currently is)
-        Vector3 impactPosition = targetTransform.position;
+        // Vector3 impactPosition = targetTransform.position;
+        Vector3 impactPosition = owner.transform.position + randomPosition;
         
         // Calculate fall time for indicator lifetime
         float fallTime = spawnHeight / projectileSpeed;
@@ -153,14 +151,14 @@ public class MeteorShowerAbility : Ability
                 {
                     indicator.lifetime = totalWarningTime; // Shows during delay + fall
                     indicator.radius = UpgradeSystem.ApplyAreaOfEffectUpgrade(impactRadius);
-                    indicator.enablePulse = true;
+                    indicator.enablePulse = false;
                     indicator.pulseSpeed = 3.0f;
                 }
 
                 // Scale the indicator to match impact radius
                 float upgradedRadius = UpgradeSystem.ApplyAreaOfEffectUpgrade(impactRadius);
-                indicatorEntity.transform.scale = new Vector3(upgradedRadius * 2, 0.1f, upgradedRadius * 2);
-                indicatorEntity.transform.position = impactPosition;
+                indicatorEntity.transform.scale = new Vector3(upgradedRadius, 0.1f, upgradedRadius);
+                indicatorEntity.transform.position = impactPosition + Vector3.up * (0.15f * upgradedRadius * 0.5f);
             }
         }
         

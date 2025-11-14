@@ -26,8 +26,9 @@ public class AbilityCard : UpgradeCard
     /// <param name="upgrade">Single upgrade to apply</param>
     /// <param name="abilityType">Type of ability component to add</param>
     /// <param name="configureAbility">Optional configuration action for the ability</param>
-    public AbilityCard(string name, string description, UpgradeRarity rarity, Upgrade upgrade, Type abilityType, System.Action<ScriptComponent> configureAbility = null)
-        : base(name, rarity, upgrade)
+    /// <param name="maxPicks">Maximum number of times this card can be picked. -1 = unlimited (default).</param>
+    public AbilityCard(string name, string description, UpgradeRarity rarity, Upgrade upgrade, Type abilityType, System.Action<ScriptComponent> configureAbility = null, int maxPicks = -1)
+        : base(name, rarity, upgrade, maxPicks)
     {
         ValidateAbilityType(abilityType);
         AbilityType = abilityType;
@@ -43,8 +44,9 @@ public class AbilityCard : UpgradeCard
     /// <param name="upgrades">List of upgrades to apply</param>
     /// <param name="abilityType">Type of ability component to add</param>
     /// <param name="configureAbility">Optional configuration action for the ability</param>
-    public AbilityCard(string name, string description, UpgradeRarity rarity, List<Upgrade> upgrades, Type abilityType, System.Action<ScriptComponent> configureAbility = null)
-        : base(name, rarity, upgrades)
+    /// <param name="maxPicks">Maximum number of times this card can be picked. -1 = unlimited (default).</param>
+    public AbilityCard(string name, string description, UpgradeRarity rarity, List<Upgrade> upgrades, Type abilityType, System.Action<ScriptComponent> configureAbility = null, int maxPicks = -1)
+        : base(name, rarity, upgrades, maxPicks)
     {
         ValidateAbilityType(abilityType);
         AbilityType = abilityType;

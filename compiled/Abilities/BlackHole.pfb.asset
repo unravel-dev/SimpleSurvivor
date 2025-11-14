@@ -1,12 +1,12 @@
 {
  "entities": [
   {
-   "prefab_uid": "aa09c5ba-97b1-6942-94ab-063ef2d7ed07",
-   "id": 1048579,
+   "prefab_uid": "b680919e-bc23-2e42-8203-9b57ece6cecd",
+   "id": 39845917,
    "components": {
     "has_tag_component": true,
     "tag_component": {
-     "name": "MeteorIndicator",
+     "name": "BlackHole",
      "tag": ""
     },
     "has_layer_component": true,
@@ -17,15 +17,15 @@
     },
     "has_prefab_id_component": true,
     "prefab_id_component": {
-     "id": "aa09c5ba-97b1-6942-94ab-063ef2d7ed07"
+     "id": "b680919e-bc23-2e42-8203-9b57ece6cecd"
     },
     "has_transform_component": true,
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": -6.0,
-       "y": 0.26173898577690127,
-       "z": 2.1739513874053957
+       "x": 6.5075883865356449,
+       "y": 1.8576360940933228,
+       "z": -3.415680408477783
       },
       "rotation": {
        "x": 0.0,
@@ -54,20 +54,20 @@
     "has_particle_emitter_component": true,
     "particle_emitter_component": {
      "enabled": true,
-     "shape": 2,
+     "shape": 0,
      "direction": 1,
      "simulation_space": 0,
-     "max_particles": 838,
+     "max_particles": 200,
      "emission_lifetime": {
       "count": 2.0
      },
      "emission_shape_scale": {
-      "x": 0.20000000298023225,
-      "y": 0.20000000298023225,
-      "z": 0.20000000298023225
+      "x": 1.0,
+      "y": 1.0,
+      "z": 1.0
      },
      "gravity_scale": 0.0,
-     "emission_rate": 10000.0,
+     "emission_rate": 100.0,
      "temporal_motion": 1.0,
      "velocity_damping": 0.0,
      "force_over_lifetime": {
@@ -133,15 +133,15 @@
        {
         "progress": 0.0,
         "element": {
-         "min": 0.5,
-         "max": 0.5
+         "min": 1.0,
+         "max": 1.399999976158142
         }
        },
        {
         "progress": 1.0,
         "element": {
-         "min": 0.5,
-         "max": 0.5
+         "min": 0.8500000238418579,
+         "max": 1.7000000476837159
         }
        }
       ]
@@ -151,81 +151,72 @@
        {
         "progress": 0.0,
         "element": {
-         "min": 0.10000000149011612,
-         "max": 0.10000000149011612
+         "min": 0.3799999952316284,
+         "max": 0.75
         }
        },
        {
         "progress": 1.0,
         "element": {
-         "min": 0.10000000149011612,
-         "max": 0.10000000149011612
+         "min": 0.7799999713897705,
+         "max": 1.1299999952316285
         }
        }
       ]
      },
-     "blend_gradient": {
-      "points": [
-       {
-        "progress": 0.0,
-        "element": {
-         "min": 0.800000011920929,
-         "max": 1.0
-        }
-       },
-       {
-        "progress": 1.0,
-        "element": {
-         "min": 0.0,
-         "max": 0.20000000298023225
-        }
-       }
-      ]
-     },
-     "blend_multiplier": 1.0,
+     "opacity": 1.0,
      "color_gradient": {
       "points": [
        {
         "progress": 0.0,
         "element": {
-         "r": 1.0,
-         "g": 1.0,
-         "b": 1.0,
+         "r": 0.17012447118759156,
+         "g": 0.17012447118759156,
+         "b": 0.17012447118759156,
          "a": 0.0
         }
        },
        {
-        "progress": 0.24452555179595948,
+        "progress": 0.25,
         "element": {
-         "r": 1.0,
-         "g": 0.40350544452667239,
-         "b": 0.14937758445739747,
+         "r": 0.0,
+         "g": 0.0,
+         "b": 0.0,
          "a": 1.0
         }
        },
        {
-        "progress": 0.7244523167610169,
+        "progress": 0.5,
         "element": {
-         "r": 0.9917012453079224,
-         "g": 0.34821635484695437,
-         "b": 0.07406897097826004,
-         "a": 0.9502074718475342
+         "r": 0.0,
+         "g": 0.0,
+         "b": 0.0,
+         "a": 1.0
+        }
+       },
+       {
+        "progress": 0.75,
+        "element": {
+         "r": 0.0,
+         "g": 0.0,
+         "b": 0.0,
+         "a": 1.0
         }
        },
        {
         "progress": 1.0,
         "element": {
-         "r": 1.0,
-         "g": 1.0,
-         "b": 1.0,
+         "r": 0.21991699934005738,
+         "g": 0.21991699934005738,
+         "b": 0.21991699934005738,
          "a": 0.0
         }
        }
       ]
      },
-     "position_easing": 0,
+     "position_easing": 35,
      "texture": {
-      "uid": "8128bb6c-942c-8a4c-9d85-3e9e9a60ea1d"
+      "uid": "958ef03a-d547-f34c-940c-0b437b788d99"
      },
      "loop": true
     }
