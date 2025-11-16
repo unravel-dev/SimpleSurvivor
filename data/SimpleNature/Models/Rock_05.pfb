@@ -1,0 +1,206 @@
+{
+ "entities": [
+  {
+   "prefab_uid": "926a0cf4-b45f-b44a-9a65-83dc37363662",
+   "id": 3145774,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Rock_05",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "926a0cf4-b45f-b44a-9a65-83dc37363662"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -33.395591735839847,
+       "y": 0.0,
+       "z": -23.279687881469728
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "00000000-0000-0000-0000-000000000000",
+      "id": 4294967295
+     },
+     "children": [
+      {
+       "prefab_uid": "2e825e1f-d784-bb4a-b2cf-f1235d8976e5",
+       "id": 3145775
+      }
+     ],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "57442201-b722-714c-8662-49a0fef0956f"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "70f00a41-30ee-ec4e-85e7-b4a067f95cef"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "prefab_uid": "2e825e1f-d784-bb4a-b2cf-f1235d8976e5",
+   "id": 3145775,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "RootNode",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "2e825e1f-d784-bb4a-b2cf-f1235d8976e5"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "926a0cf4-b45f-b44a-9a65-83dc37363662",
+      "id": 3145774
+     },
+     "children": [
+      {
+       "prefab_uid": "8cc5d723-bba1-3942-8f6e-e867f9e9b1c2",
+       "id": 3145776
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "prefab_uid": "8cc5d723-bba1-3942-8f6e-e867f9e9b1c2",
+   "id": 3145776,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Rock_05",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "8cc5d723-bba1-3942-8f6e-e867f9e9b1c2"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "2e825e1f-d784-bb4a-b2cf-f1235d8976e5",
+      "id": 3145775
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      0
+     ]
+    }
+   }
+  }
+ ],
+ "version": "1.0.0"
+}

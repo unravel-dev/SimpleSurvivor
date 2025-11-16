@@ -6,6 +6,7 @@ using Unravel.Core;
 public struct DamageBreakdown
 {
     public int amount;
+    public Color color;
     public bool isCritical;
 
 }

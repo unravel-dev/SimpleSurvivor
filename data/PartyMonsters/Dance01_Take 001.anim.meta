@@ -1,0 +1,22 @@
+{
+ "meta": {
+  "type": ".anim",
+  "uid": "01ec5de1-5ea6-964f-aa1e-f11028c3a481",
+  "importer": {
+   "polymorphic_id": 2147483649,
+   "polymorphic_name": "animation_importer_meta",
+   "ptr_wrapper": {
+    "id": 2147483649,
+    "data": {
+     "base_type": {},
+     "root_motion": {
+      "keep_position_y": true,
+      "keep_position_xz": false,
+      "keep_rotation": false,
+      "keep_in_place": false
+     }
+    }
+   }
+  }
+ }
+}

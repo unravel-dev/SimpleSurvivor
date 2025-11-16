@@ -1,8 +1,8 @@
 {
- "entities_count": 16,
+ "entities_count": 23,
  "entities": [
   {
-   "id": 35651585,
+   "id": 6291457,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -58,11 +58,11 @@
        "y": 0
       },
       "viewport_size": {
-       "width": 1891,
-       "height": 969
+       "width": 1920,
+       "height": 1080
       },
       "orthographic_size": 5.0,
-      "aspect_ratio": 1.9514963626861573,
+      "aspect_ratio": 1.7777777910232545,
       "aspect_locked": false,
       "frustum_locked": false
      },
@@ -189,7 +189,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 35651587,
+   "id": 6291459,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -277,7 +277,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 35651589,
+   "id": 6291461,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -346,7 +346,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 35651591,
+   "id": 6291463,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -413,8 +413,8 @@
       },
       "skew": {
        "x": 0.0,
-       "y": -1.5246593050577406e-20,
-       "z": -7.105427357601002e-15
+       "y": 0.0,
+       "z": 0.0
       }
      },
      "parent": {
@@ -422,19 +422,19 @@
      },
      "children": [
       {
-       "id": 35651592
+       "id": 6291464
       },
       {
-       "id": 35651593
+       "id": 6291465
       },
       {
-       "id": 35651594
+       "id": 6291466
       },
       {
-       "id": 34603019
+       "id": 5242891
       },
       {
-       "id": 33554444
+       "id": 5242892
       }
      ],
      "active": true
@@ -498,7 +498,7 @@
    }
   },
   {
-   "id": 35651592,
+   "id": 6291464,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -541,7 +541,7 @@
       }
      },
      "parent": {
-      "id": 35651591
+      "id": 6291463
      },
      "children": [],
      "active": false
@@ -564,7 +564,7 @@
    }
   },
   {
-   "id": 35651593,
+   "id": 6291465,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -607,7 +607,7 @@
       }
      },
      "parent": {
-      "id": 35651591
+      "id": 6291463
      },
      "children": [],
      "active": false
@@ -630,7 +630,7 @@
    }
   },
   {
-   "id": 35651594,
+   "id": 6291466,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -673,7 +673,7 @@
       }
      },
      "parent": {
-      "id": 35651591
+      "id": 6291463
      },
      "children": [],
      "active": false
@@ -696,7 +696,7 @@
    }
   },
   {
-   "id": 34603019,
+   "id": 5242891,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -735,7 +735,7 @@
       }
      },
      "parent": {
-      "id": 35651591
+      "id": 6291463
      },
      "children": [],
      "active": false
@@ -758,7 +758,7 @@
    }
   },
   {
-   "id": 33554444,
+   "id": 5242892,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -797,7 +797,7 @@
       }
      },
      "parent": {
-      "id": 35651591
+      "id": 6291463
      },
      "children": [],
      "active": true
@@ -823,7 +823,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 33554446,
+   "id": 5242894,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -866,7 +866,7 @@
      },
      "children": [
       {
-       "id": 33554447
+       "id": 5242895
       }
      ],
      "active": true
@@ -874,7 +874,7 @@
    }
   },
   {
-   "id": 33554447,
+   "id": 5242895,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -893,12 +893,12 @@
       "position": {
        "x": -2.1774155811726816e-9,
        "y": -0.4515100419521332,
-       "z": 5.809681624668883e-10
+       "z": 6.067182312108343e-10
       },
       "rotation": {
        "x": 2.6361135496699717e-12,
        "y": 5.366017959834712e-13,
-       "z": -2.908070312335198e-11,
+       "z": -3.137035076150596e-11,
        "w": 1.0
       },
       "scale": {
@@ -907,13 +907,13 @@
        "z": 400.0
       },
       "skew": {
-       "x": 2.5192720132238835e-10,
-       "y": -1.07198332242181e-12,
-       "z": -6.989003265012173e-10
+       "x": 2.6904387051551739e-10,
+       "y": -1.0716885278511112e-12,
+       "z": -7.034796078997374e-10
       }
      },
      "parent": {
-      "id": 33554446
+      "id": 5242894
      },
      "children": [],
      "active": true
@@ -996,7 +996,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 33554449,
+   "id": 5242897,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1039,7 +1039,7 @@
      },
      "children": [
       {
-       "id": 33554450
+       "id": 5242898
       }
      ],
      "active": true
@@ -1126,7 +1126,7 @@
    }
   },
   {
-   "id": 33554450,
+   "id": 5242898,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1143,14 +1143,14 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": -5.066092967354052e-8,
-       "y": 1.4999998807907105,
-       "z": 4.0578512994216e-8
+       "x": -5.0898080417027816e-8,
+       "y": 1.4999874830245972,
+       "z": 4.057554292558052e-8
       },
       "rotation": {
        "x": 0.0,
-       "y": 0.0,
-       "z": -4.440889980918258e-16,
+       "y": -1.3063536590459956e-27,
+       "z": -8.881782079418884e-16,
        "w": 1.0
       },
       "scale": {
@@ -1159,13 +1159,13 @@
        "z": 1.0
       },
       "skew": {
-       "x": 4.263256414560601e-14,
-       "y": -7.993551567192503e-15,
-       "z": -4.470302883419208e-8
+       "x": 2.9416469260468148e-12,
+       "y": -4.2148359455373988e-18,
+       "z": -9.458922534122394e-11
       }
      },
      "parent": {
-      "id": 33554449
+      "id": 5242897
      },
      "children": [],
      "active": true
@@ -1206,7 +1206,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 33554452,
+   "id": 5242900,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1224,8 +1224,8 @@
      "local_transform": {
       "position": {
        "x": 4.6700768052687638e-7,
-       "y": -0.000001380874778078578,
-       "z": -2.6758846161101248e-7
+       "y": -0.0000013803680758428528,
+       "z": -2.6746178605208117e-7
       },
       "rotation": {
        "x": -1.1920938902676426e-7,
@@ -1241,7 +1241,7 @@
       "skew": {
        "x": -5.960487214906607e-8,
        "y": -2.980337043823056e-8,
-       "z": -0.0000058460523177927829
+       "z": -0.0000058480791267356839
       }
      },
      "parent": {
@@ -1272,6 +1272,9 @@
        "enableBillboard": true,
        "maxActiveDamageNumbers": 50,
        "enableAutoCleanup": true
+      },
+      {
+       "type": "EffectsSystemUpdater"
       }
      ]
     }
@@ -1281,7 +1284,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 33554454,
+   "id": 5242902,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1299,13 +1302,13 @@
      "local_transform": {
       "position": {
        "x": 4.6700768052687638e-7,
-       "y": -0.0000013820827007293702,
-       "z": -2.678904422737105e-7
+       "y": -0.0000013820556432619924,
+       "z": -2.6788367790686609e-7
       },
       "rotation": {
        "x": -1.1920938902676426e-7,
        "y": 1.4901168299275015e-8,
-       "z": -2.980232594040899e-8,
+       "z": -2.980232949312267e-8,
        "w": 1.0
       },
       "scale": {
@@ -1316,7 +1319,7 @@
       "skew": {
        "x": -5.960487214906607e-8,
        "y": -2.980337043823056e-8,
-       "z": -0.000005841220627189614
+       "z": -0.000005841328857059125
       }
      },
      "parent": {
@@ -1324,7 +1327,7 @@
      },
      "children": [
       {
-       "id": 33554455
+       "id": 5242903
       }
      ],
      "active": true
@@ -1332,7 +1335,7 @@
    }
   },
   {
-   "id": 33554455,
+   "id": 5242903,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1350,13 +1353,13 @@
      "local_transform": {
       "position": {
        "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
+       "y": 9.640643838793039e-11,
+       "z": 2.4101609596982599e-11
       },
       "rotation": {
        "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
+       "y": -4.165185579566942e-28,
+       "z": -8.881782079418884e-16,
        "w": 1.0
       },
       "scale": {
@@ -1365,13 +1368,13 @@
        "z": 1.0
       },
       "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
+       "x": 9.379164112033322e-13,
+       "y": -1.0734025024080121e-17,
+       "z": -6.002842667385267e-11
       }
      },
      "parent": {
-      "id": 33554454
+      "id": 5242902
      },
      "children": [],
      "active": true
@@ -1380,7 +1383,7 @@
     "audio_source_component": {
      "auto_play": true,
      "loop": true,
-     "volume": 1.0,
+     "volume": 0.382999986410141,
      "pitch": 1.0,
      "volume_rolloff": 1.0,
      "range": {
@@ -1397,7 +1400,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 33554457,
+   "id": 5242905,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1447,7 +1450,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 29360225,
+   "id": 5242907,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1533,10 +1536,10 @@
      },
      "children": [
       {
-       "id": 29360227
+       "id": 5242908
       },
       {
-       "id": 35651619
+       "id": 5242909
       }
      ],
      "active": true
@@ -1589,8 +1592,8 @@
      "script_components": [
       {
        "type": "Enemy",
-       "maxSpeed": 6.0,
-       "maxAcceleration": 20.0,
+       "maxSpeed": 2.0,
+       "maxAcceleration": 13.0,
        "slowRadius": 5.0,
        "arriveRadius": 0.6000000238418579,
        "rotationSpeed": 180.0,
@@ -1616,7 +1619,7 @@
    }
   },
   {
-   "id": 29360227,
+   "id": 5242908,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1659,7 +1662,7 @@
       }
      },
      "parent": {
-      "id": 29360225
+      "id": 5242907
      },
      "children": [],
      "active": true
@@ -1693,7 +1696,7 @@
    }
   },
   {
-   "id": 35651619,
+   "id": 5242909,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1736,7 +1739,7 @@
       }
      },
      "parent": {
-      "id": 29360225
+      "id": 5242907
      },
      "children": [],
      "active": true
@@ -1773,7 +1776,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 29360228,
+   "id": 5242911,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1864,10 +1867,10 @@
      },
      "children": [
       {
-       "id": 29360230
+       "id": 5242912
       },
       {
-       "id": 29360226
+       "id": 5242913
       }
      ],
      "active": true
@@ -1920,8 +1923,8 @@
      "script_components": [
       {
        "type": "Enemy",
-       "maxSpeed": 6.0,
-       "maxAcceleration": 20.0,
+       "maxSpeed": 2.0,
+       "maxAcceleration": 13.0,
        "slowRadius": 5.0,
        "arriveRadius": 0.6000000238418579,
        "rotationSpeed": 180.0,
@@ -1947,7 +1950,7 @@
    }
   },
   {
-   "id": 29360230,
+   "id": 5242912,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1990,7 +1993,7 @@
       }
      },
      "parent": {
-      "id": 29360228
+      "id": 5242911
      },
      "children": [],
      "active": true
@@ -2024,7 +2027,7 @@
    }
   },
   {
-   "id": 29360226,
+   "id": 5242913,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2067,7 +2070,7 @@
       }
      },
      "parent": {
-      "id": 29360228
+      "id": 5242911
      },
      "children": [],
      "active": true
@@ -2104,7 +2107,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 29360233,
+   "id": 5242915,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2195,10 +2198,10 @@
      },
      "children": [
       {
-       "id": 30408814
+       "id": 5242916
       },
       {
-       "id": 29360224
+       "id": 5242917
       }
      ],
      "active": true
@@ -2251,8 +2254,8 @@
      "script_components": [
       {
        "type": "Enemy",
-       "maxSpeed": 6.0,
-       "maxAcceleration": 20.0,
+       "maxSpeed": 2.0,
+       "maxAcceleration": 13.0,
        "slowRadius": 5.0,
        "arriveRadius": 0.6000000238418579,
        "rotationSpeed": 180.0,
@@ -2278,7 +2281,7 @@
    }
   },
   {
-   "id": 30408814,
+   "id": 5242916,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2321,7 +2324,7 @@
       }
      },
      "parent": {
-      "id": 29360233
+      "id": 5242915
      },
      "children": [],
      "active": true
@@ -2355,7 +2358,7 @@
    }
   },
   {
-   "id": 29360224,
+   "id": 5242917,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2398,7 +2401,7 @@
       }
      },
      "parent": {
-      "id": 29360233
+      "id": 5242915
      },
      "children": [],
      "active": true
@@ -2435,7 +2438,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 33554545,
+   "id": 5242919,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2526,10 +2529,10 @@
      },
      "children": [
       {
-       "id": 35651691
+       "id": 5242920
       },
       {
-       "id": 39845999
+       "id": 5242921
       }
      ],
      "active": true
@@ -2582,8 +2585,8 @@
      "script_components": [
       {
        "type": "Enemy",
-       "maxSpeed": 6.0,
-       "maxAcceleration": 20.0,
+       "maxSpeed": 2.0,
+       "maxAcceleration": 13.0,
        "slowRadius": 5.0,
        "arriveRadius": 0.6000000238418579,
        "rotationSpeed": 180.0,
@@ -2609,7 +2612,7 @@
    }
   },
   {
-   "id": 35651691,
+   "id": 5242920,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2652,7 +2655,7 @@
       }
      },
      "parent": {
-      "id": 33554545
+      "id": 5242919
      },
      "children": [],
      "active": true
@@ -2686,7 +2689,7 @@
    }
   },
   {
-   "id": 39845999,
+   "id": 5242921,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2729,7 +2732,7 @@
       }
      },
      "parent": {
-      "id": 33554545
+      "id": 5242919
      },
      "children": [],
      "active": true
@@ -2766,7 +2769,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 30408747,
+   "id": 5242923,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2857,10 +2860,10 @@
      },
      "children": [
       {
-       "id": 30408748
+       "id": 5242924
       },
       {
-       "id": 30408749
+       "id": 5242925
       }
      ],
      "active": true
@@ -2913,8 +2916,8 @@
      "script_components": [
       {
        "type": "Enemy",
-       "maxSpeed": 6.0,
-       "maxAcceleration": 20.0,
+       "maxSpeed": 2.0,
+       "maxAcceleration": 13.0,
        "slowRadius": 5.0,
        "arriveRadius": 0.6000000238418579,
        "rotationSpeed": 180.0,
@@ -2940,7 +2943,7 @@
    }
   },
   {
-   "id": 30408748,
+   "id": 5242924,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2983,7 +2986,7 @@
       }
      },
      "parent": {
-      "id": 30408747
+      "id": 5242923
      },
      "children": [],
      "active": true
@@ -3017,7 +3020,7 @@
    }
   },
   {
-   "id": 30408749,
+   "id": 5242925,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3060,7 +3063,7 @@
       }
      },
      "parent": {
-      "id": 30408747
+      "id": 5242923
      },
      "children": [],
      "active": true
@@ -3097,7 +3100,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 38797418,
+   "id": 5242927,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3188,10 +3191,10 @@
      },
      "children": [
       {
-       "id": 29360223
+       "id": 5242928
       },
       {
-       "id": 35651635
+       "id": 5242929
       }
      ],
      "active": true
@@ -3244,8 +3247,8 @@
      "script_components": [
       {
        "type": "Enemy",
-       "maxSpeed": 6.0,
-       "maxAcceleration": 20.0,
+       "maxSpeed": 2.0,
+       "maxAcceleration": 13.0,
        "slowRadius": 5.0,
        "arriveRadius": 0.6000000238418579,
        "rotationSpeed": 180.0,
@@ -3271,7 +3274,7 @@
    }
   },
   {
-   "id": 29360223,
+   "id": 5242928,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3314,7 +3317,7 @@
       }
      },
      "parent": {
-      "id": 38797418
+      "id": 5242927
      },
      "children": [],
      "active": true
@@ -3348,7 +3351,7 @@
    }
   },
   {
-   "id": 35651635,
+   "id": 5242929,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3391,7 +3394,7 @@
       }
      },
      "parent": {
-      "id": 38797418
+      "id": 5242927
      },
      "children": [],
      "active": true
@@ -3428,7 +3431,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 29360232,
+   "id": 5242931,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3519,10 +3522,10 @@
      },
      "children": [
       {
-       "id": 29360231
+       "id": 5242932
       },
       {
-       "id": 29360229
+       "id": 5242933
       }
      ],
      "active": true
@@ -3575,8 +3578,8 @@
      "script_components": [
       {
        "type": "Enemy",
-       "maxSpeed": 6.0,
-       "maxAcceleration": 20.0,
+       "maxSpeed": 2.0,
+       "maxAcceleration": 13.0,
        "slowRadius": 5.0,
        "arriveRadius": 0.6000000238418579,
        "rotationSpeed": 180.0,
@@ -3602,7 +3605,7 @@
    }
   },
   {
-   "id": 29360231,
+   "id": 5242932,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3645,7 +3648,7 @@
       }
      },
      "parent": {
-      "id": 29360232
+      "id": 5242931
      },
      "children": [],
      "active": true
@@ -3679,7 +3682,7 @@
    }
   },
   {
-   "id": 29360229,
+   "id": 5242933,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3722,7 +3725,7 @@
       }
      },
      "parent": {
-      "id": 29360232
+      "id": 5242931
      },
      "children": [],
      "active": true
@@ -3752,6 +3755,8237 @@
        }
       ]
      }
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 5242935,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "MeteorIndicator",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_component": true,
+    "prefab_component": {
+     "source": {
+      "uid": "a38ccb54-d9d7-9241-8893-2c5f3b213954"
+     },
+     "property_overrides": [],
+     "removed_entities": []
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "aa09c5ba-97b1-6942-94ab-063ef2d7ed07"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -3.5244359970092775,
+       "y": 0.789547324180603,
+       "z": 4.4996795654296879
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [],
+     "active": true
+    },
+    "has_particle_emitter_component": true,
+    "particle_emitter_component": {
+     "enabled": true,
+     "shape": 2,
+     "direction": 1,
+     "simulation_space": 0,
+     "max_particles": 838,
+     "emission_lifetime": {
+      "count": 2.0
+     },
+     "emission_shape_scale": {
+      "x": 0.20000000298023225,
+      "y": 0.20000000298023225,
+      "z": 0.20000000298023225
+     },
+     "gravity_scale": 0.0,
+     "emission_rate": 10000.0,
+     "temporal_motion": 1.0,
+     "velocity_damping": 0.0,
+     "force_over_lifetime": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+     },
+     "size_by_speed_range": {
+      "min": 1.0,
+      "max": 1.0
+     },
+     "size_by_speed_velocity_range": {
+      "min": 0.0,
+      "max": 10.0
+     },
+     "color_by_speed_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": {
+         "r": 1.0,
+         "g": 1.0,
+         "b": 1.0,
+         "a": 1.0
+        }
+       },
+       {
+        "progress": 1.0,
+        "element": {
+         "r": 1.0,
+         "g": 1.0,
+         "b": 1.0,
+         "a": 1.0
+        }
+       }
+      ]
+     },
+     "color_by_speed_velocity_range": {
+      "min": 0.0,
+      "max": 10.0
+     },
+     "lifetime_by_emitter_speed_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": 1.0
+       },
+       {
+        "progress": 1.0,
+        "element": 1.0
+       }
+      ]
+     },
+     "lifetime_by_emitter_speed_range": {
+      "min": 0.0,
+      "max": 10.0
+     },
+     "lifetime": {
+      "count": 1.0
+     },
+     "velocity_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": {
+         "min": 0.5,
+         "max": 0.5
+        }
+       },
+       {
+        "progress": 1.0,
+        "element": {
+         "min": 0.5,
+         "max": 0.5
+        }
+       }
+      ]
+     },
+     "scale_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": {
+         "min": 0.10000000149011612,
+         "max": 0.10000000149011612
+        }
+       },
+       {
+        "progress": 1.0,
+        "element": {
+         "min": 0.10000000149011612,
+         "max": 0.10000000149011612
+        }
+       }
+      ]
+     },
+     "opacity": 1.0,
+     "color_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": {
+         "r": 0.9834024906158447,
+         "g": 0.4678361713886261,
+         "b": 0.12649574875831605,
+         "a": 0.0
+        }
+       },
+       {
+        "progress": 0.24452555179595948,
+        "element": {
+         "r": 1.0,
+         "g": 0.40350544452667239,
+         "b": 0.14937758445739747,
+         "a": 1.0
+        }
+       },
+       {
+        "progress": 0.7244523167610169,
+        "element": {
+         "r": 0.9921568632125855,
+         "g": 0.6456593871116638,
+         "b": 0.07450979948043823,
+         "a": 0.9490196108818054
+        }
+       },
+       {
+        "progress": 1.0,
+        "element": {
+         "r": 0.9333333373069763,
+         "g": 0.8141241669654846,
+         "b": 0.15686273574829102,
+         "a": 0.0
+        }
+       }
+      ]
+     },
+     "position_easing": 0,
+     "texture": {
+      "uid": "8128bb6c-942c-8a4c-9d85-3e9e9a60ea1d"
+     },
+     "loop": false
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 5243062,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "EnemyMonster",
+     "tag": "Enemy"
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 32
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -8.774713516235352,
+       "y": 0.0,
+       "z": -3.8148860931396486
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [
+      {
+       "id": 5243063
+      }
+     ],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": false,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "866d134d-f74d-574f-9446-6b69fbaac1ef"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "f690511a-9f88-224e-8275-535064772f36"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    },
+    "has_animation_component": true,
+    "animation_component": {
+     "animation": {
+      "uid": "f2a8d620-6ce1-8848-9657-03fe25bb1103"
+     },
+     "auto_play": true,
+     "culling_mode": 0,
+     "apply_root_motion": false,
+     "speed": 1.0
+    },
+    "has_physics_component": true,
+    "physics_component": {
+     "is_using_gravity": false,
+     "is_kinematic": false,
+     "is_sensor": false,
+     "is_autoscaled": true,
+     "mass": 1.0,
+     "include_layers": {
+      "mask": -1
+     },
+     "exclude_layers": {
+      "mask": 128
+     },
+     "freeze_position": {
+      "x": false,
+      "y": true,
+      "z": false
+     },
+     "freeze_rotation": {
+      "x": true,
+      "y": true,
+      "z": true
+     },
+     "material": {
+      "uid": "00000000-0000-0000-0000-000000000000"
+     },
+     "shapes": [
+      {
+       "shape": {
+        "index": 2,
+        "data": {
+         "center": {
+          "x": 0.0,
+          "y": 1.149999976158142,
+          "z": 0.0
+         },
+         "radius": 0.5,
+         "length": 1.0
+        }
+       }
+      }
+     ]
+    },
+    "has_script_component": true,
+    "script_component": {
+     "script_components": [
+      {
+       "type": "Enemy",
+       "maxSpeed": 2.0,
+       "maxAcceleration": 13.0,
+       "slowRadius": 5.0,
+       "arriveRadius": 0.6000000238418579,
+       "rotationSpeed": 180.0,
+       "usePhysicsMovement": true,
+       "target": {
+        "flags": 2,
+        "id": 4294967295
+       },
+       "autoFindPlayer": true,
+       "maxChaseDistance": 0.0,
+       "enemyType": "basic"
+      },
+      {
+       "type": "Health",
+       "maxHealth": 40,
+       "currentHealth": 40,
+       "allowOverheal": false,
+       "destroyOnDeath": true,
+       "destroyDelay": 0.0
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": 5243063,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "RootNode",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": -0.7071067094802856,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 0.7071068286895752
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999999403953552,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243062
+     },
+     "children": [
+      {
+       "id": 5243066
+      },
+      {
+       "id": 5243064
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "id": 5243066,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "root",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243063
+     },
+     "children": [
+      {
+       "id": 2097339
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 0
+    }
+   }
+  },
+  {
+   "id": 2097339,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "pelvis",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 3.0999766739164859e-32,
+       "y": -0.0007635658257640898,
+       "z": 0.6601592302322388
+      },
+      "rotation": {
+       "x": 0.0880134329199791,
+       "y": -0.701607882976532,
+       "z": -0.0880134329199791,
+       "w": 0.701607882976532
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243066
+     },
+     "children": [
+      {
+       "id": 4194413
+      },
+      {
+       "id": 4194416
+      },
+      {
+       "id": 4194419
+      },
+      {
+       "id": 7340089
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 1
+    }
+   }
+  },
+  {
+   "id": 4194413,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "spine_01",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.14028804004192353,
+       "y": 0.006197316572070122,
+       "z": 2.251641213906505e-17
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.14149324595928193,
+       "w": 0.9899393320083618
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 0.9999999403953552,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 2097339
+     },
+     "children": [
+      {
+       "id": 4194415
+      },
+      {
+       "id": 4194414
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 2
+    }
+   }
+  },
+  {
+   "id": 4194415,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "spine_02",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.15357346832752229,
+       "y": -3.6637357959745596e-17,
+       "z": 4.178964100221179e-17
+      },
+      "rotation": {
+       "x": 0.0024123755283653738,
+       "y": 0.04355262219905853,
+       "z": 0.09965893626213074,
+       "w": 0.9940651655197144
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -1.3969838619232178e-9,
+       "y": 1.6880221664905549e-9,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4194413
+     },
+     "children": [
+      {
+       "id": 4194367
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 3
+    }
+   }
+  },
+  {
+   "id": 4194367,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "spine_03",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.14891406893730164,
+       "y": 1.2434497928741313e-16,
+       "z": 4.8846454465522129e-17
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.10330993682146073,
+       "w": 0.9946492314338684
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4194415
+     },
+     "children": [
+      {
+       "id": 4194396
+      },
+      {
+       "id": 4194403
+      },
+      {
+       "id": 4194410
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 4
+    }
+   }
+  },
+  {
+   "id": 4194396,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "neck_01",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.20905116200447083,
+       "y": 1.776356733521132e-16,
+       "z": 1.0606600828566532e-16
+      },
+      "rotation": {
+       "x": 0.04359927028417587,
+       "y": -0.0013244873844087124,
+       "z": -0.2388368397951126,
+       "w": 0.9700795412063599
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999999403953552,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4194367
+     },
+     "children": [
+      {
+       "id": 4194397
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 5
+    }
+   }
+  },
+  {
+   "id": 4194397,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "head",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.30618181824684145,
+       "y": -6.039613317488323e-16,
+       "z": 8.413475032936519e-17
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.06708358973264694,
+       "w": 0.9977473616600037
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4194396
+     },
+     "children": [
+      {
+       "id": 5243061
+      },
+      {
+       "id": 4194381
+      },
+      {
+       "id": 4194382
+      },
+      {
+       "id": 4194383
+      },
+      {
+       "id": 4194395
+      },
+      {
+       "id": 4194385
+      },
+      {
+       "id": 4194373
+      },
+      {
+       "id": 4194400
+      },
+      {
+       "id": 4194398
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 6
+    }
+   }
+  },
+  {
+   "id": 5243061,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "face",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.1146899163722992,
+       "y": -0.11381889134645462,
+       "z": -1.1558125877776492e-16
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": -0.7658092975616455,
+       "w": 0.6430677771568298
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4194397
+     },
+     "children": [
+      {
+       "id": 5243060
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 7
+    }
+   }
+  },
+  {
+   "id": 5243060,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "mouth",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.1039998009800911,
+       "y": -0.006094659212976694,
+       "z": -1.0966216607257226e-16
+      },
+      "rotation": {
+       "x": 0.5415088534355164,
+       "y": -0.4547176659107208,
+       "z": -0.5415088534355164,
+       "w": -0.4547176659107208
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -2.9802322387695315e-8,
+       "y": -2.9353337538395864e-8,
+       "z": -2.464868487095373e-8
+      }
+     },
+     "parent": {
+      "id": 5243061
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 8
+    }
+   }
+  },
+  {
+   "id": 4194381,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Jaw",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.16025885939598084,
+       "y": 0.02083532139658928,
+       "z": 1.5729947769716643e-18
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.7071067094802856,
+       "z": 0.0,
+       "w": 0.7071068286895752
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 1.0,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4194397
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 9
+    }
+   }
+  },
+  {
+   "id": 4194382,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hat_01",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.18918251991271974,
+       "y": 0.004980006255209446,
+       "z": 1.1443253651750028e-16
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.00631275400519371,
+       "w": 0.999980092048645
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4194397
+     },
+     "children": [
+      {
+       "id": 4194391
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 10
+    }
+   }
+  },
+  {
+   "id": 4194391,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hat_02",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.6819025278091431,
+       "y": -0.00860987976193428,
+       "z": 7.840969434354277e-17
+      },
+      "rotation": {
+       "x": 0.004463790915906429,
+       "y": 0.7070927619934082,
+       "z": -0.004463791381567717,
+       "w": 0.7070926427841187
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 7.2417254484702376e-12,
+       "z": -1.1475249639403274e-9
+      }
+     },
+     "parent": {
+      "id": 4194382
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 11
+    }
+   }
+  },
+  {
+   "id": 4194383,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornA_01_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.12041797488927841,
+       "y": 0.004980006255209446,
+       "z": -0.08191205561161041
+      },
+      "rotation": {
+       "x": -0.0013932839501649142,
+       "y": 0.2096453309059143,
+       "z": -0.006498070899397135,
+       "w": 0.9777550101280212
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -3.0247909732494806e-10,
+       "y": 2.9799227974081078e-8,
+       "z": 9.313225746154786e-10
+      }
+     },
+     "parent": {
+      "id": 4194397
+     },
+     "children": [
+      {
+       "id": 4194392
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 12
+    }
+   }
+  },
+  {
+   "id": 4194392,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornA_02_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.675695538520813,
+       "y": -2.8865797581462889e-17,
+       "z": -5.684341759025859e-16
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.5431475043296814,
+       "z": 0.0,
+       "w": 0.839637279510498
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 1.0,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4194383
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 13
+    }
+   }
+  },
+  {
+   "id": 4194395,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornB_01_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.016145382076501848,
+       "y": 0.004980006255209446,
+       "z": -0.2079729586839676
+      },
+      "rotation": {
+       "x": 0.019879600033164026,
+       "y": 0.4099843502044678,
+       "z": -0.0441637858748436,
+       "w": 0.9108058214187622
+      },
+      "scale": {
+       "x": 0.9999998211860657,
+       "y": 0.9999998807907105,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 7.450580596923828e-9,
+       "y": -1.6763806343078614e-8,
+       "z": -1.4901162970204497e-8
+      }
+     },
+     "parent": {
+      "id": 4194397
+     },
+     "children": [
+      {
+       "id": 4194384
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 14
+    }
+   }
+  },
+  {
+   "id": 4194384,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornB_02_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.2182939499616623,
+       "y": -7.105427198782324e-17,
+       "z": 1.4210853868169057e-15
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": -0.43467530608177187,
+       "z": 0.0,
+       "w": 0.9005873799324036
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4194395
+     },
+     "children": [
+      {
+       "id": 4194393
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 15
+    }
+   }
+  },
+  {
+   "id": 4194393,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornB_03_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.2914453148841858,
+       "y": 8.946976189430633e-13,
+       "z": -2.1316280802253586e-15
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.7257408499717712,
+       "z": 0.0,
+       "w": 0.6879681944847107
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4194384
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 16
+    }
+   }
+  },
+  {
+   "id": 4194385,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornC_01_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.06945151835680008,
+       "y": 0.004980006255209446,
+       "z": -0.23598650097846986
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.47399386763572695,
+       "z": 0.0,
+       "w": 0.8805281519889832
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4194397
+     },
+     "children": [
+      {
+       "id": 4194394
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 17
+    }
+   }
+  },
+  {
+   "id": 4194394,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornC_02_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.3561088442802429,
+       "y": 2.83989913654423e-31,
+       "z": -1.4210854397564649e-16
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.28746315836906435,
+       "z": 0.0,
+       "w": 0.957791805267334
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4194385
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 18
+    }
+   }
+  },
+  {
+   "id": 4194373,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornA_01_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.12041652202606201,
+       "y": 0.004980006255209446,
+       "z": 0.0819120928645134
+      },
+      "rotation": {
+       "x": -0.20964524149894715,
+       "y": -0.0013932777801528574,
+       "z": 0.9777549505233765,
+       "w": 0.006498096976429224
+      },
+      "scale": {
+       "x": 1.0000001192092896,
+       "y": 1.0000001192092896,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -4.353548632707316e-10,
+       "y": 8.971952070169209e-8,
+       "z": 9.313224635931761e-10
+      }
+     },
+     "parent": {
+      "id": 4194397
+     },
+     "children": [
+      {
+       "id": 4194376
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 19
+    }
+   }
+  },
+  {
+   "id": 4194376,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornA_02_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.6756924390792847,
+       "y": 4.6456332114530599e-8,
+       "z": 0.0000010327850077374024
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.5431475043296814,
+       "z": 0.0,
+       "w": 0.839637279510498
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 1.0,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4194373
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 20
+    }
+   }
+  },
+  {
+   "id": 4194400,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornC_01_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.06945347040891648,
+       "y": 0.004980006255209446,
+       "z": 0.23598599433898927
+      },
+      "rotation": {
+       "x": -0.47399386763572695,
+       "y": -2.071893057120633e-8,
+       "z": 0.8805281519889832,
+       "w": -3.848910523629456e-8
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 3.5130022331343777e-15,
+       "z": -3.552713678800501e-15
+      }
+     },
+     "parent": {
+      "id": 4194397
+     },
+     "children": [
+      {
+       "id": 4194399
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 21
+    }
+   }
+  },
+  {
+   "id": 4194399,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornC_02_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.35611197352409365,
+       "y": 3.100586933609273e-17,
+       "z": -0.000004239204372424865
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.28746315836906435,
+       "z": 0.0,
+       "w": 0.957791805267334
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4194400
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 22
+    }
+   }
+  },
+  {
+   "id": 4194398,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornB_01_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.016146527603268625,
+       "y": 0.004980006255209446,
+       "z": 0.20797300338745118
+      },
+      "rotation": {
+       "x": -0.4099843502044678,
+       "y": 0.019879618659615518,
+       "z": 0.9108058214187622,
+       "w": 0.044163819402456287
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 1.0000001192092896,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -7.450580596923828e-9,
+       "y": 1.1082738637924194e-7,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4194397
+     },
+     "children": [
+      {
+       "id": 4194402
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 23
+    }
+   }
+  },
+  {
+   "id": 4194402,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornB_02_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.21829533576965333,
+       "y": -2.8226679660292577e-7,
+       "z": -0.00000197259078049683
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": -0.43467530608177187,
+       "z": 0.0,
+       "w": 0.9005873799324036
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4194398
+     },
+     "children": [
+      {
+       "id": 4194401
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 24
+    }
+   }
+  },
+  {
+   "id": 4194401,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornB_03_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.2914411425590515,
+       "y": 4.336579308983346e-7,
+       "z": -1.432652396715639e-7
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.7257408499717712,
+       "z": 0.0,
+       "w": 0.6879681944847107
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4194402
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 25
+    }
+   }
+  },
+  {
+   "id": 4194403,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "clavicle_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.06351194530725479,
+       "y": 0.030065516009926797,
+       "z": -0.20842351019382478
+      },
+      "rotation": {
+       "x": 0.03173622116446495,
+       "y": 0.7219832539558411,
+       "z": -0.1561218649148941,
+       "w": 0.6733193397521973
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999998807907105,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": -2.980232594040899e-8,
+       "y": 8.568168397005138e-8,
+       "z": 1.4901162970204497e-8
+      }
+     },
+     "parent": {
+      "id": 4194367
+     },
+     "children": [
+      {
+       "id": 4194404
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 26
+    }
+   }
+  },
+  {
+   "id": 4194404,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "upperarm_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.15415950119495393,
+       "y": -2.664535100281698e-16,
+       "z": -2.1316280802253586e-15
+      },
+      "rotation": {
+       "x": -0.12648573517799378,
+       "y": 0.293862909078598,
+       "z": -0.19685202836990357,
+       "w": 0.926766037940979
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": -7.450581485102248e-9,
+       "y": -3.725290742551124e-9,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4194403
+     },
+     "children": [
+      {
+       "id": 4194405
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 27
+    }
+   }
+  },
+  {
+   "id": 4194405,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "lowerarm_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.3589194715023041,
+       "y": -6.661337998858429e-18,
+       "z": -4.2632563192693947e-16
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": -0.2960919439792633,
+       "w": 0.9551594257354736
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 0.9999999403953552,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4194404
+     },
+     "children": [
+      {
+       "id": 4194409
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 28
+    }
+   }
+  },
+  {
+   "id": 4194409,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hand_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.4093039631843567,
+       "y": -2.8421708795129299e-16,
+       "z": 2.2737367036103439e-15
+      },
+      "rotation": {
+       "x": -0.6097530126571655,
+       "y": 0.061238884925842288,
+       "z": -0.06104069575667381,
+       "w": 0.7878611087799072
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -1.4901161193847657e-8,
+       "y": -1.4901161193847657e-8,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4194405
+     },
+     "children": [
+      {
+       "id": 4194374
+      },
+      {
+       "id": 4194406
+      },
+      {
+       "id": 4194407
+      },
+      {
+       "id": 4194408
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 29
+    }
+   }
+  },
+  {
+   "id": 4194374,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "drill_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.1100829467177391,
+       "y": -0.009449473582208157,
+       "z": 0.0006042766035534442
+      },
+      "rotation": {
+       "x": 0.7058098912239075,
+       "y": 0.0022091600112617018,
+       "z": -0.00031847922946326435,
+       "w": 0.7083978056907654
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -3.864988684654236e-8,
+       "y": -4.656612873077393e-10,
+       "z": -4.029061528854072e-10
+      }
+     },
+     "parent": {
+      "id": 4194409
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 30
+    }
+   }
+  },
+  {
+   "id": 4194406,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "saw_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.13957767188549043,
+       "y": -0.002243037335574627,
+       "z": 0.0004728826170321554
+      },
+      "rotation": {
+       "x": 0.7058098912239075,
+       "y": 0.0022091600112617018,
+       "z": -0.00031847922946326435,
+       "w": 0.7083978056907654
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -3.864988684654236e-8,
+       "y": -4.656612873077393e-10,
+       "z": -4.029061528854072e-10
+      }
+     },
+     "parent": {
+      "id": 4194409
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 31
+    }
+   }
+  },
+  {
+   "id": 4194407,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "upperJaw_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.24131815135478974,
+       "y": -0.13323141634464265,
+       "z": 0.0005894331261515617
+      },
+      "rotation": {
+       "x": 0.7058098912239075,
+       "y": 0.0022091600112617018,
+       "z": -0.00031847922946326435,
+       "w": 0.7083978056907654
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -3.864988684654236e-8,
+       "y": -4.656612873077393e-10,
+       "z": -4.029061528854072e-10
+      }
+     },
+     "parent": {
+      "id": 4194409
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 32
+    }
+   }
+  },
+  {
+   "id": 4194408,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "LowerJaw_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.2783709764480591,
+       "y": 0.14700452983379365,
+       "z": -0.0005698422319255769
+      },
+      "rotation": {
+       "x": 0.7058098912239075,
+       "y": 0.0022091600112617018,
+       "z": -0.00031847922946326435,
+       "w": 0.7083978056907654
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -3.864988684654236e-8,
+       "y": -4.656612873077393e-10,
+       "z": -4.029061528854072e-10
+      }
+     },
+     "parent": {
+      "id": 4194409
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 33
+    }
+   }
+  },
+  {
+   "id": 4194410,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "clavicle_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.06351175904273987,
+       "y": 0.030065547674894334,
+       "z": 0.20842398703098298
+      },
+      "rotation": {
+       "x": 0.7219833135604858,
+       "y": -0.031736213713884357,
+       "z": -0.6733192801475525,
+       "w": -0.1561218798160553
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": -2.980232594040899e-8,
+       "y": 4.470348713425665e-8,
+       "z": -1.4901161193847657e-8
+      }
+     },
+     "parent": {
+      "id": 4194367
+     },
+     "children": [
+      {
+       "id": 4194411
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 34
+    }
+   }
+  },
+  {
+   "id": 4194411,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "upperarm_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.15415917336940766,
+       "y": 4.352324012302233e-8,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": -0.18024423718452454,
+       "y": 0.3568649888038635,
+       "z": -0.08212504535913468,
+       "w": 0.9129155874252319
+      },
+      "scale": {
+       "x": 0.9999998807907105,
+       "y": 1.0,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": -1.4901162970204497e-8,
+       "y": 2.2351743567128325e-8,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4194410
+     },
+     "children": [
+      {
+       "id": 4194412
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 35
+    }
+   }
+  },
+  {
+   "id": 4194412,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "lowerarm_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.35891908407211306,
+       "y": 1.554312241092664e-17,
+       "z": 1.4210854397564649e-16
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": -0.43243420124053957,
+       "w": 0.9016655087471008
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4194411
+     },
+     "children": [
+      {
+       "id": 4194366
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 36
+    }
+   }
+  },
+  {
+   "id": 4194366,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hand_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.40930742025375368,
+       "y": 4.440891999238953e-18,
+       "z": -7.105427357601002e-15
+      },
+      "rotation": {
+       "x": -0.6373770236968994,
+       "y": 0.0268490482121706,
+       "z": -0.0005240693571977317,
+       "w": 0.770084023475647
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999999403953552,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": -1.862645371275562e-9
+      }
+     },
+     "parent": {
+      "id": 4194412
+     },
+     "children": [
+      {
+       "id": 4194375
+      },
+      {
+       "id": 4194372
+      },
+      {
+       "id": 4194370
+      },
+      {
+       "id": 4194371
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 37
+    }
+   }
+  },
+  {
+   "id": 4194375,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "drill_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.11007845401763916,
+       "y": 0.009448838420212269,
+       "z": -0.0006042898749001324
+      },
+      "rotation": {
+       "x": 0.7058098912239075,
+       "y": 0.0022091600112617018,
+       "z": -0.00031847922946326435,
+       "w": 0.7083978056907654
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -3.864988684654236e-8,
+       "y": -4.656612873077393e-10,
+       "z": -4.029061528854072e-10
+      }
+     },
+     "parent": {
+      "id": 4194366
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 38
+    }
+   }
+  },
+  {
+   "id": 4194372,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "saw_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.13957905769348145,
+       "y": 0.00224217283539474,
+       "z": -0.0004728740605060011
+      },
+      "rotation": {
+       "x": 0.7058098912239075,
+       "y": 0.0022091600112617018,
+       "z": -0.00031847922946326435,
+       "w": 0.7083978056907654
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -3.864988684654236e-8,
+       "y": -4.656612873077393e-10,
+       "z": -4.029061528854072e-10
+      }
+     },
+     "parent": {
+      "id": 4194366
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 39
+    }
+   }
+  },
+  {
+   "id": 4194370,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "upperJaw_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.24130988121032716,
+       "y": 0.13323241472244264,
+       "z": -0.000589465897064656
+      },
+      "rotation": {
+       "x": 0.7058098912239075,
+       "y": 0.0022091600112617018,
+       "z": -0.00031847922946326435,
+       "w": 0.7083978056907654
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -3.864988684654236e-8,
+       "y": -4.656612873077393e-10,
+       "z": -4.029061528854072e-10
+      }
+     },
+     "parent": {
+      "id": 4194366
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 40
+    }
+   }
+  },
+  {
+   "id": 4194371,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "LowerJaw_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.27836862206459048,
+       "y": -0.14700455963611604,
+       "z": 0.0005698343156836927
+      },
+      "rotation": {
+       "x": 0.7058098912239075,
+       "y": 0.0022091600112617018,
+       "z": -0.00031847922946326435,
+       "w": 0.7083978056907654
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -3.864988684654236e-8,
+       "y": -4.656612873077393e-10,
+       "z": -4.029061528854072e-10
+      }
+     },
+     "parent": {
+      "id": 4194366
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 41
+    }
+   }
+  },
+  {
+   "id": 4194414,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "FrontBelly",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0924404114484787,
+       "y": -0.2748403549194336,
+       "z": -2.32962409628886e-16
+      },
+      "rotation": {
+       "x": -0.01576247066259384,
+       "y": 0.7069311141967773,
+       "z": 0.01576247066259384,
+       "w": 0.7069310545921326
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -3.725290298461914e-9,
+       "y": 3.544711746350515e-11,
+       "z": 1.5899479510750326e-9
+      }
+     },
+     "parent": {
+      "id": 4194413
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 42
+    }
+   }
+  },
+  {
+   "id": 4194416,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "thigh_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.022657401859760286,
+       "y": -0.0018067064229398966,
+       "z": -0.17085041105747224
+      },
+      "rotation": {
+       "x": 0.11307594925165177,
+       "y": -0.09652359038591385,
+       "z": -0.19748453795909882,
+       "w": 0.9689670205116272
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 0.9999999403953552,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 1.4901161193847657e-8,
+       "y": 7.450580596923828e-9,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 2097339
+     },
+     "children": [
+      {
+       "id": 4194417
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 43
+    }
+   }
+  },
+  {
+   "id": 4194417,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "calf_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.2537067234516144,
+       "y": -0.010923627763986588,
+       "z": 0.0016361565794795752
+      },
+      "rotation": {
+       "x": -0.05494113266468048,
+       "y": -0.0400070920586586,
+       "z": -0.4500587284564972,
+       "w": 0.8904089331626892
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -7.450580596923828e-9,
+       "y": -7.450580596923828e-9,
+       "z": 2.9802322387695315e-8
+      }
+     },
+     "parent": {
+      "id": 4194416
+     },
+     "children": [
+      {
+       "id": 4194418
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 44
+    }
+   }
+  },
+  {
+   "id": 4194418,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "foot_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.1534036248922348,
+       "y": 0.017944220453500749,
+       "z": -0.001143369940109551
+      },
+      "rotation": {
+       "x": -0.11379261314868927,
+       "y": 0.04078901186585426,
+       "z": -0.08157671242952347,
+       "w": 0.9893093109130859
+      },
+      "scale": {
+       "x": 1.0000001192092896,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 1.4901161193847657e-8,
+       "y": 0.0,
+       "z": -1.4901161193847657e-8
+      }
+     },
+     "parent": {
+      "id": 4194417
+     },
+     "children": [
+      {
+       "id": 4194368
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 45
+    }
+   }
+  },
+  {
+   "id": 4194368,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "ball_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.01865966245532036,
+       "y": -0.08321955800056458,
+       "z": 0.0010733596282079816
+      },
+      "rotation": {
+       "x": -0.018653172999620439,
+       "y": 0.018653172999620439,
+       "z": -0.7068607211112976,
+       "w": 0.7068607211112976
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999999403953552,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 3.725290742551124e-9,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4194418
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 46
+    }
+   }
+  },
+  {
+   "id": 4194419,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "tail_01",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.03035246580839157,
+       "y": 0.2541774809360504,
+       "z": 2.7145378374382838e-16
+      },
+      "rotation": {
+       "x": 0.30240845680236819,
+       "y": 0.9531785249710083,
+       "z": -4.166475875422293e-8,
+       "w": -1.3218696359729165e-8
+      },
+      "scale": {
+       "x": 0.9999998807907105,
+       "y": 1.0,
+       "z": 0.9999998807907105
+      },
+      "skew": {
+       "x": -1.0658142730467398e-14,
+       "y": -7.105428204633949e-15,
+       "z": 2.9802322387695315e-8
+      }
+     },
+     "parent": {
+      "id": 2097339
+     },
+     "children": [
+      {
+       "id": 4194363
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 47
+    }
+   }
+  },
+  {
+   "id": 4194363,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "tail_02",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.28033706545829775,
+       "y": 4.973799171496525e-16,
+       "z": -9.895422701628961e-17
+      },
+      "rotation": {
+       "x": 0.016851335763931276,
+       "y": -0.17909903824329377,
+       "z": 0.0921475887298584,
+       "w": 0.9793612360954285
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": -5.21540641784668e-8,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4194419
+     },
+     "children": [
+      {
+       "id": 4194365
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 48
+    }
+   }
+  },
+  {
+   "id": 4194365,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "tail_03",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.3089900314807892,
+       "y": 7.105427198782324e-17,
+       "z": -7.424184225679839e-17
+      },
+      "rotation": {
+       "x": 0.01772594079375267,
+       "y": -0.17901462316513062,
+       "z": 0.09693016111850739,
+       "w": 0.9788995385169983
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": -2.60770320892334e-8,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4194363
+     },
+     "children": [
+      {
+       "id": 4194369
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 49
+    }
+   }
+  },
+  {
+   "id": 4194369,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "tail_04",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.3067770302295685,
+       "y": 0.011362112127244473,
+       "z": -3.952183932611396e-17
+      },
+      "rotation": {
+       "x": 0.012154847383499146,
+       "y": -0.1794789731502533,
+       "z": 0.06646594405174256,
+       "w": 0.9814387559890747
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -7.450580596923828e-9,
+       "y": -2.60770320892334e-8,
+       "z": 7.450580596923828e-9
+      }
+     },
+     "parent": {
+      "id": 4194365
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 50
+    }
+   }
+  },
+  {
+   "id": 7340089,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "thigh_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.02265775203704834,
+       "y": -0.0018067972268909217,
+       "z": 0.1708499938249588
+      },
+      "rotation": {
+       "x": -0.012739150784909726,
+       "y": -0.042607977986335757,
+       "z": -0.8104247450828552,
+       "w": 0.5841524004936218
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": -7.450581485102248e-9,
+       "y": 7.450581485102248e-9,
+       "z": 5.960464477539063e-8
+      }
+     },
+     "parent": {
+      "id": 2097339
+     },
+     "children": [
+      {
+       "id": 39846130
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 51
+    }
+   }
+  },
+  {
+   "id": 39846130,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "calf_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.2537067234516144,
+       "y": 0.010923714376986027,
+       "z": -0.0016354380641132594
+      },
+      "rotation": {
+       "x": -0.05366097390651703,
+       "y": -0.020223261788487436,
+       "z": -0.23188497126102448,
+       "w": 0.9710514545440674
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 0.9999998807907105,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -7.450580596923828e-9,
+       "y": 0.0,
+       "z": 2.980232594040899e-8
+      }
+     },
+     "parent": {
+      "id": 7340089
+     },
+     "children": [
+      {
+       "id": 4194362
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 52
+    }
+   }
+  },
+  {
+   "id": 4194362,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "foot_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.15340334177017213,
+       "y": -0.017944257706403734,
+       "z": 0.0011432310566306115
+      },
+      "rotation": {
+       "x": 0.07525728642940521,
+       "y": -0.015277557075023651,
+       "z": 0.003998052328824997,
+       "w": 0.9970390796661377
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999998807907105,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 1.4901162970204497e-8,
+       "y": -1.5716069556859225e-9,
+       "z": -4.656613428188905e-10
+      }
+     },
+     "parent": {
+      "id": 39846130
+     },
+     "children": [
+      {
+       "id": 4194364
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 53
+    }
+   }
+  },
+  {
+   "id": 4194364,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "ball_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.018659645691514016,
+       "y": 0.08321960270404816,
+       "z": -0.0010736184194684029
+      },
+      "rotation": {
+       "x": -0.018653172999620439,
+       "y": 0.018653172999620439,
+       "z": -0.7068607211112976,
+       "w": 0.7068607211112976
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999999403953552,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 3.725290742551124e-9,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4194362
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 54
+    }
+   }
+  },
+  {
+   "id": 5243064,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Bodies",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243063
+     },
+     "children": [
+      {
+       "id": 5243065
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "id": 5243065,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "MainBody01",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243064
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      0
+     ]
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 5242997,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "DefaultCharacterMesh_PBR02",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -5.528513431549072,
+       "y": 0.0,
+       "z": -1.9522607326507569
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [
+      {
+       "id": 5242998
+      }
+     ],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": false,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "c03c0eca-0066-174f-ac3b-0f82a6b79c7d"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "74b26160-dae8-dd44-b3e3-c5a3bbfb8503"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    },
+    "has_animation_component": true,
+    "animation_component": {
+     "animation": {
+      "uid": "f2a8d620-6ce1-8848-9657-03fe25bb1103"
+     },
+     "auto_play": true,
+     "culling_mode": 0,
+     "apply_root_motion": false,
+     "speed": 1.0
+    }
+   }
+  },
+  {
+   "id": 5242998,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "RootNode",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": -0.7071067094802856,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 0.7071068286895752
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999999403953552,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5242997
+     },
+     "children": [
+      {
+       "id": 5242999
+      },
+      {
+       "id": 5243000
+      },
+      {
+       "id": 5243001
+      },
+      {
+       "id": 5243002
+      },
+      {
+       "id": 5243003
+      },
+      {
+       "id": 5243004
+      },
+      {
+       "id": 5243005
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "id": 5242999,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "root",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5242998
+     },
+     "children": [
+      {
+       "id": 5243006
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 0
+    }
+   }
+  },
+  {
+   "id": 5243006,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "pelvis",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 3.0999766739164859e-32,
+       "y": -0.0007635658257640898,
+       "z": 0.46243998408317568
+      },
+      "rotation": {
+       "x": 0.0880134329199791,
+       "y": -0.701607882976532,
+       "z": -0.0880134329199791,
+       "w": 0.701607882976532
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5242999
+     },
+     "children": [
+      {
+       "id": 5243007
+      },
+      {
+       "id": 5243008
+      },
+      {
+       "id": 5243009
+      },
+      {
+       "id": 5243010
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 1
+    }
+   }
+  },
+  {
+   "id": 5243007,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "spine_01",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.14028804004192353,
+       "y": 0.006197316572070122,
+       "z": 2.251641213906505e-17
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.10232072323560715,
+       "w": 0.9947514533996582
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243006
+     },
+     "children": [
+      {
+       "id": 5243011
+      },
+      {
+       "id": 5243012
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 2
+    }
+   }
+  },
+  {
+   "id": 5243011,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "spine_02",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.15357346832752229,
+       "y": -3.6637357959745596e-17,
+       "z": 4.178964100221179e-17
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.07653319835662842,
+       "w": 0.9970670342445374
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243007
+     },
+     "children": [
+      {
+       "id": 5243013
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 3
+    }
+   }
+  },
+  {
+   "id": 5243013,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "spine_03",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.14891406893730164,
+       "y": 1.2434497928741313e-16,
+       "z": 4.8846454465522129e-17
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.08148055523633957,
+       "w": 0.9966749548912048
+      },
+      "scale": {
+       "x": 0.9999998807907105,
+       "y": 0.9999998807907105,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243011
+     },
+     "children": [
+      {
+       "id": 5243014
+      },
+      {
+       "id": 5243015
+      },
+      {
+       "id": 5243016
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 4
+    }
+   }
+  },
+  {
+   "id": 5243014,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "neck_01",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.20905116200447083,
+       "y": 1.776356733521132e-16,
+       "z": 1.0606600828566532e-16
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": -0.20162799954414369,
+       "w": 0.979462206363678
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 0.9999999403953552,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243013
+     },
+     "children": [
+      {
+       "id": 5243017
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 5
+    }
+   }
+  },
+  {
+   "id": 5243017,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "head",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.30618181824684145,
+       "y": -6.039613317488323e-16,
+       "z": 8.413475032936519e-17
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.06708358973264694,
+       "w": 0.9977473616600037
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243014
+     },
+     "children": [
+      {
+       "id": 5243018
+      },
+      {
+       "id": 5243019
+      },
+      {
+       "id": 5243020
+      },
+      {
+       "id": 5243021
+      },
+      {
+       "id": 5243022
+      },
+      {
+       "id": 5243023
+      },
+      {
+       "id": 5243024
+      },
+      {
+       "id": 5243025
+      },
+      {
+       "id": 5243026
+      },
+      {
+       "id": 5243027
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 6
+    }
+   }
+  },
+  {
+   "id": 5243018,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "face",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.1146899163722992,
+       "y": -0.11381889134645462,
+       "z": -1.1558125877776492e-16
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": -0.7658092975616455,
+       "w": 0.6430677771568298
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243017
+     },
+     "children": [
+      {
+       "id": 5243028
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 7
+    }
+   }
+  },
+  {
+   "id": 5243028,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "mouth",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.1039998009800911,
+       "y": -0.006094659212976694,
+       "z": -1.0966216607257226e-16
+      },
+      "rotation": {
+       "x": 0.5415088534355164,
+       "y": -0.4547176659107208,
+       "z": -0.5415088534355164,
+       "w": -0.4547176659107208
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -2.9802322387695315e-8,
+       "y": -2.9353337538395864e-8,
+       "z": -2.464868487095373e-8
+      }
+     },
+     "parent": {
+      "id": 5243018
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 8
+    }
+   }
+  },
+  {
+   "id": 5243019,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Jaw",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.16025885939598084,
+       "y": 0.02083532139658928,
+       "z": 1.5729947769716643e-18
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.7071067094802856,
+       "z": 0.0,
+       "w": 0.7071068286895752
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 1.0,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243017
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 9
+    }
+   }
+  },
+  {
+   "id": 5243020,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hat_01",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.18918251991271974,
+       "y": 0.004980006255209446,
+       "z": 1.1443253651750028e-16
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.00631275400519371,
+       "w": 0.999980092048645
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243017
+     },
+     "children": [
+      {
+       "id": 5243029
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 10
+    }
+   }
+  },
+  {
+   "id": 5243029,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hat_02",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.6819025278091431,
+       "y": -0.00860987976193428,
+       "z": 7.840969434354277e-17
+      },
+      "rotation": {
+       "x": 0.004463790915906429,
+       "y": 0.7070927619934082,
+       "z": -0.004463791381567717,
+       "w": 0.7070926427841187
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 7.2417254484702376e-12,
+       "z": -1.1475249639403274e-9
+      }
+     },
+     "parent": {
+      "id": 5243020
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 11
+    }
+   }
+  },
+  {
+   "id": 5243021,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornA_01_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.12041797488927841,
+       "y": 0.004980006255209446,
+       "z": -0.08191205561161041
+      },
+      "rotation": {
+       "x": -0.0013932839501649142,
+       "y": 0.2096453309059143,
+       "z": -0.006498070899397135,
+       "w": 0.9777550101280212
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -3.0247909732494806e-10,
+       "y": 2.9799227974081078e-8,
+       "z": 9.313225746154786e-10
+      }
+     },
+     "parent": {
+      "id": 5243017
+     },
+     "children": [
+      {
+       "id": 5243030
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 12
+    }
+   }
+  },
+  {
+   "id": 5243030,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornA_02_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.675695538520813,
+       "y": -2.8865797581462889e-17,
+       "z": -5.684341759025859e-16
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.5431475043296814,
+       "z": 0.0,
+       "w": 0.839637279510498
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 1.0,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243021
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 13
+    }
+   }
+  },
+  {
+   "id": 5243022,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornB_01_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.016145382076501848,
+       "y": 0.004980006255209446,
+       "z": -0.2079729586839676
+      },
+      "rotation": {
+       "x": 0.019879600033164026,
+       "y": 0.4099843502044678,
+       "z": -0.0441637858748436,
+       "w": 0.9108058214187622
+      },
+      "scale": {
+       "x": 0.9999998211860657,
+       "y": 0.9999998807907105,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 7.450580596923828e-9,
+       "y": -1.6763806343078614e-8,
+       "z": -1.4901162970204497e-8
+      }
+     },
+     "parent": {
+      "id": 5243017
+     },
+     "children": [
+      {
+       "id": 5243031
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 14
+    }
+   }
+  },
+  {
+   "id": 5243031,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornB_02_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.2182939499616623,
+       "y": -7.105427198782324e-17,
+       "z": 1.4210853868169057e-15
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": -0.43467530608177187,
+       "z": 0.0,
+       "w": 0.9005873799324036
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243022
+     },
+     "children": [
+      {
+       "id": 5243032
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 15
+    }
+   }
+  },
+  {
+   "id": 5243032,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornB_03_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.2914453148841858,
+       "y": 8.946976189430633e-13,
+       "z": -2.1316280802253586e-15
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.7257408499717712,
+       "z": 0.0,
+       "w": 0.6879681944847107
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243031
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 16
+    }
+   }
+  },
+  {
+   "id": 5243023,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornC_01_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.06945151835680008,
+       "y": 0.004980006255209446,
+       "z": -0.23598650097846986
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.47399386763572695,
+       "z": 0.0,
+       "w": 0.8805281519889832
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243017
+     },
+     "children": [
+      {
+       "id": 5243033
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 17
+    }
+   }
+  },
+  {
+   "id": 5243033,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornC_02_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.3561088442802429,
+       "y": 2.83989913654423e-31,
+       "z": -1.4210854397564649e-16
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.28746315836906435,
+       "z": 0.0,
+       "w": 0.957791805267334
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243023
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 18
+    }
+   }
+  },
+  {
+   "id": 5243024,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornA_01_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.12041652202606201,
+       "y": 0.004980006255209446,
+       "z": 0.0819120928645134
+      },
+      "rotation": {
+       "x": -0.20964524149894715,
+       "y": -0.0013932777801528574,
+       "z": 0.9777549505233765,
+       "w": 0.006498096976429224
+      },
+      "scale": {
+       "x": 1.0000001192092896,
+       "y": 1.0000001192092896,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -4.353548632707316e-10,
+       "y": 8.971952070169209e-8,
+       "z": 9.313224635931761e-10
+      }
+     },
+     "parent": {
+      "id": 5243017
+     },
+     "children": [
+      {
+       "id": 5243034
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 19
+    }
+   }
+  },
+  {
+   "id": 5243034,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornA_02_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.6756924390792847,
+       "y": 4.6456332114530599e-8,
+       "z": 0.0000010327850077374024
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.5431475043296814,
+       "z": 0.0,
+       "w": 0.839637279510498
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 1.0,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243024
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 20
+    }
+   }
+  },
+  {
+   "id": 5243025,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornC_01_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.06945347040891648,
+       "y": 0.004980006255209446,
+       "z": 0.23598599433898927
+      },
+      "rotation": {
+       "x": -0.47399386763572695,
+       "y": -2.071893057120633e-8,
+       "z": 0.8805281519889832,
+       "w": -3.848910523629456e-8
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 3.5130022331343777e-15,
+       "z": -3.552713678800501e-15
+      }
+     },
+     "parent": {
+      "id": 5243017
+     },
+     "children": [
+      {
+       "id": 5243035
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 21
+    }
+   }
+  },
+  {
+   "id": 5243035,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornC_02_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.35611197352409365,
+       "y": 3.100586933609273e-17,
+       "z": -0.000004239204372424865
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.28746315836906435,
+       "z": 0.0,
+       "w": 0.957791805267334
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243025
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 22
+    }
+   }
+  },
+  {
+   "id": 5243026,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornB_01_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.016146527603268625,
+       "y": 0.004980006255209446,
+       "z": 0.20797300338745118
+      },
+      "rotation": {
+       "x": -0.4099843502044678,
+       "y": 0.019879618659615518,
+       "z": 0.9108058214187622,
+       "w": 0.044163819402456287
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 1.0000001192092896,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -7.450580596923828e-9,
+       "y": 1.1082738637924194e-7,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243017
+     },
+     "children": [
+      {
+       "id": 5243036
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 23
+    }
+   }
+  },
+  {
+   "id": 5243036,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornB_02_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.21829533576965333,
+       "y": -2.8226679660292577e-7,
+       "z": -0.00000197259078049683
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": -0.43467530608177187,
+       "z": 0.0,
+       "w": 0.9005873799324036
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243026
+     },
+     "children": [
+      {
+       "id": 5243037
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 24
+    }
+   }
+  },
+  {
+   "id": 5243037,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornB_03_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.2914411425590515,
+       "y": 4.336579308983346e-7,
+       "z": -1.432652396715639e-7
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.7257408499717712,
+       "z": 0.0,
+       "w": 0.6879681944847107
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243036
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 25
+    }
+   }
+  },
+  {
+   "id": 5243027,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Hat16",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243017
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "id": 5243015,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "clavicle_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.06351194530725479,
+       "y": 0.030065516009926797,
+       "z": -0.20842351019382478
+      },
+      "rotation": {
+       "x": 0.03173622116446495,
+       "y": 0.7219832539558411,
+       "z": -0.1561218649148941,
+       "w": 0.6733193397521973
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999998807907105,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": -2.980232594040899e-8,
+       "y": 8.568168397005138e-8,
+       "z": 1.4901162970204497e-8
+      }
+     },
+     "parent": {
+      "id": 5243013
+     },
+     "children": [
+      {
+       "id": 5243038
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 26
+    }
+   }
+  },
+  {
+   "id": 5243038,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "upperarm_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.15415950119495393,
+       "y": -2.664535100281698e-16,
+       "z": -2.1316280802253586e-15
+      },
+      "rotation": {
+       "x": 0.0015542248729616404,
+       "y": -0.022218244150280954,
+       "z": 0.11379964649677277,
+       "w": 0.9932540655136108
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 9.31322685637781e-10,
+       "y": -1.7462299384263247e-9,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243015
+     },
+     "children": [
+      {
+       "id": 5243039
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 27
+    }
+   }
+  },
+  {
+   "id": 5243039,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "lowerarm_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.3589194715023041,
+       "y": -6.661337998858429e-18,
+       "z": -4.2632563192693947e-16
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": -0.03987670689821243,
+       "w": 0.9992046356201172
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243038
+     },
+     "children": [
+      {
+       "id": 5243040
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 28
+    }
+   }
+  },
+  {
+   "id": 5243040,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hand_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.4093039631843567,
+       "y": -2.8421708795129299e-16,
+       "z": 2.2737367036103439e-15
+      },
+      "rotation": {
+       "x": -0.7056592702865601,
+       "y": -0.014749781228601933,
+       "z": 0.012905380688607693,
+       "w": 0.7082802653312683
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 2.8638169169425966e-8,
+       "y": -3.725290298461914e-9,
+       "z": -2.3137545213103296e-9
+      }
+     },
+     "parent": {
+      "id": 5243039
+     },
+     "children": [
+      {
+       "id": 5243041
+      },
+      {
+       "id": 5243042
+      },
+      {
+       "id": 5243043
+      },
+      {
+       "id": 5243044
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 29
+    }
+   }
+  },
+  {
+   "id": 5243041,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "drill_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.1100829467177391,
+       "y": -0.009449473582208157,
+       "z": 0.0006042766035534442
+      },
+      "rotation": {
+       "x": 0.7058098912239075,
+       "y": 0.0022091600112617018,
+       "z": -0.00031847922946326435,
+       "w": 0.7083978056907654
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -3.864988684654236e-8,
+       "y": -4.656612873077393e-10,
+       "z": -4.029061528854072e-10
+      }
+     },
+     "parent": {
+      "id": 5243040
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 30
+    }
+   }
+  },
+  {
+   "id": 5243042,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "saw_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.13957767188549043,
+       "y": -0.002243037335574627,
+       "z": 0.0004728826170321554
+      },
+      "rotation": {
+       "x": 0.7058098912239075,
+       "y": 0.0022091600112617018,
+       "z": -0.00031847922946326435,
+       "w": 0.7083978056907654
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -3.864988684654236e-8,
+       "y": -4.656612873077393e-10,
+       "z": -4.029061528854072e-10
+      }
+     },
+     "parent": {
+      "id": 5243040
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 31
+    }
+   }
+  },
+  {
+   "id": 5243043,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "upperJaw_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.24131815135478974,
+       "y": -0.13323141634464265,
+       "z": 0.0005894331261515617
+      },
+      "rotation": {
+       "x": 0.7058098912239075,
+       "y": 0.0022091600112617018,
+       "z": -0.00031847922946326435,
+       "w": 0.7083978056907654
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -3.864988684654236e-8,
+       "y": -4.656612873077393e-10,
+       "z": -4.029061528854072e-10
+      }
+     },
+     "parent": {
+      "id": 5243040
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 32
+    }
+   }
+  },
+  {
+   "id": 5243044,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "LowerJaw_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.2783709764480591,
+       "y": 0.14700452983379365,
+       "z": -0.0005698422319255769
+      },
+      "rotation": {
+       "x": 0.7058098912239075,
+       "y": 0.0022091600112617018,
+       "z": -0.00031847922946326435,
+       "w": 0.7083978056907654
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -3.864988684654236e-8,
+       "y": -4.656612873077393e-10,
+       "z": -4.029061528854072e-10
+      }
+     },
+     "parent": {
+      "id": 5243040
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 33
+    }
+   }
+  },
+  {
+   "id": 5243016,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "clavicle_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.06351175904273987,
+       "y": 0.030065547674894334,
+       "z": 0.20842398703098298
+      },
+      "rotation": {
+       "x": 0.7219833135604858,
+       "y": -0.031736213713884357,
+       "z": -0.6733192801475525,
+       "w": -0.1561218798160553
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": -2.980232594040899e-8,
+       "y": 4.470348713425665e-8,
+       "z": -1.4901161193847657e-8
+      }
+     },
+     "parent": {
+      "id": 5243013
+     },
+     "children": [
+      {
+       "id": 5243045
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 34
+    }
+   }
+  },
+  {
+   "id": 5243045,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "upperarm_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.15415917336940766,
+       "y": 4.352324012302233e-8,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0015542248729616404,
+       "y": -0.022218244150280954,
+       "z": 0.11379964649677277,
+       "w": 0.9932540655136108
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 9.31322685637781e-10,
+       "y": -1.7462299384263247e-9,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243016
+     },
+     "children": [
+      {
+       "id": 5243046
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 35
+    }
+   }
+  },
+  {
+   "id": 5243046,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "lowerarm_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.35891908407211306,
+       "y": 1.554312241092664e-17,
+       "z": 1.4210854397564649e-16
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": -0.03987670689821243,
+       "w": 0.9992046356201172
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243045
+     },
+     "children": [
+      {
+       "id": 5243047
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 36
+    }
+   }
+  },
+  {
+   "id": 5243047,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hand_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.40930742025375368,
+       "y": 4.440891999238953e-18,
+       "z": -7.105427357601002e-15
+      },
+      "rotation": {
+       "x": -0.7056592702865601,
+       "y": -0.014749781228601933,
+       "z": 0.012905380688607693,
+       "w": 0.7082802653312683
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 2.8638169169425966e-8,
+       "y": -3.725290298461914e-9,
+       "z": -2.3137545213103296e-9
+      }
+     },
+     "parent": {
+      "id": 5243046
+     },
+     "children": [
+      {
+       "id": 5243048
+      },
+      {
+       "id": 5243049
+      },
+      {
+       "id": 5243050
+      },
+      {
+       "id": 5243051
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 37
+    }
+   }
+  },
+  {
+   "id": 5243048,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "drill_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.11007845401763916,
+       "y": 0.009448838420212269,
+       "z": -0.0006042898749001324
+      },
+      "rotation": {
+       "x": 0.7058098912239075,
+       "y": 0.0022091600112617018,
+       "z": -0.00031847922946326435,
+       "w": 0.7083978056907654
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -3.864988684654236e-8,
+       "y": -4.656612873077393e-10,
+       "z": -4.029061528854072e-10
+      }
+     },
+     "parent": {
+      "id": 5243047
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 38
+    }
+   }
+  },
+  {
+   "id": 5243049,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "saw_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.13957905769348145,
+       "y": 0.00224217283539474,
+       "z": -0.0004728740605060011
+      },
+      "rotation": {
+       "x": 0.7058098912239075,
+       "y": 0.0022091600112617018,
+       "z": -0.00031847922946326435,
+       "w": 0.7083978056907654
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -3.864988684654236e-8,
+       "y": -4.656612873077393e-10,
+       "z": -4.029061528854072e-10
+      }
+     },
+     "parent": {
+      "id": 5243047
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 39
+    }
+   }
+  },
+  {
+   "id": 5243050,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "upperJaw_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.24130988121032716,
+       "y": 0.13323241472244264,
+       "z": -0.000589465897064656
+      },
+      "rotation": {
+       "x": 0.7058098912239075,
+       "y": 0.0022091600112617018,
+       "z": -0.00031847922946326435,
+       "w": 0.7083978056907654
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -3.864988684654236e-8,
+       "y": -4.656612873077393e-10,
+       "z": -4.029061528854072e-10
+      }
+     },
+     "parent": {
+      "id": 5243047
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 40
+    }
+   }
+  },
+  {
+   "id": 5243051,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "LowerJaw_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.27836862206459048,
+       "y": -0.14700455963611604,
+       "z": 0.0005698343156836927
+      },
+      "rotation": {
+       "x": 0.7058098912239075,
+       "y": 0.0022091600112617018,
+       "z": -0.00031847922946326435,
+       "w": 0.7083978056907654
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -3.864988684654236e-8,
+       "y": -4.656612873077393e-10,
+       "z": -4.029061528854072e-10
+      }
+     },
+     "parent": {
+      "id": 5243047
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 41
+    }
+   }
+  },
+  {
+   "id": 5243012,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "FrontBelly",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.0040949671529233459,
+       "y": -0.2791474163532257,
+       "z": -2.8367556920020147e-16
+      },
+      "rotation": {
+       "x": -0.01576247066259384,
+       "y": 0.7069311141967773,
+       "z": 0.01576247066259384,
+       "w": 0.7069310545921326
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -3.725290298461914e-9,
+       "y": 3.544711746350515e-11,
+       "z": 1.5899479510750326e-9
+      }
+     },
+     "parent": {
+      "id": 5243007
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 42
+    }
+   }
+  },
+  {
+   "id": 5243008,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "thigh_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.022657401859760286,
+       "y": -0.0018067064229398966,
+       "z": -0.17085041105747224
+      },
+      "rotation": {
+       "x": 0.07721848040819168,
+       "y": -0.0319301001727581,
+       "z": 0.1327817142009735,
+       "w": 0.9876167178153992
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 1.4901161193847657e-8
+      }
+     },
+     "parent": {
+      "id": 5243006
+     },
+     "children": [
+      {
+       "id": 5243052
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 43
+    }
+   }
+  },
+  {
+   "id": 5243052,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "calf_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.2537067234516144,
+       "y": -0.010923627763986588,
+       "z": 0.0016361565794795752
+      },
+      "rotation": {
+       "x": -0.053631845861673358,
+       "y": -0.0006181337521411479,
+       "z": -0.022184183821082116,
+       "w": 0.9983141422271729
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 0.9999998807907105,
+       "z": 0.9999998807907105
+      },
+      "skew": {
+       "x": -7.450581485102248e-9,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243008
+     },
+     "children": [
+      {
+       "id": 5243053
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 44
+    }
+   }
+  },
+  {
+   "id": 5243053,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "foot_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.1534036248922348,
+       "y": 0.017944220453500749,
+       "z": -0.001143369940109551
+      },
+      "rotation": {
+       "x": -0.01958310604095459,
+       "y": 0.014337633736431599,
+       "z": 0.016081659123301507,
+       "w": 0.9995761513710022
+      },
+      "scale": {
+       "x": 0.9999998807907105,
+       "y": 1.0,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 0.0,
+       "y": -5.820766646458253e-10,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243052
+     },
+     "children": [
+      {
+       "id": 5243054
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 45
+    }
+   }
+  },
+  {
+   "id": 5243054,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "ball_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.01865966245532036,
+       "y": -0.08321955800056458,
+       "z": 0.0010733596282079816
+      },
+      "rotation": {
+       "x": -0.018653172999620439,
+       "y": 0.018653172999620439,
+       "z": -0.7068607211112976,
+       "w": 0.7068607211112976
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999999403953552,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 3.725290742551124e-9,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243053
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 46
+    }
+   }
+  },
+  {
+   "id": 5243009,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "tail_01",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.03035246580839157,
+       "y": 0.2541774809360504,
+       "z": 2.7145378374382838e-16
+      },
+      "rotation": {
+       "x": 0.30240845680236819,
+       "y": 0.9531785249710083,
+       "z": -4.166475875422293e-8,
+       "w": -1.3218696359729165e-8
+      },
+      "scale": {
+       "x": 0.9999998807907105,
+       "y": 1.0,
+       "z": 0.9999998807907105
+      },
+      "skew": {
+       "x": -1.0658142730467398e-14,
+       "y": -7.105428204633949e-15,
+       "z": 2.9802322387695315e-8
+      }
+     },
+     "parent": {
+      "id": 5243006
+     },
+     "children": [
+      {
+       "id": 5243055
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 47
+    }
+   }
+  },
+  {
+   "id": 5243055,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "tail_02",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.28033706545829775,
+       "y": 4.973799171496525e-16,
+       "z": -9.895422701628961e-17
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.09367574006319046,
+       "w": 0.9956027865409851
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243009
+     },
+     "children": [
+      {
+       "id": 5243056
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 48
+    }
+   }
+  },
+  {
+   "id": 5243056,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "tail_03",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.3089900314807892,
+       "y": 7.105427198782324e-17,
+       "z": -7.424184225679839e-17
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0985376164317131,
+       "w": 0.9951333403587341
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243055
+     },
+     "children": [
+      {
+       "id": 5243057
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 49
+    }
+   }
+  },
+  {
+   "id": 5243057,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "tail_04",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.3067770302295685,
+       "y": 0.011362112127244473,
+       "z": -3.952183932611396e-17
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.06756819784641266,
+       "w": 0.997714638710022
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243056
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 50
+    }
+   }
+  },
+  {
+   "id": 5243010,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "thigh_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.02265775203704834,
+       "y": -0.0018067972268909217,
+       "z": 0.1708499938249588
+      },
+      "rotation": {
+       "x": 0.03193098306655884,
+       "y": 0.07720961421728134,
+       "z": 0.9876174330711365,
+       "w": -0.132781520485878
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 0.9999999403953552,
+       "z": 0.9999998807907105
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 3.725290742551124e-9,
+       "z": 2.980232594040899e-8
+      }
+     },
+     "parent": {
+      "id": 5243006
+     },
+     "children": [
+      {
+       "id": 5243058
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 51
+    }
+   }
+  },
+  {
+   "id": 5243058,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "calf_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.2537067234516144,
+       "y": 0.010923714376986027,
+       "z": -0.0016354380641132594
+      },
+      "rotation": {
+       "x": -0.053631845861673358,
+       "y": -0.0006181337521411479,
+       "z": -0.022184183821082116,
+       "w": 0.9983141422271729
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 0.9999998807907105,
+       "z": 0.9999998807907105
+      },
+      "skew": {
+       "x": -7.450581485102248e-9,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243010
+     },
+     "children": [
+      {
+       "id": 5243059
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 52
+    }
+   }
+  },
+  {
+   "id": 5243059,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "foot_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.15340334177017213,
+       "y": -0.017944257706403734,
+       "z": 0.0011432310566306115
+      },
+      "rotation": {
+       "x": -0.019574157893657686,
+       "y": 0.014337585307657719,
+       "z": 0.016081780195236207,
+       "w": 0.9995763301849365
+      },
+      "scale": {
+       "x": 0.9999998807907105,
+       "y": 1.0,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 2.3283067140944527e-10,
+       "z": -3.725290298461914e-9
+      }
+     },
+     "parent": {
+      "id": 5243058
+     },
+     "children": [
+      {
+       "id": 16777292
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 53
+    }
+   }
+  },
+  {
+   "id": 16777292,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "ball_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.018659645691514016,
+       "y": 0.08321960270404816,
+       "z": -0.0010736184194684029
+      },
+      "rotation": {
+       "x": -0.018653172999620439,
+       "y": 0.018653172999620439,
+       "z": -0.7068607211112976,
+       "w": 0.7068607211112976
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999999403953552,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 3.725290742551124e-9,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243059
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 54
+    }
+   }
+  },
+  {
+   "id": 5243000,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Bodies",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5242998
+     },
+     "children": [
+      {
+       "id": 14680148
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "id": 14680148,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "MainBody03",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243000
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      1
+     ]
+    }
+   }
+  },
+  {
+   "id": 5243001,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Bodyparts",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5242998
+     },
+     "children": [
+      {
+       "id": 3145917
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "id": 3145917,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Bodypart08",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243001
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      2
+     ]
+    }
+   }
+  },
+  {
+   "id": 5243002,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Tails",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5242998
+     },
+     "children": [
+      {
+       "id": 3145918
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "id": 3145918,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Tail06",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243002
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      3
+     ]
+    }
+   }
+  },
+  {
+   "id": 5243003,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Gloves",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5242998
+     },
+     "children": [
+      {
+       "id": 3145919
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "id": 3145919,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Glove04",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243003
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      4
+     ]
+    }
+   }
+  },
+  {
+   "id": 5243004,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Eyes",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5242998
+     },
+     "children": [
+      {
+       "id": 3145920
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "id": 3145920,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Eye11",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243004
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      5
+     ]
+    }
+   }
+  },
+  {
+   "id": 5243005,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "MouthandNoses",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5242998
+     },
+     "children": [
+      {
+       "id": 3145921
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "id": 3145921,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Nose13",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 5243005
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      6
+     ]
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 3145922,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "flower1",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 3.286283493041992,
+       "y": 0.0,
+       "z": 2.1528549194335939
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [
+      {
+       "id": 3145923
+      }
+     ],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "19e2670c-08b6-5244-a2e1-2f9b046391d7"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "id": 3145923,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "flower1.obj",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 3145922
+     },
+     "children": [
+      {
+       "id": 3145924
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "id": 3145924,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "flower1",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 3145923
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      0
+     ]
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 3145925,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "mushroom3",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 5.483329772949219,
+       "y": 0.7553952932357788,
+       "z": 2.604595184326172
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [
+      {
+       "id": 3145926
+      }
+     ],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "6272f1e6-e98a-7745-a331-f3a78515eecd"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "id": 3145926,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "mushroom3.obj",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 3145925
+     },
+     "children": [
+      {
+       "id": 3145927
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "id": 3145927,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "mushroom3",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 3145926
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      0
+     ]
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 3145928,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "pine1",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 8.099100112915039,
+       "y": 4.76837158203125e-7,
+       "z": 4.685938835144043
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [
+      {
+       "id": 3145929
+      }
+     ],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "f3d0bac7-e10b-7d4e-92c1-6b8a67c7c3a2"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "id": 3145929,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "pine1.obj",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 3145928
+     },
+     "children": [
+      {
+       "id": 3145930
+      },
+      {
+       "id": 3145931
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "id": 3145930,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Pine1 leaves",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 3145929
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "id": 3145931,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Pine1 trunk",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 3145929
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      1
+     ]
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 3145932,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "pine2",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 8.176078796386719,
+       "y": 0.0,
+       "z": -1.986384391784668
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [
+      {
+       "id": 3145933
+      }
+     ],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "330f4782-0baa-ca46-9c5a-c16f0f2c8eb7"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "id": 3145933,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "pine2.obj",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 3145932
+     },
+     "children": [
+      {
+       "id": 3145934
+      },
+      {
+       "id": 3145935
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "id": 3145934,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Pine2 leaves",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 3145933
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "id": 3145935,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Pine2 trunk",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 3145933
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      1
+     ]
     }
    }
   }

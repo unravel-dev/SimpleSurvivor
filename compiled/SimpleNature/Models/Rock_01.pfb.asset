@@ -1,0 +1,206 @@
+{
+ "entities": [
+  {
+   "prefab_uid": "57e5d6ae-c855-cd48-ad1e-6dad0d5f9dc8",
+   "id": 3145786,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Rock_01",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "57e5d6ae-c855-cd48-ad1e-6dad0d5f9dc8"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -30.95157814025879,
+       "y": 1.1920928955078126e-7,
+       "z": -9.037737846374512
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "00000000-0000-0000-0000-000000000000",
+      "id": 4294967295
+     },
+     "children": [
+      {
+       "prefab_uid": "fcc17a4f-8db1-8a48-bda4-6a8766b37c20",
+       "id": 3145787
+      }
+     ],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "aea28b22-f3aa-db41-9ed8-fba243edf467"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "70f00a41-30ee-ec4e-85e7-b4a067f95cef"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "prefab_uid": "fcc17a4f-8db1-8a48-bda4-6a8766b37c20",
+   "id": 3145787,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "RootNode",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "fcc17a4f-8db1-8a48-bda4-6a8766b37c20"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "57e5d6ae-c855-cd48-ad1e-6dad0d5f9dc8",
+      "id": 3145786
+     },
+     "children": [
+      {
+       "prefab_uid": "295d079a-70f6-4846-8931-2902a6646b7c",
+       "id": 3145788
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "prefab_uid": "295d079a-70f6-4846-8931-2902a6646b7c",
+   "id": 3145788,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Rock_01",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "295d079a-70f6-4846-8931-2902a6646b7c"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.12640082836151124,
+       "y": -0.00574619323015213,
+       "z": 2.250775098800659
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "fcc17a4f-8db1-8a48-bda4-6a8766b37c20",
+      "id": 3145787
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      0
+     ]
+    }
+   }
+  }
+ ],
+ "version": "1.0.0"
+}

@@ -1,0 +1,269 @@
+{
+ "entities": [
+  {
+   "prefab_uid": "8bbc7ebc-c05d-ce4d-9011-192cb405453c",
+   "id": 3145814,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Flowers_02",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "8bbc7ebc-c05d-ce4d-9011-192cb405453c"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -57.18026351928711,
+       "y": 0.0,
+       "z": -26.47301483154297
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "00000000-0000-0000-0000-000000000000",
+      "id": 4294967295
+     },
+     "children": [
+      {
+       "prefab_uid": "629a8f7d-a447-6549-b102-e1e69367c28a",
+       "id": 3145815
+      }
+     ],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "5cd80e35-7967-ae42-b97b-603c882027f5"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "70f00a41-30ee-ec4e-85e7-b4a067f95cef"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "prefab_uid": "629a8f7d-a447-6549-b102-e1e69367c28a",
+   "id": 3145815,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "RootNode",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "629a8f7d-a447-6549-b102-e1e69367c28a"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "8bbc7ebc-c05d-ce4d-9011-192cb405453c",
+      "id": 3145814
+     },
+     "children": [
+      {
+       "prefab_uid": "ce58e9d9-e862-f944-8860-e7a2df25b1b4",
+       "id": 3145816
+      },
+      {
+       "prefab_uid": "7107b8ea-a606-ed4d-8911-a7e067798a67",
+       "id": 3145817
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "prefab_uid": "ce58e9d9-e862-f944-8860-e7a2df25b1b4",
+   "id": 3145816,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Flowers_02_LOD0",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "ce58e9d9-e862-f944-8860-e7a2df25b1b4"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "629a8f7d-a447-6549-b102-e1e69367c28a",
+      "id": 3145815
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "prefab_uid": "7107b8ea-a606-ed4d-8911-a7e067798a67",
+   "id": 3145817,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Flowers_02_LOD1",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "7107b8ea-a606-ed4d-8911-a7e067798a67"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "629a8f7d-a447-6549-b102-e1e69367c28a",
+      "id": 3145815
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      1
+     ]
+    }
+   }
+  }
+ ],
+ "version": "1.0.0"
+}

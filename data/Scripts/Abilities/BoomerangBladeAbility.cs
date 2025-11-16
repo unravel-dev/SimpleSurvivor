@@ -209,7 +209,7 @@ public class BoomerangBladeAbility : Ability
         var damageComponent = bladeEntity.AddComponent<PhysicalDamageComponent>();
         if (damageComponent != null)
         {
-            int baseUpgradedDamage = UpgradeSystem.ApplyDamageUpgrade(damage);
+            int baseUpgradedDamage = damage;
             // Apply spinning slash damage multiplier
             int finalDamage = Mathf.RoundToInt(baseUpgradedDamage * spinningSlashDamageMultiplier);
             damageComponent.SetDamage(finalDamage);

@@ -73,7 +73,7 @@ public class FireballAbility : Ability
         QueryClosestTarget query = new QueryClosestTarget();
         query.source = owner;
         query.maxRange = UpgradeSystem.ApplyAreaOfEffectUpgrade(maxRange);
-        return ContactSystem.FindClosestEnemies(query);
+        return ContactSystem.FindClosestEnemies(query, LayerMask.GetMask("Enemy"));
     }
 
     /// <summary>
@@ -149,7 +149,7 @@ public class FireballAbility : Ability
             damageComponent = fireballEntity.AddComponent<PhysicalDamageComponent>();
         }
 
-        int upgradedDamage = UpgradeSystem.ApplyDamageUpgrade(damage);
+        int upgradedDamage = damage;
         damageComponent.SetDamage(upgradedDamage);
 
         // Add area damage component for explosion effect

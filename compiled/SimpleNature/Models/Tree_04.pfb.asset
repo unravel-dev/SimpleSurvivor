@@ -1,0 +1,269 @@
+{
+ "entities": [
+  {
+   "prefab_uid": "6ec8c899-38e7-1946-924b-c0eb70b7c9a5",
+   "id": 3145754,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Tree_04",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "6ec8c899-38e7-1946-924b-c0eb70b7c9a5"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 2.7472617626190187,
+       "y": -9.5367431640625e-7,
+       "z": -15.83444595336914
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "00000000-0000-0000-0000-000000000000",
+      "id": 4294967295
+     },
+     "children": [
+      {
+       "prefab_uid": "832da966-ec8b-114a-a2e7-d2afea8e90de",
+       "id": 3145755
+      }
+     ],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "1e5ac485-c9ea-b642-adc5-198c0d8cd54a"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "70f00a41-30ee-ec4e-85e7-b4a067f95cef"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "prefab_uid": "832da966-ec8b-114a-a2e7-d2afea8e90de",
+   "id": 3145755,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "RootNode",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "832da966-ec8b-114a-a2e7-d2afea8e90de"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "6ec8c899-38e7-1946-924b-c0eb70b7c9a5",
+      "id": 3145754
+     },
+     "children": [
+      {
+       "prefab_uid": "a9eee58e-5e10-614b-8159-084934de1e2f",
+       "id": 3145756
+      },
+      {
+       "prefab_uid": "a54e1958-421b-ba4b-b06e-9960466169b9",
+       "id": 3145757
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "prefab_uid": "a9eee58e-5e10-614b-8159-084934de1e2f",
+   "id": 3145756,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Tree_04_LOD0",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "a9eee58e-5e10-614b-8159-084934de1e2f"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "832da966-ec8b-114a-a2e7-d2afea8e90de",
+      "id": 3145755
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "prefab_uid": "a54e1958-421b-ba4b-b06e-9960466169b9",
+   "id": 3145757,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Tree_04_LOD1",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "a54e1958-421b-ba4b-b06e-9960466169b9"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "832da966-ec8b-114a-a2e7-d2afea8e90de",
+      "id": 3145755
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      1
+     ]
+    }
+   }
+  }
+ ],
+ "version": "1.0.0"
+}

@@ -1,0 +1,269 @@
+{
+ "entities": [
+  {
+   "prefab_uid": "d6aa640b-b8df-a44d-bc1b-376a2a3ffa56",
+   "id": 3145830,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Bush_01",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "d6aa640b-b8df-a44d-bc1b-376a2a3ffa56"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -51.23210144042969,
+       "y": 0.0,
+       "z": -26.968297958374025
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "00000000-0000-0000-0000-000000000000",
+      "id": 4294967295
+     },
+     "children": [
+      {
+       "prefab_uid": "14092d2b-220e-5b41-91f0-000852bb1adc",
+       "id": 3145831
+      }
+     ],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "6814693e-9298-d44c-8a40-49ed7f72a8ce"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "70f00a41-30ee-ec4e-85e7-b4a067f95cef"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "prefab_uid": "14092d2b-220e-5b41-91f0-000852bb1adc",
+   "id": 3145831,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "RootNode",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "14092d2b-220e-5b41-91f0-000852bb1adc"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "d6aa640b-b8df-a44d-bc1b-376a2a3ffa56",
+      "id": 3145830
+     },
+     "children": [
+      {
+       "prefab_uid": "5c47737f-8ca3-024a-973b-5f81b3b882b7",
+       "id": 3145832
+      },
+      {
+       "prefab_uid": "dcde4a39-d87d-8a42-a489-b8bb910c4775",
+       "id": 3145833
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "prefab_uid": "5c47737f-8ca3-024a-973b-5f81b3b882b7",
+   "id": 3145832,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Bush_01_LOD0",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "5c47737f-8ca3-024a-973b-5f81b3b882b7"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "14092d2b-220e-5b41-91f0-000852bb1adc",
+      "id": 3145831
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "prefab_uid": "dcde4a39-d87d-8a42-a489-b8bb910c4775",
+   "id": 3145833,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Bush_01_LOD1",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "dcde4a39-d87d-8a42-a489-b8bb910c4775"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "14092d2b-220e-5b41-91f0-000852bb1adc",
+      "id": 3145831
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      1
+     ]
+    }
+   }
+  }
+ ],
+ "version": "1.0.0"
+}

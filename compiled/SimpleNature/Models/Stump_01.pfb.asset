@@ -1,0 +1,269 @@
+{
+ "entities": [
+  {
+   "prefab_uid": "cfd7d115-67ee-664d-9da7-ab31fdd0e9a8",
+   "id": 3145770,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Stump_01",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "cfd7d115-67ee-664d-9da7-ab31fdd0e9a8"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -36.92151641845703,
+       "y": 0.0,
+       "z": -23.834409713745118
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "00000000-0000-0000-0000-000000000000",
+      "id": 4294967295
+     },
+     "children": [
+      {
+       "prefab_uid": "e58048a3-c679-cb44-9b9a-332fae69780b",
+       "id": 3145771
+      }
+     ],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "d87441a1-5a9c-5b4f-b694-0258e087dd45"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "70f00a41-30ee-ec4e-85e7-b4a067f95cef"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "prefab_uid": "e58048a3-c679-cb44-9b9a-332fae69780b",
+   "id": 3145771,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "RootNode",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "e58048a3-c679-cb44-9b9a-332fae69780b"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "cfd7d115-67ee-664d-9da7-ab31fdd0e9a8",
+      "id": 3145770
+     },
+     "children": [
+      {
+       "prefab_uid": "2932c8a6-d290-564d-bbc5-c764a3f7c7a9",
+       "id": 3145772
+      },
+      {
+       "prefab_uid": "71caf385-b20e-4f40-9661-2e30aac008b7",
+       "id": 3145773
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "prefab_uid": "2932c8a6-d290-564d-bbc5-c764a3f7c7a9",
+   "id": 3145772,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Stump_01_LOD0",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "2932c8a6-d290-564d-bbc5-c764a3f7c7a9"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "e58048a3-c679-cb44-9b9a-332fae69780b",
+      "id": 3145771
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "prefab_uid": "71caf385-b20e-4f40-9661-2e30aac008b7",
+   "id": 3145773,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Stump_01_LOD1",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "71caf385-b20e-4f40-9661-2e30aac008b7"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "e58048a3-c679-cb44-9b9a-332fae69780b",
+      "id": 3145771
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      1
+     ]
+    }
+   }
+  }
+ ],
+ "version": "1.0.0"
+}

@@ -2,7 +2,7 @@
  "entities": [
   {
    "prefab_uid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
-   "id": 10485761,
+   "id": 1048577,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -51,11 +51,11 @@
      "children": [
       {
        "prefab_uid": "181acae2-d0c5-004b-a243-c9486c8919ac",
-       "id": 10485762
+       "id": 1048578
       },
       {
        "prefab_uid": "f394a2d3-fb82-604e-8a57-97d75348a99d",
-       "id": 10485763
+       "id": 1048579
       }
      ],
      "active": true
@@ -108,8 +108,8 @@
      "script_components": [
       {
        "type": "Enemy",
-       "maxSpeed": 6.0,
-       "maxAcceleration": 20.0,
+       "maxSpeed": 2.0,
+       "maxAcceleration": 13.0,
        "slowRadius": 5.0,
        "arriveRadius": 0.6000000238418579,
        "rotationSpeed": 180.0,
@@ -137,7 +137,7 @@
   },
   {
    "prefab_uid": "181acae2-d0c5-004b-a243-c9486c8919ac",
-   "id": 10485762,
+   "id": 1048578,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -181,7 +181,7 @@
      },
      "parent": {
       "prefab_uid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
-      "id": 10485761
+      "id": 1048577
      },
      "children": [],
      "active": true
@@ -216,7 +216,7 @@
   },
   {
    "prefab_uid": "f394a2d3-fb82-604e-8a57-97d75348a99d",
-   "id": 10485763,
+   "id": 1048579,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -260,7 +260,7 @@
      },
      "parent": {
       "prefab_uid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
-      "id": 10485761
+      "id": 1048577
      },
      "children": [],
      "active": true

@@ -24,6 +24,12 @@ public class BlackHoleAbility : Ability
     [Tooltip("How long the black hole lasts (in seconds)")]
     public float duration = 4.0f;
 
+
+    [Tooltip("Doom damage per second")]
+    public float doomDamagePerSecond = 5.0f;
+
+
+
     [Tooltip("Spawn offset from the caster")]
     public Vector3 spawnOffset = Vector3.up;
 
@@ -41,9 +47,10 @@ public class BlackHoleAbility : Ability
         ability.cooldown = 6.0f;
         ability.maxRange = 12.0f;
         ability.pullRadius = 6.0f;
-        ability.pullStrength = 45.0f;
+        ability.pullStrength = 25.0f;
         ability.duration = 4.0f;
-        ability.spawnOffset = Vector3.up;
+        ability.spawnOffset = Vector3.up * 4.0f;
+        ability.doomDamagePerSecond = 5.0f;
     }
 
     public override void OnStart()
@@ -91,9 +98,23 @@ public class BlackHoleAbility : Ability
             return;
         }
 
+        // Get upgrade values
+        float pullStrengthMultiplier = UpgradeSystem.GetBlackHolePullStrengthMultiplier();
+        int stacksToApply = 1 + UpgradeSystem.GetBlackHoleDoomAdditionalStacks(); // Number of stacks to apply at once
+        float doomDamageMultiplier = UpgradeSystem.GetBlackHoleDoomDamagePerStackMultiplier();
+
         // Apply area of effect upgrade to pull radius
         float upgradedPullRadius = UpgradeSystem.ApplyAreaOfEffectUpgrade(pullRadius);
-        float upgradedMaxRange = UpgradeSystem.ApplyAreaOfEffectUpgrade(maxRange);
+        float upgradedMaxRange = maxRange;
+        
+        // Apply pull strength upgrade
+        float upgradedPullStrength = pullStrength * pullStrengthMultiplier;
+        
+        // Apply duration upgrade
+        float upgradedDuration = UpgradeSystem.ApplyDurationUpgrade(duration);
+        
+        // Apply doom damage upgrade
+        float upgradedDoomDamage = doomDamagePerSecond * doomDamageMultiplier;
 
         // Calculate random position within range
         Vector2 randomCircle = Random.insideUnitCircle * upgradedMaxRange;
@@ -106,7 +127,8 @@ public class BlackHoleAbility : Ability
         if (blackHoleEntity)
         {
             blackHoleEntity.transform.position = spawnPosition;
-            ConfigureBlackHole(blackHoleEntity, upgradedPullRadius, pullStrength, duration, owner);
+            ConfigureBlackHole(blackHoleEntity, upgradedPullRadius, upgradedPullStrength, 
+                             upgradedDuration, upgradedDoomDamage, stacksToApply, owner);
         }
     }
 
@@ -117,8 +139,11 @@ public class BlackHoleAbility : Ability
     /// <param name="radius">Pull radius</param>
     /// <param name="strength">Pull strength</param>
     /// <param name="lifeDuration">How long the black hole lasts</param>
+    /// <param name="doomDamage">Doom damage per second</param>
+    /// <param name="stacksToApply">Number of Doom stacks to apply at once</param>
     /// <param name="source">Source entity that created the black hole</param>
-    private void ConfigureBlackHole(Entity blackHoleEntity, float radius, float strength, float lifeDuration, Entity source)
+    private void ConfigureBlackHole(Entity blackHoleEntity, float radius, float strength, float lifeDuration, 
+                                   float doomDamage, int stacksToApply, Entity source)
     {
         if (!blackHoleEntity)
         {
@@ -135,19 +160,29 @@ public class BlackHoleAbility : Ability
             pullComponent.distanceBasedStrength = true;
             pullComponent.minStrengthMultiplier = 0.3f;
             pullComponent.pullLayerMask = LayerMask.GetMask("Enemy");
+            pullComponent.callbackInterval = 0.25f;
+            pullComponent.onAffectedEntities = (entities) => {
+                // Calculate damage per tick
+                float damagePerTick = doomDamage * pullComponent.callbackInterval;
+                foreach (var entity in entities)
+                {
+                    // Apply multiple stacks of Doom at once (based on upgrades)
+                    EffectsSystem.AddOrRefreshEffect<DoomComponent>(entity, source, damagePerTick, 3.0f, stacksToApply: stacksToApply, maxStacks: 10);
+                }
+            };
         }
 
         // Add auto-destroy component to clean up when duration expires
         // (PullComponent will destroy the entity, but this is a safety measure)
-        blackHoleEntity.AddComponent<AutoDestroyComponent>();
+        // blackHoleEntity.AddComponent<AutoDestroyComponent>();
 
-        // Add projectile component for lifetime tracking (optional, for consistency)
-        var projectileComponent = blackHoleEntity.AddComponent<Projectile>();
-        if (projectileComponent != null)
-        {
-            projectileComponent.SetSource(source);
-            projectileComponent.lifetime = lifeDuration;
-        }
+        // // Add projectile component for lifetime tracking (optional, for consistency)
+        // var projectileComponent = blackHoleEntity.AddComponent<Projectile>();
+        // if (projectileComponent != null)
+        // {
+        //     projectileComponent.SetSource(source);
+        //     projectileComponent.lifetime = lifeDuration;
+        // }
     }
 
     /// <summary>

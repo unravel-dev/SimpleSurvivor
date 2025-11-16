@@ -223,7 +223,6 @@ public class LevelUpMenu : BaseMenu
     /// </summary>
     private void OnCard1Click(UIPointerEvent ev)
     {
-        Log.Info("Card 1 selected");
         SelectCard(0);
     }
     
@@ -232,7 +231,6 @@ public class LevelUpMenu : BaseMenu
     /// </summary>
     private void OnCard2Click(UIPointerEvent ev)
     {
-        Log.Info("Card 2 selected");
         SelectCard(1);
     }
     
@@ -241,7 +239,6 @@ public class LevelUpMenu : BaseMenu
     /// </summary>
     private void OnCard3Click(UIPointerEvent ev)
     {
-        Log.Info("Card 3 selected");
         SelectCard(2);
     }
     
@@ -281,7 +278,6 @@ public class LevelUpMenu : BaseMenu
     /// </summary>
     private void OnCardDown(UIElement card, UIPointerEvent ev, string cardName)
     {
-        Log.Info($"{cardName} pressed down");
         PlayButtonClickSound(card, ev);
         
         // Add selected class for visual feedback
@@ -296,7 +292,6 @@ public class LevelUpMenu : BaseMenu
     /// </summary>
     private void OnCardHover(UIElement card, UIPointerEvent ev, string cardName)
     {
-        Log.Info($"{cardName} hovered");
         PlayButtonHoverSound(card, ev);
     }
     
@@ -305,7 +300,6 @@ public class LevelUpMenu : BaseMenu
     /// </summary>
     private void OnCardLeave(UIElement card, UIPointerEvent ev, string cardName)
     {
-        Log.Info($"{cardName} hover ended");
     }
     
     /// <summary>
@@ -313,7 +307,6 @@ public class LevelUpMenu : BaseMenu
     /// </summary>
     private void OnCardRelease(UIElement card, UIPointerEvent ev, string cardName)
     {
-        Log.Info($"{cardName} released");
         
         // Remove selected class
         if (card != null)

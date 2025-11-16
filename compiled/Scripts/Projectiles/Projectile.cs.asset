@@ -50,25 +50,32 @@ public class Projectile : ScriptComponent
     /// Handle collision with another entity.
     /// </summary>
     /// <param name="other">The entity this projectile collided with.</param>
-    public override void OnSensorEnter(Entity other)
+    public override void OnSensorEnter(Collision collision)
     {
-        if (!other)
+        if (collision == null)
             return;
             
-        // Don't collide with the source entity
-        if (sourceEntity && other == sourceEntity)
-            return;
+        // Use collision contact point if available, otherwise use projectile position
+        Vector3 contactPosition = collision.contacts.Length > 0 
+            ? collision.contacts[0].point 
+            : owner.transform.position;
             
         // Use ContactSystem to handle the interaction
-        ContactSystem.ApplyContact(owner, other);
+        ContactSystem.ApplyContact(owner, collision.entity, contactPosition);
     }
 
     public override void OnCollisionEnter(Collision collision)
     {
         if (collision == null)
             return;
+        
+        // Use collision contact point if available, otherwise use projectile position
+        Vector3 contactPosition = collision.contacts.Length > 0 
+            ? collision.contacts[0].point 
+            : owner.transform.position;
+        
         // Use ContactSystem to handle the interaction
-        ContactSystem.ApplyContact(owner, collision.entity);
+        ContactSystem.ApplyContact(owner, collision.entity, contactPosition);
     }
     
     /// <summary>

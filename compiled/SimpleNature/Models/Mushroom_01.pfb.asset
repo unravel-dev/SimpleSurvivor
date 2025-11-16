@@ -1,0 +1,269 @@
+{
+ "entities": [
+  {
+   "prefab_uid": "ba282e92-3469-3a43-b9a4-b36afbc637bc",
+   "id": 3145793,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Mushroom_01",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "ba282e92-3469-3a43-b9a4-b36afbc637bc"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -31.354637145996095,
+       "y": 0.0,
+       "z": -8.94959545135498
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "00000000-0000-0000-0000-000000000000",
+      "id": 4294967295
+     },
+     "children": [
+      {
+       "prefab_uid": "6663c0ce-37bc-c549-aa6c-32b7993f8441",
+       "id": 3145794
+      }
+     ],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "eb9b8aa9-cee9-f54d-8e2a-112ebe4021a1"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "70f00a41-30ee-ec4e-85e7-b4a067f95cef"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "prefab_uid": "6663c0ce-37bc-c549-aa6c-32b7993f8441",
+   "id": 3145794,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "RootNode",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "6663c0ce-37bc-c549-aa6c-32b7993f8441"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "ba282e92-3469-3a43-b9a4-b36afbc637bc",
+      "id": 3145793
+     },
+     "children": [
+      {
+       "prefab_uid": "671ad113-f087-d440-8816-326acefc8119",
+       "id": 3145795
+      },
+      {
+       "prefab_uid": "b47b3b48-548b-0f41-bf1f-6c0b9c0f18b8",
+       "id": 3145796
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "prefab_uid": "671ad113-f087-d440-8816-326acefc8119",
+   "id": 3145795,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Mushroom_01_LOD0",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "671ad113-f087-d440-8816-326acefc8119"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "6663c0ce-37bc-c549-aa6c-32b7993f8441",
+      "id": 3145794
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "prefab_uid": "b47b3b48-548b-0f41-bf1f-6c0b9c0f18b8",
+   "id": 3145796,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Mushroom_01_LOD1",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "b47b3b48-548b-0f41-bf1f-6c0b9c0f18b8"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "6663c0ce-37bc-c549-aa6c-32b7993f8441",
+      "id": 3145794
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      1
+     ]
+    }
+   }
+  }
+ ],
+ "version": "1.0.0"
+}

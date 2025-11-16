@@ -188,7 +188,7 @@ public class Player : ScriptComponent
         }
     }
     
-public override void OnFixedUpdate()
+    public override void OnFixedUpdate()
     {
         if (physicsComponent == null || transformComponent == null)
             return;
@@ -242,36 +242,6 @@ public override void OnFixedUpdate()
         targetVelocity = inputDirection * currentMaxSpeed;
         
 
-        if (Input.IsDown(KeyCode.Q))
-        {
-            // 2) raycast from camera → mouse
-            var camE = Scene.FindEntityByName("Main Camera");
-            if (!camE.IsValid()) return;
-            var cam = camE.GetComponent<CameraComponent>();
-            cam.ScreenPointToRay(Input.mousePosition, out Ray ray);
-
-            var hit = Physics.Raycast(ray, 500f, -1, false);
-            if (!hit.HasValue) return;
-
-            Vector3 hitPoint = hit.Value.point;
-
-            float radius = 15.0f;
-
-            var hits = Physics.SphereOverlap(hitPoint, radius, LayerMask.GetMask("Enemy"));
-
-            foreach (var e in hits)
-            {
-                var ph = e.GetComponent<PhysicsComponent>();
-                if (ph != null)
-                {
-                    ph.ApplyExplosionForce(2.0f, hitPoint, radius, 0.0f, ForceMode.Impulse);
-                }
-            }
-            // bool shootRight = righthandIKWeight >= lefthandIKWeight;
-            // Vector3 source = (shootRight ? RightHand : LeftHand).transform.position;
-            // Vector3 dir = (hitPoint - source).normalized;
-            // Shoot(source, dir, 4.4f, 200);
-        }
     }
     
     /// <summary>
@@ -364,34 +334,6 @@ public override void OnFixedUpdate()
         {
             physicsComponent.ApplyForce(force, mode);
         }
-    }
-
-    
-    /// <summary>
-    /// Called when this entity begins a collision with another entity.
-    /// Override this method to handle collision events.
-    /// </summary>
-    /// <param name="collision">Details of the collision.</param>
-    public override void OnCollisionEnter(Collision collision)
-    {
-        // Example: Log collision for debugging
-        // Log.Info($"Player collided with {collision.entity.name}");
-        
-        // Add custom collision handling here
-        // For example: damage from enemies, item pickup, etc.
-    }
-    
-    /// <summary>
-    /// Called when another entity enters a sensor attached to this entity.
-    /// Useful for trigger zones, item pickup areas, etc.
-    /// </summary>
-    /// <param name="entity">The entity that entered the sensor.</param>
-    public override void OnSensorEnter(Entity entity)
-    {
-        Log.Info($"Player sensor triggered by {entity.name}");
-        
-        // Add custom sensor handling here
-        // For example: item pickup, area triggers, etc.
     }
     
     /// <summary>
@@ -541,30 +483,7 @@ public override void OnFixedUpdate()
     /// </summary>
     private void ShowInitialAbilitySelection()
     {
-        // Find the GameUI entity in the scene
-        var gameUIEntity = Scene.FindEntityByName("GameUI");
-        if (!gameUIEntity)
-        {
-            Log.Warning("Player: GameUI entity not found in scene - cannot show initial ability menu");
-            return;
-        }
-        
-        // Get the LevelUpUI script component
-        var levelUpUIScript = gameUIEntity.GetComponent<LevelUpUI>();
-        
-        if (levelUpUIScript == null)
-        {
-            Log.Warning("Player: LevelUpUI script component not found - cannot show initial ability menu");
-            return;
-        }
-        
-        // Generate ability-only card options for initial selection
-        currentUpgradeOptions = UpgradeCardGenerator.GenerateAbilityOnlySelection(3);
-        
-        // Pass cards directly to the UI
-        levelUpUIScript.ShowLevelUpMenu(currentUpgradeOptions[0], currentUpgradeOptions[1], currentUpgradeOptions[2]);
-        
-        Log.Info("Player: Showing initial ability selection menu");
+        ShowLevelUpMenu(0);
     }
     
     /// <summary>
@@ -590,11 +509,19 @@ public override void OnFixedUpdate()
             return;
         }
         
-        // Generate upgrade card options using the new system with player luck
-        currentUpgradeOptions = UpgradeCardGenerator.GenerateCardSelection(3, baseLuck);
+        // Generate upgrade card options (handles ability-only levels automatically)
+        var currentAbilities = owner.GetComponents<Ability>();
+        currentUpgradeOptions = UpgradeCardGenerator.GenerateLevelUpSelection(level, currentAbilities, baseLuck);
         
         // Pass cards directly to the UI
-        levelUpUIScript.ShowLevelUpMenu(currentUpgradeOptions[0], currentUpgradeOptions[1], currentUpgradeOptions[2]);
+        if (currentUpgradeOptions != null && currentUpgradeOptions.Count >= 3)
+        {
+            levelUpUIScript.ShowLevelUpMenu(currentUpgradeOptions[0], currentUpgradeOptions[1], currentUpgradeOptions[2]);
+        }
+        else
+        {
+            Log.Error($"Player: Not enough upgrade cards generated ({currentUpgradeOptions?.Count ?? 0}/3)");
+        }
     }
     
     /// <summary>

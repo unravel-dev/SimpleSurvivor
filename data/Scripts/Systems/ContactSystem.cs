@@ -51,13 +51,13 @@ public static class ContactSystem
     /// <param name="query">Query parameters including source, range, and visited targets.</param>
     /// <param name="results">Output list that will be populated with sorted entities.</param>
     /// <returns>Number of entities found.</returns>
-    public static int FindClosestEnemies(QueryClosestTarget query, List<Entity> results)
+    public static int FindClosestEnemies(QueryClosestTarget query, List<Entity> results, LayerMask layerMask)
     {
         results.Clear();
         
         var sourcePosition = query.source.transform.position;
         // Perform sphere overlap to find potential targets
-        var overlaps = Physics.SphereOverlap(sourcePosition, query.maxRange, LayerMask.GetMask("Enemy"));
+        var overlaps = Physics.SphereOverlap(sourcePosition, query.maxRange, layerMask);
 
         if (overlaps == null || overlaps.Length == 0)
         {
@@ -124,10 +124,10 @@ public static class ContactSystem
     /// </summary>
     /// <param name="query">Query parameters including source, range, and visited targets.</param>
     /// <returns>Array of entities sorted by priority (non-visited first) then by distance.</returns>
-    public static Entity[] FindClosestEnemies(QueryClosestTarget query)
+    public static Entity[] FindClosestEnemies(QueryClosestTarget query, LayerMask layerMask)
     {
         tempResultList.Clear();
-        int count = FindClosestEnemies(query, tempResultList);
+        int count = FindClosestEnemies(query, tempResultList, layerMask);
         
         if (count == 0)
         {
@@ -147,11 +147,11 @@ public static class ContactSystem
     /// Find the closest enemy within range using SphereOverlap.
     /// </summary>
     /// <returns>The closest enemy entity, or Entity.Invalid if none found.</returns>
-    public static Entity FindClosestEnemy(QueryClosestTarget query)
+    public static Entity FindClosestEnemy(QueryClosestTarget query, LayerMask layerMask)
     {
         var sourcePosition = query.source.transform.position;
         // Perform sphere overlap to find potential targets
-        var overlaps = Physics.SphereOverlap(sourcePosition, query.maxRange, LayerMask.GetMask("Enemy"));
+        var overlaps = Physics.SphereOverlap(sourcePosition, query.maxRange, layerMask);
 
         if (overlaps == null || overlaps.Length == 0)
         {
@@ -205,7 +205,8 @@ public static class ContactSystem
     /// </summary>
     /// <param name="source">The entity initiating contact (e.g., projectile, weapon).</param>
     /// <param name="target">The entity being contacted (e.g., enemy, player).</param>
-    public static void ApplyContact(Entity source, Entity target)
+    /// <param name="contactPosition">The world position where contact occurred.</param>
+    public static void ApplyContact(Entity source, Entity target, Vector3 contactPosition)
     {
 
         if(source.HasComponent<DestroyedComponent>())
@@ -233,6 +234,8 @@ public static class ContactSystem
         HandlePhysicalDamage(source, target);
         HandleAreaDamage(source, target);
         
+        // Handle contact visual effects
+        HandleContactVisual(source, contactPosition);
 
         if (!shouldExtendLifetime)
         {
@@ -295,7 +298,7 @@ public static class ContactSystem
         QueryClosestTarget query = new QueryClosestTarget();
         query.source = source;
         query.maxRange = areaDamageComponent.GetExplosionRadius();
-        var enemies = FindClosestEnemies(query);
+        var enemies = FindClosestEnemies(query, areaDamageComponent.damageLayerMask);
 
         Vector3 explosionCenter = source.transform.position;
         int baseDamage = areaDamageComponent.GetDamage();
@@ -359,7 +362,7 @@ public static class ContactSystem
             query.source = target;
             query.maxRange = chainComponent.chainRange;
             query.visitedTargets = chainComponent.visitedTargets;
-            Entity newTarget = FindClosestEnemy(query);
+            Entity newTarget = FindClosestEnemy(query, target.layers);
 
             if (!newTarget)
             {
@@ -419,5 +422,46 @@ public static class ContactSystem
         }
 
         return ContactResult.Success;
+    }
+
+    /// <summary>
+    /// Handle spawning contact visual effects at the contact position.
+    /// </summary>
+    /// <param name="source">Source entity with potential ContactVisualComponent.</param>
+    /// <param name="contactPosition">World position where contact occurred.</param>
+    private static void HandleContactVisual(Entity source, Vector3 contactPosition)
+    {
+        // Check if source has contact visual component
+        var visualComponent = source.GetComponent<ContactVisualComponent>();
+        if (visualComponent == null || visualComponent.visualPrefab == null)
+        {
+            return; // No visual to spawn
+        }
+
+        // Instantiate the visual prefab
+        Entity visualEntity = Scene.Instantiate(visualComponent.visualPrefab);
+        if (!visualEntity)
+        {
+            return;
+        }
+
+        // Set position with offset
+        visualEntity.transform.position = contactPosition + visualComponent.positionOffset;
+
+        // Apply rotation offset
+        if (visualComponent.rotationOffset != Vector3.zero)
+        {
+            visualEntity.transform.rotation = Quaternion.Euler(visualComponent.rotationOffset);
+        }
+
+        // Apply scale multiplier
+        if (visualComponent.scaleMultiplier != 1.0f)
+        {
+            visualEntity.transform.scale = visualEntity.transform.scale * visualComponent.scaleMultiplier;
+        }
+        
+        Scene.DestroyEntity(visualEntity, 1.0f);
+        // Note: Visual effect lifetime should be managed by the visual prefab itself
+        // through particle systems or other components
     }
 }

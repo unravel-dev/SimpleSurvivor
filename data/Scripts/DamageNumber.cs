@@ -254,17 +254,14 @@ public class DamageNumber : ScriptComponent
         if (textComponent == null)
             return;
             
+        textComponent.color = breakdown.color;
+        textComponent.outlineColor = breakdown.color;
         // Color coding for different damage types
         if (breakdown.isCritical)
         {
             textComponent.color = Color.red;
             textComponent.outlineColor = Color.red;
             initialScale = 3.5f;
-        }
-        else
-        {
-            textComponent.color = Color.cyan;
-            textComponent.outlineColor = Color.cyan;
         }
 
     }

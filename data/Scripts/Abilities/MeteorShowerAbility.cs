@@ -3,8 +3,26 @@ using System.Runtime.CompilerServices;
 using Unravel.Core;
 
 /// <summary>
-/// Meteor Shower ability that calls down meteors from the sky at enemy positions.
-/// Meteors have a delay before impact, dealing massive AoE damage and knockback.
+/// Represents a single active meteor shower cast.
+/// </summary>
+public class ActiveMeteorShower
+{
+    public Vector3 centerPosition;
+    public float remainingDuration;
+    public float spawnTimer;
+    public float spawnInterval;
+    public float showerRadius;
+    public float spawnHeight;
+    public float meteorSpeed;
+    public float trajectoryAngle;
+    public int meteorDamage;
+    public float impactRadius;
+    public float knockbackForce;
+}
+
+/// <summary>
+/// Meteor Shower ability that creates a sustained rain of meteors in an area.
+/// Meteors fall continuously from the sky at an angle for a duration.
 /// </summary>
 [ScriptSourceFile]
 public class MeteorShowerAbility : Ability
@@ -12,31 +30,39 @@ public class MeteorShowerAbility : Ability
     [Tooltip("Prefab to instantiate as the meteor")]
     public Prefab meteorPrefab;
 
-    [Tooltip("Prefab to instantiate as ground indicator")]
-    public Prefab indicatorPrefab;
+
+    [Tooltip("Prefab to instantiate as the meteor impact")]
+    public Prefab meteorImpactPrefab;
 
     [Tooltip("Base damage per meteor impact")]
-    public int damage = 50;
+    public int damage = 10;
 
     [Tooltip("Impact radius for area damage")]
-    public float impactRadius = 5.0f;
+    public float impactRadius = 3.0f;
 
-    [Tooltip("Maximum range to search for targets")]
-    public float maxRange = 20.0f;
+    [Tooltip("Duration of the meteor shower")]
+    public float showerDuration = 5.0f;
+
+    [Tooltip("Interval between meteor spawns")]
+    public float spawnInterval = 0.3f;
+
+    [Tooltip("Radius of the shower area")]
+    public float showerRadius = 8.0f;
 
     [Tooltip("Spawn height above target")]
     public float spawnHeight = 15.0f;
 
     [Tooltip("Projectile fall speed")]
-    public float projectileSpeed = 20.0f;
+    public float meteorSpeed = 25.0f;
+
+    [Tooltip("Trajectory angle offset in degrees")]
+    public float trajectoryAngle = 15.0f;
 
     [Tooltip("Knockback force applied to enemies")]
-    public float knockbackForce = 10.0f;
+    public float knockbackForce = 5.0f;
 
-    [Tooltip("Delay before meteor spawns (indicator warning time)")]
-    public float spawnDelay = 0.8f;
-
-    private TransformComponent transformComponent;
+    // List of active meteor showers
+    private List<ActiveMeteorShower> activeShowers = new List<ActiveMeteorShower>();
 
     /// <summary>
     /// Configure a Meteor Shower ability with default values.
@@ -47,21 +73,20 @@ public class MeteorShowerAbility : Ability
         if (ability == null)
             return;
 
-        ability.damage = 5;
-        ability.cooldown = 5.0f;
-        ability.impactRadius = 5.0f;
-        ability.maxRange = 8.0f;
-        ability.spawnHeight = 15.0f;
-        ability.projectileSpeed = 40.0f;
+        ability.damage = 8;
+        ability.cooldown = 12.0f; // Bigger cooldown
+        ability.impactRadius = 2.0f;
+        ability.showerDuration = 10.0f;
+        ability.spawnInterval = 0.25f;
+        ability.showerRadius = 4.0f;
+        ability.spawnHeight = 25.0f;
+        ability.meteorSpeed = 25.0f;
+        ability.trajectoryAngle = 15.0f;
         ability.knockbackForce = 5.0f;
-        ability.multicastPercent = 600.0f;
-        ability.spawnDelay = 0.8f;
     }
 
     public override void OnStart()
     {
-        transformComponent = owner.GetComponent<TransformComponent>();
-
         if (meteorPrefab == null)
         {
             // Try to load a default prefab
@@ -73,155 +98,175 @@ public class MeteorShowerAbility : Ability
             }
         }
 
-        if (indicatorPrefab == null)
+        if (meteorImpactPrefab == null)
         {
-            // Try to load a default indicator prefab
-            indicatorPrefab = Assets.GetAsset<Prefab>("app:/data/Abilities/MeteorIndicator.pfb");
-            
-            if (indicatorPrefab == null)
+            meteorImpactPrefab = Assets.GetAsset<Prefab>("app:/data/Abilities/MeteorIndicator.pfb");
+            if (meteorImpactPrefab == null)
             {
-                Log.Warning($"MeteorShowerAbility on {owner.name}: No indicator prefab assigned and default not found!");
+                Log.Warning($"MeteorShowerAbility on {owner.name}: No meteor impact prefab assigned and default not found!");
             }
         }
 
         // Set default cooldown if not set
         if (cooldown <= 0)
         {
-            cooldown = 5.0f;
+            cooldown = 12.0f;
         }
     }
 
+    public override void OnUpdate()
+    {
+        base.OnUpdate();
+
+        // Process active showers (backwards iteration to allow removal)
+        for (int i = activeShowers.Count - 1; i >= 0; i--)
+        {
+            var shower = activeShowers[i];
+
+            // Update duration
+            shower.remainingDuration -= Time.deltaTime;
+
+            // Remove expired showers
+            if (shower.remainingDuration <= 0.0f)
+            {
+                activeShowers.RemoveAt(i);
+                continue;
+            }
+
+            // Update spawn timer
+            shower.spawnTimer -= Time.deltaTime;
+
+            // Spawn meteor if timer expired
+            if (shower.spawnTimer <= 0.0f)
+            {
+                SpawnMeteor(shower);
+                shower.spawnTimer = shower.spawnInterval;
+            }
+        }
+
+    }
+
     /// <summary>
-    /// Gather targets for meteor strikes (finds enemies within range).
+    /// Gather targets - not used for Meteor Shower (area effect).
     /// </summary>
-    /// <returns>Array of enemies to target with meteors</returns>
+    /// <returns>Empty array</returns>
     protected override Entity[] GatherTargets()
     {
-        // QueryClosestTarget query = new QueryClosestTarget();
-        // query.source = owner;
-        // query.maxRange = UpgradeSystem.ApplyAreaOfEffectUpgrade(maxRange);
-        // return ContactSystem.FindClosestEnemies(query);
         return new Entity[] { Entity.Invalid };
     }
 
     /// <summary>
-    /// Trigger the meteor shower ability - spawn meteors above targets.
+    /// Trigger the meteor shower ability - create a new active shower instance.
     /// </summary>
-    /// <param name="targets">List of targets to strike.</param>
-    /// <param name="castIndex">Used to target different enemies when multicast is active.</param>
+    /// <param name="targets">Not used for area effect.</param>
+    /// <param name="castIndex">Not used for area effect.</param>
     protected override void OnTriggerAbility(Entity[] targets, int castIndex)
     {
         if (meteorPrefab == null)
         {
-            Log.Warning("MeteorShowerAbility: No meteor prefab assigned - cannot spawn meteor!");
+            Log.Warning("MeteorShowerAbility: No meteor prefab assigned - cannot create meteor shower!");
             return;
         }
-        Vector2 randomCircle = Random.insideUnitCircle * maxRange;
-        Vector3 randomPosition = new Vector3(randomCircle.x, 0, randomCircle.y);
-        // Select random target
-        // int randomIndex = Random.Range(0, targets.Length);
-        // Entity target = targets[randomIndex];
-        
-        // var targetTransform = target.GetComponent<TransformComponent>();
-        // if (targetTransform == null)
-        // {
-        //     Log.Warning("MeteorShowerAbility: Target has no TransformComponent");
-        //     return;
-        // }
 
-        // Calculate impact position (where target currently is)
-        // Vector3 impactPosition = targetTransform.position;
-        Vector3 impactPosition = owner.transform.position + randomPosition;
-        
-        // Calculate fall time for indicator lifetime
-        float fallTime = spawnHeight / projectileSpeed;
-        
-        // Calculate total warning time (indicator shows for delay + fall time)
-        float totalWarningTime = spawnDelay + fallTime;
-        
-        // Spawn ground indicator at impact position
-        if (indicatorPrefab != null)
+        // Apply upgrades
+        int upgradedDamage = damage;
+        float upgradedImpactRadius = UpgradeSystem.ApplyAreaOfEffectUpgrade(impactRadius);
+        float upgradedShowerRadius = UpgradeSystem.ApplyAreaOfEffectUpgrade(showerRadius);
+        float upgradedSpawnInterval = UpgradeSystem.ApplyCooldownReductionUpgrade(spawnInterval);
+        float upgradedShowerDuration = UpgradeSystem.ApplyDurationUpgrade(showerDuration);
+        // Create a new active shower instance
+        ActiveMeteorShower shower = new ActiveMeteorShower
         {
-            Entity indicatorEntity = Scene.Instantiate(indicatorPrefab);
-            if (indicatorEntity)
-            {
-                // Add ground indicator component
-                var indicator = indicatorEntity.AddComponent<GroundIndicatorComponent>();
-                if (indicator != null)
-                {
-                    indicator.lifetime = totalWarningTime; // Shows during delay + fall
-                    indicator.radius = UpgradeSystem.ApplyAreaOfEffectUpgrade(impactRadius);
-                    indicator.enablePulse = false;
-                    indicator.pulseSpeed = 3.0f;
-                }
+            centerPosition = owner.transform.position,
+            remainingDuration = upgradedShowerDuration,
+            spawnTimer = 0.0f, // Spawn first meteor immediately
+            spawnInterval = upgradedSpawnInterval,
+            showerRadius = upgradedShowerRadius,
+            spawnHeight = spawnHeight,
+            meteorSpeed = meteorSpeed,
+            trajectoryAngle = trajectoryAngle,
+            meteorDamage = upgradedDamage,
+            impactRadius = upgradedImpactRadius,
+            knockbackForce = knockbackForce
+        };
+        
+        // Add to active showers list
+        activeShowers.Add(shower);
+    }
 
-                // Scale the indicator to match impact radius
-                float upgradedRadius = UpgradeSystem.ApplyAreaOfEffectUpgrade(impactRadius);
-                indicatorEntity.transform.scale = new Vector3(upgradedRadius, 0.1f, upgradedRadius);
-                indicatorEntity.transform.position = impactPosition + Vector3.up * (0.15f * upgradedRadius * 0.5f);
-            }
+    /// <summary>
+    /// Spawn a single meteor for an active shower.
+    /// </summary>
+    /// <param name="shower">The active shower to spawn a meteor for.</param>
+    private void SpawnMeteor(ActiveMeteorShower shower)
+    {
+        if (meteorPrefab == null)
+            return;
+        
+        // Calculate random position within shower radius
+        Vector2 randomCircle = Random.insideUnitCircle * shower.showerRadius;
+        Vector3 impactPosition = shower.centerPosition + new Vector3(randomCircle.x, 0, randomCircle.y);
+        
+        // Calculate spawn position above impact point
+        Vector3 spawnPosition = impactPosition + Vector3.up * shower.spawnHeight;
+        
+        // Add random horizontal offset based on trajectory angle
+        float angleRad = shower.trajectoryAngle * Mathf.Deg2Rad;
+        float horizontalOffset = shower.spawnHeight * Mathf.Tan(angleRad);
+        Vector2 randomDirection = Random.insideUnitCircle.normalized;
+        spawnPosition += new Vector3(randomDirection.x * horizontalOffset, 0, randomDirection.y * horizontalOffset);
+        
+        // Spawn meteor
+        Entity meteorEntity = Scene.Instantiate(meteorPrefab);
+        if (!meteorEntity)
+            return;
+        
+        meteorEntity.transform.position = spawnPosition;
+        // meteorEntity.transform.scale *= shower.impactRadius;
+        // Calculate velocity towards impact point
+        Vector3 directionToImpact = (impactPosition - spawnPosition).normalized;
+        Vector3 velocity = directionToImpact * shower.meteorSpeed;
+        
+        // Add projectile component
+        var projectileComponent = meteorEntity.AddComponent<Projectile>();
+        if (projectileComponent != null)
+        {
+            projectileComponent.SetSource(owner);
+            projectileComponent.lifetime = (shower.spawnHeight * 1.5f) / shower.meteorSpeed;
         }
         
-        // Create a delayed spawner entity (empty entity to hold the delayed spawn component)
-        Entity spawnerEntity = Scene.CreateEntity();
-        spawnerEntity.name = "MeteorSpawner";
-
-        // Add delayed spawn component
-        var delayedSpawn = spawnerEntity.AddComponent<DelayedSpawnComponent>();
-        if (delayedSpawn != null)
+        // Add auto-destroy component
+        meteorEntity.AddComponent<AutoDestroyComponent>();
+        
+        // Add damage component
+        var damageComponent = meteorEntity.AddComponent<PhysicalDamageComponent>();
+        if (damageComponent != null)
         {
-            delayedSpawn.prefabToSpawn = meteorPrefab;
-            delayedSpawn.spawnDelay = spawnDelay;
-            delayedSpawn.spawnPosition = impactPosition + new Vector3(0, spawnHeight, 0);
-            delayedSpawn.spawnDirection = Vector3.down;
-            delayedSpawn.destroyAfterSpawn = true;
-
-            // Store values for the callback
-            int upgradedDamage = UpgradeSystem.ApplyDamageUpgrade(damage);
-            float upgradedRadius = UpgradeSystem.ApplyAreaOfEffectUpgrade(impactRadius);
-            float meteorLifetime = fallTime + 1.0f;
-            Entity sourceEntity = owner;
-            float meteorSpeed = projectileSpeed;
-            float meteorKnockback = knockbackForce;
-
-            // Set up callback to configure the meteor when it spawns
-            delayedSpawn.onSpawnCallback = (Entity meteorEntity) =>
-            {
-                // Add projectile component
-                var projectileComponent = meteorEntity.AddComponent<Projectile>();
-                if (projectileComponent != null)
-                {
-                    projectileComponent.SetSource(sourceEntity);
-                    projectileComponent.lifetime = meteorLifetime;
-                }
-
-                // Add auto-destroy component
-                meteorEntity.AddComponent<AutoDestroyComponent>();
-
-                // Add damage component
-                var damageComponent = meteorEntity.AddComponent<PhysicalDamageComponent>();
-                if (damageComponent != null)
-                {
-                    damageComponent.SetDamage(upgradedDamage);
-                }
-
-                // Add area damage component with knockback
-                var areaDamageComponent = meteorEntity.AddComponent<AreaDamageComponent>();
-                if (areaDamageComponent != null)
-                {
-                    areaDamageComponent.explosionRadius = upgradedRadius;
-                    areaDamageComponent.damage = upgradedDamage;
-                    areaDamageComponent.damageLayerMask = LayerMask.GetMask("Enemy");
-                    areaDamageComponent.knockbackForce = meteorKnockback;
-                }
-
-                // Apply physics velocity downward
-                var meteorPhysics = meteorEntity.GetComponent<PhysicsComponent>();
-                if (meteorPhysics != null)
-                {
-                    meteorPhysics.velocity = Vector3.down * meteorSpeed;
-                }
-            };
+            damageComponent.SetDamage(shower.meteorDamage);
+        }
+        
+        // Add area damage component with knockback
+        var areaDamageComponent = meteorEntity.AddComponent<AreaDamageComponent>();
+        if (areaDamageComponent != null)
+        {
+            areaDamageComponent.explosionRadius = shower.impactRadius;
+            areaDamageComponent.damage = shower.meteorDamage;
+            areaDamageComponent.damageLayerMask = LayerMask.GetMask("Enemy");
+            areaDamageComponent.knockbackForce = shower.knockbackForce;
+        }
+        
+        // Add contact visual component
+        var contactVisualComponent = meteorEntity.AddComponent<ContactVisualComponent>();
+        if (contactVisualComponent != null)
+        {
+            contactVisualComponent.visualPrefab = meteorImpactPrefab;
+            // contactVisualComponent.scaleMultiplier = shower.impactRadius;
+        }
+        // Apply physics velocity
+        var meteorPhysics = meteorEntity.GetComponent<PhysicsComponent>();
+        if (meteorPhysics != null)
+        {
+            meteorPhysics.velocity = velocity;
         }
     }
 
@@ -241,7 +286,7 @@ public class MeteorShowerAbility : Ability
 
     public static string GetDescription()
     {
-        return "Calls down meteors from the sky, dealing massive area damage after a short delay.";
+        return "Creates a sustained rain of meteors that fall continuously in an area, dealing area damage on impact.";
     }
 }
 

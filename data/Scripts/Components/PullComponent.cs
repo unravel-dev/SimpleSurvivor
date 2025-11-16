@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.CompilerServices;
 using Unravel.Core;
 
@@ -26,26 +27,25 @@ public class PullComponent : ScriptComponent
     [Tooltip("Minimum pull strength multiplier when using distance-based strength")]
     public float minStrengthMultiplier = 0.3f;
 
-    private TransformComponent transformComponent;
+    [Tooltip("Interval (in seconds) at which the callback is triggered with affected entities")]
+    public float callbackInterval = 1.0f;
+
+    /// <summary>
+    /// Callback that is invoked periodically with the list of entities currently affected by the pull.
+    /// Use this to apply effects like DoT, debuffs, etc. to pulled enemies.
+    /// </summary>
+    public Action<Entity[]> onAffectedEntities;
+
     private float elapsedTime = 0.0f;
+    private float callbackTimer = 0.0f;
 
     public override void OnCreate()
     {
-        transformComponent = owner.GetComponent<TransformComponent>();
-        if (transformComponent == null)
-        {
-            Log.Error($"PullComponent on {owner.name}: No TransformComponent found!");
-        }
+
     }
 
     public override void OnStart()
     {
-        if (transformComponent == null)
-        {
-            Log.Error($"PullComponent on {owner.name}: Missing TransformComponent. Disabling pull effect.");
-            return;
-        }
-
         // If duration is 0, set to a very large value for "infinite" duration
         if (duration <= 0.0f)
         {
@@ -53,27 +53,43 @@ public class PullComponent : ScriptComponent
         }
     }
 
-    public override void OnUpdate()
+    public override void OnFixedUpdate()
     {
-        if (transformComponent == null)
-        {
-            return;
-        }
+
+        UpdateImpl(Time.fixedDeltaTime);
+    }
+
+    public void UpdateImpl(float deltaTime)
+    {
+
 
         // Update elapsed time
-        elapsedTime += Time.deltaTime;
+        elapsedTime += deltaTime;
 
         // Check if duration has expired
         if (elapsedTime >= duration)
         {
+            var particleEmitter = owner.GetComponent<ParticleEmitterComponent>();
+            if (particleEmitter != null)
+            {
+                particleEmitter.Stop();
+            }
             // Destroy this component or entity when duration expires
-            Scene.DestroyEntity(owner);
+            Scene.DestroyEntity(owner, 1.5f);
             return;
         }
 
         // Find all enemies within pull radius
-        Vector3 pullPosition = transformComponent.position;
+        Vector3 pullPosition = owner.transform.position;
         var nearbyEnemies = Physics.SphereOverlap(pullPosition, pullRadius, pullLayerMask);
+
+        // Update callback timer and trigger callback if interval has passed
+        callbackTimer += deltaTime;
+        if (callbackTimer >= callbackInterval && onAffectedEntities != null && nearbyEnemies.Length > 0)
+        {
+            onAffectedEntities.Invoke(nearbyEnemies);
+            callbackTimer = 0.0f;
+        }
 
         // Apply pull force to each enemy
         foreach (var enemyEntity in nearbyEnemies)
@@ -84,16 +100,15 @@ public class PullComponent : ScriptComponent
             }
 
             // Get enemy transform and physics components
-            var enemyTransform = enemyEntity.GetComponent<TransformComponent>();
             var enemyPhysics = enemyEntity.GetComponent<PhysicsComponent>();
 
-            if (enemyTransform == null || enemyPhysics == null)
+            if (enemyPhysics == null)
             {
                 continue;
             }
 
             // Calculate direction from enemy to pull center
-            Vector3 enemyPosition = enemyTransform.position;
+            Vector3 enemyPosition = enemyEntity.transform.position;
             Vector3 toCenter = pullPosition - enemyPosition;
             toCenter.y = 0.0f; // Flatten to XZ plane for top-down gameplay
 
@@ -161,29 +176,5 @@ public class PullComponent : ScriptComponent
         pullStrength = Mathf.Max(0.0f, newStrength);
     }
 
-    /// <summary>
-    /// Get the remaining duration.
-    /// </summary>
-    /// <returns>Remaining duration in seconds</returns>
-    public float GetRemainingDuration()
-    {
-        return Mathf.Max(0.0f, duration - elapsedTime);
-    }
-
-    /// <summary>
-    /// Get the number of enemies currently in pull range.
-    /// </summary>
-    /// <returns>Number of enemies in pull range</returns>
-    public int GetPulledEnemyCount()
-    {
-        if (transformComponent == null)
-        {
-            return 0;
-        }
-
-        Vector3 pullPosition = transformComponent.position;
-        var nearbyEnemies = Physics.SphereOverlap(pullPosition, pullRadius, pullLayerMask);
-        return nearbyEnemies.Length;
-    }
 }
 

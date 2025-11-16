@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unravel.Core;
 
@@ -73,22 +74,130 @@ public static class UpgradeCardGenerator
    
         return cards;
     }
+   
     
     /// <summary>
-    /// Generate a selection of ability cards only (for initial ability pickup).
+    /// Generate upgrade card selection for level up, handling ability-only levels automatically.
+    /// This method encapsulates all the logic for determining whether to show ability-only cards
+    /// or regular upgrade cards based on level and current abilities.
+    /// </summary>
+    /// <param name="level">Current player level</param>
+    /// <param name="currentAbilities">Array of current ability components the player has</param>
+    /// <param name="playerLuck">Player's luck value for rarity weighting</param>
+    /// <param name="maxAbilitySlots">Maximum number of ability slots (default 4)</param>
+    /// <param name="cardCount">Number of cards to generate (default 3)</param>
+    /// <returns>List of upgrade cards (always returns exactly cardCount cards, padded with regular upgrades if needed)</returns>
+    public static List<UpgradeCard> GenerateLevelUpSelection(int level, Ability[] currentAbilities, float playerLuck = 0.0f, int maxAbilitySlots = 4, int cardCount = 3)
+    {
+        // Check if this is an ability-only level (every 5 levels) and if ability slots are not full
+        bool isAbilityOnlyLevel = (level % 5 == 0);
+        int currentAbilityCount = currentAbilities != null ? currentAbilities.Length : 0;
+        bool hasAvailableAbilitySlots = currentAbilityCount < maxAbilitySlots;
+        
+        List<UpgradeCard> cards = new List<UpgradeCard>();
+        
+        if (isAbilityOnlyLevel && hasAvailableAbilitySlots)
+        {
+            // Get owned ability types to exclude them
+            var ownedAbilityTypes = new HashSet<Type>();
+            if (currentAbilities != null)
+            {
+                foreach (var ability in currentAbilities)
+                {
+                    if (ability != null)
+                    {
+                        ownedAbilityTypes.Add(ability.GetType());
+                    }
+                }
+            }
+            
+            // Try to generate ability-only selection excluding owned abilities
+            cards = GenerateAbilityOnlySelectionExcludingOwned(cardCount, ownedAbilityTypes);
+            
+            // If no abilities available, fall back to regular upgrade cards
+            if (cards == null || cards.Count == 0)
+            {
+                Log.Info($"UpgradeCardGenerator: No new abilities available at level {level}, showing regular upgrade cards");
+                cards = GenerateCardSelection(cardCount, playerLuck);
+            }
+            else
+            {
+                Log.Info($"UpgradeCardGenerator: Showing ability-only selection at level {level} (owned: {currentAbilityCount}/{maxAbilitySlots})");
+            }
+        }
+        else
+        {
+            // Generate upgrade card options using the new system with player luck
+            cards = GenerateCardSelection(cardCount, playerLuck);
+        }
+        
+        // Ensure we have exactly cardCount cards (pad with regular upgrades if needed)
+        while (cards.Count < cardCount)
+        {
+            var fallbackCards = GenerateCardSelection(1, playerLuck);
+            if (fallbackCards.Count > 0)
+            {
+                cards.Add(fallbackCards[0]);
+            }
+            else
+            {
+                break; // Can't generate more cards
+            }
+        }
+        
+        return cards;
+    }
+    
+    /// <summary>
+    /// Generate a selection of ability cards only, excluding abilities the player already has.
     /// </summary>
     /// <param name="cardCount">Number of cards to generate (default 3).</param>
-    /// <returns>List of ability upgrade cards.</returns>
-    public static List<UpgradeCard> GenerateAbilityOnlySelection(int cardCount = 3)
+    /// <param name="ownedAbilityTypes">Set of ability types the player already owns.</param>
+    /// <returns>List of ability upgrade cards (or empty if no abilities available).</returns>
+    private static List<UpgradeCard> GenerateAbilityOnlySelectionExcludingOwned(int cardCount = 3, HashSet<Type> ownedAbilityTypes = null)
     {
-        var abilityCards = GetAvailableAbilityCards();
+        var allAbilityCards = GetAvailableAbilityCards();
+        var availableAbilityCards = new List<Func<UpgradeCard>>();
+        
+        // Filter out abilities the player already owns
+        foreach (var abilityCardGenerator in allAbilityCards)
+        {
+            // Generate a test card to check its ability type
+            var testCard = abilityCardGenerator();
+            if (testCard is AbilityCard abilityCard)
+            {
+                // Check if player owns this ability type
+                if (ownedAbilityTypes == null || !ownedAbilityTypes.Contains(abilityCard.AbilityType))
+                {
+                    availableAbilityCards.Add(abilityCardGenerator);
+                }
+            }
+        }
+        
+        // If no abilities available, return empty list (caller should fall back to regular upgrades)
+        if (availableAbilityCards.Count == 0)
+        {
+            return new List<UpgradeCard>();
+        }
+        
         var cards = new List<UpgradeCard>();
         
-        // Pick random ability cards, allowing duplicates
-        for (int i = 0; i < cardCount; i++)
+        // Pick random ability cards without duplicates if possible
+        var usedIndices = new HashSet<int>();
+        for (int i = 0; i < cardCount && cards.Count < availableAbilityCards.Count; i++)
         {
-            int randomIndex = Random.Range(0, abilityCards.Count);
-            cards.Add(abilityCards[randomIndex]());
+            int randomIndex;
+            int attempts = 0;
+            
+            // Try to avoid duplicates if we have enough unique abilities
+            do
+            {
+                randomIndex = Random.Range(0, availableAbilityCards.Count);
+                attempts++;
+            } while (usedIndices.Contains(randomIndex) && attempts < 10 && availableAbilityCards.Count > cardCount);
+            
+            usedIndices.Add(randomIndex);
+            cards.Add(availableAbilityCards[randomIndex]());
         }
         
         return cards;
@@ -307,7 +416,17 @@ public static class UpgradeCardGenerator
                 MultipleBladesUpgrade.Generate(1, 2), 1),
                 
             () => new UpgradeCard("Faster Rotation", UpgradeRarity.Common, 
-                FasterRotationUpgrade.Generate(50.0f, 75.0f), 1)
+                FasterRotationUpgrade.Generate(50.0f, 75.0f), 1),
+                
+            // Black Hole upgrades (Common)
+            () => new UpgradeCard("Cursed Vortex", UpgradeRarity.Common, 
+                IncreaseDoomStacksUpgrade.Generate(1, 2)),
+                
+            () => new UpgradeCard("Gravitational Pull", UpgradeRarity.Common, 
+                IncreasePullStrengthUpgrade.Generate(30.0f, 50.0f)),
+                
+            () => new UpgradeCard("Amplified Doom", UpgradeRarity.Common, 
+                IncreaseDoomDamagePerStackUpgrade.Generate(20.0f, 35.0f))
         };
     }
     
@@ -342,13 +461,6 @@ public static class UpgradeCardGenerator
                 
             () => new UpgradeCard("Enduring Power", UpgradeRarity.Epic, 
                 DurationUpgrade.Generate(30.0f, 50.0f)),
-                
-            // First ability cards
-            () => GenerateLightningBoltAbilityCard(),
-            () => GenerateFireballAbilityCard(),
-            () => GenerateBoomerangBladeAbilityCard(),
-            () => GenerateMeteorShowerAbilityCard(),
-            () => GenerateBlackHoleAbilityCard(),
                 
             // Powerful dual combinations
             () => new UpgradeCard("Berserker's Fury", UpgradeRarity.Epic, 
@@ -408,7 +520,17 @@ public static class UpgradeCardGenerator
                 MultipleBladesUpgrade.Generate(2, 4), 1),
                 
             () => new UpgradeCard("Faster Rotation+", UpgradeRarity.Epic, 
-                FasterRotationUpgrade.Generate(75.0f, 125.0f), 1)
+                FasterRotationUpgrade.Generate(75.0f, 125.0f), 1),
+                
+            // Black Hole upgrades (Epic)
+            () => new UpgradeCard("Cursed Vortex+", UpgradeRarity.Epic, 
+                IncreaseDoomStacksUpgrade.Generate(2, 4)),
+                
+            () => new UpgradeCard("Gravitational Pull+", UpgradeRarity.Epic, 
+                IncreasePullStrengthUpgrade.Generate(60.0f, 90.0f)),
+                
+            () => new UpgradeCard("Amplified Doom+", UpgradeRarity.Epic, 
+                IncreaseDoomDamagePerStackUpgrade.Generate(40.0f, 60.0f)),
         };
     }
     
@@ -488,9 +610,6 @@ public static class UpgradeCardGenerator
                     AreaOfEffectUpgrade.Generate(100.0f, 150.0f),
                     MulticastUpgrade.Generate(150.0f, 250.0f)
                 }),
-                
-            // Legendary ability cards
-            () => GenerateLegendaryAbilityCard(),
             
             // Boomerang Blade upgrades (Legendary) - Limited to 1 pick each
             () => new UpgradeCard("Master Bladesman", UpgradeRarity.Legendary, 
@@ -507,7 +626,22 @@ public static class UpgradeCardGenerator
                     PingPongOrbitUpgrade.Generate(100.0f, 150.0f, 100.0f, 150.0f),
                     new DualOrbitUpgrade(),
                     ReturningBladeUpgrade.Generate()
-                }, 1)
+                }, 1),
+                
+            // Black Hole upgrades (Legendary)
+            () => new UpgradeCard("Singularity", UpgradeRarity.Legendary, 
+                new List<Upgrade>
+                {
+                    IncreaseDoomStacksUpgrade.Generate(4, 6),
+                    IncreasePullStrengthUpgrade.Generate(100.0f, 150.0f),
+                    IncreaseDoomDamagePerStackUpgrade.Generate(60.0f, 100.0f)
+                }),
+                
+            () => new UpgradeCard("Eternal Void", UpgradeRarity.Legendary, 
+                new List<Upgrade>
+                {
+                    IncreasePullStrengthUpgrade.Generate(80.0f, 120.0f)
+                })
         };
     }
     
@@ -558,56 +692,6 @@ public static class UpgradeCardGenerator
     }
     
     /// <summary>
-    /// Generate a lightning bolt ability card for Epic rarity.
-    /// </summary>
-    /// <returns>AbilityCard with LightningBoltAbility</returns>
-    private static AbilityCard GenerateLightningBoltAbilityCard()
-    {
-        return new AbilityCard(
-            "Lightning Bolt", 
-            LightningBoltAbility.GetDescription(),
-            UpgradeRarity.Epic,
-            DamageUpgrade.Generate(15.0f, 25.0f),
-            typeof(LightningBoltAbility),
-            (ability) => {
-                // Configure the LightningBoltAbility
-                var lightningBoltAbility = ability as LightningBoltAbility;
-                if (lightningBoltAbility != null)
-                {
-                    LightningBoltAbility.ConfigureAbility(lightningBoltAbility);
-                }
-            }
-        );
-    }
-    
-    /// <summary>
-    /// Generate a fireball ability card for Epic rarity.
-    /// </summary>
-    /// <returns>AbilityCard with FireballAbility</returns>
-    private static AbilityCard GenerateFireballAbilityCard()
-    {
-        return new AbilityCard(
-            "Fireball Mastery", 
-            FireballAbility.GetDescription(),
-            UpgradeRarity.Epic,
-            new List<Upgrade>
-            {
-                DamageUpgrade.Generate(20.0f, 30.0f),
-                CooldownReductionUpgrade.Generate(15.0f, 25.0f)
-            },
-            typeof(FireballAbility),
-            (ability) => {
-                // Configure the FireballAbility
-                var fireballAbility = ability as FireballAbility;
-                if (fireballAbility != null)
-                {
-                    FireballAbility.ConfigureAbility(fireballAbility);
-                }
-            }
-        );
-    }
-    
-    /// <summary>
     /// Generate a basic boomerang blade ability card without additional upgrades (for initial selection).
     /// </summary>
     /// <returns>AbilityCard with basic BoomerangBladeAbility</returns>
@@ -618,32 +702,6 @@ public static class UpgradeCardGenerator
             BoomerangBladeAbility.GetDescription(),
             UpgradeRarity.Common,
             new List<Upgrade>(),
-            typeof(BoomerangBladeAbility),
-            (ability) => {
-                var boomerangAbility = ability as BoomerangBladeAbility;
-                if (boomerangAbility != null)
-                {
-                    BoomerangBladeAbility.ConfigureAbility(boomerangAbility);
-                }
-            }
-        );
-    }
-    
-    /// <summary>
-    /// Generate a boomerang blade ability card for Epic rarity.
-    /// </summary>
-    /// <returns>AbilityCard with BoomerangBladeAbility</returns>
-    private static AbilityCard GenerateBoomerangBladeAbilityCard()
-    {
-        return new AbilityCard(
-            "Boomerang Blade Mastery", 
-            BoomerangBladeAbility.GetDescription(),
-            UpgradeRarity.Epic,
-            new List<Upgrade>
-            {
-                AreaOfEffectUpgrade.Generate(30.0f, 50.0f),
-                PierceUpgrade.Generate(2, 4)
-            },
             typeof(BoomerangBladeAbility),
             (ability) => {
                 var boomerangAbility = ability as BoomerangBladeAbility;
@@ -678,32 +736,6 @@ public static class UpgradeCardGenerator
     }
     
     /// <summary>
-    /// Generate a meteor shower ability card for Epic rarity.
-    /// </summary>
-    /// <returns>AbilityCard with MeteorShowerAbility</returns>
-    private static AbilityCard GenerateMeteorShowerAbilityCard()
-    {
-        return new AbilityCard(
-            "Meteor Shower Mastery", 
-            MeteorShowerAbility.GetDescription(),
-            UpgradeRarity.Epic,
-            new List<Upgrade>
-            {
-                DamageUpgrade.Generate(25.0f, 40.0f),
-                AreaOfEffectUpgrade.Generate(40.0f, 60.0f)
-            },
-            typeof(MeteorShowerAbility),
-            (ability) => {
-                var meteorAbility = ability as MeteorShowerAbility;
-                if (meteorAbility != null)
-                {
-                    MeteorShowerAbility.ConfigureAbility(meteorAbility);
-                }
-            }
-        );
-    }
-    
-    /// <summary>
     /// Generate a basic black hole ability card without additional upgrades (for initial selection).
     /// </summary>
     /// <returns>AbilityCard with basic BlackHoleAbility</returns>
@@ -725,56 +757,4 @@ public static class UpgradeCardGenerator
         );
     }
     
-    /// <summary>
-    /// Generate a black hole ability card for Epic rarity.
-    /// </summary>
-    /// <returns>AbilityCard with BlackHoleAbility</returns>
-    private static AbilityCard GenerateBlackHoleAbilityCard()
-    {
-        return new AbilityCard(
-            "Black Hole Mastery", 
-            BlackHoleAbility.GetDescription(),
-            UpgradeRarity.Epic,
-            new List<Upgrade>
-            {
-                AreaOfEffectUpgrade.Generate(30.0f, 50.0f),
-                DurationUpgrade.Generate(20.0f, 40.0f)
-            },
-            typeof(BlackHoleAbility),
-            (ability) => {
-                var blackHoleAbility = ability as BlackHoleAbility;
-                if (blackHoleAbility != null)
-                {
-                    BlackHoleAbility.ConfigureAbility(blackHoleAbility);
-                }
-            }
-        );
-    }
-    
-    /// <summary>
-    /// Generate a legendary ability card with powerful configuration.
-    /// </summary>
-    /// <returns>AbilityCard with enhanced LightningBoltAbility</returns>
-    private static AbilityCard GenerateLegendaryAbilityCard()
-    {
-        return new AbilityCard(
-            "Storm Mastery", 
-            LightningBoltAbility.GetDescription(),
-            UpgradeRarity.Legendary,
-            new List<Upgrade>
-            {
-                DamageUpgrade.Generate(30.0f, 45.0f),
-                MulticastUpgrade.Generate(100.0f, 200.0f)
-            },
-            typeof(LightningBoltAbility),
-            (ability) => {
-                // Configure the LightningBoltAbility with legendary stats
-                var lightningBoltAbility = ability as LightningBoltAbility;
-                if (lightningBoltAbility != null)
-                {
-                    LightningBoltAbility.ConfigureAbility(lightningBoltAbility);
-                }
-            }
-        );
-    }
 }

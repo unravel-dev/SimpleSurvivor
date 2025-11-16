@@ -1,0 +1,3736 @@
+{
+ "entities": [
+  {
+   "prefab_uid": "3df7d3e0-0c57-7940-9219-029c73f3f172",
+   "id": 1048763,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "EnemyMonster",
+     "tag": "Enemy"
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 32
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "3df7d3e0-0c57-7940-9219-029c73f3f172"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -8.774713516235352,
+       "y": 0.0,
+       "z": -3.8148860931396486
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "00000000-0000-0000-0000-000000000000",
+      "id": 4294967295
+     },
+     "children": [
+      {
+       "prefab_uid": "ec3718a0-018e-dc46-9253-982289df3c34",
+       "id": 1048764
+      }
+     ],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": false,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "866d134d-f74d-574f-9446-6b69fbaac1ef"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "f690511a-9f88-224e-8275-535064772f36"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    },
+    "has_animation_component": true,
+    "animation_component": {
+     "animation": {
+      "uid": "f2a8d620-6ce1-8848-9657-03fe25bb1103"
+     },
+     "auto_play": true,
+     "culling_mode": 0,
+     "apply_root_motion": false,
+     "speed": 1.0
+    },
+    "has_physics_component": true,
+    "physics_component": {
+     "is_using_gravity": false,
+     "is_kinematic": false,
+     "is_sensor": false,
+     "is_autoscaled": true,
+     "mass": 1.0,
+     "include_layers": {
+      "mask": -1
+     },
+     "exclude_layers": {
+      "mask": 128
+     },
+     "freeze_position": {
+      "x": false,
+      "y": true,
+      "z": false
+     },
+     "freeze_rotation": {
+      "x": true,
+      "y": true,
+      "z": true
+     },
+     "material": {
+      "uid": "00000000-0000-0000-0000-000000000000"
+     },
+     "shapes": [
+      {
+       "shape": {
+        "index": 2,
+        "data": {
+         "center": {
+          "x": 0.0,
+          "y": 1.149999976158142,
+          "z": 0.0
+         },
+         "radius": 0.5,
+         "length": 1.0
+        }
+       }
+      }
+     ]
+    },
+    "has_script_component": true,
+    "script_component": {
+     "script_components": [
+      {
+       "type": "Enemy",
+       "maxSpeed": 2.0,
+       "maxAcceleration": 13.0,
+       "slowRadius": 5.0,
+       "arriveRadius": 0.6000000238418579,
+       "rotationSpeed": 180.0,
+       "usePhysicsMovement": true,
+       "target": {
+        "flags": 2,
+        "prefab_uid": "00000000-0000-0000-0000-000000000000",
+        "id": 4294967295
+       },
+       "autoFindPlayer": true,
+       "maxChaseDistance": 0.0,
+       "enemyType": "basic"
+      },
+      {
+       "type": "Health",
+       "maxHealth": 40,
+       "currentHealth": 40,
+       "allowOverheal": false,
+       "destroyOnDeath": true,
+       "destroyDelay": 0.0
+      }
+     ]
+    }
+   }
+  },
+  {
+   "prefab_uid": "ec3718a0-018e-dc46-9253-982289df3c34",
+   "id": 1048764,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "RootNode",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "ec3718a0-018e-dc46-9253-982289df3c34"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": -0.7071067094802856,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 0.7071068286895752
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999999403953552,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "3df7d3e0-0c57-7940-9219-029c73f3f172",
+      "id": 1048763
+     },
+     "children": [
+      {
+       "prefab_uid": "d678db19-aab7-c14a-949a-c59bc5ca4a9a",
+       "id": 1048767
+      },
+      {
+       "prefab_uid": "7bc3f97d-22db-c147-8725-72c3b31aa41f",
+       "id": 1048765
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "prefab_uid": "d678db19-aab7-c14a-949a-c59bc5ca4a9a",
+   "id": 1048767,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "root",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "d678db19-aab7-c14a-949a-c59bc5ca4a9a"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "ec3718a0-018e-dc46-9253-982289df3c34",
+      "id": 1048764
+     },
+     "children": [
+      {
+       "prefab_uid": "de8e203a-e143-a24b-a3b3-b6cf062d5997",
+       "id": 1048768
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 0
+    }
+   }
+  },
+  {
+   "prefab_uid": "de8e203a-e143-a24b-a3b3-b6cf062d5997",
+   "id": 1048768,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "pelvis",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "de8e203a-e143-a24b-a3b3-b6cf062d5997"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 3.0999766739164859e-32,
+       "y": -0.0007635658257640898,
+       "z": 0.6601592302322388
+      },
+      "rotation": {
+       "x": 0.0880134329199791,
+       "y": -0.701607882976532,
+       "z": -0.0880134329199791,
+       "w": 0.701607882976532
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "d678db19-aab7-c14a-949a-c59bc5ca4a9a",
+      "id": 1048767
+     },
+     "children": [
+      {
+       "prefab_uid": "e812fe9a-a720-6345-87f1-87de9a6427dd",
+       "id": 1048781
+      },
+      {
+       "prefab_uid": "9a3d082e-72e2-4a43-a203-c3397bc7b7a7",
+       "id": 1048777
+      },
+      {
+       "prefab_uid": "69ac2645-14aa-4c41-b35f-63b64f035124",
+       "id": 1048773
+      },
+      {
+       "prefab_uid": "f87c3944-2be8-6040-b66c-cf317d865000",
+       "id": 1048769
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 1
+    }
+   }
+  },
+  {
+   "prefab_uid": "e812fe9a-a720-6345-87f1-87de9a6427dd",
+   "id": 1048781,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "spine_01",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "e812fe9a-a720-6345-87f1-87de9a6427dd"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.14028804004192353,
+       "y": 0.006197316572070122,
+       "z": 2.251641213906505e-17
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.14149324595928193,
+       "w": 0.9899393320083618
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 0.9999999403953552,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "de8e203a-e143-a24b-a3b3-b6cf062d5997",
+      "id": 1048768
+     },
+     "children": [
+      {
+       "prefab_uid": "51065fc2-9507-7045-ab13-565ddd87a666",
+       "id": 1048783
+      },
+      {
+       "prefab_uid": "604ed23d-8e85-9446-b4c9-5b0a9b287f08",
+       "id": 1048782
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 2
+    }
+   }
+  },
+  {
+   "prefab_uid": "51065fc2-9507-7045-ab13-565ddd87a666",
+   "id": 1048783,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "spine_02",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "51065fc2-9507-7045-ab13-565ddd87a666"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.15357346832752229,
+       "y": -3.6637357959745596e-17,
+       "z": 4.178964100221179e-17
+      },
+      "rotation": {
+       "x": 0.0024123755283653738,
+       "y": 0.04355262219905853,
+       "z": 0.09965893626213074,
+       "w": 0.9940651655197144
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -1.3969838619232178e-9,
+       "y": 1.6880221664905549e-9,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "e812fe9a-a720-6345-87f1-87de9a6427dd",
+      "id": 1048781
+     },
+     "children": [
+      {
+       "prefab_uid": "b929de30-ba6d-a945-bd62-c8dd18ef2585",
+       "id": 1048784
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 3
+    }
+   }
+  },
+  {
+   "prefab_uid": "b929de30-ba6d-a945-bd62-c8dd18ef2585",
+   "id": 1048784,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "spine_03",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "b929de30-ba6d-a945-bd62-c8dd18ef2585"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.14891406893730164,
+       "y": 1.2434497928741313e-16,
+       "z": 4.8846454465522129e-17
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.10330993682146073,
+       "w": 0.9946492314338684
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "51065fc2-9507-7045-ab13-565ddd87a666",
+      "id": 1048783
+     },
+     "children": [
+      {
+       "prefab_uid": "414538a1-b0e6-5743-bfa7-e9ffe86af259",
+       "id": 1048801
+      },
+      {
+       "prefab_uid": "4d9d28ff-ca00-894d-9d2f-4662eaa691e5",
+       "id": 1048793
+      },
+      {
+       "prefab_uid": "7728a00e-4db6-0642-a82e-90803c8f6b35",
+       "id": 1048785
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 4
+    }
+   }
+  },
+  {
+   "prefab_uid": "414538a1-b0e6-5743-bfa7-e9ffe86af259",
+   "id": 1048801,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "neck_01",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "414538a1-b0e6-5743-bfa7-e9ffe86af259"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.20905116200447083,
+       "y": 1.776356733521132e-16,
+       "z": 1.0606600828566532e-16
+      },
+      "rotation": {
+       "x": 0.04359927028417587,
+       "y": -0.0013244873844087124,
+       "z": -0.2388368397951126,
+       "w": 0.9700795412063599
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999999403953552,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "b929de30-ba6d-a945-bd62-c8dd18ef2585",
+      "id": 1048784
+     },
+     "children": [
+      {
+       "prefab_uid": "188d110d-74ef-a848-85eb-a9b1b1131a77",
+       "id": 1048802
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 5
+    }
+   }
+  },
+  {
+   "prefab_uid": "188d110d-74ef-a848-85eb-a9b1b1131a77",
+   "id": 1048802,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "head",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "188d110d-74ef-a848-85eb-a9b1b1131a77"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.30618181824684145,
+       "y": -6.039613317488323e-16,
+       "z": 8.413475032936519e-17
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.06708358973264694,
+       "w": 0.9977473616600037
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "414538a1-b0e6-5743-bfa7-e9ffe86af259",
+      "id": 1048801
+     },
+     "children": [
+      {
+       "prefab_uid": "ec5c531f-0747-7a48-9c77-49d7b3cd4270",
+       "id": 1048762
+      },
+      {
+       "prefab_uid": "d06e4d7f-8d6d-ca48-874d-28d3444f0382",
+       "id": 2097334
+      },
+      {
+       "prefab_uid": "2bc61ea0-c58b-f040-87e6-c17fb3cfa30c",
+       "id": 2097336
+      },
+      {
+       "prefab_uid": "5449582b-48c2-dc48-b9a3-3ee09448e80f",
+       "id": 2097332
+      },
+      {
+       "prefab_uid": "eebb3eae-2429-ee45-b43e-7444d8ef67b2",
+       "id": 1048812
+      },
+      {
+       "prefab_uid": "a884ed1f-8556-ac40-ba7d-fd50751d512b",
+       "id": 1048810
+      },
+      {
+       "prefab_uid": "b930c27f-d257-a943-b5c8-591905f6a658",
+       "id": 1048808
+      },
+      {
+       "prefab_uid": "7cfa16fc-00f0-bf44-ab2f-98a9bdadf328",
+       "id": 1048806
+      },
+      {
+       "prefab_uid": "e02d3d77-407a-8a4b-9deb-4a3c04a3e1d9",
+       "id": 1048803
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 6
+    }
+   }
+  },
+  {
+   "prefab_uid": "ec5c531f-0747-7a48-9c77-49d7b3cd4270",
+   "id": 1048762,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "face",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "ec5c531f-0747-7a48-9c77-49d7b3cd4270"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.1146899163722992,
+       "y": -0.11381889134645462,
+       "z": -1.1558125877776492e-16
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": -0.7658092975616455,
+       "w": 0.6430677771568298
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "188d110d-74ef-a848-85eb-a9b1b1131a77",
+      "id": 1048802
+     },
+     "children": [
+      {
+       "prefab_uid": "3f187d90-28a8-464b-9514-348fdcd37612",
+       "id": 2097335
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 7
+    }
+   }
+  },
+  {
+   "prefab_uid": "3f187d90-28a8-464b-9514-348fdcd37612",
+   "id": 2097335,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "mouth",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "3f187d90-28a8-464b-9514-348fdcd37612"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.1039998009800911,
+       "y": -0.006094659212976694,
+       "z": -1.0966216607257226e-16
+      },
+      "rotation": {
+       "x": 0.5415088534355164,
+       "y": -0.4547176659107208,
+       "z": -0.5415088534355164,
+       "w": -0.4547176659107208
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -2.9802322387695315e-8,
+       "y": -2.9353337538395864e-8,
+       "z": -2.464868487095373e-8
+      }
+     },
+     "parent": {
+      "prefab_uid": "ec5c531f-0747-7a48-9c77-49d7b3cd4270",
+      "id": 1048762
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 8
+    }
+   }
+  },
+  {
+   "prefab_uid": "d06e4d7f-8d6d-ca48-874d-28d3444f0382",
+   "id": 2097334,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Jaw",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "d06e4d7f-8d6d-ca48-874d-28d3444f0382"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.16025885939598084,
+       "y": 0.02083532139658928,
+       "z": 1.5729947769716643e-18
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.7071067094802856,
+       "z": 0.0,
+       "w": 0.7071068286895752
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 1.0,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "188d110d-74ef-a848-85eb-a9b1b1131a77",
+      "id": 1048802
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 9
+    }
+   }
+  },
+  {
+   "prefab_uid": "2bc61ea0-c58b-f040-87e6-c17fb3cfa30c",
+   "id": 2097336,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hat_01",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "2bc61ea0-c58b-f040-87e6-c17fb3cfa30c"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.18918251991271974,
+       "y": 0.004980006255209446,
+       "z": 1.1443253651750028e-16
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.00631275400519371,
+       "w": 0.999980092048645
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "188d110d-74ef-a848-85eb-a9b1b1131a77",
+      "id": 1048802
+     },
+     "children": [
+      {
+       "prefab_uid": "399372dc-bc5a-784f-9e4d-764eb4e11861",
+       "id": 2097337
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 10
+    }
+   }
+  },
+  {
+   "prefab_uid": "399372dc-bc5a-784f-9e4d-764eb4e11861",
+   "id": 2097337,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hat_02",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "399372dc-bc5a-784f-9e4d-764eb4e11861"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.6819025278091431,
+       "y": -0.00860987976193428,
+       "z": 7.840969434354277e-17
+      },
+      "rotation": {
+       "x": 0.004463790915906429,
+       "y": 0.7070927619934082,
+       "z": -0.004463791381567717,
+       "w": 0.7070926427841187
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 7.2417254484702376e-12,
+       "z": -1.1475249639403274e-9
+      }
+     },
+     "parent": {
+      "prefab_uid": "2bc61ea0-c58b-f040-87e6-c17fb3cfa30c",
+      "id": 2097336
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 11
+    }
+   }
+  },
+  {
+   "prefab_uid": "5449582b-48c2-dc48-b9a3-3ee09448e80f",
+   "id": 2097332,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornA_01_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "5449582b-48c2-dc48-b9a3-3ee09448e80f"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.12041797488927841,
+       "y": 0.004980006255209446,
+       "z": -0.08191205561161041
+      },
+      "rotation": {
+       "x": -0.0013932839501649142,
+       "y": 0.2096453309059143,
+       "z": -0.006498070899397135,
+       "w": 0.9777550101280212
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -3.0247909732494806e-10,
+       "y": 2.9799227974081078e-8,
+       "z": 9.313225746154786e-10
+      }
+     },
+     "parent": {
+      "prefab_uid": "188d110d-74ef-a848-85eb-a9b1b1131a77",
+      "id": 1048802
+     },
+     "children": [
+      {
+       "prefab_uid": "66d6f631-9bf1-a544-b94c-dcb107fe0279",
+       "id": 2097333
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 12
+    }
+   }
+  },
+  {
+   "prefab_uid": "66d6f631-9bf1-a544-b94c-dcb107fe0279",
+   "id": 2097333,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornA_02_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "66d6f631-9bf1-a544-b94c-dcb107fe0279"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.675695538520813,
+       "y": -2.8865797581462889e-17,
+       "z": -5.684341759025859e-16
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.5431475043296814,
+       "z": 0.0,
+       "w": 0.839637279510498
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 1.0,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "5449582b-48c2-dc48-b9a3-3ee09448e80f",
+      "id": 2097332
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 13
+    }
+   }
+  },
+  {
+   "prefab_uid": "eebb3eae-2429-ee45-b43e-7444d8ef67b2",
+   "id": 1048812,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornB_01_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "eebb3eae-2429-ee45-b43e-7444d8ef67b2"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.016145382076501848,
+       "y": 0.004980006255209446,
+       "z": -0.2079729586839676
+      },
+      "rotation": {
+       "x": 0.019879600033164026,
+       "y": 0.4099843502044678,
+       "z": -0.0441637858748436,
+       "w": 0.9108058214187622
+      },
+      "scale": {
+       "x": 0.9999998211860657,
+       "y": 0.9999998807907105,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 7.450580596923828e-9,
+       "y": -1.6763806343078614e-8,
+       "z": -1.4901162970204497e-8
+      }
+     },
+     "parent": {
+      "prefab_uid": "188d110d-74ef-a848-85eb-a9b1b1131a77",
+      "id": 1048802
+     },
+     "children": [
+      {
+       "prefab_uid": "668d56f5-fcd4-b84a-8a50-8deb4b2113f6",
+       "id": 1048813
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 14
+    }
+   }
+  },
+  {
+   "prefab_uid": "668d56f5-fcd4-b84a-8a50-8deb4b2113f6",
+   "id": 1048813,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornB_02_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "668d56f5-fcd4-b84a-8a50-8deb4b2113f6"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.2182939499616623,
+       "y": -7.105427198782324e-17,
+       "z": 1.4210853868169057e-15
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": -0.43467530608177187,
+       "z": 0.0,
+       "w": 0.9005873799324036
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "eebb3eae-2429-ee45-b43e-7444d8ef67b2",
+      "id": 1048812
+     },
+     "children": [
+      {
+       "prefab_uid": "538a704e-e665-4f4c-bf51-c047207102e2",
+       "id": 1048814
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 15
+    }
+   }
+  },
+  {
+   "prefab_uid": "538a704e-e665-4f4c-bf51-c047207102e2",
+   "id": 1048814,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornB_03_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "538a704e-e665-4f4c-bf51-c047207102e2"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.2914453148841858,
+       "y": 8.946976189430633e-13,
+       "z": -2.1316280802253586e-15
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.7257408499717712,
+       "z": 0.0,
+       "w": 0.6879681944847107
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "668d56f5-fcd4-b84a-8a50-8deb4b2113f6",
+      "id": 1048813
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 16
+    }
+   }
+  },
+  {
+   "prefab_uid": "a884ed1f-8556-ac40-ba7d-fd50751d512b",
+   "id": 1048810,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornC_01_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "a884ed1f-8556-ac40-ba7d-fd50751d512b"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.06945151835680008,
+       "y": 0.004980006255209446,
+       "z": -0.23598650097846986
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.47399386763572695,
+       "z": 0.0,
+       "w": 0.8805281519889832
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "188d110d-74ef-a848-85eb-a9b1b1131a77",
+      "id": 1048802
+     },
+     "children": [
+      {
+       "prefab_uid": "e03d2b81-c00c-3f4a-b7ed-bbf1a7392e5b",
+       "id": 1048811
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 17
+    }
+   }
+  },
+  {
+   "prefab_uid": "e03d2b81-c00c-3f4a-b7ed-bbf1a7392e5b",
+   "id": 1048811,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornC_02_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "e03d2b81-c00c-3f4a-b7ed-bbf1a7392e5b"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.3561088442802429,
+       "y": 2.83989913654423e-31,
+       "z": -1.4210854397564649e-16
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.28746315836906435,
+       "z": 0.0,
+       "w": 0.957791805267334
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "a884ed1f-8556-ac40-ba7d-fd50751d512b",
+      "id": 1048810
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 18
+    }
+   }
+  },
+  {
+   "prefab_uid": "b930c27f-d257-a943-b5c8-591905f6a658",
+   "id": 1048808,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornA_01_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "b930c27f-d257-a943-b5c8-591905f6a658"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.12041652202606201,
+       "y": 0.004980006255209446,
+       "z": 0.0819120928645134
+      },
+      "rotation": {
+       "x": -0.20964524149894715,
+       "y": -0.0013932777801528574,
+       "z": 0.9777549505233765,
+       "w": 0.006498096976429224
+      },
+      "scale": {
+       "x": 1.0000001192092896,
+       "y": 1.0000001192092896,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -4.353548632707316e-10,
+       "y": 8.971952070169209e-8,
+       "z": 9.313224635931761e-10
+      }
+     },
+     "parent": {
+      "prefab_uid": "188d110d-74ef-a848-85eb-a9b1b1131a77",
+      "id": 1048802
+     },
+     "children": [
+      {
+       "prefab_uid": "2b79e453-3fb2-c842-8e46-7610810a41e8",
+       "id": 1048809
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 19
+    }
+   }
+  },
+  {
+   "prefab_uid": "2b79e453-3fb2-c842-8e46-7610810a41e8",
+   "id": 1048809,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornA_02_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "2b79e453-3fb2-c842-8e46-7610810a41e8"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.6756924390792847,
+       "y": 4.6456332114530599e-8,
+       "z": 0.0000010327850077374024
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.5431475043296814,
+       "z": 0.0,
+       "w": 0.839637279510498
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 1.0,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "b930c27f-d257-a943-b5c8-591905f6a658",
+      "id": 1048808
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 20
+    }
+   }
+  },
+  {
+   "prefab_uid": "7cfa16fc-00f0-bf44-ab2f-98a9bdadf328",
+   "id": 1048806,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornC_01_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "7cfa16fc-00f0-bf44-ab2f-98a9bdadf328"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.06945347040891648,
+       "y": 0.004980006255209446,
+       "z": 0.23598599433898927
+      },
+      "rotation": {
+       "x": -0.47399386763572695,
+       "y": -2.071893057120633e-8,
+       "z": 0.8805281519889832,
+       "w": -3.848910523629456e-8
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 3.5130022331343777e-15,
+       "z": -3.552713678800501e-15
+      }
+     },
+     "parent": {
+      "prefab_uid": "188d110d-74ef-a848-85eb-a9b1b1131a77",
+      "id": 1048802
+     },
+     "children": [
+      {
+       "prefab_uid": "56ba92c7-5eaa-8546-b372-d5cf9f85f5e9",
+       "id": 1048807
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 21
+    }
+   }
+  },
+  {
+   "prefab_uid": "56ba92c7-5eaa-8546-b372-d5cf9f85f5e9",
+   "id": 1048807,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornC_02_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "56ba92c7-5eaa-8546-b372-d5cf9f85f5e9"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.35611197352409365,
+       "y": 3.100586933609273e-17,
+       "z": -0.000004239204372424865
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.28746315836906435,
+       "z": 0.0,
+       "w": 0.957791805267334
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "7cfa16fc-00f0-bf44-ab2f-98a9bdadf328",
+      "id": 1048806
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 22
+    }
+   }
+  },
+  {
+   "prefab_uid": "e02d3d77-407a-8a4b-9deb-4a3c04a3e1d9",
+   "id": 1048803,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornB_01_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "e02d3d77-407a-8a4b-9deb-4a3c04a3e1d9"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.016146527603268625,
+       "y": 0.004980006255209446,
+       "z": 0.20797300338745118
+      },
+      "rotation": {
+       "x": -0.4099843502044678,
+       "y": 0.019879618659615518,
+       "z": 0.9108058214187622,
+       "w": 0.044163819402456287
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 1.0000001192092896,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -7.450580596923828e-9,
+       "y": 1.1082738637924194e-7,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "188d110d-74ef-a848-85eb-a9b1b1131a77",
+      "id": 1048802
+     },
+     "children": [
+      {
+       "prefab_uid": "2e6b0b6e-1406-d844-839b-c792ac066de3",
+       "id": 1048804
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 23
+    }
+   }
+  },
+  {
+   "prefab_uid": "2e6b0b6e-1406-d844-839b-c792ac066de3",
+   "id": 1048804,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornB_02_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "2e6b0b6e-1406-d844-839b-c792ac066de3"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.21829533576965333,
+       "y": -2.8226679660292577e-7,
+       "z": -0.00000197259078049683
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": -0.43467530608177187,
+       "z": 0.0,
+       "w": 0.9005873799324036
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "e02d3d77-407a-8a4b-9deb-4a3c04a3e1d9",
+      "id": 1048803
+     },
+     "children": [
+      {
+       "prefab_uid": "12b62432-6e68-1349-b079-4eafb3fbbf5a",
+       "id": 1048805
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 24
+    }
+   }
+  },
+  {
+   "prefab_uid": "12b62432-6e68-1349-b079-4eafb3fbbf5a",
+   "id": 1048805,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hornB_03_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "12b62432-6e68-1349-b079-4eafb3fbbf5a"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.2914411425590515,
+       "y": 4.336579308983346e-7,
+       "z": -1.432652396715639e-7
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.7257408499717712,
+       "z": 0.0,
+       "w": 0.6879681944847107
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "2e6b0b6e-1406-d844-839b-c792ac066de3",
+      "id": 1048804
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 25
+    }
+   }
+  },
+  {
+   "prefab_uid": "4d9d28ff-ca00-894d-9d2f-4662eaa691e5",
+   "id": 1048793,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "clavicle_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "4d9d28ff-ca00-894d-9d2f-4662eaa691e5"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.06351194530725479,
+       "y": 0.030065516009926797,
+       "z": -0.20842351019382478
+      },
+      "rotation": {
+       "x": 0.03173622116446495,
+       "y": 0.7219832539558411,
+       "z": -0.1561218649148941,
+       "w": 0.6733193397521973
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999998807907105,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": -2.980232594040899e-8,
+       "y": 8.568168397005138e-8,
+       "z": 1.4901162970204497e-8
+      }
+     },
+     "parent": {
+      "prefab_uid": "b929de30-ba6d-a945-bd62-c8dd18ef2585",
+      "id": 1048784
+     },
+     "children": [
+      {
+       "prefab_uid": "e99907da-1182-5343-9206-266aeec66091",
+       "id": 1048794
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 26
+    }
+   }
+  },
+  {
+   "prefab_uid": "e99907da-1182-5343-9206-266aeec66091",
+   "id": 1048794,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "upperarm_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "e99907da-1182-5343-9206-266aeec66091"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.15415950119495393,
+       "y": -2.664535100281698e-16,
+       "z": -2.1316280802253586e-15
+      },
+      "rotation": {
+       "x": -0.12648573517799378,
+       "y": 0.293862909078598,
+       "z": -0.19685202836990357,
+       "w": 0.926766037940979
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": -7.450581485102248e-9,
+       "y": -3.725290742551124e-9,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "4d9d28ff-ca00-894d-9d2f-4662eaa691e5",
+      "id": 1048793
+     },
+     "children": [
+      {
+       "prefab_uid": "c679a2db-a944-d544-81f5-dfe1455b7a21",
+       "id": 1048795
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 27
+    }
+   }
+  },
+  {
+   "prefab_uid": "c679a2db-a944-d544-81f5-dfe1455b7a21",
+   "id": 1048795,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "lowerarm_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "c679a2db-a944-d544-81f5-dfe1455b7a21"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.3589194715023041,
+       "y": -6.661337998858429e-18,
+       "z": -4.2632563192693947e-16
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": -0.2960919439792633,
+       "w": 0.9551594257354736
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 0.9999999403953552,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "e99907da-1182-5343-9206-266aeec66091",
+      "id": 1048794
+     },
+     "children": [
+      {
+       "prefab_uid": "062799b9-acb0-2f4f-8078-16c960699515",
+       "id": 1048796
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 28
+    }
+   }
+  },
+  {
+   "prefab_uid": "062799b9-acb0-2f4f-8078-16c960699515",
+   "id": 1048796,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hand_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "062799b9-acb0-2f4f-8078-16c960699515"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.4093039631843567,
+       "y": -2.8421708795129299e-16,
+       "z": 2.2737367036103439e-15
+      },
+      "rotation": {
+       "x": -0.6097530126571655,
+       "y": 0.061238884925842288,
+       "z": -0.06104069575667381,
+       "w": 0.7878611087799072
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -1.4901161193847657e-8,
+       "y": -1.4901161193847657e-8,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "c679a2db-a944-d544-81f5-dfe1455b7a21",
+      "id": 1048795
+     },
+     "children": [
+      {
+       "prefab_uid": "e5bafc83-0417-6448-8d91-ad62d522f709",
+       "id": 1048800
+      },
+      {
+       "prefab_uid": "e8fd593e-825b-8c4d-b531-e773fb2bbda6",
+       "id": 1048799
+      },
+      {
+       "prefab_uid": "2c5ffb7d-e032-cf46-8867-bab814bb7f0d",
+       "id": 1048798
+      },
+      {
+       "prefab_uid": "5769050c-4a40-a748-a0ef-46596da5587e",
+       "id": 1048797
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 29
+    }
+   }
+  },
+  {
+   "prefab_uid": "e5bafc83-0417-6448-8d91-ad62d522f709",
+   "id": 1048800,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "drill_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "e5bafc83-0417-6448-8d91-ad62d522f709"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.1100829467177391,
+       "y": -0.009449473582208157,
+       "z": 0.0006042766035534442
+      },
+      "rotation": {
+       "x": 0.7058098912239075,
+       "y": 0.0022091600112617018,
+       "z": -0.00031847922946326435,
+       "w": 0.7083978056907654
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -3.864988684654236e-8,
+       "y": -4.656612873077393e-10,
+       "z": -4.029061528854072e-10
+      }
+     },
+     "parent": {
+      "prefab_uid": "062799b9-acb0-2f4f-8078-16c960699515",
+      "id": 1048796
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 30
+    }
+   }
+  },
+  {
+   "prefab_uid": "e8fd593e-825b-8c4d-b531-e773fb2bbda6",
+   "id": 1048799,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "saw_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "e8fd593e-825b-8c4d-b531-e773fb2bbda6"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.13957767188549043,
+       "y": -0.002243037335574627,
+       "z": 0.0004728826170321554
+      },
+      "rotation": {
+       "x": 0.7058098912239075,
+       "y": 0.0022091600112617018,
+       "z": -0.00031847922946326435,
+       "w": 0.7083978056907654
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -3.864988684654236e-8,
+       "y": -4.656612873077393e-10,
+       "z": -4.029061528854072e-10
+      }
+     },
+     "parent": {
+      "prefab_uid": "062799b9-acb0-2f4f-8078-16c960699515",
+      "id": 1048796
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 31
+    }
+   }
+  },
+  {
+   "prefab_uid": "2c5ffb7d-e032-cf46-8867-bab814bb7f0d",
+   "id": 1048798,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "upperJaw_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "2c5ffb7d-e032-cf46-8867-bab814bb7f0d"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.24131815135478974,
+       "y": -0.13323141634464265,
+       "z": 0.0005894331261515617
+      },
+      "rotation": {
+       "x": 0.7058098912239075,
+       "y": 0.0022091600112617018,
+       "z": -0.00031847922946326435,
+       "w": 0.7083978056907654
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -3.864988684654236e-8,
+       "y": -4.656612873077393e-10,
+       "z": -4.029061528854072e-10
+      }
+     },
+     "parent": {
+      "prefab_uid": "062799b9-acb0-2f4f-8078-16c960699515",
+      "id": 1048796
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 32
+    }
+   }
+  },
+  {
+   "prefab_uid": "5769050c-4a40-a748-a0ef-46596da5587e",
+   "id": 1048797,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "LowerJaw_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "5769050c-4a40-a748-a0ef-46596da5587e"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.2783709764480591,
+       "y": 0.14700452983379365,
+       "z": -0.0005698422319255769
+      },
+      "rotation": {
+       "x": 0.7058098912239075,
+       "y": 0.0022091600112617018,
+       "z": -0.00031847922946326435,
+       "w": 0.7083978056907654
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -3.864988684654236e-8,
+       "y": -4.656612873077393e-10,
+       "z": -4.029061528854072e-10
+      }
+     },
+     "parent": {
+      "prefab_uid": "062799b9-acb0-2f4f-8078-16c960699515",
+      "id": 1048796
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 33
+    }
+   }
+  },
+  {
+   "prefab_uid": "7728a00e-4db6-0642-a82e-90803c8f6b35",
+   "id": 1048785,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "clavicle_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "7728a00e-4db6-0642-a82e-90803c8f6b35"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.06351175904273987,
+       "y": 0.030065547674894334,
+       "z": 0.20842398703098298
+      },
+      "rotation": {
+       "x": 0.7219833135604858,
+       "y": -0.031736213713884357,
+       "z": -0.6733192801475525,
+       "w": -0.1561218798160553
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": -2.980232594040899e-8,
+       "y": 4.470348713425665e-8,
+       "z": -1.4901161193847657e-8
+      }
+     },
+     "parent": {
+      "prefab_uid": "b929de30-ba6d-a945-bd62-c8dd18ef2585",
+      "id": 1048784
+     },
+     "children": [
+      {
+       "prefab_uid": "09699aea-2ba3-da49-885d-8220e4b68b16",
+       "id": 1048786
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 34
+    }
+   }
+  },
+  {
+   "prefab_uid": "09699aea-2ba3-da49-885d-8220e4b68b16",
+   "id": 1048786,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "upperarm_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "09699aea-2ba3-da49-885d-8220e4b68b16"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.15415917336940766,
+       "y": 4.352324012302233e-8,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": -0.18024423718452454,
+       "y": 0.3568649888038635,
+       "z": -0.08212504535913468,
+       "w": 0.9129155874252319
+      },
+      "scale": {
+       "x": 0.9999998807907105,
+       "y": 1.0,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": -1.4901162970204497e-8,
+       "y": 2.2351743567128325e-8,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "7728a00e-4db6-0642-a82e-90803c8f6b35",
+      "id": 1048785
+     },
+     "children": [
+      {
+       "prefab_uid": "babb4b00-7db5-dc46-8d43-4627af796784",
+       "id": 1048787
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 35
+    }
+   }
+  },
+  {
+   "prefab_uid": "babb4b00-7db5-dc46-8d43-4627af796784",
+   "id": 1048787,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "lowerarm_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "babb4b00-7db5-dc46-8d43-4627af796784"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.35891908407211306,
+       "y": 1.554312241092664e-17,
+       "z": 1.4210854397564649e-16
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": -0.43243420124053957,
+       "w": 0.9016655087471008
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "09699aea-2ba3-da49-885d-8220e4b68b16",
+      "id": 1048786
+     },
+     "children": [
+      {
+       "prefab_uid": "15a4a5dd-a003-a64d-9dad-832906736647",
+       "id": 1048788
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 36
+    }
+   }
+  },
+  {
+   "prefab_uid": "15a4a5dd-a003-a64d-9dad-832906736647",
+   "id": 1048788,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "hand_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "15a4a5dd-a003-a64d-9dad-832906736647"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.40930742025375368,
+       "y": 4.440891999238953e-18,
+       "z": -7.105427357601002e-15
+      },
+      "rotation": {
+       "x": -0.6373770236968994,
+       "y": 0.0268490482121706,
+       "z": -0.0005240693571977317,
+       "w": 0.770084023475647
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999999403953552,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": -1.862645371275562e-9
+      }
+     },
+     "parent": {
+      "prefab_uid": "babb4b00-7db5-dc46-8d43-4627af796784",
+      "id": 1048787
+     },
+     "children": [
+      {
+       "prefab_uid": "8d4b3594-9f28-0a4a-a412-257a8a410ad9",
+       "id": 1048792
+      },
+      {
+       "prefab_uid": "ca5904c6-cf65-9b41-86f1-c3e25456611e",
+       "id": 1048791
+      },
+      {
+       "prefab_uid": "f8b87ec4-3062-3a45-8c22-53478312905a",
+       "id": 1048790
+      },
+      {
+       "prefab_uid": "fad4555f-88e6-3547-afcb-d6cd530e2a97",
+       "id": 1048789
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 37
+    }
+   }
+  },
+  {
+   "prefab_uid": "8d4b3594-9f28-0a4a-a412-257a8a410ad9",
+   "id": 1048792,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "drill_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "8d4b3594-9f28-0a4a-a412-257a8a410ad9"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.11007845401763916,
+       "y": 0.009448838420212269,
+       "z": -0.0006042898749001324
+      },
+      "rotation": {
+       "x": 0.7058098912239075,
+       "y": 0.0022091600112617018,
+       "z": -0.00031847922946326435,
+       "w": 0.7083978056907654
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -3.864988684654236e-8,
+       "y": -4.656612873077393e-10,
+       "z": -4.029061528854072e-10
+      }
+     },
+     "parent": {
+      "prefab_uid": "15a4a5dd-a003-a64d-9dad-832906736647",
+      "id": 1048788
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 38
+    }
+   }
+  },
+  {
+   "prefab_uid": "ca5904c6-cf65-9b41-86f1-c3e25456611e",
+   "id": 1048791,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "saw_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "ca5904c6-cf65-9b41-86f1-c3e25456611e"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.13957905769348145,
+       "y": 0.00224217283539474,
+       "z": -0.0004728740605060011
+      },
+      "rotation": {
+       "x": 0.7058098912239075,
+       "y": 0.0022091600112617018,
+       "z": -0.00031847922946326435,
+       "w": 0.7083978056907654
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -3.864988684654236e-8,
+       "y": -4.656612873077393e-10,
+       "z": -4.029061528854072e-10
+      }
+     },
+     "parent": {
+      "prefab_uid": "15a4a5dd-a003-a64d-9dad-832906736647",
+      "id": 1048788
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 39
+    }
+   }
+  },
+  {
+   "prefab_uid": "f8b87ec4-3062-3a45-8c22-53478312905a",
+   "id": 1048790,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "upperJaw_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "f8b87ec4-3062-3a45-8c22-53478312905a"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.24130988121032716,
+       "y": 0.13323241472244264,
+       "z": -0.000589465897064656
+      },
+      "rotation": {
+       "x": 0.7058098912239075,
+       "y": 0.0022091600112617018,
+       "z": -0.00031847922946326435,
+       "w": 0.7083978056907654
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -3.864988684654236e-8,
+       "y": -4.656612873077393e-10,
+       "z": -4.029061528854072e-10
+      }
+     },
+     "parent": {
+      "prefab_uid": "15a4a5dd-a003-a64d-9dad-832906736647",
+      "id": 1048788
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 40
+    }
+   }
+  },
+  {
+   "prefab_uid": "fad4555f-88e6-3547-afcb-d6cd530e2a97",
+   "id": 1048789,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "LowerJaw_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "fad4555f-88e6-3547-afcb-d6cd530e2a97"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.27836862206459048,
+       "y": -0.14700455963611604,
+       "z": 0.0005698343156836927
+      },
+      "rotation": {
+       "x": 0.7058098912239075,
+       "y": 0.0022091600112617018,
+       "z": -0.00031847922946326435,
+       "w": 0.7083978056907654
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -3.864988684654236e-8,
+       "y": -4.656612873077393e-10,
+       "z": -4.029061528854072e-10
+      }
+     },
+     "parent": {
+      "prefab_uid": "15a4a5dd-a003-a64d-9dad-832906736647",
+      "id": 1048788
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 41
+    }
+   }
+  },
+  {
+   "prefab_uid": "604ed23d-8e85-9446-b4c9-5b0a9b287f08",
+   "id": 1048782,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "FrontBelly",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "604ed23d-8e85-9446-b4c9-5b0a9b287f08"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0924404114484787,
+       "y": -0.2748403549194336,
+       "z": -2.32962409628886e-16
+      },
+      "rotation": {
+       "x": -0.01576247066259384,
+       "y": 0.7069311141967773,
+       "z": 0.01576247066259384,
+       "w": 0.7069310545921326
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -3.725290298461914e-9,
+       "y": 3.544711746350515e-11,
+       "z": 1.5899479510750326e-9
+      }
+     },
+     "parent": {
+      "prefab_uid": "e812fe9a-a720-6345-87f1-87de9a6427dd",
+      "id": 1048781
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 42
+    }
+   }
+  },
+  {
+   "prefab_uid": "9a3d082e-72e2-4a43-a203-c3397bc7b7a7",
+   "id": 1048777,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "thigh_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "9a3d082e-72e2-4a43-a203-c3397bc7b7a7"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.022657401859760286,
+       "y": -0.0018067064229398966,
+       "z": -0.17085041105747224
+      },
+      "rotation": {
+       "x": 0.11307594925165177,
+       "y": -0.09652359038591385,
+       "z": -0.19748453795909882,
+       "w": 0.9689670205116272
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 0.9999999403953552,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 1.4901161193847657e-8,
+       "y": 7.450580596923828e-9,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "de8e203a-e143-a24b-a3b3-b6cf062d5997",
+      "id": 1048768
+     },
+     "children": [
+      {
+       "prefab_uid": "689f6ab2-c855-a541-a9f9-226ba9490b00",
+       "id": 1048778
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 43
+    }
+   }
+  },
+  {
+   "prefab_uid": "689f6ab2-c855-a541-a9f9-226ba9490b00",
+   "id": 1048778,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "calf_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "689f6ab2-c855-a541-a9f9-226ba9490b00"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.2537067234516144,
+       "y": -0.010923627763986588,
+       "z": 0.0016361565794795752
+      },
+      "rotation": {
+       "x": -0.05494113266468048,
+       "y": -0.0400070920586586,
+       "z": -0.4500587284564972,
+       "w": 0.8904089331626892
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -7.450580596923828e-9,
+       "y": -7.450580596923828e-9,
+       "z": 2.9802322387695315e-8
+      }
+     },
+     "parent": {
+      "prefab_uid": "9a3d082e-72e2-4a43-a203-c3397bc7b7a7",
+      "id": 1048777
+     },
+     "children": [
+      {
+       "prefab_uid": "66ab7b86-0996-e24c-a5df-b275dc6d1b31",
+       "id": 1048779
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 44
+    }
+   }
+  },
+  {
+   "prefab_uid": "66ab7b86-0996-e24c-a5df-b275dc6d1b31",
+   "id": 1048779,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "foot_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "66ab7b86-0996-e24c-a5df-b275dc6d1b31"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.1534036248922348,
+       "y": 0.017944220453500749,
+       "z": -0.001143369940109551
+      },
+      "rotation": {
+       "x": -0.11379261314868927,
+       "y": 0.04078901186585426,
+       "z": -0.08157671242952347,
+       "w": 0.9893093109130859
+      },
+      "scale": {
+       "x": 1.0000001192092896,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 1.4901161193847657e-8,
+       "y": 0.0,
+       "z": -1.4901161193847657e-8
+      }
+     },
+     "parent": {
+      "prefab_uid": "689f6ab2-c855-a541-a9f9-226ba9490b00",
+      "id": 1048778
+     },
+     "children": [
+      {
+       "prefab_uid": "105d0bfc-2016-1242-9748-1cbf4b609ec8",
+       "id": 1048780
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 45
+    }
+   }
+  },
+  {
+   "prefab_uid": "105d0bfc-2016-1242-9748-1cbf4b609ec8",
+   "id": 1048780,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "ball_l",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "105d0bfc-2016-1242-9748-1cbf4b609ec8"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.01865966245532036,
+       "y": -0.08321955800056458,
+       "z": 0.0010733596282079816
+      },
+      "rotation": {
+       "x": -0.018653172999620439,
+       "y": 0.018653172999620439,
+       "z": -0.7068607211112976,
+       "w": 0.7068607211112976
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999999403953552,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 3.725290742551124e-9,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "66ab7b86-0996-e24c-a5df-b275dc6d1b31",
+      "id": 1048779
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 46
+    }
+   }
+  },
+  {
+   "prefab_uid": "69ac2645-14aa-4c41-b35f-63b64f035124",
+   "id": 1048773,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "tail_01",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "69ac2645-14aa-4c41-b35f-63b64f035124"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.03035246580839157,
+       "y": 0.2541774809360504,
+       "z": 2.7145378374382838e-16
+      },
+      "rotation": {
+       "x": 0.30240845680236819,
+       "y": 0.9531785249710083,
+       "z": -4.166475875422293e-8,
+       "w": -1.3218696359729165e-8
+      },
+      "scale": {
+       "x": 0.9999998807907105,
+       "y": 1.0,
+       "z": 0.9999998807907105
+      },
+      "skew": {
+       "x": -1.0658142730467398e-14,
+       "y": -7.105428204633949e-15,
+       "z": 2.9802322387695315e-8
+      }
+     },
+     "parent": {
+      "prefab_uid": "de8e203a-e143-a24b-a3b3-b6cf062d5997",
+      "id": 1048768
+     },
+     "children": [
+      {
+       "prefab_uid": "23d415d5-6d44-4f43-b479-fea5bdfd53ad",
+       "id": 1048774
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 47
+    }
+   }
+  },
+  {
+   "prefab_uid": "23d415d5-6d44-4f43-b479-fea5bdfd53ad",
+   "id": 1048774,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "tail_02",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "23d415d5-6d44-4f43-b479-fea5bdfd53ad"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.28033706545829775,
+       "y": 4.973799171496525e-16,
+       "z": -9.895422701628961e-17
+      },
+      "rotation": {
+       "x": 0.016851335763931276,
+       "y": -0.17909903824329377,
+       "z": 0.0921475887298584,
+       "w": 0.9793612360954285
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": -5.21540641784668e-8,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "69ac2645-14aa-4c41-b35f-63b64f035124",
+      "id": 1048773
+     },
+     "children": [
+      {
+       "prefab_uid": "027f6bec-e4a7-1b45-8d46-1599251fdac7",
+       "id": 1048775
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 48
+    }
+   }
+  },
+  {
+   "prefab_uid": "027f6bec-e4a7-1b45-8d46-1599251fdac7",
+   "id": 1048775,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "tail_03",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "027f6bec-e4a7-1b45-8d46-1599251fdac7"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.3089900314807892,
+       "y": 7.105427198782324e-17,
+       "z": -7.424184225679839e-17
+      },
+      "rotation": {
+       "x": 0.01772594079375267,
+       "y": -0.17901462316513062,
+       "z": 0.09693016111850739,
+       "w": 0.9788995385169983
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": -2.60770320892334e-8,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "23d415d5-6d44-4f43-b479-fea5bdfd53ad",
+      "id": 1048774
+     },
+     "children": [
+      {
+       "prefab_uid": "21458262-f38d-0b4a-974a-fb4a73c74b87",
+       "id": 1048776
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 49
+    }
+   }
+  },
+  {
+   "prefab_uid": "21458262-f38d-0b4a-974a-fb4a73c74b87",
+   "id": 1048776,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "tail_04",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "21458262-f38d-0b4a-974a-fb4a73c74b87"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.3067770302295685,
+       "y": 0.011362112127244473,
+       "z": -3.952183932611396e-17
+      },
+      "rotation": {
+       "x": 0.012154847383499146,
+       "y": -0.1794789731502533,
+       "z": 0.06646594405174256,
+       "w": 0.9814387559890747
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -7.450580596923828e-9,
+       "y": -2.60770320892334e-8,
+       "z": 7.450580596923828e-9
+      }
+     },
+     "parent": {
+      "prefab_uid": "027f6bec-e4a7-1b45-8d46-1599251fdac7",
+      "id": 1048775
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 50
+    }
+   }
+  },
+  {
+   "prefab_uid": "f87c3944-2be8-6040-b66c-cf317d865000",
+   "id": 1048769,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "thigh_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "f87c3944-2be8-6040-b66c-cf317d865000"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.02265775203704834,
+       "y": -0.0018067972268909217,
+       "z": 0.1708499938249588
+      },
+      "rotation": {
+       "x": -0.012739150784909726,
+       "y": -0.042607977986335757,
+       "z": -0.8104247450828552,
+       "w": 0.5841524004936218
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": -7.450581485102248e-9,
+       "y": 7.450581485102248e-9,
+       "z": 5.960464477539063e-8
+      }
+     },
+     "parent": {
+      "prefab_uid": "de8e203a-e143-a24b-a3b3-b6cf062d5997",
+      "id": 1048768
+     },
+     "children": [
+      {
+       "prefab_uid": "ce39d973-0327-4849-b2fe-8526faf1c22f",
+       "id": 1048770
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 51
+    }
+   }
+  },
+  {
+   "prefab_uid": "ce39d973-0327-4849-b2fe-8526faf1c22f",
+   "id": 1048770,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "calf_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "ce39d973-0327-4849-b2fe-8526faf1c22f"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.2537067234516144,
+       "y": 0.010923714376986027,
+       "z": -0.0016354380641132594
+      },
+      "rotation": {
+       "x": -0.05366097390651703,
+       "y": -0.020223261788487436,
+       "z": -0.23188497126102448,
+       "w": 0.9710514545440674
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 0.9999998807907105,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -7.450580596923828e-9,
+       "y": 0.0,
+       "z": 2.980232594040899e-8
+      }
+     },
+     "parent": {
+      "prefab_uid": "f87c3944-2be8-6040-b66c-cf317d865000",
+      "id": 1048769
+     },
+     "children": [
+      {
+       "prefab_uid": "06ee6499-702d-7a48-918e-f04b3941b15d",
+       "id": 1048771
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 52
+    }
+   }
+  },
+  {
+   "prefab_uid": "06ee6499-702d-7a48-918e-f04b3941b15d",
+   "id": 1048771,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "foot_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "06ee6499-702d-7a48-918e-f04b3941b15d"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.15340334177017213,
+       "y": -0.017944257706403734,
+       "z": 0.0011432310566306115
+      },
+      "rotation": {
+       "x": 0.07525728642940521,
+       "y": -0.015277557075023651,
+       "z": 0.003998052328824997,
+       "w": 0.9970390796661377
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999998807907105,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 1.4901162970204497e-8,
+       "y": -1.5716069556859225e-9,
+       "z": -4.656613428188905e-10
+      }
+     },
+     "parent": {
+      "prefab_uid": "ce39d973-0327-4849-b2fe-8526faf1c22f",
+      "id": 1048770
+     },
+     "children": [
+      {
+       "prefab_uid": "6ec0281d-fbf0-8b46-9069-aab7b44eff98",
+       "id": 1048772
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 53
+    }
+   }
+  },
+  {
+   "prefab_uid": "6ec0281d-fbf0-8b46-9069-aab7b44eff98",
+   "id": 1048772,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "ball_r",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "6ec0281d-fbf0-8b46-9069-aab7b44eff98"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.018659645691514016,
+       "y": 0.08321960270404816,
+       "z": -0.0010736184194684029
+      },
+      "rotation": {
+       "x": -0.018653172999620439,
+       "y": 0.018653172999620439,
+       "z": -0.7068607211112976,
+       "w": 0.7068607211112976
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999999403953552,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 3.725290742551124e-9,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "06ee6499-702d-7a48-918e-f04b3941b15d",
+      "id": 1048771
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 54
+    }
+   }
+  },
+  {
+   "prefab_uid": "7bc3f97d-22db-c147-8725-72c3b31aa41f",
+   "id": 1048765,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Bodies",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "7bc3f97d-22db-c147-8725-72c3b31aa41f"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "ec3718a0-018e-dc46-9253-982289df3c34",
+      "id": 1048764
+     },
+     "children": [
+      {
+       "prefab_uid": "fa8a231e-9b7e-6549-9eb1-cec5ed281817",
+       "id": 1048766
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "prefab_uid": "fa8a231e-9b7e-6549-9eb1-cec5ed281817",
+   "id": 1048766,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "MainBody01",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "fa8a231e-9b7e-6549-9eb1-cec5ed281817"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "prefab_uid": "7bc3f97d-22db-c147-8725-72c3b31aa41f",
+      "id": 1048765
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      0
+     ]
+    }
+   }
+  }
+ ],
+ "version": "1.0.0"
+}

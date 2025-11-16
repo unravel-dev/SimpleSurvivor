@@ -77,7 +77,7 @@ public class LightningBoltAbility : Ability
         QueryClosestTarget query = new QueryClosestTarget();
         query.source = owner;
         query.maxRange = UpgradeSystem.ApplyAreaOfEffectUpgrade(maxRange);
-        return ContactSystem.FindClosestEnemies(query);
+        return ContactSystem.FindClosestEnemies(query, LayerMask.GetMask("Enemy"));
     }
     
     /// <summary>
@@ -149,7 +149,7 @@ public class LightningBoltAbility : Ability
             var damageComponent = projectileEntity.AddComponent<PhysicalDamageComponent>();
             if (damageComponent != null)
             {
-                damageComponent.SetDamage(UpgradeSystem.ApplyDamageUpgrade(damage));
+                damageComponent.SetDamage(damage);
             }
 
             // Apply physics force in the spread direction

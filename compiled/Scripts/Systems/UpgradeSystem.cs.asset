@@ -31,6 +31,15 @@ public static class UpgradeSystem
     private static readonly LuckUpgrade accumulatedLuckUpgrade = new LuckUpgrade(0.0f);
     private static readonly AreaOfEffectUpgrade accumulatedAreaOfEffectUpgrade = new AreaOfEffectUpgrade(0.0f);
     private static readonly DurationUpgrade accumulatedDurationUpgrade = new DurationUpgrade(0.0f);
+    
+    // Ability-specific accumulated upgrade instances
+    private static readonly IncreaseDoomStacksUpgrade accumulatedBlackHoleDoomStacksUpgrade = new IncreaseDoomStacksUpgrade(0);
+    private static readonly IncreasePullStrengthUpgrade accumulatedBlackHolePullStrengthUpgrade = new IncreasePullStrengthUpgrade(0.0f);
+    private static readonly IncreaseDoomDamagePerStackUpgrade accumulatedBlackHoleDoomDamageUpgrade = new IncreaseDoomDamagePerStackUpgrade(0.0f);
+    private static readonly MultipleBladesUpgrade accumulatedBoomerangMultipleBladesUpgrade = new MultipleBladesUpgrade(0);
+    private static readonly FasterRotationUpgrade accumulatedBoomerangFasterRotationUpgrade = new FasterRotationUpgrade(0.0f);
+    private static readonly PingPongOrbitUpgrade accumulatedBoomerangPingPongOrbitUpgrade = new PingPongOrbitUpgrade(0.0f, 0.0f);
+    private static readonly SpinningSlashUpgrade accumulatedBoomerangSpinningSlashUpgrade = new SpinningSlashUpgrade(0.0f, 0.0f);
 
     /// <summary>
     /// Get the total number of active upgrades.
@@ -215,6 +224,17 @@ public static class UpgradeSystem
         accumulatedAreaOfEffectUpgrade.AoePercent = 0.0f;
         accumulatedDurationUpgrade.DurationPercent = 0.0f;
         
+        // Reset ability-specific accumulated values
+        accumulatedBlackHoleDoomStacksUpgrade.AdditionalStacks = 0;
+        accumulatedBlackHolePullStrengthUpgrade.PullStrengthPercent = 0.0f;
+        accumulatedBlackHoleDoomDamageUpgrade.DamagePerStackPercent = 0.0f;
+        accumulatedBoomerangMultipleBladesUpgrade.AdditionalBladeCount = 0;
+        accumulatedBoomerangFasterRotationUpgrade.RotationSpeedPercent = 0.0f;
+        accumulatedBoomerangPingPongOrbitUpgrade.MaxRadiusPercent = 0.0f;
+        accumulatedBoomerangPingPongOrbitUpgrade.PingPongSpeedPercent = 0.0f;
+        accumulatedBoomerangSpinningSlashUpgrade.SpinSpeedPercent = 0.0f;
+        accumulatedBoomerangSpinningSlashUpgrade.DamagePercent = 0.0f;
+        
         // Accumulate values from all active upgrades
         float totalDamagePercent = 0.0f;
         float totalMulticastPercent = 0.0f;
@@ -297,6 +317,45 @@ public static class UpgradeSystem
             {
                 DurationUpgrade durationUpgrade = (DurationUpgrade)upgrade;
                 totalDuration += durationUpgrade.DurationPercent;
+            }
+            // Black Hole upgrades
+            else if (upgrade is IncreaseDoomStacksUpgrade)
+            {
+                IncreaseDoomStacksUpgrade doomStacksUpgrade = (IncreaseDoomStacksUpgrade)upgrade;
+                accumulatedBlackHoleDoomStacksUpgrade.AdditionalStacks += doomStacksUpgrade.AdditionalStacks;
+            }
+            else if (upgrade is IncreasePullStrengthUpgrade)
+            {
+                IncreasePullStrengthUpgrade pullStrengthUpgrade = (IncreasePullStrengthUpgrade)upgrade;
+                accumulatedBlackHolePullStrengthUpgrade.PullStrengthPercent += pullStrengthUpgrade.PullStrengthPercent;
+            }
+            else if (upgrade is IncreaseDoomDamagePerStackUpgrade)
+            {
+                IncreaseDoomDamagePerStackUpgrade doomDamageUpgrade = (IncreaseDoomDamagePerStackUpgrade)upgrade;
+                accumulatedBlackHoleDoomDamageUpgrade.DamagePerStackPercent += doomDamageUpgrade.DamagePerStackPercent;
+            }
+            // Boomerang upgrades
+            else if (upgrade is MultipleBladesUpgrade)
+            {
+                MultipleBladesUpgrade multipleBladesUpgrade = (MultipleBladesUpgrade)upgrade;
+                accumulatedBoomerangMultipleBladesUpgrade.AdditionalBladeCount += multipleBladesUpgrade.AdditionalBladeCount;
+            }
+            else if (upgrade is FasterRotationUpgrade)
+            {
+                FasterRotationUpgrade fasterRotationUpgrade = (FasterRotationUpgrade)upgrade;
+                accumulatedBoomerangFasterRotationUpgrade.RotationSpeedPercent += fasterRotationUpgrade.RotationSpeedPercent;
+            }
+            else if (upgrade is PingPongOrbitUpgrade)
+            {
+                PingPongOrbitUpgrade pingPongOrbitUpgrade = (PingPongOrbitUpgrade)upgrade;
+                accumulatedBoomerangPingPongOrbitUpgrade.MaxRadiusPercent += pingPongOrbitUpgrade.MaxRadiusPercent;
+                accumulatedBoomerangPingPongOrbitUpgrade.PingPongSpeedPercent += pingPongOrbitUpgrade.PingPongSpeedPercent;
+            }
+            else if (upgrade is SpinningSlashUpgrade)
+            {
+                SpinningSlashUpgrade spinningSlashUpgrade = (SpinningSlashUpgrade)upgrade;
+                accumulatedBoomerangSpinningSlashUpgrade.SpinSpeedPercent += spinningSlashUpgrade.SpinSpeedPercent;
+                accumulatedBoomerangSpinningSlashUpgrade.DamagePercent += spinningSlashUpgrade.DamagePercent;
             }
         }
         
@@ -433,7 +492,7 @@ public static class UpgradeSystem
         DamageBreakdown damageInfo = new DamageBreakdown();
         // Apply damage upgrades first
         damageInfo.amount = ApplyDamageUpgrade(baseDamage);
-        
+        damageInfo.color = Color.cyan;
         // Calculate final critical chance
         float finalCriticalChance = ApplyCriticalChanceUpgrade(baseCriticalChance);
         
@@ -562,31 +621,19 @@ public static class UpgradeSystem
     // ========== BOOMERANG BLADE UPGRADE HELPERS ==========
 
     /// <summary>
-    /// Get the total number of blades to spawn (1 + all MultipleBladesUpgrade bonuses).
+    /// Get the total number of blades to spawn (1 + all MultipleBladesUpgrade bonuses) (cached).
     /// </summary>
     public static int GetBoomerangBladeCount()
     {
-        int totalBlades = 1; // Base blade
-        var upgrades = GetUpgradesByType<MultipleBladesUpgrade>();
-        foreach (var upgrade in upgrades)
-        {
-            totalBlades += upgrade.AdditionalBladeCount;
-        }
-        return totalBlades;
+        return 1 + accumulatedBoomerangMultipleBladesUpgrade.AdditionalBladeCount;
     }
 
     /// <summary>
-    /// Get the rotation speed multiplier from all FasterRotationUpgrade bonuses.
+    /// Get the rotation speed multiplier from all FasterRotationUpgrade bonuses (cached).
     /// </summary>
     public static float GetBoomerangRotationSpeedMultiplier()
     {
-        float multiplier = 1.0f;
-        var upgrades = GetUpgradesByType<FasterRotationUpgrade>();
-        foreach (var upgrade in upgrades)
-        {
-            multiplier *= upgrade.GetRotationSpeedMultiplier();
-        }
-        return multiplier;
+        return accumulatedBoomerangFasterRotationUpgrade.GetRotationSpeedMultiplier();
     }
 
     /// <summary>
@@ -606,31 +653,19 @@ public static class UpgradeSystem
     }
 
     /// <summary>
-    /// Get the maximum radius multiplier from all PingPongOrbitUpgrade bonuses.
+    /// Get the maximum radius multiplier from all PingPongOrbitUpgrade bonuses (cached).
     /// </summary>
     public static float GetBoomerangPingPongMaxRadiusMultiplier()
     {
-        float multiplier = 1.0f;
-        var upgrades = GetUpgradesByType<PingPongOrbitUpgrade>();
-        foreach (var upgrade in upgrades)
-        {
-            multiplier *= upgrade.GetMaxRadiusMultiplier();
-        }
-        return multiplier;
+        return accumulatedBoomerangPingPongOrbitUpgrade.GetMaxRadiusMultiplier();
     }
 
     /// <summary>
-    /// Get the ping-pong speed multiplier from all PingPongOrbitUpgrade bonuses.
+    /// Get the ping-pong speed multiplier from all PingPongOrbitUpgrade bonuses (cached).
     /// </summary>
     public static float GetBoomerangPingPongSpeedMultiplier()
     {
-        float multiplier = 1.0f;
-        var upgrades = GetUpgradesByType<PingPongOrbitUpgrade>();
-        foreach (var upgrade in upgrades)
-        {
-            multiplier *= upgrade.GetPingPongSpeedMultiplier();
-        }
-        return multiplier;
+        return accumulatedBoomerangPingPongOrbitUpgrade.GetPingPongSpeedMultiplier();
     }
 
     /// <summary>
@@ -650,30 +685,45 @@ public static class UpgradeSystem
     }
 
     /// <summary>
-    /// Get the visual spin speed multiplier from SpinningSlashUpgrade.
+    /// Get the visual spin speed multiplier from SpinningSlashUpgrade (cached).
     /// </summary>
     public static float GetBoomerangSpinSpeedMultiplier()
     {
-        float multiplier = 1.0f;
-        var upgrades = GetUpgradesByType<SpinningSlashUpgrade>();
-        foreach (var upgrade in upgrades)
-        {
-            multiplier *= upgrade.GetSpinSpeedMultiplier();
-        }
-        return multiplier;
+        return accumulatedBoomerangSpinningSlashUpgrade.GetSpinSpeedMultiplier();
     }
 
     /// <summary>
-    /// Get the damage multiplier from SpinningSlashUpgrade.
+    /// Get the damage multiplier from SpinningSlashUpgrade (cached).
     /// </summary>
     public static float GetBoomerangSpinningSlashDamageMultiplier()
     {
-        float multiplier = 1.0f;
-        var upgrades = GetUpgradesByType<SpinningSlashUpgrade>();
-        foreach (var upgrade in upgrades)
-        {
-            multiplier *= upgrade.GetDamageMultiplier();
-        }
-        return multiplier;
+        return accumulatedBoomerangSpinningSlashUpgrade.GetDamageMultiplier();
     }
+
+    // ========== BLACK HOLE UPGRADE HELPERS ==========
+
+    /// <summary>
+    /// Get the total additional Doom stacks from all IncreaseDoomStacksUpgrade bonuses (cached).
+    /// </summary>
+    public static int GetBlackHoleDoomAdditionalStacks()
+    {
+        return accumulatedBlackHoleDoomStacksUpgrade.AdditionalStacks;
+    }
+
+    /// <summary>
+    /// Get the pull strength multiplier from all IncreasePullStrengthUpgrade bonuses (cached).
+    /// </summary>
+    public static float GetBlackHolePullStrengthMultiplier()
+    {
+        return accumulatedBlackHolePullStrengthUpgrade.GetPullStrengthMultiplier();
+    }
+
+    /// <summary>
+    /// Get the Doom damage per stack multiplier from all IncreaseDoomDamagePerStackUpgrade bonuses (cached).
+    /// </summary>
+    public static float GetBlackHoleDoomDamagePerStackMultiplier()
+    {
+        return accumulatedBlackHoleDoomDamageUpgrade.GetDamagePerStackMultiplier();
+    }
+
 }
