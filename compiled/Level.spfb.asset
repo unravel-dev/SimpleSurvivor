@@ -1,8 +1,8 @@
 {
- "entities_count": 9,
+ "entities_count": 10,
  "entities": [
   {
-   "id": 12582913,
+   "id": 14680065,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -58,11 +58,11 @@
        "y": 0
       },
       "viewport_size": {
-       "width": 1444,
-       "height": 742
+       "width": 1920,
+       "height": 1080
       },
       "orthographic_size": 5.0,
-      "aspect_ratio": 1.946091651916504,
+      "aspect_ratio": 1.7777777910232545,
       "aspect_locked": false,
       "frustum_locked": false
      },
@@ -189,7 +189,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 12582915,
+   "id": 14680067,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -277,7 +277,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 12582917,
+   "id": 14680069,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -346,7 +346,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 12582919,
+   "id": 14680071,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -422,19 +422,19 @@
      },
      "children": [
       {
-       "id": 12582920
+       "id": 14680072
       },
       {
-       "id": 12582921
+       "id": 14680073
       },
       {
-       "id": 12582922
+       "id": 14680074
       },
       {
-       "id": 10485771
+       "id": 12582923
       },
       {
-       "id": 10485772
+       "id": 12582924
       }
      ],
      "active": true
@@ -498,7 +498,7 @@
    }
   },
   {
-   "id": 12582920,
+   "id": 14680072,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -541,7 +541,7 @@
       }
      },
      "parent": {
-      "id": 12582919
+      "id": 14680071
      },
      "children": [],
      "active": false
@@ -564,7 +564,7 @@
    }
   },
   {
-   "id": 12582921,
+   "id": 14680073,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -607,7 +607,7 @@
       }
      },
      "parent": {
-      "id": 12582919
+      "id": 14680071
      },
      "children": [],
      "active": false
@@ -630,7 +630,7 @@
    }
   },
   {
-   "id": 12582922,
+   "id": 14680074,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -673,7 +673,7 @@
       }
      },
      "parent": {
-      "id": 12582919
+      "id": 14680071
      },
      "children": [],
      "active": false
@@ -696,7 +696,7 @@
    }
   },
   {
-   "id": 10485771,
+   "id": 12582923,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -735,7 +735,7 @@
       }
      },
      "parent": {
-      "id": 12582919
+      "id": 14680071
      },
      "children": [],
      "active": false
@@ -758,7 +758,7 @@
    }
   },
   {
-   "id": 10485772,
+   "id": 12582924,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -797,7 +797,7 @@
       }
      },
      "parent": {
-      "id": 12582919
+      "id": 14680071
      },
      "children": [],
      "active": true
@@ -823,7 +823,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 10485774,
+   "id": 12582926,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -866,7 +866,16 @@
      },
      "children": [
       {
-       "id": 10485775
+       "id": 12582927
+      },
+      {
+       "id": 12582941
+      },
+      {
+       "id": 12582946
+      },
+      {
+       "id": 12582951
       }
      ],
      "active": true
@@ -874,7 +883,7 @@
    }
   },
   {
-   "id": 10485775,
+   "id": 12582927,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -891,14 +900,14 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": 6.622542514378438e-10,
+       "x": 6.620268777624005e-10,
        "y": -0.4515100419521332,
-       "z": 1.4347278920467944e-10
+       "z": 2.828528522513807e-10
       },
       "rotation": {
-       "x": 4.433786671143025e-12,
+       "x": 4.433786237462156e-12,
        "y": 5.093170351612442e-13,
-       "z": -7.079437947324352e-13,
+       "z": -6.109484120865594e-13,
        "w": 1.0
       },
       "scale": {
@@ -907,13 +916,13 @@
        "z": 1500.0
       },
       "skew": {
-       "x": 3.360582992439909e-11,
-       "y": -1.0187105065756485e-12,
-       "z": -1.4243201063024458e-9
+       "x": 6.500461193631457e-12,
+       "y": -1.0182066778260945e-12,
+       "z": -1.4241261503400438e-9
       }
      },
      "parent": {
-      "id": 10485774
+      "id": 12582926
      },
      "children": [],
      "active": true
@@ -932,7 +941,7 @@
       ],
       "materials": [
        {
-        "uid": "63e1b2b1-7cf0-164f-8abe-7a0580de2af1"
+        "uid": "8b3b5a05-217a-5849-ae54-0665a1e6cdd2"
        }
       ],
       "material_instances": [],
@@ -991,12 +1000,841 @@
      ]
     }
    }
+  },
+  {
+   "id": 12582941,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Bush_01",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_component": true,
+    "prefab_component": {
+     "source": {
+      "uid": "3ff9650a-b864-7745-800c-fe4efd29dd4e"
+     },
+     "property_overrides": [],
+     "removed_entities": []
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "d6aa640b-b8df-a44d-bc1b-376a2a3ffa56"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -5.215364933013916,
+       "y": 0.000005755746315116994,
+       "z": -26.198030471801759
+      },
+      "rotation": {
+       "x": 1.1920926112907182e-7,
+       "y": -1.4901164746561336e-8,
+       "z": 2.980232594040899e-8,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0000001192092896,
+       "z": 0.9999997615814209
+      },
+      "skew": {
+       "x": 5.9604559510262337e-8,
+       "y": 2.9802322387695315e-8,
+       "z": 0.000005841256552230334
+      }
+     },
+     "parent": {
+      "id": 12582926
+     },
+     "children": [
+      {
+       "id": 12582942
+      }
+     ],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "6814693e-9298-d44c-8a40-49ed7f72a8ce"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "70f00a41-30ee-ec4e-85e7-b4a067f95cef"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "id": 12582942,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "RootNode",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "14092d2b-220e-5b41-91f0-000852bb1adc"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 12582941
+     },
+     "children": [
+      {
+       "id": 12582943
+      },
+      {
+       "id": 12582944
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "id": 12582943,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Bush_01_LOD0",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "5c47737f-8ca3-024a-973b-5f81b3b882b7"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 12582942
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "id": 12582944,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Bush_01_LOD1",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "dcde4a39-d87d-8a42-a489-b8bb910c4775"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 12582942
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      1
+     ]
+    }
+   }
+  },
+  {
+   "id": 12582946,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Tree_01",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_component": true,
+    "prefab_component": {
+     "source": {
+      "uid": "34b8e717-0462-dd44-b9be-717f494bbc33"
+     },
+     "property_overrides": [],
+     "removed_entities": []
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "0d17ea06-3b9b-754e-b7ab-a8acee5d9c1a"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -12.257698059082032,
+       "y": 0.0000042774058783834338,
+       "z": -20.277711868286134
+      },
+      "rotation": {
+       "x": 1.1920926112907182e-7,
+       "y": -1.4901164746561336e-8,
+       "z": 2.9802322387695315e-8,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.000000238418579,
+       "z": 0.9999995231628418
+      },
+      "skew": {
+       "x": 1.1920944587018313e-7,
+       "y": 5.96050000467585e-8,
+       "z": 0.00001168118524219608
+      }
+     },
+     "parent": {
+      "id": 12582926
+     },
+     "children": [
+      {
+       "id": 12582947
+      }
+     ],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "a73d1990-29ac-6144-a89b-bb71e4483400"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "70f00a41-30ee-ec4e-85e7-b4a067f95cef"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    },
+    "has_physics_component": true,
+    "physics_component": {
+     "is_using_gravity": false,
+     "is_kinematic": true,
+     "is_sensor": false,
+     "is_autoscaled": true,
+     "mass": 1.0,
+     "include_layers": {
+      "mask": -1
+     },
+     "exclude_layers": {
+      "mask": 0
+     },
+     "freeze_position": {
+      "x": false,
+      "y": false,
+      "z": false
+     },
+     "freeze_rotation": {
+      "x": false,
+      "y": false,
+      "z": false
+     },
+     "material": {
+      "uid": "00000000-0000-0000-0000-000000000000"
+     },
+     "shapes": [
+      {
+       "shape": {
+        "index": 0,
+        "data": {
+         "center": {
+          "x": 0.0,
+          "y": 2.5,
+          "z": 0.0
+         },
+         "extends": {
+          "x": 0.46000000834465029,
+          "y": 5.0,
+          "z": 0.7300000190734863
+         }
+        }
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": 12582947,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "RootNode",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "96cb30ff-6bd8-de4d-945f-36b1c745ad0b"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 12582946
+     },
+     "children": [
+      {
+       "id": 12582948
+      },
+      {
+       "id": 12582949
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "id": 12582948,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Tree_01_LOD0",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "c824fe62-c056-7f4a-badd-53d0c1e073aa"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 12582947
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "id": 12582949,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Tree_01_LOD1",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "1fdc2112-d22f-8442-8941-6a5046929341"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 12582947
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      1
+     ]
+    }
+   }
+  },
+  {
+   "id": 12582951,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Tree_02",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_component": true,
+    "prefab_component": {
+     "source": {
+      "uid": "c9b013be-b9bc-b34f-862b-37ca986b574d"
+     },
+     "property_overrides": [],
+     "removed_entities": []
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "8b7abf38-fbdb-8a44-94e1-e1fe5fd08b3c"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -14.115232467651368,
+       "y": -0.000004894151061307639,
+       "z": 30.394071578979493
+      },
+      "rotation": {
+       "x": 1.1920926112907182e-7,
+       "y": -1.4901164746561336e-8,
+       "z": 2.980232594040899e-8,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0000001192092896,
+       "z": 0.9999997615814209
+      },
+      "skew": {
+       "x": 5.9604559510262337e-8,
+       "y": 2.9802322387695315e-8,
+       "z": 0.000005841267920914106
+      }
+     },
+     "parent": {
+      "id": 12582926
+     },
+     "children": [
+      {
+       "id": 12582952
+      }
+     ],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "878c263f-852e-924e-b243-2e09eb8431df"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "70f00a41-30ee-ec4e-85e7-b4a067f95cef"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "id": 12582952,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "RootNode",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "fe91576e-c24d-8e4d-9dfe-144d887e40dd"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 12582951
+     },
+     "children": [
+      {
+       "id": 12582953
+      },
+      {
+       "id": 12582954
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "id": 12582953,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Tree_02_LOD0",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "1155c4d5-d782-da4b-8aea-b80637a59f48"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 12582952
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "id": 12582954,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Tree_02_LOD1",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "3ad1bbc5-049f-bb43-97e3-9c08d6ab225d"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 12582952
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      1
+     ]
+    }
+   }
   }
  ],
  "version": "1.0.0",
  "entities": [
   {
-   "id": 10485777,
+   "id": 12582929,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1039,7 +1877,7 @@
      },
      "children": [
       {
-       "id": 10485778
+       "id": 12582930
       }
      ],
      "active": true
@@ -1126,7 +1964,7 @@
    }
   },
   {
-   "id": 10485778,
+   "id": 12582930,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1165,7 +2003,7 @@
       }
      },
      "parent": {
-      "id": 10485777
+      "id": 12582929
      },
      "children": [],
      "active": true
@@ -1206,7 +2044,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 10485780,
+   "id": 12582932,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1312,7 +2150,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 10485782,
+   "id": 12582934,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1355,7 +2193,7 @@
      },
      "children": [
       {
-       "id": 10485783
+       "id": 12582935
       }
      ],
      "active": true
@@ -1363,7 +2201,7 @@
    }
   },
   {
-   "id": 10485783,
+   "id": 12582935,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1402,7 +2240,7 @@
       }
      },
      "parent": {
-      "id": 10485782
+      "id": 12582934
      },
      "children": [],
      "active": true
@@ -1428,7 +2266,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 10485785,
+   "id": 12582937,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1464,6 +2302,56 @@
        "x": -5.960487214906607e-8,
        "y": -2.980337043823056e-8,
        "z": -0.000005841220627189614
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [],
+     "active": true
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 12582939,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Entity",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
       }
      },
      "parent": {

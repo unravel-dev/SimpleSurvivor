@@ -164,10 +164,11 @@ public class BlackHoleAbility : Ability
             pullComponent.onAffectedEntities = (entities) => {
                 // Calculate damage per tick
                 float damagePerTick = doomDamage * pullComponent.callbackInterval;
+                float duration = 3.0f;
                 foreach (var entity in entities)
                 {
                     // Apply multiple stacks of Doom at once (based on upgrades)
-                    EffectsSystem.AddOrRefreshEffect<DoomComponent>(entity, source, damagePerTick, 3.0f, stacksToApply: stacksToApply, maxStacks: 10);
+                    EffectsSystem.AddOrRefreshEffect<DoomComponent>(entity, source, damagePerTick, duration, stacksToApply);
                 }
             };
         }

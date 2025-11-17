@@ -40,6 +40,8 @@ public static class UpgradeSystem
     private static readonly FasterRotationUpgrade accumulatedBoomerangFasterRotationUpgrade = new FasterRotationUpgrade(0.0f);
     private static readonly PingPongOrbitUpgrade accumulatedBoomerangPingPongOrbitUpgrade = new PingPongOrbitUpgrade(0.0f, 0.0f);
     private static readonly SpinningSlashUpgrade accumulatedBoomerangSpinningSlashUpgrade = new SpinningSlashUpgrade(0.0f, 0.0f);
+    private static readonly BurnOnHitUpgrade accumulatedBurnOnHitUpgrade = new BurnOnHitUpgrade(0.0f, 0);
+    private static readonly LightningSplitUpgrade accumulatedLightningSplitUpgrade = new LightningSplitUpgrade(0, 0.0f);
 
     /// <summary>
     /// Get the total number of active upgrades.
@@ -234,6 +236,10 @@ public static class UpgradeSystem
         accumulatedBoomerangPingPongOrbitUpgrade.PingPongSpeedPercent = 0.0f;
         accumulatedBoomerangSpinningSlashUpgrade.SpinSpeedPercent = 0.0f;
         accumulatedBoomerangSpinningSlashUpgrade.DamagePercent = 0.0f;
+        accumulatedBurnOnHitUpgrade.BurnChancePercent = 0.0f;
+        accumulatedBurnOnHitUpgrade.BurnStacks = 0;
+        accumulatedLightningSplitUpgrade.SplitCount = 0;
+        accumulatedLightningSplitUpgrade.SplitRange = 0.0f;
         
         // Accumulate values from all active upgrades
         float totalDamagePercent = 0.0f;
@@ -356,6 +362,29 @@ public static class UpgradeSystem
                 SpinningSlashUpgrade spinningSlashUpgrade = (SpinningSlashUpgrade)upgrade;
                 accumulatedBoomerangSpinningSlashUpgrade.SpinSpeedPercent += spinningSlashUpgrade.SpinSpeedPercent;
                 accumulatedBoomerangSpinningSlashUpgrade.DamagePercent += spinningSlashUpgrade.DamagePercent;
+            }
+            // Burn on hit upgrades
+            else if (upgrade is BurnOnHitUpgrade)
+            {
+                BurnOnHitUpgrade burnOnHitUpgrade = (BurnOnHitUpgrade)upgrade;
+                // Sum burn chances (will be capped at 100% in getter)
+                accumulatedBurnOnHitUpgrade.BurnChancePercent += burnOnHitUpgrade.BurnChancePercent;
+                // Use maximum stacks from all upgrades
+                if (burnOnHitUpgrade.BurnStacks > accumulatedBurnOnHitUpgrade.BurnStacks)
+                {
+                    accumulatedBurnOnHitUpgrade.BurnStacks = burnOnHitUpgrade.BurnStacks;
+                }
+            }
+            // Lightning split upgrades
+            else if (upgrade is LightningSplitUpgrade)
+            {
+                LightningSplitUpgrade splitUpgrade = (LightningSplitUpgrade)upgrade;
+                // Use maximum split count from all upgrades (should only be one legendary)
+                if (splitUpgrade.SplitCount > accumulatedLightningSplitUpgrade.SplitCount)
+                {
+                    accumulatedLightningSplitUpgrade.SplitCount = splitUpgrade.SplitCount;
+                    accumulatedLightningSplitUpgrade.SplitRange = splitUpgrade.SplitRange;
+                }
             }
         }
         
@@ -724,6 +753,55 @@ public static class UpgradeSystem
     public static float GetBlackHoleDoomDamagePerStackMultiplier()
     {
         return accumulatedBlackHoleDoomDamageUpgrade.GetDamagePerStackMultiplier();
+    }
+
+    // ========== BURN ON HIT UPGRADE HELPERS ==========
+
+    /// <summary>
+    /// Get the burn chance percent from all BurnOnHitUpgrade bonuses (cached, capped at 100%).
+    /// </summary>
+    public static float GetBurnOnHitChancePercent()
+    {
+        return Mathf.Min(100.0f, accumulatedBurnOnHitUpgrade.BurnChancePercent);
+    }
+
+    /// <summary>
+    /// Get the burn stacks to apply from all BurnOnHitUpgrade bonuses (cached, returns maximum).
+    /// </summary>
+    public static int GetBurnOnHitStacks()
+    {
+        return accumulatedBurnOnHitUpgrade.BurnStacks;
+    }
+
+    /// <summary>
+    /// Check if burn should be applied based on accumulated upgrades (cached).
+    /// </summary>
+    /// <returns>True if burn should be applied, false otherwise.</returns>
+    public static bool ShouldApplyBurnOnHit()
+    {
+        float chance = GetBurnOnHitChancePercent();
+        if (chance <= 0.0f)
+            return false;
+        
+        return Random.Range(0.0f, 100.0f) < chance;
+    }
+
+    // ========== LIGHTNING SPLIT UPGRADE HELPERS ==========
+
+    /// <summary>
+    /// Get the split count from all LightningSplitUpgrade bonuses (cached).
+    /// </summary>
+    public static int GetLightningSplitCount()
+    {
+        return accumulatedLightningSplitUpgrade.SplitCount;
+    }
+
+    /// <summary>
+    /// Get the split range from all LightningSplitUpgrade bonuses (cached).
+    /// </summary>
+    public static float GetLightningSplitRange()
+    {
+        return accumulatedLightningSplitUpgrade.SplitRange;
     }
 
 }

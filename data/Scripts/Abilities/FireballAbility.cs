@@ -158,6 +158,20 @@ public class FireballAbility : Ability
         areaDamageComponent.damage = upgradedDamage;
         areaDamageComponent.damageLayerMask = LayerMask.GetMask("Enemy");
 
+        // Add burn on hit component if upgrade is active
+        float burnChance = UpgradeSystem.GetBurnOnHitChancePercent();
+        if (burnChance > 0.0f)
+        {
+            var burnOnHit = fireballEntity.AddComponent<BurnOnHitComponent>();
+            if (burnOnHit != null)
+            {
+                burnOnHit.burnChancePercent = burnChance;
+                burnOnHit.burnStacks = UpgradeSystem.GetBurnOnHitStacks();
+                burnOnHit.burnDamagePerSecond = 10.0f;
+                burnOnHit.burnDuration = 5.0f;
+                burnOnHit.maxBurnStacks = 3;
+            }
+        }
 
         var fireballPhysics = fireballEntity.GetComponent<PhysicsComponent>();
         if (fireballPhysics != null)

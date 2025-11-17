@@ -2,7 +2,7 @@
  "entities": [
   {
    "prefab_uid": "10ef8358-c389-3a4b-896e-3f9e41e44097",
-   "id": 24117249,
+   "id": 11534337,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -62,7 +62,7 @@
       "mask": 32
      },
      "exclude_layers": {
-      "mask": 0
+      "mask": 128
      },
      "freeze_position": {
       "x": false,
@@ -206,25 +206,7 @@
        }
       ]
      },
-     "blend_gradient": {
-      "points": [
-       {
-        "progress": 0.0,
-        "element": {
-         "min": 0.800000011920929,
-         "max": 1.0
-        }
-       },
-       {
-        "progress": 1.0,
-        "element": {
-         "min": 0.0,
-         "max": 0.20000000298023225
-        }
-       }
-      ]
-     },
-     "blend_multiplier": 1.0,
+     "opacity": 1.0,
      "color_gradient": {
       "points": [
        {

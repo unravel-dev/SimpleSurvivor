@@ -426,7 +426,11 @@ public static class UpgradeCardGenerator
                 IncreasePullStrengthUpgrade.Generate(30.0f, 50.0f)),
                 
             () => new UpgradeCard("Amplified Doom", UpgradeRarity.Common, 
-                IncreaseDoomDamagePerStackUpgrade.Generate(20.0f, 35.0f))
+                IncreaseDoomDamagePerStackUpgrade.Generate(20.0f, 35.0f)),
+                
+            // Fireball upgrades (Common)
+            () => new UpgradeCard("Igniting Strike", UpgradeRarity.Common, 
+                BurnOnHitUpgrade.Generate(30.0f, 50.0f, 1, 1))
         };
     }
     
@@ -531,6 +535,13 @@ public static class UpgradeCardGenerator
                 
             () => new UpgradeCard("Amplified Doom+", UpgradeRarity.Epic, 
                 IncreaseDoomDamagePerStackUpgrade.Generate(40.0f, 60.0f)),
+                
+            // Fireball upgrades (Epic)
+            () => new UpgradeCard("Burning Impact", UpgradeRarity.Epic, 
+                BurnOnHitUpgrade.Generate(60.0f, 80.0f, 1, 2)),
+                
+            () => new UpgradeCard("Inferno Strike", UpgradeRarity.Epic, 
+                BurnOnHitUpgrade.Generate(70.0f, 90.0f, 2, 3))
         };
     }
     
@@ -636,6 +647,13 @@ public static class UpgradeCardGenerator
                     IncreasePullStrengthUpgrade.Generate(100.0f, 150.0f),
                     IncreaseDoomDamagePerStackUpgrade.Generate(60.0f, 100.0f)
                 }),
+            
+            // // Lightning Bolt upgrades (Legendary) - Limited to 1 pick
+            // () => new UpgradeCard("Forked Lightning", UpgradeRarity.Legendary, 
+            //     new List<Upgrade>
+            //     {
+            //         LightningSplitUpgrade.Generate(2, 3, 8.0f, 12.0f)
+            //     }, 1),
                 
             () => new UpgradeCard("Eternal Void", UpgradeRarity.Legendary, 
                 new List<Upgrade>

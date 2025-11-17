@@ -144,6 +144,20 @@ public class LightningBoltAbility : Ability
                 chainComponent.chainOffset = spawnOffset;
             }
 
+            // Add split component if upgrade is active
+            int splitCount = 1; //UpgradeSystem.GetLightningSplitCount();
+            if (splitCount > 0)
+            {
+                var splitComponent = projectileEntity.AddComponent<SplitComponent>();
+                if (splitComponent != null)
+                {
+                    splitComponent.splitCount = splitCount;
+                    splitComponent.splitRange = UpgradeSystem.GetLightningSplitRange();
+                    splitComponent.splitOffset = spawnOffset;
+                    splitComponent.projectilePrefab = projectilePrefab; // Store prefab for duplication
+                }
+            }
+
 
             // Add PhysicalDamageComponent to the projectile
             var damageComponent = projectileEntity.AddComponent<PhysicalDamageComponent>();

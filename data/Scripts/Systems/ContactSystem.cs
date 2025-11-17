@@ -30,11 +30,11 @@ public static class ContactSystem
     // Define the order of effect execution
     static readonly System.Func<Entity, Entity, ContactResult>[] effectHandlers = 
     {
+        // HandleSplit,
         HandlePierce,
         HandleChain,
         // Add new effects here in order of priority
         // HandleBounce,
-        // HandleSplit,
         // etc.
     };
     
@@ -278,6 +278,9 @@ public static class ContactSystem
             DamageBreakdown breakdown = UpgradeSystem.CalculateDamage(damageAmount);
             DamageSystem.ApplyDamage(target, source, breakdown);
         }
+        
+        // Check for on-hit effects
+        TryApplyOnHitEffects(source, target);
     }
     
     /// <summary>
@@ -320,6 +323,9 @@ public static class ContactSystem
             // Apply upgraded damage through DamageSystem
             DamageBreakdown breakdown = UpgradeSystem.CalculateDamage(baseDamage);
             DamageSystem.ApplyDamage(entity, source, breakdown);
+            
+            // Check for on-hit effects
+            TryApplyOnHitEffects(source, entity);
             
             // Apply knockback if specified
             if (knockbackForce > 0.0f)
@@ -424,6 +430,208 @@ public static class ContactSystem
         return ContactResult.Success;
     }
 
+    /// <summary>
+    /// Handle split effect - duplicates the projectile on contact.
+    /// </summary>
+    /// <param name="source">Source entity (e.g., projectile).</param>
+    /// <param name="target">Target entity that was hit.</param>
+    private static ContactResult HandleSplit(Entity source, Entity target)
+    {
+        //  TODO
+        // Check for SplitComponent on source
+        var splitComponent = source.GetComponent<SplitComponent>();
+        if (splitComponent == null)
+        {
+            return ContactResult.Failure; // No split to apply
+        }
+
+        if (splitComponent.splitCount > 0)
+        {
+            splitComponent.splitCount--;
+            splitComponent.visitedTargets.Add(target);
+
+            var sourcePosition = splitComponent.owner.transform.position;
+
+            // Find new targets for the split projectiles
+            QueryClosestTarget query = new QueryClosestTarget();
+            query.source = target;
+            query.maxRange = splitComponent.splitRange;
+            query.visitedTargets = splitComponent.visitedTargets;
+
+            // Get the prefab from the split component to duplicate the projectile
+            if (splitComponent.projectilePrefab == null)
+            {
+                return ContactResult.Failure; // No prefab to instantiate
+            }
+
+            Entity duplicatedProjectile = Scene.Instantiate(splitComponent.projectilePrefab);
+            if (!duplicatedProjectile)
+            {
+                return ContactResult.Failure;
+            }
+
+            // Find a new target for the duplicated projectile
+            Entity newTarget = FindClosestEnemy(query, target.layers);
+
+            if (!newTarget)
+            {
+                // No target found, destroy the duplicate
+                Scene.DestroyEntity(duplicatedProjectile, 0.0f);
+                splitComponent.splitCount = 0;
+                return ContactResult.Exhausted; // No new target to split to
+            }
+
+            // If the new target is already in the visited targets list, clear it to allow looping
+            if (splitComponent.visitedTargets.Contains(newTarget))
+            {
+                splitComponent.visitedTargets.Clear();
+            }
+
+            // Position the duplicated projectile at the hit location
+            duplicatedProjectile.transform.position = sourcePosition;
+            
+            // Calculate direction to new target
+            var targetPosition = newTarget.transform.position + splitComponent.splitOffset;
+            var direction = (targetPosition - sourcePosition).normalized;
+            duplicatedProjectile.transform.forward = direction;
+
+            // Copy the Projectile component's source from the original
+            var sourceProjectile = source.GetComponent<Projectile>();
+            var duplicateProjectile = duplicatedProjectile.GetComponent<Projectile>();
+            if (sourceProjectile != null && duplicateProjectile != null)
+            {
+                Entity originalSource = sourceProjectile.GetSource();
+                if (originalSource)
+                {
+                    duplicateProjectile.SetSource(originalSource);
+                }
+            }
+
+            // Overwrite SplitComponent values with reduced count and updated visited targets
+            var duplicateSplitComponent = duplicatedProjectile.GetComponent<SplitComponent>();
+            if (duplicateSplitComponent != null)
+            {
+                duplicateSplitComponent.splitCount = splitComponent.splitCount;
+                duplicateSplitComponent.visitedTargets = new List<Entity>(splitComponent.visitedTargets);
+            }
+
+            // Overwrite ChainComponent visited targets if it exists
+            var sourceChainComponent = source.GetComponent<ChainComponent>();
+            var duplicateChainComponent = duplicatedProjectile.GetComponent<ChainComponent>();
+            if (sourceChainComponent != null && duplicateChainComponent != null)
+            {
+                duplicateChainComponent.visitedTargets = new List<Entity>(sourceChainComponent.visitedTargets);
+            }
+
+            // Apply physics velocity to the duplicated projectile
+            var sourcePhysics = source.GetComponent<PhysicsComponent>();
+            var duplicatePhysics = duplicatedProjectile.GetComponent<PhysicsComponent>();
+            if (sourcePhysics != null && duplicatePhysics != null)
+            {
+                float speed = sourcePhysics.velocity.magnitude;
+                duplicatePhysics.velocity = direction * speed;
+            }
+        }
+
+        // Check exhaust condition
+        if (splitComponent.splitCount <= 0)
+        {
+            return ContactResult.Exhausted;
+        }
+
+        return ContactResult.Success;
+    }
+
+    /// <summary>
+    /// Try to apply on-hit effects from components attached to the source entity.
+    /// Checks for BurnOnHitComponent, DoomOnHitComponent, PoisonOnHitComponent, and BleedOnHitComponent.
+    /// </summary>
+    /// <param name="source">Source entity (projectile or weapon).</param>
+    /// <param name="target">Target entity to apply effects to.</param>
+    private static void TryApplyOnHitEffects(Entity source, Entity target)
+    {
+        if (!source || !target)
+            return;
+        
+        // Get the original source entity (player) if this is a projectile
+        Entity originalSource = source;
+        var projectile = source.GetComponent<Projectile>();
+        if (projectile != null)
+        {
+            originalSource = projectile.GetSource();
+            if (!originalSource)
+                return;
+        }
+        
+        // Check for BurnOnHitComponent
+        var burnOnHit = source.GetComponent<BurnOnHitComponent>();
+        if (burnOnHit != null)
+        {
+            if (Random.Range(0.0f, 100.0f) < burnOnHit.burnChancePercent)
+            {
+                EffectsSystem.AddOrRefreshEffect<BurnComponent>(
+                    target,
+                    originalSource,
+                    burnOnHit.burnDamagePerSecond,
+                    burnOnHit.burnDuration,
+                    burnOnHit.burnStacks,
+                    burnOnHit.maxBurnStacks
+                );
+            }
+        }
+        
+        // Check for DoomOnHitComponent
+        var doomOnHit = source.GetComponent<DoomOnHitComponent>();
+        if (doomOnHit != null)
+        {
+            if (Random.Range(0.0f, 100.0f) < doomOnHit.doomChancePercent)
+            {
+                EffectsSystem.AddOrRefreshEffect<DoomComponent>(
+                    target,
+                    originalSource,
+                    doomOnHit.doomDamagePerSecond,
+                    doomOnHit.doomDuration,
+                    doomOnHit.doomStacks,
+                    doomOnHit.maxDoomStacks
+                );
+            }
+        }
+        
+        // Check for PoisonOnHitComponent
+        var poisonOnHit = source.GetComponent<PoisonOnHitComponent>();
+        if (poisonOnHit != null)
+        {
+            if (Random.Range(0.0f, 100.0f) < poisonOnHit.poisonChancePercent)
+            {
+                EffectsSystem.AddOrRefreshEffect<PoisonComponent>(
+                    target,
+                    originalSource,
+                    poisonOnHit.poisonDamagePerSecond,
+                    poisonOnHit.poisonDuration,
+                    poisonOnHit.poisonStacks,
+                    poisonOnHit.maxPoisonStacks
+                );
+            }
+        }
+        
+        // Check for BleedOnHitComponent
+        var bleedOnHit = source.GetComponent<BleedOnHitComponent>();
+        if (bleedOnHit != null)
+        {
+            if (Random.Range(0.0f, 100.0f) < bleedOnHit.bleedChancePercent)
+            {
+                EffectsSystem.AddOrRefreshEffect<BleedComponent>(
+                    target,
+                    originalSource,
+                    bleedOnHit.bleedDamagePerSecond,
+                    bleedOnHit.bleedDuration,
+                    bleedOnHit.bleedStacks,
+                    bleedOnHit.maxBleedStacks
+                );
+            }
+        }
+    }
+    
     /// <summary>
     /// Handle spawning contact visual effects at the contact position.
     /// </summary>
