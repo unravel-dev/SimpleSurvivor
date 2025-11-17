@@ -648,12 +648,12 @@ public static class UpgradeCardGenerator
                     IncreaseDoomDamagePerStackUpgrade.Generate(60.0f, 100.0f)
                 }),
             
-            // // Lightning Bolt upgrades (Legendary) - Limited to 1 pick
-            // () => new UpgradeCard("Forked Lightning", UpgradeRarity.Legendary, 
-            //     new List<Upgrade>
-            //     {
-            //         LightningSplitUpgrade.Generate(2, 3, 8.0f, 12.0f)
-            //     }, 1),
+            // Lightning Bolt upgrades (Legendary) - Limited to 1 pick
+            () => new UpgradeCard("Forked Lightning", UpgradeRarity.Legendary, 
+                new List<Upgrade>
+                {
+                    LightningSplitUpgrade.Generate(2, 3)
+                }, 1),
                 
             () => new UpgradeCard("Eternal Void", UpgradeRarity.Legendary, 
                 new List<Upgrade>

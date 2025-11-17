@@ -41,7 +41,7 @@ public static class UpgradeSystem
     private static readonly PingPongOrbitUpgrade accumulatedBoomerangPingPongOrbitUpgrade = new PingPongOrbitUpgrade(0.0f, 0.0f);
     private static readonly SpinningSlashUpgrade accumulatedBoomerangSpinningSlashUpgrade = new SpinningSlashUpgrade(0.0f, 0.0f);
     private static readonly BurnOnHitUpgrade accumulatedBurnOnHitUpgrade = new BurnOnHitUpgrade(0.0f, 0);
-    private static readonly LightningSplitUpgrade accumulatedLightningSplitUpgrade = new LightningSplitUpgrade(0, 0.0f);
+    private static readonly LightningSplitUpgrade accumulatedLightningSplitUpgrade = new LightningSplitUpgrade(0);
 
     /// <summary>
     /// Get the total number of active upgrades.
@@ -239,7 +239,6 @@ public static class UpgradeSystem
         accumulatedBurnOnHitUpgrade.BurnChancePercent = 0.0f;
         accumulatedBurnOnHitUpgrade.BurnStacks = 0;
         accumulatedLightningSplitUpgrade.SplitCount = 0;
-        accumulatedLightningSplitUpgrade.SplitRange = 0.0f;
         
         // Accumulate values from all active upgrades
         float totalDamagePercent = 0.0f;
@@ -383,7 +382,6 @@ public static class UpgradeSystem
                 if (splitUpgrade.SplitCount > accumulatedLightningSplitUpgrade.SplitCount)
                 {
                     accumulatedLightningSplitUpgrade.SplitCount = splitUpgrade.SplitCount;
-                    accumulatedLightningSplitUpgrade.SplitRange = splitUpgrade.SplitRange;
                 }
             }
         }
@@ -794,14 +792,6 @@ public static class UpgradeSystem
     public static int GetLightningSplitCount()
     {
         return accumulatedLightningSplitUpgrade.SplitCount;
-    }
-
-    /// <summary>
-    /// Get the split range from all LightningSplitUpgrade bonuses (cached).
-    /// </summary>
-    public static float GetLightningSplitRange()
-    {
-        return accumulatedLightningSplitUpgrade.SplitRange;
     }
 
 }

@@ -21,7 +21,5 @@ public class SplitComponent : ScriptComponent
     [Tooltip("List of targets already hit (to avoid re-hitting same targets)")]
     public List<Entity> visitedTargets = new List<Entity>();
 
-    [Tooltip("Prefab to instantiate when splitting (duplicates the projectile)")]
-    public Prefab projectilePrefab;
 }
 

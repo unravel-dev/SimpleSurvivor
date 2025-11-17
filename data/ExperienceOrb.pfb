@@ -2,7 +2,7 @@
  "entities": [
   {
    "prefab_uid": "b46d51d1-fea8-b14f-9a3a-0347104fe3a3",
-   "id": 3145731,
+   "id": 5242883,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -34,9 +34,9 @@
        "w": 1.0
       },
       "scale": {
-       "x": 0.6055000424385071,
-       "y": 0.6055000424385071,
-       "z": 0.6055000424385071
+       "x": 0.49953746795654299,
+       "y": 0.49953746795654299,
+       "z": 0.49953746795654299
       },
       "skew": {
        "x": 0.0,
@@ -181,6 +181,175 @@
        }
       }
      ]
+    },
+    "has_particle_emitter_component": true,
+    "particle_emitter_component": {
+     "enabled": true,
+     "shape": 0,
+     "direction": 0,
+     "simulation_space": 0,
+     "max_particles": 1024,
+     "emission_lifetime": {
+      "count": 2.0
+     },
+     "emission_shape_scale": {
+      "x": 0.5,
+      "y": 0.5,
+      "z": 0.5
+     },
+     "gravity_scale": 0.0,
+     "emission_rate": 50.0,
+     "temporal_motion": 1.0,
+     "velocity_damping": 0.0,
+     "force_over_lifetime": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+     },
+     "size_by_speed_range": {
+      "min": 1.0,
+      "max": 1.0
+     },
+     "size_by_speed_velocity_range": {
+      "min": 0.0,
+      "max": 10.0
+     },
+     "color_by_speed_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": {
+         "r": 1.0,
+         "g": 1.0,
+         "b": 1.0,
+         "a": 1.0
+        }
+       },
+       {
+        "progress": 1.0,
+        "element": {
+         "r": 1.0,
+         "g": 1.0,
+         "b": 1.0,
+         "a": 1.0
+        }
+       }
+      ]
+     },
+     "color_by_speed_velocity_range": {
+      "min": 0.0,
+      "max": 10.0
+     },
+     "lifetime_by_emitter_speed_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": 1.0
+       },
+       {
+        "progress": 1.0,
+        "element": 1.0
+       }
+      ]
+     },
+     "lifetime_by_emitter_speed_range": {
+      "min": 0.0,
+      "max": 10.0
+     },
+     "lifetime": {
+      "count": 1.0
+     },
+     "velocity_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": {
+         "min": 0.0,
+         "max": 1.0
+        }
+       },
+       {
+        "progress": 1.0,
+        "element": {
+         "min": 1.2999999523162842,
+         "max": 2.0
+        }
+       }
+      ]
+     },
+     "scale_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": {
+         "min": 0.5400000214576721,
+         "max": 0.6299999952316284
+        }
+       },
+       {
+        "progress": 1.0,
+        "element": {
+         "min": 0.7400000095367432,
+         "max": 0.7400000095367432
+        }
+       }
+      ]
+     },
+     "opacity": 1.0,
+     "color_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": {
+         "r": 0.0,
+         "g": 0.8117647171020508,
+         "b": 1.0,
+         "a": 0.0
+        }
+       },
+       {
+        "progress": 0.25,
+        "element": {
+         "r": 0.0,
+         "g": 0.8117647171020508,
+         "b": 1.0,
+         "a": 1.0
+        }
+       },
+       {
+        "progress": 0.5,
+        "element": {
+         "r": 0.0,
+         "g": 0.8117647171020508,
+         "b": 1.0,
+         "a": 1.0
+        }
+       },
+       {
+        "progress": 0.75,
+        "element": {
+         "r": 0.0,
+         "g": 0.8117647171020508,
+         "b": 1.0,
+         "a": 1.0
+        }
+       },
+       {
+        "progress": 1.0,
+        "element": {
+         "r": 0.0,
+         "g": 0.8117647171020508,
+         "b": 1.0,
+         "a": 0.0
+        }
+       }
+      ]
+     },
+     "position_easing": 0,
+     "texture": {
+      "uid": "48986ef2-f9f8-1f4d-98af-6368e69299ea"
+     },
+     "loop": true
     },
     "has_script_component": true,
     "script_component": {

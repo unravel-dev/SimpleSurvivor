@@ -145,16 +145,15 @@ public class LightningBoltAbility : Ability
             }
 
             // Add split component if upgrade is active
-            int splitCount = 1; //UpgradeSystem.GetLightningSplitCount();
+            int splitCount = 3; //UpgradeSystem.GetLightningSplitCount();
             if (splitCount > 0)
             {
                 var splitComponent = projectileEntity.AddComponent<SplitComponent>();
                 if (splitComponent != null)
                 {
                     splitComponent.splitCount = splitCount;
-                    splitComponent.splitRange = UpgradeSystem.GetLightningSplitRange();
+                    splitComponent.splitRange = UpgradeSystem.ApplyAreaOfEffectUpgrade(maxRange);
                     splitComponent.splitOffset = spawnOffset;
-                    splitComponent.projectilePrefab = projectilePrefab; // Store prefab for duplication
                 }
             }
 

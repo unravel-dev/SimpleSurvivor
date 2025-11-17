@@ -30,7 +30,7 @@ public static class ContactSystem
     // Define the order of effect execution
     static readonly System.Func<Entity, Entity, ContactResult>[] effectHandlers = 
     {
-        // HandleSplit,
+        HandleSplit,
         HandlePierce,
         HandleChain,
         // Add new effects here in order of priority
@@ -53,69 +53,71 @@ public static class ContactSystem
     /// <returns>Number of entities found.</returns>
     public static int FindClosestEnemies(QueryClosestTarget query, List<Entity> results, LayerMask layerMask)
     {
-        results.Clear();
-        
-        var sourcePosition = query.source.transform.position;
-        // Perform sphere overlap to find potential targets
-        var overlaps = Physics.SphereOverlap(sourcePosition, query.maxRange, layerMask);
-
-        if (overlaps == null || overlaps.Length == 0)
+        using (Profiler.Scope("FindClosestEnemies"))
         {
-            return 0;
-        }
+            results.Clear();
 
-        // Clear and reuse static collections
-        tempEnemyList.Clear();
-        
-        // Use squared distance to avoid expensive sqrt calculations
-        float maxRangeSquared = query.maxRange * query.maxRange;
+            var sourcePosition = query.source.transform.position;
+            // Perform sphere overlap to find potential targets
+            var overlaps = Physics.SphereOverlap(sourcePosition, query.maxRange, layerMask);
 
-        // Collect valid enemies with their squared distances and visited status
-        for (int i = 0; i < overlaps.Length; i++)
-        {
-            var entity = overlaps[i];
-            if (!entity) continue;
-
-            // Skip self
-            if (entity == query.source) continue;
-
-            // Calculate squared distance (faster than Vector3.Distance)
-            var deltaPos = entity.transform.position - sourcePosition;
-            float distanceSquared = Vector3.Dot(deltaPos, deltaPos);
-            // Early distance check
-            if (distanceSquared > maxRangeSquared) continue;
-
-            // Check if this entity has been visited
-            bool isVisited = query.visitedTargets != null && query.visitedTargets.Contains(entity);
-
-            tempEnemyList.Add((entity, distanceSquared, isVisited));
-        }
-
-        if (tempEnemyList.Count == 0)
-        {
-            return 0;
-        }
-
-        // Sort by priority: non-visited first (isVisited = false), then by squared distance
-        tempEnemyList.Sort((a, b) =>
-        {
-            // First priority: non-visited targets come before visited targets
-            if (a.isVisited != b.isVisited)
+            if (overlaps == null || overlaps.Length == 0)
             {
-                return a.isVisited.CompareTo(b.isVisited); // false (non-visited) < true (visited)
+                return 0;
             }
-            
-            // Second priority: sort by squared distance within the same visited status
-            return a.distance.CompareTo(b.distance);
-        });
 
-        // Populate results list directly
-        for (int i = 0; i < tempEnemyList.Count; i++)
-        {
-            results.Add(tempEnemyList[i].entity);
+            // Clear and reuse static collections
+            tempEnemyList.Clear();
+
+            // Use squared distance to avoid expensive sqrt calculations
+            float maxRangeSquared = query.maxRange * query.maxRange;
+
+            // Collect valid enemies with their squared distances and visited status
+            for (int i = 0; i < overlaps.Length; i++)
+            {
+                var entity = overlaps[i];
+                if (!entity) continue;
+
+                // Skip self
+                if (entity == query.source) continue;
+
+                // Calculate squared distance (faster than Vector3.Distance)
+                var deltaPos = entity.transform.position - sourcePosition;
+                float distanceSquared = Vector3.Dot(deltaPos, deltaPos);
+                // Early distance check
+                if (distanceSquared > maxRangeSquared) continue;
+
+                // Check if this entity has been visited
+                bool isVisited = query.visitedTargets != null && query.visitedTargets.Contains(entity);
+
+                tempEnemyList.Add((entity, distanceSquared, isVisited));
+            }
+
+            if (tempEnemyList.Count == 0)
+            {
+                return 0;
+            }
+
+            // Sort by priority: non-visited first (isVisited = false), then by squared distance
+            tempEnemyList.Sort((a, b) =>
+            {
+                // First priority: non-visited targets come before visited targets
+                if (a.isVisited != b.isVisited)
+                {
+                    return a.isVisited.CompareTo(b.isVisited); // false (non-visited) < true (visited)
+                }
+
+                // Second priority: sort by squared distance within the same visited status
+                return a.distance.CompareTo(b.distance);
+            });
+
+            // Populate results list directly
+            for (int i = 0; i < tempEnemyList.Count; i++)
+            {
+                results.Add(tempEnemyList[i].entity);
+            }
+            return tempEnemyList.Count;
         }
-
-        return tempEnemyList.Count;
     }
     
     /// <summary>
@@ -149,55 +151,58 @@ public static class ContactSystem
     /// <returns>The closest enemy entity, or Entity.Invalid if none found.</returns>
     public static Entity FindClosestEnemy(QueryClosestTarget query, LayerMask layerMask)
     {
-        var sourcePosition = query.source.transform.position;
-        // Perform sphere overlap to find potential targets
-        var overlaps = Physics.SphereOverlap(sourcePosition, query.maxRange, layerMask);
-
-        if (overlaps == null || overlaps.Length == 0)
+        using (Profiler.Scope("FindClosestEnemy"))
         {
-            return Entity.Invalid;
-        }
+            var sourcePosition = query.source.transform.position;
+            // Perform sphere overlap to find potential targets
+            var overlaps = Physics.SphereOverlap(sourcePosition, query.maxRange, layerMask);
 
-        Entity closestEnemy = Entity.Invalid;
-        float closestDistance = float.MaxValue;
-
-        Entity closestNonVisitedEnemy = Entity.Invalid;
-        float closestNonVisitedDistance = float.MaxValue;
-
-        // Find the closest valid enemy
-        foreach (var entity in overlaps)
-        {
-            if (!entity) continue;
-
-            // Skip self
-            if (entity == query.source) continue;
-
-            // Calculate distance
-            float distance = Vector3.Distance(sourcePosition, entity.transform.position);
-
-            // Check if this is the closest so far
-            if (distance < closestDistance)
+            if (overlaps == null || overlaps.Length == 0)
             {
-                closestDistance = distance;
-                closestEnemy = entity;
-
+                return Entity.Invalid;
             }
 
-            if (query.visitedTargets != null)
+            Entity closestEnemy = Entity.Invalid;
+            float closestDistance = float.MaxValue;
+
+            Entity closestNonVisitedEnemy = Entity.Invalid;
+            float closestNonVisitedDistance = float.MaxValue;
+
+            // Find the closest valid enemy
+            foreach (var entity in overlaps)
             {
-                if (distance < closestNonVisitedDistance && !query.visitedTargets.Contains(entity))
+                if (!entity) continue;
+
+                // Skip self
+                if (entity == query.source) continue;
+
+                // Calculate distance
+                float distance = Vector3.Distance(sourcePosition, entity.transform.position);
+
+                // Check if this is the closest so far
+                if (distance < closestDistance)
                 {
-                    closestNonVisitedDistance = distance;
-                    closestNonVisitedEnemy = entity;
+                    closestDistance = distance;
+                    closestEnemy = entity;
+
+                }
+
+                if (query.visitedTargets != null)
+                {
+                    if (distance < closestNonVisitedDistance && !query.visitedTargets.Contains(entity))
+                    {
+                        closestNonVisitedDistance = distance;
+                        closestNonVisitedEnemy = entity;
+                    }
                 }
             }
-        }
 
-        if (closestNonVisitedEnemy != Entity.Invalid)
-        {
-            return closestNonVisitedEnemy;
+            if (closestNonVisitedEnemy != Entity.Invalid)
+            {
+                return closestNonVisitedEnemy;
+            }
+            return closestEnemy;
         }
-        return closestEnemy;
     }
     /// <summary>
     /// Apply contact effects between a source entity and target entity.
@@ -208,50 +213,52 @@ public static class ContactSystem
     /// <param name="contactPosition">The world position where contact occurred.</param>
     public static void ApplyContact(Entity source, Entity target, Vector3 contactPosition)
     {
-
-        if(source.HasComponent<DestroyedComponent>())
+        using (Profiler.Scope("ContactSystem.ApplyContact"))
         {
-            return;
-        }
-        bool shouldExtendLifetime = false;
-        
-        // Execute effects in order until one succeeds
-        foreach (var handler in effectHandlers)
-        {
-            ContactResult result = handler(source, target);
-            
-            if (result == ContactResult.Success)
+            if (source.HasComponent<DestroyedComponent>())
             {
-                shouldExtendLifetime = true;
-                break; // Stop processing further effects
+                return;
+            }
+            bool shouldExtendLifetime = false;
+            
+            // Execute effects in order until one succeeds
+            foreach (var handler in effectHandlers)
+            {
+                ContactResult result = handler(source, target);
+                
+                if (result == ContactResult.Success)
+                {
+                    shouldExtendLifetime = true;
+                    break; // Stop processing further effects
+                }
+                
+                // If result is Exhausted, continue to next effect
+                // If result is Failure, continue to next effect
             }
             
-            // If result is Exhausted, continue to next effect
-            // If result is Failure, continue to next effect
-        }
-        
-        // Always handle damage regardless of other effects
-        HandlePhysicalDamage(source, target);
-        HandleAreaDamage(source, target);
-        
-        // Handle contact visual effects
-        HandleContactVisual(source, contactPosition);
+            // Always handle damage regardless of other effects
+            HandlePhysicalDamage(source, target);
+            HandleAreaDamage(source, target);
+            
+            // Handle contact visual effects
+            HandleContactVisual(source, contactPosition);
 
-        if (!shouldExtendLifetime)
-        {
-            // Probably check for an auto destroy component
-            var autoDestroyComponent = source.GetComponent<AutoDestroyComponent>();
-            if (autoDestroyComponent != null)
+            if (!shouldExtendLifetime)
             {
-                source.AddComponent<DestroyedComponent>();
-
-
-                var particleEmitter = source.GetComponent<ParticleEmitterComponent>();
-                if (particleEmitter != null)
+                // Probably check for an auto destroy component
+                var autoDestroyComponent = source.GetComponent<AutoDestroyComponent>();
+                if (autoDestroyComponent != null)
                 {
-                    particleEmitter.Stop();
+                    source.AddComponent<DestroyedComponent>();
+
+
+                    var particleEmitter = source.GetComponent<ParticleEmitterComponent>();
+                    if (particleEmitter != null)
+                    {
+                        particleEmitter.Stop();
+                    }
+                    Scene.DestroyEntity(source, 1.0f);
                 }
-                Scene.DestroyEntity(source, 1.0f);
             }
         }
     }
@@ -349,84 +356,88 @@ public static class ContactSystem
     /// <param name="target">Target entity that was hit.</param>
     private static ContactResult HandleChain(Entity source, Entity target)
     {
-        // Check for BounceComponent on source
-        var chainComponent = source.GetComponent<ChainComponent>();
-        if (chainComponent == null)
+        using (Profiler.Scope("HandleChain"))
         {
-            return ContactResult.Failure; // No bounce to apply
-        }
-        // Redirect projectile to new target
-        // Reduce bounce count, etc.    
-        if (chainComponent.chainCount > 0)
-        {
-            chainComponent.chainCount--;
-            chainComponent.visitedTargets.Add(target);
-
-            var sourcePosition = chainComponent.owner.transform.position;
-
-            QueryClosestTarget query = new QueryClosestTarget();
-            query.source = target;
-            query.maxRange = chainComponent.chainRange;
-            query.visitedTargets = chainComponent.visitedTargets;
-            Entity newTarget = FindClosestEnemy(query, target.layers);
-
-            if (!newTarget)
+            // Check for BounceComponent on source
+            var chainComponent = source.GetComponent<ChainComponent>();
+            if (chainComponent == null)
             {
-                chainComponent.chainCount = 0;
-                return ContactResult.Exhausted; // No new target to bounce to
+                return ContactResult.Failure; // No bounce to apply
+            }
+            // Redirect projectile to new target
+            // Reduce bounce count, etc.    
+            if (chainComponent.chainCount > 0)
+            {
+                chainComponent.chainCount--;
+                chainComponent.visitedTargets.Add(target);
+
+                var sourcePosition = chainComponent.owner.transform.position;
+
+                QueryClosestTarget query = new QueryClosestTarget();
+                query.source = target;
+                query.maxRange = chainComponent.chainRange;
+                query.visitedTargets = chainComponent.visitedTargets;
+                Entity newTarget = FindClosestEnemy(query, target.layers);
+
+                if (!newTarget)
+                {
+                    chainComponent.chainCount = 0;
+                    return ContactResult.Exhausted; // No new target to bounce to
+                }
+
+                // if the new target is already in the visited targets list, we looped back to the same target, so we clear the visited targets list
+                if (chainComponent.visitedTargets.Contains(newTarget))
+                {
+                    chainComponent.visitedTargets.Clear();
+                }
+
+
+                var targetPosition = newTarget.transform.position + chainComponent.chainOffset;
+                var direction = (targetPosition - sourcePosition).normalized;
+                chainComponent.owner.transform.forward = direction;
+
+                var iphysics = chainComponent.owner.GetComponent<PhysicsComponent>();
+                if (iphysics != null)
+                {
+                    var velocity = iphysics.velocity;
+                    velocity = direction * velocity.magnitude;
+                    iphysics.velocity = velocity;
+                }
+
             }
 
-            // if the new target is already in the visited targets list, we looped back to the same target, so we clear the visited targets list
-            if (chainComponent.visitedTargets.Contains(newTarget))
+            // Check exhaust condition
+            if (chainComponent.chainCount <= 0)
             {
-                chainComponent.visitedTargets.Clear();
+                return ContactResult.Exhausted;
             }
-
-
-            var targetPosition = newTarget.transform.position + chainComponent.chainOffset;
-            var direction = (targetPosition - sourcePosition).normalized;
-            chainComponent.owner.transform.forward = direction;
-
-            var iphysics = chainComponent.owner.GetComponent<PhysicsComponent>();
-            if (iphysics != null)
-            {
-                var velocity = iphysics.velocity;
-                velocity = direction * velocity.magnitude;
-                iphysics.velocity = velocity;
-            }
-
+            return ContactResult.Success;
         }
-
-        // Check exhaust condition
-        if (chainComponent.chainCount <= 0)
-        {
-            return ContactResult.Exhausted;
-        }
-
-        return ContactResult.Success;
     }
 
     private static ContactResult HandlePierce(Entity source, Entity target)
     {
-        // Check if source has pierce component
-        var pierceComponent = source.GetComponent<PierceComponent>();
-        if (pierceComponent == null)
+        using (Profiler.Scope("HandlePierce"))
         {
-            return ContactResult.Failure; // No pierce to apply
-        }
+            // Check if source has pierce component
+            var pierceComponent = source.GetComponent<PierceComponent>();
+            if (pierceComponent == null)
+            {
+                return ContactResult.Failure; // No pierce to apply
+            }
 
-        if(pierceComponent.pierceCount >= 0)
-        {
-            // apply pierce
-            pierceComponent.pierceCount--;
-        }
+            if(pierceComponent.pierceCount >= 0)
+            {
+                // apply pierce
+                pierceComponent.pierceCount--;
+            }
 
-        // Check exhaust condition
-        if (pierceComponent.pierceCount < 0)
-        {
-            return ContactResult.Exhausted;
+            // Check exhaust condition
+            if (pierceComponent.pierceCount < 0)
+            {
+                return ContactResult.Exhausted;
+            }
         }
-
         return ContactResult.Success;
     }
 
@@ -437,109 +448,125 @@ public static class ContactSystem
     /// <param name="target">Target entity that was hit.</param>
     private static ContactResult HandleSplit(Entity source, Entity target)
     {
-        //  TODO
-        // Check for SplitComponent on source
-        var splitComponent = source.GetComponent<SplitComponent>();
-        if (splitComponent == null)
+        using (Profiler.Scope("HandleSplit"))
         {
-            return ContactResult.Failure; // No split to apply
-        }
+            // Check for SplitComponent on source
+            var splitComponent = source.GetComponent<SplitComponent>();
+            if (splitComponent == null)
+            {
+                return ContactResult.Failure; // No split to apply
+            }
 
-        if (splitComponent.splitCount > 0)
-        {
+            if (splitComponent.splitCount <= 0)
+            {
+                return ContactResult.Failure; // No splits remaining
+            }
+
+            // Decrement split count (like chain - represents remaining splits)
             splitComponent.splitCount--;
             splitComponent.visitedTargets.Add(target);
 
             var sourcePosition = splitComponent.owner.transform.position;
 
-            // Find new targets for the split projectiles
-            QueryClosestTarget query = new QueryClosestTarget();
-            query.source = target;
-            query.maxRange = splitComponent.splitRange;
-            query.visitedTargets = splitComponent.visitedTargets;
-
-            // Get the prefab from the split component to duplicate the projectile
-            if (splitComponent.projectilePrefab == null)
-            {
-                return ContactResult.Failure; // No prefab to instantiate
-            }
-
-            Entity duplicatedProjectile = Scene.Instantiate(splitComponent.projectilePrefab);
-            if (!duplicatedProjectile)
-            {
-                return ContactResult.Failure;
-            }
-
-            // Find a new target for the duplicated projectile
-            Entity newTarget = FindClosestEnemy(query, target.layers);
-
-            if (!newTarget)
-            {
-                // No target found, destroy the duplicate
-                Scene.DestroyEntity(duplicatedProjectile, 0.0f);
-                splitComponent.splitCount = 0;
-                return ContactResult.Exhausted; // No new target to split to
-            }
-
-            // If the new target is already in the visited targets list, clear it to allow looping
-            if (splitComponent.visitedTargets.Contains(newTarget))
-            {
-                splitComponent.visitedTargets.Clear();
-            }
-
-            // Position the duplicated projectile at the hit location
-            duplicatedProjectile.transform.position = sourcePosition;
-            
-            // Calculate direction to new target
-            var targetPosition = newTarget.transform.position + splitComponent.splitOffset;
-            var direction = (targetPosition - sourcePosition).normalized;
-            duplicatedProjectile.transform.forward = direction;
-
-            // Copy the Projectile component's source from the original
+            // Store source components for copying
             var sourceProjectile = source.GetComponent<Projectile>();
-            var duplicateProjectile = duplicatedProjectile.GetComponent<Projectile>();
-            if (sourceProjectile != null && duplicateProjectile != null)
-            {
-                Entity originalSource = sourceProjectile.GetSource();
-                if (originalSource)
-                {
-                    duplicateProjectile.SetSource(originalSource);
-                }
-            }
-
-            // Overwrite SplitComponent values with reduced count and updated visited targets
-            var duplicateSplitComponent = duplicatedProjectile.GetComponent<SplitComponent>();
-            if (duplicateSplitComponent != null)
-            {
-                duplicateSplitComponent.splitCount = splitComponent.splitCount;
-                duplicateSplitComponent.visitedTargets = new List<Entity>(splitComponent.visitedTargets);
-            }
-
-            // Overwrite ChainComponent visited targets if it exists
             var sourceChainComponent = source.GetComponent<ChainComponent>();
-            var duplicateChainComponent = duplicatedProjectile.GetComponent<ChainComponent>();
-            if (sourceChainComponent != null && duplicateChainComponent != null)
-            {
-                duplicateChainComponent.visitedTargets = new List<Entity>(sourceChainComponent.visitedTargets);
-            }
-
-            // Apply physics velocity to the duplicated projectile
             var sourcePhysics = source.GetComponent<PhysicsComponent>();
-            var duplicatePhysics = duplicatedProjectile.GetComponent<PhysicsComponent>();
-            if (sourcePhysics != null && duplicatePhysics != null)
+
+            // Create 2 split projectiles (standard fork pattern)
+            // Each duplicate will have splitCount - 1, allowing recursive splitting
+            int successfulSplits = 0;
+            var visitedTargets = new List<Entity>(splitComponent.visitedTargets);
+
+            for (int i = 0; i < 2; i++)
             {
-                float speed = sourcePhysics.velocity.magnitude;
-                duplicatePhysics.velocity = direction * speed;
+                // Find new targets for the split projectiles
+                QueryClosestTarget query = new QueryClosestTarget();
+                query.source = target;
+                query.maxRange = splitComponent.splitRange;
+                query.visitedTargets = visitedTargets;
+
+                // Find a new target for this split projectile
+                Entity newTarget = FindClosestEnemy(query, target.layers);
+
+                if (!newTarget)
+                {
+                    // No target found, skip this split
+                    continue;
+                }
+
+                // If the new target is already in the visited targets list, clear it to allow looping
+                if (visitedTargets.Contains(newTarget))
+                {
+                    visitedTargets.Clear();
+                }
+                visitedTargets.Add(newTarget);
+
+                // Instantiate the duplicate projectile
+                Entity duplicatedProjectile = Scene.CloneEntity(source);
+                if (!duplicatedProjectile)
+                {
+                    continue;
+                }
+
+                // Position the duplicated projectile at the hit location
+                duplicatedProjectile.transform.position = sourcePosition;
+
+                // Calculate direction to new target
+                var targetPosition = newTarget.transform.position + splitComponent.splitOffset;
+                var direction = (targetPosition - sourcePosition).normalized;
+                duplicatedProjectile.transform.forward = direction;
+
+                // Copy the Projectile component's source from the original
+                var duplicateProjectile = duplicatedProjectile.GetComponent<Projectile>();
+                if (sourceProjectile != null && duplicateProjectile != null)
+                {
+                    Entity originalSource = sourceProjectile.GetSource();
+                    if (originalSource)
+                    {
+                        duplicateProjectile.SetSource(originalSource);
+                    }
+                }
+
+                // Set split count on duplicate to allow recursive splitting (like chain)
+                var duplicateSplitComponent = duplicatedProjectile.GetComponent<SplitComponent>();
+                if (duplicateSplitComponent != null)
+                {
+                    duplicateSplitComponent.splitCount = splitComponent.splitCount; // Pass remaining splits
+                    duplicateSplitComponent.visitedTargets = new List<Entity>(visitedTargets);
+                }
+
+                // Overwrite ChainComponent visited targets if it exists
+                var duplicateChainComponent = duplicatedProjectile.GetComponent<ChainComponent>();
+                if (sourceChainComponent != null && duplicateChainComponent != null)
+                {
+                    duplicateChainComponent.visitedTargets = new List<Entity>(sourceChainComponent.visitedTargets);
+                }
+
+                // Apply physics velocity to the duplicated projectile
+                var duplicatePhysics = duplicatedProjectile.GetComponent<PhysicsComponent>();
+                if (sourcePhysics != null && duplicatePhysics != null)
+                {
+                    float speed = sourcePhysics.velocity.magnitude;
+                    duplicatePhysics.velocity = direction * speed;
+                }
+
+                successfulSplits++;
             }
-        }
 
-        // Check exhaust condition
-        if (splitComponent.splitCount <= 0)
-        {
-            return ContactResult.Exhausted;
-        }
+            // Check exhaust condition (like chain)
+            if (splitComponent.splitCount <= 0)
+            {
+                return ContactResult.Exhausted;
+            }
 
-        return ContactResult.Success;
+            if (successfulSplits > 0)
+            {
+                return ContactResult.Success;
+            }
+
+        }
+        return ContactResult.Exhausted; // No targets found for any splits
     }
 
     /// <summary>
