@@ -145,7 +145,7 @@ public class LightningBoltAbility : Ability
             }
 
             // Add split component if upgrade is active
-            int splitCount = 3; //UpgradeSystem.GetLightningSplitCount();
+            int splitCount = UpgradeSystem.GetLightningSplitCount();
             if (splitCount > 0)
             {
                 var splitComponent = projectileEntity.AddComponent<SplitComponent>();
