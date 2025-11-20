@@ -12,6 +12,7 @@ public class GameUI : ScriptComponent
 {
 	public Entity GameMenu;
 	public Entity SettingsMenu;
+	public Entity GameOverMenu;
 	public Entity GameHub;
 
 	public Entity BackgroundAudioSource;
@@ -19,6 +20,7 @@ public class GameUI : ScriptComponent
 	public Scene LobbyScene;
 
 	public bool IsGamePaused { get; private set; } = false;
+	public bool IsGameOver { get; private set; } = false;
 
 	/// <summary>
 	/// OnCreate is called when the script is first loaded, or when an object it is attached to is instantiated
@@ -60,6 +62,12 @@ public class GameUI : ScriptComponent
 		{
 			var settingsMenuEntity = owner.transform.FindChild("SettingsMenu", true);
 			if (settingsMenuEntity) SettingsMenu = settingsMenuEntity;
+		}
+
+		if (!GameOverMenu)
+		{
+			var gameOverMenuEntity = owner.transform.FindChild("GameOverMenu", true);
+			if (gameOverMenuEntity) GameOverMenu = gameOverMenuEntity;
 		}
 
 		if (!GameHub)
@@ -111,8 +119,8 @@ public class GameUI : ScriptComponent
 
 	public override void OnUpdate()
 	{
-		// Handle ESC key for opening/closing game menu
-		if (Input.IsPressed(KeyCode.Escape))
+		// Handle ESC key for opening/closing game menu (but not when game over)
+		if (!IsGameOver && Input.IsPressed(KeyCode.Escape))
 		{
 			ToggleGameMenu();
 		}
@@ -225,7 +233,16 @@ public class GameUI : ScriptComponent
 	/// </summary>
 	public void GoToMainMenu()
 	{
-		ResumeGame();
+		// Close any open menus
+		if (IsGameOver)
+		{
+			CloseGameOverMenu();
+		}
+		else
+		{
+			ResumeGame();
+		}
+		
 		Log.Info("Navigating to main menu from game");
 		if (LobbyScene != null)
 		{
@@ -234,6 +251,104 @@ public class GameUI : ScriptComponent
 		else
 		{
 			Log.Warning("LobbyScene reference not set");
+		}
+	}
+
+	/// <summary>
+	/// Restart the game (used by restart button in game over menu and game menu).
+	/// </summary>
+	public void RestartGame()
+	{
+		Log.Info("Restarting game");
+		
+		// Close whichever menu is open (game over menu or game menu)
+		if (IsGameOver && GameOverMenu && GameOverMenu.active)
+		{
+			CloseGameOverMenu();
+		}
+		else if (IsGamePaused && GameMenu && GameMenu.active)
+		{
+			CloseGameMenu();
+		}
+		
+		Scene.ReloadScene();
+	}
+	
+	/// <summary>
+	/// Open the game over menu (called when player dies).
+	/// </summary>
+	public void OpenGameOverMenu()
+	{
+		if (IsGameOver)
+		{
+			return;
+		}
+		
+		if (GameOverMenu)
+		{
+			// Pause game audio
+			var gameAudio = Scene.FindEntityByName("GameAudio");
+			if (gameAudio)
+			{
+				var sourceComponents = gameAudio.GetComponentsInChildren<AudioSourceComponent>();
+				foreach (var sourceComponent in sourceComponents)
+				{
+					sourceComponent.Pause();
+				}
+			}
+			
+			// Hide GameHub
+			if (GameHub)
+			{
+				GameHub.SetActive(false);
+			}
+			
+			// Hide GameMenu if open
+			if (GameMenu && GameMenu.active)
+			{
+				GameMenu.SetActive(false);
+			}
+			
+			GameOverMenu.SetActive(true);
+			BackgroundAudioSource.SetActive(true);
+			
+			Time.timeScale = 0f;
+			IsGamePaused = true;
+			IsGameOver = true;
+			Log.Info("Game over menu opened - game paused");
+		}
+	}
+	
+	/// <summary>
+	/// Close the game over menu (only called by restart/quit buttons).
+	/// </summary>
+	private void CloseGameOverMenu()
+	{
+		if (GameOverMenu)
+		{
+			var gameAudio = Scene.FindEntityByName("GameAudio");
+			if (gameAudio)
+			{
+				var sourceComponents = gameAudio.GetComponentsInChildren<AudioSourceComponent>();
+				foreach (var sourceComponent in sourceComponents)
+				{
+					sourceComponent.Resume();
+				}
+			}
+			
+			GameOverMenu.SetActive(false);
+			
+			// Show GameHub when resuming gameplay
+			if (GameHub)
+			{
+				GameHub.SetActive(true);
+			}
+
+			BackgroundAudioSource.SetActive(false);
+			Time.timeScale = 1f;
+			IsGamePaused = false;
+			IsGameOver = false;
+			Log.Info("Game over menu closed");
 		}
 	}
 

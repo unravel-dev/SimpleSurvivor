@@ -92,6 +92,15 @@ public abstract class BaseMenu : ScriptComponent
 	protected abstract void RegisterEventHandlers();
 
 	/// <summary>
+	/// Unregister event handlers. Override in child classes to unsubscribe from C# events.
+	/// UI callbacks registered via RegisterCallback are automatically cleaned up when elements are destroyed.
+	/// </summary>
+	protected virtual void UnregisterEventHandlers()
+	{
+		// Base implementation is empty - child classes can override to unsubscribe from C# events
+	}
+
+	/// <summary>
 	/// Get the ID of the title element for this menu. Override in child classes.
 	/// </summary>
 	protected abstract string GetTitleElementId();
@@ -138,6 +147,35 @@ public abstract class BaseMenu : ScriptComponent
 		else
 		{
 			Log.Warning($"{buttonName} button not found or invalid");
+		}
+	}
+
+	/// <summary>
+	/// Unregister all standard button events for a button element.
+	/// Mirrors RegisterButtonEvents to clean up the same events that were registered.
+	/// </summary>
+	/// <param name="button">The button element to unregister events for</param>
+	/// <param name="buttonName">Name for logging purposes</param>
+	/// <param name="onDown">Mouse down handler (same reference used for registration)</param>
+	/// <param name="onClick">Click handler (same reference used for registration)</param>
+	/// <param name="onHover">Mouse hover handler (same reference used for registration)</param>
+	/// <param name="onLeave">Mouse leave handler (same reference used for registration)</param>
+	/// <param name="onRelease">Mouse release handler (same reference used for registration)</param>
+	protected void UnregisterButtonEvents(UIElement button, string buttonName,
+		Action<UIPointerEvent> onDown,
+		Action<UIPointerEvent> onClick,
+		Action<UIPointerEvent> onHover,
+		Action<UIPointerEvent> onLeave,
+		Action<UIPointerEvent> onRelease)
+	{
+		if (button != null && button.IsValid())
+		{
+			button.UnregisterCallback<UIPointerEvent>("click", onClick);
+			button.UnregisterCallback<UIPointerEvent>("mousedown", onDown);
+			button.UnregisterCallback<UIPointerEvent>("mouseover", onHover);
+			button.UnregisterCallback<UIPointerEvent>("mouseout", onLeave);
+			button.UnregisterCallback<UIPointerEvent>("mouseup", onRelease);
+			Log.Info($"{buttonName} button event handlers unregistered");
 		}
 	}
 
@@ -210,11 +248,21 @@ public abstract class BaseMenu : ScriptComponent
 		}
 	}
 
+	public override void OnDisable()
+	{
+		// Unregister event handlers when component is disabled (e.g., scene unload)
+		UnregisterEventHandlers();
+		base.OnDisable();
+	}
+
 	public override void OnDestroy()
 	{
+		// Ensure event handlers are unregistered
+		UnregisterEventHandlers();
+		
 		// No need to manually clean up wrappers - they automatically become invalid
 		// when the underlying C++ objects are destroyed
-		// Event callbacks are also automatically cleaned up by the UIEventManager
+		// UI callbacks registered via RegisterCallback are automatically cleaned up by the UIEventManager
 		Log.Info($"{GetType().Name} controller destroyed");
 	}
 }

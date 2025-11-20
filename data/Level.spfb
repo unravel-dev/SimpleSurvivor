@@ -2,7 +2,7 @@
  "entities_count": 10,
  "entities": [
   {
-   "id": 14680065,
+   "id": 2097153,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -189,7 +189,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 14680067,
+   "id": 2097155,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -277,7 +277,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 14680069,
+   "id": 2097157,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -346,7 +346,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 14680071,
+   "id": 2097159,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -365,6 +365,16 @@
       "uid": "6e59541b-a348-6248-9685-aba84bc78076"
      },
      "property_overrides": [
+      {
+       "entity_uuid": "a66a3c5f-1ab8-e64a-a02c-42103b80e44a",
+       "component_path": "transform_component/active",
+       "pretty_component_path": "Transform/Active"
+      },
+      {
+       "entity_uuid": "e44fb193-9232-d349-85ed-a527384f3585",
+       "component_path": "transform_component/active",
+       "pretty_component_path": "Transform/Active"
+      },
       {
        "entity_uuid": "7b2a12a5-b8bc-7749-9b5e-f9c9d0a9f337",
        "component_path": "script_component/script_components/GameUI/LobbyScene",
@@ -398,7 +408,7 @@
       "position": {
        "x": 4.6700768052687638e-7,
        "y": -0.0000013820827007293702,
-       "z": -2.6787694196173108e-7
+       "z": -2.6782066697705888e-7
       },
       "rotation": {
        "x": -1.1920938902676426e-7,
@@ -413,8 +423,8 @@
       },
       "skew": {
        "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
+       "y": -1.6940658945086007e-20,
+       "z": -7.105427357601002e-15
       }
      },
      "parent": {
@@ -422,19 +432,22 @@
      },
      "children": [
       {
-       "id": 14680072
+       "id": 2097160
       },
       {
-       "id": 14680073
+       "id": 2097161
       },
       {
-       "id": 14680074
+       "id": 2097162
       },
       {
-       "id": 12582923
+       "id": 11
       },
       {
-       "id": 12582924
+       "id": 12
+      },
+      {
+       "id": 13
       }
      ],
      "active": true
@@ -449,6 +462,10 @@
         "id": 4294967295
        },
        "SettingsMenu": {
+        "flags": 2,
+        "id": 4294967295
+       },
+       "GameOverMenu": {
         "flags": 2,
         "id": 4294967295
        },
@@ -470,35 +487,13 @@
         "flags": 2,
         "id": 4294967295
        }
-      },
-      {
-       "type": "GameUI",
-       "GameMenu": {
-        "flags": 2,
-        "id": 4294967295
-       },
-       "SettingsMenu": {
-        "flags": 2,
-        "id": 4294967295
-       },
-       "GameHub": {
-        "flags": 2,
-        "id": 4294967295
-       },
-       "BackgroundAudioSource": {
-        "flags": 2,
-        "id": 4294967295
-       },
-       "LobbyScene": {
-        "uid": "00000000-0000-0000-0000-000000000000"
-       }
       }
      ]
     }
    }
   },
   {
-   "id": 14680072,
+   "id": 2097160,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -521,12 +516,12 @@
       "position": {
        "x": 0.0,
        "y": 0.0,
-       "z": 0.0
+       "z": 1.2846612662542612e-11
       },
       "rotation": {
        "x": 0.0,
        "y": 0.0,
-       "z": 0.0,
+       "z": 3.8116482626443519e-21,
        "w": 1.0
       },
       "scale": {
@@ -537,11 +532,11 @@
       "skew": {
        "x": 0.0,
        "y": 0.0,
-       "z": 0.0
+       "z": 1.5246593050577406e-20
       }
      },
      "parent": {
-      "id": 14680071
+      "id": 2097159
      },
      "children": [],
      "active": false
@@ -564,7 +559,7 @@
    }
   },
   {
-   "id": 14680073,
+   "id": 2097161,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -607,7 +602,7 @@
       }
      },
      "parent": {
-      "id": 14680071
+      "id": 2097159
      },
      "children": [],
      "active": false
@@ -630,7 +625,7 @@
    }
   },
   {
-   "id": 14680074,
+   "id": 2097162,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -673,7 +668,7 @@
       }
      },
      "parent": {
-      "id": 14680071
+      "id": 2097159
      },
      "children": [],
      "active": false
@@ -696,7 +691,7 @@
    }
   },
   {
-   "id": 12582923,
+   "id": 11,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -708,6 +703,10 @@
      "layers": {
       "mask": 1
      }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "fb41a6d0-8542-da4c-a57a-1d73be1ec37c"
     },
     "has_transform_component": true,
     "transform_component": {
@@ -735,7 +734,7 @@
       }
      },
      "parent": {
-      "id": 14680071
+      "id": 2097159
      },
      "children": [],
      "active": false
@@ -758,7 +757,7 @@
    }
   },
   {
-   "id": 12582924,
+   "id": 12,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -770,6 +769,10 @@
      "layers": {
       "mask": 1
      }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "e44fb193-9232-d349-85ed-a527384f3585"
     },
     "has_transform_component": true,
     "transform_component": {
@@ -797,7 +800,7 @@
       }
      },
      "parent": {
-      "id": 14680071
+      "id": 2097159
      },
      "children": [],
      "active": true
@@ -818,12 +821,78 @@
      ]
     }
    }
+  },
+  {
+   "id": 13,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "GameOverMenu",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "a66a3c5f-1ab8-e64a-a02c-42103b80e44a"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 1.3460521586239339e-10
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 3.8116482626443519e-21,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 1.5246593050577406e-20
+      }
+     },
+     "parent": {
+      "id": 2097159
+     },
+     "children": [],
+     "active": false
+    },
+    "has_ui_document_component": true,
+    "ui_document_component": {
+     "enabled": true,
+     "asset": {
+      "uid": "5c766876-9303-bc45-bad2-28c57037a157"
+     }
+    },
+    "has_script_component": true,
+    "script_component": {
+     "script_components": [
+      {
+       "type": "GameOverMenu"
+      }
+     ]
+    }
+   }
   }
  ],
  "version": "1.0.0",
  "entities": [
   {
-   "id": 12582926,
+   "id": 15,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -866,16 +935,16 @@
      },
      "children": [
       {
-       "id": 12582927
+       "id": 16
       },
       {
-       "id": 12582941
+       "id": 19
       },
       {
-       "id": 12582946
+       "id": 18
       },
       {
-       "id": 12582951
+       "id": 17
       }
      ],
      "active": true
@@ -883,7 +952,7 @@
    }
   },
   {
-   "id": 12582927,
+   "id": 16,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -922,7 +991,7 @@
       }
      },
      "parent": {
-      "id": 12582926
+      "id": 15
      },
      "children": [],
      "active": true
@@ -1002,7 +1071,7 @@
    }
   },
   {
-   "id": 12582941,
+   "id": 19,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1043,21 +1112,21 @@
       },
       "scale": {
        "x": 1.0,
-       "y": 1.0000001192092896,
-       "z": 0.9999997615814209
+       "y": 1.0,
+       "z": 1.0
       },
       "skew": {
-       "x": 5.9604559510262337e-8,
-       "y": 2.9802322387695315e-8,
-       "z": 0.000005841256552230334
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
       }
      },
      "parent": {
-      "id": 12582926
+      "id": 15
      },
      "children": [
       {
-       "id": 12582942
+       "id": 26
       }
      ],
      "active": true
@@ -1091,7 +1160,7 @@
    }
   },
   {
-   "id": 12582942,
+   "id": 26,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1134,14 +1203,14 @@
       }
      },
      "parent": {
-      "id": 12582941
+      "id": 19
      },
      "children": [
       {
-       "id": 12582943
+       "id": 27
       },
       {
-       "id": 12582944
+       "id": 28
       }
      ],
      "active": true
@@ -1149,7 +1218,7 @@
    }
   },
   {
-   "id": 12582943,
+   "id": 27,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1192,7 +1261,7 @@
       }
      },
      "parent": {
-      "id": 12582942
+      "id": 26
      },
      "children": [],
      "active": true
@@ -1206,7 +1275,7 @@
    }
   },
   {
-   "id": 12582944,
+   "id": 28,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1249,7 +1318,7 @@
       }
      },
      "parent": {
-      "id": 12582942
+      "id": 26
      },
      "children": [],
      "active": true
@@ -1263,7 +1332,7 @@
    }
   },
   {
-   "id": 12582946,
+   "id": 18,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1304,21 +1373,21 @@
       },
       "scale": {
        "x": 1.0,
-       "y": 1.000000238418579,
-       "z": 0.9999995231628418
+       "y": 1.0000001192092896,
+       "z": 0.9999997615814209
       },
       "skew": {
-       "x": 1.1920944587018313e-7,
-       "y": 5.96050000467585e-8,
-       "z": 0.00001168118524219608
+       "x": 5.9604559510262337e-8,
+       "y": 2.9802322387695315e-8,
+       "z": 0.0000058399123190611139
       }
      },
      "parent": {
-      "id": 12582926
+      "id": 15
      },
      "children": [
       {
-       "id": 12582947
+       "id": 23
       }
      ],
      "active": true
@@ -1398,7 +1467,7 @@
    }
   },
   {
-   "id": 12582947,
+   "id": 23,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1441,14 +1510,14 @@
       }
      },
      "parent": {
-      "id": 12582946
+      "id": 18
      },
      "children": [
       {
-       "id": 12582948
+       "id": 24
       },
       {
-       "id": 12582949
+       "id": 25
       }
      ],
      "active": true
@@ -1456,7 +1525,7 @@
    }
   },
   {
-   "id": 12582948,
+   "id": 24,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1499,7 +1568,7 @@
       }
      },
      "parent": {
-      "id": 12582947
+      "id": 23
      },
      "children": [],
      "active": true
@@ -1513,7 +1582,7 @@
    }
   },
   {
-   "id": 12582949,
+   "id": 25,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1556,7 +1625,7 @@
       }
      },
      "parent": {
-      "id": 12582947
+      "id": 23
      },
      "children": [],
      "active": true
@@ -1570,7 +1639,7 @@
    }
   },
   {
-   "id": 12582951,
+   "id": 17,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1611,21 +1680,21 @@
       },
       "scale": {
        "x": 1.0,
-       "y": 1.0000001192092896,
-       "z": 0.9999997615814209
+       "y": 1.0,
+       "z": 1.0
       },
       "skew": {
-       "x": 5.9604559510262337e-8,
-       "y": 2.9802322387695315e-8,
-       "z": 0.000005841267920914106
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
       }
      },
      "parent": {
-      "id": 12582926
+      "id": 15
      },
      "children": [
       {
-       "id": 12582952
+       "id": 20
       }
      ],
      "active": true
@@ -1659,7 +1728,7 @@
    }
   },
   {
-   "id": 12582952,
+   "id": 20,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1702,14 +1771,14 @@
       }
      },
      "parent": {
-      "id": 12582951
+      "id": 17
      },
      "children": [
       {
-       "id": 12582953
+       "id": 21
       },
       {
-       "id": 12582954
+       "id": 22
       }
      ],
      "active": true
@@ -1717,7 +1786,7 @@
    }
   },
   {
-   "id": 12582953,
+   "id": 21,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1760,7 +1829,7 @@
       }
      },
      "parent": {
-      "id": 12582952
+      "id": 20
      },
      "children": [],
      "active": true
@@ -1774,7 +1843,7 @@
    }
   },
   {
-   "id": 12582954,
+   "id": 22,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1817,7 +1886,7 @@
       }
      },
      "parent": {
-      "id": 12582952
+      "id": 20
      },
      "children": [],
      "active": true
@@ -1834,7 +1903,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 12582929,
+   "id": 30,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1853,7 +1922,7 @@
       "position": {
        "x": 4.670094995162799e-7,
        "y": -0.000004600723968906095,
-       "z": -2.6730717195277978e-7
+       "z": -2.673011181286711e-7
       },
       "rotation": {
        "x": -1.1920938902676426e-7,
@@ -1869,7 +1938,7 @@
       "skew": {
        "x": -5.960487214906607e-8,
        "y": -2.980337399094424e-8,
-       "z": -0.00000585069346925593
+       "z": -0.000005850790330441669
       }
      },
      "parent": {
@@ -1877,7 +1946,7 @@
      },
      "children": [
       {
-       "id": 12582930
+       "id": 31
       }
      ],
      "active": true
@@ -1943,7 +2012,7 @@
        "maxHealth": 100,
        "currentHealth": 100,
        "allowOverheal": false,
-       "destroyOnDeath": true,
+       "destroyOnDeath": false,
        "destroyDelay": 0.0
       },
       {
@@ -1964,7 +2033,7 @@
    }
   },
   {
-   "id": 12582930,
+   "id": 31,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2003,7 +2072,7 @@
       }
      },
      "parent": {
-      "id": 12582929
+      "id": 30
      },
      "children": [],
      "active": true
@@ -2044,7 +2113,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 12582932,
+   "id": 33,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2116,8 +2185,12 @@
        "speedScalingPerMinute": 0.5,
        "healthScalingPerLevel": 0.15000000596046449,
        "speedScalingPerLevel": 0.0,
+       "damageScalingPerMinute": 0.10000000149011612,
+       "damageScalingPerLevel": 0.15000000596046449,
+       "baseEnemyDamage": 10,
        "maxHealthScaling": 5.0,
-       "maxSpeedScaling": 3.0
+       "maxSpeedScaling": 3.0,
+       "maxDamageScaling": 5.0
       },
       {
        "type": "LootSystem",
@@ -2150,7 +2223,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 12582934,
+   "id": 35,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2193,7 +2266,7 @@
      },
      "children": [
       {
-       "id": 12582935
+       "id": 36
       }
      ],
      "active": true
@@ -2201,7 +2274,7 @@
    }
   },
   {
-   "id": 12582935,
+   "id": 36,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2240,7 +2313,7 @@
       }
      },
      "parent": {
-      "id": 12582934
+      "id": 35
      },
      "children": [],
      "active": true
@@ -2266,7 +2339,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 12582937,
+   "id": 38,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2316,7 +2389,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 12582939,
+   "id": 40,
    "components": {
     "has_tag_component": true,
     "tag_component": {

@@ -54,10 +54,18 @@ public class BasicLevelDirector : ScriptComponent
     public float healthScalingPerLevel = 0.15f;
     [Tooltip("Speed scaling per player level (multiplier)")]
     public float speedScalingPerLevel = 0.08f;
+    [Tooltip("Damage scaling per minute of game time (multiplier)")]
+    public float damageScalingPerMinute = 0.1f;
+    [Tooltip("Damage scaling per player level (multiplier)")]
+    public float damageScalingPerLevel = 0.15f;
+    [Tooltip("Base damage value for enemies (used when PhysicalDamageComponent is missing)")]
+    public int baseEnemyDamage = 10;
     [Tooltip("Maximum health scaling multiplier")]
     public float maxHealthScaling = 5.0f;
     [Tooltip("Maximum speed scaling multiplier")]
     public float maxSpeedScaling = 3.0f;
+    [Tooltip("Maximum damage scaling multiplier")]
+    public float maxDamageScaling = 5.0f;
     
     // Spawn timing and tracking
     private float timeSinceLastSpawn = 0.0f;
@@ -70,6 +78,9 @@ public class BasicLevelDirector : ScriptComponent
     private float gameStartTime = 0.0f;
     private Player playerComponent;
     private Experience playerExperience;
+    
+    // Base damage tracking (to preserve original values for scaling)
+    private System.Collections.Generic.Dictionary<Entity, int> enemyBaseDamage = new System.Collections.Generic.Dictionary<Entity, int>();
     
     /// <summary>
     /// Called when the script is created.
@@ -427,6 +438,7 @@ public class BasicLevelDirector : ScriptComponent
         // Calculate scaling multipliers
         float healthMultiplier = CalculateHealthScaling();
         float speedMultiplier = CalculateSpeedScaling();
+        float damageMultiplier = CalculateDamageScaling();
         
         // Apply health scaling
         var healthComponent = enemy.GetComponent<Health>();
@@ -450,6 +462,36 @@ public class BasicLevelDirector : ScriptComponent
             float scaledAcceleration = originalAcceleration * speedMultiplier;
             enemyComponent.SetMaxAcceleration(scaledAcceleration);
 
+        }
+        
+        // Apply damage scaling
+        var damageComponent = enemy.GetComponent<PhysicalDamageComponent>();
+        if (damageComponent == null)
+        {
+            // Attach PhysicalDamageComponent if missing
+            damageComponent = enemy.AddComponent<PhysicalDamageComponent>();
+            if (damageComponent != null)
+            {
+                // Store base damage for future scaling
+                enemyBaseDamage[enemy] = baseEnemyDamage;
+                damageComponent.SetDamage(baseEnemyDamage);
+            }
+        }
+        
+        if (damageComponent != null)
+        {
+            // Get or store base damage
+            int baseDamage;
+            if (!enemyBaseDamage.TryGetValue(enemy, out baseDamage))
+            {
+                // If not tracked, use current damage as base (first time scaling)
+                baseDamage = damageComponent.GetDamage();
+                enemyBaseDamage[enemy] = baseDamage;
+            }
+            
+            // Apply scaling
+            int scaledDamage = Mathf.RoundToInt(baseDamage * damageMultiplier);
+            damageComponent.SetDamage(scaledDamage);
         }
     }
     
@@ -501,6 +543,31 @@ public class BasicLevelDirector : ScriptComponent
         // Combine multipliers and clamp to maximum
         float totalMultiplier = timeMultiplier * levelMultiplier;
         return Mathf.Min(totalMultiplier, maxSpeedScaling);
+    }
+    
+    /// <summary>
+    /// Calculate the damage scaling multiplier based on game time and player level.
+    /// </summary>
+    /// <returns>Damage scaling multiplier.</returns>
+    private float CalculateDamageScaling()
+    {
+        float timeMultiplier = 1.0f;
+        float levelMultiplier = 1.0f;
+        
+        // Time-based scaling
+        float gameTimeMinutes = (Time.time - gameStartTime) / 60.0f;
+        timeMultiplier = 1.0f + (gameTimeMinutes * damageScalingPerMinute);
+        
+        // Level-based scaling
+        if (playerExperience != null)
+        {
+            int playerLevel = playerExperience.GetCurrentLevel();
+            levelMultiplier = 1.0f + ((playerLevel - 1) * damageScalingPerLevel);
+        }
+        
+        // Combine multipliers and clamp to maximum
+        float totalMultiplier = timeMultiplier * levelMultiplier;
+        return Mathf.Min(totalMultiplier, maxDamageScaling);
     }
     
     /// <summary>

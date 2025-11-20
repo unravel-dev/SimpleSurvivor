@@ -213,14 +213,29 @@ public class LevelUpUI : ScriptComponent
         return isLevelUpActive;
     }
     
+    public override void OnDisable()
+    {
+        // Unsubscribe from events when component is disabled (e.g., scene unload)
+        UnsubscribeFromEvents();
+        base.OnDisable();
+    }
+
     public override void OnDestroy()
     {
-        // Unsubscribe from events
+        // Ensure events are unsubscribed
+        UnsubscribeFromEvents();
+        Log.Info("LevelUpUI controller destroyed");
+    }
+
+    /// <summary>
+    /// Unsubscribe from all events to prevent memory leaks.
+    /// </summary>
+    private void UnsubscribeFromEvents()
+    {
         if (levelUpMenuScript != null)
         {
             levelUpMenuScript.OnCardSelected -= OnCardSelected;
+            Log.Info("LevelUpUI: Unsubscribed from card selection events");
         }
-        
-        Log.Info("LevelUpUI controller destroyed");
     }
 }

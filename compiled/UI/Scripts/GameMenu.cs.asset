@@ -12,6 +12,7 @@ public class GameMenu : BaseMenu
 
 	// Menu button elements
 	private UIElement resumeButton;
+	private UIElement restartButton;
 	private UIElement settingsButton;
 	private UIElement quitButton;
 
@@ -42,6 +43,7 @@ public class GameMenu : BaseMenu
 
 		// Cache menu-specific button elements
 		resumeButton = document.GetElementById("resume_btn");
+		restartButton = document.GetElementById("restart_btn");
 		settingsButton = document.GetElementById("settings_btn");
 		quitButton = document.GetElementById("quit_btn");
 
@@ -64,7 +66,7 @@ public class GameMenu : BaseMenu
 	protected override int CountValidElements()
 	{
 		int count = base.CountValidElements();
-		var buttonElements = new UIElement[] { resumeButton, settingsButton, quitButton };
+		var buttonElements = new UIElement[] { resumeButton, restartButton, settingsButton, quitButton };
 		var upgradeElements = new UIElement[] { 
 			upgradeListContainer, damageValueElement, multicastValueElement, pierceValueElement,
 			chainValueElement, cooldownValueElement, speedValueElement, healthValueElement,
@@ -95,6 +97,14 @@ public class GameMenu : BaseMenu
 			(ev) => OnButtonLeave(resumeButton, ev, "Resume"),
 			(ev) => OnButtonRelease(resumeButton, ev, "Resume"));
 
+		// Register Restart button event handlers
+		RegisterButtonEvents(restartButton, "Restart",
+			(ev) => OnButtonDown(restartButton, ev, "Restart"),
+			OnRestartButtonClick,
+			(ev) => OnButtonHover(restartButton, ev, "Restart"),
+			(ev) => OnButtonLeave(restartButton, ev, "Restart"),
+			(ev) => OnButtonRelease(restartButton, ev, "Restart"));
+
 		// Register Settings button event handlers
 		RegisterButtonEvents(settingsButton, "Settings",
 			(ev) => OnButtonDown(settingsButton, ev, "Settings"),
@@ -112,6 +122,17 @@ public class GameMenu : BaseMenu
 			(ev) => OnButtonRelease(quitButton, ev, "Quit"));
 
 		Log.Info("GameMenu event handlers registered successfully");
+	}
+
+	protected override void UnregisterEventHandlers()
+	{
+		resumeButton.UnsubscribeAll();
+		restartButton.UnsubscribeAll();
+		settingsButton.UnsubscribeAll();
+		quitButton.UnsubscribeAll();
+		
+
+		base.UnregisterEventHandlers();
 	}
 
 	protected override void SetupInitialUI()
@@ -238,6 +259,15 @@ public class GameMenu : BaseMenu
 	{
 		Log.Info($"Resume button clicked");
 		GameUI.FindInScene()?.ResumeGame();
+	}
+
+	/// <summary>
+	/// Handles the Restart button click - restarts the game via GameUI.
+	/// </summary>
+	private void OnRestartButtonClick(UIPointerEvent ev)
+	{
+		Log.Info($"Restart button clicked");
+		GameUI.FindInScene()?.RestartGame();
 	}
 
 	/// <summary>

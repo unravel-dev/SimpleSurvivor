@@ -378,12 +378,16 @@ public class Player : ScriptComponent
         targetVelocity = Vector3.zero;
         inputDirection = Vector3.zero;
         
-        // Could add death behaviors here, like:
-        // - Show game over screen
-        // - Play death sound/animation
-        // - Disable input
-        // - Restart level
-        // - Show respawn options
+        // Show game over menu
+        var gameUI = GameUI.FindInScene();
+        if (gameUI != null)
+        {
+            gameUI.OpenGameOverMenu();
+        }
+        else
+        {
+            Log.Warning("GameUI not found - cannot show game over menu");
+        }
     }
     
     /// <summary>

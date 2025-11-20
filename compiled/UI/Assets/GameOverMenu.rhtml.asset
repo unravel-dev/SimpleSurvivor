@@ -1,0 +1,47 @@
+<rml>
+  <head>
+    <title>Game Over Menu</title>
+    <link type="text/rcss" href="engine:/data/ui/rml.rcss" />
+    <link type="text/rcss" href="CommonMenu.rcss" />
+    <link type="text/rcss" href="GameOverMenu.rcss" />
+  </head>
+
+  <body id="body" class="theme-dark">
+    <div class="gameover-menu-layout">
+      
+      <!-- Main Menu Content -->
+      <div class="menu-container menu-container--centered">
+        
+        <!-- Game Over Title -->
+        <header class="menu-header menu-header--large">
+          <h1 id="gameover_title" class="menu-title menu-title--large">Game Over</h1>
+          <div class="menu-subtitle menu-subtitle--large">You have been defeated</div>
+        </header>
+
+        <!-- Game Over Menu Buttons -->
+        <nav class="menu-nav">
+          <div class="menu-buttons">
+            <button id="restart_btn" class="menu-btn menu-btn--large menu-btn-primary">
+              <span class="btn-icon"></span>
+              <span class="btn-text">Restart</span>
+            </button>
+            
+            <button id="quit_btn" class="menu-btn menu-btn--large menu-btn-danger">
+              <span class="btn-icon"></span>
+              <span class="btn-text">Quit</span>
+            </button>
+          </div>
+        </nav>
+
+        <!-- Footer Info -->
+        <footer class="menu-footer">
+          <div class="version-info">Game Over</div>
+          <div class="copyright">Select an option to continue</div>
+        </footer>
+
+      </div>
+
+    </div>
+  </body>
+</rml>
+

@@ -2,7 +2,7 @@
  "entities": [
   {
    "prefab_uid": "3df7d3e0-0c57-7940-9219-029c73f3f172",
-   "id": 2097153,
+   "id": 1048577,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -153,7 +153,9 @@
        },
        "autoFindPlayer": true,
        "maxChaseDistance": 0.0,
-       "enemyType": "basic"
+       "enemyType": "basic",
+       "contactDamageRadius": 2.0,
+       "contactDamageInterval": 0.5
       },
       {
        "type": "Health",
@@ -213,7 +215,7 @@
      },
      "parent": {
       "prefab_uid": "3df7d3e0-0c57-7940-9219-029c73f3f172",
-      "id": 2097153
+      "id": 1048577
      },
      "children": [
       {

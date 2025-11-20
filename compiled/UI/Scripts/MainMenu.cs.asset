@@ -73,6 +73,15 @@ public class MainMenu : BaseMenu
 		Log.Info("MainMenu event handlers registered successfully");
 	}
 
+	protected override void UnregisterEventHandlers()
+	{
+		playButton.UnsubscribeAll();
+		settingsButton.UnsubscribeAll();
+		exitButton.UnsubscribeAll();
+		
+		base.UnregisterEventHandlers();
+	}
+
 	// ========== BUTTON CLICK HANDLERS ==========
 	// All navigation goes through LobbyUI for consistency
 

@@ -107,6 +107,15 @@ public class LevelUpMenu : BaseMenu
         
         Log.Info("LevelUpMenu event handlers registered successfully");
     }
+
+    protected override void UnregisterEventHandlers()
+    {
+        card1.UnsubscribeAll();
+        card2.UnsubscribeAll();
+        card3.UnsubscribeAll();
+
+        base.UnregisterEventHandlers();
+    }
     
     /// <summary>
     /// Set the upgrade cards for the three card slots.

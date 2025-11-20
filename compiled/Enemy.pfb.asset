@@ -2,7 +2,7 @@
  "entities": [
   {
    "prefab_uid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
-   "id": 1048577,
+   "id": 3145729,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -51,11 +51,11 @@
      "children": [
       {
        "prefab_uid": "181acae2-d0c5-004b-a243-c9486c8919ac",
-       "id": 1048578
+       "id": 3145730
       },
       {
        "prefab_uid": "f394a2d3-fb82-604e-8a57-97d75348a99d",
-       "id": 1048579
+       "id": 3145731
       }
      ],
      "active": true
@@ -121,7 +121,9 @@
        },
        "autoFindPlayer": true,
        "maxChaseDistance": 0.0,
-       "enemyType": "basic"
+       "enemyType": "basic",
+       "contactDamageRadius": 2.0,
+       "contactDamageInterval": 0.5
       },
       {
        "type": "Health",
@@ -137,7 +139,7 @@
   },
   {
    "prefab_uid": "181acae2-d0c5-004b-a243-c9486c8919ac",
-   "id": 1048578,
+   "id": 3145730,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -181,7 +183,7 @@
      },
      "parent": {
       "prefab_uid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
-      "id": 1048577
+      "id": 3145729
      },
      "children": [],
      "active": true
@@ -216,7 +218,7 @@
   },
   {
    "prefab_uid": "f394a2d3-fb82-604e-8a57-97d75348a99d",
-   "id": 1048579,
+   "id": 3145731,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -260,7 +262,7 @@
      },
      "parent": {
       "prefab_uid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
-      "id": 1048577
+      "id": 3145729
      },
      "children": [],
      "active": true

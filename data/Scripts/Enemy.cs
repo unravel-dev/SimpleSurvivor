@@ -34,16 +34,24 @@ public class Enemy : ScriptComponent
     //[Header("Enemy Type")]
     [Tooltip("Enemy type identifier for loot configuration (e.g., 'basic', 'elite', 'boss')")]
     public string enemyType = "basic";
-
+    
+    //[Header("Contact Damage")]
+    [Tooltip("Distance from player to start dealing contact damage")]
+    public float contactDamageRadius = 1.5f;
+    [Tooltip("Interval between contact damage ticks (seconds)")]
+    public float contactDamageInterval = 0.5f;
     
     // Component references
     private TransformComponent transformComponent;
     private PhysicsComponent physicsComponent;
     private Health Health;
-    
+
     // Movement state
     private Vector3 lastPlayerPosition;
     private bool isChasing = false;
+    
+    // Contact damage state
+    private float contactDamageTimer = 0.0f;
     
     /// <summary>
     /// Called when the script is created. Initialize component references.
@@ -113,6 +121,9 @@ public class Enemy : ScriptComponent
             
         // Update AI behavior (decision making only)
         UpdateAI();
+        
+        // Handle contact damage
+        HandleContactDamage();
     }
     
     /// <summary>
@@ -464,5 +475,44 @@ public class Enemy : ScriptComponent
             return 1.0f;
             
         return Health.GetHealthPercentage();
+    }
+    
+    /// <summary>
+    /// Handle contact damage when enemy is close to player.
+    /// </summary>
+    private void HandleContactDamage()
+    {
+        // Don't deal contact damage if dead or no damage component
+        if (Health != null && Health.IsDead())
+            return;
+       
+            
+        if (!target)
+            return;
+            
+        // Calculate distance to player
+        Vector3 enemyPosition = transformComponent.position;
+        Vector3 playerPosition = target.transform.position;
+        float distanceToPlayer = Vector3.Distance(enemyPosition, playerPosition);
+        // Update timer
+        contactDamageTimer += Time.deltaTime;
+        
+        // Check if within contact damage range
+        if (distanceToPlayer <= contactDamageRadius)
+        {
+            
+            // Apply contact damage at interval
+            if (contactDamageTimer >= contactDamageInterval)
+            {
+                // Calculate contact position (midpoint between enemy and player)
+                Vector3 contactPosition = (enemyPosition + playerPosition) * 0.5f;
+                
+                // Apply contact damage (enemy is source, player is target)
+                ContactSystem.ApplyContact(owner, target, contactPosition);
+                
+                // Reset timer
+                contactDamageTimer = 0.0f;
+            }
+        }
     }
 }

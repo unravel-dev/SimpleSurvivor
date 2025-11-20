@@ -236,6 +236,16 @@ public class SettingsMenu : BaseMenu
 		Log.Info("SettingsMenu event handlers registered successfully");
 	}
 
+	protected override void UnregisterEventHandlers()
+	{
+		volumeSlider.UnsubscribeAll();
+		graphicsQualityDropdown.UnsubscribeAll();
+		backButton.UnsubscribeAll();
+		applyButton.UnsubscribeAll();
+
+		base.UnregisterEventHandlers();
+	}
+
 	// ========== SLIDER EVENT HANDLERS ==========
 	// Volume slider event handlers
 
