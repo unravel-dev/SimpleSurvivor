@@ -42,6 +42,10 @@ public static class UpgradeSystem
     private static readonly SpinningSlashUpgrade accumulatedBoomerangSpinningSlashUpgrade = new SpinningSlashUpgrade(0.0f, 0.0f);
     private static readonly BurnOnHitUpgrade accumulatedBurnOnHitUpgrade = new BurnOnHitUpgrade(0.0f, 0);
     private static readonly LightningSplitUpgrade accumulatedLightningSplitUpgrade = new LightningSplitUpgrade(0);
+    private static readonly FasterPlagueTickUpgrade accumulatedPlagueFasterTickUpgrade = new FasterPlagueTickUpgrade(0.0f);
+    private static readonly PlaguePoisonUpgrade accumulatedPlaguePoisonUpgrade = new PlaguePoisonUpgrade(0.0f, 0);
+    private static readonly ExtendedPlagueDurationUpgrade accumulatedPlagueExtendedDurationUpgrade = new ExtendedPlagueDurationUpgrade(0.0f);
+    private static readonly PlagueLifeDrainUpgrade accumulatedPlagueLifeDrainUpgrade = new PlagueLifeDrainUpgrade(0.0f, 0);
 
     /// <summary>
     /// Get the total number of active upgrades.
@@ -239,6 +243,12 @@ public static class UpgradeSystem
         accumulatedBurnOnHitUpgrade.BurnChancePercent = 0.0f;
         accumulatedBurnOnHitUpgrade.BurnStacks = 0;
         accumulatedLightningSplitUpgrade.SplitCount = 0;
+        accumulatedPlagueFasterTickUpgrade.TickSpeedPercent = 0.0f;
+        accumulatedPlaguePoisonUpgrade.PoisonChancePercent = 0.0f;
+        accumulatedPlaguePoisonUpgrade.PoisonStacks = 0;
+        accumulatedPlagueExtendedDurationUpgrade.DurationPercent = 0.0f;
+        accumulatedPlagueLifeDrainUpgrade.HealChancePercent = 0.0f;
+        accumulatedPlagueLifeDrainUpgrade.HealAmount = 0;
         
         // Accumulate values from all active upgrades
         float totalDamagePercent = 0.0f;
@@ -384,6 +394,39 @@ public static class UpgradeSystem
                     accumulatedLightningSplitUpgrade.SplitCount = splitUpgrade.SplitCount;
                 }
             }
+            // Plague upgrades
+            else if (upgrade is FasterPlagueTickUpgrade)
+            {
+                FasterPlagueTickUpgrade fasterTickUpgrade = (FasterPlagueTickUpgrade)upgrade;
+                accumulatedPlagueFasterTickUpgrade.TickSpeedPercent += fasterTickUpgrade.TickSpeedPercent;
+            }
+            else if (upgrade is PlaguePoisonUpgrade)
+            {
+                PlaguePoisonUpgrade poisonUpgrade = (PlaguePoisonUpgrade)upgrade;
+                // Sum poison chances (will be capped at 100% in getter)
+                accumulatedPlaguePoisonUpgrade.PoisonChancePercent += poisonUpgrade.PoisonChancePercent;
+                // Use maximum stacks from all upgrades
+                if (poisonUpgrade.PoisonStacks > accumulatedPlaguePoisonUpgrade.PoisonStacks)
+                {
+                    accumulatedPlaguePoisonUpgrade.PoisonStacks = poisonUpgrade.PoisonStacks;
+                }
+            }
+            else if (upgrade is ExtendedPlagueDurationUpgrade)
+            {
+                ExtendedPlagueDurationUpgrade durationUpgrade = (ExtendedPlagueDurationUpgrade)upgrade;
+                accumulatedPlagueExtendedDurationUpgrade.DurationPercent += durationUpgrade.DurationPercent;
+            }
+            else if (upgrade is PlagueLifeDrainUpgrade)
+            {
+                PlagueLifeDrainUpgrade lifeDrainUpgrade = (PlagueLifeDrainUpgrade)upgrade;
+                // Sum heal chances (will be capped at 100% in getter)
+                accumulatedPlagueLifeDrainUpgrade.HealChancePercent += lifeDrainUpgrade.HealChancePercent;
+                // Use maximum heal amount from all upgrades
+                if (lifeDrainUpgrade.HealAmount > accumulatedPlagueLifeDrainUpgrade.HealAmount)
+                {
+                    accumulatedPlagueLifeDrainUpgrade.HealAmount = lifeDrainUpgrade.HealAmount;
+                }
+            }
         }
         
         // Update all accumulated upgrade instances
@@ -519,7 +562,7 @@ public static class UpgradeSystem
         DamageBreakdown damageInfo = new DamageBreakdown();
         // Apply damage upgrades first
         damageInfo.amount = ApplyDamageUpgrade(baseDamage);
-        damageInfo.color = Color.cyan;
+        damageInfo.color = Color.white;
         // Calculate final critical chance
         float finalCriticalChance = ApplyCriticalChanceUpgrade(baseCriticalChance);
         
@@ -792,6 +835,76 @@ public static class UpgradeSystem
     public static int GetLightningSplitCount()
     {
         return accumulatedLightningSplitUpgrade.SplitCount;
+    }
+
+    // ========== PLAGUE UPGRADE HELPERS ==========
+
+    /// <summary>
+    /// Get the tick interval multiplier from all FasterPlagueTickUpgrade bonuses (cached).
+    /// Lower value = faster ticks. Applies diminishing returns similar to cooldown reduction.
+    /// </summary>
+    public static float GetPlagueTickIntervalMultiplier()
+    {
+        float tickSpeedPercent = accumulatedPlagueFasterTickUpgrade.TickSpeedPercent;
+        
+        if (tickSpeedPercent <= 0.0f)
+            return 1.0f;
+        
+        // Apply diminishing returns formula to prevent performance issues
+        // Formula: effectiveReduction = tickSpeedPercent / (tickSpeedPercent + 100)
+        // This approaches 100% but never reaches it
+        float effectiveReduction = tickSpeedPercent / (tickSpeedPercent + 100.0f);
+        
+        // Calculate final multiplier (1.0 - effectiveReduction)
+        // Lower multiplier = faster ticks
+        float multiplier = 1.0f - effectiveReduction;
+        
+        // Enforce minimum multiplier to prevent instant ticks and performance issues
+        const float minimumMultiplier = 0.1f; // Can't go faster than 10x speed (0.1x interval)
+        return Mathf.Max(multiplier, minimumMultiplier);
+    }
+
+    /// <summary>
+    /// Get the poison chance percent from all PlaguePoisonUpgrade bonuses (cached, capped at 100%).
+    /// </summary>
+    public static float GetPlaguePoisonChancePercent()
+    {
+        return Mathf.Min(100.0f, accumulatedPlaguePoisonUpgrade.PoisonChancePercent);
+    }
+
+    /// <summary>
+    /// Get the poison stacks to apply from all PlaguePoisonUpgrade bonuses (cached, returns maximum).
+    /// </summary>
+    public static int GetPlaguePoisonStacks()
+    {
+        return accumulatedPlaguePoisonUpgrade.PoisonStacks;
+    }
+
+    /// <summary>
+    /// Get the duration multiplier from all ExtendedPlagueDurationUpgrade bonuses (cached).
+    /// </summary>
+    public static float GetPlagueDurationMultiplier()
+    {
+        if (accumulatedPlagueExtendedDurationUpgrade.DurationPercent <= 0.0f)
+            return 1.0f;
+        
+        return accumulatedPlagueExtendedDurationUpgrade.GetDurationMultiplier();
+    }
+
+    /// <summary>
+    /// Get the heal chance percent from all PlagueLifeDrainUpgrade bonuses (cached, capped at 100%).
+    /// </summary>
+    public static float GetPlagueHealChancePercent()
+    {
+        return Mathf.Min(100.0f, accumulatedPlagueLifeDrainUpgrade.HealChancePercent);
+    }
+
+    /// <summary>
+    /// Get the heal amount from all PlagueLifeDrainUpgrade bonuses (cached, returns maximum).
+    /// </summary>
+    public static int GetPlagueHealAmount()
+    {
+        return accumulatedPlagueLifeDrainUpgrade.HealAmount;
     }
 
 }

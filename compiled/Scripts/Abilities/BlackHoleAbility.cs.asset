@@ -61,7 +61,7 @@ public class BlackHoleAbility : Ability
         {
             // Try to load a default prefab (you'll need to create this)
             blackHolePrefab = Assets.GetAsset<Prefab>("app:/data/Abilities/BlackHole.pfb");
-            
+
             if (blackHolePrefab == null)
             {
                 Log.Warning($"BlackHoleAbility on {owner.name}: No black hole prefab assigned and default not found!");
@@ -73,6 +73,9 @@ public class BlackHoleAbility : Ability
         {
             cooldown = 6.0f;
         }
+        
+        AddDamageSourceComponent(owner);
+
     }
 
     /// <summary>

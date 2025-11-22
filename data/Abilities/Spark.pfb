@@ -2,7 +2,7 @@
  "entities": [
   {
    "prefab_uid": "10ef8358-c389-3a4b-896e-3f9e41e44097",
-   "id": 11534337,
+   "id": 9437185,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -98,6 +98,7 @@
      "enabled": true,
      "shape": 0,
      "direction": 1,
+     "spawn_location": 0,
      "simulation_space": 0,
      "max_particles": 100,
      "emission_lifetime": {

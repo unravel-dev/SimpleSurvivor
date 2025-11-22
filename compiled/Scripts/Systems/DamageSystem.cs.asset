@@ -44,6 +44,9 @@ public static class DamageSystem
         // Apply damage
         bool died = healthComponent.TakeDamage(breakdown.amount, source);
 
+        // Track damage to ability statistics if source has DamageSourceComponent
+        TrackDamageToAbility(source, breakdown.amount);
+
         // Trigger damage event
         OnDamageApplied?.Invoke(target, source, breakdown);
 
@@ -54,6 +57,24 @@ public static class DamageSystem
         }
 
         return died;
+    }
+
+    /// <summary>
+    /// Track damage to the ability's statistics by checking for DamageSourceComponent or Ability component.
+    /// </summary>
+    /// <param name="source">The entity that caused the damage (could be projectile, DoT effect, ability entity, etc.).</param>
+    /// <param name="damageAmount">Amount of damage dealt.</param>
+    private static void TrackDamageToAbility(Entity source, int damageAmount)
+    {
+        if (!source || damageAmount <= 0)
+            return;
+
+        // Check if source has DamageSourceComponent
+        var damageSource = source.GetComponent<DamageSourceComponent>();
+        if (damageSource != null && damageSource.abilityComponent != null)
+        {
+            damageSource.abilityComponent.totalDamageDealt += damageAmount;
+        }
     }
 
 

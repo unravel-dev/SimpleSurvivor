@@ -38,10 +38,11 @@ public class ReturningBladeComponent : ScriptComponent
 
         if (!targetEntity)
         {
-            // Try to get target from projectile source
-            if (projectileComponent != null)
+            // Try to get target from DamageSourceComponent
+            var damageSource = owner.GetComponent<DamageSourceComponent>();
+            if (damageSource != null)
             {
-                targetEntity = projectileComponent.GetSource();
+                targetEntity = damageSource.GetAbilityEntity();
             }
             
             if (!targetEntity)

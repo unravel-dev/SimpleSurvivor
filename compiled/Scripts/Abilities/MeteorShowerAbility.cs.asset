@@ -231,9 +231,11 @@ public class MeteorShowerAbility : Ability
         var projectileComponent = meteorEntity.AddComponent<Projectile>();
         if (projectileComponent != null)
         {
-            projectileComponent.SetSource(owner);
             projectileComponent.lifetime = (shower.spawnHeight * 1.5f) / shower.meteorSpeed;
         }
+        
+        // Add damage source component to track damage statistics
+        AddDamageSourceComponent(meteorEntity);
         
         // Add auto-destroy component
         meteorEntity.AddComponent<AutoDestroyComponent>();

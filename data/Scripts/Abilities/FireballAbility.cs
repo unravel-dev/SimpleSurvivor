@@ -117,14 +117,14 @@ public class FireballAbility : Ability
         fireballEntity.transform.forward = direction;
 
         // Set up the projectile component
-        var projectile = fireballEntity.GetComponent<Projectile>();
-        if (projectile == null)
+        var projectile = fireballEntity.AddComponent<Projectile>();
+        if (projectile != null)
         {
-            projectile = fireballEntity.AddComponent<Projectile>();
+            projectile.lifetime = UpgradeSystem.ApplyAreaOfEffectUpgrade(maxRange) / projectileSpeed; // Lifetime based on range
         }
 
-        projectile.SetSource(owner);
-        projectile.lifetime = UpgradeSystem.ApplyAreaOfEffectUpgrade(maxRange) / projectileSpeed; // Lifetime based on range
+        // Add damage source component to track damage statistics
+        AddDamageSourceComponent(fireballEntity);
 
         fireballEntity.AddComponent<AutoDestroyComponent>();
 

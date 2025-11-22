@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -29,6 +30,11 @@ public class UpgradeCard
     public List<Upgrade> Upgrades { get; protected set; }
     
     /// <summary>
+    /// Optional ability type that this card is specific to. If set, the player must have this ability to see this card.
+    /// </summary>
+    public Type RequiredAbilityType { get; protected set; }
+    
+    /// <summary>
     /// Number of times this card can be picked. -1 = unlimited, 0 = cannot be picked, >0 = specific count.
     /// </summary>
     protected int remainingPicks;
@@ -40,12 +46,14 @@ public class UpgradeCard
     /// <param name="rarity">Rarity level of the card.</param>
     /// <param name="upgrades">List of upgrades this card provides.</param>
     /// <param name="maxPicks">Maximum number of times this card can be picked. -1 = unlimited (default).</param>
-    public UpgradeCard(string name, UpgradeRarity rarity, List<Upgrade> upgrades, int maxPicks = -1)
+    /// <param name="requiredAbilityType">Optional ability type that this card is specific to. If set, player must have this ability to see this card.</param>
+    public UpgradeCard(string name, UpgradeRarity rarity, List<Upgrade> upgrades, int maxPicks = -1, Type requiredAbilityType = null)
     {
         Name = name;
         Rarity = rarity;
         Upgrades = upgrades ?? new List<Upgrade>();
         remainingPicks = maxPicks;
+        RequiredAbilityType = requiredAbilityType;
         Description = GetDescription();
     }
     
@@ -56,12 +64,14 @@ public class UpgradeCard
     /// <param name="rarity">Rarity level of the card.</param>
     /// <param name="upgrade">Single upgrade this card provides.</param>
     /// <param name="maxPicks">Maximum number of times this card can be picked. -1 = unlimited (default).</param>
-    public UpgradeCard(string name, UpgradeRarity rarity, Upgrade upgrade, int maxPicks = -1)
+    /// <param name="requiredAbilityType">Optional ability type that this card is specific to. If set, player must have this ability to see this card.</param>
+    public UpgradeCard(string name, UpgradeRarity rarity, Upgrade upgrade, int maxPicks = -1, Type requiredAbilityType = null)
     {
         Name = name;
         Rarity = rarity;
         Upgrades = new List<Upgrade> { upgrade };
         remainingPicks = maxPicks;
+        RequiredAbilityType = requiredAbilityType;
         Description = GetDescription();
     }
     

@@ -215,7 +215,8 @@ public static class UpgradeCardGenerator
             () => GenerateBasicFireballAbilityCard(),
             () => GenerateBasicBoomerangBladeAbilityCard(),
             () => GenerateBasicMeteorShowerAbilityCard(),
-            () => GenerateBasicBlackHoleAbilityCard()
+            () => GenerateBasicBlackHoleAbilityCard(),
+            () => GenerateBasicPlagueAbilityCard()
         };
     }
     
@@ -271,25 +272,68 @@ public static class UpgradeCardGenerator
     }
     
     /// <summary>
+    /// Check if the player has a specific ability type.
+    /// </summary>
+    /// <param name="abilityType">The ability type to check for.</param>
+    /// <returns>True if the player has the ability, false otherwise.</returns>
+    private static bool PlayerHasAbility(Type abilityType)
+    {
+        var playerEntity = Scene.FindEntityByName("Player");
+        if (!playerEntity)
+            return false;
+        
+        return playerEntity.HasComponent(abilityType);
+    }
+
+    /// <summary>
     /// Get list of available card generators for the specified rarity.
+    /// Filters out ability-specific upgrades if the player doesn't have the corresponding ability.
     /// </summary>
     /// <param name="rarity">The rarity level.</param>
     /// <returns>List of functions that generate cards of the specified rarity.</returns>
     private static List<System.Func<UpgradeCard>> GetAvailableCards(UpgradeRarity rarity)
     {
+        List<System.Func<UpgradeCard>> allCards;
+        
         switch (rarity)
         {
             case UpgradeRarity.Normal:
-                return GetNormalCards();
+                allCards = GetNormalCards();
+                break;
             case UpgradeRarity.Common:
-                return GetCommonCards();
+                allCards = GetCommonCards();
+                break;
             case UpgradeRarity.Epic:
-                return GetEpicCards();
+                allCards = GetEpicCards();
+                break;
             case UpgradeRarity.Legendary:
-                return GetLegendaryCards();
+                allCards = GetLegendaryCards();
+                break;
             default:
-                return GetNormalCards();
+                allCards = GetNormalCards();
+                break;
         }
+        
+        // Filter out ability-specific upgrades if player doesn't have the corresponding ability
+        var filteredCards = new List<System.Func<UpgradeCard>>();
+        foreach (var cardGenerator in allCards)
+        {
+            // Generate a test card to check its required ability type
+            UpgradeCard testCard = cardGenerator();
+            
+            // If card has a required ability type, check if player has it
+            if (testCard.RequiredAbilityType != null)
+            {
+                if (!PlayerHasAbility(testCard.RequiredAbilityType))
+                {
+                    continue; // Skip this card if player doesn't have the required ability
+                }
+            }
+            
+            filteredCards.Add(cardGenerator);
+        }
+        
+        return filteredCards;
     }
     
     // ===== NORMAL RARITY CARDS =====
@@ -413,24 +457,37 @@ public static class UpgradeCardGenerator
                 
             // Boomerang Blade upgrades (Common) - Limited to 1 pick each
             () => new UpgradeCard("Multiple Blades", UpgradeRarity.Common, 
-                MultipleBladesUpgrade.Generate(1, 2), 1),
-                
+                MultipleBladesUpgrade.Generate(1, 2), 1, typeof(BoomerangBladeAbility)),
+            
             () => new UpgradeCard("Faster Rotation", UpgradeRarity.Common, 
-                FasterRotationUpgrade.Generate(50.0f, 75.0f), 1),
+                FasterRotationUpgrade.Generate(50.0f, 75.0f), 1, typeof(BoomerangBladeAbility)),
                 
             // Black Hole upgrades (Common)
             () => new UpgradeCard("Cursed Vortex", UpgradeRarity.Common, 
-                IncreaseDoomStacksUpgrade.Generate(1, 2)),
-                
+                IncreaseDoomStacksUpgrade.Generate(1, 2), -1, typeof(BlackHoleAbility)),
+            
             () => new UpgradeCard("Gravitational Pull", UpgradeRarity.Common, 
-                IncreasePullStrengthUpgrade.Generate(30.0f, 50.0f)),
-                
+                IncreasePullStrengthUpgrade.Generate(30.0f, 50.0f), -1, typeof(BlackHoleAbility)),
+            
             () => new UpgradeCard("Amplified Doom", UpgradeRarity.Common, 
-                IncreaseDoomDamagePerStackUpgrade.Generate(20.0f, 35.0f)),
+                IncreaseDoomDamagePerStackUpgrade.Generate(20.0f, 35.0f), -1, typeof(BlackHoleAbility)),
                 
             // Fireball upgrades (Common)
             () => new UpgradeCard("Igniting Strike", UpgradeRarity.Common, 
-                BurnOnHitUpgrade.Generate(30.0f, 50.0f, 1, 1))
+                BurnOnHitUpgrade.Generate(30.0f, 50.0f, 1, 1), -1, typeof(FireballAbility)),
+            
+            // Plague upgrades (Common)
+            () => new UpgradeCard("Rapid Decay", UpgradeRarity.Common, 
+                FasterPlagueTickUpgrade.Generate(25.0f, 40.0f), -1, typeof(PlagueAbility)),
+            
+            () => new UpgradeCard("Toxic Strike", UpgradeRarity.Common, 
+                PlaguePoisonUpgrade.Generate(25.0f, 40.0f, 1, 1), -1, typeof(PlagueAbility)),
+            
+            () => new UpgradeCard("Enduring Plague", UpgradeRarity.Common, 
+                ExtendedPlagueDurationUpgrade.Generate(40.0f, 60.0f), -1, typeof(PlagueAbility)),
+            
+            () => new UpgradeCard("Life Drain", UpgradeRarity.Common, 
+                PlagueLifeDrainUpgrade.Generate(15.0f, 25.0f, 1, 2), -1, typeof(PlagueAbility))
         };
     }
     
@@ -509,39 +566,52 @@ public static class UpgradeCardGenerator
                 
             // Boomerang Blade upgrades (Epic) - Limited to 1 pick each
             () => new UpgradeCard("Ping-Pong Orbit", UpgradeRarity.Epic, 
-                PingPongOrbitUpgrade.Generate(50.0f, 100.0f, 50.0f, 100.0f), 1),
-                
+                PingPongOrbitUpgrade.Generate(50.0f, 100.0f, 50.0f, 100.0f), 1, typeof(BoomerangBladeAbility)),
+            
             () => new UpgradeCard("Dual Orbit", UpgradeRarity.Epic, 
-                new DualOrbitUpgrade(), 1),
-                
+                new DualOrbitUpgrade(), 1, typeof(BoomerangBladeAbility)),
+            
             () => new UpgradeCard("Returning Blade", UpgradeRarity.Epic, 
-                ReturningBladeUpgrade.Generate(), 1),
-                
+                ReturningBladeUpgrade.Generate(), 1, typeof(BoomerangBladeAbility)),
+            
             () => new UpgradeCard("Spinning Slash", UpgradeRarity.Epic, 
-                SpinningSlashUpgrade.Generate(75.0f, 125.0f, 20.0f, 35.0f), 1),
-                
+                SpinningSlashUpgrade.Generate(75.0f, 125.0f, 20.0f, 35.0f), 1, typeof(BoomerangBladeAbility)),
+            
             () => new UpgradeCard("Multiple Blades+", UpgradeRarity.Epic, 
-                MultipleBladesUpgrade.Generate(2, 4), 1),
-                
+                MultipleBladesUpgrade.Generate(2, 4), 1, typeof(BoomerangBladeAbility)),
+            
             () => new UpgradeCard("Faster Rotation+", UpgradeRarity.Epic, 
-                FasterRotationUpgrade.Generate(75.0f, 125.0f), 1),
+                FasterRotationUpgrade.Generate(75.0f, 125.0f), 1, typeof(BoomerangBladeAbility)),
                 
             // Black Hole upgrades (Epic)
             () => new UpgradeCard("Cursed Vortex+", UpgradeRarity.Epic, 
-                IncreaseDoomStacksUpgrade.Generate(2, 4)),
-                
+                IncreaseDoomStacksUpgrade.Generate(2, 4), -1, typeof(BlackHoleAbility)),
+            
             () => new UpgradeCard("Gravitational Pull+", UpgradeRarity.Epic, 
-                IncreasePullStrengthUpgrade.Generate(60.0f, 90.0f)),
-                
+                IncreasePullStrengthUpgrade.Generate(60.0f, 90.0f), -1, typeof(BlackHoleAbility)),
+            
             () => new UpgradeCard("Amplified Doom+", UpgradeRarity.Epic, 
-                IncreaseDoomDamagePerStackUpgrade.Generate(40.0f, 60.0f)),
-                
+                IncreaseDoomDamagePerStackUpgrade.Generate(40.0f, 60.0f), -1, typeof(BlackHoleAbility)),
+            
             // Fireball upgrades (Epic)
             () => new UpgradeCard("Burning Impact", UpgradeRarity.Epic, 
-                BurnOnHitUpgrade.Generate(60.0f, 80.0f, 1, 2)),
-                
+                BurnOnHitUpgrade.Generate(60.0f, 80.0f, 1, 2), -1, typeof(FireballAbility)),
+            
             () => new UpgradeCard("Inferno Strike", UpgradeRarity.Epic, 
-                BurnOnHitUpgrade.Generate(70.0f, 90.0f, 2, 3))
+                BurnOnHitUpgrade.Generate(70.0f, 90.0f, 2, 3), -1, typeof(FireballAbility)),
+            
+            // Plague upgrades (Epic)
+            () => new UpgradeCard("Rapid Decay+", UpgradeRarity.Epic, 
+                FasterPlagueTickUpgrade.Generate(50.0f, 70.0f), -1, typeof(PlagueAbility)),
+            
+            () => new UpgradeCard("Toxic Strike+", UpgradeRarity.Epic, 
+                PlaguePoisonUpgrade.Generate(50.0f, 70.0f, 1, 2), -1, typeof(PlagueAbility)),
+            
+            () => new UpgradeCard("Enduring Plague+", UpgradeRarity.Epic, 
+                ExtendedPlagueDurationUpgrade.Generate(75.0f, 100.0f), -1, typeof(PlagueAbility)),
+            
+            () => new UpgradeCard("Life Drain+", UpgradeRarity.Epic, 
+                PlagueLifeDrainUpgrade.Generate(30.0f, 45.0f, 2, 4), -1, typeof(PlagueAbility))
         };
     }
     
@@ -629,7 +699,7 @@ public static class UpgradeCardGenerator
                     MultipleBladesUpgrade.Generate(3, 5),
                     FasterRotationUpgrade.Generate(100.0f, 150.0f),
                     SpinningSlashUpgrade.Generate(100.0f, 150.0f, 30.0f, 50.0f)
-                }, 1),
+                }, 1, typeof(BoomerangBladeAbility)),
                 
             () => new UpgradeCard("Perfect Orbit", UpgradeRarity.Legendary, 
                 new List<Upgrade>
@@ -637,8 +707,8 @@ public static class UpgradeCardGenerator
                     PingPongOrbitUpgrade.Generate(100.0f, 150.0f, 100.0f, 150.0f),
                     new DualOrbitUpgrade(),
                     ReturningBladeUpgrade.Generate()
-                }, 1),
-                
+                }, 1, typeof(BoomerangBladeAbility)),
+            
             // Black Hole upgrades (Legendary)
             () => new UpgradeCard("Singularity", UpgradeRarity.Legendary, 
                 new List<Upgrade>
@@ -646,20 +716,30 @@ public static class UpgradeCardGenerator
                     IncreaseDoomStacksUpgrade.Generate(4, 6),
                     IncreasePullStrengthUpgrade.Generate(100.0f, 150.0f),
                     IncreaseDoomDamagePerStackUpgrade.Generate(60.0f, 100.0f)
-                }),
+                }, -1, typeof(BlackHoleAbility)),
             
             // Lightning Bolt upgrades (Legendary) - Limited to 1 pick
             () => new UpgradeCard("Forked Lightning", UpgradeRarity.Legendary, 
                 new List<Upgrade>
                 {
                     LightningSplitUpgrade.Generate(2, 3)
-                }, 1),
+                }, 1, typeof(LightningBoltAbility)),
                 
             () => new UpgradeCard("Eternal Void", UpgradeRarity.Legendary, 
                 new List<Upgrade>
                 {
                     IncreasePullStrengthUpgrade.Generate(80.0f, 120.0f)
-                })
+                }, -1, typeof(BlackHoleAbility)),
+            
+            // Plague upgrades (Legendary)
+            () => new UpgradeCard("Pestilence Master", UpgradeRarity.Legendary, 
+                new List<Upgrade>
+                {
+                    FasterPlagueTickUpgrade.Generate(70.0f, 90.0f),
+                    PlaguePoisonUpgrade.Generate(60.0f, 80.0f, 2, 3),
+                    ExtendedPlagueDurationUpgrade.Generate(100.0f, 150.0f),
+                    PlagueLifeDrainUpgrade.Generate(40.0f, 60.0f, 3, 5)
+                }, -1, typeof(PlagueAbility))
         };
     }
     
@@ -674,7 +754,7 @@ public static class UpgradeCardGenerator
         return new AbilityCard(
             "Lightning Bolt", 
             LightningBoltAbility.GetDescription(),
-            UpgradeRarity.Common,
+            UpgradeRarity.Legendary,
             new List<Upgrade>(),
             typeof(LightningBoltAbility),
             (ability) => {
@@ -696,7 +776,7 @@ public static class UpgradeCardGenerator
         return new AbilityCard(
             "Fireball", 
             FireballAbility.GetDescription(),
-            UpgradeRarity.Common,
+            UpgradeRarity.Legendary,
             new List<Upgrade>(),
             typeof(FireballAbility),
             (ability) => {
@@ -718,7 +798,7 @@ public static class UpgradeCardGenerator
         return new AbilityCard(
             "Boomerang Blade", 
             BoomerangBladeAbility.GetDescription(),
-            UpgradeRarity.Common,
+            UpgradeRarity.Legendary,
             new List<Upgrade>(),
             typeof(BoomerangBladeAbility),
             (ability) => {
@@ -740,7 +820,7 @@ public static class UpgradeCardGenerator
         return new AbilityCard(
             "Meteor Shower", 
             MeteorShowerAbility.GetDescription(),
-            UpgradeRarity.Common,
+            UpgradeRarity.Legendary,
             new List<Upgrade>(),
             typeof(MeteorShowerAbility),
             (ability) => {
@@ -762,7 +842,7 @@ public static class UpgradeCardGenerator
         return new AbilityCard(
             "Black Hole", 
             BlackHoleAbility.GetDescription(),
-            UpgradeRarity.Common,
+            UpgradeRarity.Legendary,
             new List<Upgrade>(),
             typeof(BlackHoleAbility),
             (ability) => {
@@ -770,6 +850,28 @@ public static class UpgradeCardGenerator
                 if (blackHoleAbility != null)
                 {
                     BlackHoleAbility.ConfigureAbility(blackHoleAbility);
+                }
+            }
+        );
+    }
+    
+    /// <summary>
+    /// Generate a basic plague ability card without additional upgrades (for initial selection).
+    /// </summary>
+    /// <returns>AbilityCard with basic PlagueAbility</returns>
+    private static AbilityCard GenerateBasicPlagueAbilityCard()
+    {
+        return new AbilityCard(
+            "Plague", 
+            PlagueAbility.GetDescription(),
+            UpgradeRarity.Legendary,
+            new List<Upgrade>(),
+            typeof(PlagueAbility),
+            (ability) => {
+                var plagueAbility = ability as PlagueAbility;
+                if (plagueAbility != null)
+                {
+                    PlagueAbility.ConfigureAbility(plagueAbility);
                 }
             }
         );

@@ -14,17 +14,6 @@ public class Projectile : ScriptComponent
 
     // Internal state
     private float timeAlive = 0.0f;
-    private Entity sourceEntity;
-
-    
-    /// <summary>
-    /// Set the source entity for this projectile.
-    /// </summary>
-    /// <param name="source">Entity that created this projectile.</param>
-    public void SetSource(Entity source)
-    {
-        sourceEntity = source;
-    }
     
     public override void OnStart()
     {
@@ -85,14 +74,5 @@ public class Projectile : ScriptComponent
     public float GetRemainingLifetime()
     {
         return Mathf.Max(0f, lifetime - timeAlive);
-    }
-    
-    /// <summary>
-    /// Get the source entity that created this projectile.
-    /// </summary>
-    /// <returns>Source entity, or null if none set.</returns>
-    public Entity GetSource()
-    {
-        return sourceEntity;
     }
 }

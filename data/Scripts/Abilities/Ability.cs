@@ -27,6 +27,9 @@ public abstract class Ability : ScriptComponent
     [Tooltip("Base multicast percentage")]
     public float multicastPercent = 0.0f;
 
+    [Tooltip("Total damage dealt by this ability")]
+    public int totalDamageDealt = 0;
+
     private float modifiedCooldown = 0f;
     // Internal state
     private float lastTriggerTime = -1f;
@@ -157,6 +160,27 @@ public abstract class Ability : ScriptComponent
     /// </summary>
     /// <param name="targets">List of target entities to affect.</param>
     protected abstract void OnTriggerAbility(Entity[] targets, int castIndex);
+
+    /// <summary>
+    /// Add DamageSourceComponent to an entity to track damage statistics.
+    /// </summary>
+    /// <param name="entity">The entity to add the component to.</param>
+    protected void AddDamageSourceComponent(Entity entity)
+    {
+        if (!entity)
+            return;
+            
+        var damageSource = entity.GetComponent<DamageSourceComponent>();
+        if (damageSource == null)
+        {
+            damageSource = entity.AddComponent<DamageSourceComponent>();
+        }
+        
+        if (damageSource != null)
+        {
+            damageSource.Initialize(owner, this);
+        }
+    }
 
     /// <summary>
     /// Virtual method called when the ability starts (can be overridden for setup).

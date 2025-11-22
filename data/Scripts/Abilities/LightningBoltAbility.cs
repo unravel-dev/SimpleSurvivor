@@ -122,11 +122,10 @@ public class LightningBoltAbility : Ability
             // Configure the projectile
 
             // If no Projectile component, add one
-            var projectileComponent = projectileEntity.AddComponent<Projectile>();
-            if (projectileComponent != null)
-            {
-                projectileComponent.SetSource(owner);
-            }
+            projectileEntity.AddComponent<Projectile>();
+            
+            // Add damage source component to track damage statistics
+            AddDamageSourceComponent(projectileEntity);
 
             projectileEntity.AddComponent<AutoDestroyComponent>();
 

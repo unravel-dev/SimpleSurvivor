@@ -191,9 +191,11 @@ public class BoomerangBladeAbility : Ability
         var projectile = bladeEntity.AddComponent<Projectile>();
         if(projectile != null)
         {
-            projectile.SetSource(owner);
             projectile.lifetime = orbitDuration;
         }
+
+        // Add damage source component to track damage statistics
+        AddDamageSourceComponent(bladeEntity);
 
         // Add auto-destroy component
         bladeEntity.AddComponent<AutoDestroyComponent>();

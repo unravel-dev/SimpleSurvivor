@@ -239,7 +239,7 @@ public class DamageNumber : ScriptComponent
         textComponent.text = damageText;
         
         textComponent.alignment = Alignment.Center | Alignment.Middle;
-        textComponent.fontSize = 6;
+        textComponent.fontSize = 8;
         // Set color based on damage type
         SetDamageColor(breakdown);
 
@@ -259,9 +259,7 @@ public class DamageNumber : ScriptComponent
         // Color coding for different damage types
         if (breakdown.isCritical)
         {
-            textComponent.color = Color.red;
-            textComponent.outlineColor = Color.red;
-            initialScale = 3.5f;
+            initialScale = 4.0f;
         }
 
     }

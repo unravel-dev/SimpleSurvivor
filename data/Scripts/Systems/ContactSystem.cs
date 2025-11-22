@@ -517,14 +517,18 @@ public static class ContactSystem
                 var direction = (targetPosition - sourcePosition).normalized;
                 duplicatedProjectile.transform.forward = direction;
 
-                // Copy the Projectile component's source from the original
-                var duplicateProjectile = duplicatedProjectile.GetComponent<Projectile>();
-                if (sourceProjectile != null && duplicateProjectile != null)
+                // Copy the DamageSourceComponent from the original (preserved by CloneEntity, but ensure it exists)
+                var sourceDamageSource = source.GetComponent<DamageSourceComponent>();
+                if (sourceDamageSource != null)
                 {
-                    Entity originalSource = sourceProjectile.GetSource();
-                    if (originalSource)
+                    var duplicateDamageSource = duplicatedProjectile.GetComponent<DamageSourceComponent>();
+                    if (duplicateDamageSource == null)
                     {
-                        duplicateProjectile.SetSource(originalSource);
+                        duplicateDamageSource = duplicatedProjectile.AddComponent<DamageSourceComponent>();
+                    }
+                    if (duplicateDamageSource != null)
+                    {
+                        duplicateDamageSource.Initialize(sourceDamageSource.GetAbilityEntity(), sourceDamageSource.GetAbilityComponent());
                     }
                 }
 
@@ -580,12 +584,12 @@ public static class ContactSystem
         if (!source || !target)
             return;
         
-        // Get the original source entity (player) if this is a projectile
+        // Get the original source entity (player) from DamageSourceComponent
         Entity originalSource = source;
-        var projectile = source.GetComponent<Projectile>();
-        if (projectile != null)
+        var damageSource = source.GetComponent<DamageSourceComponent>();
+        if (damageSource != null)
         {
-            originalSource = projectile.GetSource();
+            originalSource = damageSource.GetAbilityEntity();
             if (!originalSource)
                 return;
         }

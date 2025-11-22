@@ -50,6 +50,41 @@ public abstract class DamageOverTimeComponent : ScriptComponent
         maxStacks = maxStackCount;
         currentStacks = 1;
         isExpired = false;
+        
+        // Add DamageSourceComponent to track damage statistics
+        // Try to find the ability component from the source entity
+        if (owner && source)
+        {
+            var damageSource = owner.GetComponent<DamageSourceComponent>();
+            if (damageSource == null)
+            {
+                damageSource = owner.AddComponent<DamageSourceComponent>();
+            }
+            
+            if (damageSource != null)
+            {
+                // Try to find ability component from source entity
+                var ability = source.GetComponent<Ability>();
+                if (ability != null)
+                {
+                    damageSource.Initialize(source, ability);
+                }
+                else
+                {
+                    // If source is a projectile, check its DamageSourceComponent directly
+                    var projectileDamageSource = source.GetComponent<DamageSourceComponent>();
+                    if (projectileDamageSource != null)
+                    {
+                        var projectileAbility = projectileDamageSource.GetAbilityComponent();
+                        Entity projectileSource = projectileDamageSource.GetAbilityEntity();
+                        if (projectileAbility != null && projectileSource)
+                        {
+                            damageSource.Initialize(projectileSource, projectileAbility);
+                        }
+                    }
+                }
+            }
+        }
     }
     
     /// <summary>

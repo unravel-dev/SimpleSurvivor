@@ -2,7 +2,7 @@
  "entities": [
   {
    "prefab_uid": "b680919e-bc23-2e42-8203-9b57ece6cecd",
-   "id": 41943081,
+   "id": 27263020,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -23,9 +23,9 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": 4.681364059448242,
-       "y": 3.2070422172546388,
-       "z": -3.9694430828094484
+       "x": 24.515235900878908,
+       "y": 6.201525688171387,
+       "z": 0.0
       },
       "rotation": {
        "x": 0.0,
@@ -34,9 +34,9 @@
        "w": 1.0
       },
       "scale": {
-       "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
+       "x": 0.6299999952316284,
+       "y": 0.6299999952316284,
+       "z": 0.6299999952316284
       },
       "skew": {
        "x": 0.0,
@@ -55,9 +55,9 @@
     "particle_emitter_component": {
      "enabled": true,
      "shape": 0,
-     "direction": 1,
+     "direction": 2,
      "simulation_space": 0,
-     "max_particles": 200,
+     "max_particles": 303,
      "emission_lifetime": {
       "count": 2.0
      },
@@ -67,7 +67,7 @@
       "z": 1.0
      },
      "gravity_scale": 0.0,
-     "emission_rate": 100.0,
+     "emission_rate": 254.0,
      "temporal_motion": 1.0,
      "velocity_damping": 0.0,
      "force_over_lifetime": {
@@ -133,15 +133,15 @@
        {
         "progress": 0.0,
         "element": {
-         "min": 1.0,
-         "max": 1.399999976158142
+         "min": 1.899999976158142,
+         "max": 2.75
         }
        },
        {
         "progress": 1.0,
         "element": {
-         "min": 0.8500000238418579,
-         "max": 1.7000000476837159
+         "min": 4.900000095367432,
+         "max": 4.900000095367432
         }
        }
       ]
@@ -214,9 +214,9 @@
        }
       ]
      },
-     "position_easing": 35,
+     "position_easing": 8,
      "texture": {
-      "uid": "958ef03a-d547-f34c-940c-0b437b788d99"
+      "uid": "decac9ca-c032-6542-acd5-d3a153bc848f"
      },
      "loop": true
     }
