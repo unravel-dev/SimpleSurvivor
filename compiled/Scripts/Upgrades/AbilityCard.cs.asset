@@ -97,7 +97,7 @@ public class AbilityCard : UpgradeCard
         }
         
         // Check if the player already has this ability type
-        var existingAbility = playerEntity.GetComponent(AbilityType);
+        var existingAbility = playerEntity.GetComponentInChildren(AbilityType);
         if (existingAbility != null)
         {
             Log.Warning($"AbilityCard: Player already has ability {AbilityType.Name} - skipping addition");
@@ -106,8 +106,10 @@ public class AbilityCard : UpgradeCard
         
         try
         {
-            // Add the ability component to the player
-            var abilityComponent = playerEntity.AddComponent(AbilityType) as ScriptComponent;
+            var abilityEntity = Scene.CreateEntity(AbilityType.Name);
+            abilityEntity.transform.SetParent(playerEntity, false);
+            // Add the ability component to the ability entity
+            var abilityComponent = abilityEntity.AddComponent(AbilityType) as ScriptComponent;
             
             if (abilityComponent == null)
             {
@@ -137,6 +139,6 @@ public class AbilityCard : UpgradeCard
         if (!playerEntity)
             return false;
             
-        return playerEntity.HasComponent(AbilityType);
+        return playerEntity.GetComponentInChildren(AbilityType) != null;
     }
 }

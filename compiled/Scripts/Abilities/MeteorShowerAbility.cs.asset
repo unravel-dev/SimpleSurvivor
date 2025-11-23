@@ -160,12 +160,12 @@ public class MeteorShowerAbility : Ability
     /// </summary>
     /// <param name="targets">Not used for area effect.</param>
     /// <param name="castIndex">Not used for area effect.</param>
-    protected override void OnTriggerAbility(Entity[] targets, int castIndex)
+    protected override bool OnTriggerAbility(Entity[] targets, int castIndex)
     {
         if (meteorPrefab == null)
         {
             Log.Warning("MeteorShowerAbility: No meteor prefab assigned - cannot create meteor shower!");
-            return;
+            return false;
         }
 
         // Apply upgrades
@@ -192,6 +192,7 @@ public class MeteorShowerAbility : Ability
         
         // Add to active showers list
         activeShowers.Add(shower);
+        return true;
     }
 
     /// <summary>
@@ -279,7 +280,7 @@ public class MeteorShowerAbility : Ability
     public override AbilityDisplayInfo GetDisplayInfo()
     {
         AbilityDisplayInfo info = new AbilityDisplayInfo();
-        info.type = "meteor";
+        info.type = "meteorshower";
         info.name = "Meteor Shower";
         info.icon = "M";
         info.color = "rgba(255, 80, 20, 180)"; // Bright orange/red

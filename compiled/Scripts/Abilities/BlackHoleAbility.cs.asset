@@ -93,12 +93,12 @@ public class BlackHoleAbility : Ability
     /// </summary>
     /// <param name="targets">Ignored for this ability.</param>
     /// <param name="castIndex">Used to offset multiple black holes when multicast is active.</param>
-    protected override void OnTriggerAbility(Entity[] targets, int castIndex)
+    protected override bool OnTriggerAbility(Entity[] targets, int castIndex)
     {
         if (blackHolePrefab == null)
         {
             Log.Warning("BlackHoleAbility: No black hole prefab assigned - cannot spawn black hole!");
-            return;
+            return false;
         }
 
         // Get upgrade values
@@ -133,6 +133,8 @@ public class BlackHoleAbility : Ability
             ConfigureBlackHole(blackHoleEntity, upgradedPullRadius, upgradedPullStrength, 
                              upgradedDuration, upgradedDoomDamage, stacksToApply, owner);
         }
+
+        return true;
     }
 
     /// <summary>

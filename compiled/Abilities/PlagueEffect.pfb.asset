@@ -2,7 +2,7 @@
  "entities": [
   {
    "prefab_uid": "aa09c5ba-97b1-6942-94ab-063ef2d7ed07",
-   "id": 1049429,
+   "id": 3145729,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -165,7 +165,7 @@
        }
       ]
      },
-     "opacity": 1.0,
+     "opacity": 0.5130000114440918,
      "color_gradient": {
       "points": [
        {

@@ -35,8 +35,7 @@ public class Player : ScriptComponent
     private PhysicsComponent physicsComponent;
     private TransformComponent transformComponent;
     private Health Health;
-    private Experience Experience;
-    
+    private Experience Experience;    
     // Movement state
     private Vector3 inputDirection;
     private Vector3 currentVelocity;
@@ -78,7 +77,7 @@ public class Player : ScriptComponent
             Log.Warning($"Player on {owner.name}: Experience not found! Player will not be able to collect experience.");
         }
     }
-    
+
     /// <summary>
     /// Called when the script starts execution. Initialize state and values.
     /// </summary>
@@ -87,22 +86,23 @@ public class Player : ScriptComponent
         // Initialize movement state
         currentVelocity = Vector3.zero;
         targetVelocity = Vector3.zero;
-        
+
         // Validate components
         if (physicsComponent == null || transformComponent == null)
         {
             Log.Error($"Player on {owner.name}: Missing required components. Disabling script.");
             return;
         }
-        
+
         // Initialize health with base max health + upgrades
         InitializeHealth();
-        
+
         // Initialize pickup range with base pickup range + upgrades
         InitializePickupRange();
-        
+
         // Note: Don't call UpdateAbilities() here - player has no abilities yet
         // Abilities will be updated after initial ability selection in OnUpgradeSelected
+        
     }
     
     /// <summary>
@@ -487,6 +487,10 @@ public class Player : ScriptComponent
     /// </summary>
     private void ShowInitialAbilitySelection()
     {
+        
+        var dashAbilityCard = UpgradeCardGenerator.GenerateBasicDashAbilityCard();
+        dashAbilityCard.ApplyUpgrades();
+        
         ShowLevelUpMenu(0);
     }
     
@@ -705,7 +709,7 @@ public class Player : ScriptComponent
         
         Log.Info($"Player pickup range updated: {upgradedPickupRange}");
     }
-    
+
     /// <summary>
     /// Update the GameHub ability slots based on current player abilities.
     /// </summary>
@@ -718,20 +722,21 @@ public class Player : ScriptComponent
             Log.Warning("Player: GameUI entity not found in scene - cannot update abilities display");
             return;
         }
-        
+
         // Get the GameHub script component
         var gameHubScript = gameHubEntity.GetComponent<GameHub>();
-        
+
         if (gameHubScript == null)
         {
             Log.Warning("Player: GameHub script component not found - cannot update abilities display");
             return;
         }
-        
+
         // Call GameHub to initialize ability slots with current player abilities
         gameHubScript.InitializeAbilitySlots();
-        
+
         Log.Info("Player: Updated abilities display in GameHub");
+
     }
     
     /// <summary>

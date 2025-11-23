@@ -75,11 +75,14 @@ public class MainMenu : BaseMenu
 
 	protected override void UnregisterEventHandlers()
 	{
+
 		playButton.UnsubscribeAll();
 		settingsButton.UnsubscribeAll();
 		exitButton.UnsubscribeAll();
-		
+
 		base.UnregisterEventHandlers();
+		
+		Log.Info("MainMenu event handlers unregistered successfully");
 	}
 
 	// ========== BUTTON CLICK HANDLERS ==========

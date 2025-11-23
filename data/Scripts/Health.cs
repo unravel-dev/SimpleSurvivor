@@ -198,10 +198,11 @@ public class Health : ScriptComponent
 
         isDead = true;
 
-        // Trigger death event
+        // Trigger death event FIRST - allows other components to handle death sequence
         OnDeath?.Invoke();
 
         // Destroy entity if configured to do so
+        // Note: If using DeathSequence component, set destroyOnDeath to false
         if (destroyOnDeath)
         {
             if (destroyDelay > 0)

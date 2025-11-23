@@ -52,6 +52,11 @@ public abstract class Ability : ScriptComponent
         return canTrigger;
     }
 
+    public float GetCooldown()
+    {
+        return modifiedCooldown;
+    }
+
     /// <summary>
     /// Get the remaining cooldown time in seconds.
     /// </summary>
@@ -95,7 +100,6 @@ public abstract class Ability : ScriptComponent
         int totalCasts = 1 + additionalCasts; // Base cast + additional casts
 
         // Update cooldown timer (only once, regardless of multicast)
-        lastTriggerTime = Time.time;
         bool anySuccessful = false;
         var targets = GatherTargets();
         if (targets != null && targets.Length > 0)
@@ -106,9 +110,13 @@ public abstract class Ability : ScriptComponent
                 // Gather targets for each cast (allows for dynamic targeting)
             
                 // Execute the ability
-                OnTriggerAbility(targets, i);
-                anySuccessful = true;
+                anySuccessful |= OnTriggerAbility(targets, i);
             }
+        }
+
+        if(anySuccessful)
+        {
+            ResetCooldown();
         }
 
         return anySuccessful;
@@ -119,7 +127,7 @@ public abstract class Ability : ScriptComponent
     /// </summary>
     public void ResetCooldown()
     {
-        lastTriggerTime = -1f;
+        lastTriggerTime = Time.time;
     }
 
     /// <summary>
@@ -159,7 +167,7 @@ public abstract class Ability : ScriptComponent
     /// Virtual method for derived classes to implement the actual ability effect.
     /// </summary>
     /// <param name="targets">List of target entities to affect.</param>
-    protected abstract void OnTriggerAbility(Entity[] targets, int castIndex);
+    protected abstract bool OnTriggerAbility(Entity[] targets, int castIndex);
 
     /// <summary>
     /// Add DamageSourceComponent to an entity to track damage statistics.

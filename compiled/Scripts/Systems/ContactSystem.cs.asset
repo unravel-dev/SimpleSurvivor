@@ -211,7 +211,7 @@ public static class ContactSystem
     /// <param name="source">The entity initiating contact (e.g., projectile, weapon).</param>
     /// <param name="target">The entity being contacted (e.g., enemy, player).</param>
     /// <param name="contactPosition">The world position where contact occurred.</param>
-    public static void ApplyContact(Entity source, Entity target, Vector3 contactPosition)
+    public static void ApplyContact(Entity source, Entity target, Vector3 contactPosition, Color? contactColor = null)
     {
         using (Profiler.Scope("ContactSystem.ApplyContact"))
         {
@@ -237,7 +237,7 @@ public static class ContactSystem
             }
             
             // Always handle damage regardless of other effects
-            HandlePhysicalDamage(source, target);
+            HandlePhysicalDamage(source, target, contactColor);
             HandleAreaDamage(source, target);
             
             // Handle contact visual effects
@@ -269,7 +269,7 @@ public static class ContactSystem
     /// </summary>
     /// <param name="source">Source entity with potential PhysicalDamageComponent.</param>
     /// <param name="target">Target entity to receive damage.</param>
-    private static void HandlePhysicalDamage(Entity source, Entity target)
+    private static void HandlePhysicalDamage(Entity source, Entity target, Color? contactColor = null)
     {
         // Check if source has physical damage component
         var damageComponent = source.GetComponent<PhysicalDamageComponent>();
@@ -283,6 +283,10 @@ public static class ContactSystem
         if (damageAmount > 0)
         {
             DamageBreakdown breakdown = UpgradeSystem.CalculateDamage(damageAmount);
+            if (contactColor != null)
+            {
+                breakdown.color = contactColor.Value;
+            }
             DamageSystem.ApplyDamage(target, source, breakdown);
         }
         

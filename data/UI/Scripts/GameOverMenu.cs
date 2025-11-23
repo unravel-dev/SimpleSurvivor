@@ -68,6 +68,7 @@ public class GameOverMenu : BaseMenu
 		quitButton.UnsubscribeAll();
 		
 		base.UnregisterEventHandlers();
+		Log.Info("GameOverMenu event handlers unregistered successfully");
 	}
 
 	protected override void SetupInitialUI()

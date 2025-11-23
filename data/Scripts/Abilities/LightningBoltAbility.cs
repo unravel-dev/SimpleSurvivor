@@ -84,12 +84,12 @@ public class LightningBoltAbility : Ability
     /// Execute the ability by creating a projectile aimed at the target.
     /// </summary>
     /// <param name="targets">List of target entities (should contain one enemy).</param>
-    protected override void OnTriggerAbility(Entity[] targets, int castIndex)
+    protected override bool OnTriggerAbility(Entity[] targets, int castIndex)
     {                
         if (projectilePrefab == null)
         {
             Log.Error("LightningBoltAbility: No projectile prefab assigned!");
-            return;
+            return false;
         }
 
         if(castIndex >= targets.Length)
@@ -113,7 +113,7 @@ public class LightningBoltAbility : Ability
             if (!projectileEntity)
             {
                 Log.Error("LightningBoltAbility: Failed to instantiate projectile!");
-                return;
+                return false;
             }
 
             projectileEntity.transform.position = sourcePosition;
@@ -129,11 +129,11 @@ public class LightningBoltAbility : Ability
 
             projectileEntity.AddComponent<AutoDestroyComponent>();
 
-            // var pierceComponent = projectileEntity.AddComponent<PierceComponent>();
-            // if (pierceComponent != null)
-            // {
-            //     pierceComponent.pierceCount = UpgradeSystem.ApplyPierceUpgrade(0);
-            // }
+            var pierceComponent = projectileEntity.AddComponent<PierceComponent>();
+            if (pierceComponent != null)
+            {
+                pierceComponent.pierceCount = UpgradeSystem.ApplyPierceUpgrade(0);
+            }
 
             var chainComponent = projectileEntity.AddComponent<ChainComponent>();
             if (chainComponent != null)
@@ -171,6 +171,8 @@ public class LightningBoltAbility : Ability
                 iphysics.ApplyForce(direction * projectileSpeed, ForceMode.Impulse);
             }
         }
+
+        return true;
     }
 
     /// <summary>

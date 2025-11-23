@@ -146,8 +146,14 @@ public class PlagueAbility : Ability
     /// </summary>
     /// <param name="targets">Not used for area effect.</param>
     /// <param name="castIndex">Not used for area effect.</param>
-    protected override void OnTriggerAbility(Entity[] targets, int castIndex)
+    protected override bool OnTriggerAbility(Entity[] targets, int castIndex)
     {
+        if (plagueEffectPrefab == null)
+        {
+            Log.Warning("PlagueAbility: No plague effect prefab assigned - cannot create plague!");
+            return false;
+        }
+
         // Apply upgrades
         int upgradedDamage = damage;
         float upgradedAuraRadius = UpgradeSystem.ApplyAreaOfEffectUpgrade(auraRadius);
@@ -192,6 +198,7 @@ public class PlagueAbility : Ability
         
         // Add to active plagues list
         activePlagues.Add(plague);
+        return true;
     }
 
     /// <summary>

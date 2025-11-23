@@ -17,10 +17,10 @@ public class GameHub : ScriptComponent
     private UIElement healthValue;
     private UIElement levelValue;
     
-    // Ability slot elements
-    private UIElement[] abilitySlots = new UIElement[4];
-    private UIElement[] abilityIcons = new UIElement[4];
-    private UIElement[] abilityCooldowns = new UIElement[4];
+    // Ability slot elements (5 slots: 0-4, where 0 is dash)
+    private UIElement[] abilitySlots = new UIElement[5];
+    private UIElement[] abilityIcons = new UIElement[5];
+    private UIElement[] abilityCooldowns = new UIElement[5];
     
     // Player and component references
     private Player player;
@@ -123,26 +123,26 @@ public class GameHub : ScriptComponent
     /// </summary>
     private void CacheAbilitySlotElements()
     {
-        for (int i = 0; i < 4; i++)
+        // Cache all ability slots (0-4)
+        for (int i = 0; i < 5; i++)
         {
-            int slotNumber = i + 1;
-            abilitySlots[i] = document.GetElementById($"ability_slot_{slotNumber}");
-            abilityIcons[i] = document.GetElementById($"ability_icon_{slotNumber}");
-            abilityCooldowns[i] = document.GetElementById($"ability_cooldown_{slotNumber}");
+            abilitySlots[i] = document.GetElementById($"ability_slot_{i}");
+            abilityIcons[i] = document.GetElementById($"ability_icon_{i}");
+            abilityCooldowns[i] = document.GetElementById($"ability_cooldown_{i}");
             
             if (abilitySlots[i]?.IsValid() != true)
             {
-                Log.Warning($"GameHub: Ability slot {slotNumber} element not found or invalid");
+                Log.Warning($"GameHub: Ability slot {i} element not found or invalid");
             }
             
             if (abilityIcons[i]?.IsValid() != true)
             {
-                Log.Warning($"GameHub: Ability icon {slotNumber} element not found or invalid");
+                Log.Warning($"GameHub: Ability icon {i} element not found or invalid");
             }
             
             if (abilityCooldowns[i]?.IsValid() != true)
             {
-                Log.Warning($"GameHub: Ability cooldown {slotNumber} element not found or invalid");
+                Log.Warning($"GameHub: Ability cooldown {i} element not found or invalid");
             }
         }
         
@@ -341,7 +341,7 @@ public class GameHub : ScriptComponent
         // Update level value text
         if (levelValue?.IsValid() == true)
         {
-            string levelText = $"Level {currentLevel}";
+            string levelText = $"{currentLevel}";
             levelValue.InnerRml = levelText;
         }
         
@@ -443,7 +443,7 @@ public class GameHub : ScriptComponent
     public void InitializeAbilitySlots()
     {
         // Clear all slots first
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < abilitySlots.Length; i++)
         {
             SetAbilitySlotEmpty(i);
         }
@@ -454,14 +454,13 @@ public class GameHub : ScriptComponent
             return;
         }
         
-        // Get all ability components from the player
-        var abilities = player.owner.GetComponents<Ability>();
-        
+
         int slotIndex = 0;
+
+        // Then add regular abilities starting from slot 1 (or 0 if no dash)
+        var abilities = player.owner.GetComponentsInChildren<Ability>();
         foreach (var ability in abilities)
         {
-            if (slotIndex >= 4) break; // Only 4 slots available
-            
             if (ability != null)
             {
                 var abilityInfo = ability.GetDisplayInfo();
@@ -476,13 +475,13 @@ public class GameHub : ScriptComponent
     /// <summary>
     /// Set an ability slot to display a specific ability.
     /// </summary>
-    /// <param name="slotIndex">Slot index (0-3)</param>
-    /// <param name="abilityType">Type of ability (fireball, spark, cube, etc.)</param>
+    /// <param name="slotIndex">Slot index (0-4)</param>
+    /// <param name="abilityType">Type of ability (dash, fireball, spark, cube, etc.)</param>
     /// <param name="abilityName">Display name of the ability</param>
     /// <param name="iconText">Text to display in the icon (optional)</param>
     public void SetAbilitySlot(int slotIndex, string abilityType, string abilityName, string iconText = "")
     {
-        if (slotIndex < 0 || slotIndex >= 4)
+        if (slotIndex < 0 || slotIndex >= abilitySlots.Length)
         {
             Log.Warning($"GameHub: Invalid ability slot index: {slotIndex}");
             return;
@@ -493,7 +492,7 @@ public class GameHub : ScriptComponent
         
         if (slot?.IsValid() != true || icon?.IsValid() != true)
         {
-            Log.Warning($"GameHub: Ability slot {slotIndex + 1} elements not valid");
+            Log.Warning($"GameHub: Ability slot {slotIndex} elements not valid");
             return;
         }
         
@@ -502,6 +501,10 @@ public class GameHub : ScriptComponent
         slot.SetClass("fireball", false);
         slot.SetClass("spark", false);
         slot.SetClass("cube", false);
+        slot.SetClass("dash", false);
+        slot.SetClass("blackhole", false);
+        slot.SetClass("plague", false);
+        slot.SetClass("meteorshower", false);
         
         // Add the specific ability type class
         slot.SetClass(abilityType, true);
@@ -516,16 +519,16 @@ public class GameHub : ScriptComponent
         // Set tooltip or title attribute for accessibility
         slot.SetAttribute("title", abilityName);
         
-        Log.Info($"GameHub: Set ability slot {slotIndex + 1} to {abilityType} ({abilityName})");
+        Log.Info($"GameHub: Set ability slot {slotIndex} to {abilityType} ({abilityName})");
     }
     
     /// <summary>
     /// Set an ability slot to empty state.
     /// </summary>
-    /// <param name="slotIndex">Slot index (0-3)</param>
+    /// <param name="slotIndex">Slot index (0-4)</param>
     public void SetAbilitySlotEmpty(int slotIndex)
     {
-        if (slotIndex < 0 || slotIndex >= 4)
+        if (slotIndex < 0 || slotIndex >= abilitySlots.Length)
         {
             Log.Warning($"GameHub: Invalid ability slot index: {slotIndex}");
             return;
@@ -536,7 +539,7 @@ public class GameHub : ScriptComponent
         
         if (slot?.IsValid() != true || icon?.IsValid() != true)
         {
-            Log.Warning($"GameHub: Ability slot {slotIndex + 1} elements not valid");
+            Log.Warning($"GameHub: Ability slot {slotIndex} elements not valid");
             return;
         }
         
@@ -544,6 +547,10 @@ public class GameHub : ScriptComponent
         slot.SetClass("fireball", false);
         slot.SetClass("spark", false);
         slot.SetClass("cube", false);
+        slot.SetClass("dash", false);
+        slot.SetClass("blackhole", false);
+        slot.SetClass("plague", false);
+        slot.SetClass("meteorshower", false);
         slot.SetClass("empty", true);
         icon.SetClass("has-ability", false);
         
@@ -557,11 +564,12 @@ public class GameHub : ScriptComponent
     /// <summary>
     /// Set cooldown display for an ability slot.
     /// </summary>
-    /// <param name="slotIndex">Slot index (0-3)</param>
+    /// <param name="slotIndex">Slot index (0-4)</param>
     /// <param name="cooldownTime">Remaining cooldown time in seconds (0 to hide cooldown)</param>
-    public void SetAbilityCooldown(int slotIndex, float cooldownTime)
+    /// <param name="maxCooldown">Maximum cooldown time for calculating progress</param>
+    public void SetAbilityCooldown(int slotIndex, float cooldownTime, float maxCooldown = 1.0f)
     {
-        if (slotIndex < 0 || slotIndex >= 4)
+        if (slotIndex < 0 || slotIndex >= abilitySlots.Length)
         {
             Log.Warning($"GameHub: Invalid ability slot index: {slotIndex}");
             return;
@@ -572,24 +580,32 @@ public class GameHub : ScriptComponent
         
         if (slot?.IsValid() != true || cooldownElement?.IsValid() != true)
         {
-            Log.Warning($"GameHub: Ability slot {slotIndex + 1} cooldown elements not valid");
+            Log.Warning($"GameHub: Ability slot {slotIndex} cooldown elements not valid");
             return;
         }
         
         bool onCooldown = cooldownTime > 0;
         slot.SetClass("on-cooldown", onCooldown);
-        cooldownElement.SetClass("active", onCooldown);
-        cooldownElement.InnerRml = $"{cooldownTime:F1}s";
+        
+        // Calculate cooldown progress (0 = ready, 1 = just used)
+        float progress = 0.0f;
+        if (maxCooldown > 0 && cooldownTime > 0)
+        {
+            progress = cooldownTime / maxCooldown;
+        }
+        
+        // Update the circular progress gauge
+        cooldownElement.SetAttribute("value", progress.ToString("F3"));
     }
     
     /// <summary>
     /// Set active state for an ability slot (when ability is being used).
     /// </summary>
-    /// <param name="slotIndex">Slot index (0-3)</param>
+    /// <param name="slotIndex">Slot index (0-4)</param>
     /// <param name="isActive">Whether the ability is currently active</param>
     public void SetAbilityActive(int slotIndex, bool isActive)
     {
-        if (slotIndex < 0 || slotIndex >= 4)
+        if (slotIndex < 0 || slotIndex >= abilitySlots.Length)
         {
             Log.Warning($"GameHub: Invalid ability slot index: {slotIndex}");
             return;
@@ -599,7 +615,7 @@ public class GameHub : ScriptComponent
         
         if (slot?.IsValid() != true)
         {
-            Log.Warning($"GameHub: Ability slot {slotIndex + 1} element not valid");
+            Log.Warning($"GameHub: Ability slot {slotIndex} element not valid");
             return;
         }
         
@@ -613,19 +629,19 @@ public class GameHub : ScriptComponent
     {
         if (player?.owner == null)
             return;
-            
-        // Get all ability components from the player
-        var abilities = player.owner.GetComponents<Ability>();
         
         int slotIndex = 0;
+        
+
+        // Update all abilities (including DashAbility)
+        var abilities = player.owner.GetComponentsInChildren<Ability>();
         foreach (var ability in abilities)
         {
-            if (slotIndex >= 4) break; // Only 4 slots available
-            
             if (ability != null)
             {
                 float remainingCooldown = ability.GetRemainingCooldown();
-                SetAbilityCooldown(slotIndex, remainingCooldown);
+                float maxCooldown = ability.GetCooldown();
+                SetAbilityCooldown(slotIndex, remainingCooldown, maxCooldown);
                 slotIndex++;
             }
         }

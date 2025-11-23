@@ -80,12 +80,12 @@ public class FireballAbility : Ability
     /// Trigger the fireball ability - launch fireball at target.
     /// </summary>
     /// <param name="targets">List of targets (should contain one enemy)</param>
-    protected override void OnTriggerAbility(Entity[] targets, int castIndex)
+    protected override bool OnTriggerAbility(Entity[] targets, int castIndex)
     {
         if (fireballPrefab == null)
         {
             Log.Warning("FireballAbility: No fireball prefab assigned - cannot fire!");
-            return;
+            return false;
         }
 
         if (castIndex >= targets.Length)
@@ -98,7 +98,7 @@ public class FireballAbility : Ability
         if (targetTransform == null)
         {
             Log.Warning("FireballAbility: Target has no TransformComponent");
-            return;
+            return false;
         }
 
         // Calculate spawn position and direction
@@ -111,7 +111,7 @@ public class FireballAbility : Ability
         if (!fireballEntity)
         {
             Log.Error("FireballAbility: Failed to instantiate fireball prefab");
-            return;
+            return false;
         }
         fireballEntity.transform.position = spawnPosition;
         fireballEntity.transform.forward = direction;
@@ -179,6 +179,7 @@ public class FireballAbility : Ability
             fireballPhysics.velocity = direction * projectileSpeed;
         }
 
+        return true;
     }
 
     /// <summary>

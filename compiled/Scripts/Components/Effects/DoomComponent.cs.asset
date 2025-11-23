@@ -38,5 +38,48 @@ public class DoomComponent : DamageOverTimeComponent
         // Could add an explosion or additional effect here
         Log.Info($"Doom effect expired on {owner.name}");
     }
+    
+    
+    /// <summary>
+    /// Doom executes targets when remaining damage exceeds their health.
+    /// </summary>
+    /// <returns>True if the target should be executed.</returns>
+    protected bool ShouldExecute()
+    {
+        if (!owner)
+            return false;
+        
+        // Get the entity's health component
+        var health = owner.GetComponent<Health>();
+        if (health == null)
+            return false;
+        
+        int currentHealth = health.GetCurrentHealth();
+        
+        // Calculate total remaining damage from this Doom
+        int totalRemainingDamage = GetTotalRemainingDamage();
+        
+        // Execute if remaining damage exceeds current health
+        return totalRemainingDamage >= currentHealth;
+    }
+    
+    /// <summary>
+    /// Override damage application to include execute mechanic.
+    /// </summary>
+    protected override void ApplyDamage()
+    {
+        if (!owner)
+            return;
+        
+        // Check if we should execute (apply all remaining damage at once)
+        if (ShouldExecute())
+        {
+            ExecuteTarget();
+            return;
+        }
+        
+        // Otherwise, apply normal tick damage
+        base.ApplyDamage();
+    }
 }
 

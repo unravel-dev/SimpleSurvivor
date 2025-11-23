@@ -508,7 +508,7 @@ public class Enemy : ScriptComponent
                 Vector3 contactPosition = (enemyPosition + playerPosition) * 0.5f;
                 
                 // Apply contact damage (enemy is source, player is target)
-                ContactSystem.ApplyContact(owner, target, contactPosition);
+                ContactSystem.ApplyContact(owner, target, contactPosition, Color.red);
                 
                 // Reset timer
                 contactDamageTimer = 0.0f;

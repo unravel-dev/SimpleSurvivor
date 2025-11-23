@@ -83,12 +83,12 @@ public class BoomerangBladeAbility : Ability
     /// </summary>
     /// <param name="targets">Ignored for this ability.</param>
     /// <param name="castIndex">Used to offset multiple blades when multicast is active.</param>
-    protected override void OnTriggerAbility(Entity[] targets, int castIndex)
+    protected override bool OnTriggerAbility(Entity[] targets, int castIndex)
     {
         if (bladePrefab == null)
         {
             Log.Warning("BoomerangBladeAbility: No blade prefab assigned - cannot spawn blade!");
-            return;
+            return false;
         }
 
         // Get upgrade values
@@ -129,6 +129,8 @@ public class BoomerangBladeAbility : Ability
                       spinSpeedMultiplier, spinningSlashDamageMultiplier, 
                       pingPongMaxRadiusMultiplier, pingPongSpeedMultiplier);
         }
+
+        return true;
     }
 
     /// <summary>

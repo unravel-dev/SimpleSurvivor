@@ -44,9 +44,6 @@ public abstract class BaseMenu : ScriptComponent
 		
 		// Set up initial UI state
 		SetupInitialUI();
-		
-		// Register event handlers using the wrapper objects
-		RegisterEventHandlers();
 	}
 
 	/// <summary>
@@ -246,6 +243,13 @@ public abstract class BaseMenu : ScriptComponent
 			var clip = Assets.GetAsset<AudioClip>(AudioPaths.ButtonHover);
 			AudioSourceComponent.PlayClipAtPoint(clip, new Vector3(0, 0, 0), 1f);
 		}
+	}
+
+	public override void OnEnable()
+	{
+		// Register event handlers when component is enabled (e.g., scene load)
+		RegisterEventHandlers();
+		base.OnEnable();
 	}
 
 	public override void OnDisable()

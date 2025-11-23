@@ -243,6 +243,10 @@ public class GameUI : ScriptComponent
 			ResumeGame();
 		}
 		
+				
+		// Clear all collected upgrades before going to main menu
+		UpgradeSystem.ClearAllUpgrades();
+		
 		Log.Info("Navigating to main menu from game");
 		if (LobbyScene != null)
 		{
@@ -270,6 +274,9 @@ public class GameUI : ScriptComponent
 		{
 			CloseGameMenu();
 		}
+		
+		// Clear all collected upgrades before restarting
+		UpgradeSystem.ClearAllUpgrades();
 		
 		Scene.ReloadScene();
 	}

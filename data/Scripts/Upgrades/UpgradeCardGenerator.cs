@@ -282,7 +282,7 @@ public static class UpgradeCardGenerator
         if (!playerEntity)
             return false;
         
-        return playerEntity.HasComponent(abilityType);
+        return playerEntity.GetComponentInChildren(abilityType) != null;
     }
 
     /// <summary>
@@ -342,41 +342,41 @@ public static class UpgradeCardGenerator
     {
         return new List<System.Func<UpgradeCard>>
         {
-            // Basic damage boost
+            // Basic damage boost - reduced from 5-10% to 4-7%
             () => new UpgradeCard("Power Up", UpgradeRarity.Normal, 
-                DamageUpgrade.Generate(5.0f, 10.0f)),
+                DamageUpgrade.Generate(4.0f, 7.0f)),
                 
-            // Basic health boost
+            // Basic health boost - reduced from 15-25 to 10-20
             () => new UpgradeCard("Vitality", UpgradeRarity.Normal, 
-                MaxHealthUpgrade.Generate(15, 25)),
+                MaxHealthUpgrade.Generate(10, 20)),
                 
-            // Basic speed boost
+            // Basic speed boost - reduced from 8-15% to 5-10%
             () => new UpgradeCard("Swift Feet", UpgradeRarity.Normal, 
-                MovementSpeedUpgrade.Generate(8.0f, 15.0f)),
+                MovementSpeedUpgrade.Generate(5.0f, 10.0f)),
                 
-            // Basic cooldown reduction
+            // Basic cooldown reduction - reduced from 5-10% to 3-6%
             () => new UpgradeCard("Quick Hands", UpgradeRarity.Normal, 
-                CooldownReductionUpgrade.Generate(5.0f, 10.0f)),
+                CooldownReductionUpgrade.Generate(3.0f, 6.0f)),
                 
-            // Basic pickup radius
+            // Basic pickup radius - kept similar for QoL
             () => new UpgradeCard("Magnetism", UpgradeRarity.Normal, 
-                PickupRadiusUpgrade.Generate(45.0f, 65.0f)),
+                PickupRadiusUpgrade.Generate(40.0f, 60.0f)),
                 
-            // Basic luck
+            // Basic luck - reduced from 10-20% to 8-15%
             () => new UpgradeCard("Fortune", UpgradeRarity.Normal, 
-                LuckUpgrade.Generate(10.0f, 20.0f)),
+                LuckUpgrade.Generate(8.0f, 15.0f)),
                 
-            // Basic critical chance
+            // Basic critical chance - kept low for balance
             () => new UpgradeCard("Lucky Strike", UpgradeRarity.Normal, 
-                CriticalChanceUpgrade.Generate(2.0f, 5.0f)),
+                CriticalChanceUpgrade.Generate(2.0f, 4.0f)),
                 
-            // Basic critical damage
+            // Basic critical damage - reduced from 15-25% to 10-20%
             () => new UpgradeCard("Sharp Edge", UpgradeRarity.Normal, 
-                CriticalDamageUpgrade.Generate(15.0f, 25.0f)),
+                CriticalDamageUpgrade.Generate(10.0f, 20.0f)),
                 
-            // Basic area of effect
+            // Basic area of effect - reduced from 10-20% to 8-15%
             () => new UpgradeCard("Wider Impact", UpgradeRarity.Normal, 
-                AreaOfEffectUpgrade.Generate(10.0f, 20.0f))
+                AreaOfEffectUpgrade.Generate(8.0f, 15.0f))
         };
     }
     
@@ -386,81 +386,78 @@ public static class UpgradeCardGenerator
     {
         return new List<System.Func<UpgradeCard>>
         {
-            // Better single upgrades
+            // Better single upgrades - reduced for better scaling
             () => new UpgradeCard("Power Strike", UpgradeRarity.Common, 
-                DamageUpgrade.Generate(12.0f, 18.0f)),
+                DamageUpgrade.Generate(8.0f, 12.0f)),
                 
             () => new UpgradeCard("Robust Health", UpgradeRarity.Common, 
-                MaxHealthUpgrade.Generate(30, 45)),
+                MaxHealthUpgrade.Generate(25, 35)),
                 
             () => new UpgradeCard("Fleet Footed", UpgradeRarity.Common, 
-                MovementSpeedUpgrade.Generate(18.0f, 25.0f)),
+                MovementSpeedUpgrade.Generate(12.0f, 18.0f)),
                 
             () => new UpgradeCard("Dexterity", UpgradeRarity.Common, 
-                CooldownReductionUpgrade.Generate(12.0f, 18.0f)),
+                CooldownReductionUpgrade.Generate(8.0f, 12.0f)),
                 
             () => new UpgradeCard("Item Magnet", UpgradeRarity.Common, 
-                PickupRadiusUpgrade.Generate(90.0f, 100.0f)),
+                PickupRadiusUpgrade.Generate(80.0f, 100.0f)),
                 
             () => new UpgradeCard("Good Fortune", UpgradeRarity.Common, 
-                LuckUpgrade.Generate(25.0f, 35.0f)),
+                LuckUpgrade.Generate(18.0f, 28.0f)),
                 
             () => new UpgradeCard("Critical Focus", UpgradeRarity.Common, 
-                CriticalChanceUpgrade.Generate(6.0f, 10.0f)),
+                CriticalChanceUpgrade.Generate(4.0f, 7.0f)),
                 
             () => new UpgradeCard("Devastating Strike", UpgradeRarity.Common, 
-                CriticalDamageUpgrade.Generate(30.0f, 45.0f)),
+                CriticalDamageUpgrade.Generate(25.0f, 35.0f)),
                 
             () => new UpgradeCard("Lasting Power", UpgradeRarity.Common, 
-                DurationUpgrade.Generate(15.0f, 25.0f)),
+                DurationUpgrade.Generate(12.0f, 20.0f)),
                 
-            // Dual upgrade combinations
+            // Dual upgrade combinations - reduced to avoid power creep
             () => new UpgradeCard("Combat Training", UpgradeRarity.Common, 
                 new List<Upgrade>
                 {
-                    DamageUpgrade.Generate(8.0f, 12.0f),
-                    CooldownReductionUpgrade.Generate(8.0f, 12.0f)
+                    DamageUpgrade.Generate(5.0f, 8.0f),
+                    CooldownReductionUpgrade.Generate(5.0f, 8.0f)
                 }),
                 
             () => new UpgradeCard("Agile Fighter", UpgradeRarity.Common, 
                 new List<Upgrade>
                 {
-                    MovementSpeedUpgrade.Generate(12.0f, 18.0f),
-                    MaxHealthUpgrade.Generate(20, 30)
+                    MovementSpeedUpgrade.Generate(8.0f, 12.0f),
+                    MaxHealthUpgrade.Generate(15, 25)
                 }),
                 
             () => new UpgradeCard("Critical Mastery", UpgradeRarity.Common, 
                 new List<Upgrade>
                 {
-                    CriticalChanceUpgrade.Generate(4.0f, 6.0f),
-                    CriticalDamageUpgrade.Generate(20.0f, 30.0f)
+                    CriticalChanceUpgrade.Generate(3.0f, 5.0f),
+                    CriticalDamageUpgrade.Generate(15.0f, 25.0f)
                 }),
                 
             () => new UpgradeCard("Treasure Hunter", UpgradeRarity.Common, 
                 new List<Upgrade>
                 {
-                    PickupRadiusUpgrade.Generate(120.0f, 150.0f),
-                    LuckUpgrade.Generate(15.0f, 25.0f)
+                    PickupRadiusUpgrade.Generate(100.0f, 130.0f),
+                    LuckUpgrade.Generate(12.0f, 20.0f)
                 }),
                 
-            // Better area of effect
+            // Better area of effect - reduced from 25-40% to 18-30%
             () => new UpgradeCard("Expanding Radius", UpgradeRarity.Common, 
-                AreaOfEffectUpgrade.Generate(25.0f, 40.0f)),
+                AreaOfEffectUpgrade.Generate(18.0f, 30.0f)),
                 
-            // AOE combo with damage
+            // AOE combo with damage - reduced
             () => new UpgradeCard("Explosive Power", UpgradeRarity.Common, 
                 new List<Upgrade>
                 {
-                    AreaOfEffectUpgrade.Generate(20.0f, 30.0f),
-                    DamageUpgrade.Generate(10.0f, 15.0f)
+                    AreaOfEffectUpgrade.Generate(15.0f, 22.0f),
+                    DamageUpgrade.Generate(6.0f, 10.0f)
                 }),
                 
-            // Boomerang Blade upgrades (Common) - Limited to 1 pick each
-            () => new UpgradeCard("Multiple Blades", UpgradeRarity.Common, 
-                MultipleBladesUpgrade.Generate(1, 2), 1, typeof(BoomerangBladeAbility)),
-            
+   
             () => new UpgradeCard("Faster Rotation", UpgradeRarity.Common, 
-                FasterRotationUpgrade.Generate(50.0f, 75.0f), 1, typeof(BoomerangBladeAbility)),
+                FasterRotationUpgrade.Generate(20.0f, 30.0f), 1, typeof(BoomerangBladeAbility)),
                 
             // Black Hole upgrades (Common)
             () => new UpgradeCard("Cursed Vortex", UpgradeRarity.Common, 
@@ -492,76 +489,79 @@ public static class UpgradeCardGenerator
     }
     
     // ===== EPIC RARITY CARDS =====
-    // Powerful upgrades including projectile mechanics and first abilities
+    // Powerful upgrades including projectile mechanics - balanced for long runs
     private static List<System.Func<UpgradeCard>> GetEpicCards()
     {
         return new List<System.Func<UpgradeCard>>
         {
-            // Powerful single upgrades
+            // Powerful single upgrades - significantly reduced
             () => new UpgradeCard("Devastating Power", UpgradeRarity.Epic, 
-                DamageUpgrade.Generate(25.0f, 35.0f)),
+                DamageUpgrade.Generate(15.0f, 22.0f)),
                 
             () => new UpgradeCard("Iron Constitution", UpgradeRarity.Epic, 
-                MaxHealthUpgrade.Generate(60, 80)),
+                MaxHealthUpgrade.Generate(45, 60)),
                 
             () => new UpgradeCard("Lightning Speed", UpgradeRarity.Epic, 
-                MovementSpeedUpgrade.Generate(35.0f, 50.0f)),
+                MovementSpeedUpgrade.Generate(22.0f, 32.0f)),
                 
             () => new UpgradeCard("Master's Reflexes", UpgradeRarity.Epic, 
-                CooldownReductionUpgrade.Generate(25.0f, 35.0f)),
+                CooldownReductionUpgrade.Generate(15.0f, 22.0f)),
                 
-            // First appearance of multicast upgrades
+            // Multicast - heavily reduced from 50-100% to 25-40%
             () => new UpgradeCard("Multi-Cast", UpgradeRarity.Epic, 
-                MulticastUpgrade.Generate(50.0f, 100.0f)),
+                MulticastUpgrade.Generate(25.0f, 40.0f)),
                 
+            // Pierce - kept at 1-2 (good value)
             () => new UpgradeCard("Piercing Shot", UpgradeRarity.Epic, 
                 PierceUpgrade.Generate(1, 2)),
                 
+            // Chain - reduced from 1-3 to 1-2
             () => new UpgradeCard("Chain Lightning", UpgradeRarity.Epic, 
-                ChainUpgrade.Generate(1, 3)),
+                ChainUpgrade.Generate(1, 2)),
                 
             () => new UpgradeCard("Enduring Power", UpgradeRarity.Epic, 
-                DurationUpgrade.Generate(30.0f, 50.0f)),
+                DurationUpgrade.Generate(22.0f, 35.0f)),
                 
-            // Powerful dual combinations
+            // Powerful dual combinations - significantly reduced
             () => new UpgradeCard("Berserker's Fury", UpgradeRarity.Epic, 
                 new List<Upgrade>
                 {
-                    DamageUpgrade.Generate(20.0f, 30.0f),
-                    MovementSpeedUpgrade.Generate(25.0f, 35.0f)
+                    DamageUpgrade.Generate(12.0f, 18.0f),
+                    MovementSpeedUpgrade.Generate(15.0f, 22.0f)
                 }),
                 
             () => new UpgradeCard("Assassin's Edge", UpgradeRarity.Epic, 
                 new List<Upgrade>
                 {
-                    CriticalChanceUpgrade.Generate(8.0f, 12.0f),
-                    CriticalDamageUpgrade.Generate(40.0f, 60.0f)
+                    CriticalChanceUpgrade.Generate(6.0f, 10.0f),
+                    CriticalDamageUpgrade.Generate(30.0f, 45.0f)
                 }),
                 
             () => new UpgradeCard("Battle Veteran", UpgradeRarity.Epic, 
                 new List<Upgrade>
                 {
-                    MaxHealthUpgrade.Generate(40, 60),
-                    CooldownReductionUpgrade.Generate(15.0f, 25.0f)
+                    MaxHealthUpgrade.Generate(30, 45),
+                    CooldownReductionUpgrade.Generate(10.0f, 16.0f)
                 }),
                 
+            // Multicast combo - heavily reduced
             () => new UpgradeCard("Arcane Barrage", UpgradeRarity.Epic, 
                 new List<Upgrade>
                 {
-                    MulticastUpgrade.Generate(75.0f, 125.0f),
-                    DamageUpgrade.Generate(15.0f, 25.0f)
+                    MulticastUpgrade.Generate(30.0f, 50.0f),
+                    DamageUpgrade.Generate(8.0f, 14.0f)
                 }),
                 
-            // Powerful area of effect
+            // Area of effect - reduced from 50-75% to 35-50%
             () => new UpgradeCard("Massive Blast", UpgradeRarity.Epic, 
-                AreaOfEffectUpgrade.Generate(50.0f, 75.0f)),
+                AreaOfEffectUpgrade.Generate(35.0f, 50.0f)),
                 
-            // AOE combo with multicast
+            // AOE combo - reduced
             () => new UpgradeCard("Cataclysm", UpgradeRarity.Epic, 
                 new List<Upgrade>
                 {
-                    AreaOfEffectUpgrade.Generate(40.0f, 60.0f),
-                    MulticastUpgrade.Generate(50.0f, 100.0f)
+                    AreaOfEffectUpgrade.Generate(25.0f, 38.0f),
+                    MulticastUpgrade.Generate(20.0f, 35.0f)
                 }),
                 
             // Boomerang Blade upgrades (Epic) - Limited to 1 pick each
@@ -578,7 +578,7 @@ public static class UpgradeCardGenerator
                 SpinningSlashUpgrade.Generate(75.0f, 125.0f, 20.0f, 35.0f), 1, typeof(BoomerangBladeAbility)),
             
             () => new UpgradeCard("Multiple Blades+", UpgradeRarity.Epic, 
-                MultipleBladesUpgrade.Generate(2, 4), 1, typeof(BoomerangBladeAbility)),
+                MultipleBladesUpgrade.Generate(1, 2), 2, typeof(BoomerangBladeAbility)),
             
             () => new UpgradeCard("Faster Rotation+", UpgradeRarity.Epic, 
                 FasterRotationUpgrade.Generate(75.0f, 125.0f), 1, typeof(BoomerangBladeAbility)),
@@ -616,7 +616,7 @@ public static class UpgradeCardGenerator
     }
     
     // ===== LEGENDARY RARITY CARDS =====
-    // Game-changing combinations
+    // Game-changing but balanced combinations
     private static List<System.Func<UpgradeCard>> GetLegendaryCards()
     {
         return new List<System.Func<UpgradeCard>>
@@ -624,72 +624,78 @@ public static class UpgradeCardGenerator
             () => new UpgradeCard("God of War", UpgradeRarity.Legendary, 
                 new List<Upgrade>
                 {
-                    DamageUpgrade.Generate(40.0f, 60.0f),
-                    CooldownReductionUpgrade.Generate(30.0f, 45.0f)
+                    DamageUpgrade.Generate(25.0f, 35.0f),
+                    CooldownReductionUpgrade.Generate(20.0f, 28.0f)
                 }),
                 
+            // Chain - reduced from 3-6 to 2-3
             () => new UpgradeCard("Lightning Emperor", UpgradeRarity.Legendary, 
                 new List<Upgrade>
                 {
-                    ChainUpgrade.Generate(3, 6),
-                    DamageUpgrade.Generate(30.0f, 45.0f)
+                    ChainUpgrade.Generate(2, 3),
+                    DamageUpgrade.Generate(18.0f, 28.0f)
                 }),
                 
             () => new UpgradeCard("Immortal Guardian", UpgradeRarity.Legendary, 
                 new List<Upgrade>
                 {
-                    MaxHealthUpgrade.Generate(100, 150),
-                    MovementSpeedUpgrade.Generate(40.0f, 60.0f)
+                    MaxHealthUpgrade.Generate(70, 100),
+                    MovementSpeedUpgrade.Generate(28.0f, 40.0f)
                 }),
                 
+            // Pierce + Chain combo - reduced from 3-5 pierce to 2-3
             () => new UpgradeCard("Piercing Storm", UpgradeRarity.Legendary, 
                 new List<Upgrade>
                 {
-                    PierceUpgrade.Generate(3, 5),
-                    ChainUpgrade.Generate(2, 4)
+                    PierceUpgrade.Generate(2, 3),
+                    ChainUpgrade.Generate(1, 2)
                 }),
                 
             () => new UpgradeCard("Perfect Warrior", UpgradeRarity.Legendary, 
                 new List<Upgrade>
                 {
-                    DamageUpgrade.Generate(35.0f, 50.0f),
-                    MaxHealthUpgrade.Generate(80, 120)
+                    DamageUpgrade.Generate(22.0f, 32.0f),
+                    MaxHealthUpgrade.Generate(55, 80)
                 }),
                 
+            // Multicast - HEAVILY reduced from 150-250% to 50-75%
             () => new UpgradeCard("Omnislash Master", UpgradeRarity.Legendary, 
                 new List<Upgrade>
                 {
-                    MulticastUpgrade.Generate(150.0f, 250.0f),
-                    PierceUpgrade.Generate(2, 4)
+                    MulticastUpgrade.Generate(50.0f, 75.0f),
+                    PierceUpgrade.Generate(1, 2)
                 }),
                 
+            // Multicast - HEAVILY reduced from 200-300% to 60-90%
             () => new UpgradeCard("Divine Arsenal", UpgradeRarity.Legendary, 
                 new List<Upgrade>
                 {
-                    MulticastUpgrade.Generate(200.0f, 300.0f),
-                    ChainUpgrade.Generate(2, 4)
+                    MulticastUpgrade.Generate(60.0f, 90.0f),
+                    ChainUpgrade.Generate(1, 2)
                 }),
                 
+            // Crit combo - reduced from 15-25% chance to 10-16%
             () => new UpgradeCard("Godslayer", UpgradeRarity.Legendary, 
                 new List<Upgrade>
                 {
-                    CriticalChanceUpgrade.Generate(15.0f, 25.0f),
-                    CriticalDamageUpgrade.Generate(80.0f, 120.0f)
+                    CriticalChanceUpgrade.Generate(10.0f, 16.0f),
+                    CriticalDamageUpgrade.Generate(55.0f, 80.0f)
                 }),
                 
-            // Legendary AOE combinations
+            // AOE - reduced from 80-120% to 50-70%
             () => new UpgradeCard("World Ender", UpgradeRarity.Legendary, 
                 new List<Upgrade>
                 {
-                    AreaOfEffectUpgrade.Generate(80.0f, 120.0f),
-                    DamageUpgrade.Generate(40.0f, 60.0f)
+                    AreaOfEffectUpgrade.Generate(50.0f, 70.0f),
+                    DamageUpgrade.Generate(25.0f, 38.0f)
                 }),
                 
+            // AOE + Multicast - heavily reduced
             () => new UpgradeCard("Nuclear Blast", UpgradeRarity.Legendary, 
                 new List<Upgrade>
                 {
-                    AreaOfEffectUpgrade.Generate(100.0f, 150.0f),
-                    MulticastUpgrade.Generate(150.0f, 250.0f)
+                    AreaOfEffectUpgrade.Generate(60.0f, 85.0f),
+                    MulticastUpgrade.Generate(45.0f, 70.0f)
                 }),
             
             // Boomerang Blade upgrades (Legendary) - Limited to 1 pick each
@@ -872,6 +878,28 @@ public static class UpgradeCardGenerator
                 if (plagueAbility != null)
                 {
                     PlagueAbility.ConfigureAbility(plagueAbility);
+                }
+            }
+        );
+    }
+    
+    /// <summary>
+    /// Generate a basic dash ability card without additional upgrades (for initial selection).
+    /// </summary>
+    /// <returns>AbilityCard with basic DashAbility</returns>
+    public static AbilityCard GenerateBasicDashAbilityCard()
+    {
+        return new AbilityCard(
+            "Dash", 
+            "Quickly dash in the movement direction. Activated with Space key. 3 second cooldown.",
+            UpgradeRarity.Legendary,
+            new List<Upgrade>(),
+            typeof(DashAbility),
+            (ability) => {
+                var dashAbility = ability as DashAbility;
+                if (dashAbility != null)
+                {
+                    DashAbility.ConfigureAbility(dashAbility);
                 }
             }
         );

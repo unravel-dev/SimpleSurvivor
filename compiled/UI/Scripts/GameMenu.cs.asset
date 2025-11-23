@@ -130,9 +130,11 @@ public class GameMenu : BaseMenu
 		restartButton.UnsubscribeAll();
 		settingsButton.UnsubscribeAll();
 		quitButton.UnsubscribeAll();
-		
+
 
 		base.UnregisterEventHandlers();
+		
+		Log.Info("GameMenu event handlers unregistered successfully");
 	}
 
 	protected override void SetupInitialUI()

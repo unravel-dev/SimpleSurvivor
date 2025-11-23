@@ -115,6 +115,7 @@ public class LevelUpMenu : BaseMenu
         card3.UnsubscribeAll();
 
         base.UnregisterEventHandlers();
+		Log.Info("LevelUpMenu event handlers unregistered successfully");
     }
     
     /// <summary>

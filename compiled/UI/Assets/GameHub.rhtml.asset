@@ -7,63 +7,70 @@
   </head>
 
   <body id="body" class="theme-dark">
-    <!-- Game Timer (using exact menu structure) -->
-    <div class="timer-container menu-container menu-container--top">
-      <header class="menu-header menu-header--medium">
-        <h1 class="menu-title menu-title--medium timer-title">
-          <span class="timer-icon">TIME</span>
-          <span id="game_timer" class="timer-text">00:00</span>
-        </h1>
-      </header>
-    </div>
-    
-    <div class="hud-container">
-      
-      <!-- Health Bar -->
-      <div class="stat-bar-container">
-        <div class="stat-bar-label">
-          <span class="health-icon">♥</span>
-          <span class="stat-text">HEALTH</span>
-          <span id="health_value" class="stat-value">100/100</span>
-        </div>
-        <progress id="health_bar" class="stat-progress health-progress" value="1.0" max="1.0"></progress>
-      </div>
-      
-      <!-- Experience Bar -->
-      <div class="stat-bar-container">
-        <div class="stat-bar-label">
-          <span class="experience-icon">★</span>
-          <span class="stat-text">EXPERIENCE</span>
-          <span id="level_value" class="stat-value">Level 1</span>
-        </div>
-        <progress id="experience_bar" class="stat-progress experience-progress" value="0.3" max="1.0"></progress>
-      </div>
-      
+    <!-- Game Timer - Top Center -->
+    <div class="timer-display">
+      <span class="timer-label">TIME</span>
+      <span id="game_timer" class="timer-value">00:00</span>
     </div>
 
-    <!-- Ability Slots Bar (Bottom Center) -->
-    <div class="ability-bar-container">
-      <div class="ability-bar">
-        <div id="ability_slot_1" class="ability-slot">
-          <div class="ability-icon" id="ability_icon_1"></div>
-          <div class="ability-cooldown" id="ability_cooldown_1"></div>
-          <div class="ability-key">1</div>
+    <!-- Bottom HUD Container -->
+    <div class="bottom-hud">
+      <!-- Health Bar - Above Abilities -->
+      <div class="health-bar-container">
+        <progress id="health_bar" class="health-progress" value="1.0" max="1.0"></progress>
+        <span id="health_value" class="health-value">100/100</span>
+      </div>
+
+      <!-- Ability Slots Bar -->
+      <div class="ability-bar-container">
+        <div class="ability-bar">
+          <!-- Ability slot 0 - Dash (larger) -->
+          <div id="ability_slot_0" class="ability-slot ability-slot-dash">
+            <div class="ability-icon" id="ability_icon_0"></div>
+            <progress class="ability-cooldown" id="ability_cooldown_0" direction="top"></progress>
+            <div class="ability-key">
+              <span id="ability_key_0" class="ability-key-value">Space</span>
+            </div>
+          </div>
+          
+          <!-- Regular ability slots 1-4 -->
+          <div id="ability_slot_1" class="ability-slot">
+            <div class="ability-icon" id="ability_icon_1"></div>
+            <progress class="ability-cooldown" id="ability_cooldown_1"></progress>
+            <div class="ability-key">
+              <span id="ability_key_1" class="ability-key-value">1</span>
+            </div>
+          </div>
+          <div id="ability_slot_2" class="ability-slot">
+            <div class="ability-icon" id="ability_icon_2"></div>
+            <progress class="ability-cooldown" id="ability_cooldown_2"></progress>
+            <div class="ability-key">
+              <span id="ability_key_2" class="ability-key-value">2</span>
+            </div>
+          </div>
+          <div id="ability_slot_3" class="ability-slot">
+            <div class="ability-icon" id="ability_icon_3"></div>
+            <progress class="ability-cooldown" id="ability_cooldown_3"></progress>
+            <div class="ability-key">
+              <span id="ability_key_3" class="ability-key-value">3</span>
+            </div>
+          </div>
+          <div id="ability_slot_4" class="ability-slot">
+            <div class="ability-icon" id="ability_icon_4"></div>
+            <progress class="ability-cooldown" id="ability_cooldown_4"></progress>
+            <div class="ability-key">
+              <span id="ability_key_4" class="ability-key-value">4</span>
+            </div>
+          </div>
         </div>
-        <div id="ability_slot_2" class="ability-slot">
-          <div class="ability-icon" id="ability_icon_2"></div>
-          <div class="ability-cooldown" id="ability_cooldown_2"></div>
-          <div class="ability-key">2</div>
+      </div>
+
+      <!-- Experience Bar - Full Width Bottom -->
+      <div class="xp-bar-bottom">
+        <div class="level-display">
+          <span id="level_value" class="level-text">1</span>
         </div>
-        <div id="ability_slot_3" class="ability-slot">
-          <div class="ability-icon" id="ability_icon_3"></div>
-          <div class="ability-cooldown" id="ability_cooldown_3"></div>
-          <div class="ability-key">3</div>
-        </div>
-        <div id="ability_slot_4" class="ability-slot">
-          <div class="ability-icon" id="ability_icon_4"></div>
-          <div class="ability-cooldown" id="ability_cooldown_4"></div>
-          <div class="ability-key">4</div>
-        </div>
+        <progress id="experience_bar" class="xp-progress" value="0.3" max="1.0"></progress>
       </div>
     </div>
 

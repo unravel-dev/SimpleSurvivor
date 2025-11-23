@@ -118,8 +118,9 @@ public abstract class DamageOverTimeComponent : ScriptComponent
     
     /// <summary>
     /// Apply damage from this effect.
+    /// Override in derived classes to customize damage application behavior.
     /// </summary>
-    private void ApplyDamage()
+    protected virtual void ApplyDamage()
     {
         if (!owner)
             return;
@@ -137,6 +138,52 @@ public abstract class DamageOverTimeComponent : ScriptComponent
         
         // Call the effect's OnDamageApplied callback
         OnDamageApplied(tickDamage);
+    }
+   
+    
+    /// <summary>
+    /// Calculate the total remaining damage this DoT will deal.
+    /// </summary>
+    /// <returns>Total remaining damage.</returns>
+    protected int GetTotalRemainingDamage()
+    {
+        // Calculate how many ticks are left
+        float ticksRemaining = remainingDuration / TICK_INTERVAL;
+        
+        // Calculate damage per tick
+        int damagePerTick = GetDamagePerTick(TICK_INTERVAL);
+        
+        // Total remaining damage
+        int totalDamage = Mathf.RoundToInt(ticksRemaining * damagePerTick);
+        
+        return totalDamage;
+    }
+    
+    /// <summary>
+    /// Execute the target by applying all remaining DoT damage at once.
+    /// </summary>
+    protected void ExecuteTarget()
+    {
+        if (!owner)
+            return;
+        
+        // Calculate total remaining damage
+        int executeDamage = GetTotalRemainingDamage();
+        
+        if (executeDamage <= 0)
+            return;
+        
+        
+        // Apply all remaining damage at once
+        DamageBreakdown breakdown = UpgradeSystem.CalculateDamage(executeDamage);
+        breakdown.color = GetDamageColor();
+        DamageSystem.ApplyDamage(owner, sourceEntity, breakdown);
+        
+        // Mark effect as expired since we dealt all the damage
+        MarkAsExpired();
+        
+        // Call the effect's OnDamageApplied callback with total damage
+        OnDamageApplied(executeDamage);
     }
     
     /// <summary>

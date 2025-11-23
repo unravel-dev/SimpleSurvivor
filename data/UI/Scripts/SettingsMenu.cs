@@ -244,6 +244,9 @@ public class SettingsMenu : BaseMenu
 		applyButton.UnsubscribeAll();
 
 		base.UnregisterEventHandlers();
+		
+		Log.Info("SettingsMenu event handlers unregistered successfully");
+
 	}
 
 	// ========== SLIDER EVENT HANDLERS ==========
