@@ -3,6 +3,18 @@ using System.Collections.Generic;
 using System.Text;
 
 /// <summary>
+/// Structure to hold display information for UI (used for both abilities and upgrade cards).
+/// </summary>
+public struct UpgradeDisplayInfo
+{
+    public string name;
+    public string description;
+    public string iconType; // CSS class name for the ability icon (if applicable)
+    public string icon; // Text icon/emoji (for abilities)
+    public string color; // Color string (for abilities)
+}
+
+/// <summary>
 /// Represents a card that contains one or more upgrades and has its own rarity.
 /// Used for the upgrade selection system where players choose cards containing upgrades.
 /// </summary>
@@ -13,11 +25,6 @@ public class UpgradeCard
     /// </summary>
     public string Name { get; protected set; }
 
-
-    /// <summary>
-    /// Description of the upgrade card.
-    /// </summary>
-    public string Description { get; protected set; }
     
     /// <summary>
     /// Rarity level of this upgrade card.
@@ -37,7 +44,7 @@ public class UpgradeCard
     /// <summary>
     /// Number of times this card can be picked. -1 = unlimited, 0 = cannot be picked, >0 = specific count.
     /// </summary>
-    protected int remainingPicks;
+    protected int RemainingPicks;
     
     /// <summary>
     /// Create a new upgrade card with specified upgrades and rarity.
@@ -52,9 +59,8 @@ public class UpgradeCard
         Name = name;
         Rarity = rarity;
         Upgrades = upgrades ?? new List<Upgrade>();
-        remainingPicks = maxPicks;
+        RemainingPicks = maxPicks;
         RequiredAbilityType = requiredAbilityType;
-        Description = GetDescription();
     }
     
     /// <summary>
@@ -70,37 +76,76 @@ public class UpgradeCard
         Name = name;
         Rarity = rarity;
         Upgrades = new List<Upgrade> { upgrade };
-        remainingPicks = maxPicks;
+        RemainingPicks = maxPicks;
         RequiredAbilityType = requiredAbilityType;
-        Description = GetDescription();
     }
     
     /// <summary>
-    /// Get the combined description of all upgrades in this card.
-    /// Each upgrade description is on a new line.
+    /// Virtual method for derived classes to provide display information for UI.
+    /// Override this to customize how the upgrade card appears in the UI.
     /// </summary>
-    /// <returns>Combined description string.</returns>
-    private string GetDescription()
+    /// <returns>Display information for the upgrade card.</returns>
+    public virtual UpgradeDisplayInfo GetDisplayInfo()
     {
-        if (Upgrades == null || Upgrades.Count == 0)
-        {
-            return "";
-        }
+
+
+        UpgradeDisplayInfo info = new UpgradeDisplayInfo();
+        info.name = Name;
         
-        var description = new StringBuilder();
-        
-        for (int i = 0; i < Upgrades.Count; i++)
+        // Get the combined description of all upgrades in this card
+        if (Upgrades != null && Upgrades.Count > 0)
         {
-            description.Append(Upgrades[i].Description);
+            var description = new StringBuilder();
             
-            // Add newline between upgrades (but not after the last one)
-            if (i < Upgrades.Count - 1)
+            for (int i = 0; i < Upgrades.Count; i++)
             {
-                description.AppendLine();
+                description.Append(Upgrades[i].Description);
+                
+                // Add newline between upgrades (but not after the last one)
+                if (i < Upgrades.Count - 1)
+                {
+                    description.AppendLine();
+                }
             }
+            
+            info.description = description.ToString();
+        }
+        else
+        {
+            info.description = "";
         }
         
-        return description.ToString();
+        // Set icon type based on rarity for non-ability-specific upgrades
+        info.iconType = GetRarityIconType(Rarity);
+
+        if (RequiredAbilityType != null)
+        {
+            info.iconType = Ability.GetDisplayInfo(RequiredAbilityType).iconType;
+        }
+        
+        return info;
+    }
+    
+    /// <summary>
+    /// Get the CSS icon class name for a given rarity.
+    /// </summary>
+    /// <param name="rarity">The upgrade rarity</param>
+    /// <returns>CSS class name for the rarity icon</returns>
+    private string GetRarityIconType(UpgradeRarity rarity)
+    {
+        switch (rarity)
+        {
+            case UpgradeRarity.Normal:
+                return "upgrade-normal";
+            case UpgradeRarity.Common:
+                return "upgrade-common";
+            case UpgradeRarity.Epic:
+                return "upgrade-epic";
+            case UpgradeRarity.Legendary:
+                return "upgrade-legendary";
+            default:
+                return "upgrade-normal";
+        }
     }
 
     
@@ -139,7 +184,7 @@ public class UpgradeCard
     /// </returns>
     public virtual int GetRemainingPicks()
     {
-        return remainingPicks;
+        return RemainingPicks;
     }
 
     /// <summary>
@@ -148,9 +193,9 @@ public class UpgradeCard
     /// </summary>
     public virtual void OnCardSelected()
     {
-        if (remainingPicks > 0)
+        if (RemainingPicks > 0)
         {
-            remainingPicks--;
+            RemainingPicks--;
         }
     }
 }

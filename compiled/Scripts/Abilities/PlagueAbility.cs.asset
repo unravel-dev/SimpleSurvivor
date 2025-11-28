@@ -259,19 +259,20 @@ public class PlagueAbility : Ability
     }
 
     /// <summary>
-    /// Get display information for the Plague ability.
+    /// Get display information for the Plague ability (static version).
     /// </summary>
     /// <returns>Display information for UI.</returns>
-    public override AbilityDisplayInfo GetDisplayInfo()
+    public static new UpgradeDisplayInfo GetDisplayInfo()
     {
-        AbilityDisplayInfo info = new AbilityDisplayInfo();
-        info.type = "plague";
+        UpgradeDisplayInfo info = new UpgradeDisplayInfo();
+        info.iconType = "plague";
         info.name = "Plague";
         info.icon = "P";
         info.color = "rgba(100, 50, 150, 180)"; // Purple/dark purple
+        info.description = GetDescription();
         return info;
     }
-
+    
     public static string GetDescription()
     {
         return "Creates a toxic aura around you that deals damage over time to all enemies in range.";

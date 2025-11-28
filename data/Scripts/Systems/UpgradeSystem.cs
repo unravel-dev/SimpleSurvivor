@@ -29,6 +29,10 @@ public static class UpgradeSystem
     private static readonly CriticalDamageUpgrade accumulatedCriticalDamageUpgrade = new CriticalDamageUpgrade(0.0f);
     private static readonly PickupRadiusUpgrade accumulatedPickupRadiusUpgrade = new PickupRadiusUpgrade(0.0f);
     private static readonly LuckUpgrade accumulatedLuckUpgrade = new LuckUpgrade(0.0f);
+    
+    // Temporary magnet effect (pickup range multiplier)
+    private static float magnetMultiplier = 1.0f;
+    private static float magnetRemainingDuration = 0.0f;
     private static readonly AreaOfEffectUpgrade accumulatedAreaOfEffectUpgrade = new AreaOfEffectUpgrade(0.0f);
     private static readonly DurationUpgrade accumulatedDurationUpgrade = new DurationUpgrade(0.0f);
     
@@ -42,6 +46,9 @@ public static class UpgradeSystem
     private static readonly SpinningSlashUpgrade accumulatedBoomerangSpinningSlashUpgrade = new SpinningSlashUpgrade(0.0f, 0.0f);
     private static readonly BurnOnHitUpgrade accumulatedBurnOnHitUpgrade = new BurnOnHitUpgrade(0.0f, 0);
     private static readonly LightningSplitUpgrade accumulatedLightningSplitUpgrade = new LightningSplitUpgrade(0);
+    private static readonly LightningChainExplosionUpgrade accumulatedLightningChainExplosionUpgrade = new LightningChainExplosionUpgrade(0.0f, 0.0f);
+    private static readonly LightningStunUpgrade accumulatedLightningStunUpgrade = new LightningStunUpgrade(0.0f);
+    private static bool hasLightningBouncingUpgrade = false;
     private static readonly FasterPlagueTickUpgrade accumulatedPlagueFasterTickUpgrade = new FasterPlagueTickUpgrade(0.0f);
     private static readonly PlaguePoisonUpgrade accumulatedPlaguePoisonUpgrade = new PlaguePoisonUpgrade(0.0f, 0);
     private static readonly ExtendedPlagueDurationUpgrade accumulatedPlagueExtendedDurationUpgrade = new ExtendedPlagueDurationUpgrade(0.0f);
@@ -243,6 +250,10 @@ public static class UpgradeSystem
         accumulatedBurnOnHitUpgrade.BurnChancePercent = 0.0f;
         accumulatedBurnOnHitUpgrade.BurnStacks = 0;
         accumulatedLightningSplitUpgrade.SplitCount = 0;
+        accumulatedLightningChainExplosionUpgrade.ExplosionRadius = 0.0f;
+        accumulatedLightningChainExplosionUpgrade.ExplosionDamagePercent = 0.0f;
+        accumulatedLightningStunUpgrade.StunDuration = 0.0f;
+        hasLightningBouncingUpgrade = false;
         accumulatedPlagueFasterTickUpgrade.TickSpeedPercent = 0.0f;
         accumulatedPlaguePoisonUpgrade.PoisonChancePercent = 0.0f;
         accumulatedPlaguePoisonUpgrade.PoisonStacks = 0;
@@ -394,6 +405,35 @@ public static class UpgradeSystem
                     accumulatedLightningSplitUpgrade.SplitCount = splitUpgrade.SplitCount;
                 }
             }
+            // Lightning chain explosion upgrades
+            else if (upgrade is LightningChainExplosionUpgrade)
+            {
+                LightningChainExplosionUpgrade explosionUpgrade = (LightningChainExplosionUpgrade)upgrade;
+                // Use maximum values from all upgrades
+                if (explosionUpgrade.ExplosionRadius > accumulatedLightningChainExplosionUpgrade.ExplosionRadius)
+                {
+                    accumulatedLightningChainExplosionUpgrade.ExplosionRadius = explosionUpgrade.ExplosionRadius;
+                }
+                if (explosionUpgrade.ExplosionDamagePercent > accumulatedLightningChainExplosionUpgrade.ExplosionDamagePercent)
+                {
+                    accumulatedLightningChainExplosionUpgrade.ExplosionDamagePercent = explosionUpgrade.ExplosionDamagePercent;
+                }
+            }
+            // Lightning stun upgrades
+            else if (upgrade is LightningStunUpgrade)
+            {
+                LightningStunUpgrade stunUpgrade = (LightningStunUpgrade)upgrade;
+                // Use maximum stun duration from all upgrades
+                if (stunUpgrade.StunDuration > accumulatedLightningStunUpgrade.StunDuration)
+                {
+                    accumulatedLightningStunUpgrade.StunDuration = stunUpgrade.StunDuration;
+                }
+            }
+            // Lightning bouncing upgrade
+            else if (upgrade is LightningBouncingUpgrade)
+            {
+                hasLightningBouncingUpgrade = true;
+            }
             // Plague upgrades
             else if (upgrade is FasterPlagueTickUpgrade)
             {
@@ -532,7 +572,47 @@ public static class UpgradeSystem
 
     public static float ApplyPickupRadiusUpgrade(float basePickupRadius)
     {
-        return basePickupRadius * accumulatedPickupRadiusUpgrade.GetRadiusMultiplier();
+        float upgradedRadius = basePickupRadius * accumulatedPickupRadiusUpgrade.GetRadiusMultiplier();
+        // Apply temporary magnet multiplier
+        upgradedRadius *= magnetMultiplier;
+        return upgradedRadius;
+    }
+    
+    /// <summary>
+    /// Apply a temporary magnet effect that multiplies pickup range.
+    /// </summary>
+    /// <param name="multiplier">Pickup range multiplier (e.g., 5.0 = 5x range).</param>
+    /// <param name="duration">Duration of the effect in seconds.</param>
+    public static void ApplyMagnetEffect(float multiplier, float duration)
+    {
+        magnetMultiplier = Mathf.Max(magnetMultiplier, multiplier); // Use maximum if multiple magnets
+        magnetRemainingDuration = Mathf.Max(magnetRemainingDuration, duration); // Use maximum duration
+    }
+    
+    /// <summary>
+    /// Get the current magnet multiplier.
+    /// </summary>
+    /// <returns>Current magnet multiplier (1.0 = no effect).</returns>
+    public static float GetMagnetMultiplier()
+    {
+        return magnetMultiplier;
+    }
+    
+    /// <summary>
+    /// Update the magnet effect duration. Should be called every frame.
+    /// </summary>
+    /// <param name="deltaTime">Time since last frame.</param>
+    public static void UpdateMagnetEffect(float deltaTime)
+    {
+        if (magnetRemainingDuration > 0.0f)
+        {
+            magnetRemainingDuration -= deltaTime;
+            if (magnetRemainingDuration <= 0.0f)
+            {
+                magnetMultiplier = 1.0f;
+                magnetRemainingDuration = 0.0f;
+            }
+        }
     }
 
     public static float ApplyLuckUpgrade(float baseLuck)
@@ -835,6 +915,54 @@ public static class UpgradeSystem
     public static int GetLightningSplitCount()
     {
         return accumulatedLightningSplitUpgrade.SplitCount;
+    }
+    
+    /// <summary>
+    /// Get the chain explosion radius from all LightningChainExplosionUpgrade bonuses (cached).
+    /// </summary>
+    public static float GetLightningChainExplosionRadius()
+    {
+        return accumulatedLightningChainExplosionUpgrade.ExplosionRadius;
+    }
+    
+    /// <summary>
+    /// Get the chain explosion damage percent from all LightningChainExplosionUpgrade bonuses (cached).
+    /// </summary>
+    public static float GetLightningChainExplosionDamagePercent()
+    {
+        return accumulatedLightningChainExplosionUpgrade.ExplosionDamagePercent;
+    }
+    
+    /// <summary>
+    /// Check if chain explosions are enabled.
+    /// </summary>
+    public static bool HasLightningChainExplosion()
+    {
+        return accumulatedLightningChainExplosionUpgrade.ExplosionRadius > 0.0f;
+    }
+    
+    /// <summary>
+    /// Get the stun duration from all LightningStunUpgrade bonuses (cached).
+    /// </summary>
+    public static float GetLightningStunDuration()
+    {
+        return accumulatedLightningStunUpgrade.StunDuration;
+    }
+    
+    /// <summary>
+    /// Check if chain stuns are enabled.
+    /// </summary>
+    public static bool HasLightningStun()
+    {
+        return accumulatedLightningStunUpgrade.StunDuration > 0.0f;
+    }
+    
+    /// <summary>
+    /// Check if bouncing lightning is enabled.
+    /// </summary>
+    public static bool HasLightningBouncing()
+    {
+        return hasLightningBouncingUpgrade;
     }
 
     // ========== PLAGUE UPGRADE HELPERS ==========

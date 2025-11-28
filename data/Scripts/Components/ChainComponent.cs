@@ -18,4 +18,7 @@ public class ChainComponent : ScriptComponent
     public Vector3 chainOffset = Vector3.zero;
 
     public List<Entity> visitedTargets = new List<Entity>();
+    
+    [Tooltip("If true, allows revisiting already visited targets (bouncing behavior)")]
+    public bool allowRevisitTargets = false;
 }

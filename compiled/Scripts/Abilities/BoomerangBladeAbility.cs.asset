@@ -237,19 +237,20 @@ public class BoomerangBladeAbility : Ability
     }
 
     /// <summary>
-    /// Get display information for the Boomerang Blade ability.
+    /// Get display information for the Boomerang Blade ability (static version).
     /// </summary>
     /// <returns>Display information for UI.</returns>
-    public override AbilityDisplayInfo GetDisplayInfo()
+    public static new UpgradeDisplayInfo GetDisplayInfo()
     {
-        AbilityDisplayInfo info = new AbilityDisplayInfo();
-        info.type = "boomerang";
+        UpgradeDisplayInfo info = new UpgradeDisplayInfo();
+        info.iconType = "boomerang";
         info.name = "Boomerang Blade";
         info.icon = "B";
         info.color = "rgba(180, 180, 50, 180)"; // Yellow/gold
+        info.description = GetDescription();
         return info;
     }
-
+    
     public static string GetDescription()
     {
         return "Throws a blade that orbits around you, hitting enemies multiple times.";

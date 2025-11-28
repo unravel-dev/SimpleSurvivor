@@ -4,17 +4,6 @@ using System.Runtime.CompilerServices;
 using Unravel.Core;
 
 /// <summary>
-/// Structure to hold ability display information for UI.
-/// </summary>
-public struct AbilityDisplayInfo
-{
-    public string type;
-    public string name;
-    public string icon;
-    public string color;
-}
-
-/// <summary>
 /// Base class for all ability types. Handles cooldown management and provides
 /// virtual methods for derived classes to implement specific ability behavior.
 /// </summary>
@@ -141,20 +130,69 @@ public abstract class Ability : ScriptComponent
 
 
     /// <summary>
-    /// Virtual method for derived classes to provide display information for UI.
-    /// Override this to customize how the ability appears in the UI.
+    /// Static method to get display information for an ability type.
+    /// Tries to call the static GetDisplayInfo method on the specific ability type,
+    /// falls back to default implementation if not found.
     /// </summary>
-    /// <returns>Display information for the ability.</returns>
-    public virtual AbilityDisplayInfo GetDisplayInfo()
+    /// <param name="abilityType">The ability type</param>
+    /// <returns>Display information for the ability</returns>
+    public static UpgradeDisplayInfo GetDisplayInfo(Type abilityType)
     {
-        // Default implementation - uses class name
-        string typeName = GetType().Name;
-        AbilityDisplayInfo info = new AbilityDisplayInfo();
-        info.type = typeName.ToLower().Replace("ability", "");
-        info.name = typeName.Replace("Ability", "");
+        if (abilityType == null)
+        {
+            UpgradeDisplayInfo defaultInfo = new UpgradeDisplayInfo();
+            defaultInfo.iconType = "";
+            defaultInfo.name = "Unknown";
+            defaultInfo.icon = "?";
+            defaultInfo.color = "rgba(150, 150, 150, 180)";
+            defaultInfo.description = "";
+            return defaultInfo;
+        }
+        
+        // Try to call the static method on the specific ability type
+        var method = abilityType.GetMethod("GetDisplayInfo", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
+        if (method != null)
+        {
+            return (UpgradeDisplayInfo)(method.Invoke(null, null) ?? GetDefaultDisplayInfo(abilityType));
+        }
+        
+        // Fallback: use default implementation
+        return GetDefaultDisplayInfo(abilityType);
+    }
+    
+    /// <summary>
+    /// Get default display information based on ability type name.
+    /// </summary>
+    /// <param name="abilityType">The ability type</param>
+    /// <returns>Default display information</returns>
+    private static UpgradeDisplayInfo GetDefaultDisplayInfo(Type abilityType)
+    {
+        string typeName = abilityType.Name.ToLower();
+        if (typeName.EndsWith("ability"))
+        {
+            typeName = typeName.Substring(0, typeName.Length - 7);
+        }
+        
+        UpgradeDisplayInfo info = new UpgradeDisplayInfo();
+        info.iconType = typeName;
+        info.name = abilityType.Name.Replace("Ability", "");
         info.icon = info.name.Length > 0 ? info.name[0].ToString() : "?";
         info.color = "rgba(150, 150, 150, 180)"; // Gray
+        info.description = "";
+        
         return info;
+    }
+
+    /// <summary>
+    /// Virtual method for derived classes to provide display information for UI.
+    /// Override this to customize how the ability appears in the UI.
+    /// By default, calls the static GetDisplayInfo method.
+    /// </summary>
+    /// <returns>Display information for the ability.</returns>
+    public virtual UpgradeDisplayInfo GetDisplayInfo()
+    {
+        // Call the static version
+        return GetDisplayInfo(GetType());
     }
 
     /// <summary>

@@ -274,19 +274,20 @@ public class MeteorShowerAbility : Ability
     }
 
     /// <summary>
-    /// Get display information for the Meteor Shower ability.
+    /// Get display information for the Meteor Shower ability (static version).
     /// </summary>
     /// <returns>Display information for UI.</returns>
-    public override AbilityDisplayInfo GetDisplayInfo()
+    public static new UpgradeDisplayInfo GetDisplayInfo()
     {
-        AbilityDisplayInfo info = new AbilityDisplayInfo();
-        info.type = "meteorshower";
+        UpgradeDisplayInfo info = new UpgradeDisplayInfo();
+        info.iconType = "meteorshower";
         info.name = "Meteor Shower";
         info.icon = "M";
         info.color = "rgba(255, 80, 20, 180)"; // Bright orange/red
+        info.description = GetDescription();
         return info;
     }
-
+    
     public static string GetDescription()
     {
         return "Creates a sustained rain of meteors that fall continuously in an area, dealing area damage on impact.";

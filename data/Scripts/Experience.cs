@@ -110,17 +110,27 @@ public class Experience : ScriptComponent
             if (!entity) continue;
             
             var experienceOrb = entity.GetComponent<ExperienceOrb>();
-            if (experienceOrb == null) continue;
-            
-            orbsFound++;
-            
-            // Skip if already being attracted
-            if (experienceOrb.IsBeingAttracted()) continue;
-            
-            // Start attracting this orb
-            experienceOrb.StartAttraction(owner);
-            attractedOrbs.Add(experienceOrb);
-            orbsAttracted++;
+            if (experienceOrb != null)
+            {
+                orbsFound++;
+                
+                // Skip if already being attracted
+                if (experienceOrb.IsBeingAttracted()) continue;
+                
+                // Start attracting this orb
+                experienceOrb.StartAttraction(owner);
+                attractedOrbs.Add(experienceOrb);
+                orbsAttracted++;
+            }
+            else
+            {
+                // Check for MagnetLoot as well
+                var magnetLoot = entity.GetComponent<MagnetLoot>();
+                if (magnetLoot != null && !magnetLoot.IsBeingAttracted())
+                {
+                    magnetLoot.StartAttraction(owner);
+                }
+            }
         }
     }
     

@@ -235,53 +235,8 @@ body {
 }
 
 /* Ability slot states for different ability types */
-.ability-slot.fireball .ability-icon {
-  decorator: linear-gradient(135deg, rgb(255, 80, 30), rgb(255, 140, 60));
-  decorator: image( app:/data/Textures/Abilities/fireball.png );
-  color: white;
-}
-
-.ability-slot.dash .ability-icon {
-  decorator: linear-gradient(135deg, rgb(255, 60, 10), rgb(255, 120, 40));
-  decorator: image( app:/data/Textures/Abilities/dash.png );
-  color: white;
-}
-
-.ability-slot.spark .ability-icon {
-  decorator: linear-gradient(135deg, rgb(80, 120, 255), rgb(140, 180, 255));
-  decorator: image( app:/data/Textures/Abilities/spark.png );
-  color: white;
-}
-
-.ability-slot.cube .ability-icon {
-  decorator: linear-gradient(135deg, rgb(120, 80, 255), rgb(180, 140, 255));
-  color: white;
-}
-
-.ability-slot.boomerang .ability-icon {
-  decorator: linear-gradient(135deg, rgb(200, 180, 40), rgb(240, 220, 80));
-  decorator: image( app:/data/Textures/Abilities/boomerang.png );
-  color: white;
-}
-
-.ability-slot.meteorshower .ability-icon {
-  decorator: linear-gradient(135deg, rgb(255, 60, 10), rgb(255, 120, 40));
-  decorator: image( app:/data/Textures/Abilities/meteorshower.png );
-
-  color: white;
-}
-
-.ability-slot.blackhole .ability-icon {
-  decorator: linear-gradient(135deg, rgb(120, 80, 255), rgb(180, 140, 255));
-  decorator: image( app:/data/Textures/Abilities/blackhole.png );
-  color: white;
-}
-
-.ability-slot.plague .ability-icon {
-  decorator: linear-gradient(135deg, rgb(24, 78, 10), rgb(12, 119, 60));
-  decorator: image( app:/data/Textures/Abilities/plague.png );
-  color: white;
-}
+/* Note: Ability-specific styles (decorator, image, color) are now in CommonMenu.rcss */
+/* Applied directly to .ability-icon.{abilityType} for reuse across slots and cards */
 
 .ability-slot.empty .ability-icon {
   background-color: rgba(40, 40, 45, 180);

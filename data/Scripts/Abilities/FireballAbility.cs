@@ -183,19 +183,20 @@ public class FireballAbility : Ability
     }
 
     /// <summary>
-    /// Get display information for the Fireball ability.
+    /// Get display information for the Fireball ability (static version).
     /// </summary>
     /// <returns>Display information for UI.</returns>
-    public override AbilityDisplayInfo GetDisplayInfo()
+    public static new UpgradeDisplayInfo GetDisplayInfo()
     {
-        AbilityDisplayInfo info = new AbilityDisplayInfo();
-        info.type = "fireball";
+        UpgradeDisplayInfo info = new UpgradeDisplayInfo();
+        info.iconType = "fireball";
         info.name = "Fireball";
         info.icon = "F";
         info.color = "rgba(255, 100, 50, 180)"; // Orange/red
+        info.description = GetDescription();
         return info;
     }
-
+    
     public static string GetDescription()
     {
         return "Shoots a fireball at the nearest enemy, dealing damage and causing an explosion.";

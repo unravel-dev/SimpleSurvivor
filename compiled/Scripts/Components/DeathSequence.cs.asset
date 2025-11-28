@@ -181,7 +181,7 @@ public class DeathSequence : ScriptComponent
             }
         }
         
-        Log.Info($"DeathSequence: Starting death sequence for {owner.name}");
+        // Log.Info($"DeathSequence: Starting death sequence for {owner.name}");
     }
     
     /// <summary>

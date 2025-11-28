@@ -51,6 +51,12 @@ public class LootSystem : ScriptComponent
     [Tooltip("Experience orb prefab to spawn")]
     public Prefab experienceOrbPrefab;
     
+    [Tooltip("Magnet loot prefab to spawn")]
+    public Prefab magnetLootPrefab;
+    
+    [Tooltip("Chance to drop a magnet when an enemy dies (0-1, e.g., 0.05 = 5% chance)")]
+    public float magnetDropChance = 0.03f; // 3% chance by default
+    
     [Tooltip("Default loot configuration")]
     public LootConfiguration defaultLootConfig = new LootConfiguration();
     
@@ -301,6 +307,12 @@ public class LootSystem : ScriptComponent
         
         // Drop experience orbs
         DropExperienceOrbs(enemyPosition, experienceValue, config.orbCount);
+        
+        // Randomly drop magnet loot
+        if (magnetLootPrefab != null && Random.Range(0.0f, 1.0f) < magnetDropChance)
+        {
+            DropMagnetLoot(enemyPosition);
+        }
     }
     
     /// <summary>
@@ -447,6 +459,42 @@ public class LootSystem : ScriptComponent
     public float GetOrbSpeedMultiplier()
     {
         return orbSpeedMultiplier;
+    }
+    
+    /// <summary>
+    /// Drop a magnet loot item at the specified location.
+    /// </summary>
+    /// <param name="dropPosition">Position to drop magnet at.</param>
+    private void DropMagnetLoot(Vector3 dropPosition)
+    {
+        if (magnetLootPrefab == null)
+            return;
+        
+        // Calculate random position within spread radius
+        Vector2 randomCircle = Random.insideUnitCircle * dropSpreadRadius;
+        Vector3 magnetPosition = dropPosition + new Vector3(randomCircle.x, dropHeight, randomCircle.y);
+        
+        // Instantiate magnet loot
+        var magnetEntity = Scene.Instantiate(magnetLootPrefab);
+        if (magnetEntity)
+        {
+            magnetEntity.transform.position = magnetPosition;
+            
+            // Parent the magnet under the ExperienceContainer
+            if (experienceContainer)
+            {
+                magnetEntity.transform.SetParent(experienceContainer, true);
+            }
+            else
+            {
+                // Try to find/create container if it doesn't exist
+                FindOrCreateExperienceContainer();
+                if (experienceContainer)
+                {
+                    magnetEntity.transform.SetParent(experienceContainer, true);
+                }
+            }
+        }
     }
     
     /// <summary>

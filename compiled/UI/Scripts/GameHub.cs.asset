@@ -464,7 +464,7 @@ public class GameHub : ScriptComponent
             if (ability != null)
             {
                 var abilityInfo = ability.GetDisplayInfo();
-                SetAbilitySlot(slotIndex, abilityInfo.type, abilityInfo.name, abilityInfo.icon);
+                SetAbilitySlot(slotIndex, abilityInfo.iconType, abilityInfo.name, abilityInfo.icon);
                 slotIndex++;
             }
         }
@@ -496,18 +496,14 @@ public class GameHub : ScriptComponent
             return;
         }
         
-        // Remove all ability type classes
+        // Remove empty class from slot
         slot.SetClass("empty", false);
-        slot.SetClass("fireball", false);
-        slot.SetClass("spark", false);
-        slot.SetClass("cube", false);
-        slot.SetClass("dash", false);
-        slot.SetClass("blackhole", false);
-        slot.SetClass("plague", false);
-        slot.SetClass("meteorshower", false);
         
-        // Add the specific ability type class
-        slot.SetClass(abilityType, true);
+        // Remove all ability type classes from icon
+        RemoveAbilityClassesFromIcon(icon);
+        
+        // Add the specific ability type class to the icon (shared styles in CommonMenu.rcss)
+        icon.SetClass(abilityType, true);
         icon.SetClass("has-ability", true);
         
         // Set icon text content
@@ -544,13 +540,7 @@ public class GameHub : ScriptComponent
         }
         
         // Remove all ability type classes and set to empty
-        slot.SetClass("fireball", false);
-        slot.SetClass("spark", false);
-        slot.SetClass("cube", false);
-        slot.SetClass("dash", false);
-        slot.SetClass("blackhole", false);
-        slot.SetClass("plague", false);
-        slot.SetClass("meteorshower", false);
+        RemoveAbilityClassesFromIcon(icon);
         slot.SetClass("empty", true);
         icon.SetClass("has-ability", false);
         
@@ -559,6 +549,32 @@ public class GameHub : ScriptComponent
         
         // Clear tooltip
         slot.SetAttribute("title", "Empty Slot");
+    }
+    
+    /// <summary>
+    /// Remove all ability type classes from an icon element.
+    /// </summary>
+    /// <param name="icon">The icon element to clean</param>
+    private void RemoveAbilityClassesFromIcon(UIElement icon)
+    {
+        if (icon == null)
+            return;
+        
+        // Remove ability-specific classes
+        icon.SetClass("fireball", false);
+        icon.SetClass("dash", false);
+        icon.SetClass("spark", false);
+        icon.SetClass("cube", false);
+        icon.SetClass("boomerang", false);
+        icon.SetClass("meteorshower", false);
+        icon.SetClass("blackhole", false);
+        icon.SetClass("plague", false);
+        
+        // Remove upgrade rarity classes
+        icon.SetClass("upgrade-normal", false);
+        icon.SetClass("upgrade-common", false);
+        icon.SetClass("upgrade-epic", false);
+        icon.SetClass("upgrade-legendary", false);
     }
     
     /// <summary>

@@ -3,17 +3,15 @@ using Unravel.Core;
 
 /// <summary>
 /// Base class for all damage over time effects.
-/// Handles duration, stacking, and damage calculation.
+/// Handles stacking and damage calculation.
 /// The actual damage application is handled by EffectsSystem.
+/// Duration tracking is handled by EffectOverTime base class.
 /// </summary>
 [ScriptSourceFile]
-public abstract class DamageOverTimeComponent : ScriptComponent
+public abstract class DamageOverTimeComponent : EffectOverTime
 {
     [Tooltip("Damage per second")]
     public float damagePerSecond = 5.0f;
-    
-    [Tooltip("Duration of the effect in seconds")]
-    public float duration = 5.0f;
     
     [Tooltip("Current number of stacks")]
     public int currentStacks = 1;
@@ -28,9 +26,6 @@ public abstract class DamageOverTimeComponent : ScriptComponent
     public bool stacksDuration = false;
     
     // Internal state
-    private float remainingDuration;
-    private Entity sourceEntity;
-    private bool isExpired = false;
     private float timeSinceLastTick = 0.0f;
     private const float TICK_INTERVAL = 0.5f; // Apply damage every 0.5 seconds
     
@@ -43,13 +38,11 @@ public abstract class DamageOverTimeComponent : ScriptComponent
     /// <param name="maxStackCount">Maximum number of stacks.</param>
     public virtual void Initialize(Entity source, float dps, float effectDuration, int maxStackCount = 0)
     {
-        sourceEntity = source;
+        base.Initialize(source, effectDuration);
         damagePerSecond = dps;
-        duration = effectDuration;
-        remainingDuration = effectDuration;
         maxStacks = maxStackCount;
         currentStacks = 1;
-        isExpired = false;
+        timeSinceLastTick = 0.0f;
         
         // Add DamageSourceComponent to track damage statistics
         // Try to find the ability component from the source entity
@@ -92,18 +85,13 @@ public abstract class DamageOverTimeComponent : ScriptComponent
     /// Handles duration tracking and damage application.
     /// </summary>
     /// <param name="deltaTime">Time since last update.</param>
-    public void Update(float deltaTime)
+    public override void Update(float deltaTime)
     {
-        if (isExpired)
-            return;
+        // Call base class update for duration tracking
+        base.Update(deltaTime);
         
-        // Update duration
-        remainingDuration -= deltaTime;
-        if (remainingDuration <= 0.0f)
-        {
-            isExpired = true;
+        if (IsExpired())
             return;
-        }
         
         // Update tick timer
         timeSinceLastTick += deltaTime;
@@ -134,7 +122,7 @@ public abstract class DamageOverTimeComponent : ScriptComponent
         // Apply damage through DamageSystem
         DamageBreakdown breakdown = UpgradeSystem.CalculateDamage(tickDamage);
         breakdown.color = GetDamageColor();
-        DamageSystem.ApplyDamage(owner, sourceEntity, breakdown);
+        DamageSystem.ApplyDamage(owner, GetSource(), breakdown);
         
         // Call the effect's OnDamageApplied callback
         OnDamageApplied(tickDamage);
@@ -148,7 +136,7 @@ public abstract class DamageOverTimeComponent : ScriptComponent
     protected int GetTotalRemainingDamage()
     {
         // Calculate how many ticks are left
-        float ticksRemaining = remainingDuration / TICK_INTERVAL;
+        float ticksRemaining = GetRemainingDuration() / TICK_INTERVAL;
         
         // Calculate damage per tick
         int damagePerTick = GetDamagePerTick(TICK_INTERVAL);
@@ -177,7 +165,7 @@ public abstract class DamageOverTimeComponent : ScriptComponent
         // Apply all remaining damage at once
         DamageBreakdown breakdown = UpgradeSystem.CalculateDamage(executeDamage);
         breakdown.color = GetDamageColor();
-        DamageSystem.ApplyDamage(owner, sourceEntity, breakdown);
+        DamageSystem.ApplyDamage(owner, GetSource(), breakdown);
         
         // Mark effect as expired since we dealt all the damage
         MarkAsExpired();
@@ -190,15 +178,9 @@ public abstract class DamageOverTimeComponent : ScriptComponent
     /// Refresh the effect duration (reset to full duration).
     /// </summary>
     /// <param name="newDuration">Optional new duration, uses current duration if not specified.</param>
-    public void Refresh(float? newDuration = null)
+    public new void Refresh(float? newDuration = null)
     {
-        if (newDuration.HasValue)
-        {
-            duration = newDuration.Value;
-        }
-        
-        remainingDuration = duration;
-        isExpired = false;
+        base.Refresh(newDuration);
     }
     
     /// <summary>
@@ -240,52 +222,7 @@ public abstract class DamageOverTimeComponent : ScriptComponent
         return Mathf.RoundToInt(baseDamage);
     }
     
-    /// <summary>
-    /// Check if this effect has expired.
-    /// </summary>
-    /// <returns>True if expired.</returns>
-    public bool IsExpired()
-    {
-        return isExpired;
-    }
-    
-    /// <summary>
-    /// Mark this effect as expired (will be removed on next system tick).
-    /// </summary>
-    public void MarkAsExpired()
-    {
-        isExpired = true;
-    }
-    
-    /// <summary>
-    /// Get the remaining duration.
-    /// </summary>
-    /// <returns>Remaining duration in seconds.</returns>
-    public float GetRemainingDuration()
-    {
-        return Mathf.Max(0.0f, remainingDuration);
-    }
-    
-    /// <summary>
-    /// Get the source entity that caused this effect.
-    /// </summary>
-    /// <returns>Source entity.</returns>
-    public Entity GetSource()
-    {
-        return sourceEntity;
-    }
-    
-    /// <summary>
-    /// Get the effect name (for UI/debugging).
-    /// </summary>
-    /// <returns>Name of the effect.</returns>
-    public abstract string GetEffectName();
-    
-    /// <summary>
-    /// Get the effect color (for UI visualization).
-    /// </summary>
-    /// <returns>Color as RGBA string.</returns>
-    public abstract string GetEffectColor();
+
 
     public abstract Color GetDamageColor();
     
@@ -299,13 +236,5 @@ public abstract class DamageOverTimeComponent : ScriptComponent
         // Override in derived classes for custom behavior
     }
     
-    /// <summary>
-    /// Called when the effect expires.
-    /// Override to add custom behavior.
-    /// </summary>
-    public virtual void OnExpired()
-    {
-        // Override in derived classes for custom behavior
-    }
 }
 

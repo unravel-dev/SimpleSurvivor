@@ -18,12 +18,15 @@ public class LevelUpMenu : BaseMenu
     private UIElement card1Title;
     private UIElement card1Description;
     private UIElement card1Rarity;
+    private UIElement card1Icon;
     private UIElement card2Title;
     private UIElement card2Description;
     private UIElement card2Rarity;
+    private UIElement card2Icon;
     private UIElement card3Title;
     private UIElement card3Description;
     private UIElement card3Rarity;
+    private UIElement card3Icon;
     
     // Current upgrade cards
     private UpgradeCard[] upgradeCards = new UpgradeCard[3];
@@ -53,12 +56,15 @@ public class LevelUpMenu : BaseMenu
         card1Title = document.GetElementById("card1_title");
         card1Description = document.GetElementById("card1_description");
         card1Rarity = document.GetElementById("card1_rarity");
+        card1Icon = document.GetElementById("card1_icon");
         card2Title = document.GetElementById("card2_title");
         card2Description = document.GetElementById("card2_description");
         card2Rarity = document.GetElementById("card2_rarity");
+        card2Icon = document.GetElementById("card2_icon");
         card3Title = document.GetElementById("card3_title");
         card3Description = document.GetElementById("card3_description");
         card3Rarity = document.GetElementById("card3_rarity");
+        card3Icon = document.GetElementById("card3_icon");
     }
     
     protected override int CountValidElements()
@@ -66,9 +72,9 @@ public class LevelUpMenu : BaseMenu
         int count = base.CountValidElements();
         var elements = new UIElement[] { 
             card1, card2, card3,
-            card1Title, card1Description, card1Rarity,
-            card2Title, card2Description, card2Rarity,
-            card3Title, card3Description, card3Rarity
+            card1Title, card1Description, card1Rarity, card1Icon,
+            card2Title, card2Description, card2Rarity, card2Icon,
+            card3Title, card3Description, card3Rarity, card3Icon
         };
         
         foreach (var element in elements)
@@ -148,13 +154,13 @@ public class LevelUpMenu : BaseMenu
         }
         
         // Update card 1
-        UpdateSingleCard(0, card1, card1Title, card1Description, card1Rarity, upgradeCards[0]);
+        UpdateSingleCard(0, card1, card1Title, card1Description, card1Rarity, card1Icon, upgradeCards[0]);
         
         // Update card 2
-        UpdateSingleCard(1, card2, card2Title, card2Description, card2Rarity, upgradeCards[1]);
+        UpdateSingleCard(1, card2, card2Title, card2Description, card2Rarity, card2Icon, upgradeCards[1]);
         
         // Update card 3
-        UpdateSingleCard(2, card3, card3Title, card3Description, card3Rarity, upgradeCards[2]);
+        UpdateSingleCard(2, card3, card3Title, card3Description, card3Rarity, card3Icon, upgradeCards[2]);
     }
     
     /// <summary>
@@ -165,8 +171,9 @@ public class LevelUpMenu : BaseMenu
     /// <param name="titleElement">The card title element</param>
     /// <param name="descriptionElement">The card description element</param>
     /// <param name="rarityElement">The card rarity element</param>
+    /// <param name="iconElement">The card icon element</param>
     /// <param name="upgradeCard">The upgrade card data</param>
-    private void UpdateSingleCard(int cardIndex, UIElement cardElement, UIElement titleElement, UIElement descriptionElement, UIElement rarityElement, UpgradeCard upgradeCard)
+    private void UpdateSingleCard(int cardIndex, UIElement cardElement, UIElement titleElement, UIElement descriptionElement, UIElement rarityElement, UIElement iconElement, UpgradeCard upgradeCard)
     {
         if (upgradeCard == null)
         {
@@ -174,11 +181,14 @@ public class LevelUpMenu : BaseMenu
             return;
         }
         
+        // Get display information from the upgrade card
+        var displayInfo = upgradeCard.GetDisplayInfo();
+        
         // Update text content
         if (titleElement != null && descriptionElement != null && rarityElement != null)
         {
-            titleElement.InnerRml = upgradeCard.Name;
-            descriptionElement.InnerRml = upgradeCard.Description;
+            titleElement.InnerRml = displayInfo.name;
+            descriptionElement.InnerRml = displayInfo.description;
             rarityElement.InnerRml = upgradeCard.Rarity.ToString();
         }
         else
@@ -200,6 +210,27 @@ public class LevelUpMenu : BaseMenu
             cardElement.SetClass(rarityClass, true);
             
             Log.Info($"LevelUpMenu: Applied rarity class '{rarityClass}' to card {cardIndex + 1}");
+        }
+        
+        // Apply ability icon styling
+        if (cardElement != null && iconElement != null)
+        {
+            // Remove all ability type classes from icon
+            RemoveAbilityClassesFromIcon(iconElement);
+            
+            // Add the appropriate ability class if we have an icon type from display info
+            if (!string.IsNullOrEmpty(displayInfo.iconType))
+            {
+                // Set ability class on icon element (shared styles in CommonMenu.rcss)
+                iconElement.SetClass(displayInfo.iconType, true);
+                iconElement.SetClass("has-ability", true);
+                Log.Info($"LevelUpMenu: Applied ability class '{displayInfo.iconType}' to card {cardIndex + 1} icon");
+            }
+            else
+            {
+                // No ability - ensure icon shows empty state
+                iconElement.SetClass("has-ability", false);
+            }
         }
     }
     
@@ -223,6 +254,32 @@ public class LevelUpMenu : BaseMenu
             default:
                 return "rarity-normal";
         }
+    }
+    
+    /// <summary>
+    /// Remove all ability type classes from an icon element.
+    /// </summary>
+    /// <param name="iconElement">The icon element to clean</param>
+    private void RemoveAbilityClassesFromIcon(UIElement iconElement)
+    {
+        if (iconElement == null)
+            return;
+        
+        // Remove ability-specific classes
+        iconElement.SetClass("fireball", false);
+        iconElement.SetClass("dash", false);
+        iconElement.SetClass("spark", false);
+        iconElement.SetClass("cube", false);
+        iconElement.SetClass("boomerang", false);
+        iconElement.SetClass("meteorshower", false);
+        iconElement.SetClass("blackhole", false);
+        iconElement.SetClass("plague", false);
+        
+        // Remove upgrade rarity classes
+        iconElement.SetClass("upgrade-normal", false);
+        iconElement.SetClass("upgrade-common", false);
+        iconElement.SetClass("upgrade-epic", false);
+        iconElement.SetClass("upgrade-legendary", false);
     }
     
     

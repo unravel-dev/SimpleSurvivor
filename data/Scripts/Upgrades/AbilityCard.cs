@@ -27,13 +27,12 @@ public class AbilityCard : UpgradeCard
     /// <param name="abilityType">Type of ability component to add</param>
     /// <param name="configureAbility">Optional configuration action for the ability</param>
     /// <param name="maxPicks">Maximum number of times this card can be picked. -1 = unlimited (default).</param>
-    public AbilityCard(string name, string description, UpgradeRarity rarity, Upgrade upgrade, Type abilityType, System.Action<ScriptComponent> configureAbility = null, int maxPicks = -1)
+    public AbilityCard(string name, UpgradeRarity rarity, Upgrade upgrade, Type abilityType, System.Action<ScriptComponent> configureAbility = null, int maxPicks = -1)
         : base(name, rarity, upgrade, maxPicks)
     {
         ValidateAbilityType(abilityType);
         AbilityType = abilityType;
         ConfigureAbility = configureAbility;
-        Description = description;
     }
     
     /// <summary>
@@ -45,13 +44,12 @@ public class AbilityCard : UpgradeCard
     /// <param name="abilityType">Type of ability component to add</param>
     /// <param name="configureAbility">Optional configuration action for the ability</param>
     /// <param name="maxPicks">Maximum number of times this card can be picked. -1 = unlimited (default).</param>
-    public AbilityCard(string name, string description, UpgradeRarity rarity, List<Upgrade> upgrades, Type abilityType, System.Action<ScriptComponent> configureAbility = null, int maxPicks = -1)
+    public AbilityCard(string name, UpgradeRarity rarity, List<Upgrade> upgrades, Type abilityType, System.Action<ScriptComponent> configureAbility = null, int maxPicks = -1)
         : base(name, rarity, upgrades, maxPicks)
     {
         ValidateAbilityType(abilityType);
         AbilityType = abilityType;
         ConfigureAbility = configureAbility;
-        Description = description;
     }
     
     /// <summary>
@@ -140,5 +138,21 @@ public class AbilityCard : UpgradeCard
             return false;
             
         return playerEntity.GetComponentInChildren(AbilityType) != null;
+    }
+    
+    /// <summary>
+    /// Get display information for the Ability Card.
+    /// Overrides base implementation to include ability icon type.
+    /// </summary>
+    /// <returns>Display information for the upgrade card.</returns>
+    public override UpgradeDisplayInfo GetDisplayInfo()
+    {
+        // Set icon type from the ability type
+        if (AbilityType != null)
+        {
+            return Ability.GetDisplayInfo(AbilityType);
+        }
+        
+        return base.GetDisplayInfo();
     }
 }

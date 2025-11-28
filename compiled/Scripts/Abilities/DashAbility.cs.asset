@@ -85,16 +85,17 @@ public class DashAbility : Ability
 
     
     /// <summary>
-    /// Get display information for UI.
+    /// Get display information for the Dash ability (static version).
     /// </summary>
-    /// <returns>Display information for the dash ability.</returns>
-    public override AbilityDisplayInfo GetDisplayInfo()
+    /// <returns>Display information for UI.</returns>
+    public static new UpgradeDisplayInfo GetDisplayInfo()
     {
-        AbilityDisplayInfo info = new AbilityDisplayInfo();
-        info.type = "dash";
+        UpgradeDisplayInfo info = new UpgradeDisplayInfo();
+        info.iconType = "dash";
         info.name = "Dash";
         info.icon = "➤";
         info.color = "rgba(100, 180, 255, 220)";
+        info.description = GetDescription();
         return info;
     }
     

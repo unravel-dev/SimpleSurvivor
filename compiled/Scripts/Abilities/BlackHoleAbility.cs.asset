@@ -192,19 +192,20 @@ public class BlackHoleAbility : Ability
     }
 
     /// <summary>
-    /// Get display information for the Black Hole ability.
+    /// Get display information for the Black Hole ability (static version).
     /// </summary>
     /// <returns>Display information for UI.</returns>
-    public override AbilityDisplayInfo GetDisplayInfo()
+    public static new UpgradeDisplayInfo GetDisplayInfo()
     {
-        AbilityDisplayInfo info = new AbilityDisplayInfo();
-        info.type = "blackhole";
+        UpgradeDisplayInfo info = new UpgradeDisplayInfo();
+        info.iconType = "blackhole";
         info.name = "Black Hole";
         info.icon = "B";
         info.color = "rgba(100, 50, 200, 180)"; // Purple/dark purple
+        info.description = GetDescription();
         return info;
     }
-
+    
     public static string GetDescription()
     {
         return "Creates a black hole at a random location that pulls enemies toward it.";

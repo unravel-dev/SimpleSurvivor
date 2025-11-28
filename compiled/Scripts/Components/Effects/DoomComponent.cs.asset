@@ -31,13 +31,6 @@ public class DoomComponent : DamageOverTimeComponent
     {
         return new Color(139, 0, 139, 255);
     }
-
-    public override void OnExpired()
-    {
-        base.OnExpired();
-        // Could add an explosion or additional effect here
-        Log.Info($"Doom effect expired on {owner.name}");
-    }
     
     
     /// <summary>

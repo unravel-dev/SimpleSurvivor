@@ -28,8 +28,6 @@ public class Enemy : ScriptComponent
     public Entity target;
     [Tooltip("Automatically find the player entity on start")]
     public bool autoFindPlayer = true;
-    [Tooltip("Maximum distance to chase the player (0 = unlimited)")]
-    public float maxChaseDistance = 0.0f;
     
     //[Header("Enemy Type")]
     [Tooltip("Enemy type identifier for loot configuration (e.g., 'basic', 'elite', 'boss')")]
@@ -41,10 +39,17 @@ public class Enemy : ScriptComponent
     [Tooltip("Interval between contact damage ticks (seconds)")]
     public float contactDamageInterval = 0.5f;
     
+    //[Header("Animations")]
+    [Tooltip("Animation clip for walking/moving")]
+    public AnimationClip walkAnimation;
+    [Tooltip("Animation clip for stun state (played looped)")]
+    public AnimationClip stunAnimation;
+    
     // Component references
     private TransformComponent transformComponent;
     private PhysicsComponent physicsComponent;
     private Health Health;
+    private AnimationComponent animationComponent;
 
     // Movement state
     private Vector3 lastPlayerPosition;
@@ -61,6 +66,7 @@ public class Enemy : ScriptComponent
         transformComponent = owner.GetComponent<TransformComponent>();
         physicsComponent = owner.GetComponent<PhysicsComponent>();
         Health = owner.GetComponent<Health>();
+        animationComponent = owner.GetComponent<AnimationComponent>();
         
         if (transformComponent == null)
         {
@@ -81,6 +87,11 @@ public class Enemy : ScriptComponent
         {
             // Subscribe to health events
             Health.OnDeath += OnEnemyDeath;
+        }
+        
+        if (animationComponent == null)
+        {
+            Log.Warning($"Enemy on {owner.name}: AnimationComponent not found! Animations will not play.");
         }
     }
     
@@ -103,10 +114,17 @@ public class Enemy : ScriptComponent
             FindPlayer();
         }
 
-        // Initialize last known player position
+        // Initialize last known player position and set chasing state
         if (target)
         {
             lastPlayerPosition = target.transform.position;
+            isChasing = true; // Start chasing if target exists
+            // Start walk animation when chasing begins
+            PlayWalkAnimation();
+        }
+        else
+        {
+            isChasing = false; // No target, don't chase
         }
 
     }
@@ -125,7 +143,7 @@ public class Enemy : ScriptComponent
         // Handle contact damage
         HandleContactDamage();
     }
-    
+
     /// <summary>
     /// Called at fixed intervals for physics-based movement.
     /// </summary>
@@ -133,7 +151,7 @@ public class Enemy : ScriptComponent
     {
         if (transformComponent == null || !target || !usePhysicsMovement || physicsComponent == null)
             return;
-            
+
         // Handle physics movement
         if (isChasing)
         {
@@ -159,58 +177,47 @@ public class Enemy : ScriptComponent
             return;
         }
         
+        // Only update movement if chasing is enabled
+        if (!isChasing)
+            return;
+        
         Vector3 playerPosition = target.transform.position;
         Vector3 enemyPosition = transformComponent.position;
         
         // Calculate distance to player
         float distanceToPlayer = Vector3.Distance(enemyPosition, playerPosition);
         
-        // Check if player is within chase range
-        bool shouldChase = maxChaseDistance <= 0 || distanceToPlayer <= maxChaseDistance;
+        // Calculate direction to player (only X and Z for top-down)
+        Vector3 toTarget = playerPosition - enemyPosition;
+        toTarget.y = 0; // Keep movement on horizontal plane
         
-        // Check if we should stop (arrived at player)
-        bool shouldStop = distanceToPlayer <= arriveRadius;
-        
-        if (shouldChase && !shouldStop)
+        if (toTarget.magnitude > 0.0001f)
         {
-            // Calculate direction to player (only X and Z for top-down)
-            Vector3 toTarget = playerPosition - enemyPosition;
-            toTarget.y = 0; // Keep movement on horizontal plane
-            
-            if (toTarget.magnitude > 0.0001f)
+            // Handle non-physics movement here (direct transform)
+            if (!usePhysicsMovement)
             {
-                // Handle non-physics movement here (direct transform)
-                if (!usePhysicsMovement)
-                {
-                    Vector3 directionToPlayer = toTarget.normalized;
-                    MoveTowardsPlayer(directionToPlayer, distanceToPlayer);
-                }
-                
-                // Rotate to face movement direction (for physics) or player (for direct movement)
-                if (usePhysicsMovement && physicsComponent != null)
-                {
-                    // Rotate to face velocity direction for physics movement
-                    Vector3 velocity = physicsComponent.velocity;
-                    velocity.y = 0;
-                    if (velocity.sqrMagnitude > 0.01f)
-                    {
-                        RotateTowardsDirection(velocity.normalized);
-                    }
-                }
-                else
-                {
-                    // Rotate to face player for direct movement
-                    RotateTowardsDirection(toTarget.normalized);
-                }
-                
-                isChasing = true;
-                lastPlayerPosition = playerPosition;
+                Vector3 directionToPlayer = toTarget.normalized;
+                MoveTowardsPlayer(directionToPlayer, distanceToPlayer);
             }
-        }
-        else
-        {
             
-            isChasing = false;
+            // Rotate to face movement direction (for physics) or player (for direct movement)
+            if (usePhysicsMovement && physicsComponent != null)
+            {
+                // Rotate to face velocity direction for physics movement
+                Vector3 velocity = physicsComponent.velocity;
+                velocity.y = 0;
+                if (velocity.sqrMagnitude > 0.01f)
+                {
+                    RotateTowardsDirection(velocity.normalized);
+                }
+            }
+            else
+            {
+                // Rotate to face player for direct movement
+                RotateTowardsDirection(toTarget.normalized);
+            }
+            
+            lastPlayerPosition = playerPosition;
         }
     }
     
@@ -380,19 +387,12 @@ public class Enemy : ScriptComponent
     }
     
     /// <summary>
-    /// Check if the target is within chase range.
+    /// Check if the target is set and valid.
     /// </summary>
-    /// <returns>True if target is in range, false otherwise.</returns>
+    /// <returns>True if target exists, false otherwise.</returns>
     public bool IsTargetInRange()
     {
-        if (!target || transformComponent == null)
-            return false;
-            
-        if (maxChaseDistance <= 0)
-            return true; // Unlimited range
-            
-        float distance = GetDistanceToTarget();
-        return distance <= maxChaseDistance;
+        return target && transformComponent != null;
     }
     
     /// <summary>
@@ -400,11 +400,15 @@ public class Enemy : ScriptComponent
     /// </summary>
     public void StopChasing()
     {
+        if (isChasing)
+        {
+            return;
+        }   
         isChasing = false;
-        
+        // Play stun animation looped (only if not already playing)
+        PlayStunAnimation();
         // Stop physics movement if using physics
         // Note: Physics velocity will be stopped in OnFixedUpdate when isChasing = false
-
     }
     
     /// <summary>
@@ -414,7 +418,13 @@ public class Enemy : ScriptComponent
     {
         if (target && (Health == null || !Health.IsDead()))
         {
+            if (isChasing)
+            {
+                return;
+            }
             isChasing = true;
+            // Blend to walk animation when resuming chase
+            PlayWalkAnimation();
         }
     }
     
@@ -514,5 +524,28 @@ public class Enemy : ScriptComponent
                 contactDamageTimer = 0.0f;
             }
         }
+    }
+    
+    /// <summary>
+    /// Play the walk animation, blending from current animation.
+    /// </summary>
+    private void PlayWalkAnimation()
+    {
+        if (animationComponent == null || walkAnimation == null)
+            return;
+        
+        // Blend to walk animation with 0.2s blend time, looped
+        animationComponent.Blend(walkAnimation, 0.2f, true, false);
+    }
+    
+    /// <summary>
+    /// Play the stun animation looped, only if not already playing (when not chasing).
+    /// </summary>
+    private void PlayStunAnimation()
+    {
+        if (animationComponent == null || stunAnimation == null)
+            return;
+        
+        animationComponent.Blend(stunAnimation, 0.2f, true, false);
     }
 }

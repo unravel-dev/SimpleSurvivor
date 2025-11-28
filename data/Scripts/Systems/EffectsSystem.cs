@@ -2,8 +2,8 @@ using System.Runtime.CompilerServices;
 using Unravel.Core;
 
 /// <summary>
-/// Static system that handles all ongoing effects like damage over time.
-/// Iterates over all entities with DamageOverTimeComponent each tick.
+/// Static system that handles all ongoing effects like damage over time and stuns.
+/// Iterates over all entities with EffectOverTime components each tick.
 /// </summary>
 [ScriptSourceFile]
 public static class EffectsSystem
@@ -15,40 +15,65 @@ public static class EffectsSystem
     public static void Tick(float deltaTime)
     {
         // Find all entities with DamageOverTimeComponent (includes derived types)
-        var entitiesWithEffects = Scene.FindEntitiesWithComponent<DamageOverTimeComponent>();
+        var entitiesWithDoT = Scene.FindEntitiesWithComponent<EffectOverTime>();
         
-        // Process each entity with effects
-        foreach (var entity in entitiesWithEffects)
+        // Process each entity with DoT effects
+        foreach (var entity in entitiesWithDoT)
         {
             if (!entity)
                 continue;
             
-            // Get all DamageOverTimeComponent components on this entity
-            var effects = entity.GetComponents<DamageOverTimeComponent>();
+            // Get all OverTimeEffect components on this entity
+            var effects = entity.GetComponents<EffectOverTime>();
             if (effects == null || effects.Length == 0)
                 continue;
-            
+
             // Process each effect on this entity (backwards to allow removal)
             for (int i = effects.Length - 1; i >= 0; i--)
             {
                 var effect = effects[i];
                 if (effect == null)
                     continue;
-                
+
                 // Update the effect and check if it should tick
                 effect.Update(deltaTime);
-                
+
+
+                bool isStun = effect is StunComponent;
+
                 // Check if effect is expired and remove it
                 if (effect.IsExpired())
                 {
+                    
+                    if (isStun)
+                    {
+                        var enemy = entity.GetComponent<Enemy>();
+                        if (enemy != null)
+                        {
+                            enemy.ResumeChasing();
+                        }
+                    }
                     // Call expiration callback
                     effect.OnExpired();
-                    
+
                     // Remove the component from the entity
                     entity.RemoveComponent(effect);
+
+                    continue;
+                }
+                
+                
+                if (isStun)
+                {
+                    var enemy = entity.GetComponent<Enemy>();
+                    if (enemy != null)
+                    {
+                        enemy.StopChasing();
+                    }
                 }
             }
         }
+    
     }
     
     /// <summary>
@@ -57,7 +82,7 @@ public static class EffectsSystem
     /// <typeparam name="T">Type of effect to check for.</typeparam>
     /// <param name="entity">Entity to check.</param>
     /// <returns>True if the entity has the effect.</returns>
-    public static bool HasEffect<T>(Entity entity) where T : DamageOverTimeComponent
+    public static bool HasEffect<T>(Entity entity) where T : EffectOverTime
     {
         if (!entity)
             return false;
@@ -71,7 +96,7 @@ public static class EffectsSystem
     /// <typeparam name="T">Type of effect to get.</typeparam>
     /// <param name="entity">Entity to check.</param>
     /// <returns>Array of effects of the specified type.</returns>
-    public static T[] GetEffects<T>(Entity entity) where T : DamageOverTimeComponent
+    public static T[] GetEffects<T>(Entity entity) where T : EffectOverTime
     {
         if (!entity)
             return new T[0];
@@ -121,6 +146,56 @@ public static class EffectsSystem
         }
         
         return effect;
+    }
+    
+    /// <summary>
+    /// Add or refresh a stun effect on an entity.
+    /// If the entity already has a StunComponent, refreshes its duration.
+    /// Otherwise, adds a new StunComponent.
+    /// </summary>
+    /// <param name="entity">Entity to apply the stun to.</param>
+    /// <param name="source">Entity that caused the stun.</param>
+    /// <param name="duration">Duration of the stun in seconds.</param>
+    /// <returns>The StunComponent that was added or refreshed, or null if failed.</returns>
+    public static StunComponent AddOrRefreshStun(Entity entity, Entity source, float duration)
+    {
+        if (!entity)
+            return null;
+            
+        // Try to find existing stun effect
+        StunComponent stun = entity.GetComponent<StunComponent>();
+
+        if (stun != null)
+        {
+            // Refresh existing stun (use longer duration)
+            if (duration > stun.GetRemainingDuration())
+            {
+                stun.Refresh(duration);
+            }
+        }
+        else
+        {
+            // Add new stun effect
+            stun = entity.AddComponent<StunComponent>();
+            if (stun != null)
+            {
+                stun.Initialize(source, duration);
+            }
+        }
+        
+        return stun;
+    }
+    
+    /// <summary>
+    /// Check if an entity has a stun effect.
+    /// </summary>
+    /// <param name="entity">Entity to check.</param>
+    /// <returns>True if entity has a StunComponent.</returns>
+    public static bool HasStun(Entity entity)
+    {
+        if (!entity)
+            return false;
+        return entity.GetComponent<StunComponent>() != null;
     }
 }
 

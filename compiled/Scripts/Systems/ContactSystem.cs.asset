@@ -373,14 +373,20 @@ public static class ContactSystem
             if (chainComponent.chainCount > 0)
             {
                 chainComponent.chainCount--;
-                chainComponent.visitedTargets.Add(target);
+                
+                // Only add to visited targets if not allowing revisits (bouncing behavior)
+                if (!chainComponent.allowRevisitTargets)
+                {
+                    chainComponent.visitedTargets.Add(target);
+                }
 
                 var sourcePosition = chainComponent.owner.transform.position;
 
                 QueryClosestTarget query = new QueryClosestTarget();
                 query.source = target;
                 query.maxRange = chainComponent.chainRange;
-                query.visitedTargets = chainComponent.visitedTargets;
+                // Only use visited targets list if not allowing revisits
+                query.visitedTargets = chainComponent.allowRevisitTargets ? null : chainComponent.visitedTargets;
                 Entity newTarget = FindClosestEnemy(query, target.layers);
 
                 if (!newTarget)
@@ -389,8 +395,8 @@ public static class ContactSystem
                     return ContactResult.Exhausted; // No new target to bounce to
                 }
 
-                // if the new target is already in the visited targets list, we looped back to the same target, so we clear the visited targets list
-                if (chainComponent.visitedTargets.Contains(newTarget))
+                // if the new target is already in the visited targets list and not allowing revisits, we looped back to the same target, so we clear the visited targets list
+                if (!chainComponent.allowRevisitTargets && chainComponent.visitedTargets.Contains(newTarget))
                 {
                     chainComponent.visitedTargets.Clear();
                 }
@@ -407,6 +413,8 @@ public static class ContactSystem
                     velocity = direction * velocity.magnitude;
                     iphysics.velocity = velocity;
                 }
+                
+                // Apply chain explosion if upgrade is active (area damage is handled in HandleAreaDamage when contact occurs)
 
             }
 
@@ -664,6 +672,13 @@ public static class ContactSystem
                     bleedOnHit.maxBleedStacks
                 );
             }
+        }
+        
+        // Check for StunOnHitComponent
+        var stunOnHit = source.GetComponent<StunOnHitComponent>();
+        if (stunOnHit != null)
+        {
+            EffectsSystem.AddOrRefreshStun(target, originalSource, stunOnHit.stunDuration);
         }
     }
     

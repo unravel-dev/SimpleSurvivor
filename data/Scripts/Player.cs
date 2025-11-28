@@ -162,6 +162,13 @@ public class Player : ScriptComponent
     /// </summary>
     public override void OnUpdate()
     {
+        // Update magnet effect duration and pickup range continuously
+        if (UpgradeSystem.GetMagnetMultiplier() > 1.0f)
+        {
+            UpgradeSystem.UpdateMagnetEffect(Time.deltaTime);
+            UpdatePickupRange();
+        }
+        
         if (initialUpdate)
         {
             ShowInitialAbilitySelection();
@@ -737,12 +744,12 @@ public class Player : ScriptComponent
     {
         if (Experience == null)
             return;
-            
+        
+        // ApplyPickupRadiusUpgrade already includes magnet multiplier
         float upgradedPickupRange = UpgradeSystem.ApplyPickupRadiusUpgrade(basePickupRange);
         Experience.SetPickupRange(upgradedPickupRange);
-        
-        Log.Info($"Player pickup range updated: {upgradedPickupRange}");
     }
+
 
     /// <summary>
     /// Update the GameHub ability slots based on current player abilities.

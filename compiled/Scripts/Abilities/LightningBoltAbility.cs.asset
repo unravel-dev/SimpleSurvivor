@@ -141,6 +141,32 @@ public class LightningBoltAbility : Ability
                 chainComponent.chainCount = UpgradeSystem.ApplyChainUpgrade(chainCount);
                 chainComponent.chainRange = UpgradeSystem.ApplyAreaOfEffectUpgrade(maxRange);
                 chainComponent.chainOffset = spawnOffset;
+                // Enable bouncing if upgrade is active
+                chainComponent.allowRevisitTargets = UpgradeSystem.HasLightningBouncing();
+            }
+            
+            // Add area damage component for chain explosions if upgrade is active
+            if (UpgradeSystem.HasLightningChainExplosion())
+            {
+                var areaDamageComponent = projectileEntity.AddComponent<AreaDamageComponent>();
+                if (areaDamageComponent != null)
+                {
+                    float explosionRadius = UpgradeSystem.GetLightningChainExplosionRadius();
+                    int explosionDamage = Mathf.RoundToInt(damage * (UpgradeSystem.GetLightningChainExplosionDamagePercent() / 100.0f));
+                    areaDamageComponent.explosionRadius = explosionRadius;
+                    areaDamageComponent.damage = explosionDamage;
+                    areaDamageComponent.excludeOriginalTarget = false; // Allow explosion to hit original target too
+                }
+            }
+            
+            // Add stun component if upgrade is active
+            if (UpgradeSystem.HasLightningStun())
+            {
+                var stunOnHitComponent = projectileEntity.AddComponent<StunOnHitComponent>();
+                if (stunOnHitComponent != null)
+                {
+                    stunOnHitComponent.stunDuration = UpgradeSystem.GetLightningStunDuration();
+                }
             }
 
             // Add split component if upgrade is active
@@ -176,19 +202,20 @@ public class LightningBoltAbility : Ability
     }
 
     /// <summary>
-    /// Get display information for the Lightning Bolt ability.
+    /// Get display information for the Lightning Bolt ability (static version).
     /// </summary>
     /// <returns>Display information for UI.</returns>
-    public override AbilityDisplayInfo GetDisplayInfo()
+    public static new UpgradeDisplayInfo GetDisplayInfo()
     {
-        AbilityDisplayInfo info = new AbilityDisplayInfo();
-        info.type = "spark";
+        UpgradeDisplayInfo info = new UpgradeDisplayInfo();
+        info.iconType = "spark";
         info.name = "Lightning Bolt";
         info.icon = "L";
         info.color = "rgba(100, 150, 255, 180)"; // Blue
+        info.description = GetDescription();
         return info;
     }
-
+    
     public static string GetDescription()
     {
         return "Shoots a lightning bolt at the nearest enemy, dealing damage and causing a chain reaction.";
