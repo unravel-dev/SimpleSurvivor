@@ -52,6 +52,18 @@ public class TopDownCamera : ScriptComponent
     [Tooltip("Speed of look-ahead offset transitions (higher = more responsive)")]
     public float lookAheadSpeed = 2.0f;
     
+    //[Header("Camera Shake Settings")]
+    [Tooltip("Enable camera shake when player takes damage")]
+    public bool enableCameraShake = true;
+    [Tooltip("Base shake intensity (multiplied by damage amount)")]
+    public float shakeIntensity = 0.5f;
+    [Tooltip("Base shake duration in seconds")]
+    public float shakeDuration = 0.3f;
+    [Tooltip("Shake decay curve (higher = faster decay)")]
+    public float shakeDecay = 2.0f;
+    [Tooltip("Maximum shake intensity (caps the shake strength)")]
+    public float maxShakeIntensity = 2.0f;
+    
     // Component references
     private CameraComponent cameraComponent;
     private TransformComponent transformComponent;
@@ -60,6 +72,12 @@ public class TopDownCamera : ScriptComponent
     private Vector3 velocity = Vector3.zero;
     private Vector3 targetPosition;
     private Vector3 lookAheadOffset = Vector3.zero;
+    
+    // Camera shake state
+    private float shakeTimer = 0.0f;
+    private float currentShakeIntensity = 0.0f;
+    private Vector3 shakeOffset = Vector3.zero;
+    private System.Random shakeRandom = new System.Random();
     
     /// <summary>
     /// Called when the script is created. Initialize component references.
@@ -113,6 +131,7 @@ public class TopDownCamera : ScriptComponent
         }
     }
     
+    
     /// <summary>
     /// Called every frame to update camera position (when not using physics movement).
     /// </summary>
@@ -120,6 +139,12 @@ public class TopDownCamera : ScriptComponent
     {
         if (cameraComponent == null || transformComponent == null || !target)
             return;
+            
+        // Update camera shake
+        if (enableCameraShake)
+        {
+            UpdateCameraShake();
+        }
             
         // Update camera following (only if not using physics movement)
         if (!usePhysicsMovement)
@@ -141,6 +166,12 @@ public class TopDownCamera : ScriptComponent
     {
         if (cameraComponent == null || transformComponent == null || !target)
             return;
+            
+        // Update camera shake
+        if (enableCameraShake)
+        {
+            UpdateCameraShake();
+        }
             
         // Update camera following (only if using physics movement)
         if (usePhysicsMovement)
@@ -170,10 +201,11 @@ public class TopDownCamera : ScriptComponent
         }
         
         // Move camera towards target
+        Vector3 finalPosition;
         if (smoothFollow)
         {
             // Use smooth damping for natural movement
-            transformComponent.position = Vector3.SmoothDamp(
+            finalPosition = Vector3.SmoothDamp(
                 transformComponent.position, 
                 targetPosition, 
                 ref velocity, 
@@ -185,12 +217,20 @@ public class TopDownCamera : ScriptComponent
         else
         {
             // Use linear interpolation for consistent speed
-            transformComponent.position = Vector3.MoveTowards(
+            finalPosition = Vector3.MoveTowards(
                 transformComponent.position, 
                 targetPosition, 
                 followSpeed * Time.deltaTime
             );
         }
+        
+        // Apply camera shake offset to final position
+        if (enableCameraShake)
+        {
+            finalPosition += shakeOffset;
+        }
+        
+        transformComponent.position = finalPosition;
     }
     
     /// <summary>
@@ -214,10 +254,11 @@ public class TopDownCamera : ScriptComponent
         }
         
         // Move camera towards target using fixed timestep
+        Vector3 finalPosition;
         if (smoothFollow)
         {
             // Use smooth damping for natural movement with fixed timestep
-            transformComponent.position = Vector3.SmoothDamp(
+            finalPosition = Vector3.SmoothDamp(
                 transformComponent.position, 
                 targetPosition, 
                 ref velocity, 
@@ -229,12 +270,20 @@ public class TopDownCamera : ScriptComponent
         else
         {
             // Use linear interpolation for consistent speed with fixed timestep
-            transformComponent.position = Vector3.MoveTowards(
+            finalPosition = Vector3.MoveTowards(
                 transformComponent.position, 
                 targetPosition, 
                 followSpeed * Time.fixedDeltaTime
             );
         }
+        
+        // Apply camera shake offset to final position
+        if (enableCameraShake)
+        {
+            finalPosition += shakeOffset;
+        }
+        
+        transformComponent.position = finalPosition;
     }
     
     /// <summary>
@@ -336,5 +385,73 @@ public class TopDownCamera : ScriptComponent
         transformComponent.position = targetPosition;
         velocity = Vector3.zero;
         lookAheadOffset = Vector3.zero;
+        shakeOffset = Vector3.zero;
+        shakeTimer = 0.0f;
+        currentShakeIntensity = 0.0f;
+    }
+    
+    /// <summary>
+    /// Trigger camera shake with specified intensity.
+    /// </summary>
+    /// <param name="intensityMultiplier">Multiplier for shake intensity (e.g., damage amount).</param>
+    public void TriggerShake(float intensityMultiplier = 1.0f)
+    {
+        if (!enableCameraShake)
+            return;
+            
+        // Scale damage to reasonable shake intensity (divide by 10 to normalize typical damage values)
+        // This means damage of 10 = 1.0x base intensity, damage of 50 = 5.0x base intensity
+        float scaledMultiplier = intensityMultiplier / 10.0f;
+        
+        // Calculate shake intensity based on damage (scaled by intensity multiplier)
+        float calculatedIntensity = shakeIntensity * scaledMultiplier;
+        
+        // Cap the intensity to prevent excessive shaking
+        calculatedIntensity = Mathf.Min(calculatedIntensity, maxShakeIntensity);
+        
+        // If already shaking, add to existing intensity (stacking)
+        currentShakeIntensity = Mathf.Max(currentShakeIntensity, calculatedIntensity);
+        
+        // Reset timer to full duration
+        shakeTimer = shakeDuration;
+    }
+    
+    /// <summary>
+    /// Update camera shake effect.
+    /// </summary>
+    private void UpdateCameraShake()
+    {
+        if (shakeTimer > 0.0f)
+        {
+            // Calculate shake decay (exponential decay)
+            float decayFactor = Mathf.Pow(shakeTimer / shakeDuration, shakeDecay);
+            float currentIntensity = currentShakeIntensity * decayFactor;
+            
+            // Generate random shake offset (perlin noise-like behavior using random)
+            float deltaTime = usePhysicsMovement ? Time.fixedDeltaTime : Time.deltaTime;
+            float randomX = (float)(shakeRandom.NextDouble() * 2.0 - 1.0) * currentIntensity;
+            float randomY = (float)(shakeRandom.NextDouble() * 2.0 - 1.0) * currentIntensity;
+            float randomZ = (float)(shakeRandom.NextDouble() * 2.0 - 1.0) * currentIntensity;
+            
+            // Smooth the shake offset for more natural movement
+            Vector3 targetShakeOffset = new Vector3(randomX, randomY, randomZ);
+            shakeOffset = Vector3.Lerp(shakeOffset, targetShakeOffset, 15.0f * deltaTime);
+            
+            // Update timer
+            shakeTimer -= deltaTime;
+            
+            if (shakeTimer <= 0.0f)
+            {
+                // Shake finished, reset
+                shakeTimer = 0.0f;
+                currentShakeIntensity = 0.0f;
+                shakeOffset = Vector3.zero;
+            }
+        }
+        else
+        {
+            // No shake active, ensure offset is zero
+            shakeOffset = Vector3.zero;
+        }
     }
 }

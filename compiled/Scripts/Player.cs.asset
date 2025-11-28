@@ -35,7 +35,9 @@ public class Player : ScriptComponent
     private PhysicsComponent physicsComponent;
     private TransformComponent transformComponent;
     private Health Health;
-    private Experience Experience;    
+    private Experience Experience;
+    private TopDownCamera cachedCamera; // Cached camera reference for shake
+    
     // Movement state
     private Vector3 inputDirection;
     private Vector3 currentVelocity;
@@ -344,12 +346,44 @@ public class Player : ScriptComponent
     {
         Log.Info($"Player took {damageAmount} damage - Health: {Health.GetCurrentHealth()}/{Health.GetMaxHealth()}");
         
-        // Could add damage reaction behaviors here, like:
-        // - Screen shake/flash
+        // Trigger camera shake
+        TriggerCameraShake(damageAmount);
+        
+        // Could add other damage reaction behaviors here, like:
+        // - Screen flash
         // - Play damage sound
         // - Show damage UI
         // - Brief invincibility frames
         // - Knockback effect
+    }
+    
+    /// <summary>
+    /// Trigger camera shake when player takes damage.
+    /// </summary>
+    /// <param name="damageAmount">Amount of damage taken (used to scale shake intensity).</param>
+    private void TriggerCameraShake(int damageAmount)
+    {
+        // Cache camera reference if not already cached
+        if (cachedCamera == null)
+        {
+            // Find the camera entity in the scene
+            var cameraEntity = Scene.FindEntityByName("Main Camera");
+            
+            if (!cameraEntity)
+            {
+                // Camera not found, skip shake
+                return;
+            }
+            
+            // Get the TopDownCamera component
+            cachedCamera = cameraEntity.GetComponent<TopDownCamera>();
+        }
+        
+        // Trigger shake if camera is available
+        if (cachedCamera != null)
+        {
+            cachedCamera.TriggerShake(damageAmount);
+        }
     }
     
     /// <summary>
