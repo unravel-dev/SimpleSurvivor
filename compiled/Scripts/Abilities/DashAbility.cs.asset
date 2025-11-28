@@ -11,13 +11,13 @@ using Unravel.Core;
 public class DashAbility : Ability
 {
     [Tooltip("Dash force/speed multiplier")]
-    public float dashForce = 30.0f;
+    public float dashForce = 22.0f;
     
     // Component references
     private PhysicsComponent physicsComponent;
     
     /// <summary>
-    /// Called when the script is created.
+    /// Called when the script is created.[]
     /// </summary>
     public override void OnCreate()
     {
@@ -75,10 +75,10 @@ public class DashAbility : Ability
         // This prevents the dash from being affected by current movement speed
         float currentSpeedInDashDirection = Vector3.Dot(currentVelocity, dashDirection);
         Vector3 velocityToCancel = dashDirection * currentSpeedInDashDirection;
-        physicsComponent.velocity -= velocityToCancel;
+        // physicsComponent.velocity -= velocityToCancel;
         
         // Apply dash impulse
-        Vector3 force = dashDirection * dashForce;
+        Vector3 force = dashDirection * (dashForce - velocityToCancel.magnitude);
         physicsComponent.ApplyForce(force, ForceMode.Impulse);
         return true;
     }
@@ -114,7 +114,7 @@ public class DashAbility : Ability
     public static void ConfigureAbility(DashAbility ability)
     {
         ability.cooldown = 3.0f;
-        ability.dashForce = 16.0f;
+        ability.dashForce = 22.0f;
     }
 }
 

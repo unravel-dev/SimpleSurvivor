@@ -2,7 +2,7 @@
  "entities": [
   {
    "prefab_uid": "10ef8358-c389-3a4b-896e-3f9e41e44097",
-   "id": 9437185,
+   "id": 8388609,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -169,7 +169,7 @@
       "max": 10.0
      },
      "lifetime": {
-      "count": 0.10000000149011612
+      "count": 0.05000000074505806
      },
      "velocity_gradient": {
       "points": [

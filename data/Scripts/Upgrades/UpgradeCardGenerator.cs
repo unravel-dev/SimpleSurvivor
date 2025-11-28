@@ -150,13 +150,15 @@ public static class UpgradeCardGenerator
     
     /// <summary>
     /// Generate a selection of ability cards only, excluding abilities the player already has.
+    /// If we run out of ability cards, fills remaining slots with regular upgrade cards.
     /// </summary>
     /// <param name="cardCount">Number of cards to generate (default 3).</param>
     /// <param name="ownedAbilityTypes">Set of ability types the player already owns.</param>
-    /// <returns>List of ability upgrade cards (or empty if no abilities available).</returns>
+    /// <returns>List of upgrade cards (ability cards + regular upgrades if needed).</returns>
     private static List<UpgradeCard> GenerateAbilityOnlySelectionExcludingOwned(int cardCount = 3, HashSet<Type> ownedAbilityTypes = null)
     {
         var allAbilityCards = GetAvailableAbilityCards();
+        
         var availableAbilityCards = new List<Func<UpgradeCard>>();
         
         // Filter out abilities the player already owns
@@ -174,30 +176,21 @@ public static class UpgradeCardGenerator
             }
         }
         
-        // If no abilities available, return empty list (caller should fall back to regular upgrades)
-        if (availableAbilityCards.Count == 0)
-        {
-            return new List<UpgradeCard>();
-        }
-        
         var cards = new List<UpgradeCard>();
         
-        // Pick random ability cards without duplicates if possible
-        var usedIndices = new HashSet<int>();
-        for (int i = 0; i < cardCount && cards.Count < availableAbilityCards.Count; i++)
+        // Pick random ability cards without duplicates by removing from the pool
+        for (int i = 0; i < cardCount; i++)
         {
-            int randomIndex;
-            int attempts = 0;
-            
-            // Try to avoid duplicates if we have enough unique abilities
-            do
+            // If we still have ability cards available, pick one
+            if (availableAbilityCards.Count > 0)
             {
-                randomIndex = Random.Range(0, availableAbilityCards.Count);
-                attempts++;
-            } while (usedIndices.Contains(randomIndex) && attempts < 10 && availableAbilityCards.Count > cardCount);
-            
-            usedIndices.Add(randomIndex);
-            cards.Add(availableAbilityCards[randomIndex]());
+                int randomIndex = Random.Range(0, availableAbilityCards.Count);
+                cards.Add(availableAbilityCards[randomIndex]());
+                
+                // Remove the chosen card from the pool to prevent duplicates
+                availableAbilityCards.RemoveAt(randomIndex);
+            }
+
         }
         
         return cards;

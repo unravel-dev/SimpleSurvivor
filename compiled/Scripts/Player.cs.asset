@@ -518,7 +518,7 @@ public class Player : ScriptComponent
         }
         
         // Generate upgrade card options (handles ability-only levels automatically)
-        var currentAbilities = owner.GetComponents<Ability>();
+        var currentAbilities = owner.GetComponentsInChildren<Ability>();
         currentUpgradeOptions = UpgradeCardGenerator.GenerateLevelUpSelection(level, currentAbilities, baseLuck);
         
         // Pass cards directly to the UI
