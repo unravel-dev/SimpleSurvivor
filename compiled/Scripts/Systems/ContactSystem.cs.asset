@@ -28,11 +28,11 @@ public static class ContactSystem
 {
     
     // Define the order of effect execution
-    static readonly System.Func<Entity, Entity, ContactResult>[] effectHandlers = 
+    static readonly System.Func<Entity, Entity, ContactResult>[] priorityHandlers = 
     {
         HandleSplit,
-        HandlePierce,
         HandleChain,
+        HandlePierce,
         // Add new effects here in order of priority
         // HandleBounce,
         // etc.
@@ -222,7 +222,7 @@ public static class ContactSystem
             bool shouldExtendLifetime = false;
             
             // Execute effects in order until one succeeds
-            foreach (var handler in effectHandlers)
+            foreach (var handler in priorityHandlers)
             {
                 ContactResult result = handler(source, target);
                 
@@ -282,11 +282,30 @@ public static class ContactSystem
         int damageAmount = damageComponent.GetDamage();
         if (damageAmount > 0)
         {
-            DamageBreakdown breakdown = UpgradeSystem.CalculateDamage(damageAmount);
+            DamageBreakdown breakdown;
+            
+            // Check if this damage should be affected by upgrades
+            if (damageComponent.affectedByUpgrades)
+            {
+                // Apply upgrade modifications (critical chance, damage multipliers, etc.)
+                breakdown = UpgradeSystem.CalculateDamage(damageAmount);
+            }
+            else
+            {
+                // Use base damage without upgrade modifications
+                breakdown = new DamageBreakdown
+                {
+                    amount = damageAmount,
+                    color = contactColor ?? Color.white,
+                    isCritical = false
+                };
+            }
+            
             if (contactColor != null)
             {
                 breakdown.color = contactColor.Value;
             }
+            
             DamageSystem.ApplyDamage(target, source, breakdown);
         }
         

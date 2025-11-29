@@ -136,6 +136,17 @@ public class Enemy : ScriptComponent
     {
         if (transformComponent == null || !target)
             return;
+        
+        // Check if stunned - if so, stop chasing
+        bool isStunned = owner.HasComponent<StunnedComponent>();
+        if (isStunned && isChasing)
+        {
+            StopChasing();
+        }
+        else if (!isStunned && !isChasing && target && (Health == null || !Health.IsDead()))
+        {
+            ResumeChasing();
+        }
             
         // Update AI behavior (decision making only)
         UpdateAI();
@@ -400,7 +411,7 @@ public class Enemy : ScriptComponent
     /// </summary>
     public void StopChasing()
     {
-        if (isChasing)
+        if (!isChasing)
         {
             return;
         }   

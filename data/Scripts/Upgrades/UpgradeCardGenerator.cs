@@ -8,52 +8,7 @@ using Unravel.Core;
 /// </summary>
 public static class UpgradeCardGenerator
 {
-    /// <summary>
-    /// Generate a random upgrade card of the specified rarity.
-    /// Automatically filters out cards with 0 remaining picks.
-    /// </summary>
-    /// <param name="rarity">The rarity level of the card to generate.</param>
-    /// <returns>A randomly selected upgrade card of the specified rarity.</returns>
-    public static UpgradeCard GenerateRandomCard(UpgradeRarity rarity)
-    {
-        var availableCards = GetAvailableCards(rarity);
-        
-        // Filter out cards with 0 remaining picks
-        var validCards = new List<System.Func<UpgradeCard>>();
-        foreach (var cardGenerator in availableCards)
-        {
-            UpgradeCard testCard = cardGenerator();
-            if (testCard.GetRemainingPicks() != 0) // -1 (unlimited) or >0 (has picks left)
-            {
-                validCards.Add(cardGenerator);
-            }
-        }
-        
-        // If no valid cards, fall back to all available cards
-        if (validCards.Count == 0)
-        {
-            validCards = availableCards;
-        }
-        
-        int randomIndex = Random.Range(0, validCards.Count);
-        return validCards[randomIndex]();
-    }
     
-    /// <summary>
-    /// Generate multiple random upgrade cards.
-    /// </summary>
-    /// <param name="count">Number of cards to generate.</param>
-    /// <param name="rarity">Rarity level for all cards.</param>
-    /// <returns>List of randomly generated upgrade cards.</returns>
-    public static List<UpgradeCard> GenerateRandomCards(int count, UpgradeRarity rarity)
-    {
-        var cards = new List<UpgradeCard>();
-        for (int i = 0; i < count; i++)
-        {
-            cards.Add(GenerateRandomCard(rarity));
-        }
-        return cards;
-    }
     
     /// <summary>
     /// Generate a selection of cards with mixed rarities for player choice.
@@ -64,12 +19,41 @@ public static class UpgradeCardGenerator
     public static List<UpgradeCard> GenerateCardSelection(int cardCount = 3, float playerLuck = 0.0f)
     {
         var cards = new List<UpgradeCard>();
-        
+   
+        var validCards = new List<System.Func<UpgradeCard>>();
+
+        UpgradeRarity previousRarity = UpgradeRarity.Normal;
         for (int i = 0; i < cardCount; i++)
         {
             // Weight rarity distribution based on player luck
             UpgradeRarity rarity = GetRandomWeightedRarity(playerLuck);
-            cards.Add(GenerateRandomCard(rarity));
+
+            if (rarity != previousRarity || validCards.Count == 0)
+            {
+                var availableCards = GetAvailableCards(rarity);
+
+                // Filter out cards with 0 remaining picks
+                foreach (var cardGenerator in availableCards)
+                {
+                    UpgradeCard testCard = cardGenerator();
+                    if (testCard.GetRemainingPicks() != 0) // -1 (unlimited) or >0 (has picks left)
+                    {
+                        validCards.Add(cardGenerator);
+                    }
+                }
+
+                if (validCards.Count == 0)
+                {
+                    validCards = availableCards;
+                }
+            }
+
+            int randomIndex = Random.Range(0, validCards.Count);
+            cards.Add(validCards[randomIndex]());
+
+            validCards.RemoveAt(randomIndex);
+            
+            previousRarity = rarity;
         }
    
         return cards;

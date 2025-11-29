@@ -523,15 +523,20 @@ public class Player : ScriptComponent
         ShowLevelUpMenu(newLevel);
     }
     
+    public void ShowUpgradeSelectionMenu()
+    {
+        ShowLevelUpMenu(GetLevel());
+    }
+    
     /// <summary>
     /// Show the initial ability selection menu at game start.
     /// </summary>
     private void ShowInitialAbilitySelection()
     {
-        
+
         var dashAbilityCard = UpgradeCardGenerator.GenerateBasicDashAbilityCard();
         dashAbilityCard.ApplyUpgrades();
-        
+
         ShowLevelUpMenu(0);
     }
     

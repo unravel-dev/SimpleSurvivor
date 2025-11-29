@@ -39,7 +39,7 @@ public class FireballAbility : Ability
         if (ability == null)
             return;
 
-        ability.damage = 10;
+        ability.damage = 20;
         ability.cooldown = 3.5f;
         ability.explosionRadius = 3.0f;
         ability.maxRange = 15.0f;

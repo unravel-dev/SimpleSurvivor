@@ -10,6 +10,9 @@ public class PhysicalDamageComponent : ScriptComponent
 {
     [Tooltip("Amount of physical damage this entity deals")]
     public int damage = 10;
+    
+    [Tooltip("Whether this damage should be affected by player upgrades (critical chance, damage multipliers, etc.)")]
+    public bool affectedByUpgrades = true;
 
     
     /// <summary>

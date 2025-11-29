@@ -2,7 +2,7 @@
  "entities": [
   {
    "prefab_uid": "b46d51d1-fea8-b14f-9a3a-0347104fe3a3",
-   "id": 16777218,
+   "id": 12,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -23,9 +23,9 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": 0.012458562850952149,
+       "x": -0.5653020739555359,
        "y": 0.0,
-       "z": 0.5576062202453613
+       "z": -7.113248825073242
       },
       "rotation": {
        "x": 0.0,
@@ -50,95 +50,6 @@
      },
      "children": [],
      "active": true
-    },
-    "has_model_component": true,
-    "model_component": {
-     "enabled": true,
-     "static": true,
-     "casts_shadow": true,
-     "casts_reflection": false,
-     "model": {
-      "lods": [
-       {
-        "uid": "b755a718-ef93-1552-bf79-f79c0e6973eb"
-       }
-      ],
-      "materials": [
-       {
-        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
-       }
-      ],
-      "material_instances": [
-       {
-        "polymorphic_id": 2147483649,
-        "polymorphic_name": "pbr_material",
-        "ptr_wrapper": {
-         "id": 2147483649,
-         "data": {
-          "base_type": {
-           "cull_type": 2
-          },
-          "base_color": {
-           "r": 0.0,
-           "g": 0.8117647171020508,
-           "b": 1.0,
-           "a": 1.0
-          },
-          "subsurface_color": {
-           "r": 0.0,
-           "g": 0.0,
-           "b": 0.0,
-           "a": 0.8196078538894653
-          },
-          "emissive_color": {
-           "r": 0.0,
-           "g": 0.7883815765380859,
-           "b": 1.0,
-           "a": 0.0
-          },
-          "surface_data": {
-           "x": 0.0,
-           "y": 0.0,
-           "z": 1.0,
-           "w": 0.25
-          },
-          "tiling": {
-           "x": 1.0,
-           "y": 1.0
-          },
-          "dither_threshold": {
-           "x": 0.5,
-           "y": 0.0
-          },
-          "color_map": {
-           "uid": "00000000-0000-0000-0000-000000000000"
-          },
-          "normal_map": {
-           "uid": "00000000-0000-0000-0000-000000000000"
-          },
-          "roughness_map": {
-           "uid": "00000000-0000-0000-0000-000000000000"
-          },
-          "metalness_map": {
-           "uid": "00000000-0000-0000-0000-000000000000"
-          },
-          "emissive_map": {
-           "uid": "00000000-0000-0000-0000-000000000000"
-          },
-          "ao_map": {
-           "uid": "00000000-0000-0000-0000-000000000000"
-          }
-         }
-        }
-       }
-      ],
-      "lod_limits": [
-       {
-        "min": 0,
-        "max": 100
-       }
-      ]
-     }
     },
     "has_physics_component": true,
     "physics_component": {
@@ -185,8 +96,8 @@
     "has_particle_emitter_component": true,
     "particle_emitter_component": {
      "enabled": true,
-     "shape": 2,
-     "direction": 0,
+     "shape": 0,
+     "direction": 2,
      "spawn_location": 0,
      "simulation_space": 0,
      "max_particles": 1024,
@@ -194,7 +105,7 @@
       "count": 2.0
      },
      "emission_shape_scale": {
-      "x": 0.8899999856948853,
+      "x": 0.5,
       "y": 0.5,
       "z": 0.5
      },
@@ -265,15 +176,15 @@
        {
         "progress": 0.0,
         "element": {
-         "min": 2.4000000953674318,
-         "max": 3.549999952316284
+         "min": 5.0,
+         "max": 9.800000190734864
         }
        },
        {
         "progress": 1.0,
         "element": {
-         "min": 1.2999999523162842,
-         "max": 6.099999904632568
+         "min": 0.550000011920929,
+         "max": 2.299999952316284
         }
        }
       ]
@@ -290,8 +201,8 @@
        {
         "progress": 1.0,
         "element": {
-         "min": 0.7400000095367432,
-         "max": 0.7400000095367432
+         "min": 0.30000001192092898,
+         "max": 0.4000000059604645
         }
        }
       ]
@@ -309,35 +220,89 @@
         }
        },
        {
-        "progress": 0.25,
+        "progress": 0.10116294026374817,
         "element": {
-         "r": 0.0,
-         "g": 0.8117647171020508,
-         "b": 1.0,
-         "a": 1.0
+         "r": 1.0,
+         "g": 0.0,
+         "b": 0.0,
+         "a": 0.5176470875740051
         }
        },
        {
-        "progress": 0.5,
+        "progress": 0.20465126633644105,
+        "element": {
+         "r": 0.2823529541492462,
+         "g": 1.0,
+         "b": 0.0,
+         "a": 0.886274516582489
+        }
+       },
+       {
+        "progress": 0.3302326202392578,
+        "element": {
+         "r": 0.10980392247438431,
+         "g": 0.0,
+         "b": 1.0,
+         "a": 0.7098039388656616
+        }
+       },
+       {
+        "progress": 0.43255823850631716,
+        "element": {
+         "r": 0.8784313797950745,
+         "g": 0.0,
+         "b": 1.0,
+         "a": 0.4901960790157318
+        }
+       },
+       {
+        "progress": 0.5069767236709595,
+        "element": {
+         "r": 0.3791753351688385,
+         "g": 0.9324618577957153,
+         "b": 0.0,
+         "a": 0.6540305614471436
+        }
+       },
+       {
+        "progress": 0.5999999642372131,
+        "element": {
+         "r": 1.0,
+         "g": 0.0,
+         "b": 0.6470588445663452,
+         "a": 0.8588235378265381
+        }
+       },
+       {
+        "progress": 0.7441860437393189,
         "element": {
          "r": 0.0,
          "g": 0.8117647171020508,
          "b": 1.0,
+         "a": 0.8352941274642944
+        }
+       },
+       {
+        "progress": 0.844186544418335,
+        "element": {
+         "r": 0.3568464517593384,
+         "g": 1.0,
+         "b": 0.0,
          "a": 0.2666666805744171
         }
        },
        {
         "progress": 1.0,
         "element": {
-         "r": 0.0,
-         "g": 0.8117647171020508,
-         "b": 1.0,
+         "r": 1.0,
+         "g": 0.07468879222869873,
+         "b": 0.0,
          "a": 0.0
         }
        }
       ]
      },
-     "position_easing": 0,
+     "position_easing": 36,
      "texture": {
       "uid": "4124b193-3b63-b246-a59b-3cd6ef50d701"
      },
@@ -348,7 +313,6 @@
      "script_components": [
       {
        "type": "MagnetLoot",
-       "duration": 0.10000000149011612,
        "baseAttractionSpeed": 15.0,
        "playerSpeedMultiplier": 1.5,
        "minimumAttractionSpeed": 12.0,
@@ -356,7 +320,8 @@
        "collectDistance": 1.0,
        "enableFloating": true,
        "floatSpeed": 2.0,
-       "floatAmplitude": 0.30000001192092898
+       "floatAmplitude": 0.30000001192092898,
+       "duration": 0.10000000149011612
       }
      ]
     }

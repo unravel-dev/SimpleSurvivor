@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.CompilerServices;
 using Unravel.Core;
-
+using System.Collections.Generic;
 /// <summary>
 /// Level director that provides spawning functionality for a top-down game.
 /// Spawns entities around the player at random positions within configurable ranges.
@@ -24,8 +24,13 @@ public class BasicLevelDirector : ScriptComponent
     //[Header("Enemy Spawning")]
     [Tooltip("Enemy prefab to spawn automatically")]
     public Prefab enemy;
+    public Prefab enemy1;
+    public Prefab enemy2;
     [Tooltip("Base number of spawns per second")]
     public float baseSpawnsPerSecond = 1.0f;
+    
+    // List of enemy prefabs for random selection
+    private List<Prefab> enemyPrefabs = new List<Prefab>();
     [Tooltip("Base minimum number of enemies to maintain")]
     public int baseMinEnemies = 20;
     [Tooltip("Additional enemies per player level")]
@@ -80,7 +85,7 @@ public class BasicLevelDirector : ScriptComponent
     private Experience playerExperience;
     
     // Base damage tracking (to preserve original values for scaling)
-    private System.Collections.Generic.Dictionary<Entity, int> enemyBaseDamage = new System.Collections.Generic.Dictionary<Entity, int>();
+    private Dictionary<Entity, int> enemyBaseDamage = new Dictionary<Entity, int>();
     
     /// <summary>
     /// Called when the script is created.
@@ -96,6 +101,9 @@ public class BasicLevelDirector : ScriptComponent
     {
         // Initialize scaling system
         gameStartTime = Time.time;
+        
+        // Initialize enemy prefab list
+        InitializeEnemyPrefabList();
         
         // Auto-find player
         if (!player)
@@ -118,12 +126,40 @@ public class BasicLevelDirector : ScriptComponent
     }
     
     /// <summary>
+    /// Initialize the list of enemy prefabs from the assigned prefab fields.
+    /// </summary>
+    private void InitializeEnemyPrefabList()
+    {
+        enemyPrefabs.Clear();
+        
+        // Add enemy prefabs if they are assigned
+        if (enemy != null)
+        {
+            enemyPrefabs.Add(enemy);
+        }
+        if (enemy1 != null)
+        {
+            enemyPrefabs.Add(enemy1);
+        }
+        if (enemy2 != null)
+        {
+            enemyPrefabs.Add(enemy2);
+        }
+        
+        // Log warning if no enemy prefabs are assigned
+        if (enemyPrefabs.Count == 0)
+        {
+            Log.Warning("BasicLevelDirector: No enemy prefabs assigned! Enemy spawning will not work.");
+        }
+    }
+    
+    /// <summary>
     /// Called every frame to handle intelligent enemy spawning.
     /// </summary>
     public override void OnUpdate()
     {
-        // Only spawn if auto-spawning is enabled and we have an enemy prefab
-        if (!enableAutoSpawning || enemy == null)
+        // Only spawn if auto-spawning is enabled and we have enemy prefabs
+        if (!enableAutoSpawning || enemyPrefabs.Count == 0)
             return;
             
         // Update enemy count
@@ -147,20 +183,26 @@ public class BasicLevelDirector : ScriptComponent
         
         if (shouldSpawn)
         {
-            // Try to spawn an enemy
-            Entity spawnedEnemy = SpawnAroundPlayer(enemy);
+            // Get a random enemy prefab from the list
+            Prefab enemyPrefabToSpawn = GetRandomEnemyPrefab();
             
-            if (spawnedEnemy != Entity.Invalid)
+            if (enemyPrefabToSpawn != null)
             {
-                // Apply scaling to the spawned enemy
-                if (enableEnemyScaling)
-                {
-                    ApplyEnemyScaling(spawnedEnemy);
-                }
+                // Try to spawn an enemy
+                Entity spawnedEnemy = SpawnAroundPlayer(enemyPrefabToSpawn);
                 
-                // Reset timer and increment count
-                timeSinceLastSpawn = 0.0f;
-                currentEnemyCount++;
+                if (spawnedEnemy != Entity.Invalid)
+                {
+                    // Apply scaling to the spawned enemy
+                    if (enableEnemyScaling)
+                    {
+                        ApplyEnemyScaling(spawnedEnemy);
+                    }
+                    
+                    // Reset timer and increment count
+                    timeSinceLastSpawn = 0.0f;
+                    currentEnemyCount++;
+                }
             }
         }
     }
@@ -475,7 +517,14 @@ public class BasicLevelDirector : ScriptComponent
                 // Store base damage for future scaling
                 enemyBaseDamage[enemy] = baseEnemyDamage;
                 damageComponent.SetDamage(baseEnemyDamage);
+                // Enemy damage should not be affected by player upgrades
+                damageComponent.affectedByUpgrades = false;
             }
+        }
+        else
+        {
+            // Ensure existing damage component has the flag set correctly
+            damageComponent.affectedByUpgrades = false;
         }
         
         if (damageComponent != null)
@@ -816,6 +865,19 @@ public class BasicLevelDirector : ScriptComponent
     }
     
     /// <summary>
+    /// Get a random enemy prefab from the list.
+    /// </summary>
+    /// <returns>A random enemy prefab, or null if no prefabs are available.</returns>
+    private Prefab GetRandomEnemyPrefab()
+    {
+        if (enemyPrefabs.Count == 0)
+            return null;
+        
+        int randomIndex = Random.Range(0, enemyPrefabs.Count);
+        return enemyPrefabs[randomIndex];
+    }
+    
+    /// <summary>
     /// Force spawn enemies to reach target count immediately.
     /// </summary>
     public void ForceSpawnToTarget()
@@ -823,10 +885,27 @@ public class BasicLevelDirector : ScriptComponent
         int targetCount = GetTargetEnemyCount();
         int enemiesToSpawn = targetCount - currentEnemyCount;
         
-        if (enemiesToSpawn > 0)
+        if (enemiesToSpawn > 0 && enemyPrefabs.Count > 0)
         {
-            var spawned = SpawnMultipleAroundPlayer(enemy, enemiesToSpawn);
-            currentEnemyCount += spawned.Length;
+            // Spawn enemies using random prefabs
+            for (int i = 0; i < enemiesToSpawn; i++)
+            {
+                Prefab enemyPrefabToSpawn = GetRandomEnemyPrefab();
+                if (enemyPrefabToSpawn != null)
+                {
+                    Entity spawned = SpawnAroundPlayer(enemyPrefabToSpawn);
+                    if (spawned != Entity.Invalid)
+                    {
+                        currentEnemyCount++;
+                        
+                        // Apply scaling if enabled
+                        if (enableEnemyScaling)
+                        {
+                            ApplyEnemyScaling(spawned);
+                        }
+                    }
+                }
+            }
         }
     }
     

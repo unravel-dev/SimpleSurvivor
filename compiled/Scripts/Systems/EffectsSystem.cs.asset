@@ -44,15 +44,12 @@ public static class EffectsSystem
                 // Check if effect is expired and remove it
                 if (effect.IsExpired())
                 {
-                    
+                    // Remove stun marker component when stun expires
                     if (isStun)
                     {
-                        var enemy = entity.GetComponent<Enemy>();
-                        if (enemy != null)
-                        {
-                            enemy.ResumeChasing();
-                        }
+                        entity.RemoveComponent<StunnedComponent>();
                     }
+                    
                     // Call expiration callback
                     effect.OnExpired();
 
@@ -62,14 +59,10 @@ public static class EffectsSystem
                     continue;
                 }
                 
-                
-                if (isStun)
+                // Add stun marker component when stun is active
+                if (isStun && !entity.HasComponent<StunnedComponent>())
                 {
-                    var enemy = entity.GetComponent<Enemy>();
-                    if (enemy != null)
-                    {
-                        enemy.StopChasing();
-                    }
+                    entity.AddComponent<StunnedComponent>();
                 }
             }
         }
