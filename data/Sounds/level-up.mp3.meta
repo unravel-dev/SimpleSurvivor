@@ -1,0 +1,17 @@
+{
+ "meta": {
+  "type": ".mp3",
+  "uid": "f8aed064-ffc9-9243-b46e-bc5440d6a054",
+  "importer": {
+   "polymorphic_id": 2147483649,
+   "polymorphic_name": "audio_importer_meta",
+   "ptr_wrapper": {
+    "id": 2147483649,
+    "data": {
+     "base_type": {},
+     "force_to_mono": false
+    }
+   }
+  }
+ }
+}

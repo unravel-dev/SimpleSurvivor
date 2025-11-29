@@ -419,6 +419,10 @@ public class Player : ScriptComponent
         targetVelocity = Vector3.zero;
         inputDirection = Vector3.zero;
         
+        var gameOverSound = Assets.GetAsset<AudioClip>("app:/data/Sounds/game-over.mp3");
+        var source = AudioSourceComponent.PlayClipAtPoint(gameOverSound, transformComponent.position, 1.0f);
+        source.maxDistance = 100.0f;
+
         // Show game over menu
         var gameUI = GameUI.FindInScene();
         if (gameUI != null)
@@ -562,6 +566,10 @@ public class Player : ScriptComponent
             Log.Warning("Player: LevelUpUI script component not found - cannot show level up menu");
             return;
         }
+
+        var levelUpSound = Assets.GetAsset<AudioClip>("app:/data/Sounds/level-up.mp3");
+        var source = AudioSourceComponent.PlayClipAtPoint(levelUpSound, transformComponent.position, 1.0f);
+        source.maxDistance = 100.0f;
         
         // Generate upgrade card options (handles ability-only levels automatically)
         var currentAbilities = owner.GetComponentsInChildren<Ability>();

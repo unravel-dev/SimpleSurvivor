@@ -27,6 +27,9 @@ public class FireballAbility : Ability
     [Tooltip("Spawn offset from the caster")]
     public Vector3 spawnOffset = Vector3.up;
 
+    [Tooltip("Sound to play when casting the ability")]
+    public AudioClip castSound;
+
     private TransformComponent transformComponent;
 
 
@@ -57,6 +60,12 @@ public class FireballAbility : Ability
             fireballPrefab = Assets.GetAsset<Prefab>("app:/data/Abilities/Fireball.pfb");
         }
 
+        // Load default cast sound if not assigned
+        if (castSound == null)
+        {
+            castSound = Assets.GetAsset<AudioClip>("app:/data/Sounds/fireball/fireball-cast.mp3");
+        }
+
         // Set default cooldown if not set
         if (cooldown <= 0)
         {
@@ -74,6 +83,23 @@ public class FireballAbility : Ability
         query.source = owner;
         query.maxRange = UpgradeSystem.ApplyAreaOfEffectUpgrade(maxRange);
         return ContactSystem.FindClosestEnemies(query, LayerMask.GetMask("Enemy"));
+    }
+
+    
+    public override bool TriggerAbility()
+    {
+        if(!base.TriggerAbility())
+        {
+            return false;
+        }
+
+        if (castSound != null)
+        {
+            var source = AudioSourceComponent.PlayClipAtPoint(castSound, transformComponent.position, 1.0f);
+            source.maxDistance = 100.0f;
+        }
+
+        return true;
     }
 
     /// <summary>

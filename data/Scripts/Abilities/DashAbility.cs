@@ -13,6 +13,9 @@ public class DashAbility : Ability
     [Tooltip("Dash force/speed multiplier")]
     public float dashForce = 22.0f;
     
+    [Tooltip("Duration of invulnerability frames during dash (in seconds)")]
+    public float invulnerabilityDuration = 0.3f;
+    
     // Component references
     private PhysicsComponent physicsComponent;
     
@@ -77,9 +80,14 @@ public class DashAbility : Ability
         Vector3 velocityToCancel = dashDirection * currentSpeedInDashDirection;
         // physicsComponent.velocity -= velocityToCancel;
         
+        float upgradedDashForce = UpgradeSystem.ApplyMovementSpeedUpgrade(dashForce);
         // Apply dash impulse
-        Vector3 force = dashDirection * (dashForce - velocityToCancel.magnitude);
+        Vector3 force = dashDirection * (upgradedDashForce- velocityToCancel.magnitude);
         physicsComponent.ApplyForce(force, ForceMode.Impulse);
+        
+        // Grant invulnerability during dash
+        GrantDashInvulnerability();
+        
         return true;
     }
 
@@ -100,12 +108,43 @@ public class DashAbility : Ability
     }
     
     /// <summary>
+    /// Grant invulnerability frames during dash.
+    /// </summary>
+    private void GrantDashInvulnerability()
+    {
+        if (invulnerabilityDuration <= 0.0f)
+            return;
+            
+        // Get or add InvulnerabilityComponent to the owner entity
+        // Check parent entity first (player entity), then owner itself
+        Entity targetEntity = owner;
+        if (owner.transform.parent != null)
+        {
+            targetEntity = owner.transform.parent;
+        }
+        
+        if (!targetEntity)
+            return;
+            
+        var invulnerabilityComponent = targetEntity.GetComponent<InvulnerabilityComponent>();
+        if (invulnerabilityComponent == null)
+        {
+            invulnerabilityComponent = targetEntity.AddComponent<InvulnerabilityComponent>();
+        }
+        
+        if (invulnerabilityComponent != null)
+        {
+            invulnerabilityComponent.GrantInvulnerability(invulnerabilityDuration);
+        }
+    }
+    
+    /// <summary>
     /// Get a description of the dash ability.
     /// </summary>
     /// <returns>Description string.</returns>
     public static string GetDescription()
     {
-        return "Quickly dash in the movement direction. Activated with Space key. 3 second cooldown.";
+        return "Quickly dash in the movement direction, gaining brief invulnerability. Activated with Space key. 3 second cooldown.";
     }
     
     /// <summary>
@@ -116,6 +155,7 @@ public class DashAbility : Ability
     {
         ability.cooldown = 3.0f;
         ability.dashForce = 22.0f;
+        ability.invulnerabilityDuration = 0.3f; // 200ms of invulnerability frames
     }
 }
 

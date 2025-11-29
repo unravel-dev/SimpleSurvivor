@@ -37,6 +37,13 @@ public static class DamageSystem
         if (healthComponent == null)
             return false;
 
+        // Check if target is invulnerable (component presence indicates invulnerability)
+        if (target.HasComponent<InvulnerabilityComponent>())
+        {
+            // Entity is invulnerable, damage is blocked
+            return false;
+        }
+
         // Store health before damage
         float healthBefore = healthComponent.GetCurrentHealth();
         bool wasAlive = !healthComponent.IsDead();

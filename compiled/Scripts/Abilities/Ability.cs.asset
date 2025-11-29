@@ -77,7 +77,7 @@ public abstract class Ability : ScriptComponent
     /// Handles multicast upgrades automatically.
     /// </summary>
     /// <returns>True if ability was successfully triggered.</returns>
-    public bool TriggerAbility()
+    public virtual bool TriggerAbility()
     {
         if (!CanTriggerAbility())
         {

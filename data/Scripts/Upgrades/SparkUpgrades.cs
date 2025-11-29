@@ -2,7 +2,7 @@ using System.Runtime.CompilerServices;
 using Unravel.Core;
 
 /// <summary>
-/// Lightning Bolt specific upgrades.
+/// Spark specific upgrades.
 /// </summary>
 [ScriptSourceFile]
 public class LightningSplitUpgrade : Upgrade
@@ -10,7 +10,7 @@ public class LightningSplitUpgrade : Upgrade
     public int SplitCount { get; set; }
 
     public LightningSplitUpgrade(int splitCount = 2)
-        : base("Lightning Split", $"Lightning Bolt can split {splitCount} times, creating 2 projectiles each split")
+        : base("Lightning Split", $"Spark can split {splitCount} times, creating 2 projectiles each split")
     {
         SplitCount = splitCount;
     }
@@ -29,7 +29,7 @@ public class LightningSplitUpgrade : Upgrade
 }
 
 /// <summary>
-/// Upgrade that makes Lightning Bolt chains create explosions.
+/// Upgrade that makes Spark chains create explosions.
 /// </summary>
 public class LightningChainExplosionUpgrade : Upgrade
 {
@@ -67,7 +67,7 @@ public class LightningChainExplosionUpgrade : Upgrade
 }
 
 /// <summary>
-/// Upgrade that makes Lightning Bolt chains stun enemies.
+/// Upgrade that makes Spark chains stun enemies.
 /// </summary>
 public class LightningStunUpgrade : Upgrade
 {
@@ -97,7 +97,7 @@ public class LightningStunUpgrade : Upgrade
 }
 
 /// <summary>
-/// Upgrade that makes Lightning Bolt bounce between enemies instead of chaining normally.
+/// Upgrade that makes Spark bounce between enemies instead of chaining normally.
 /// </summary>
 public class LightningBouncingUpgrade : Upgrade
 {

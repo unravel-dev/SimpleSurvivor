@@ -708,7 +708,7 @@ public class BasicLevelDirector : ScriptComponent
     {
         int playerLevel = GetPlayerLevel();
         int targetCount = baseMinEnemies + (playerLevel - 1) * enemiesPerLevel;
-        return Mathf.Min(targetCount, maxEnemies);
+        return targetCount;
     }
     
     /// <summary>
@@ -741,8 +741,8 @@ public class BasicLevelDirector : ScriptComponent
         float desiredMultiplier = 1.0f;
         if (currentKillRate > targetKillRate * 1.2f) // Player is killing 20% faster than spawn rate
         {
-            // Increase spawn rate to maintain challenge
-            desiredMultiplier = Mathf.Min(currentKillRate / targetKillRate, maxSpawnRateMultiplier);
+            // Increase spawn rate to maintain challenge (unbounded)
+            desiredMultiplier = currentKillRate / targetKillRate;
         }
         else if (currentKillRate < targetKillRate * 0.8f) // Player is killing 20% slower than spawn rate
         {
@@ -826,10 +826,6 @@ public class BasicLevelDirector : ScriptComponent
     /// <returns>True if we should spawn</returns>
     private bool ShouldSpawnEnemy(int targetCount, float spawnInterval)
     {
-        // Always respect the maximum enemy limit
-        if (currentEnemyCount >= maxEnemies)
-            return false;
-            
         // If we're below the minimum, spawn more aggressively
         if (currentEnemyCount < targetCount)
         {

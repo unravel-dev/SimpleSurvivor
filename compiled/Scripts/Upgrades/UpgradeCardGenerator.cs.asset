@@ -188,7 +188,7 @@ public static class UpgradeCardGenerator
     {
         return new List<System.Func<UpgradeCard>>
         {
-            () => GenerateBasicLightningBoltAbilityCard(),
+            () => GenerateBasicSparkAbilityCard(),
             () => GenerateBasicFireballAbilityCard(),
             () => GenerateBasicBoomerangBladeAbilityCard(),
             () => GenerateBasicMeteorShowerAbilityCard(),
@@ -438,7 +438,7 @@ public static class UpgradeCardGenerator
                 
             // Lightning Bolt upgrades (Common)
             () => new UpgradeCard("Stun Chain", UpgradeRarity.Common, 
-                LightningStunUpgrade.Generate(0.5f, 1.0f), -1, typeof(LightningBoltAbility)),
+                LightningStunUpgrade.Generate(0.5f, 1.0f), -1, typeof(SparkAbility)),
                 
             // Black Hole upgrades (Common)
             () => new UpgradeCard("Cursed Vortex", UpgradeRarity.Common, 
@@ -498,7 +498,7 @@ public static class UpgradeCardGenerator
                 
             // Chain - reduced from 1-3 to 1-2
             () => new UpgradeCard("Chain Lightning", UpgradeRarity.Epic, 
-                ChainUpgrade.Generate(1, 2), -1, typeof(LightningBoltAbility)),
+                ChainUpgrade.Generate(1, 2), -1, typeof(SparkAbility)),
                 
             () => new UpgradeCard("Enduring Power", UpgradeRarity.Epic, 
                 DurationUpgrade.Generate(22.0f, 35.0f)),
@@ -566,13 +566,13 @@ public static class UpgradeCardGenerator
                 
             // Lightning Bolt upgrades (Epic)
             () => new UpgradeCard("Chain Explosion", UpgradeRarity.Epic, 
-                LightningChainExplosionUpgrade.Generate(2.0f, 3.0f, 40.0f, 60.0f), -1, typeof(LightningBoltAbility)),
+                LightningChainExplosionUpgrade.Generate(2.0f, 3.0f, 40.0f, 60.0f), -1, typeof(SparkAbility)),
                 
             () => new UpgradeCard("Stun Chain+", UpgradeRarity.Epic, 
-                LightningStunUpgrade.Generate(1.0f, 1.5f), -1, typeof(LightningBoltAbility)),
+                LightningStunUpgrade.Generate(1.0f, 1.5f), -1, typeof(SparkAbility)),
                 
             () => new UpgradeCard("Bouncing Lightning", UpgradeRarity.Epic, 
-                LightningBouncingUpgrade.Generate(), -1, typeof(LightningBoltAbility)),
+                LightningBouncingUpgrade.Generate(), -1, typeof(SparkAbility)),
                 
             // Black Hole upgrades (Epic)
             () => new UpgradeCard("Cursed Vortex+", UpgradeRarity.Epic, 
@@ -625,7 +625,7 @@ public static class UpgradeCardGenerator
                 {
                     ChainUpgrade.Generate(2, 3),
                     DamageUpgrade.Generate(18.0f, 28.0f)
-                }, 1, typeof(LightningBoltAbility)),
+                }, 1, typeof(SparkAbility)),
                 
             () => new UpgradeCard("Immortal Guardian", UpgradeRarity.Legendary, 
                 new List<Upgrade>
@@ -720,7 +720,7 @@ public static class UpgradeCardGenerator
                 new List<Upgrade>
                 {
                     LightningSplitUpgrade.Generate(2, 3)
-                }, 1, typeof(LightningBoltAbility)),
+                }, 1, typeof(SparkAbility)),
                 
             () => new UpgradeCard("Storm Master", UpgradeRarity.Legendary, 
                 new List<Upgrade>
@@ -728,7 +728,7 @@ public static class UpgradeCardGenerator
                     LightningChainExplosionUpgrade.Generate(3.0f, 4.0f, 60.0f, 80.0f),
                     LightningStunUpgrade.Generate(1.5f, 2.0f),
                     LightningBouncingUpgrade.Generate()
-                }, -1, typeof(LightningBoltAbility)),
+                }, -1, typeof(SparkAbility)),
                 
             () => new UpgradeCard("Eternal Void", UpgradeRarity.Legendary, 
                 new List<Upgrade>
@@ -753,19 +753,19 @@ public static class UpgradeCardGenerator
     /// <summary>
     /// Generate a basic lightning bolt ability card without additional upgrades (for initial selection).
     /// </summary>
-    /// <returns>AbilityCard with basic LightningBoltAbility</returns>
-    private static AbilityCard GenerateBasicLightningBoltAbilityCard()
+    /// <returns>AbilityCard with basic SparkAbility</returns>
+    private static AbilityCard GenerateBasicSparkAbilityCard()
     {
         return new AbilityCard(
-            LightningBoltAbility.GetDisplayInfo().name, 
+            SparkAbility.GetDisplayInfo().name, 
             UpgradeRarity.Legendary,
             new List<Upgrade>(),
-            typeof(LightningBoltAbility),
+            typeof(SparkAbility),
             (ability) => {
-                var lightningBoltAbility = ability as LightningBoltAbility;
-                if (lightningBoltAbility != null)
+                var sparkAbility = ability as SparkAbility;
+                if (sparkAbility != null)
                 {
-                    LightningBoltAbility.ConfigureAbility(lightningBoltAbility);
+                    SparkAbility.ConfigureAbility(sparkAbility);
                 }
             }
         );
