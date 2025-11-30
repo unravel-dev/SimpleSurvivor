@@ -165,11 +165,11 @@ public class BlackHoleAbility : Ability
             pullComponent.distanceBasedStrength = true;
             pullComponent.minStrengthMultiplier = 0.3f;
             pullComponent.pullLayerMask = LayerMask.GetMask("Enemy");
-            pullComponent.callbackInterval = 0.25f;
+            pullComponent.callbackInterval = 0.5f;
             pullComponent.onAffectedEntities = (entities) => {
                 // Calculate damage per tick
                 float damagePerTick = doomDamage * pullComponent.callbackInterval;
-                float duration = 3.0f;
+                float duration = 2.0f;
                 foreach (var entity in entities)
                 {
                     // Apply multiple stacks of Doom at once (based on upgrades)

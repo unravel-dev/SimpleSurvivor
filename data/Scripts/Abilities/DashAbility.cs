@@ -14,7 +14,7 @@ public class DashAbility : Ability
     public float dashForce = 22.0f;
     
     [Tooltip("Duration of invulnerability frames during dash (in seconds)")]
-    public float invulnerabilityDuration = 0.3f;
+    public float invulnerabilityDuration = 0.5f;
     
     // Component references
     private PhysicsComponent physicsComponent;
@@ -51,9 +51,13 @@ public class DashAbility : Ability
     /// <param name="castIndex">Cast index for multicast (not used for dash).</param>
     protected override bool OnTriggerAbility(Entity[] targets, int castIndex)
     {
+        if(castIndex > 0)
+        {
+            return false;
+        }
         if (Input.IsPressed(KeyCode.Space))
         {
-            return PerformDash();  
+            return PerformDash();
         }
         return false;
     }
@@ -132,10 +136,7 @@ public class DashAbility : Ability
             invulnerabilityComponent = targetEntity.AddComponent<InvulnerabilityComponent>();
         }
         
-        if (invulnerabilityComponent != null)
-        {
-            invulnerabilityComponent.GrantInvulnerability(invulnerabilityDuration);
-        }
+        invulnerabilityComponent.GrantInvulnerability(invulnerabilityDuration);
     }
     
     /// <summary>
@@ -155,7 +156,7 @@ public class DashAbility : Ability
     {
         ability.cooldown = 3.0f;
         ability.dashForce = 22.0f;
-        ability.invulnerabilityDuration = 0.3f; // 200ms of invulnerability frames
+        ability.invulnerabilityDuration = 0.5f;
     }
 }
 

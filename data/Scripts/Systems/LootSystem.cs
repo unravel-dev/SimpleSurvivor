@@ -85,7 +85,7 @@ public class LootSystem : ScriptComponent
     private Entity playerEntity;
     private Experience playerExperience;
     private float gameStartTime;
-    private Entity experienceContainer;
+    private Entity lootContainer;
     
     /// <summary>
     /// Get the singleton instance of the loot system.
@@ -107,7 +107,7 @@ public class LootSystem : ScriptComponent
             FindPlayerEntity();
             
             // Find or create experience container
-            FindOrCreateExperienceContainer();
+            FindOrCreateLootContainer();
             
             // Subscribe to death events directly
             DamageSystem.OnEntityDied += OnEntityDied;
@@ -150,27 +150,27 @@ public class LootSystem : ScriptComponent
     }
     
     /// <summary>
-    /// Find or create the ExperienceContainer entity to parent all experience orbs.
+    /// Find or create the lootContainer entity to parent all loot.
     /// </summary>
-    private void FindOrCreateExperienceContainer()
+    private void FindOrCreateLootContainer()
     {
         // First try to find existing container
-        experienceContainer = Scene.FindEntityByName("ExperienceContainer");
+        lootContainer = Scene.FindEntityByName("LootContainer");
         
-        if (!experienceContainer)
+        if (!lootContainer)
         {
             // Create new container entity
-            experienceContainer = Scene.CreateEntity("ExperienceContainer");
+            lootContainer = Scene.CreateEntity("LootContainer");
             
-            if (experienceContainer)
+            if (lootContainer)
             {
                 // Position it at world origin
-                experienceContainer.transform.position = Vector3.zero;
+                lootContainer.transform.position = Vector3.zero;
 
             }
             else
             {
-                Log.Error("LootSystem: Failed to create ExperienceContainer entity");
+                Log.Error("LootSystem: Failed to create lootContainer entity");
             }
         }
 
@@ -388,22 +388,10 @@ public class LootSystem : ScriptComponent
             var orbEntity = Scene.Instantiate(experienceOrbPrefab);
             if (orbEntity)
             {
-                orbEntity.transform.position = orbPosition;
+                // Parent the orb under the lootContainer
+                orbEntity.transform.SetParent(lootContainer, false);
                 
-                // Parent the orb under the ExperienceContainer
-                if (experienceContainer)
-                {
-                    orbEntity.transform.SetParent(experienceContainer, true);
-                }
-                else
-                {
-                    // Try to find/create container if it doesn't exist
-                    FindOrCreateExperienceContainer();
-                    if (experienceContainer)
-                    {
-                        orbEntity.transform.SetParent(experienceContainer, true);
-                    }
-                }
+                orbEntity.transform.position = orbPosition;
                 
                 // Configure experience value
                 var experienceOrb = orbEntity.GetComponent<ExperienceOrb>();
@@ -439,21 +427,7 @@ public class LootSystem : ScriptComponent
         }
         return 1;
     }
-    
-    /// <summary>
-    /// Get the ExperienceContainer entity for external access.
-    /// </summary>
-    /// <returns>The ExperienceContainer entity, or null if not found/created.</returns>
-    public Entity GetExperienceContainer()
-    {
-        // Ensure container exists
-        if (!experienceContainer)
-        {
-            FindOrCreateExperienceContainer();
-        }
-        
-        return experienceContainer;
-    }
+
     
     /// <summary>
     /// Set the speed multiplier for experience orbs relative to player speed.
@@ -491,22 +465,12 @@ public class LootSystem : ScriptComponent
         var magnetEntity = Scene.Instantiate(magnetLootPrefab);
         if (magnetEntity)
         {
-            magnetEntity.transform.position = magnetPosition;
+
+            // Parent the magnet under the lootContainer
+            magnetEntity.transform.SetParent(lootContainer, false);
             
-            // Parent the magnet under the ExperienceContainer
-            if (experienceContainer)
-            {
-                magnetEntity.transform.SetParent(experienceContainer, true);
-            }
-            else
-            {
-                // Try to find/create container if it doesn't exist
-                FindOrCreateExperienceContainer();
-                if (experienceContainer)
-                {
-                    magnetEntity.transform.SetParent(experienceContainer, true);
-                }
-            }
+            magnetEntity.transform.position = magnetPosition;
+
         }
     }
     
@@ -527,22 +491,12 @@ public class LootSystem : ScriptComponent
         var chestEntity = Scene.Instantiate(chestLootPrefab);
         if (chestEntity)
         {
-            chestEntity.transform.position = chestPosition;
             
-            // Parent the chest under the ExperienceContainer
-            if (experienceContainer)
-            {
-                chestEntity.transform.SetParent(experienceContainer, true);
-            }
-            else
-            {
-                // Try to find/create container if it doesn't exist
-                FindOrCreateExperienceContainer();
-                if (experienceContainer)
-                {
-                    chestEntity.transform.SetParent(experienceContainer, true);
-                }
-            }
+            // Parent the chest under the lootContainer
+            chestEntity.transform.SetParent(lootContainer, false);
+            
+            chestEntity.transform.position = chestPosition;
+
         }
     }
     

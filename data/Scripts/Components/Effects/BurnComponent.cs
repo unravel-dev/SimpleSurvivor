@@ -24,12 +24,12 @@ public class BurnComponent : DamageOverTimeComponent
     
     public override string GetEffectColor()
     {
-        return "rgba(255, 69, 0, 255)"; // Orange-red
+        return "rgba(255, 150, 0, 255)"; // Orange-red
     }
     
     public override Color GetDamageColor()
     {
-        return new Color(255, 69, 0, 255);
+        return new Color(255, 150, 0, 255);
     }
 
     public override void OnDamageApplied(int damageAmount)

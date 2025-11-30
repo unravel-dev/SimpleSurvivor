@@ -58,6 +58,53 @@ public static class UpgradeCardGenerator
    
         return cards;
     }
+    
+    /// <summary>
+    /// Debug function to generate a specific card by name for testing purposes.
+    /// Searches through all available cards (all rarities) to find a matching card name.
+    /// </summary>
+    /// <param name="cardName">Name of the card to search for (case-insensitive).</param>
+    /// <param name="cardCount">Number of cards to return (default 3).</param>
+    /// <returns>List containing cardCount instances of the specified card, or empty list if not found.</returns>
+    public static List<UpgradeCard> GenerateCardSelectionDebug(string cardName, int cardCount = 3)
+    {
+        var cards = new List<UpgradeCard>();
+        
+        // Get all card generators from all rarities
+        var allCardGenerators = new List<System.Func<UpgradeCard>>();
+        allCardGenerators.AddRange(GetNormalCards());
+        allCardGenerators.AddRange(GetCommonCards());
+        allCardGenerators.AddRange(GetEpicCards());
+        allCardGenerators.AddRange(GetLegendaryCards());
+        allCardGenerators.AddRange(GetAvailableAbilityCards());
+        
+        // Search for matching card name (case-insensitive)
+        System.Func<UpgradeCard> matchingCardGenerator = null;
+        foreach (var cardGenerator in allCardGenerators)
+        {
+            UpgradeCard testCard = cardGenerator();
+            if (testCard != null && string.Equals(testCard.Name, cardName, StringComparison.OrdinalIgnoreCase))
+            {
+                matchingCardGenerator = cardGenerator;
+                break;
+            }
+        }
+        
+        // If card found, generate cardCount instances
+        if (matchingCardGenerator != null)
+        {
+            for (int i = 0; i < cardCount; i++)
+            {
+                cards.Add(matchingCardGenerator());
+            }
+        }
+        else
+        {
+            Log.Warning($"UpgradeCardGenerator: Card '{cardName}' not found in GenerateCardSelectionDebug");
+        }
+        
+        return cards;
+    }
    
     
     /// <summary>
@@ -79,7 +126,7 @@ public static class UpgradeCardGenerator
         bool hasAvailableAbilitySlots = currentAbilityCount < maxAbilitySlots;
         
         List<UpgradeCard> cards = new List<UpgradeCard>();
-        
+
         if (isAbilityOnlyLevel && hasAvailableAbilitySlots)
         {
             // Get owned ability types to exclude them
@@ -94,10 +141,10 @@ public static class UpgradeCardGenerator
                     }
                 }
             }
-            
+
             // Try to generate ability-only selection excluding owned abilities
             cards = GenerateAbilityOnlySelectionExcludingOwned(cardCount, ownedAbilityTypes);
-            
+
             // If no abilities available, fall back to regular upgrade cards
             if (cards == null || cards.Count == 0)
             {
@@ -112,7 +159,8 @@ public static class UpgradeCardGenerator
         else
         {
             // Generate upgrade card options using the new system with player luck
-            cards = GenerateCardSelection(cardCount, playerLuck);
+            cards = GenerateCardSelection(cardCount, playerLuck);           
+            
         }
         
         // Ensure we have exactly cardCount cards (pad with regular upgrades if needed)
@@ -719,7 +767,8 @@ public static class UpgradeCardGenerator
             () => new UpgradeCard("Forked Lightning", UpgradeRarity.Legendary, 
                 new List<Upgrade>
                 {
-                    LightningSplitUpgrade.Generate(2, 3)
+                    LightningSplitUpgrade.Generate(3, 3),
+                    FlatCooldownModifierUpgrade.Generate(-2.5f, -2.5f)
                 }, 1, typeof(SparkAbility)),
                 
             () => new UpgradeCard("Storm Master", UpgradeRarity.Legendary, 

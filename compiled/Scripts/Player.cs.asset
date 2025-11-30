@@ -568,7 +568,7 @@ public class Player : ScriptComponent
         }
 
         var levelUpSound = Assets.GetAsset<AudioClip>("app:/data/Sounds/level-up.mp3");
-        var source = AudioSourceComponent.PlayClipAtPoint(levelUpSound, transformComponent.position, 1.0f);
+        var source = AudioSourceComponent.PlayClipAtPoint(levelUpSound, transformComponent.position, 0.4f);
         source.maxDistance = 100.0f;
         
         // Generate upgrade card options (handles ability-only levels automatically)

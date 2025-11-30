@@ -18,6 +18,9 @@ public class FireballAbility : Ability
     [Tooltip("Explosion radius for area damage")]
     public float explosionRadius = 3.0f;
 
+    [Tooltip("Base pierce count of the fireball")]
+    public int basePierceCount = 1;
+
     [Tooltip("Maximum range to search for targets")]
     public float maxRange = 15.0f;
 
@@ -48,6 +51,7 @@ public class FireballAbility : Ability
         ability.maxRange = 15.0f;
         ability.projectileSpeed = 12.0f;
         ability.spawnOffset = Vector3.up;
+        ability.basePierceCount = 1;
     }
 
     public override void OnStart()
@@ -158,7 +162,7 @@ public class FireballAbility : Ability
         var pierceComponent = fireballEntity.AddComponent<PierceComponent>();
         if (pierceComponent != null)
         {
-            pierceComponent.pierceCount = UpgradeSystem.ApplyPierceUpgrade(0);
+            pierceComponent.pierceCount = UpgradeSystem.ApplyPierceUpgrade(basePierceCount);
         }
 
         var chainComponent = fireballEntity.AddComponent<ChainComponent>();
