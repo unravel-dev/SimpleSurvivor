@@ -159,7 +159,9 @@ public static class UpgradeCardGenerator
         else
         {
             // Generate upgrade card options using the new system with player luck
-            cards = GenerateCardSelection(cardCount, playerLuck);           
+            cards = GenerateCardSelection(cardCount, playerLuck);     
+            // cards = GenerateCardSelectionDebug("Forked Lightning", cardCount);
+      
             
         }
         
@@ -768,7 +770,7 @@ public static class UpgradeCardGenerator
                 new List<Upgrade>
                 {
                     LightningSplitUpgrade.Generate(3, 3),
-                    FlatCooldownModifierUpgrade.Generate(-2.5f, -2.5f)
+                    SparkFlatCooldownModifierUpgrade.Generate(-2.5f, -2.5f)
                 }, 1, typeof(SparkAbility)),
                 
             () => new UpgradeCard("Storm Master", UpgradeRarity.Legendary, 

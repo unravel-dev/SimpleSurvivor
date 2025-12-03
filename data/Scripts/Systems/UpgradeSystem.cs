@@ -23,7 +23,6 @@ public static class UpgradeSystem
     private static readonly PierceUpgrade accumulatedPierceUpgrade = new PierceUpgrade(0);
     private static readonly ChainUpgrade accumulatedChainUpgrade = new ChainUpgrade(0);
     private static readonly CooldownReductionUpgrade accumulatedCooldownReductionUpgrade = new CooldownReductionUpgrade(0.0f);
-    private static readonly FlatCooldownModifierUpgrade accumulatedFlatCooldownModifierUpgrade = new FlatCooldownModifierUpgrade(0.0f);
     private static readonly MovementSpeedUpgrade accumulatedMovementSpeedUpgrade = new MovementSpeedUpgrade(0.0f);
     private static readonly MaxHealthUpgrade accumulatedMaxHealthUpgrade = new MaxHealthUpgrade(0);
     private static readonly CriticalChanceUpgrade accumulatedCriticalChanceUpgrade = new CriticalChanceUpgrade(0.0f);
@@ -54,6 +53,7 @@ public static class UpgradeSystem
     private static readonly PlaguePoisonUpgrade accumulatedPlaguePoisonUpgrade = new PlaguePoisonUpgrade(0.0f, 0);
     private static readonly ExtendedPlagueDurationUpgrade accumulatedPlagueExtendedDurationUpgrade = new ExtendedPlagueDurationUpgrade(0.0f);
     private static readonly PlagueLifeDrainUpgrade accumulatedPlagueLifeDrainUpgrade = new PlagueLifeDrainUpgrade(0.0f, 0);
+    private static readonly SparkFlatCooldownModifierUpgrade accumulatedSparkFlatCooldownModifierUpgrade = new SparkFlatCooldownModifierUpgrade(0.0f);
 
     /// <summary>
     /// Get the total number of active upgrades.
@@ -229,7 +229,6 @@ public static class UpgradeSystem
         accumulatedPierceUpgrade.PierceCount = 0;
         accumulatedChainUpgrade.ChainCount = 0;
         accumulatedCooldownReductionUpgrade.ReductionPercent = 0.0f;
-        accumulatedFlatCooldownModifierUpgrade.ModifierSeconds = 0.0f;
         accumulatedMovementSpeedUpgrade.SpeedPercent = 0.0f;
         accumulatedMaxHealthUpgrade.HealthIncrease = 0;
         accumulatedCriticalChanceUpgrade.ChancePercent = 0.0f;
@@ -262,6 +261,7 @@ public static class UpgradeSystem
         accumulatedPlagueExtendedDurationUpgrade.DurationPercent = 0.0f;
         accumulatedPlagueLifeDrainUpgrade.HealChancePercent = 0.0f;
         accumulatedPlagueLifeDrainUpgrade.HealAmount = 0;
+        accumulatedSparkFlatCooldownModifierUpgrade.ModifierSeconds = 0.0f;
         
         // Accumulate values from all active upgrades
         float totalDamagePercent = 0.0f;
@@ -269,7 +269,6 @@ public static class UpgradeSystem
         int totalPierceCount = 0;
         int totalChainCount = 0;
         float totalCooldownReduction = 0.0f;
-        float totalFlatCooldownModifier = 0.0f;
         float totalMovementSpeed = 0.0f;
         int totalHealthIncrease = 0;
         float totalCriticalChance = 0.0f;
@@ -306,11 +305,6 @@ public static class UpgradeSystem
             {
                 CooldownReductionUpgrade cooldownUpgrade = (CooldownReductionUpgrade)upgrade;
                 totalCooldownReduction += cooldownUpgrade.ReductionPercent;
-            }
-            else if (upgrade is FlatCooldownModifierUpgrade)
-            {
-                FlatCooldownModifierUpgrade flatCooldownUpgrade = (FlatCooldownModifierUpgrade)upgrade;
-                totalFlatCooldownModifier += flatCooldownUpgrade.ModifierSeconds;
             }
             else if (upgrade is MovementSpeedUpgrade)
             {
@@ -475,6 +469,12 @@ public static class UpgradeSystem
                     accumulatedPlagueLifeDrainUpgrade.HealAmount = lifeDrainUpgrade.HealAmount;
                 }
             }
+            // Spark flat cooldown modifier upgrades
+            else if (upgrade is SparkFlatCooldownModifierUpgrade)
+            {
+                SparkFlatCooldownModifierUpgrade sparkCooldownUpgrade = (SparkFlatCooldownModifierUpgrade)upgrade;
+                accumulatedSparkFlatCooldownModifierUpgrade.ModifierSeconds += sparkCooldownUpgrade.ModifierSeconds;
+            }
         }
         
         // Update all accumulated upgrade instances
@@ -483,7 +483,6 @@ public static class UpgradeSystem
         accumulatedPierceUpgrade.PierceCount = totalPierceCount;
         accumulatedChainUpgrade.ChainCount = totalChainCount;
         accumulatedCooldownReductionUpgrade.ReductionPercent = totalCooldownReduction;
-        accumulatedFlatCooldownModifierUpgrade.ModifierSeconds = totalFlatCooldownModifier;
         accumulatedMovementSpeedUpgrade.SpeedPercent = totalMovementSpeed;
         accumulatedMaxHealthUpgrade.HealthIncrease = totalHealthIncrease;
         accumulatedCriticalChanceUpgrade.ChancePercent = totalCriticalChance;
@@ -533,15 +532,7 @@ public static class UpgradeSystem
 
     public static float ApplyCooldownReductionUpgrade(float baseCooldown)
     {
-        // First, apply flat cooldown modifier (subtracted from base before percentage reduction)
-        // Negative values increase cooldown, positive values reduce cooldown
-        float flatModifier = accumulatedFlatCooldownModifierUpgrade.ModifierSeconds;
-        float adjustedBaseCooldown = baseCooldown - flatModifier;
-        
-        // Ensure adjusted cooldown is not negative
-        adjustedBaseCooldown = Mathf.Max(adjustedBaseCooldown, 0.0f);
-        
-        // Then apply percentage reduction with diminishing returns
+        // Apply percentage reduction with diminishing returns
         float reductionPercent = accumulatedCooldownReductionUpgrade.ReductionPercent;
         
         // Apply diminishing returns formula to prevent performance issues
@@ -550,7 +541,7 @@ public static class UpgradeSystem
         float effectiveReduction = reductionPercent / (reductionPercent + 100.0f);
         
         // Calculate final cooldown with effective reduction
-        float reducedCooldown = adjustedBaseCooldown * (1.0f - effectiveReduction);
+        float reducedCooldown = baseCooldown * (1.0f - effectiveReduction);
         
         // Enforce minimum cooldown to prevent performance issues
         const float minimumCooldown = 0.05f; // 50ms minimum
@@ -1051,6 +1042,16 @@ public static class UpgradeSystem
     public static int GetPlagueHealAmount()
     {
         return accumulatedPlagueLifeDrainUpgrade.HealAmount;
+    }
+
+    // ========== SPARK UPGRADE HELPERS ==========
+
+    /// <summary>
+    /// Get the flat cooldown modifier from all SparkFlatCooldownModifierUpgrade bonuses (cached).
+    /// </summary>
+    public static float GetSparkFlatCooldownModifier()
+    {
+        return accumulatedSparkFlatCooldownModifierUpgrade.ModifierSeconds;
     }
 
 }

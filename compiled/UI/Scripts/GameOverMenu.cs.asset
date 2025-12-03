@@ -86,7 +86,7 @@ public class GameOverMenu : BaseMenu
 	private void OnRestartButtonClick(UIPointerEvent ev)
 	{
 		Log.Info($"Restart button clicked");
-		GameUI.FindInScene()?.RestartGame();
+		MenuStackUI.FindInScene<GameUI>()?.RestartGame();
 	}
 
 	/// <summary>
@@ -95,7 +95,7 @@ public class GameOverMenu : BaseMenu
 	private void OnQuitButtonClick(UIPointerEvent ev)
 	{
 		Log.Info($"Quit button clicked");
-		GameUI.FindInScene()?.GoToMainMenu();
+		MenuStackUI.FindInScene<GameUI>()?.GoToMainMenu();
 	}
 }
 

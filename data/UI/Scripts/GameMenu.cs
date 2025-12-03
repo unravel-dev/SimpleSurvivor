@@ -260,7 +260,7 @@ public class GameMenu : BaseMenu
 	private void OnResumeButtonClick(UIPointerEvent ev)
 	{
 		Log.Info($"Resume button clicked");
-		GameUI.FindInScene()?.ResumeGame();
+		MenuStackUI.FindInScene<GameUI>()?.ResumeGame();
 	}
 
 	/// <summary>
@@ -269,7 +269,7 @@ public class GameMenu : BaseMenu
 	private void OnRestartButtonClick(UIPointerEvent ev)
 	{
 		Log.Info($"Restart button clicked");
-		GameUI.FindInScene()?.RestartGame();
+		MenuStackUI.FindInScene<GameUI>()?.RestartGame();
 	}
 
 	/// <summary>
@@ -278,7 +278,7 @@ public class GameMenu : BaseMenu
 	private void OnSettingsButtonClick(UIPointerEvent ev)
 	{
 		Log.Info($"Settings button clicked");
-		GameUI.FindInScene()?.OpenSettings();
+		MenuStackUI.FindInScene<GameUI>()?.OpenSettings();
 	}
 
 	/// <summary>
@@ -287,6 +287,6 @@ public class GameMenu : BaseMenu
 	private void OnQuitButtonClick(UIPointerEvent ev)
 	{
 		Log.Info($"Quit button clicked");
-		GameUI.FindInScene()?.GoToMainMenu();
+		MenuStackUI.FindInScene<GameUI>()?.GoToMainMenu();
 	}
 }

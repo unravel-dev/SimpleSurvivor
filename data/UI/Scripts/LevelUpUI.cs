@@ -12,7 +12,6 @@ public class LevelUpUI : ScriptComponent
     public Entity LevelUpMenu;
     
     // State
-    private bool isLevelUpActive = false;
     private LevelUpMenu levelUpMenuScript;
 
     /// <summary>
@@ -83,22 +82,18 @@ public class LevelUpUI : ScriptComponent
     /// <param name="card3">Upgrade card for option 3</param>
     public void ShowLevelUpMenu(UpgradeCard card1, UpgradeCard card2, UpgradeCard card3)
     {
-        if (isLevelUpActive)
+        if (!LevelUpMenu)
         {
-            Log.Warning("LevelUpUI: Level up menu is already active");
+            Log.Warning("LevelUpUI: Level up menu is already active or menu not found");
             return;
         }
         
         Log.Info($"LevelUpUI: Showing level up menu with cards: [{card1?.Name}], [{card2?.Name}], [{card3?.Name}]");
         
-        // Pause the game first
-        PauseGame();
-        
-        // Show the menu (this triggers OnStart and caches UI elements)
-        if (LevelUpMenu)
-        {
-            LevelUpMenu.SetActive(true);
-        }
+        // Push level up menu onto the menu stack (handles pause/audio automatically)
+        var gameUI = MenuStackUI.FindInScene();
+        gameUI.PushMenu(LevelUpMenu);
+
         
         // Now set the upgrade cards after the menu is active and elements are cached
         if (levelUpMenuScript != null)
@@ -106,7 +101,6 @@ public class LevelUpUI : ScriptComponent
             levelUpMenuScript.SetUpgradeCards(card1, card2, card3);
         }
         
-        isLevelUpActive = true;
     }
     
     /// <summary>
@@ -114,23 +108,12 @@ public class LevelUpUI : ScriptComponent
     /// </summary>
     public void HideLevelUpMenu()
     {
-        if (!isLevelUpActive)
-        {
-            return;
-        }
-        
         Log.Info("LevelUpUI: Hiding level up menu");
         
-        // Hide the menu
-        if (LevelUpMenu)
-        {
-            LevelUpMenu.SetActive(false);
-        }
+        // Pop menu from stack (handles resume/audio automatically)
+        var gameUI = MenuStackUI.FindInScene();
+        gameUI.PopMenu();
         
-        // Resume the game
-        ResumeGame();
-        
-        isLevelUpActive = false;
     }
     
     /// <summary>
@@ -147,50 +130,6 @@ public class LevelUpUI : ScriptComponent
     }
     
     /// <summary>
-    /// Pause the game when showing the level-up menu.
-    /// </summary>
-    private void PauseGame()
-    {
-        // Pause game time
-        Time.timeScale = 0f;
-        
-        // Pause game audio (similar to GameUI implementation)
-        var gameAudio = Scene.FindEntityByName("GameAudio");
-        if (gameAudio)
-        {
-            var sourceComponents = gameAudio.GetComponentsInChildren<AudioSourceComponent>();
-            foreach (var sourceComponent in sourceComponents)
-            {
-                sourceComponent.Pause();
-            }
-        }
-        
-        Log.Info("LevelUpUI: Game paused for level up");
-    }
-    
-    /// <summary>
-    /// Resume the game after level-up selection.
-    /// </summary>
-    private void ResumeGame()
-    {
-        // Resume game time
-        Time.timeScale = 1f;
-        
-        // Resume game audio
-        var gameAudio = Scene.FindEntityByName("GameAudio");
-        if (gameAudio)
-        {
-            var sourceComponents = gameAudio.GetComponentsInChildren<AudioSourceComponent>();
-            foreach (var sourceComponent in sourceComponents)
-            {
-                sourceComponent.Resume();
-            }
-        }
-        
-        Log.Info("LevelUpUI: Game resumed after level up");
-    }
-    
-    /// <summary>
     /// Static helper method to find the LevelUpUI controller in the current scene.
     /// Can be used by other systems to trigger level-up menus.
     /// </summary>
@@ -203,15 +142,7 @@ public class LevelUpUI : ScriptComponent
         }
         return null;
     }
-    
-    /// <summary>
-    /// Check if the level-up menu is currently active.
-    /// </summary>
-    /// <returns>True if the level-up menu is active</returns>
-    public bool IsLevelUpActive()
-    {
-        return isLevelUpActive;
-    }
+
     
     public override void OnDisable()
     {

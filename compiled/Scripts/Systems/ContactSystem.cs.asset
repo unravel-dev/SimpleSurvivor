@@ -219,6 +219,15 @@ public static class ContactSystem
             {
                 return;
             }
+            
+            // Check if this contact should be ignored
+            var ignoreComponent = source.GetComponent<IgnoreContactComponent>();
+            if (ignoreComponent != null && ignoreComponent.ShouldIgnoreAndRemove(target))
+            {
+                // Target is in ignore list, skip this contact
+                return;
+            }
+            
             bool shouldExtendLifetime = false;
             
             // Execute effects in order until one succeeds
@@ -538,6 +547,18 @@ public static class ContactSystem
                 if (!duplicatedProjectile)
                 {
                     continue;
+                }
+
+                // Add IgnoreContactComponent to prevent immediate re-collision with the original target
+                var ignoreComponent = duplicatedProjectile.GetComponent<IgnoreContactComponent>();
+                if (ignoreComponent == null)
+                {
+                    ignoreComponent = duplicatedProjectile.AddComponent<IgnoreContactComponent>();
+                }
+
+                
+                {
+                    ignoreComponent.targetsToIgnore.Add(target);
                 }
 
                 // Position the duplicated projectile at the hit location

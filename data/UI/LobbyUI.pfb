@@ -2,11 +2,11 @@
  "entities": [
   {
    "prefab_uid": "5100a106-231b-8840-b67e-df42df315363",
-   "id": 3,
+   "id": 2097153,
    "components": {
     "has_tag_component": true,
     "tag_component": {
-     "name": "LobbyUI",
+     "name": "UI",
      "tag": ""
     },
     "has_layer_component": true,
@@ -51,15 +51,15 @@
      "children": [
       {
        "prefab_uid": "af8efd56-6ba6-c946-aefb-45bbcc79cff5",
-       "id": 4
+       "id": 2097154
       },
       {
        "prefab_uid": "f0be3f9a-2578-484e-9862-596215a6c9a9",
-       "id": 5
+       "id": 2097155
       },
       {
        "prefab_uid": "7fc27b2b-f7eb-bd4a-a3d1-ad8e7e160c1d",
-       "id": 6
+       "id": 2097156
       }
      ],
      "active": true
@@ -94,7 +94,7 @@
   },
   {
    "prefab_uid": "af8efd56-6ba6-c946-aefb-45bbcc79cff5",
-   "id": 4,
+   "id": 2097154,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -138,10 +138,17 @@
      },
      "parent": {
       "prefab_uid": "5100a106-231b-8840-b67e-df42df315363",
-      "id": 3
+      "id": 2097153
      },
      "children": [],
      "active": true
+    },
+    "has_ui_document_component": true,
+    "ui_document_component": {
+     "enabled": true,
+     "asset": {
+      "uid": "d3f75e99-1d69-4e47-96d8-9da797deda18"
+     }
     },
     "has_script_component": true,
     "script_component": {
@@ -150,19 +157,12 @@
        "type": "MainMenu"
       }
      ]
-    },
-    "has_ui_document_component": true,
-    "ui_document_component": {
-     "enabled": true,
-     "asset": {
-      "uid": "d3f75e99-1d69-4e47-96d8-9da797deda18"
-     }
     }
    }
   },
   {
    "prefab_uid": "f0be3f9a-2578-484e-9862-596215a6c9a9",
-   "id": 5,
+   "id": 2097155,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -206,10 +206,17 @@
      },
      "parent": {
       "prefab_uid": "5100a106-231b-8840-b67e-df42df315363",
-      "id": 3
+      "id": 2097153
      },
      "children": [],
      "active": false
+    },
+    "has_ui_document_component": true,
+    "ui_document_component": {
+     "enabled": true,
+     "asset": {
+      "uid": "a3e52d6a-a8d4-e340-9430-116f9818c5e9"
+     }
     },
     "has_script_component": true,
     "script_component": {
@@ -218,19 +225,12 @@
        "type": "SettingsMenu"
       }
      ]
-    },
-    "has_ui_document_component": true,
-    "ui_document_component": {
-     "enabled": true,
-     "asset": {
-      "uid": "a3e52d6a-a8d4-e340-9430-116f9818c5e9"
-     }
     }
    }
   },
   {
    "prefab_uid": "7fc27b2b-f7eb-bd4a-a3d1-ad8e7e160c1d",
-   "id": 6,
+   "id": 2097156,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -274,7 +274,7 @@
      },
      "parent": {
       "prefab_uid": "5100a106-231b-8840-b67e-df42df315363",
-      "id": 3
+      "id": 2097153
      },
      "children": [],
      "active": true

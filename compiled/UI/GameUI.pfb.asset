@@ -2,11 +2,11 @@
  "entities": [
   {
    "prefab_uid": "7b2a12a5-b8bc-7749-9b5e-f9c9d0a9f337",
-   "id": 29360135,
+   "id": 1,
    "components": {
     "has_tag_component": true,
     "tag_component": {
-     "name": "GameUI",
+     "name": "UI",
      "tag": ""
     },
     "has_layer_component": true,
@@ -51,27 +51,27 @@
      "children": [
       {
        "prefab_uid": "466422c5-14ca-1e45-a119-ddc36d49af40",
-       "id": 29360136
+       "id": 2
       },
       {
        "prefab_uid": "531932bf-4358-1449-85fe-2d2ea88a54b6",
-       "id": 29360137
+       "id": 3
       },
       {
        "prefab_uid": "153132be-843d-fa4e-b15c-c0077f1bac98",
-       "id": 29360138
+       "id": 4
       },
       {
        "prefab_uid": "fb41a6d0-8542-da4c-a57a-1d73be1ec37c",
-       "id": 27262987
+       "id": 5
       },
       {
        "prefab_uid": "e44fb193-9232-d349-85ed-a527384f3585",
-       "id": 27262988
+       "id": 6
       },
       {
        "prefab_uid": "a66a3c5f-1ab8-e64a-a02c-42103b80e44a",
-       "id": 10485801
+       "id": 7
       }
      ],
      "active": true
@@ -155,7 +155,7 @@
   },
   {
    "prefab_uid": "466422c5-14ca-1e45-a119-ddc36d49af40",
-   "id": 29360136,
+   "id": 2,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -199,7 +199,7 @@
      },
      "parent": {
       "prefab_uid": "7b2a12a5-b8bc-7749-9b5e-f9c9d0a9f337",
-      "id": 29360135
+      "id": 1
      },
      "children": [],
      "active": true
@@ -223,7 +223,7 @@
   },
   {
    "prefab_uid": "531932bf-4358-1449-85fe-2d2ea88a54b6",
-   "id": 29360137,
+   "id": 3,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -267,7 +267,7 @@
      },
      "parent": {
       "prefab_uid": "7b2a12a5-b8bc-7749-9b5e-f9c9d0a9f337",
-      "id": 29360135
+      "id": 1
      },
      "children": [],
      "active": false
@@ -291,7 +291,7 @@
   },
   {
    "prefab_uid": "153132be-843d-fa4e-b15c-c0077f1bac98",
-   "id": 29360138,
+   "id": 4,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -335,7 +335,7 @@
      },
      "parent": {
       "prefab_uid": "7b2a12a5-b8bc-7749-9b5e-f9c9d0a9f337",
-      "id": 29360135
+      "id": 1
      },
      "children": [],
      "active": false
@@ -359,7 +359,7 @@
   },
   {
    "prefab_uid": "fb41a6d0-8542-da4c-a57a-1d73be1ec37c",
-   "id": 27262987,
+   "id": 5,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -403,7 +403,7 @@
      },
      "parent": {
       "prefab_uid": "7b2a12a5-b8bc-7749-9b5e-f9c9d0a9f337",
-      "id": 29360135
+      "id": 1
      },
      "children": [],
      "active": false
@@ -427,7 +427,7 @@
   },
   {
    "prefab_uid": "e44fb193-9232-d349-85ed-a527384f3585",
-   "id": 27262988,
+   "id": 6,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -471,7 +471,7 @@
      },
      "parent": {
       "prefab_uid": "7b2a12a5-b8bc-7749-9b5e-f9c9d0a9f337",
-      "id": 29360135
+      "id": 1
      },
      "children": [],
      "active": true
@@ -495,7 +495,7 @@
   },
   {
    "prefab_uid": "a66a3c5f-1ab8-e64a-a02c-42103b80e44a",
-   "id": 10485801,
+   "id": 7,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -539,7 +539,7 @@
      },
      "parent": {
       "prefab_uid": "7b2a12a5-b8bc-7749-9b5e-f9c9d0a9f337",
-      "id": 29360135
+      "id": 1
      },
      "children": [],
      "active": true

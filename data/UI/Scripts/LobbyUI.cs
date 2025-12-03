@@ -8,7 +8,7 @@ using Unravel.Core;
 /// </summary>
 [ScriptSourceFile]
 
-public class LobbyUI : ScriptComponent
+public class LobbyUI : MenuStackUI
 {
 	public Entity MainMenu;
 	public Entity SettingsMenu;
@@ -16,7 +16,7 @@ public class LobbyUI : ScriptComponent
 	public Scene GameScene;
 
 	public Entity BackgroundAudioSource;
-
+	
 	/// <summary>
 	/// OnCreate is called when the script is first loaded, or when an object it is attached to is instantiated
 	/// It only gets called once on each script, and only after other objects are initialised.
@@ -39,6 +39,15 @@ public class LobbyUI : ScriptComponent
 
 		// Validate required references
 		ValidateReferences();
+		
+		// Initialize menu stack with MainMenu as the base menu
+		menuStack.Initialize(MainMenu);
+		
+		// Ensure MainMenu is visible initially
+		if (MainMenu)
+		{
+			MainMenu.SetActive(true);
+		}
 
 		if(BackgroundAudioSource)
 		{
@@ -136,17 +145,14 @@ public class LobbyUI : ScriptComponent
 	{
 		Log.Info("Opening settings from main menu");
 
-		// Tell the settings menu which menu to return to
-		if (SettingsMenu)
+		if (!SettingsMenu)
 		{
-			var settingsController = SettingsMenu.GetComponent<SettingsMenu>();
-			if (settingsController != null)
-			{
-				settingsController.SetPreviousMenu(MainMenu);
-			}
+			Log.Warning("SettingsMenu reference not set");
+			return;
 		}
 
-		ShowMenu(SettingsMenu, MainMenu);
+		// Push settings menu onto stack
+		PushMenu(SettingsMenu);
 	}
 
 	/// <summary>
@@ -155,8 +161,9 @@ public class LobbyUI : ScriptComponent
 	public void CloseSettings()
 	{
 		Log.Info("Closing settings, returning to main menu");
-		ShowMenu(MainMenu, SettingsMenu);
+		PopMenu();
 	}
+
 
 	/// <summary>
 	/// Quit the application (used by exit button).
@@ -167,39 +174,6 @@ public class LobbyUI : ScriptComponent
 		Application.Quit();
 	}
 
-	/// <summary>
-	/// Show a specific menu and hide others (internal helper method).
-	/// </summary>
-	/// <param name="menuToShow">The menu entity to show</param>
-	/// <param name="menuToHide">The menu entity to hide</param>
-	private void ShowMenu(Entity menuToShow, Entity menuToHide)
-	{
-		if (menuToHide)
-		{
-			menuToHide.SetActive(false);
-		}
-
-		if (menuToShow)
-		{
-			menuToShow.SetActive(true);
-		}
-
-		Log.Info($"Lobby menu transition: {(menuToHide ? menuToHide.name : "null")} -> {(menuToShow ? menuToShow.name : "null")}");
-	}
-
-	/// <summary>
-	/// Static helper method to find the LobbyUI controller in the current scene.
-	/// Can be used by menus to find the lobby controller.
-	/// </summary>
-	public static LobbyUI FindInScene()
-	{
-		var lobbyUIEntity = Scene.FindEntityByName("LobbyUI");
-		if (lobbyUIEntity)
-		{
-			return lobbyUIEntity.GetComponent<LobbyUI>();
-		}
-		return null;
-	}
 
 	/// <summary>
 	/// For more functions <see cref="ScriptComponent"/>.

@@ -32,18 +32,6 @@ using Unravel.Core;
 public class SettingsMenu : BaseMenu
 {
 	
-	// Track which menu we came from for proper back navigation
-	private Entity previousMenu;
-	
-	/// <summary>
-	/// Set the previous menu for proper back navigation.
-	/// Called by GameUI when opening settings.
-	/// </summary>
-	/// <param name="fromMenu">The menu we came from</param>
-	public void SetPreviousMenu(Entity fromMenu)
-	{
-		previousMenu = fromMenu;
-	}
 	
 	/// <summary>
 	/// Set custom graphics presets that will replace the HTML defaults.
@@ -295,19 +283,20 @@ public class SettingsMenu : BaseMenu
 	// Only the specific business logic for each button
 
 	/// <summary>
-	/// Handles the Back button click - returns to previous menu.
+	/// Handles the Back button click - pops the menu from the stack.
 	/// </summary>
 	private void OnBackButtonClick(UIPointerEvent ev)
 	{
-		Log.Info($"Back button clicked - returning to previous menu");
-		if (previousMenu)
+		Log.Info($"Back button clicked - popping menu from stack");
+		
+		var ui = MenuStackUI.FindInScene();
+		if (ui)
 		{
-			previousMenu.SetActive(true);
-			owner.SetActive(false);
+			ui.PopMenu();
 		}
 		else
 		{
-			Log.Warning("No previous menu set - cannot navigate back");
+			Log.Warning("MenuStackUI not found - cannot navigate back");
 		}
 	}
 	

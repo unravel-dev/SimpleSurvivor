@@ -19,9 +19,9 @@ public abstract class Ability : ScriptComponent
     [Tooltip("Total damage dealt by this ability")]
     public int totalDamageDealt = 0;
 
-    private float modifiedCooldown = 0f;
+    protected float modifiedCooldown = 0f;
     // Internal state
-    private float lastTriggerTime = -1f;
+    protected float lastTriggerTime = -1f;
 
     /// <summary>
     /// Check if the ability can be triggered based on cooldown.
@@ -44,6 +44,11 @@ public abstract class Ability : ScriptComponent
     public float GetCooldown()
     {
         return modifiedCooldown;
+    }
+
+    public virtual float GetBaseCooldown()
+    {
+        return cooldown;
     }
 
     /// <summary>
@@ -242,7 +247,7 @@ public abstract class Ability : ScriptComponent
     /// </summary>
     public override void OnUpdate()
     {
-        modifiedCooldown = UpgradeSystem.ApplyCooldownReductionUpgrade(cooldown);
+        modifiedCooldown = UpgradeSystem.ApplyCooldownReductionUpgrade(GetBaseCooldown());
         // Automatically trigger the ability when it's ready
         if (CanTriggerAbility())
         {

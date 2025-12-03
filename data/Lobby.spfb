@@ -2,7 +2,7 @@
  "entities_count": 4,
  "entities": [
   {
-   "id": 7340033,
+   "id": 1048578,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -146,7 +146,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 7340035,
+   "id": 1048580,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -234,7 +234,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 7340037,
+   "id": 1048582,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -303,11 +303,11 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 7340039,
+   "id": 1048584,
    "components": {
     "has_tag_component": true,
     "tag_component": {
-     "name": "LobbyUI",
+     "name": "UI",
      "tag": ""
     },
     "has_layer_component": true,
@@ -364,13 +364,13 @@
      },
      "children": [
       {
-       "id": 7340040
+       "id": 1048585
       },
       {
-       "id": 7340041
+       "id": 1048586
       },
       {
-       "id": 7340042
+       "id": 1048587
       }
      ],
      "active": true
@@ -401,7 +401,7 @@
    }
   },
   {
-   "id": 7340040,
+   "id": 1048585,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -444,10 +444,17 @@
       }
      },
      "parent": {
-      "id": 7340039
+      "id": 1048584
      },
      "children": [],
      "active": true
+    },
+    "has_ui_document_component": true,
+    "ui_document_component": {
+     "enabled": true,
+     "asset": {
+      "uid": "d3f75e99-1d69-4e47-96d8-9da797deda18"
+     }
     },
     "has_script_component": true,
     "script_component": {
@@ -456,18 +463,11 @@
        "type": "MainMenu"
       }
      ]
-    },
-    "has_ui_document_component": true,
-    "ui_document_component": {
-     "enabled": true,
-     "asset": {
-      "uid": "d3f75e99-1d69-4e47-96d8-9da797deda18"
-     }
     }
    }
   },
   {
-   "id": 7340041,
+   "id": 1048586,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -510,10 +510,17 @@
       }
      },
      "parent": {
-      "id": 7340039
+      "id": 1048584
      },
      "children": [],
      "active": false
+    },
+    "has_ui_document_component": true,
+    "ui_document_component": {
+     "enabled": true,
+     "asset": {
+      "uid": "a3e52d6a-a8d4-e340-9430-116f9818c5e9"
+     }
     },
     "has_script_component": true,
     "script_component": {
@@ -522,18 +529,11 @@
        "type": "SettingsMenu"
       }
      ]
-    },
-    "has_ui_document_component": true,
-    "ui_document_component": {
-     "enabled": true,
-     "asset": {
-      "uid": "a3e52d6a-a8d4-e340-9430-116f9818c5e9"
-     }
     }
    }
   },
   {
-   "id": 7340042,
+   "id": 1048587,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -576,7 +576,7 @@
       }
      },
      "parent": {
-      "id": 7340039
+      "id": 1048584
      },
      "children": [],
      "active": true

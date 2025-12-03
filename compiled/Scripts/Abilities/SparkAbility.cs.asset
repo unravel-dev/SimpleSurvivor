@@ -59,6 +59,7 @@ public class SparkAbility : Ability
         ability.chainCount = 2;
         ability.spawnOffset = Vector3.up;
     }
+
     public override void OnStart()
     {
         transformComponent = owner.GetComponent<TransformComponent>();
@@ -74,6 +75,12 @@ public class SparkAbility : Ability
         {
             castSound = Assets.GetAsset<AudioClip>("app:/data/Sounds/spark/electric-cast.mp3");
         }
+    }
+
+    public override float GetBaseCooldown()
+    {
+        float sparkFlatModifier = UpgradeSystem.GetSparkFlatCooldownModifier();
+        return cooldown - sparkFlatModifier;
     }
 
     

@@ -8,7 +8,7 @@ using Unravel.Core;
 /// Focused specifically on gameplay scene functionality.
 /// </summary>
 [ScriptSourceFile]
-public class GameUI : ScriptComponent
+public class GameUI : MenuStackUI
 {
 	public Entity GameMenu;
 	public Entity SettingsMenu;
@@ -44,7 +44,15 @@ public class GameUI : ScriptComponent
 
 		// Validate required references
 		ValidateReferences();
-
+		
+		// Initialize menu stack with GameHub as the base menu
+		menuStack.Initialize(GameHub);
+		
+		// Ensure GameHub is visible initially
+		if (GameHub)
+		{
+			GameHub.SetActive(true);
+		}
 	}
 
 	/// <summary>
@@ -119,10 +127,19 @@ public class GameUI : ScriptComponent
 
 	public override void OnUpdate()
 	{
-		// Handle ESC key for opening/closing game menu (but not when game over)
+		// Handle ESC key for popping menu from stack (but not when game over)
 		if (!IsGameOver && Input.IsPressed(KeyCode.Escape))
 		{
-			ToggleGameMenu();
+			if (!menuStack.HasMenuInStack(GameMenu))
+			{
+				// Stack is empty, open game menu
+				OpenGameMenu();
+			}
+			else if (!menuStack.IsEmpty())
+			{
+				// Pop the top menu from the stack
+				PopMenu();
+			}
 		}
 
 		// TODO: Add other game UI logic here
@@ -134,94 +151,38 @@ public class GameUI : ScriptComponent
 	}
 
 	/// <summary>
-	/// Toggle the game menu on/off and handle pause state.
-	/// </summary>
-	public void ToggleGameMenu()
-	{
-		if (!GameMenu)
-		{
-			Log.Warning("GameMenu reference is not set in GameUI");
-			return;
-		}
-
-		bool isMenuActive = GameMenu.active;
-
-		if (isMenuActive)
-		{
-			// Close menu and resume game
-			CloseGameMenu();
-		}
-		else
-		{
-			// Open menu and pause game
-			OpenGameMenu();
-		}
-	}
-
-	/// <summary>
 	/// Open the game menu and pause the game.
 	/// </summary>
 	public void OpenGameMenu()
 	{
-		if (IsGamePaused)
+		PushMenu(GameMenu);	
+	}
+
+	/// <summary>
+	/// Pop a menu from the stack and handle pause/resume logic.
+	/// </summary>
+	public override void PopMenu()
+	{
+		if (menuStack.IsEmpty())
 		{
 			return;
 		}
 		
-		if (GameMenu)
+		var poppedMenu = menuStack.PopMenu(showBaseMenu: true);
+		
+		// If stack is now empty, resume game
+		if (menuStack.IsEmpty())
 		{
-			var gameAudio = Scene.FindEntityByName("GameAudio");
-			if (gameAudio)
-			{
-				var sourceComponents = gameAudio.GetComponentsInChildren<AudioSourceComponent>();
-				foreach (var sourceComponent in sourceComponents)
-				{
-					sourceComponent.Pause();
-				}
-			}
-			GameMenu.SetActive(true);
-			BackgroundAudioSource.SetActive(true);
+			menuStack.ResumeGame();
+			menuStack.ResumeAudio();
 			
-			// Hide GameHub during menu
-			if (GameHub)
+			if (BackgroundAudioSource)
 			{
-				GameHub.SetActive(false);
+				BackgroundAudioSource.SetActive(false);
 			}
 			
-			Time.timeScale = 0f;
-			IsGamePaused = true;
-			Log.Info("Game menu opened - game paused");
-		}
-	}
-
-	/// <summary>
-	/// Close the game menu and resume the game.
-	/// </summary>
-	public void CloseGameMenu()
-	{
-		if (GameMenu)
-		{
-			var gameAudio = Scene.FindEntityByName("GameAudio");
-			if (gameAudio)
-			{
-				var sourceComponents = gameAudio.GetComponentsInChildren<AudioSourceComponent>();
-				foreach (var sourceComponent in sourceComponents)
-				{
-					sourceComponent.Resume();
-				}
-			}
-			ShowMenu(Entity.Invalid, GameMenu);
-
-			// Show GameHub when resuming gameplay
-			if (GameHub)
-			{
-				GameHub.SetActive(true);
-			}
-
-			BackgroundAudioSource.SetActive(false);
-			Time.timeScale = 1f;
 			IsGamePaused = false;
-			Log.Info("Game menu closed - game resumed");
+			Log.Info("All menus closed - game resumed");
 		}
 	}
 
@@ -270,9 +231,9 @@ public class GameUI : ScriptComponent
 		{
 			CloseGameOverMenu();
 		}
-		else if (IsGamePaused && GameMenu && GameMenu.active)
+		else if (IsGamePaused)
 		{
-			CloseGameMenu();
+			ResumeGame();
 		}
 		
 		// Clear all collected upgrades before restarting
@@ -283,47 +244,33 @@ public class GameUI : ScriptComponent
 	
 	/// <summary>
 	/// Open the game over menu (called when player dies).
+	/// This clears the menu stack and shows the game over menu.
 	/// </summary>
 	public void OpenGameOverMenu()
 	{
-		if (IsGameOver)
+		if (IsGameOver || !GameOverMenu)
 		{
 			return;
 		}
 		
-		if (GameOverMenu)
+		// Clear the menu stack
+		menuStack.ClearStack(showBaseMenu: false);
+		
+		// Pause game and audio
+		menuStack.PauseGame();
+		menuStack.PauseAudio();
+		
+		// Show game over menu
+		GameOverMenu.SetActive(true);
+		
+		if (BackgroundAudioSource)
 		{
-			// Pause game audio
-			var gameAudio = Scene.FindEntityByName("GameAudio");
-			if (gameAudio)
-			{
-				var sourceComponents = gameAudio.GetComponentsInChildren<AudioSourceComponent>();
-				foreach (var sourceComponent in sourceComponents)
-				{
-					sourceComponent.Pause();
-				}
-			}
-			
-			// Hide GameHub
-			if (GameHub)
-			{
-				GameHub.SetActive(false);
-			}
-			
-			// Hide GameMenu if open
-			if (GameMenu && GameMenu.active)
-			{
-				GameMenu.SetActive(false);
-			}
-			
-			GameOverMenu.SetActive(true);
 			BackgroundAudioSource.SetActive(true);
-			
-			Time.timeScale = 0f;
-			IsGamePaused = true;
-			IsGameOver = true;
-			Log.Info("Game over menu opened - game paused");
 		}
+		
+		IsGamePaused = true;
+		IsGameOver = true;
+		Log.Info("Game over menu opened - game paused");
 	}
 	
 	/// <summary>
@@ -331,32 +278,31 @@ public class GameUI : ScriptComponent
 	/// </summary>
 	private void CloseGameOverMenu()
 	{
-		if (GameOverMenu)
+		if (!GameOverMenu)
 		{
-			var gameAudio = Scene.FindEntityByName("GameAudio");
-			if (gameAudio)
-			{
-				var sourceComponents = gameAudio.GetComponentsInChildren<AudioSourceComponent>();
-				foreach (var sourceComponent in sourceComponents)
-				{
-					sourceComponent.Resume();
-				}
-			}
-			
-			GameOverMenu.SetActive(false);
-			
-			// Show GameHub when resuming gameplay
-			if (GameHub)
-			{
-				GameHub.SetActive(true);
-			}
-
-			BackgroundAudioSource.SetActive(false);
-			Time.timeScale = 1f;
-			IsGamePaused = false;
-			IsGameOver = false;
-			Log.Info("Game over menu closed");
+			return;
 		}
+		
+		GameOverMenu.SetActive(false);
+		
+		// Resume game and audio
+		menuStack.ResumeGame();
+		menuStack.ResumeAudio();
+		
+		if (BackgroundAudioSource)
+		{
+			BackgroundAudioSource.SetActive(false);
+		}
+		
+		// Show GameHub
+		if (GameHub)
+		{
+			GameHub.SetActive(true);
+		}
+		
+		IsGamePaused = false;
+		IsGameOver = false;
+		Log.Info("Game over menu closed");
 	}
 
 	/// <summary>
@@ -365,7 +311,18 @@ public class GameUI : ScriptComponent
 	public void ResumeGame()
 	{
 		Log.Info("Resuming game");
-		CloseGameMenu();
+		
+		// Clear the menu stack and resume
+		menuStack.ClearStack(showBaseMenu: true);
+		menuStack.ResumeGame();
+		menuStack.ResumeAudio();
+		
+		if (BackgroundAudioSource)
+		{
+			BackgroundAudioSource.SetActive(false);
+		}
+		
+		IsGamePaused = false;
 	}
 
 	/// <summary>
@@ -375,17 +332,9 @@ public class GameUI : ScriptComponent
 	{
 		Log.Info("Opening settings from game menu");
 
-		// Tell the settings menu which menu to return to (always game menu in this context)
-		if (SettingsMenu)
-		{
-			var settingsController = SettingsMenu.GetComponent<SettingsMenu>();
-			if (settingsController != null)
-			{
-				settingsController.SetPreviousMenu(GameMenu);
-			}
-		}
 
-		ShowMenu(SettingsMenu, GameMenu);
+		// Push settings menu onto stack
+		PushMenu(SettingsMenu);
 	}
 
 	/// <summary>
@@ -394,7 +343,36 @@ public class GameUI : ScriptComponent
 	public void CloseSettings()
 	{
 		Log.Info("Closing settings, returning to game menu");
-		ShowMenu(GameMenu, SettingsMenu);
+		PopMenu();
+	}
+	
+	/// <summary>
+	/// Push a menu onto the stack (used by LevelUpUI and other systems).
+	/// </summary>
+	/// <param name="menu">The menu entity to push.</param>
+	public override void PushMenu(Entity menu)
+	{
+		if (!menu)
+		{
+			Log.Warning("GameUI: Attempted to push null menu");
+			return;
+		}
+		
+		// Pause game and audio when pushing first menu
+		if (menuStack.IsEmpty())
+		{
+			menuStack.PauseGame();
+			menuStack.PauseAudio();
+			
+			if (BackgroundAudioSource)
+			{
+				BackgroundAudioSource.SetActive(true);
+			}
+			
+			IsGamePaused = true;
+		}
+		
+		menuStack.PushMenu(menu, hidePreviousMenu: true, hideBaseMenu: true);
 	}
 
 	/// <summary>
@@ -404,40 +382,6 @@ public class GameUI : ScriptComponent
 	{
 		Log.Info("Quitting application");
 		Application.Quit();
-	}
-
-	/// <summary>
-	/// Show a specific menu and hide others (internal helper method).
-	/// </summary>
-	/// <param name="menuToShow">The menu entity to show</param>
-	/// <param name="menuToHide">The menu entity to hide</param>
-	private void ShowMenu(Entity menuToShow, Entity menuToHide)
-	{
-		if (menuToHide)
-		{
-			menuToHide.SetActive(false);
-		}
-
-		if (menuToShow)
-		{
-			menuToShow.SetActive(true);
-		}
-
-		Log.Info($"Menu transition: {(menuToHide ? menuToHide.name : "null")} -> {(menuToShow ? menuToShow.name : "null")}");
-	}
-
-	/// <summary>
-	/// Static helper method to find the GameUI controller in the current scene.
-	/// Can be used by menus to find the game controller.
-	/// </summary>
-	public static GameUI FindInScene()
-	{
-		var gameUIEntity = Scene.FindEntityByName("GameUI");
-		if (gameUIEntity)
-		{
-			return gameUIEntity.GetComponent<GameUI>();
-		}
-		return null;
 	}
 
 	/// <summary>

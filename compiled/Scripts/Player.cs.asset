@@ -424,7 +424,7 @@ public class Player : ScriptComponent
         source.maxDistance = 100.0f;
 
         // Show game over menu
-        var gameUI = GameUI.FindInScene();
+        var gameUI = MenuStackUI.FindInScene<GameUI>();
         if (gameUI != null)
         {
             gameUI.OpenGameOverMenu();
@@ -551,7 +551,7 @@ public class Player : ScriptComponent
     private void ShowLevelUpMenu(int level)
     {
         // Find the GameUI entity in the scene
-        var gameUIEntity = Scene.FindEntityByName("GameUI");
+        var gameUIEntity = MenuStackUI.FindInScene<GameUI>().owner;
         if (!gameUIEntity)
         {
             Log.Warning("Player: GameUI entity not found in scene - cannot show level up menu");

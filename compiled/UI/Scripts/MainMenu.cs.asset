@@ -94,7 +94,7 @@ public class MainMenu : BaseMenu
 	private void OnPlayButtonClick(UIPointerEvent ev)
 	{
 		Log.Info($"Play button clicked - starting game");
-		LobbyUI.FindInScene()?.StartGame();
+		MenuStackUI.FindInScene<LobbyUI>()?.StartGame();
 	}
 
 	/// <summary>
@@ -103,7 +103,7 @@ public class MainMenu : BaseMenu
 	private void OnSettingsButtonClick(UIPointerEvent ev)
 	{
 		Log.Info($"Settings button clicked - opening settings");
-		LobbyUI.FindInScene().OpenSettings();
+		MenuStackUI.FindInScene<LobbyUI>()?.OpenSettings();
 	}
 
 	/// <summary>
