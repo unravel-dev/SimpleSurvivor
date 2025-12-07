@@ -46,7 +46,6 @@ public class Enemy : ScriptComponent
     public AnimationClip stunAnimation;
     
     // Component references
-    private TransformComponent transformComponent;
     private PhysicsComponent physicsComponent;
     private Health Health;
     private AnimationComponent animationComponent;
@@ -63,15 +62,9 @@ public class Enemy : ScriptComponent
     /// </summary>
     public override void OnCreate()
     {
-        transformComponent = owner.GetComponent<TransformComponent>();
         physicsComponent = owner.GetComponent<PhysicsComponent>();
         Health = owner.GetComponent<Health>();
         animationComponent = owner.GetComponent<AnimationComponent>();
-        
-        if (transformComponent == null)
-        {
-            Log.Error($"Enemy on {owner.name}: TransformComponent not found!");
-        }
         
         if (usePhysicsMovement && physicsComponent == null)
         {
@@ -101,12 +94,6 @@ public class Enemy : ScriptComponent
     /// </summary>
     public override void OnStart()
     {
-        // Validate components
-        if (transformComponent == null)
-        {
-            Log.Error($"Enemy on {owner.name}: Missing TransformComponent. Disabling script.");
-            return;
-        }
 
         // Auto-find player if enabled
         if (autoFindPlayer && !target)
@@ -134,7 +121,7 @@ public class Enemy : ScriptComponent
     /// </summary>
     public override void OnUpdate()
     {
-        if (transformComponent == null || !target)
+        if (!target)
             return;
         
         // Check if stunned - if so, stop chasing
@@ -160,7 +147,7 @@ public class Enemy : ScriptComponent
     /// </summary>
     public override void OnFixedUpdate()
     {
-        if (transformComponent == null || !target || !usePhysicsMovement || physicsComponent == null)
+        if (!target || !usePhysicsMovement || physicsComponent == null)
             return;
 
         // Handle physics movement
@@ -193,7 +180,7 @@ public class Enemy : ScriptComponent
             return;
         
         Vector3 playerPosition = target.transform.position;
-        Vector3 enemyPosition = transformComponent.position;
+        Vector3 enemyPosition = transform.position;
         
         // Calculate distance to player
         float distanceToPlayer = Vector3.Distance(enemyPosition, playerPosition);
@@ -238,7 +225,7 @@ public class Enemy : ScriptComponent
     private void UpdatePhysicsMovement()
     {
         Vector3 playerPosition = target.transform.position;
-        Vector3 enemyPosition = transformComponent.position;
+        Vector3 enemyPosition = transform.position;
         
         // Direction to target (flattened to XZ plane for top-down)
         Vector3 toTarget = playerPosition - enemyPosition;
@@ -303,7 +290,7 @@ public class Enemy : ScriptComponent
         
         // Direct transform movement (for non-physics enemies)
         Vector3 movement = direction * targetSpeed * Time.deltaTime;
-        transformComponent.position += movement;
+        transform.position += movement;
     }
     
     /// <summary>
@@ -320,8 +307,8 @@ public class Enemy : ScriptComponent
         
         // Smoothly rotate towards target
         float rotationStep = rotationSpeed * Time.deltaTime;
-        transformComponent.rotation = Quaternion.RotateTowards(
-            transformComponent.rotation, 
+        transform.rotation = Quaternion.RotateTowards(
+            transform.rotation, 
             targetRotation, 
             rotationStep
         );
@@ -382,10 +369,10 @@ public class Enemy : ScriptComponent
     /// <returns>Distance to target, or -1 if no target is set.</returns>
     public float GetDistanceToTarget()
     {
-        if (!target || transformComponent == null)
+        if (!target)
             return -1f;
             
-        return Vector3.Distance(transformComponent.position, target.transform.position);
+        return Vector3.Distance(transform.position, target.transform.position);
     }
     
     /// <summary>
@@ -403,7 +390,7 @@ public class Enemy : ScriptComponent
     /// <returns>True if target exists, false otherwise.</returns>
     public bool IsTargetInRange()
     {
-        return target && transformComponent != null;
+        return target;
     }
     
     /// <summary>
@@ -512,7 +499,7 @@ public class Enemy : ScriptComponent
             return;
             
         // Calculate distance to player
-        Vector3 enemyPosition = transformComponent.position;
+        Vector3 enemyPosition = transform.position;
         Vector3 playerPosition = target.transform.position;
         float distanceToPlayer = Vector3.Distance(enemyPosition, playerPosition);
         // Update timer

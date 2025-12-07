@@ -41,41 +41,26 @@ public class OrbitalMovementComponent : ScriptComponent
 
     [Tooltip("Visual spin speed (degrees per second)")]
     public float visualSpinSpeed = 720.0f;
-
-    private TransformComponent transformComponent;
-    private TransformComponent centerTransform;
     private float visualRotation = 0.0f;
     private float radiusPingPongTime = 0.0f;
 
     public override void OnCreate()
     {
-        transformComponent = owner.GetComponent<TransformComponent>();
     }
 
     public override void OnStart()
     {
-        if (transformComponent == null)
-        {
-            Log.Error($"OrbitalProjectile on {owner.name}: No TransformComponent found!");
-            return;
-        }
-
         if (!centerEntity)
         {
             Log.Error($"OrbitalProjectile on {owner.name}: No center entity assigned!");
             return;
         }
 
-        centerTransform = centerEntity.GetComponent<TransformComponent>();
-        if (centerTransform == null)
-        {
-            Log.Error($"OrbitalProjectile on {owner.name}: Center entity has no TransformComponent!");
-        }
     }
 
     public override void OnUpdate()
     {
-        if (transformComponent == null || centerTransform == null || !centerEntity)
+        if (!centerEntity)
         {
             // Center entity destroyed or invalid, destroy this orbital
             Scene.DestroyEntity(owner);
@@ -105,7 +90,7 @@ public class OrbitalMovementComponent : ScriptComponent
 
         // Calculate new position
         float angleRad = currentAngle * Mathf.Deg2Rad;
-        Vector3 centerPosition = centerTransform.position;
+        Vector3 centerPosition = centerEntity.transform.position;
         
         Vector3 offset = new Vector3(
             Mathf.Cos(angleRad) * currentRadius,
@@ -113,7 +98,7 @@ public class OrbitalMovementComponent : ScriptComponent
             Mathf.Sin(angleRad) * currentRadius
         );
 
-        transformComponent.position = centerPosition + offset;
+        transform.position = centerPosition + offset;
 
         // Visual spinning
         if (visualSpin)
@@ -130,7 +115,7 @@ public class OrbitalMovementComponent : ScriptComponent
             // Also tilt it slightly for better visuals
             Quaternion tiltRotation = Quaternion.AngleAxis(45.0f, Vector3.right);
             
-            transformComponent.rotation = spinRotation * tiltRotation;
+            transform.rotation = spinRotation * tiltRotation;
         }
     }
 }

@@ -49,7 +49,8 @@ public class DashAbility : Ability
     /// </summary>
     /// <param name="targets">Target entities (not used for dash).</param>
     /// <param name="castIndex">Cast index for multicast (not used for dash).</param>
-    protected override bool OnTriggerAbility(Entity[] targets, int castIndex)
+    /// <param name="totalCasts">The total number of casts in this trigger (including multicast).</param>
+    protected override bool OnTriggerAbility(Entity[] targets, int castIndex, int totalCasts)
     {
         if(castIndex > 0)
         {

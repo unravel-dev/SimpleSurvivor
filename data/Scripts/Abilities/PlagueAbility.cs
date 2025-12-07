@@ -146,7 +146,8 @@ public class PlagueAbility : Ability
     /// </summary>
     /// <param name="targets">Not used for area effect.</param>
     /// <param name="castIndex">Not used for area effect.</param>
-    protected override bool OnTriggerAbility(Entity[] targets, int castIndex)
+    /// <param name="totalCasts">The total number of casts in this trigger (including multicast).</param>
+    protected override bool OnTriggerAbility(Entity[] targets, int castIndex, int totalCasts)
     {
         if (plagueEffectPrefab == null)
         {

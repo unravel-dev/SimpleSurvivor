@@ -33,7 +33,6 @@ public class Player : ScriptComponent
     
     // Component references
     private PhysicsComponent physicsComponent;
-    private TransformComponent transformComponent;
     private Health Health;
     private Experience Experience;
     private TopDownCamera cachedCamera; // Cached camera reference for shake
@@ -55,18 +54,12 @@ public class Player : ScriptComponent
     {
         // Cache required components
         physicsComponent = owner.GetComponent<PhysicsComponent>();
-        transformComponent = owner.GetComponent<TransformComponent>();
         Health = owner.GetComponent<Health>();
         Experience = owner.GetComponent<Experience>();
 
         if (physicsComponent == null)
         {
             Log.Error($"Player on {owner.name}: PhysicsComponent not found! Please attach a PhysicsComponent with a Capsule collider.");
-        }
-
-        if (transformComponent == null)
-        {
-            Log.Error($"Player on {owner.name}: TransformComponent not found!");
         }
 
         if (Health == null)
@@ -90,7 +83,7 @@ public class Player : ScriptComponent
         targetVelocity = Vector3.zero;
 
         // Validate components
-        if (physicsComponent == null || transformComponent == null)
+        if (physicsComponent == null)
         {
             Log.Error($"Player on {owner.name}: Missing required components. Disabling script.");
             return;
@@ -176,7 +169,7 @@ public class Player : ScriptComponent
             return;
         }
 
-        if (physicsComponent == null || transformComponent == null)
+        if (physicsComponent == null)
             return;
             
         // Don't process input/movement if player is dead
@@ -199,7 +192,7 @@ public class Player : ScriptComponent
     
     public override void OnFixedUpdate()
     {
-        if (physicsComponent == null || transformComponent == null)
+        if (physicsComponent == null)
             return;
             
         // Don't process physics movement if player is dead
@@ -250,7 +243,30 @@ public class Player : ScriptComponent
         float currentMaxSpeed = UpgradeSystem.ApplyMovementSpeedUpgrade(baseMaxSpeed);
         targetVelocity = inputDirection * currentMaxSpeed;
         
-
+        
+        var cameraEntity = Scene.FindEntityByName("Main Camera");
+        if (cameraEntity)
+        {
+            var camera = cameraEntity.GetComponent<CameraComponent>();
+            if (camera != null)
+            {
+                Vector2 mousePosition = Input.mousePosition;
+                var playerPosition = transform.position + Vector3.up;   
+                // float distance = Vector3.Distance(camera.transform.position, playerPosition);
+                //Vector3 worldPosition = camera.ScreenPointToWorld(new Vector3(mousePosition.x, mousePosition.y, distance));
+                if (camera.ScreenPointToRay(mousePosition, out var ray))
+                {
+                    var hit = Physics.Raycast(ray, 1000.0f, LayerMask.Everything);
+                    if (hit.HasValue)
+                    {
+                        var worldPosition = hit.Value.point;
+                        worldPosition.y = playerPosition.y;
+                        transform.forward = (worldPosition - playerPosition).normalized;
+                    }
+                }
+               
+            }
+        }
     }
     
     /// <summary>
@@ -297,7 +313,7 @@ public class Player : ScriptComponent
         if (currentVelocity.magnitude > 0.01f)
         {
             Vector3 movement = currentVelocity * Time.deltaTime;
-            transformComponent.position += movement;
+            transform.position += movement;
         }
     }
     
@@ -420,7 +436,7 @@ public class Player : ScriptComponent
         inputDirection = Vector3.zero;
         
         var gameOverSound = Assets.GetAsset<AudioClip>("app:/data/Sounds/game-over.mp3");
-        var source = AudioSourceComponent.PlayClipAtPoint(gameOverSound, transformComponent.position, 1.0f);
+        var source = AudioSourceComponent.PlayClipAtPoint(gameOverSound, transform.position, 1.0f);
         source.maxDistance = 100.0f;
 
         // Show game over menu
@@ -568,7 +584,7 @@ public class Player : ScriptComponent
         }
 
         var levelUpSound = Assets.GetAsset<AudioClip>("app:/data/Sounds/level-up.mp3");
-        var source = AudioSourceComponent.PlayClipAtPoint(levelUpSound, transformComponent.position, 0.4f);
+        var source = AudioSourceComponent.PlayClipAtPoint(levelUpSound, transform.position, 0.4f);
         source.maxDistance = 100.0f;
         
         // Generate upgrade card options (handles ability-only levels automatically)

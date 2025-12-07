@@ -30,7 +30,6 @@ public class DeathSequence : ScriptComponent
     
     // Component references
     private Health healthComponent;
-    private TransformComponent transformComponent;
     private ModelComponent meshRenderer;
 
     private AnimationComponent animationComponent;
@@ -52,7 +51,6 @@ public class DeathSequence : ScriptComponent
     public override void OnCreate()
     {
         healthComponent = owner.GetComponent<Health>();
-        transformComponent = owner.GetComponent<TransformComponent>();
         meshRenderer = owner.GetComponent<ModelComponent>();
         animationComponent = owner.GetComponent<AnimationComponent>();
         physicsComponent = owner.GetComponent<PhysicsComponent>();
@@ -60,12 +58,6 @@ public class DeathSequence : ScriptComponent
         if (healthComponent == null)
         {
             Log.Error($"DeathSequence on {owner.name}: Health component not found! This component requires a Health component.");
-            return;
-        }
-
-        if (transformComponent == null)
-        {
-            Log.Error($"DeathSequence on {owner.name}: TransformComponent not found!");
             return;
         }
 
@@ -83,10 +75,7 @@ public class DeathSequence : ScriptComponent
     /// </summary>
     public override void OnStart()
     {
-        if (transformComponent != null)
-        {
-            startScale = transformComponent.localScale;
-        }
+        startScale = transform.localScale;
     }
     
     /// <summary>
@@ -120,13 +109,13 @@ public class DeathSequence : ScriptComponent
 
             // Sink into ground
             Vector3 newPosition = Vector3.Lerp(startPosition, targetPosition, easedProgress);
-            transformComponent.position = newPosition;
+            transform.position = newPosition;
 
             // Scale down if enabled
             if (scaleDown)
             {
                 Vector3 newScale = Vector3.Lerp(startScale, targetScale, easedProgress);
-                transformComponent.localScale = newScale;
+                transform.localScale = newScale;
             }
 
             // Fade out if enabled (requires material property manipulation)
@@ -169,16 +158,13 @@ public class DeathSequence : ScriptComponent
         deathTimer = 0.0f;
         
         // Store starting position and calculate target
-        if (transformComponent != null)
-        {
-            startPosition = transformComponent.position;
-            targetPosition = startPosition + new Vector3(0, -sinkDepth, 0);
+        startPosition = transform.position;
+        targetPosition = startPosition + new Vector3(0, -sinkDepth, 0);
             
-            if (scaleDown)
-            {
-                startScale = transformComponent.localScale;
-                targetScale = startScale * finalScale;
-            }
+        if (scaleDown)
+        {
+            startScale = transform.localScale;
+            targetScale = startScale * finalScale;
         }
         
         // Log.Info($"DeathSequence: Starting death sequence for {owner.name}");

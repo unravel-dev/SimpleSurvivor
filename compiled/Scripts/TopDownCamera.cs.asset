@@ -65,9 +65,7 @@ public class TopDownCamera : ScriptComponent
     public float maxShakeIntensity = 2.0f;
     
     // Component references
-    private CameraComponent cameraComponent;
-    private TransformComponent transformComponent;
-    
+    private CameraComponent cameraComponent;    
     // Follow state
     private Vector3 velocity = Vector3.zero;
     private Vector3 targetPosition;
@@ -86,17 +84,12 @@ public class TopDownCamera : ScriptComponent
     {
         // Get required components
         cameraComponent = owner.GetComponent<CameraComponent>();
-        transformComponent = owner.GetComponent<TransformComponent>();
         
         if (cameraComponent == null)
         {
             Log.Error($"TopDownCamera on {owner.name}: CameraComponent not found! Please attach a CameraComponent.");
         }
-        
-        if (transformComponent == null)
-        {
-            Log.Error($"TopDownCamera on {owner.name}: TransformComponent not found!");
-        }
+     
     }
     
     /// <summary>
@@ -105,7 +98,7 @@ public class TopDownCamera : ScriptComponent
     public override void OnStart()
     {
         // Validate components
-        if (cameraComponent == null || transformComponent == null)
+        if (cameraComponent == null)
         {
             Log.Error($"TopDownCamera on {owner.name}: Missing required components. Disabling script.");
             return;
@@ -120,14 +113,14 @@ public class TopDownCamera : ScriptComponent
         // Set initial camera rotation for top-down view
         if (lockRotation)
         {
-            transformComponent.eulerAngles = cameraRotation;
+            transform.eulerAngles = cameraRotation;
         }
         
         // Initialize target position
         if (target)
         {
             targetPosition = CalculateTargetPosition();
-            transformComponent.position = targetPosition;
+            transform.position = targetPosition;
         }
     }
     
@@ -137,7 +130,7 @@ public class TopDownCamera : ScriptComponent
     /// </summary>
     public override void OnUpdate()
     {
-        if (cameraComponent == null || transformComponent == null || !target)
+        if (cameraComponent == null || !target)
             return;
             
         // Update camera shake
@@ -155,7 +148,7 @@ public class TopDownCamera : ScriptComponent
         // Update camera rotation if locked (always in OnUpdate for responsiveness)
         if (lockRotation)
         {
-            transformComponent.eulerAngles = cameraRotation;
+            transform.eulerAngles = cameraRotation;
         }
     }
     
@@ -164,7 +157,7 @@ public class TopDownCamera : ScriptComponent
     /// </summary>
     public override void OnFixedUpdate()
     {
-        if (cameraComponent == null || transformComponent == null || !target)
+        if (cameraComponent == null || !target)
             return;
             
         // Update camera shake
@@ -206,7 +199,7 @@ public class TopDownCamera : ScriptComponent
         {
             // Use smooth damping for natural movement
             finalPosition = Vector3.SmoothDamp(
-                transformComponent.position, 
+                transform.position, 
                 targetPosition, 
                 ref velocity, 
                 smoothTime, 
@@ -218,7 +211,7 @@ public class TopDownCamera : ScriptComponent
         {
             // Use linear interpolation for consistent speed
             finalPosition = Vector3.MoveTowards(
-                transformComponent.position, 
+                transform.position, 
                 targetPosition, 
                 followSpeed * Time.deltaTime
             );
@@ -230,7 +223,7 @@ public class TopDownCamera : ScriptComponent
             finalPosition += shakeOffset;
         }
         
-        transformComponent.position = finalPosition;
+        transform.position = finalPosition;
     }
     
     /// <summary>
@@ -259,7 +252,7 @@ public class TopDownCamera : ScriptComponent
         {
             // Use smooth damping for natural movement with fixed timestep
             finalPosition = Vector3.SmoothDamp(
-                transformComponent.position, 
+                transform.position, 
                 targetPosition, 
                 ref velocity, 
                 smoothTime, 
@@ -271,7 +264,7 @@ public class TopDownCamera : ScriptComponent
         {
             // Use linear interpolation for consistent speed with fixed timestep
             finalPosition = Vector3.MoveTowards(
-                transformComponent.position, 
+                transform.position, 
                 targetPosition, 
                 followSpeed * Time.fixedDeltaTime
             );
@@ -283,7 +276,7 @@ public class TopDownCamera : ScriptComponent
             finalPosition += shakeOffset;
         }
         
-        transformComponent.position = finalPosition;
+        transform.position = finalPosition;
     }
     
     /// <summary>
@@ -293,7 +286,7 @@ public class TopDownCamera : ScriptComponent
     private Vector3 CalculateTargetPosition()
     {
         if (!target)
-            return transformComponent.position;
+            return transform.position;
             
         Vector3 playerPosition = target.transform.position;
         return playerPosition + offset + lookAheadOffset;
@@ -382,7 +375,7 @@ public class TopDownCamera : ScriptComponent
             targetPosition = ApplyBoundaries(targetPosition);
         }
         
-        transformComponent.position = targetPosition;
+        transform.position = targetPosition;
         velocity = Vector3.zero;
         lookAheadOffset = Vector3.zero;
         shakeOffset = Vector3.zero;

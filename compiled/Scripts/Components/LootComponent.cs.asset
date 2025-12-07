@@ -33,7 +33,6 @@ public abstract class LootComponent : ScriptComponent
     public float floatAmplitude = 0.3f;
     
     // Component references
-    protected TransformComponent transformComponent;
     protected PhysicsComponent physicsComponent;
     
     // State
@@ -48,13 +47,8 @@ public abstract class LootComponent : ScriptComponent
     /// </summary>
     public override void OnCreate()
     {
-        transformComponent = owner.GetComponent<TransformComponent>();
         physicsComponent = owner.GetComponent<PhysicsComponent>();
         
-        if (transformComponent == null)
-        {
-            Log.Error($"LootComponent on {owner.name}: TransformComponent not found!");
-        }
     }
     
     /// <summary>
@@ -64,7 +58,7 @@ public abstract class LootComponent : ScriptComponent
     {
         timeAlive = 0.0f;
         isBeingAttracted = false;
-        initialPosition = transformComponent.position;
+        initialPosition = transform.position;
         floatOffset = Random.Range(0f, Mathf.PI * 2f); // Random phase for floating animation
     }
     
@@ -73,9 +67,6 @@ public abstract class LootComponent : ScriptComponent
     /// </summary>
     public override void OnUpdate()
     {
-        if (transformComponent == null)
-            return;
-        
         // Handle attraction to player
         if (isBeingAttracted && targetPlayer)
         {
@@ -92,13 +83,13 @@ public abstract class LootComponent : ScriptComponent
     /// </summary>
     protected void UpdateAttraction()
     {
-        if (!targetPlayer || transformComponent == null)
+        if (!targetPlayer)
         {
             StopAttraction();
             return;
         }
         
-        Vector3 lootPosition = transformComponent.position;
+        Vector3 lootPosition = transform.position;
         Vector3 playerPosition = targetPlayer.transform.position + Vector3.up * 1.0f;
         
         // Check if we're close enough to collect
@@ -114,7 +105,7 @@ public abstract class LootComponent : ScriptComponent
         
         // Move towards player using MoveTowards
         float moveDistance = dynamicSpeed * Time.deltaTime;
-        transformComponent.position = Vector3.MoveTowards(lootPosition, playerPosition, moveDistance);
+        transform.position = Vector3.MoveTowards(lootPosition, playerPosition, moveDistance);
     }
     
     /// <summary>
@@ -154,16 +145,13 @@ public abstract class LootComponent : ScriptComponent
     /// Update floating animation when not being attracted.
     /// </summary>
     protected void UpdateFloating()
-    {
-        if (transformComponent == null)
-            return;
-            
+    {   
         // Calculate floating offset
         float floatY = Mathf.Sin((Time.time * floatSpeed) + floatOffset) * floatAmplitude;
         Vector3 targetPosition = initialPosition + Vector3.up * floatY;
         
         // Direct position update for floating
-        transformComponent.position = targetPosition;
+        transform.position = targetPosition;
     }
     
     /// <summary>
@@ -188,9 +176,9 @@ public abstract class LootComponent : ScriptComponent
         targetPlayer = Entity.Invalid;
         
         // Reset to floating position
-        if (enableFloating && transformComponent != null)
+        if (enableFloating)
         {
-            initialPosition = transformComponent.position;
+            initialPosition = transform.position;
         }
     }
     

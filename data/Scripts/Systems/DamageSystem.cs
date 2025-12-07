@@ -45,8 +45,13 @@ public static class DamageSystem
         }
 
         // Store health before damage
-        float healthBefore = healthComponent.GetCurrentHealth();
         bool wasAlive = !healthComponent.IsDead();
+
+        if (!wasAlive)
+        {     
+            return false;
+        }
+        float healthBefore = healthComponent.GetCurrentHealth();
 
         // Apply damage
         bool died = healthComponent.TakeDamage(breakdown.amount, source);

@@ -31,7 +31,6 @@ public class Experience : ScriptComponent
     public bool debugDrawRange = false;
     
     // Component references
-    private TransformComponent transformComponent;
     
     // State
     private float lastDetectionTime = 0.0f;
@@ -47,12 +46,7 @@ public class Experience : ScriptComponent
     /// </summary>
     public override void OnCreate()
     {
-        transformComponent = owner.GetComponent<TransformComponent>();
-        
-        if (transformComponent == null)
-        {
-            Log.Error($"Experience on {owner.name}: TransformComponent not found!");
-        }
+
     }
     
     /// <summary>
@@ -69,9 +63,7 @@ public class Experience : ScriptComponent
     /// </summary>
     public override void OnUpdate()
     {
-        if (transformComponent == null)
-            return;
-            
+
         // Check for nearby experience orbs at intervals
         if (Time.time - lastDetectionTime >= detectionInterval)
         {
@@ -94,7 +86,7 @@ public class Experience : ScriptComponent
     /// </summary>
     private void DetectNearbyOrbs()
     {
-        Vector3 playerPosition = transformComponent.position;
+        Vector3 playerPosition = transform.position;
         
         // Find all entities with ExperienceOrb components within range
         var nearbyEntities = Physics.SphereOverlap(playerPosition, pickupRange, LayerMask.GetMask("Experience"), true);
@@ -198,7 +190,7 @@ public class Experience : ScriptComponent
             // Level up!
             currentLevel++;
             var effect = Scene.Instantiate(levelUpEffect);
-            effect.transform.position = transformComponent.position;
+            effect.transform.position = transform.position;
             effect.transform.SetParent(owner, true);
             Scene.DestroyEntity(effect, 2.0f);
             
@@ -263,7 +255,7 @@ public class Experience : ScriptComponent
     /// </summary>
     private void DrawDebugRange()
     {
-        Gizmos.AddSphere(Color.red, transformComponent.position, pickupRange);
+        Gizmos.AddSphere(Color.red, transform.position, pickupRange);
     }
     
     /// <summary>

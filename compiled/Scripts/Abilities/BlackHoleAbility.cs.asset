@@ -33,8 +33,6 @@ public class BlackHoleAbility : Ability
     [Tooltip("Spawn offset from the caster")]
     public Vector3 spawnOffset = Vector3.up;
 
-    private TransformComponent transformComponent;
-
     /// <summary>
     /// Configure a Black Hole ability with default values.
     /// </summary>
@@ -45,18 +43,16 @@ public class BlackHoleAbility : Ability
             return;
 
         ability.cooldown = 6.0f;
-        ability.maxRange = 12.0f;
+        ability.maxRange = 6.0f;
         ability.pullRadius = 6.0f;
         ability.pullStrength = 25.0f;
         ability.duration = 4.0f;
         ability.spawnOffset = Vector3.up * 4.0f;
-        ability.doomDamagePerSecond = 5.0f;
+        ability.doomDamagePerSecond = 2.0f;
     }
 
     public override void OnStart()
     {
-        transformComponent = owner.GetComponent<TransformComponent>();
-
         if (blackHolePrefab == null)
         {
             // Try to load a default prefab (you'll need to create this)
@@ -93,7 +89,8 @@ public class BlackHoleAbility : Ability
     /// </summary>
     /// <param name="targets">Ignored for this ability.</param>
     /// <param name="castIndex">Used to offset multiple black holes when multicast is active.</param>
-    protected override bool OnTriggerAbility(Entity[] targets, int castIndex)
+    /// <param name="totalCasts">The total number of casts in this trigger (including multicast).</param>
+    protected override bool OnTriggerAbility(Entity[] targets, int castIndex, int totalCasts)
     {
         if (blackHolePrefab == null)
         {
@@ -126,7 +123,7 @@ public class BlackHoleAbility : Ability
 
 
         // Spawn black hole immediately
-        Entity blackHoleEntity = Scene.Instantiate(blackHolePrefab);
+        Entity blackHoleEntity = Scene.Instantiate(blackHolePrefab, ContainerCache.EffectsContainer);
         if (blackHoleEntity)
         {
             blackHoleEntity.transform.position = spawnPosition;
@@ -165,11 +162,11 @@ public class BlackHoleAbility : Ability
             pullComponent.distanceBasedStrength = true;
             pullComponent.minStrengthMultiplier = 0.3f;
             pullComponent.pullLayerMask = LayerMask.GetMask("Enemy");
-            pullComponent.callbackInterval = 0.5f;
+            pullComponent.callbackInterval = 0.2f;
             pullComponent.onAffectedEntities = (entities) => {
                 // Calculate damage per tick
                 float damagePerTick = doomDamage * pullComponent.callbackInterval;
-                float duration = 2.0f;
+                float duration = 1.0f;
                 foreach (var entity in entities)
                 {
                     // Apply multiple stacks of Doom at once (based on upgrades)

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unravel.Core;
 
@@ -16,6 +17,8 @@ public class LobbyUI : MenuStackUI
 	public Scene GameScene;
 
 	public Entity BackgroundAudioSource;
+
+	public List<int> testNumbers = new List<int>();
 	
 	/// <summary>
 	/// OnCreate is called when the script is first loaded, or when an object it is attached to is instantiated

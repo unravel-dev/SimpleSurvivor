@@ -83,9 +83,6 @@ public class BasicLevelDirector : ScriptComponent
     // Base damage tracking (to preserve original values for scaling)
     private Dictionary<Entity, int> enemyBaseDamage = new Dictionary<Entity, int>();
     
-    // Container management for organizing spawned enemies
-    private Entity enemyContainer;
-    
     /// <summary>
     /// Called when the script is created.
     /// </summary>
@@ -117,39 +114,11 @@ public class BasicLevelDirector : ScriptComponent
             playerExperience = player.GetComponent<Experience>();
         }
         
-        // Find or create enemy container
-        FindOrCreateEnemyContainer();
-        
         // Initialize kill tracking
         InitializeKillTracking();
         
         // Subscribe to enemy death events to track kills
         SubscribeToEnemyDeaths();
-    }
-    
-    /// <summary>
-    /// Find or create the EnemyContainer entity to parent all enemies.
-    /// </summary>
-    private void FindOrCreateEnemyContainer()
-    {
-        // First try to find existing container
-        enemyContainer = Scene.FindEntityByName("EnemyContainer");
-        
-        if (!enemyContainer)
-        {
-            // Create new container entity
-            enemyContainer = Scene.CreateEntity("EnemyContainer");
-            
-            if (enemyContainer)
-            {
-                // Position it at world origin
-                enemyContainer.transform.position = Vector3.zero;
-            }
-            else
-            {
-                Log.Error("BasicLevelDirector: Failed to create EnemyContainer entity");
-            }
-        }
     }
     
     /// <summary>
@@ -262,7 +231,7 @@ public class BasicLevelDirector : ScriptComponent
         Vector3 spawnPosition = GenerateRandomSpawnPosition(playerPosition);
         
         // Spawn the entity
-        Entity spawnedEntity = Scene.Instantiate(prefab);
+        Entity spawnedEntity = Scene.Instantiate(prefab, ContainerCache.EnemyContainer);
         
         if (!spawnedEntity)
         {
@@ -270,12 +239,6 @@ public class BasicLevelDirector : ScriptComponent
             return Entity.Invalid;
         }
         
-                
-        // Parent the spawned entity under the enemy container
-        if (enemyContainer)
-        {
-            spawnedEntity.transform.SetParent(enemyContainer, false);
-        }
         // Set the spawned entity's position
         spawnedEntity.transform.position = spawnPosition;
 

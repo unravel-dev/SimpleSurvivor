@@ -34,9 +34,6 @@ public class DamageNumberSystem : ScriptComponent
     // Singleton instance
     private static DamageNumberSystem instance;
     
-    // Container management
-    private Entity damageContainer;
-    
     // Object pooling with ring buffer
     private Entity[] damageNumberPool;
     private int currentPoolIndex = 0;
@@ -56,9 +53,6 @@ public class DamageNumberSystem : ScriptComponent
         if (instance == null)
         {
             instance = this;
-            
-            // Find or create damage container
-            FindOrCreateDamageContainer();
             
             // Initialize object pool
             InitializeObjectPool();
@@ -104,10 +98,7 @@ public class DamageNumberSystem : ScriptComponent
             if (pooledEntity)
             {
                 // Parent under damage container
-                if (damageContainer)
-                {
-                    pooledEntity.transform.SetParent(damageContainer, true);
-                }
+                pooledEntity.transform.SetParent(ContainerCache.DamageContainer, true);
                 
                 // Add TextComponent
                 pooledEntity.AddComponent<TextComponent>();
@@ -135,31 +126,6 @@ public class DamageNumberSystem : ScriptComponent
         
         poolInitialized = true;
         currentPoolIndex = 0;
-    }
-    
-    /// <summary>
-    /// Find or create the DamageContainer entity to parent all damage numbers.
-    /// </summary>
-    private void FindOrCreateDamageContainer()
-    {
-        // First try to find existing container
-        damageContainer = Scene.FindEntityByName("DamageContainer");
-        
-        if (!damageContainer)
-        {
-            // Create new container entity
-            damageContainer = Scene.CreateEntity("DamageContainer");
-            
-            if (damageContainer)
-            {
-                // Position it at world origin
-                damageContainer.transform.position = Vector3.zero;
-            }
-            else
-            {
-                Log.Error("DamageNumberSystem: Failed to create DamageContainer entity");
-            }
-        }
     }
     
     /// <summary>
@@ -312,20 +278,6 @@ public class DamageNumberSystem : ScriptComponent
 
     }
 
-    
-    /// <summary>
-    /// Get the DamageContainer entity for external access.
-    /// </summary>
-    /// <returns>The DamageContainer entity.</returns>
-    public Entity GetDamageContainer()
-    {
-        if (!damageContainer)
-        {
-            FindOrCreateDamageContainer();
-        }
-        
-        return damageContainer;
-    }
     
     /// <summary>
     /// Get the current number of active damage numbers.

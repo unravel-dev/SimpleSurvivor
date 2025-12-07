@@ -737,7 +737,7 @@ public static class ContactSystem
         }
 
         // Instantiate the visual prefab
-        Entity visualEntity = Scene.Instantiate(visualComponent.visualPrefab);
+        Entity visualEntity = Scene.Instantiate(visualComponent.visualPrefab, ContainerCache.EffectsContainer);
         if (!visualEntity)
         {
             return;

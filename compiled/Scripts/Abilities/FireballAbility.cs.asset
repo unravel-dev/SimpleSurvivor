@@ -33,7 +33,6 @@ public class FireballAbility : Ability
     [Tooltip("Sound to play when casting the ability")]
     public AudioClip castSound;
 
-    private TransformComponent transformComponent;
 
 
     /// <summary>
@@ -48,15 +47,14 @@ public class FireballAbility : Ability
         ability.damage = 20;
         ability.cooldown = 3.5f;
         ability.explosionRadius = 3.0f;
-        ability.maxRange = 15.0f;
-        ability.projectileSpeed = 12.0f;
+        ability.maxRange = 20.0f;
+        ability.projectileSpeed = 20.0f;
         ability.spawnOffset = Vector3.up;
         ability.basePierceCount = 1;
     }
 
     public override void OnStart()
     {
-        transformComponent = owner.GetComponent<TransformComponent>();
 
         if (fireballPrefab == null)
         {
@@ -99,7 +97,7 @@ public class FireballAbility : Ability
 
         if (castSound != null)
         {
-            var source = AudioSourceComponent.PlayClipAtPoint(castSound, transformComponent.position, 1.0f);
+            var source = AudioSourceComponent.PlayClipAtPoint(castSound, transform.position, 1.0f);
             source.maxDistance = 100.0f;
         }
 
@@ -110,7 +108,9 @@ public class FireballAbility : Ability
     /// Trigger the fireball ability - launch fireball at target.
     /// </summary>
     /// <param name="targets">List of targets (should contain one enemy)</param>
-    protected override bool OnTriggerAbility(Entity[] targets, int castIndex)
+    /// <param name="castIndex">The index of the current cast (0-based).</param>
+    /// <param name="totalCasts">The total number of casts in this trigger (including multicast).</param>
+    protected override bool OnTriggerAbility(Entity[] targets, int castIndex, int totalCasts)
     {
         if (fireballPrefab == null)
         {
@@ -124,25 +124,20 @@ public class FireballAbility : Ability
         }
 
         Entity target = targets[castIndex];
-        var targetTransform = target.GetComponent<TransformComponent>();
-        if (targetTransform == null)
-        {
-            Log.Warning("FireballAbility: Target has no TransformComponent");
-            return false;
-        }
-
         // Calculate spawn position and direction
-        Vector3 spawnPosition = transformComponent.position + spawnOffset;
-        Vector3 targetPosition = targetTransform.position + spawnOffset;
-        Vector3 direction = (targetPosition - spawnPosition).normalized;
+        Vector3 spawnPosition = transform.position + spawnOffset;
+        Vector3 targetPosition = target.transform.position + spawnOffset;
+        // Vector3 direction = (targetPosition - spawnPosition).normalized;
+        Vector3 direction = Ability.CalculateSpreadDirectionByAngleBetween(transform.forward, castIndex, totalCasts, 5.0f);
 
         // Instantiate the fireball projectile
-        Entity fireballEntity = Scene.Instantiate(fireballPrefab);
+        Entity fireballEntity = Scene.Instantiate(fireballPrefab, ContainerCache.EffectsContainer);
         if (!fireballEntity)
         {
             Log.Error("FireballAbility: Failed to instantiate fireball prefab");
             return false;
         }
+   
         fireballEntity.transform.position = spawnPosition;
         fireballEntity.transform.forward = direction;
 
@@ -165,13 +160,13 @@ public class FireballAbility : Ability
             pierceComponent.pierceCount = UpgradeSystem.ApplyPierceUpgrade(basePierceCount);
         }
 
-        var chainComponent = fireballEntity.AddComponent<ChainComponent>();
-        if (chainComponent != null)
-        {
-            chainComponent.chainCount = UpgradeSystem.ApplyChainUpgrade(0);
-            chainComponent.chainRange = UpgradeSystem.ApplyAreaOfEffectUpgrade(maxRange);
-            chainComponent.chainOffset = spawnOffset;
-        }
+        // var chainComponent = fireballEntity.AddComponent<ChainComponent>();
+        // if (chainComponent != null)
+        // {
+        //     chainComponent.chainCount = UpgradeSystem.ApplyChainUpgrade(0);
+        //     chainComponent.chainRange = UpgradeSystem.ApplyAreaOfEffectUpgrade(maxRange);
+        //     chainComponent.chainOffset = spawnOffset;
+        // }
         // Add physical damage component with upgraded damage
         var damageComponent = fireballEntity.GetComponent<PhysicalDamageComponent>();
         if (damageComponent == null)

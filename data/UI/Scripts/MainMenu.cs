@@ -114,4 +114,5 @@ public class MainMenu : BaseMenu
 		Log.Info($"Exit button clicked - quitting application");
 		Application.Quit();
 	}
+	
 }

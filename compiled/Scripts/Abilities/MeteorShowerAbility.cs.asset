@@ -160,7 +160,8 @@ public class MeteorShowerAbility : Ability
     /// </summary>
     /// <param name="targets">Not used for area effect.</param>
     /// <param name="castIndex">Not used for area effect.</param>
-    protected override bool OnTriggerAbility(Entity[] targets, int castIndex)
+    /// <param name="totalCasts">The total number of casts in this trigger (including multicast).</param>
+    protected override bool OnTriggerAbility(Entity[] targets, int castIndex, int totalCasts)
     {
         if (meteorPrefab == null)
         {
@@ -218,7 +219,7 @@ public class MeteorShowerAbility : Ability
         spawnPosition += new Vector3(randomDirection.x * horizontalOffset, 0, randomDirection.y * horizontalOffset);
         
         // Spawn meteor
-        Entity meteorEntity = Scene.Instantiate(meteorPrefab);
+        Entity meteorEntity = Scene.Instantiate(meteorPrefab, ContainerCache.EffectsContainer);
         if (!meteorEntity)
             return;
         

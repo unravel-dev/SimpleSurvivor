@@ -14,6 +14,8 @@ public class Projectile : ScriptComponent
 
     // Internal state
     private float timeAlive = 0.0f;
+
+    private bool isDestroyed = false;
     
     public override void OnStart()
     {
@@ -28,8 +30,17 @@ public class Projectile : ScriptComponent
         // Check if projectile should be destroyed due to lifetime
         if (timeAlive >= lifetime)
         {
-            
-            Scene.DestroyEntity(owner);
+
+            if (!isDestroyed)
+            {
+                isDestroyed = true;
+                var particleEmitter = owner.GetComponent<ParticleEmitterComponent>();
+                if (particleEmitter != null)
+                {
+                    particleEmitter.Stop();
+                }
+                Scene.DestroyEntity(owner, 1.0f);
+            }
             return;
         }
     }

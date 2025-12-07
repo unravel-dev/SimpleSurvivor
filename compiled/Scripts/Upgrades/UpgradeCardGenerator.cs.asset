@@ -118,7 +118,7 @@ public static class UpgradeCardGenerator
     /// <param name="maxAbilitySlots">Maximum number of ability slots (default 4)</param>
     /// <param name="cardCount">Number of cards to generate (default 3)</param>
     /// <returns>List of upgrade cards (always returns exactly cardCount cards, padded with regular upgrades if needed)</returns>
-    public static List<UpgradeCard> GenerateLevelUpSelection(int level, Ability[] currentAbilities, float playerLuck = 0.0f, int maxAbilitySlots = 4, int cardCount = 3)
+    public static List<UpgradeCard> GenerateLevelUpSelection(int level, Ability[] currentAbilities, float playerLuck = 0.0f, int maxAbilitySlots = 5, int cardCount = 3)
     {
         // Check if this is an ability-only level (every 5 levels) and if ability slots are not full
         bool isAbilityOnlyLevel = (level % 5 == 0);

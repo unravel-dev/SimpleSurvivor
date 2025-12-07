@@ -27,34 +27,21 @@ public class GroundIndicatorComponent : ScriptComponent
     [Tooltip("Maximum scale multiplier for pulse")]
     public float maxScale = 1.2f;
 
-    private TransformComponent transformComponent;
     private float elapsedTime = 0.0f;
     private Vector3 baseScale;
 
     public override void OnCreate()
     {
-        transformComponent = owner.GetComponent<TransformComponent>();
     }
 
     public override void OnStart()
     {
-        if (transformComponent == null)
-        {
-            Log.Error($"GroundIndicatorComponent on {owner.name}: No TransformComponent found!");
-            return;
-        }
-
         // Store base scale
-        baseScale = transformComponent.scale;
+        baseScale = transform.scale;
     }
 
     public override void OnUpdate()
     {
-        if (transformComponent == null)
-        {
-            return;
-        }
-
         // Update lifetime
         elapsedTime += Time.deltaTime;
         if (elapsedTime >= lifetime)
@@ -70,7 +57,7 @@ public class GroundIndicatorComponent : ScriptComponent
             float pulseValue = Mathf.PingPong(pulseTime, 1.0f);
             float scaleMultiplier = Mathf.Lerp(minScale, maxScale, pulseValue);
             
-            transformComponent.scale = baseScale * scaleMultiplier;
+            transform.scale = baseScale * scaleMultiplier;
         }
 
         // Optional: Fade out near end of lifetime

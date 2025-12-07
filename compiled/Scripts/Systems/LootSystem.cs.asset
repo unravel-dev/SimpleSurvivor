@@ -85,7 +85,6 @@ public class LootSystem : ScriptComponent
     private Entity playerEntity;
     private Experience playerExperience;
     private float gameStartTime;
-    private Entity lootContainer;
     
     /// <summary>
     /// Get the singleton instance of the loot system.
@@ -105,9 +104,6 @@ public class LootSystem : ScriptComponent
             
             // Find player entity
             FindPlayerEntity();
-            
-            // Find or create experience container
-            FindOrCreateLootContainer();
             
             // Subscribe to death events directly
             DamageSystem.OnEntityDied += OnEntityDied;
@@ -149,32 +145,6 @@ public class LootSystem : ScriptComponent
         }
     }
     
-    /// <summary>
-    /// Find or create the lootContainer entity to parent all loot.
-    /// </summary>
-    private void FindOrCreateLootContainer()
-    {
-        // First try to find existing container
-        lootContainer = Scene.FindEntityByName("LootContainer");
-        
-        if (!lootContainer)
-        {
-            // Create new container entity
-            lootContainer = Scene.CreateEntity("LootContainer");
-            
-            if (lootContainer)
-            {
-                // Position it at world origin
-                lootContainer.transform.position = Vector3.zero;
-
-            }
-            else
-            {
-                Log.Error("LootSystem: Failed to create lootContainer entity");
-            }
-        }
-
-    }
     
     /// <summary>
     /// Handle entity death events from DamageSystem.
@@ -226,12 +196,6 @@ public class LootSystem : ScriptComponent
     /// <param name="killer">The entity that killed it.</param>
     private void ProcessLootDrop(Entity deadEntity, Entity killer)
     {
-        // Get the enemy's position for loot drop
-        var transformComponent = deadEntity.GetComponent<TransformComponent>();
-        if (transformComponent == null)
-        {
-            return;
-        }
         
         // Get custom loot configuration based on enemy type
         var enemyComponent = deadEntity.GetComponent<Enemy>();
@@ -243,7 +207,7 @@ public class LootSystem : ScriptComponent
         }
         
         // Drop the loot
-        Vector3 dropPosition = transformComponent.position;
+        Vector3 dropPosition = deadEntity.transform.position;
         HandleEnemyDeath(deadEntity, dropPosition, customConfig);
     }
     
@@ -385,12 +349,10 @@ public class LootSystem : ScriptComponent
             Vector3 orbPosition = dropPosition + new Vector3(randomCircle.x, dropHeight, randomCircle.y);
             
             // Instantiate experience orb
-            var orbEntity = Scene.Instantiate(experienceOrbPrefab);
+            var orbEntity = Scene.Instantiate(experienceOrbPrefab, ContainerCache.LootContainer);
             if (orbEntity)
             {
-                // Parent the orb under the lootContainer
-                orbEntity.transform.SetParent(lootContainer, false);
-                
+
                 orbEntity.transform.position = orbPosition;
                 
                 // Configure experience value
@@ -462,13 +424,10 @@ public class LootSystem : ScriptComponent
         Vector3 magnetPosition = dropPosition + new Vector3(randomCircle.x, dropHeight, randomCircle.y);
         
         // Instantiate magnet loot
-        var magnetEntity = Scene.Instantiate(magnetLootPrefab);
+        var magnetEntity = Scene.Instantiate(magnetLootPrefab, ContainerCache.LootContainer);
         if (magnetEntity)
         {
 
-            // Parent the magnet under the lootContainer
-            magnetEntity.transform.SetParent(lootContainer, false);
-            
             magnetEntity.transform.position = magnetPosition;
 
         }
@@ -488,13 +447,10 @@ public class LootSystem : ScriptComponent
         Vector3 chestPosition = dropPosition + new Vector3(randomCircle.x, 0.0f, randomCircle.y);
         
         // Instantiate chest loot
-        var chestEntity = Scene.Instantiate(chestLootPrefab);
+        var chestEntity = Scene.Instantiate(chestLootPrefab, ContainerCache.LootContainer);
         if (chestEntity)
         {
-            
-            // Parent the chest under the lootContainer
-            chestEntity.transform.SetParent(lootContainer, false);
-            
+
             chestEntity.transform.position = chestPosition;
 
         }

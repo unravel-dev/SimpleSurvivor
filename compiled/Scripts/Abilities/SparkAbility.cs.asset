@@ -37,10 +37,7 @@ public class SparkAbility : Ability
     
     [Tooltip("Sound to play when casting the ability")]
     public AudioClip castSound;
-    
-    
-    private TransformComponent transformComponent;
-    
+        
      
     /// <summary>
     /// Configure a Spark ability with default values.
@@ -54,7 +51,7 @@ public class SparkAbility : Ability
         ability.damage = 30;
         ability.cooldown = 1.0f;
         ability.maxRange = 10.0f;
-        ability.projectileSpeed = 55.0f;
+        ability.projectileSpeed = 40.0f;
         ability.projectileCount = 1;
         ability.chainCount = 2;
         ability.spawnOffset = Vector3.up;
@@ -62,7 +59,6 @@ public class SparkAbility : Ability
 
     public override void OnStart()
     {
-        transformComponent = owner.GetComponent<TransformComponent>();
         
         if (projectilePrefab == null)
         {
@@ -105,7 +101,7 @@ public class SparkAbility : Ability
 
         if (castSound != null)
         {
-            var source = AudioSourceComponent.PlayClipAtPoint(castSound, transformComponent.position, 1.0f);
+            var source = AudioSourceComponent.PlayClipAtPoint(castSound, transform.position, 1.0f);
             source.maxDistance = 100.0f;
         }
 
@@ -116,7 +112,9 @@ public class SparkAbility : Ability
     /// Execute the ability by creating a projectile aimed at the target.
     /// </summary>
     /// <param name="targets">List of target entities (should contain one enemy).</param>
-    protected override bool OnTriggerAbility(Entity[] targets, int castIndex)
+    /// <param name="castIndex">The index of the current cast (0-based).</param>
+    /// <param name="totalCasts">The total number of casts in this trigger (including multicast).</param>
+    protected override bool OnTriggerAbility(Entity[] targets, int castIndex, int totalCasts)
     {
         if (projectilePrefab == null)
         {
@@ -133,14 +131,14 @@ public class SparkAbility : Ability
 
         {
             // Calculate spawn position
-            Vector3 sourcePosition = transformComponent.position + spawnOffset;
+            Vector3 sourcePosition = transform.position + spawnOffset;
 
             // Calculate direction to target
             Vector3 targetPosition = target.transform.position + spawnOffset;
             Vector3 direction = (targetPosition - sourcePosition).normalized;
 
             // Instantiate the projectile
-            Entity projectileEntity = Scene.Instantiate(projectilePrefab);
+            Entity projectileEntity = Scene.Instantiate(projectilePrefab, ContainerCache.EffectsContainer);
 
             if (!projectileEntity)
             {

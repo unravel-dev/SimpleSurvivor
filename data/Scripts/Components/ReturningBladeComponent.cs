@@ -19,22 +19,12 @@ public class ReturningBladeComponent : ScriptComponent
 
     [Tooltip("Pierce count for the return journey (high value to pierce through many enemies)")]
     public int returnPierceCount = 999;
-
-    private TransformComponent transformComponent;
-    private TransformComponent targetTransform;
     private Projectile projectileComponent;
     private bool isReturning = false;
 
     public override void OnStart()
     {
-        transformComponent = owner.GetComponent<TransformComponent>();
         projectileComponent = owner.GetComponent<Projectile>();
-
-        if (transformComponent == null)
-        {
-            Log.Warning($"ReturningBladeComponent on {owner.name}: No TransformComponent found!");
-            return;
-        }
 
         if (!targetEntity)
         {
@@ -52,17 +42,11 @@ public class ReturningBladeComponent : ScriptComponent
             }
         }
 
-        targetTransform = targetEntity.GetComponent<TransformComponent>();
-        if (targetTransform == null)
-        {
-            Log.Warning($"ReturningBladeComponent on {owner.name}: Target entity has no TransformComponent!");
-            return;
-        }
     }
 
     public override void OnUpdate()
     {
-        if (transformComponent == null || targetTransform == null || !targetEntity)
+        if (!targetEntity)
             return;
 
         // Check if projectile lifetime is almost up (start returning)
@@ -78,11 +62,11 @@ public class ReturningBladeComponent : ScriptComponent
         if (isReturning)
         {
             // Move toward target
-            Vector3 direction = (targetTransform.position - transformComponent.position).normalized;
-            transformComponent.position += direction * returnSpeed * Time.deltaTime;
+            Vector3 direction = (targetEntity.transform.position - transform.position).normalized;
+            transform.position += direction * returnSpeed * Time.deltaTime;
 
             // Check if we've reached the target
-            float distance = Vector3.Distance(transformComponent.position, targetTransform.position);
+            float distance = Vector3.Distance(transform.position, targetEntity.transform.position);
             if (distance <= returnDistanceThreshold)
             {
                 // Blade has returned - destroy it

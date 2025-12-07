@@ -30,7 +30,6 @@ public class DamageNumber : ScriptComponent
     public float billboardUpdateInterval = 0.1f;
     
     // Component references
-    private TransformComponent transformComponent;
     private TextComponent textComponent;
     
     // State
@@ -46,13 +45,7 @@ public class DamageNumber : ScriptComponent
     /// </summary>
     public override void OnCreate()
     {
-        transformComponent = owner.GetComponent<TransformComponent>();
         textComponent = owner.GetComponent<TextComponent>();
-        
-        if (transformComponent == null)
-        {
-            Log.Error($"DamageNumber on {owner.name}: TransformComponent not found!");
-        }
         
         if (textComponent == null)
         {
@@ -66,8 +59,8 @@ public class DamageNumber : ScriptComponent
     public override void OnStart()
     {
         timeAlive = 0.0f;
-        initialPosition = transformComponent.position;
-        initialScale3D = transformComponent.scale;
+        initialPosition = transform.position;
+        initialScale3D = transform.scale;
         
         // Generate random drift direction
         float randomAngle = Random.Range(0f, Mathf.PI * 2f);
@@ -77,17 +70,14 @@ public class DamageNumber : ScriptComponent
         FindCamera();
         
         // Set initial scale
-        transformComponent.scale = initialScale3D * initialScale;
+        transform.scale = initialScale3D * initialScale;
     }
     
     /// <summary>
     /// Called every frame to update damage number behavior.
     /// </summary>
     public override void OnUpdate()
-    {
-        if (transformComponent == null)
-            return;
-            
+    {            
         // Update lifetime
         timeAlive += Time.deltaTime;
         
@@ -131,7 +121,7 @@ public class DamageNumber : ScriptComponent
         
         // Apply movement
         Vector3 newPosition = initialPosition + Vector3.up * verticalOffset + horizontalOffset;
-        transformComponent.position = newPosition;
+        transform.position = newPosition;
     }
     
     /// <summary>
@@ -156,7 +146,7 @@ public class DamageNumber : ScriptComponent
             scaleMultiplier = Mathf.Lerp(1.0f, finalScale, shrinkProgress);
         }
         
-        transformComponent.scale = initialScale3D * scaleMultiplier;
+        transform.scale = initialScale3D * scaleMultiplier;
     }
     
     /// <summary>
@@ -164,10 +154,10 @@ public class DamageNumber : ScriptComponent
     /// </summary>
     private void UpdateBillboard()
     {
-        if (!cameraEntity || transformComponent == null)
+        if (!cameraEntity)
             return;
             
-        Vector3 damageNumberPosition = transformComponent.position;
+        Vector3 damageNumberPosition = transform.position;
         Vector3 cameraPosition = cameraEntity.transform.position;
         
         // For top-down camera, we only need to rotate around Y axis
@@ -181,7 +171,7 @@ public class DamageNumber : ScriptComponent
         if (directionToCamera.magnitude > 0.01f)
         {
             Quaternion targetRotation = Quaternion.LookRotation(-directionToCamera, Vector3.up);
-            transformComponent.rotation = targetRotation;
+            transform.rotation = targetRotation;
         }
     }
 
@@ -307,23 +297,20 @@ public class DamageNumber : ScriptComponent
     {
         timeAlive = 0.0f;
         
-        if (transformComponent != null)
-        {
-            // Store the current position as the new initial position
-            initialPosition = transformComponent.position;
-            
-            // Reset to the original scale (before any scaling effects)
-            // We need to get the base scale without any multipliers
-            initialScale3D = Vector3.one; // Reset to unit scale as base
-            
-            // Generate new random drift direction
-            float randomAngle = Random.Range(0f, Mathf.PI * 2f);
-            driftDirection = new Vector3(Mathf.Cos(randomAngle), 0, Mathf.Sin(randomAngle)).normalized;
-            
-            // Set initial scale with the pop-in effect
-            transformComponent.scale = initialScale3D * initialScale;
-        }
+        // Store the current position as the new initial position
+        initialPosition = transform.position;
         
+        // Reset to the original scale (before any scaling effects)
+        // We need to get the base scale without any multipliers
+        initialScale3D = Vector3.one; // Reset to unit scale as base
+        
+        // Generate new random drift direction
+        float randomAngle = Random.Range(0f, Mathf.PI * 2f);
+        driftDirection = new Vector3(Mathf.Cos(randomAngle), 0, Mathf.Sin(randomAngle)).normalized;
+        
+        // Set initial scale with the pop-in effect
+        transform.scale = initialScale3D * initialScale;
+    
         // Reset billboard timer
         lastBillboardUpdate = 0.0f;
         

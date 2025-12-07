@@ -104,7 +104,7 @@ public abstract class Ability : ScriptComponent
                 // Gather targets for each cast (allows for dynamic targeting)
             
                 // Execute the ability
-                anySuccessful |= OnTriggerAbility(targets, i);
+                anySuccessful |= OnTriggerAbility(targets, i, totalCasts);
             }
         }
 
@@ -210,7 +210,95 @@ public abstract class Ability : ScriptComponent
     /// Virtual method for derived classes to implement the actual ability effect.
     /// </summary>
     /// <param name="targets">List of target entities to affect.</param>
-    protected abstract bool OnTriggerAbility(Entity[] targets, int castIndex);
+    /// <param name="castIndex">The index of the current cast (0-based).</param>
+    /// <param name="totalCasts">The total number of casts in this trigger (including multicast).</param>
+    protected abstract bool OnTriggerAbility(Entity[] targets, int castIndex, int totalCasts);
+
+    /// <summary>
+    /// Calculate a spread direction based on cast index and total casts using a total spread angle.
+    /// Useful for abilities that want to spread projectiles in a cone pattern when multicast is active.
+    /// The total spread angle is distributed evenly across all casts.
+    /// </summary>
+    /// <param name="baseDirection">The base direction to spread from.</param>
+    /// <param name="castIndex">The current cast index (0-based).</param>
+    /// <param name="totalCasts">The total number of casts in this trigger.</param>
+    /// <param name="totalSpreadAngle">The total spread angle in degrees (e.g., 30 degrees creates a 30-degree cone from first to last cast).</param>
+    /// <returns>A new direction vector rotated by the appropriate spread angle.</returns>
+    static protected Vector3 CalculateSpreadDirection(Vector3 baseDirection, int castIndex, int totalCasts, float totalSpreadAngle)
+    {
+        // If only one cast, return the base direction unchanged
+        if (totalCasts <= 1)
+        {
+            return baseDirection.normalized;
+        }
+
+        // Calculate the angle offset for this cast
+        // Spread evenly from -totalSpreadAngle/2 to +totalSpreadAngle/2
+        float normalizedPosition = (float)castIndex / (totalCasts - 1); // 0.0 to 1.0
+        float angleOffset = (normalizedPosition - 0.5f) * totalSpreadAngle; // -totalSpreadAngle/2 to +totalSpreadAngle/2
+
+        return ApplyDirectionRotation(baseDirection, angleOffset);
+    }
+
+    /// <summary>
+    /// Calculate a spread direction based on cast index and total casts using an angle between casts.
+    /// Useful for abilities that want consistent spacing between projectiles regardless of total cast count.
+    /// The angle between casts is fixed, so total spread increases with more casts.
+    /// </summary>
+    /// <param name="baseDirection">The base direction to spread from.</param>
+    /// <param name="castIndex">The current cast index (0-based).</param>
+    /// <param name="totalCasts">The total number of casts in this trigger.</param>
+    /// <param name="angleBetweenCasts">The angle in degrees between each cast (e.g., 15 degrees means 15 degrees between each projectile).</param>
+    /// <returns>A new direction vector rotated by the appropriate spread angle.</returns>
+    static protected Vector3 CalculateSpreadDirectionByAngleBetween(Vector3 baseDirection, int castIndex, int totalCasts, float angleBetweenCasts)
+    {
+        // If only one cast, return the base direction unchanged
+        if (totalCasts <= 1)
+        {
+            return baseDirection.normalized;
+        }
+
+        // Calculate the angle offset for this cast
+        // Center the spread around the base direction
+        // For 3 casts with 15 degrees between: cast 0 = -15, cast 1 = 0, cast 2 = +15
+        float centerOffset = (totalCasts - 1) * 0.5f; // Center position (e.g., 1.0 for 3 casts)
+        float angleOffset = (castIndex - centerOffset) * angleBetweenCasts;
+
+        return ApplyDirectionRotation(baseDirection, angleOffset);
+    }
+
+    /// <summary>
+    /// Helper method to apply rotation to a direction vector around a perpendicular axis.
+    /// </summary>
+    /// <param name="baseDirection">The base direction to rotate.</param>
+    /// <param name="angleOffset">The angle offset in degrees to rotate by.</param>
+    /// <returns>A new direction vector rotated by the angle offset.</returns>
+    static private Vector3 ApplyDirectionRotation(Vector3 baseDirection, float angleOffset)
+    {
+        // If the angle is zero, return the base direction
+        if (Mathf.Abs(angleOffset) < 0.001f)
+        {
+            return baseDirection.normalized;
+        }
+
+        // Find the rotation axis (perpendicular to the base direction, using up as reference)
+        Vector3 up = Vector3.up;
+        Vector3 right = Vector3.Cross(baseDirection.normalized, up);
+        
+        // If base direction is parallel to up, use forward as reference instead
+        if (right.magnitude < 0.001f)
+        {
+            right = Vector3.Cross(baseDirection.normalized, Vector3.forward);
+        }
+        
+        right = right.normalized;
+        
+        // Rotate the base direction around the right axis by the angle offset
+        Quaternion rotation = Quaternion.AngleAxis(angleOffset, right);
+        Vector3 spreadDirection = rotation * baseDirection.normalized;
+        
+        return spreadDirection.normalized;
+    }
 
     /// <summary>
     /// Add DamageSourceComponent to an entity to track damage statistics.

@@ -1,8 +1,8 @@
 {
- "entities_count": 4,
+ "entities_count": 7,
  "entities": [
   {
-   "id": 1048578,
+   "id": 3145730,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -58,11 +58,11 @@
        "y": 0
       },
       "viewport_size": {
-       "width": 1536,
-       "height": 788
+       "width": 1920,
+       "height": 1080
       },
       "orthographic_size": 5.0,
-      "aspect_ratio": 1.9492385387420655,
+      "aspect_ratio": 1.7777777910232545,
       "aspect_locked": false,
       "frustum_locked": false
      },
@@ -146,7 +146,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 1048580,
+   "id": 3145732,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -163,25 +163,25 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": 0.0,
+       "x": -0.000004991891273675719,
        "y": 1.0,
-       "z": 0.0
+       "z": -0.000010901549103436992
       },
       "rotation": {
-       "x": 0.10938168317079544,
-       "y": 0.875426173210144,
-       "z": -0.40821796655654909,
-       "w": 0.2345697581768036
+       "x": 0.10938172042369843,
+       "y": 0.8754260540008545,
+       "z": -0.40821799635887148,
+       "w": 0.23456971347332
       },
       "scale": {
        "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
+       "y": 1.0000001192092896,
+       "z": 0.9999997615814209
       },
       "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
+       "x": 8.940698847936801e-8,
+       "y": -5.266767857392551e-7,
+       "z": -1.119864947440874e-7
       }
      },
      "parent": {
@@ -234,7 +234,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 1048582,
+   "id": 3145734,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -251,25 +251,25 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": 0.0,
-       "y": 0.10000000149011612,
-       "z": 0.0
+       "x": -0.000002859536834876053,
+       "y": 0.10000133514404297,
+       "z": -0.0000066904817686008759
       },
       "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
+       "x": -0.000002339482307434082,
+       "y": -8.86618067852396e-7,
+       "z": 0.000002056357971014222,
        "w": 1.0
       },
       "scale": {
-       "x": 1.0,
-       "y": 1.0,
+       "x": 1.0000001192092896,
+       "y": 0.9999999403953552,
        "z": 1.0
       },
       "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
+       "x": -0.000012010341379209422,
+       "y": 0.0000021457342427311234,
+       "z": 0.0000017434271057936713
       }
      },
      "parent": {
@@ -303,7 +303,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 1048584,
+   "id": 3145736,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -338,25 +338,25 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
+       "x": -0.00000262260573435924,
+       "y": 0.0000013373971796681872,
+       "z": -0.000006222574938874459
       },
       "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
+       "x": -0.000002339482307434082,
+       "y": -8.86618067852396e-7,
+       "z": 0.000002056357971014222,
        "w": 1.0
       },
       "scale": {
-       "x": 1.0,
-       "y": 1.0,
+       "x": 1.0000001192092896,
+       "y": 0.9999999403953552,
        "z": 1.0
       },
       "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
+       "x": -0.000012010341379209422,
+       "y": 0.0000021457342427311234,
+       "z": 0.0000017434271057936713
       }
      },
      "parent": {
@@ -364,13 +364,13 @@
      },
      "children": [
       {
-       "id": 1048585
+       "id": 3145737
       },
       {
-       "id": 1048586
+       "id": 3145738
       },
       {
-       "id": 1048587
+       "id": 3145739
       }
      ],
      "active": true
@@ -401,7 +401,7 @@
    }
   },
   {
-   "id": 1048585,
+   "id": 3145737,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -444,7 +444,7 @@
       }
      },
      "parent": {
-      "id": 1048584
+      "id": 3145736
      },
      "children": [],
      "active": true
@@ -467,7 +467,7 @@
    }
   },
   {
-   "id": 1048586,
+   "id": 3145738,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -510,7 +510,7 @@
       }
      },
      "parent": {
-      "id": 1048584
+      "id": 3145736
      },
      "children": [],
      "active": false
@@ -533,7 +533,7 @@
    }
   },
   {
-   "id": 1048587,
+   "id": 3145739,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -576,7 +576,7 @@
       }
      },
      "parent": {
-      "id": 1048584
+      "id": 3145736
      },
      "children": [],
      "active": true
@@ -594,6 +594,597 @@
      },
      "clip": {
       "uid": "c3015e55-b5cc-3c4c-a695-821016c5d381"
+     }
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 3145741,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TestUI",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.00000262260573435924,
+       "y": 0.0000013373971796681872,
+       "z": -0.000006222574938874459
+      },
+      "rotation": {
+       "x": -0.000002339482307434082,
+       "y": -8.86618067852396e-7,
+       "z": 0.000002056357971014222,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0000001192092896,
+       "y": 0.9999999403953552,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -0.000012010341379209422,
+       "y": 0.0000021457342427311234,
+       "z": 0.0000017434271057936713
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [],
+     "active": true
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 3145743,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Particle Emitter",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 3.602311611175537,
+       "y": 0.00001609535866009537,
+       "z": 1.970520315808244e-7
+      },
+      "rotation": {
+       "x": -0.000002339482307434082,
+       "y": -8.865999348017795e-7,
+       "z": 0.0000020563975340337494,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0000001192092896,
+       "y": 0.9999999403953552,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -0.000011972889296885115,
+       "y": 0.0000021433206711662935,
+       "z": 0.0000017435062318327255
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [
+      {
+       "id": 3145744
+      }
+     ],
+     "active": true
+    },
+    "has_particle_emitter_component": true,
+    "particle_emitter_component": {
+     "enabled": true,
+     "shape": 2,
+     "direction": 0,
+     "spawn_location": 0,
+     "simulation_space": 0,
+     "max_particles": 1,
+     "emission_lifetime": {
+      "count": 2.0
+     },
+     "emission_shape_position": {
+      "x": 0.0,
+      "y": 1.5099999904632569,
+      "z": 0.0
+     },
+     "emission_shape_scale": {
+      "x": 0.10000000149011612,
+      "y": 1.0,
+      "z": 0.10000000149011612
+     },
+     "gravity_scale": 0.0,
+     "emission_rate": 50.0,
+     "temporal_motion": 1.0,
+     "velocity_damping": 0.0,
+     "force_over_lifetime": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+     },
+     "size_by_speed_range": {
+      "min": 1.0,
+      "max": 1.0
+     },
+     "size_by_speed_velocity_range": {
+      "min": 0.0,
+      "max": 10.0
+     },
+     "color_by_speed_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": {
+         "r": 1.0,
+         "g": 1.0,
+         "b": 1.0,
+         "a": 1.0
+        }
+       },
+       {
+        "progress": 1.0,
+        "element": {
+         "r": 1.0,
+         "g": 1.0,
+         "b": 1.0,
+         "a": 1.0
+        }
+       }
+      ]
+     },
+     "color_by_speed_velocity_range": {
+      "min": 0.0,
+      "max": 10.0
+     },
+     "lifetime_by_emitter_speed_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": 1.0
+       },
+       {
+        "progress": 1.0,
+        "element": 1.0
+       }
+      ]
+     },
+     "lifetime_by_emitter_speed_range": {
+      "min": 0.0,
+      "max": 10.0
+     },
+     "lifetime": {
+      "count": 0.20000000298023225
+     },
+     "velocity_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": {
+         "min": 0.0,
+         "max": 0.0
+        }
+       },
+       {
+        "progress": 1.0,
+        "element": {
+         "min": 0.0,
+         "max": 0.0
+        }
+       }
+      ]
+     },
+     "scale_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": {
+         "min": 1.0,
+         "max": 1.0
+        }
+       },
+       {
+        "progress": 1.0,
+        "element": {
+         "min": 1.0,
+         "max": 1.0
+        }
+       }
+      ]
+     },
+     "initial_scale_3d": {
+      "x": 0.7599999904632568,
+      "y": 3.25,
+      "z": 0.8500000238418579
+     },
+     "opacity": 1.0,
+     "color_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": {
+         "r": 1.0,
+         "g": 1.0,
+         "b": 1.0,
+         "a": 1.0
+        }
+       },
+       {
+        "progress": 0.5,
+        "element": {
+         "r": 1.0,
+         "g": 1.0,
+         "b": 1.0,
+         "a": 1.0
+        }
+       },
+       {
+        "progress": 1.0,
+        "element": {
+         "r": 1.0,
+         "g": 1.0,
+         "b": 1.0,
+         "a": 1.0
+        }
+       }
+      ]
+     },
+     "position_easing": 0,
+     "texture": {
+      "uid": "3e744bd6-dcf3-0e47-9bd8-27c7abe14fe0"
+     },
+     "texture_mode": 0,
+     "render_mode": 2,
+     "texture_sheet_tiles": {
+      "x": 5.0,
+      "y": 1.0
+     },
+     "texture_sheet_cycles": 1.0,
+     "texture_sheet_randomize": false,
+     "loop": true,
+     "start_delay": {
+      "count": 0.0
+     }
+    }
+   }
+  },
+  {
+   "id": 3145744,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Particle Emitter",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.003447294235229492,
+       "y": -2.304011559317587e-8,
+       "z": 8.55516191222705e-9
+      },
+      "rotation": {
+       "x": -1.6215802553400028e-21,
+       "y": 8.218989933084231e-10,
+       "z": -1.9326797107144245e-12,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 6.575191946467385e-9,
+       "y": -2.077342742268229e-9,
+       "z": -3.945935592164496e-12
+      }
+     },
+     "parent": {
+      "id": 3145743
+     },
+     "children": [],
+     "active": true
+    },
+    "has_particle_emitter_component": true,
+    "particle_emitter_component": {
+     "enabled": true,
+     "shape": 2,
+     "direction": 1,
+     "spawn_location": 0,
+     "simulation_space": 0,
+     "max_particles": 100,
+     "emission_lifetime": {
+      "count": 2.0
+     },
+     "emission_shape_position": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+     },
+     "emission_shape_scale": {
+      "x": 0.10000000149011612,
+      "y": 1.0,
+      "z": 0.10000000149011612
+     },
+     "gravity_scale": 0.0,
+     "emission_rate": 10000.0,
+     "temporal_motion": 1.0,
+     "velocity_damping": 0.0,
+     "force_over_lifetime": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+     },
+     "size_by_speed_range": {
+      "min": 1.0,
+      "max": 1.0
+     },
+     "size_by_speed_velocity_range": {
+      "min": 0.0,
+      "max": 10.0
+     },
+     "color_by_speed_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": {
+         "r": 1.0,
+         "g": 1.0,
+         "b": 1.0,
+         "a": 1.0
+        }
+       },
+       {
+        "progress": 1.0,
+        "element": {
+         "r": 1.0,
+         "g": 1.0,
+         "b": 1.0,
+         "a": 1.0
+        }
+       }
+      ]
+     },
+     "color_by_speed_velocity_range": {
+      "min": 0.0,
+      "max": 10.0
+     },
+     "lifetime_by_emitter_speed_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": 1.0
+       },
+       {
+        "progress": 1.0,
+        "element": 1.0
+       }
+      ]
+     },
+     "lifetime_by_emitter_speed_range": {
+      "min": 0.0,
+      "max": 10.0
+     },
+     "lifetime": {
+      "count": 0.30000001192092898
+     },
+     "velocity_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": {
+         "min": 0.0,
+         "max": 0.0
+        }
+       },
+       {
+        "progress": 1.0,
+        "element": {
+         "min": 0.5,
+         "max": 1.0
+        }
+       }
+      ]
+     },
+     "scale_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": {
+         "min": 1.0,
+         "max": 1.0
+        }
+       },
+       {
+        "progress": 1.0,
+        "element": {
+         "min": 1.0,
+         "max": 1.0
+        }
+       }
+      ]
+     },
+     "initial_scale_3d": {
+      "x": 0.5,
+      "y": 0.5,
+      "z": 1.0
+     },
+     "opacity": 1.0,
+     "color_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": {
+         "r": 1.0,
+         "g": 1.0,
+         "b": 1.0,
+         "a": 0.0
+        }
+       },
+       {
+        "progress": 0.25,
+        "element": {
+         "r": 1.0,
+         "g": 1.0,
+         "b": 1.0,
+         "a": 1.0
+        }
+       },
+       {
+        "progress": 0.5,
+        "element": {
+         "r": 1.0,
+         "g": 1.0,
+         "b": 1.0,
+         "a": 1.0
+        }
+       },
+       {
+        "progress": 0.75,
+        "element": {
+         "r": 1.0,
+         "g": 1.0,
+         "b": 1.0,
+         "a": 1.0
+        }
+       },
+       {
+        "progress": 1.0,
+        "element": {
+         "r": 1.0,
+         "g": 1.0,
+         "b": 1.0,
+         "a": 0.0
+        }
+       }
+      ]
+     },
+     "position_easing": 4,
+     "texture": {
+      "uid": "48986ef2-f9f8-1f4d-98af-6368e69299ea"
+     },
+     "texture_mode": 0,
+     "render_mode": 1,
+     "texture_sheet_tiles": {
+      "x": 1.0,
+      "y": 1.0
+     },
+     "texture_sheet_cycles": 0.0,
+     "texture_sheet_randomize": true,
+     "loop": false,
+     "start_delay": {
+      "count": 0.10000000149011612
+     }
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 1048593,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "ground",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 3.557781934738159,
+       "y": -0.6214237809181213,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 22.67829132080078,
+       "y": 1.0,
+       "z": 26.434532165527345
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "790e9074-e0a4-605b-baab-e3bff1339e45"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "8b3b5a05-217a-5849-ae54-0665a1e6cdd2"
+       }
+      ],
+      "material_instances": [],
+      "lod_limits": [
+       {
+        "min": 0,
+        "max": 100
+       }
+      ]
      }
     }
    }

@@ -27,7 +27,6 @@ public class BoomerangBladeAbility : Ability
     [Tooltip("Spawn offset from the caster")]
     public Vector3 spawnOffset = Vector3.up;
 
-    private TransformComponent transformComponent;
 
     /// <summary>
     /// Configure a Boomerang Blade ability with default values.
@@ -48,7 +47,6 @@ public class BoomerangBladeAbility : Ability
 
     public override void OnStart()
     {
-        transformComponent = owner.GetComponent<TransformComponent>();
 
         if (bladePrefab == null)
         {
@@ -83,7 +81,8 @@ public class BoomerangBladeAbility : Ability
     /// </summary>
     /// <param name="targets">Ignored for this ability.</param>
     /// <param name="castIndex">Used to offset multiple blades when multicast is active.</param>
-    protected override bool OnTriggerAbility(Entity[] targets, int castIndex)
+    /// <param name="totalCasts">The total number of casts in this trigger (including multicast).</param>
+    protected override bool OnTriggerAbility(Entity[] targets, int castIndex, int totalCasts)
     {
         if (bladePrefab == null)
         {
@@ -143,7 +142,7 @@ public class BoomerangBladeAbility : Ability
                            float pingPongMaxRadiusMultiplier, float pingPongSpeedMultiplier)
     {
         // Spawn the blade
-        Entity bladeEntity = Scene.Instantiate(bladePrefab);
+        Entity bladeEntity = Scene.Instantiate(bladePrefab, ContainerCache.EffectsContainer);
         if (!bladeEntity)
         {
             Log.Error("BoomerangBladeAbility: Failed to instantiate blade prefab");
@@ -151,7 +150,7 @@ public class BoomerangBladeAbility : Ability
         }
 
         // Position blade at starting angle
-        Vector3 playerPosition = transformComponent.position + new Vector3(0, heightOffset, 0);
+        Vector3 playerPosition = transform.position + new Vector3(0, heightOffset, 0);
         float startAngleRad = angleOffset * Mathf.Deg2Rad;
         Vector3 offset = new Vector3(
             Mathf.Cos(startAngleRad) * radius,

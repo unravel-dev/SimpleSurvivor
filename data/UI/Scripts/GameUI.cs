@@ -208,6 +208,9 @@ public class GameUI : MenuStackUI
 		// Clear all collected upgrades before going to main menu
 		UpgradeSystem.ClearAllUpgrades();
 		
+		// Clear container cache
+		ContainerCache.Clear();
+		
 		Log.Info("Navigating to main menu from game");
 		if (LobbyScene != null)
 		{
@@ -238,6 +241,9 @@ public class GameUI : MenuStackUI
 		
 		// Clear all collected upgrades before restarting
 		UpgradeSystem.ClearAllUpgrades();
+		
+		// Clear container cache
+		ContainerCache.Clear();
 		
 		Scene.ReloadScene();
 	}
@@ -313,7 +319,7 @@ public class GameUI : MenuStackUI
 		Log.Info("Resuming game");
 		
 		// Clear the menu stack and resume
-		menuStack.ClearStack(showBaseMenu: true);
+		menuStack.PopMenu();
 		menuStack.ResumeGame();
 		menuStack.ResumeAudio();
 		
