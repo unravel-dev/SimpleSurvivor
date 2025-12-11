@@ -1,8 +1,8 @@
 {
- "entities_count": 7,
+ "entities_count": 8,
  "entities": [
   {
-   "id": 3145730,
+   "id": 1048578,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -146,7 +146,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 3145732,
+   "id": 1048580,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -234,7 +234,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 3145734,
+   "id": 1048582,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -303,7 +303,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 3145736,
+   "id": 1048584,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -349,14 +349,14 @@
        "w": 1.0
       },
       "scale": {
-       "x": 1.0000001192092896,
-       "y": 0.9999999403953552,
+       "x": 1.0,
+       "y": 1.0,
        "z": 1.0
       },
       "skew": {
-       "x": -0.000012010341379209422,
-       "y": 0.0000021457342427311234,
-       "z": 0.0000017434271057936713
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
       }
      },
      "parent": {
@@ -364,13 +364,13 @@
      },
      "children": [
       {
-       "id": 3145737
+       "id": 1048585
       },
       {
-       "id": 3145738
+       "id": 1048586
       },
       {
-       "id": 3145739
+       "id": 1048587
       }
      ],
      "active": true
@@ -401,7 +401,7 @@
    }
   },
   {
-   "id": 3145737,
+   "id": 1048585,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -444,7 +444,7 @@
       }
      },
      "parent": {
-      "id": 3145736
+      "id": 1048584
      },
      "children": [],
      "active": true
@@ -467,7 +467,7 @@
    }
   },
   {
-   "id": 3145738,
+   "id": 1048586,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -510,7 +510,7 @@
       }
      },
      "parent": {
-      "id": 3145736
+      "id": 1048584
      },
      "children": [],
      "active": false
@@ -533,7 +533,7 @@
    }
   },
   {
-   "id": 3145739,
+   "id": 1048587,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -576,7 +576,7 @@
       }
      },
      "parent": {
-      "id": 3145736
+      "id": 1048584
      },
      "children": [],
      "active": true
@@ -602,7 +602,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 3145741,
+   "id": 1048589,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -652,7 +652,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 3145743,
+   "id": 1048591,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -669,13 +669,13 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": 3.602311611175537,
-       "y": 0.00001609535866009537,
+       "x": 3.602304458618164,
+       "y": 0.000016095307728392073,
        "z": 1.970520315808244e-7
       },
       "rotation": {
        "x": -0.000002339482307434082,
-       "y": -8.865999348017795e-7,
+       "y": -8.865998779583606e-7,
        "z": 0.0000020563975340337494,
        "w": 1.0
       },
@@ -685,8 +685,8 @@
        "z": 1.0
       },
       "skew": {
-       "x": -0.000011972889296885115,
-       "y": 0.0000021433206711662935,
+       "x": -0.000011972875654464588,
+       "y": 0.0000021433197616715917,
        "z": 0.0000017435062318327255
       }
      },
@@ -695,7 +695,7 @@
      },
      "children": [
       {
-       "id": 3145744
+       "id": 1048592
       }
      ],
      "active": true
@@ -871,12 +871,17 @@
      "loop": true,
      "start_delay": {
       "count": 0.0
+     },
+     "align_to_direction": false,
+     "pivot": {
+      "x": 0.5,
+      "y": 0.5
      }
     }
    }
   },
   {
-   "id": 3145744,
+   "id": 1048592,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -893,14 +898,14 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": -0.003447294235229492,
-       "y": -2.304011559317587e-8,
-       "z": 8.55516191222705e-9
+       "x": -0.003476381301879883,
+       "y": -2.31112835535896e-8,
+       "z": 8.624283509561792e-9
       },
       "rotation": {
-       "x": -1.6215802553400028e-21,
-       "y": 8.218989933084231e-10,
-       "z": -1.9326797107144245e-12,
+       "x": -5.220822834626872e-23,
+       "y": 8.288338904094417e-10,
+       "z": -1.9521146851775306e-12,
        "w": 1.0
       },
       "scale": {
@@ -909,13 +914,13 @@
        "z": 1.0
       },
       "skew": {
-       "x": 6.575191946467385e-9,
-       "y": -2.077342742268229e-9,
-       "z": -3.945935592164496e-12
+       "x": 5.547917680814862e-11,
+       "y": -1.7337242752546446e-11,
+       "z": -1.2597995563412568e-13
       }
      },
      "parent": {
-      "id": 3145743
+      "id": 1048591
      },
      "children": [],
      "active": true
@@ -1109,6 +1114,11 @@
      "loop": false,
      "start_delay": {
       "count": 0.10000000149011612
+     },
+     "align_to_direction": false,
+     "pivot": {
+      "x": 0.5,
+      "y": 0.5
      }
     }
    }
@@ -1117,7 +1127,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 1048593,
+   "id": 1048594,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1185,6 +1195,234 @@
         "max": 100
        }
       ]
+     }
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 1048596,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Particle Emitter",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 10.140190124511719,
+       "y": 4.919114589691162,
+       "z": -0.10897815972566605
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0000227689743043,
+       "y": 1.0000262260437012,
+       "z": 0.9999716877937317
+      },
+      "skew": {
+       "x": -0.0000011459395636848058,
+       "y": -0.0000012811524356948212,
+       "z": 0.000013041243619227317
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [],
+     "active": true
+    },
+    "has_particle_emitter_component": true,
+    "particle_emitter_component": {
+     "enabled": true,
+     "shape": 2,
+     "direction": 0,
+     "spawn_location": 0,
+     "simulation_space": 1,
+     "max_particles": 1,
+     "emission_lifetime": {
+      "count": 2.0
+     },
+     "emission_shape_position": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+     },
+     "emission_shape_scale": {
+      "x": 0.10000000149011612,
+      "y": 1.0,
+      "z": 0.10000000149011612
+     },
+     "gravity_scale": 0.0,
+     "emission_rate": 50.0,
+     "temporal_motion": 1.0,
+     "velocity_damping": 0.0,
+     "force_over_lifetime": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+     },
+     "size_by_speed_range": {
+      "min": 1.0,
+      "max": 1.0
+     },
+     "size_by_speed_velocity_range": {
+      "min": 0.0,
+      "max": 10.0
+     },
+     "color_by_speed_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": {
+         "r": 1.0,
+         "g": 1.0,
+         "b": 1.0,
+         "a": 1.0
+        }
+       },
+       {
+        "progress": 1.0,
+        "element": {
+         "r": 1.0,
+         "g": 1.0,
+         "b": 1.0,
+         "a": 1.0
+        }
+       }
+      ]
+     },
+     "color_by_speed_velocity_range": {
+      "min": 0.0,
+      "max": 10.0
+     },
+     "lifetime_by_emitter_speed_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": 1.0
+       },
+       {
+        "progress": 1.0,
+        "element": 1.0
+       }
+      ]
+     },
+     "lifetime_by_emitter_speed_range": {
+      "min": 0.0,
+      "max": 10.0
+     },
+     "lifetime": {
+      "count": 0.6000000238418579
+     },
+     "velocity_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": {
+         "min": 0.0,
+         "max": 0.0
+        }
+       },
+       {
+        "progress": 1.0,
+        "element": {
+         "min": 0.0,
+         "max": 0.0
+        }
+       }
+      ]
+     },
+     "scale_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": {
+         "min": 1.0,
+         "max": 1.0
+        }
+       },
+       {
+        "progress": 1.0,
+        "element": {
+         "min": 1.0,
+         "max": 1.0
+        }
+       }
+      ]
+     },
+     "initial_scale_3d": {
+      "x": 0.7599999904632568,
+      "y": 3.25,
+      "z": 0.8500000238418579
+     },
+     "opacity": 1.0,
+     "color_gradient": {
+      "points": [
+       {
+        "progress": 0.0,
+        "element": {
+         "r": 1.0,
+         "g": 1.0,
+         "b": 1.0,
+         "a": 1.0
+        }
+       },
+       {
+        "progress": 0.8613138794898987,
+        "element": {
+         "r": 0.3333333134651184,
+         "g": 0.5064935684204102,
+         "b": 1.0,
+         "a": 1.0
+        }
+       },
+       {
+        "progress": 1.0,
+        "element": {
+         "r": 0.3333333134651184,
+         "g": 0.5064935684204102,
+         "b": 1.0,
+         "a": 1.0
+        }
+       }
+      ]
+     },
+     "position_easing": 0,
+     "texture": {
+      "uid": "229b6cda-619c-6e40-a5f0-69080ef4063b"
+     },
+     "texture_mode": 1,
+     "render_mode": 2,
+     "texture_sheet_tiles": {
+      "x": 4.0,
+      "y": 1.0
+     },
+     "texture_sheet_cycles": 1.0,
+     "texture_sheet_randomize": true,
+     "loop": true,
+     "start_delay": {
+      "count": 0.0
+     },
+     "align_to_direction": true,
+     "pivot": {
+      "x": 0.5,
+      "y": 1.0
      }
     }
    }
