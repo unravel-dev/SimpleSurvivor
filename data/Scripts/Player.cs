@@ -694,25 +694,8 @@ public class Player : ScriptComponent
             
         return Experience.GetCurrentExperience();
     }
-    
-    /// <summary>
-    /// Get the player's current luck (base luck + upgrades).
-    /// </summary>
-    /// <returns>Current total luck value.</returns>
-    public float GetCurrentLuck()
-    {
-        return UpgradeSystem.ApplyLuckUpgrade(baseLuck);
-    }
-    
-    /// <summary>
-    /// Get the player's current pickup range (base pickup range + upgrades).
-    /// </summary>
-    /// <returns>Current total pickup range value.</returns>
-    public float GetCurrentPickupRange()
-    {
-        return UpgradeSystem.ApplyPickupRadiusUpgrade(basePickupRange);
-    }
-    
+
+  
     /// <summary>
     /// Initialize the Health component with base max health + upgrades.
     /// </summary>
@@ -757,13 +740,7 @@ public class Player : ScriptComponent
     /// </summary>
     private void InitializePickupRange()
     {
-        if (Experience == null)
-            return;
-            
-        float upgradedPickupRange = UpgradeSystem.ApplyPickupRadiusUpgrade(basePickupRange);
-        Experience.SetPickupRange(upgradedPickupRange);
-        
-        Log.Info($"Player pickup range initialized: {upgradedPickupRange}");
+        UpdatePickupRange();
     }
     
     /// <summary>

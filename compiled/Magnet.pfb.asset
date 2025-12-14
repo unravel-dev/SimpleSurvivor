@@ -2,7 +2,7 @@
  "entities": [
   {
    "prefab_uid": "b46d51d1-fea8-b14f-9a3a-0347104fe3a3",
-   "id": 3,
+   "id": 12582913,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -103,6 +103,11 @@
      "max_particles": 1024,
      "emission_lifetime": {
       "count": 2.0
+     },
+     "emission_shape_position": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
      },
      "emission_shape_scale": {
       "x": 0.5,
@@ -207,6 +212,11 @@
        }
       ]
      },
+     "initial_scale_3d": {
+      "x": 1.0,
+      "y": 1.0,
+      "z": 1.0
+     },
      "opacity": 1.0,
      "color_gradient": {
       "points": [
@@ -306,7 +316,23 @@
      "texture": {
       "uid": "4124b193-3b63-b246-a59b-3cd6ef50d701"
      },
-     "loop": true
+     "texture_mode": 0,
+     "render_mode": 0,
+     "texture_sheet_tiles": {
+      "x": 1.0,
+      "y": 1.0
+     },
+     "texture_sheet_cycles": 0.0,
+     "texture_sheet_randomize": false,
+     "loop": true,
+     "start_delay": {
+      "count": 0.0
+     },
+     "align_to_direction": false,
+     "pivot": {
+      "x": 0.5,
+      "y": 0.5
+     }
     },
     "has_script_component": true,
     "script_component": {
@@ -321,7 +347,12 @@
        "enableFloating": true,
        "floatSpeed": 2.0,
        "floatAmplitude": 0.30000001192092898,
-       "duration": 0.10000000149011612
+       "enableBackEasing": true,
+       "backEaseDuration": 0.4000000059604645,
+       "backEaseOvershoot": 1.0,
+       "bounceBackDistance": 1.0,
+       "bounceBackHeight": 2.0,
+       "duration": 1.0
       }
      ]
     }

@@ -32,6 +32,21 @@ public abstract class LootComponent : ScriptComponent
     [Tooltip("Floating animation amplitude")]
     public float floatAmplitude = 0.3f;
     
+    [Tooltip("Enable back easing effect when moving towards player")]
+    public bool enableBackEasing = true;
+    
+    [Tooltip("Duration of the back easing animation (in seconds)")]
+    public float backEaseDuration = 0.4f;
+    
+    [Tooltip("Overshoot amount for back easing (higher = more bounce back)")]
+    public float backEaseOvershoot = 1.0f;
+    
+    [Tooltip("Absolute distance to bounce back (in world units)")]
+    public float bounceBackDistance = 1.5f;
+    
+    [Tooltip("Upward height during bounce-back phase (in world units)")]
+    public float bounceBackHeight = 0.5f;
+    
     // Component references
     protected PhysicsComponent physicsComponent;
     
@@ -41,6 +56,9 @@ public abstract class LootComponent : ScriptComponent
     protected Entity targetPlayer;
     protected Vector3 initialPosition;
     protected float floatOffset;
+    protected float attractionStartTime = -1f;
+    protected Vector3 attractionStartPosition;
+    protected Vector3 initialDirectionToTarget;
     
     /// <summary>
     /// Called when the script is created.
@@ -79,7 +97,7 @@ public abstract class LootComponent : ScriptComponent
     }
     
     /// <summary>
-    /// Update attraction movement towards the player - dynamic speed based on player speed.
+    /// Update attraction movement towards the player - uses back easing for smooth bounce effect.
     /// </summary>
     protected void UpdateAttraction()
     {
@@ -90,7 +108,7 @@ public abstract class LootComponent : ScriptComponent
         }
         
         Vector3 lootPosition = transform.position;
-        Vector3 playerPosition = targetPlayer.transform.position + Vector3.up * 1.0f;
+        Vector3 playerPosition = targetPlayer.transform.position + Vector3.up * 2.0f;
         
         // Check if we're close enough to collect
         float distance = Vector3.Distance(lootPosition, playerPosition);
@@ -99,13 +117,80 @@ public abstract class LootComponent : ScriptComponent
             CollectLoot();
             return;
         }
-        
+   
         // Calculate dynamic attraction speed based on player speed
         float dynamicSpeed = CalculateDynamicAttractionSpeed();
         
-        // Move towards player using MoveTowards
-        float moveDistance = dynamicSpeed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(lootPosition, playerPosition, moveDistance);
+        // Apply back easing if enabled
+        if (enableBackEasing && attractionStartTime > 0)
+        {
+            // Calculate time-based progress (0 to 1 over the easing duration)
+            float elapsedTime = Time.time - attractionStartTime;
+            float progress = Mathf.Clamp01(elapsedTime / backEaseDuration);
+            
+            // Apply EaseInBack - creates bounce-back effect at the start, then eases forward
+            // The eased value goes from negative (bounce-back) to positive (forward)
+            float easedValue = EaseInBack(progress, backEaseOvershoot);
+
+            Vector3 targetPosition;
+            if (easedValue < 0.5f)
+            {
+                // Bounce-back phase: interpolate from bounce-back position to start position
+                float bounceProgress = easedValue * 2.0f; // 0 -> 0, 0.5 -> 1
+                
+                // Calculate horizontal position (backwards movement)
+                Vector3 horizontalBounceBack = attractionStartPosition - initialDirectionToTarget * bounceBackDistance;
+                Vector3 horizontalPosition = Vector3.Lerp(horizontalBounceBack, attractionStartPosition, bounceProgress);
+                
+                // Calculate vertical position (upward arc that peaks at maximum bounce-back)
+                // Use a parabolic curve: height peaks at bounceProgress = 0, returns to 0 at bounceProgress = 1
+                float verticalOffset = bounceBackHeight * (1.0f - bounceProgress) * (1.0f - bounceProgress);
+                
+                targetPosition = horizontalPosition + Vector3.up * verticalOffset;
+            }
+            else
+            {
+                // Forward phase: interpolate from start position to target position
+                float forwardProgress = (easedValue - 0.5f) * 2.0f; // 0.5 -> 0, 1 -> 1
+                targetPosition = Vector3.Lerp(attractionStartPosition, playerPosition, forwardProgress);
+            }
+            
+            // Move towards the eased target position
+            float moveDistance = dynamicSpeed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(lootPosition, targetPosition, moveDistance);
+        }
+        else
+        {
+            // Normal movement without easing
+            float moveDistance = dynamicSpeed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(lootPosition, playerPosition, moveDistance);
+        }
+    }
+    
+    /// <summary>
+    /// EaseInBack easing function - creates a bounce-back effect at the start, then eases forward.
+    /// </summary>
+    /// <param name="t">Normalized progress (0 to 1).</param>
+    /// <param name="overshoot">Overshoot amount (higher = more bounce back).</param>
+    /// <returns>Eased value (negative at start for bounce-back, then positive as it eases forward).</returns>
+    private float EaseInBack(float t, float overshoot)
+    {
+        // Clamp t to valid range
+        t = Mathf.Clamp01(t);
+        
+        // EaseInBack formula: bounces back at the start, then accelerates forward
+        // The overshoot parameter controls how much it bounces back
+        float c1 = 1.70158f + overshoot;
+        float c3 = c1 + 1.0f;
+        
+        // At t=0, this returns 0, but we want it to start negative for bounce-back
+        // So we adjust the formula to ensure bounce-back at the start
+        float result = c3 * t * t * t - c1 * t * t;
+        
+        // Ensure we get a visible bounce-back at the start
+        // When t is very small, result should be negative
+        // The formula already does this, but we can enhance it
+        return result;
     }
     
     /// <summary>
@@ -165,6 +250,18 @@ public abstract class LootComponent : ScriptComponent
             
         targetPlayer = player;
         isBeingAttracted = true;
+        attractionStartTime = Time.time;
+        attractionStartPosition = transform.position;
+        
+        // Calculate initial direction to target for bounce-back
+        Vector3 targetPos = player.transform.position + Vector3.up * 1.0f;
+        initialDirectionToTarget = (targetPos - attractionStartPosition).normalized;
+        
+        // If direction is zero (already at target), use a default direction
+        if (initialDirectionToTarget.magnitude < 0.001f)
+        {
+            initialDirectionToTarget = Vector3.forward;
+        }
     }
     
     /// <summary>
@@ -174,6 +271,7 @@ public abstract class LootComponent : ScriptComponent
     {
         isBeingAttracted = false;
         targetPlayer = Entity.Invalid;
+        attractionStartTime = -1f;
         
         // Reset to floating position
         if (enableFloating)

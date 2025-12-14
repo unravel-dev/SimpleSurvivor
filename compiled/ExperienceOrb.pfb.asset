@@ -2,7 +2,7 @@
  "entities": [
   {
    "prefab_uid": "b46d51d1-fea8-b14f-9a3a-0347104fe3a3",
-   "id": 2097153,
+   "id": 1,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -187,10 +187,16 @@
      "enabled": true,
      "shape": 0,
      "direction": 0,
+     "spawn_location": 0,
      "simulation_space": 0,
      "max_particles": 1024,
      "emission_lifetime": {
       "count": 2.0
+     },
+     "emission_shape_position": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
      },
      "emission_shape_scale": {
       "x": 0.5,
@@ -295,6 +301,11 @@
        }
       ]
      },
+     "initial_scale_3d": {
+      "x": 1.0,
+      "y": 1.0,
+      "z": 1.0
+     },
      "opacity": 1.0,
      "color_gradient": {
       "points": [
@@ -349,24 +360,44 @@
      "texture": {
       "uid": "8ca2bdd4-74f7-2949-b20b-386efb6c5b11"
      },
-     "loop": true
+     "texture_mode": 0,
+     "render_mode": 0,
+     "texture_sheet_tiles": {
+      "x": 1.0,
+      "y": 1.0
+     },
+     "texture_sheet_cycles": 0.0,
+     "texture_sheet_randomize": false,
+     "loop": true,
+     "start_delay": {
+      "count": 0.0
+     },
+     "align_to_direction": false,
+     "pivot": {
+      "x": 0.5,
+      "y": 0.5
+     }
     },
     "has_script_component": true,
     "script_component": {
      "script_components": [
       {
        "type": "ExperienceOrb",
-       "experienceValue": 10.0,
-       "lifetime": 30.0,
-       "baseAttractionSpeed": 15.0,
+       "baseAttractionSpeed": 25.5,
        "playerSpeedMultiplier": 1.5,
        "minimumAttractionSpeed": 12.0,
        "maximumAttractionSpeed": 50.0,
-       "attractionAcceleration": 30.0,
        "collectDistance": 1.0,
        "enableFloating": true,
        "floatSpeed": 2.0,
-       "floatAmplitude": 0.30000001192092898
+       "floatAmplitude": 0.30000001192092898,
+       "enableBackEasing": true,
+       "backEaseDuration": 0.4000000059604645,
+       "backEaseOvershoot": 1.0,
+       "bounceBackDistance": 1.0,
+       "bounceBackHeight": 2.0,
+       "experienceValue": 10.0,
+       "lifetime": 30.0
       }
      ]
     }

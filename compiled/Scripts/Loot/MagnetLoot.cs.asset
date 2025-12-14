@@ -9,7 +9,7 @@ using Unravel.Core;
 public class MagnetLoot : LootComponent
 {
     [Tooltip("Duration of the magnet effect in seconds")]
-    public float duration = 0.1f;
+    public float duration = 0.5f;
     
     /// <summary>
     /// Collect this magnet and apply the pickup range boost to the player.

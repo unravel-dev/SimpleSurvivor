@@ -269,6 +269,7 @@ public abstract class Ability : ScriptComponent
 
     /// <summary>
     /// Helper method to apply rotation to a direction vector around a perpendicular axis.
+    /// Ensures spread happens on the XZ plane (horizontal plane) for top-down gameplay.
     /// </summary>
     /// <param name="baseDirection">The base direction to rotate.</param>
     /// <param name="angleOffset">The angle offset in degrees to rotate by.</param>
@@ -281,21 +282,25 @@ public abstract class Ability : ScriptComponent
             return baseDirection.normalized;
         }
 
-        // Find the rotation axis (perpendicular to the base direction, using up as reference)
-        Vector3 up = Vector3.up;
-        Vector3 right = Vector3.Cross(baseDirection.normalized, up);
+        // Project base direction onto XZ plane to ensure horizontal spreading
+        Vector3 horizontalDirection = new Vector3(baseDirection.x, 0, baseDirection.z);
         
-        // If base direction is parallel to up, use forward as reference instead
-        if (right.magnitude < 0.001f)
+        // If horizontal direction is zero (baseDirection is purely vertical), use forward as default
+        if (horizontalDirection.magnitude < 0.001f)
         {
-            right = Vector3.Cross(baseDirection.normalized, Vector3.forward);
+            horizontalDirection = Vector3.forward;
         }
         
-        right = right.normalized;
+        horizontalDirection = horizontalDirection.normalized;
         
-        // Rotate the base direction around the right axis by the angle offset
-        Quaternion rotation = Quaternion.AngleAxis(angleOffset, right);
-        Vector3 spreadDirection = rotation * baseDirection.normalized;
+        // Rotate the horizontal direction around the up axis (Y axis) by the angle offset
+        // This ensures the spread stays on the XZ plane
+        Quaternion rotation = Quaternion.AngleAxis(angleOffset, Vector3.up);
+        Vector3 spreadHorizontal = rotation * horizontalDirection;
+        
+        // Preserve the original vertical component (Y) to maintain vertical aiming angle
+        // The horizontal component is rotated, but vertical stays the same
+        Vector3 spreadDirection = new Vector3(spreadHorizontal.x, baseDirection.y, spreadHorizontal.z);
         
         return spreadDirection.normalized;
     }

@@ -128,7 +128,7 @@ public class FireballAbility : Ability
         Vector3 spawnPosition = transform.position + spawnOffset;
         Vector3 targetPosition = target.transform.position + spawnOffset;
         // Vector3 direction = (targetPosition - spawnPosition).normalized;
-        Vector3 direction = Ability.CalculateSpreadDirectionByAngleBetween(transform.forward, castIndex, totalCasts, 5.0f);
+        Vector3 direction = Ability.CalculateSpreadDirectionByAngleBetween(transform.forward, castIndex, totalCasts, 8.0f);
 
         // Instantiate the fireball projectile
         Entity fireballEntity = Scene.Instantiate(fireballPrefab, ContainerCache.EffectsContainer);
