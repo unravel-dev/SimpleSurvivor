@@ -290,7 +290,7 @@ public class LootSystem : ScriptComponent
         var enemyComponent = enemyEntity.GetComponent<Enemy>();
         if (enemyComponent != null)
         {
-            string enemyType = enemyComponent.GetEnemyType().ToLower();
+            string enemyType = enemyComponent.GetEnemyType().ToLower(); 
             isElite = enemyType == "elite";
         }
         

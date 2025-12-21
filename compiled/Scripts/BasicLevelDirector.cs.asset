@@ -84,7 +84,7 @@ public class BasicLevelDirector : ScriptComponent
     
     // Elite spawning tracking
     private float timeSinceLastEliteSpawn = 0.0f;
-    private float eliteSpawnInterval = 10.0f; // 2 minutes in seconds
+    private float eliteSpawnInterval = 120.0f; // 2 minutes in seconds
     
     // Scaling tracking
     private float gameStartTime = 0.0f;
@@ -797,16 +797,10 @@ public class BasicLevelDirector : ScriptComponent
     /// <returns>Player level, or 1 if not found</returns>
     private int GetPlayerLevel()
     {
-        if (!player)
+        if (!playerComponent)
             return 1;
             
-        var playerScript = player.GetComponent<Player>();
-        if (playerScript != null)
-        {
-            return playerScript.GetLevel();
-        }
-        
-        return 1; // Default level
+        return playerComponent.GetLevel();
     }
     
     /// <summary>

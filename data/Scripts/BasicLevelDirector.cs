@@ -84,7 +84,7 @@ public class BasicLevelDirector : ScriptComponent
     
     // Elite spawning tracking
     private float timeSinceLastEliteSpawn = 0.0f;
-    private float eliteSpawnInterval = 10.0f; // 2 minutes in seconds
+    private float eliteSpawnInterval = 120.0f; // 2 minutes in seconds
     
     // Scaling tracking
     private float gameStartTime = 0.0f;
