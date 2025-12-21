@@ -285,10 +285,23 @@ public class LootSystem : ScriptComponent
             DropMagnetLoot(enemyPosition);
         }
         
-        // Randomly drop chest loot
-        if (chestLootPrefab != null && Random.Range(0.0f, 100.0f) < chestDropChance)
+        // Check if this is an elite enemy (guaranteed chest drop)
+        bool isElite = false;
+        var enemyComponent = enemyEntity.GetComponent<Enemy>();
+        if (enemyComponent != null)
         {
-            DropChestLoot(enemyPosition);
+            string enemyType = enemyComponent.GetEnemyType().ToLower();
+            isElite = enemyType == "elite";
+        }
+        
+        // Drop chest loot - guaranteed for elites, random chance for others
+        if (chestLootPrefab != null)
+        {
+            bool shouldDropChest = isElite || Random.Range(0.0f, 100.0f) < chestDropChance;
+            if (shouldDropChest)
+            {
+                DropChestLoot(enemyPosition);
+            }
         }
     }
     

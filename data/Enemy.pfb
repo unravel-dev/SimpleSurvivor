@@ -2,7 +2,7 @@
  "entities": [
   {
    "prefab_uid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
-   "id": 2097155,
+   "id": 1048579,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -122,7 +122,13 @@
        "autoFindPlayer": true,
        "enemyType": "basic",
        "contactDamageRadius": 2.0,
-       "contactDamageInterval": 0.5
+       "contactDamageInterval": 0.5,
+       "walkAnimation": {
+        "uid": "00000000-0000-0000-0000-000000000000"
+       },
+       "stunAnimation": {
+        "uid": "00000000-0000-0000-0000-000000000000"
+       }
       },
       {
        "type": "Health",
@@ -182,7 +188,7 @@
      },
      "parent": {
       "prefab_uid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
-      "id": 2097155
+      "id": 1048579
      },
      "children": [],
      "active": true
@@ -261,7 +267,7 @@
      },
      "parent": {
       "prefab_uid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
-      "id": 2097155
+      "id": 1048579
      },
      "children": [],
      "active": true

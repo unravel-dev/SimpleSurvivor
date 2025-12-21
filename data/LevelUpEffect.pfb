@@ -2,7 +2,7 @@
  "entities": [
   {
    "prefab_uid": "30a8ac5d-16ea-9e47-8dc6-72a004fb3942",
-   "id": 3,
+   "id": 7340035,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -56,10 +56,16 @@
      "enabled": true,
      "shape": 0,
      "direction": 0,
+     "spawn_location": 0,
      "simulation_space": 1,
      "max_particles": 200,
      "emission_lifetime": {
       "count": 2.0
+     },
+     "emission_shape_position": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
      },
      "emission_shape_scale": {
       "x": 1.0,
@@ -164,25 +170,12 @@
        }
       ]
      },
-     "blend_gradient": {
-      "points": [
-       {
-        "progress": 0.0,
-        "element": {
-         "min": 0.800000011920929,
-         "max": 1.0
-        }
-       },
-       {
-        "progress": 1.0,
-        "element": {
-         "min": 0.0,
-         "max": 0.20000000298023225
-        }
-       }
-      ]
+     "initial_scale_3d": {
+      "x": 1.0,
+      "y": 1.0,
+      "z": 1.0
      },
-     "blend_multiplier": 1.0,
+     "opacity": 1.0,
      "color_gradient": {
       "points": [
        {
@@ -218,7 +211,23 @@
      "texture": {
       "uid": "d4f5d8db-02bd-654e-9b98-61d070411c61"
      },
-     "loop": false
+     "texture_mode": 0,
+     "render_mode": 0,
+     "texture_sheet_tiles": {
+      "x": 1.0,
+      "y": 1.0
+     },
+     "texture_sheet_cycles": 0.0,
+     "texture_sheet_randomize": false,
+     "loop": false,
+     "start_delay": {
+      "count": 0.0
+     },
+     "align_to_direction": false,
+     "pivot": {
+      "x": 0.5,
+      "y": 0.5
+     }
     }
    }
   }

@@ -2,7 +2,7 @@
  "entities_count": 17,
  "entities": [
   {
-   "id": 6291458,
+   "id": 4194306,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -194,7 +194,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 6291460,
+   "id": 4194308,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -282,7 +282,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 6291462,
+   "id": 4194310,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -351,7 +351,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 6291464,
+   "id": 4194312,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -432,19 +432,19 @@
      },
      "children": [
       {
-       "id": 6291465
+       "id": 4194313
       },
       {
-       "id": 6291466
+       "id": 4194314
       },
       {
-       "id": 6291467
+       "id": 4194315
       },
       {
-       "id": 6291468
+       "id": 4194316
       },
       {
-       "id": 6291469
+       "id": 4194317
       },
       {
        "id": 4194318
@@ -525,7 +525,7 @@
    }
   },
   {
-   "id": 6291465,
+   "id": 4194313,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -568,7 +568,7 @@
       }
      },
      "parent": {
-      "id": 6291464
+      "id": 4194312
      },
      "children": [],
      "active": false
@@ -591,7 +591,7 @@
    }
   },
   {
-   "id": 6291466,
+   "id": 4194314,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -634,7 +634,7 @@
       }
      },
      "parent": {
-      "id": 6291464
+      "id": 4194312
      },
      "children": [],
      "active": false
@@ -657,7 +657,7 @@
    }
   },
   {
-   "id": 6291467,
+   "id": 4194315,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -700,7 +700,7 @@
       }
      },
      "parent": {
-      "id": 6291464
+      "id": 4194312
      },
      "children": [],
      "active": false
@@ -723,7 +723,7 @@
    }
   },
   {
-   "id": 6291468,
+   "id": 4194316,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -762,7 +762,7 @@
       }
      },
      "parent": {
-      "id": 6291464
+      "id": 4194312
      },
      "children": [],
      "active": false
@@ -785,7 +785,7 @@
    }
   },
   {
-   "id": 6291469,
+   "id": 4194317,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -824,7 +824,7 @@
       }
      },
      "parent": {
-      "id": 6291464
+      "id": 4194312
      },
      "children": [],
      "active": true
@@ -890,7 +890,7 @@
       }
      },
      "parent": {
-      "id": 6291464
+      "id": 4194312
      },
      "children": [],
      "active": false
@@ -956,7 +956,7 @@
       }
      },
      "parent": {
-      "id": 6291464
+      "id": 4194312
      },
      "children": [],
      "active": true
@@ -1022,7 +1022,7 @@
       }
      },
      "parent": {
-      "id": 6291464
+      "id": 4194312
      },
      "children": [],
      "active": false
@@ -1221,7 +1221,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 4194511,
+   "id": 1048597,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1281,6 +1281,20 @@
         "uid": "00000000-0000-0000-0000-000000000000"
        },
        "chestDropChance": 1.0,
+       "defaultLootConfig": {
+        "baseExperienceValue": 10.0,
+        "experiencePerLevel": 0.10000000149011612,
+        "orbCount": 1,
+        "experienceVariance": 0.20000000298023225,
+        "minimumExperience": 5.0,
+        "maximumExperience": 100.0
+       },
+       "timeModifiers": {
+        "experiencePerMinute": 0.05000000074505806,
+        "maxTimeMultiplier": 2.0,
+        "bonusInterval": 60.0,
+        "bonusAmount": 5.0
+       },
        "dropSpreadRadius": 2.0,
        "dropHeight": 0.5,
        "orbSpeedMultiplier": 1.5
@@ -1307,7 +1321,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 4194327,
+   "id": 1048599,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1350,7 +1364,7 @@
      },
      "children": [
       {
-       "id": 4194328
+       "id": 1048600
       }
      ],
      "active": true
@@ -1358,7 +1372,7 @@
    }
   },
   {
-   "id": 4194328,
+   "id": 1048600,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1397,7 +1411,7 @@
       }
      },
      "parent": {
-      "id": 4194327
+      "id": 1048599
      },
      "children": [],
      "active": true
@@ -1423,7 +1437,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 4194330,
+   "id": 1048602,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1473,7 +1487,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 4194332,
+   "id": 1048604,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1559,10 +1573,10 @@
      },
      "children": [
       {
-       "id": 4194333
+       "id": 1048605
       },
       {
-       "id": 4194334
+       "id": 1048606
       }
      ],
      "active": true
@@ -1649,7 +1663,7 @@
    }
   },
   {
-   "id": 4194333,
+   "id": 1048605,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1692,7 +1706,7 @@
       }
      },
      "parent": {
-      "id": 4194332
+      "id": 1048604
      },
      "children": [],
      "active": true
@@ -1726,7 +1740,7 @@
    }
   },
   {
-   "id": 4194334,
+   "id": 1048606,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1769,7 +1783,7 @@
       }
      },
      "parent": {
-      "id": 4194332
+      "id": 1048604
      },
      "children": [],
      "active": true
@@ -1806,7 +1820,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 4194336,
+   "id": 1048608,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1897,10 +1911,10 @@
      },
      "children": [
       {
-       "id": 4194337
+       "id": 1048609
       },
       {
-       "id": 4194338
+       "id": 1048610
       }
      ],
      "active": true
@@ -1987,7 +2001,7 @@
    }
   },
   {
-   "id": 4194337,
+   "id": 1048609,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2030,7 +2044,7 @@
       }
      },
      "parent": {
-      "id": 4194336
+      "id": 1048608
      },
      "children": [],
      "active": true
@@ -2064,7 +2078,7 @@
    }
   },
   {
-   "id": 4194338,
+   "id": 1048610,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2107,7 +2121,7 @@
       }
      },
      "parent": {
-      "id": 4194336
+      "id": 1048608
      },
      "children": [],
      "active": true
@@ -2144,7 +2158,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 4194340,
+   "id": 1048612,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2235,10 +2249,10 @@
      },
      "children": [
       {
-       "id": 4194341
+       "id": 1048613
       },
       {
-       "id": 4194342
+       "id": 1048614
       }
      ],
      "active": true
@@ -2325,7 +2339,7 @@
    }
   },
   {
-   "id": 4194341,
+   "id": 1048613,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2368,7 +2382,7 @@
       }
      },
      "parent": {
-      "id": 4194340
+      "id": 1048612
      },
      "children": [],
      "active": true
@@ -2402,7 +2416,7 @@
    }
   },
   {
-   "id": 4194342,
+   "id": 1048614,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2445,7 +2459,7 @@
       }
      },
      "parent": {
-      "id": 4194340
+      "id": 1048612
      },
      "children": [],
      "active": true
@@ -2482,7 +2496,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 4194344,
+   "id": 1048616,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2573,10 +2587,10 @@
      },
      "children": [
       {
-       "id": 4194345
+       "id": 1048617
       },
       {
-       "id": 4194346
+       "id": 1048618
       }
      ],
      "active": true
@@ -2663,7 +2677,7 @@
    }
   },
   {
-   "id": 4194345,
+   "id": 1048617,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2706,7 +2720,7 @@
       }
      },
      "parent": {
-      "id": 4194344
+      "id": 1048616
      },
      "children": [],
      "active": true
@@ -2740,7 +2754,7 @@
    }
   },
   {
-   "id": 4194346,
+   "id": 1048618,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2783,7 +2797,7 @@
       }
      },
      "parent": {
-      "id": 4194344
+      "id": 1048616
      },
      "children": [],
      "active": true
@@ -2820,7 +2834,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 4194348,
+   "id": 1048620,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2911,10 +2925,10 @@
      },
      "children": [
       {
-       "id": 4194349
+       "id": 1048621
       },
       {
-       "id": 4194350
+       "id": 1048622
       }
      ],
      "active": true
@@ -3001,7 +3015,7 @@
    }
   },
   {
-   "id": 4194349,
+   "id": 1048621,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3044,7 +3058,7 @@
       }
      },
      "parent": {
-      "id": 4194348
+      "id": 1048620
      },
      "children": [],
      "active": true
@@ -3078,7 +3092,7 @@
    }
   },
   {
-   "id": 4194350,
+   "id": 1048622,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3121,7 +3135,7 @@
       }
      },
      "parent": {
-      "id": 4194348
+      "id": 1048620
      },
      "children": [],
      "active": true
@@ -3158,7 +3172,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 4194352,
+   "id": 1048624,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3249,10 +3263,10 @@
      },
      "children": [
       {
-       "id": 4194353
+       "id": 1048625
       },
       {
-       "id": 4194354
+       "id": 1048626
       }
      ],
      "active": true
@@ -3339,7 +3353,7 @@
    }
   },
   {
-   "id": 4194353,
+   "id": 1048625,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3382,7 +3396,7 @@
       }
      },
      "parent": {
-      "id": 4194352
+      "id": 1048624
      },
      "children": [],
      "active": true
@@ -3416,7 +3430,7 @@
    }
   },
   {
-   "id": 4194354,
+   "id": 1048626,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3459,7 +3473,7 @@
       }
      },
      "parent": {
-      "id": 4194352
+      "id": 1048624
      },
      "children": [],
      "active": true
@@ -3496,7 +3510,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 4194356,
+   "id": 1048628,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3587,10 +3601,10 @@
      },
      "children": [
       {
-       "id": 4194357
+       "id": 1048629
       },
       {
-       "id": 4194358
+       "id": 1048630
       }
      ],
      "active": true
@@ -3677,7 +3691,7 @@
    }
   },
   {
-   "id": 4194357,
+   "id": 1048629,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3720,7 +3734,7 @@
       }
      },
      "parent": {
-      "id": 4194356
+      "id": 1048628
      },
      "children": [],
      "active": true
@@ -3754,7 +3768,7 @@
    }
   },
   {
-   "id": 4194358,
+   "id": 1048630,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3797,7 +3811,7 @@
       }
      },
      "parent": {
-      "id": 4194356
+      "id": 1048628
      },
      "children": [],
      "active": true
@@ -3834,7 +3848,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 4194360,
+   "id": 1048632,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3900,6 +3914,11 @@
      "max_particles": 838,
      "emission_lifetime": {
       "count": 2.0
+     },
+     "emission_shape_position": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
      },
      "emission_shape_scale": {
       "x": 0.20000000298023225,
@@ -4004,6 +4023,11 @@
        }
       ]
      },
+     "initial_scale_3d": {
+      "x": 1.0,
+      "y": 1.0,
+      "z": 1.0
+     },
      "opacity": 1.0,
      "color_gradient": {
       "points": [
@@ -4049,7 +4073,23 @@
      "texture": {
       "uid": "8128bb6c-942c-8a4c-9d85-3e9e9a60ea1d"
      },
-     "loop": false
+     "texture_mode": 0,
+     "render_mode": 0,
+     "texture_sheet_tiles": {
+      "x": 1.0,
+      "y": 1.0
+     },
+     "texture_sheet_cycles": 0.0,
+     "texture_sheet_randomize": false,
+     "loop": false,
+     "start_delay": {
+      "count": 0.0
+     },
+     "align_to_direction": false,
+     "pivot": {
+      "x": 0.5,
+      "y": 0.5
+     }
     }
    }
   }
@@ -4057,7 +4097,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 5242901,
+   "id": 1048634,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -4104,7 +4144,7 @@
       "skew": {
        "x": -5.960487214906607e-8,
        "y": -2.980337399094424e-8,
-       "z": -0.000005854923983861227
+       "z": -0.0000058553646340442359
       }
      },
      "parent": {
@@ -4112,16 +4152,13 @@
      },
      "children": [
       {
-       "id": 5242902
+       "id": 1048635
       },
       {
-       "id": 3145995
+       "id": 1048638
       },
       {
-       "id": 3145938
-      },
-      {
-       "id": 3145939
+       "id": 1048639
       }
      ],
      "active": true
@@ -4208,7 +4245,7 @@
    }
   },
   {
-   "id": 5242902,
+   "id": 1048635,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -4229,13 +4266,13 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": 9.025779377225263e-7,
-       "y": 1.4999655485153199,
-       "z": 0.0000074315698839200199
+       "x": 9.02547014902666e-7,
+       "y": 1.4999620914459229,
+       "z": 0.000007431563972204458
       },
       "rotation": {
        "x": 0.0,
-       "y": -1.7733593149368347e-27,
+       "y": -3.597205727807814e-28,
        "z": -8.881782079418884e-16,
        "w": 1.0
       },
@@ -4245,13 +4282,13 @@
        "z": 1.0
       },
       "skew": {
-       "x": 3.993250174971763e-12,
-       "y": -1.810659979698155e-17,
-       "z": -1.2824052930682229e-10
+       "x": 8.100187187665142e-13,
+       "y": -4.770913075409847e-18,
+       "z": -2.637712270825432e-11
       }
      },
      "parent": {
-      "id": 5242901
+      "id": 1048634
      },
      "children": [],
      "active": true
@@ -4289,88 +4326,7 @@
    }
   },
   {
-   "id": 3145995,
-   "components": {
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "Mesh",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_prefab_id_component": true,
-    "prefab_id_component": {
-     "id": "875177b5-65a6-1046-a080-a448018a7936"
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": -0.0000049255581870966129,
-       "y": 1.0819995403289796,
-       "z": 1.0888646841049195
-      },
-      "rotation": {
-       "x": 0.7071068286895752,
-       "y": -1.1517780002315292e-12,
-       "z": -1.2034141044781066e-12,
-       "w": 0.7071067094802856
-      },
-      "scale": {
-       "x": 0.35640761256217959,
-       "y": 0.5277522206306458,
-       "z": 0.4001021981239319
-      },
-      "skew": {
-       "x": -5.679813170900161e-7,
-       "y": -0.000005860395049239742,
-       "z": -0.0000053318981372285638
-      }
-     },
-     "parent": {
-      "id": 5242901
-     },
-     "children": [],
-     "active": true
-    },
-    "has_model_component": true,
-    "model_component": {
-     "enabled": true,
-     "static": true,
-     "casts_shadow": true,
-     "casts_reflection": false,
-     "model": {
-      "lods": [
-       {
-        "uid": "1cd3f186-4661-ae52-a40a-9685321b7c22"
-       }
-      ],
-      "materials": [
-       {
-        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
-       }
-      ],
-      "material_instances": [],
-      "lod_limits": [
-       {
-        "min": 0,
-        "max": 100
-       }
-      ]
-     }
-    },
-    "has_script_component": true,
-    "script_component": {
-     "script_components": []
-    }
-   }
-  },
-  {
-   "id": 3145938,
+   "id": 1048638,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -4385,35 +4341,35 @@
     },
     "has_prefab_id_component": true,
     "prefab_id_component": {
-     "id": "94c462a1-792f-924d-aeac-02f8aea4965c"
+     "id": "88612239-afdf-714b-b269-011919146236"
     },
     "has_transform_component": true,
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": 0.3000001311302185,
-       "y": 0.7999996542930603,
-       "z": 0.7266797423362732
+       "x": -0.2510192096233368,
+       "y": 2.449995994567871,
+       "z": 0.4890565276145935
       },
       "rotation": {
-       "x": -9.214854356995317e-13,
-       "y": -6.462350507722792e-25,
-       "z": 6.382673794873284e-13,
+       "x": 4.430419572876154e-12,
+       "y": -4.673935934465523e-13,
+       "z": 1.0840849702306588e-12,
        "w": 1.0
       },
       "scale": {
-       "x": 0.6399998664855957,
-       "y": 0.6399998068809509,
-       "z": 0.6399998664855957
+       "x": 0.33919987082481387,
+       "y": 0.33919990062713625,
+       "z": 0.339199960231781
       },
       "skew": {
-       "x": -3.3881325644990258e-19,
-       "y": -1.5002574769874264e-17,
-       "z": -1.4455113267388548e-13
+       "x": -2.0946328574628429e-14,
+       "y": -3.9956313254520447e-19,
+       "z": -1.1834477625302653e-12
       }
      },
      "parent": {
-      "id": 5242901
+      "id": 1048634
      },
      "children": [],
      "active": true
@@ -4447,7 +4403,7 @@
    }
   },
   {
-   "id": 3145939,
+   "id": 1048639,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -4462,35 +4418,35 @@
     },
     "has_prefab_id_component": true,
     "prefab_id_component": {
-     "id": "88612239-afdf-714b-b269-011919146236"
+     "id": "db0e00fd-cb8d-804a-924e-2b52434d1f72"
     },
     "has_transform_component": true,
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": -0.29999998211860659,
-       "y": 0.7999973297119141,
-       "z": 0.7266798615455627
+       "x": 0.19240416586399079,
+       "y": 2.449995994567871,
+       "z": 0.4890565872192383
       },
       "rotation": {
-       "x": -9.214854356995317e-13,
-       "y": -6.866248277272081e-25,
-       "z": 7.520651853012983e-13,
+       "x": 4.430419572876154e-12,
+       "y": -4.673935934465523e-13,
+       "z": 1.0840849702306588e-12,
        "w": 1.0
       },
       "scale": {
-       "x": 0.6399998664855957,
-       "y": 0.6399998068809509,
-       "z": 0.6399998664855957
+       "x": 0.33919987082481387,
+       "y": 0.33919990062713625,
+       "z": 0.339199960231781
       },
       "skew": {
-       "x": -3.3881325644990258e-19,
-       "y": -9.41825260513463e-19,
-       "z": 8.304449250658153e-14
+       "x": -2.0946328574628429e-14,
+       "y": -3.9956313254520447e-19,
+       "z": -1.1834477625302653e-12
       }
      },
      "parent": {
-      "id": 5242901
+      "id": 1048634
      },
      "children": [],
      "active": true

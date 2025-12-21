@@ -2,7 +2,7 @@
  "entities_count": 8,
  "entities": [
   {
-   "id": 1048578,
+   "id": 3145730,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -146,7 +146,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 1048580,
+   "id": 3145732,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -234,7 +234,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 1048582,
+   "id": 3145734,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -303,7 +303,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 1048584,
+   "id": 3145736,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -364,13 +364,13 @@
      },
      "children": [
       {
-       "id": 1048585
+       "id": 3145737
       },
       {
-       "id": 1048586
+       "id": 3145738
       },
       {
-       "id": 1048587
+       "id": 3145739
       }
      ],
      "active": true
@@ -394,6 +394,11 @@
        "BackgroundAudioSource": {
         "flags": 2,
         "id": 4294967295
+       },
+       "testNumbers": {
+        "type": "System.Int32",
+        "size": 0,
+        "container": []
        }
       }
      ]
@@ -401,7 +406,7 @@
    }
   },
   {
-   "id": 1048585,
+   "id": 3145737,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -444,7 +449,7 @@
       }
      },
      "parent": {
-      "id": 1048584
+      "id": 3145736
      },
      "children": [],
      "active": true
@@ -467,7 +472,7 @@
    }
   },
   {
-   "id": 1048586,
+   "id": 3145738,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -510,7 +515,7 @@
       }
      },
      "parent": {
-      "id": 1048584
+      "id": 3145736
      },
      "children": [],
      "active": false
@@ -533,7 +538,7 @@
    }
   },
   {
-   "id": 1048587,
+   "id": 3145739,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -576,7 +581,7 @@
       }
      },
      "parent": {
-      "id": 1048584
+      "id": 3145736
      },
      "children": [],
      "active": true
@@ -602,7 +607,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 1048589,
+   "id": 3145741,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -652,7 +657,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 1048591,
+   "id": 3145743,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -695,7 +700,7 @@
      },
      "children": [
       {
-       "id": 1048592
+       "id": 3145744
       }
      ],
      "active": true
@@ -881,7 +886,7 @@
    }
   },
   {
-   "id": 1048592,
+   "id": 3145744,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -920,7 +925,7 @@
       }
      },
      "parent": {
-      "id": 1048591
+      "id": 3145743
      },
      "children": [],
      "active": true
@@ -1127,7 +1132,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 1048594,
+   "id": 3145746,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1203,7 +1208,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 1048596,
+   "id": 3145748,
    "components": {
     "has_tag_component": true,
     "tag_component": {

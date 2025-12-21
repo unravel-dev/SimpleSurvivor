@@ -23,20 +23,27 @@ public class BasicLevelDirector : ScriptComponent
     
     //[Header("Enemy Spawning")]
     [Tooltip("Enemy prefab to spawn automatically")]
-    public Prefab enemy;
-    public Prefab enemy1;
-    public Prefab enemy2;
+    public List<Prefab> enemies = new List<Prefab>();
+    [Tooltip("Elite enemy prefabs to spawn periodically (randomly selected)")]
+    public List<Prefab> eliteEnemies = new List<Prefab>();
     [Tooltip("Base number of spawns per second")]
     public float baseSpawnsPerSecond = 1.0f;
     
-    // List of enemy prefabs for random selection
-    private List<Prefab> enemyPrefabs = new List<Prefab>();
     [Tooltip("Base minimum number of enemies to maintain")]
     public int baseMinEnemies = 20;
     [Tooltip("Additional enemies per player level")]
     public int enemiesPerLevel = 3;
     [Tooltip("Maximum enemies allowed at once")]
     public bool enableAutoSpawning = true;
+    
+    [Tooltip("Time-based scaling: additional enemies per minute of game time")]
+    public float enemiesPerMinute = 2.0f;
+    [Tooltip("Time-based scaling exponent (higher = faster scaling over time)")]
+    public float timeScalingExponent = 1.5f;
+    [Tooltip("Kill speed scaling: multiplier for target enemy count based on kill rate")]
+    public float killSpeedScalingMultiplier = 0.5f;
+    [Tooltip("Maximum multiplier from kill speed (caps how much kill speed can increase enemy count)")]
+    public float maxKillSpeedMultiplier = 2.0f;
     
     //[Header("Adaptive Spawning")]
     [Tooltip("How quickly to adapt spawn rate based on kill rate (0-1)")]
@@ -62,7 +69,7 @@ public class BasicLevelDirector : ScriptComponent
     [Tooltip("Base damage value for enemies (used when PhysicalDamageComponent is missing)")]
     public int baseEnemyDamage = 10;
     [Tooltip("Maximum health scaling multiplier")]
-    public float maxHealthScaling = 5.0f;
+    public float maxHealthScaling = 1000.0f;
     [Tooltip("Maximum speed scaling multiplier")]
     public float maxSpeedScaling = 3.0f;
     [Tooltip("Maximum damage scaling multiplier")]
@@ -74,6 +81,10 @@ public class BasicLevelDirector : ScriptComponent
     private float[] recentKillTimes = new float[50]; // Circular buffer for recent kills
     private int killTimeIndex = 0;
     private float currentSpawnRateMultiplier = 1.0f;
+    
+    // Elite spawning tracking
+    private float timeSinceLastEliteSpawn = 0.0f;
+    private float eliteSpawnInterval = 10.0f; // 2 minutes in seconds
     
     // Scaling tracking
     private float gameStartTime = 0.0f;
@@ -98,9 +109,6 @@ public class BasicLevelDirector : ScriptComponent
         // Initialize scaling system
         gameStartTime = Time.time;
         
-        // Initialize enemy prefab list
-        InitializeEnemyPrefabList();
-        
         // Auto-find player
         if (!player)
         {
@@ -121,33 +129,6 @@ public class BasicLevelDirector : ScriptComponent
         SubscribeToEnemyDeaths();
     }
     
-    /// <summary>
-    /// Initialize the list of enemy prefabs from the assigned prefab fields.
-    /// </summary>
-    private void InitializeEnemyPrefabList()
-    {
-        enemyPrefabs.Clear();
-        
-        // Add enemy prefabs if they are assigned
-        if (enemy != null)
-        {
-            enemyPrefabs.Add(enemy);
-        }
-        if (enemy1 != null)
-        {
-            enemyPrefabs.Add(enemy1);
-        }
-        if (enemy2 != null)
-        {
-            enemyPrefabs.Add(enemy2);
-        }
-        
-        // Log warning if no enemy prefabs are assigned
-        if (enemyPrefabs.Count == 0)
-        {
-            Log.Warning("BasicLevelDirector: No enemy prefabs assigned! Enemy spawning will not work.");
-        }
-    }
     
     /// <summary>
     /// Called every frame to handle intelligent enemy spawning.
@@ -155,7 +136,7 @@ public class BasicLevelDirector : ScriptComponent
     public override void OnUpdate()
     {
         // Only spawn if auto-spawning is enabled and we have enemy prefabs
-        if (!enableAutoSpawning || enemyPrefabs.Count == 0)
+        if (!enableAutoSpawning || enemies.Count == 0)
             return;
             
         // Update enemy count
@@ -163,6 +144,9 @@ public class BasicLevelDirector : ScriptComponent
         
         // Update adaptive spawn rate based on recent kill rate
         UpdateAdaptiveSpawnRate();
+        
+        // Handle elite enemy spawning (every 2 minutes)
+        HandleEliteSpawning();
         
         // Calculate target enemy count based on player level
         int targetEnemyCount = GetTargetEnemyCount();
@@ -201,6 +185,67 @@ public class BasicLevelDirector : ScriptComponent
                 }
             }
         }
+    }
+    
+    /// <summary>
+    /// Handle elite enemy spawning every 2 minutes.
+    /// </summary>
+    private void HandleEliteSpawning()
+    {
+        // Check if elite enemies list has any prefabs
+        if (eliteEnemies == null || eliteEnemies.Count == 0)
+            return;
+        
+        // Update elite spawn timer
+        timeSinceLastEliteSpawn += Time.deltaTime;
+        
+        // Check if it's time to spawn an elite
+        if (timeSinceLastEliteSpawn >= eliteSpawnInterval)
+        {
+            // Get a random elite enemy prefab from the list
+            Prefab elitePrefabToSpawn = GetRandomElitePrefab();
+            
+            if (elitePrefabToSpawn != null)
+            {
+                // Spawn elite enemy
+                Entity spawnedElite = SpawnAroundPlayer(elitePrefabToSpawn);
+                
+                if (spawnedElite != Entity.Invalid)
+                {
+                    // Mark as elite enemy type
+                    var enemyComponent = spawnedElite.GetComponent<Enemy>();
+                    if (enemyComponent != null)
+                    {
+                        enemyComponent.enemyType = "elite";
+                    }
+                    
+                    // Apply scaling to the elite enemy
+                    if (enableEnemyScaling)
+                    {
+                        ApplyEnemyScaling(spawnedElite);
+                    }
+                    
+                    // Reset elite spawn timer
+                    timeSinceLastEliteSpawn = 0.0f;
+                    currentEnemyCount++;
+                    
+                    Log.Info("BasicLevelDirector: Elite enemy spawned!");
+                }
+            }
+        }
+    }
+    
+    /// <summary>
+    /// Get a random elite enemy prefab from the list.
+    /// </summary>
+    /// <returns>A random elite enemy prefab, or null if no prefabs are available.</returns>
+    private Prefab GetRandomElitePrefab()
+    {
+        if (eliteEnemies == null || eliteEnemies.Count == 0)
+            return null;
+        
+        int randomIndex = Random.Range(0, eliteEnemies.Count);
+        return eliteEnemies[randomIndex];
     }
     
     /// <summary>
@@ -698,14 +743,52 @@ public class BasicLevelDirector : ScriptComponent
     }
     
     /// <summary>
-    /// Get the target number of enemies based on player level.
+    /// Get the target number of enemies based on player level, time, and kill speed.
+    /// Uses faster scaling over time and adapts to player kill speed.
     /// </summary>
     /// <returns>Target enemy count</returns>
     private int GetTargetEnemyCount()
     {
         int playerLevel = GetPlayerLevel();
-        int targetCount = baseMinEnemies + (playerLevel - 1) * enemiesPerLevel;
-        return targetCount;
+        
+        // Base count from level (linear scaling)
+        int levelBasedCount = baseMinEnemies + (playerLevel - 1) * enemiesPerLevel;
+        
+        // Time-based scaling (exponential for faster growth)
+        float gameTimeMinutes = (Time.time - gameStartTime) / 60.0f;
+        float timeBasedEnemies = enemiesPerMinute * Mathf.Pow(gameTimeMinutes, timeScalingExponent);
+        
+        // Kill speed-based scaling (adapts to how fast player is killing)
+        float killSpeedMultiplier = CalculateKillSpeedMultiplier();
+        
+        // Combine all factors
+        float totalCount = (levelBasedCount + timeBasedEnemies) * killSpeedMultiplier;
+        
+        return Mathf.RoundToInt(totalCount);
+    }
+    
+    /// <summary>
+    /// Calculate a multiplier for target enemy count based on recent kill speed.
+    /// Higher kill rates result in higher target enemy counts to maintain challenge.
+    /// </summary>
+    /// <returns>Multiplier between 1.0 and maxKillSpeedMultiplier</returns>
+    private float CalculateKillSpeedMultiplier()
+    {
+        float currentKillRate = CalculateRecentKillRate();
+        float baseKillRate = baseSpawnsPerSecond; // Expected baseline kill rate
+        
+        // If kill rate is higher than baseline, increase target count
+        // This creates a positive feedback loop: faster killing -> more enemies -> more challenge
+        if (currentKillRate > baseKillRate)
+        {
+            // Calculate multiplier based on how much faster player is killing
+            float killRateRatio = currentKillRate / baseKillRate;
+            float multiplier = 1.0f + (killRateRatio - 1.0f) * killSpeedScalingMultiplier;
+            return Mathf.Min(multiplier, maxKillSpeedMultiplier);
+        }
+        
+        // If kill rate is lower, keep multiplier at 1.0 (don't reduce difficulty)
+        return 1.0f;
     }
     
     /// <summary>
@@ -863,11 +946,11 @@ public class BasicLevelDirector : ScriptComponent
     /// <returns>A random enemy prefab, or null if no prefabs are available.</returns>
     private Prefab GetRandomEnemyPrefab()
     {
-        if (enemyPrefabs.Count == 0)
+        if (enemies.Count == 0)
             return null;
         
-        int randomIndex = Random.Range(0, enemyPrefabs.Count);
-        return enemyPrefabs[randomIndex];
+        int randomIndex = Random.Range(0, enemies.Count);
+        return enemies[randomIndex];
     }
     
     /// <summary>
@@ -878,7 +961,7 @@ public class BasicLevelDirector : ScriptComponent
         int targetCount = GetTargetEnemyCount();
         int enemiesToSpawn = targetCount - currentEnemyCount;
         
-        if (enemiesToSpawn > 0 && enemyPrefabs.Count > 0)
+        if (enemiesToSpawn > 0 && enemies.Count > 0)
         {
             // Spawn enemies using random prefabs
             for (int i = 0; i < enemiesToSpawn; i++)
