@@ -14,7 +14,9 @@
       "optimize_meshes": true,
       "split_large_meshes": true,
       "find_degenerates": true,
-      "find_invalid_data": true
+      "find_invalid_data": true,
+      "generate_lods": true,
+      "lod_target_error": 0.009999999776482582
      },
      "rig": {},
      "animations": {

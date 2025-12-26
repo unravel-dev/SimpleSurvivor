@@ -1,7 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/Dance01.fbx",
+ "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/Animations/Dance01.fbx",
  "source_sha": "c3ec03fb1de60600344148c58e2d95ee34fa6678",
  "source_timestamp": {
   "count": -5177472082709551616
- }
+ },
+ "format_version": 2
 }

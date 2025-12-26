@@ -1,7 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/Dizzy.fbx",
+ "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/Animations/Dizzy.fbx",
  "source_sha": "b26196087bb50d6291a8c7b9bb6c949ca75ff51d",
  "source_timestamp": {
   "count": -5177472075709551616
- }
+ },
+ "format_version": 2
 }

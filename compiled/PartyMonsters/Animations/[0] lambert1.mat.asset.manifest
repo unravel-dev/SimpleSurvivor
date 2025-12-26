@@ -1,7 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/[0] lambert1.mat",
- "source_sha": "ffe3a7387b7d49e712b480f059240d482af66bc8",
+ "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/Animations/[0] lambert1.mat",
+ "source_sha": "c1febb15c6d8ac68aae2a716c88850238baa9f75",
  "source_timestamp": {
-  "count": -5039037025495026916
- }
+  "count": -5035526423401817616
+ },
+ "format_version": 1
 }

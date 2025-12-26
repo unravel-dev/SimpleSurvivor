@@ -1,7 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/Defense_Take 001.anim",
+ "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/Animations/Defense_Take 001.anim",
  "source_sha": "e5d724594f2b0c532edf149b1af6ef833c999760",
  "source_timestamp": {
-  "count": -5039037025513206416
- }
+  "count": -5035526435323428916
+ },
+ "format_version": 1
 }

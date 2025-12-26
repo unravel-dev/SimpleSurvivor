@@ -1,7 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/JumpAir.fbx",
+ "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/Animations/JumpAir.fbx",
  "source_sha": "288d3c3de38d6b6f81cae105ef0b6615f6b2570e",
  "source_timestamp": {
   "count": -5177472092709551616
- }
+ },
+ "format_version": 2
 }

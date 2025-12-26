@@ -1,7 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/Run01FWD_Take 001.anim",
+ "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/Animations/Run01FWD_Take 001.anim",
  "source_sha": "b6acff0fe98df14c9143f01e4ba610920178f4ea",
  "source_timestamp": {
-  "count": -5039037025563634616
- }
+  "count": -5035526435178254316
+ },
+ "format_version": 1
 }

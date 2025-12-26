@@ -1,7 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/Run01FWD.fbx",
+ "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/Animations/Run01FWD.fbx",
  "source_sha": "6193e34ac41fc8d9002ab3e310810f2b4ca2a1bf",
  "source_timestamp": {
   "count": -5177472088709551616
- }
+ },
+ "format_version": 2
 }

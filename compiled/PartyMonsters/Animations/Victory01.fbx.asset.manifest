@@ -1,7 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/Victory01.fbx",
+ "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/Animations/Victory01.fbx",
  "source_sha": "2bcfcfd32b3880bded33547a4d3ddb697fcecc2a",
  "source_timestamp": {
   "count": -5177472080709551616
- }
+ },
+ "format_version": 2
 }

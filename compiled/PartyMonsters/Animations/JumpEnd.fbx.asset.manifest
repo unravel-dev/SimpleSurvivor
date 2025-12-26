@@ -1,7 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/JumpEnd.fbx",
+ "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/Animations/JumpEnd.fbx",
  "source_sha": "7c9e257e25d50586465261db8ae594100ca87ca5",
  "source_timestamp": {
   "count": -5177472077709551616
- }
+ },
+ "format_version": 2
 }

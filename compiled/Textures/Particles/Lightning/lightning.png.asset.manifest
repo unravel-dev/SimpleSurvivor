@@ -1,7 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/lightning.png",
+ "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/Textures/Particles/Lightning/lightning.png",
  "source_sha": "e259a8c05d5be93347328ad6d3223592fed9051e",
  "source_timestamp": {
   "count": -5037156654705773716
- }
+ },
+ "format_version": 0
 }

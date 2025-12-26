@@ -1,7 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonstesEx/Materials/Monster3.mat",
+ "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonstesEx/Materials/ChestAndBeholder.mat",
  "source_sha": "e979dd11cabcb77822bb535cce32669dc344aaa4",
  "source_timestamp": {
   "count": -5037854526620054516
- }
+ },
+ "format_version": 1
 }

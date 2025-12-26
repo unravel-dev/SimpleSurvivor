@@ -1,7 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/JumpStart_Take 001.anim",
+ "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/Animations/JumpStart_Take 001.anim",
  "source_sha": "65353fbc6a890e0b3e3751933cae32178ba69852",
  "source_timestamp": {
-  "count": -5039037025562113616
- }
+  "count": -5035526435240229516
+ },
+ "format_version": 1
 }

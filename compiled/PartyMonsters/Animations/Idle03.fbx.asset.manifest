@@ -1,7 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/Idle03.fbx",
+ "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/Animations/Idle03.fbx",
  "source_sha": "8b9243d56c8c29e45ecec9d8a8ee22ac0d85ee57",
  "source_timestamp": {
   "count": -5177472070709551616
- }
+ },
+ "format_version": 2
 }

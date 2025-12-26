@@ -1,7 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/JumpOneTake.fbx",
+ "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/Animations/JumpOneTake.fbx",
  "source_sha": "f2ae10435f0073cd8468768e9287ad59d13a3393",
  "source_timestamp": {
   "count": -5177472085709551616
- }
+ },
+ "format_version": 2
 }

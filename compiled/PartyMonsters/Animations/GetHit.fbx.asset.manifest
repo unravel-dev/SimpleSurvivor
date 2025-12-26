@@ -1,7 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/GetHit.fbx",
+ "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/Animations/GetHit.fbx",
  "source_sha": "67d9afd07b8577296bd08ad68506603040aeab06",
  "source_timestamp": {
   "count": -5177472066709551616
- }
+ },
+ "format_version": 2
 }

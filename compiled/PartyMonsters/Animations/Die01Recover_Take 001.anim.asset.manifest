@@ -1,7 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/Die01Recover_Take 001.anim",
+ "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/Animations/Die01Recover_Take 001.anim",
  "source_sha": "85086c4df9251bb6fc3c427fc6ae629dd29739a0",
  "source_timestamp": {
-  "count": -5039037025555574116
- }
+  "count": -5035526435299326016
+ },
+ "format_version": 1
 }

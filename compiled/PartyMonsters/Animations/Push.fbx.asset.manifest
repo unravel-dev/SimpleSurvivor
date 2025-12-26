@@ -1,7 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/Push.fbx",
+ "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/Animations/Push.fbx",
  "source_sha": "7b37900d9f2ed5ab704314545a286f5be78a6ab8",
  "source_timestamp": {
   "count": -5177472086709551616
- }
+ },
+ "format_version": 2
 }
