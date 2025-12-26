@@ -39,20 +39,13 @@ public class Enemy : ScriptComponent
     [Tooltip("Interval between contact damage ticks (seconds)")]
     public float contactDamageInterval = 0.5f;
     
-    //[Header("Animations")]
-    [Tooltip("Animation clip for walking/moving")]
-    public AnimationClip walkAnimation;
-    [Tooltip("Animation clip for stun state (played looped)")]
-    public AnimationClip stunAnimation;
-    
     // Component references
     private PhysicsComponent physicsComponent;
     private Health Health;
-    private AnimationComponent animationComponent;
+    private EnemyStateMachine stateMachine;
 
     // Movement state
     private Vector3 lastPlayerPosition;
-    private bool isChasing = false;
     
     // Contact damage state
     private float contactDamageTimer = 0.0f;
@@ -64,7 +57,7 @@ public class Enemy : ScriptComponent
     {
         physicsComponent = owner.GetComponent<PhysicsComponent>();
         Health = owner.GetComponent<Health>();
-        animationComponent = owner.GetComponent<AnimationComponent>();
+        stateMachine = owner.GetComponent<EnemyStateMachine>();
         
         if (usePhysicsMovement && physicsComponent == null)
         {
@@ -82,10 +75,7 @@ public class Enemy : ScriptComponent
             Health.OnDeath += OnEnemyDeath;
         }
         
-        if (animationComponent == null)
-        {
-            Log.Warning($"Enemy on {owner.name}: AnimationComponent not found! Animations will not play.");
-        }
+
     }
     
     
@@ -94,26 +84,31 @@ public class Enemy : ScriptComponent
     /// </summary>
     public override void OnStart()
     {
-
         // Auto-find player if enabled
         if (autoFindPlayer && !target)
         {
             FindPlayer();
         }
 
-        // Initialize last known player position and set chasing state
+
+        // Initialize last known player position and set initial state
         if (target)
         {
             lastPlayerPosition = target.transform.position;
-            isChasing = true; // Start chasing if target exists
-            // Start walk animation when chasing begins
-            PlayWalkAnimation();
+            // Set state to Walking if we have a target
+            if (stateMachine != null)
+            {
+                stateMachine.SetState(EnemyState.Walking);
+            }
         }
         else
         {
-            isChasing = false; // No target, don't chase
+            // No target, set to Idle
+            if (stateMachine != null)
+            {
+                stateMachine.SetState(EnemyState.Idle);
+            }
         }
-
     }
     
     /// <summary>
@@ -121,18 +116,30 @@ public class Enemy : ScriptComponent
     /// </summary>
     public override void OnUpdate()
     {
-        if (!target)
+        if (!target || stateMachine == null)
             return;
         
-        // Check if stunned - if so, stop chasing
+        // Don't update if dead or dying
+        if (stateMachine.IsInAnyState(EnemyState.Dead, EnemyState.Dying))
+            return;
+        
+        // Check if stunned - update state accordingly
         bool isStunned = owner.HasComponent<StunnedComponent>();
-        if (isStunned && isChasing)
+        if (isStunned && !stateMachine.IsInState(EnemyState.Stunned))
         {
-            StopChasing();
+            stateMachine.SetState(EnemyState.Stunned);
         }
-        else if (!isStunned && !isChasing && target && (Health == null || !Health.IsDead()))
+        else if (!isStunned && stateMachine.IsInState(EnemyState.Stunned) && target && (Health == null || !Health.IsDead()))
         {
-            ResumeChasing();
+            // Resume chasing when no longer stunned
+            stateMachine.SetState(EnemyState.Walking);
+        }
+        
+        // Update movement state based on whether we can move
+        if (!isStunned && stateMachine.CanMove())
+        {
+            // Determine if we should be walking or idle based on movement
+            // This will be handled in UpdateAI based on actual movement
         }
             
         // Update AI behavior (decision making only)
@@ -147,17 +154,17 @@ public class Enemy : ScriptComponent
     /// </summary>
     public override void OnFixedUpdate()
     {
-        if (!target || !usePhysicsMovement || physicsComponent == null)
+        if (!target || !usePhysicsMovement || physicsComponent == null || stateMachine == null)
             return;
 
-        // Handle physics movement
-        if (isChasing)
+        // Handle physics movement based on state
+        if (stateMachine.IsInAnyState(EnemyState.Walking, EnemyState.Running))
         {
             UpdatePhysicsMovement();
         }
         else
         {
-            // Stop horizontal movement when not chasing
+            // Stop horizontal movement when not in a movement state
             Vector3 currentVelocity = physicsComponent.velocity;
             physicsComponent.velocity = new Vector3(0, currentVelocity.y, 0);
         }
@@ -168,15 +175,12 @@ public class Enemy : ScriptComponent
     /// </summary>
     private void UpdateAI()
     {
-        // Don't update AI if dead
-        if (Health != null && Health.IsDead())
-        {
-            isChasing = false;
+        // Don't update AI if dead or dying
+        if (stateMachine == null || !stateMachine.CanAct())
             return;
-        }
         
-        // Only update movement if chasing is enabled
-        if (!isChasing)
+        // Only update movement if in a movement state
+        if (!stateMachine.CanMove())
             return;
         
         Vector3 playerPosition = target.transform.position;
@@ -189,8 +193,15 @@ public class Enemy : ScriptComponent
         Vector3 toTarget = playerPosition - enemyPosition;
         toTarget.y = 0; // Keep movement on horizontal plane
         
+        // Update state based on movement
         if (toTarget.magnitude > 0.0001f)
         {
+            // If we're moving, ensure we're in Walking state
+            if (stateMachine.IsInState(EnemyState.Idle))
+            {
+                stateMachine.SetState(EnemyState.Walking);
+            }
+            
             // Handle non-physics movement here (direct transform)
             if (!usePhysicsMovement)
             {
@@ -216,6 +227,14 @@ public class Enemy : ScriptComponent
             }
             
             lastPlayerPosition = playerPosition;
+        }
+        else
+        {
+            // Not moving, set to Idle if we're in a movement state
+            if (stateMachine.IsInAnyState(EnemyState.Walking, EnemyState.Running))
+            {
+                stateMachine.SetState(EnemyState.Idle);
+            }
         }
     }
     
@@ -378,10 +397,12 @@ public class Enemy : ScriptComponent
     /// <summary>
     /// Check if the enemy is currently chasing the player.
     /// </summary>
-    /// <returns>True if chasing, false otherwise.</returns>
+    /// <returns>True if chasing (walking or running), false otherwise.</returns>
     public bool IsChasing()
     {
-        return isChasing;
+        if (stateMachine == null)
+            return false;
+        return stateMachine.IsInAnyState(EnemyState.Walking, EnemyState.Running);
     }
     
     /// <summary>
@@ -398,15 +419,11 @@ public class Enemy : ScriptComponent
     /// </summary>
     public void StopChasing()
     {
-        if (!isChasing)
-        {
+        if (stateMachine == null)
             return;
-        }   
-        isChasing = false;
-        // Play stun animation looped (only if not already playing)
-        PlayStunAnimation();
-        // Stop physics movement if using physics
-        // Note: Physics velocity will be stopped in OnFixedUpdate when isChasing = false
+        
+        // Set to Idle state (animation controller will handle the visual)
+        stateMachine.SetState(EnemyState.Idle);
     }
     
     /// <summary>
@@ -414,16 +431,14 @@ public class Enemy : ScriptComponent
     /// </summary>
     public void ResumeChasing()
     {
-        if (target && (Health == null || !Health.IsDead()))
-        {
-            if (isChasing)
-            {
-                return;
-            }
-            isChasing = true;
-            // Blend to walk animation when resuming chase
-            PlayWalkAnimation();
-        }
+        if (stateMachine == null || !target)
+            return;
+        
+        if (Health != null && Health.IsDead())
+            return;
+        
+        // Set to Walking state (animation controller will handle the visual)
+        stateMachine.SetState(EnemyState.Walking);
     }
     
     /// <summary>
@@ -431,9 +446,11 @@ public class Enemy : ScriptComponent
     /// </summary>
     private void OnEnemyDeath()
     {
-        
-        // Stop all movement
-        isChasing = false;
+        // Set state to Dying (DeathSequence will handle the visual sequence)
+        if (stateMachine != null)
+        {
+            stateMachine.SetState(EnemyState.Dying);
+        }
         
         // Stop physics movement
         if (physicsComponent != null)
@@ -441,7 +458,6 @@ public class Enemy : ScriptComponent
             Vector3 currentVelocity = physicsComponent.velocity;
             physicsComponent.velocity = new Vector3(0, currentVelocity.y, 0);
         }
-
     }
     
     
@@ -490,11 +506,10 @@ public class Enemy : ScriptComponent
     /// </summary>
     private void HandleContactDamage()
     {
-        // Don't deal contact damage if dead or no damage component
-        if (Health != null && Health.IsDead())
+        // Don't deal contact damage if dead, dying, or stunned
+        if (stateMachine == null || !stateMachine.CanAct())
             return;
        
-            
         if (!target)
             return;
             
@@ -522,28 +537,5 @@ public class Enemy : ScriptComponent
                 contactDamageTimer = 0.0f;
             }
         }
-    }
-    
-    /// <summary>
-    /// Play the walk animation, blending from current animation.
-    /// </summary>
-    private void PlayWalkAnimation()
-    {
-        if (animationComponent == null || walkAnimation == null)
-            return;
-        
-        // Blend to walk animation with 0.2s blend time, looped
-        animationComponent.Blend(walkAnimation, 0.2f, true, false);
-    }
-    
-    /// <summary>
-    /// Play the stun animation looped, only if not already playing (when not chasing).
-    /// </summary>
-    private void PlayStunAnimation()
-    {
-        if (animationComponent == null || stunAnimation == null)
-            return;
-        
-        animationComponent.Blend(stunAnimation, 0.2f, true, false);
     }
 }

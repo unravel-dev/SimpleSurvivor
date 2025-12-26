@@ -172,14 +172,82 @@
       },
       {
        "type": "DeathSequence",
-       "deathAnimation": {
-        "uid": "d1f26af5-4b38-594a-8b60-5661853cd9ea"
-       },
        "sinkDuration": 0.800000011920929,
        "sinkDepth": 2.0,
-       "fadeOut": true,
+       "fadeOut": false,
        "scaleDown": false,
-       "finalScale": 0.5
+       "finalScale": 0.5,
+       "sinkDelay": 1.5
+      },
+      {
+       "type": "EnemyStateMachine",
+       "InitialState": 0,
+       "CurrentState": 0,
+       "PreviousState": 0
+      },
+      {
+       "type": "EnemyAnimationController",
+       "stateAnimations": {
+        "type": "EnemyAnimationController.StateAnimationMapping",
+        "size": 6,
+        "container": [
+         {
+          "state": 0,
+          "animation": {
+           "uid": "1591b194-ea25-be44-9c4d-7d85aea23b15"
+          },
+          "blendTime": 0.20000000298023225,
+          "loop": true,
+          "canInterrupt": true
+         },
+         {
+          "state": 1,
+          "animation": {
+           "uid": "f2a8d620-6ce1-8848-9657-03fe25bb1103"
+          },
+          "blendTime": 0.20000000298023225,
+          "loop": true,
+          "canInterrupt": true
+         },
+         {
+          "state": 2,
+          "animation": {
+           "uid": "f2a8d620-6ce1-8848-9657-03fe25bb1103"
+          },
+          "blendTime": 0.20000000298023225,
+          "loop": true,
+          "canInterrupt": true
+         },
+         {
+          "state": 3,
+          "animation": {
+           "uid": "a469d2d6-6d4d-0f4c-9c0f-4811633222fa"
+          },
+          "blendTime": 0.20000000298023225,
+          "loop": true,
+          "canInterrupt": true
+         },
+         {
+          "state": 4,
+          "animation": {
+           "uid": "b3489fba-33fc-6347-b430-ddb346410a7c"
+          },
+          "blendTime": 0.20000000298023225,
+          "loop": false,
+          "canInterrupt": true
+         },
+         {
+          "state": 5,
+          "animation": {
+           "uid": "d1f26af5-4b38-594a-8b60-5661853cd9ea"
+          },
+          "blendTime": 0.20000000298023225,
+          "loop": false,
+          "canInterrupt": true
+         }
+        ]
+       },
+       "defaultBlendTime": 0.20000000298023225
       }
      ]
     }

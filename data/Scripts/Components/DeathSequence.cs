@@ -3,16 +3,13 @@ using System.Runtime.CompilerServices;
 using Unravel.Core;
 
 /// <summary>
-/// Handles death animation sequence for entities.
-/// Plays animation, sinks into ground, and destroys the entity.
-/// Requires a Health component to subscribe to death events.
+/// Handles death visual sequence for entities (sinking, fading, scaling).
+/// Listens to EnemyStateMachine state changes and handles death visuals.
+/// Separates death visual effects from animation (which is handled by EnemyAnimationController).
 /// </summary>
 [ScriptSourceFile]
 public class DeathSequence : ScriptComponent
 {
-    [Tooltip("Animation clip to play when the entity dies")]
-    public AnimationClip deathAnimation;
-    
     [Tooltip("Duration of the sink effect in seconds")]
     public float sinkDuration = 0.8f;
     
@@ -28,12 +25,13 @@ public class DeathSequence : ScriptComponent
     [Tooltip("Final scale multiplier if scaleDown is enabled")]
     public float finalScale = 0.5f;
     
+    [Tooltip("Delay before starting sink effect (allows death animation to play first)")]
+    public float sinkDelay = 0.0f;
+    
     // Component references
     private Health healthComponent;
     private ModelComponent meshRenderer;
-
-    private AnimationComponent animationComponent;
-
+    private EnemyStateMachine stateMachine;
     private PhysicsComponent physicsComponent;
     
     // Death sequence state
@@ -43,8 +41,6 @@ public class DeathSequence : ScriptComponent
     private Vector3 targetPosition;
     private Vector3 startScale;
     private Vector3 targetScale;
-    
-    private float animationDuration = 0.0f;
     /// <summary>
     /// Called when the script is created.
     /// </summary>
@@ -52,22 +48,14 @@ public class DeathSequence : ScriptComponent
     {
         healthComponent = owner.GetComponent<Health>();
         meshRenderer = owner.GetComponent<ModelComponent>();
-        animationComponent = owner.GetComponent<AnimationComponent>();
+        stateMachine = owner.GetComponent<EnemyStateMachine>();
         physicsComponent = owner.GetComponent<PhysicsComponent>();
 
-        if (healthComponent == null)
+        if (stateMachine == null)
         {
-            Log.Error($"DeathSequence on {owner.name}: Health component not found! This component requires a Health component.");
+            Log.Warning($"DeathSequence on {owner.name}: EnemyStateMachine component not found! Death sequence will not work.");
             return;
         }
-
-        if(deathAnimation != null)
-        {
-            animationDuration = deathAnimation.length;
-        }
-
-        // Subscribe to death event
-        healthComponent.OnDeath += OnDeath;
     }
     
     /// <summary>
@@ -76,6 +64,18 @@ public class DeathSequence : ScriptComponent
     public override void OnStart()
     {
         startScale = transform.localScale;
+        
+        // Subscribe to state machine changes
+        if (stateMachine != null)
+        {
+            stateMachine.OnStateChanged += OnStateChanged;
+        }
+        
+        // Also subscribe to health death event as a fallback (in case state machine isn't used)
+        if (healthComponent != null)
+        {
+            healthComponent.OnDeath += OnDeathFallback;
+        }
     }
     
     /// <summary>
@@ -88,20 +88,17 @@ public class DeathSequence : ScriptComponent
         
         deathTimer += Time.deltaTime;
         
-        float totalDuration = animationDuration + sinkDuration;
-
-        // Animation phase (0 to animationDuration)
-        if (deathTimer <= animationDuration)
+        // Wait for sink delay before starting sink effect
+        if (deathTimer < sinkDelay)
+            return;
+        
+        float sinkStartTime = sinkDelay;
+        float sinkEndTime = sinkStartTime + sinkDuration;
+        
+        // Sink phase
+        if (deathTimer <= sinkEndTime)
         {
-            // Play death animation here
-            // For now, just wait for animation to complete
-            // You can trigger animation state here if you have an AnimationComponent
-            animationComponent.Blend(deathAnimation, 0.2f, false, true);
-        }
-        // Sink phase (animationDuration to totalDuration)
-        else if (deathTimer <= totalDuration)
-        {
-            float sinkProgress = (deathTimer - animationDuration) / sinkDuration;
+            float sinkProgress = (deathTimer - sinkStartTime) / sinkDuration;
             sinkProgress = Mathf.Clamp01(sinkProgress);
 
             // Ease out cubic for smooth sinking
@@ -129,24 +126,59 @@ public class DeathSequence : ScriptComponent
                 meshRenderer.SetColor(color);
             }
         }
-        // Sequence complete - destroy entity
+        // Sequence complete - set to Dead state and destroy entity
         else
         {
+            // Set state to Dead before destroying
+            if (stateMachine != null)
+            {
+                stateMachine.SetState(EnemyState.Dead);
+            }
+            
             Scene.DestroyEntity(owner);
         }
     }
     
     /// <summary>
-    /// Called when the entity dies.
+    /// Handle state machine state changes.
     /// </summary>
-    private void OnDeath()
+    /// <param name="oldState">The previous state.</param>
+    /// <param name="newState">The new state.</param>
+    private void OnStateChanged(EnemyState oldState, EnemyState newState)
+    {
+        // Start death sequence when state changes to Dying
+        if (newState == EnemyState.Dying && !isPlayingDeathSequence)
+        {
+            StartDeathSequence();
+        }
+    }
+    
+    /// <summary>
+    /// Fallback: Called when health component fires death event (if state machine isn't used).
+    /// </summary>
+    private void OnDeathFallback()
+    {
+        // Only use this if state machine isn't available or didn't trigger
+        if (stateMachine == null || !stateMachine.IsInState(EnemyState.Dying))
+        {
+            StartDeathSequence();
+        }
+    }
+    
+    /// <summary>
+    /// Start the death visual sequence.
+    /// </summary>
+    private void StartDeathSequence()
     {
         if (isPlayingDeathSequence)
             return;
-        if(physicsComponent != null)
+        
+        // Disable physics collisions
+        if (physicsComponent != null)
         {
             physicsComponent.excludeLayers = -1;
         }
+        
         // Disable Health's auto-destroy since we're handling it
         if (healthComponent != null)
         {
@@ -166,8 +198,6 @@ public class DeathSequence : ScriptComponent
             startScale = transform.localScale;
             targetScale = startScale * finalScale;
         }
-        
-        // Log.Info($"DeathSequence: Starting death sequence for {owner.name}");
     }
     
     /// <summary>
@@ -175,9 +205,14 @@ public class DeathSequence : ScriptComponent
     /// </summary>
     public override void OnDestroy()
     {
+        if (stateMachine != null)
+        {
+            stateMachine.OnStateChanged -= OnStateChanged;
+        }
+        
         if (healthComponent != null)
         {
-            healthComponent.OnDeath -= OnDeath;
+            healthComponent.OnDeath -= OnDeathFallback;
         }
     }
 }
