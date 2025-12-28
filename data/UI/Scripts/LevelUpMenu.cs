@@ -381,4 +381,13 @@ public class LevelUpMenu : BaseMenu
             card.SetClass("selected", false);
         }
     }
+    
+    /// <summary>
+    /// Clear all static events to prevent callback accumulation when restarting or changing scenes.
+    /// Should be called before scene reloads to prevent memory leaks and duplicate event handlers.
+    /// </summary>
+    public static void ClearEvents()
+    {
+        OnUpgradeSelected = null;
+    }
 }

@@ -211,6 +211,10 @@ public class GameUI : MenuStackUI
 		// Clear container cache
 		ContainerCache.Clear();
 		
+		// Clear static events to prevent callback accumulation
+		LevelUpMenu.ClearEvents();
+		DamageSystem.ClearEvents();
+		
 		Log.Info("Navigating to main menu from game");
 		if (LobbyScene != null)
 		{
@@ -244,6 +248,10 @@ public class GameUI : MenuStackUI
 		
 		// Clear container cache
 		ContainerCache.Clear();
+		
+		// Clear static events to prevent callback accumulation
+		LevelUpMenu.ClearEvents();
+		DamageSystem.ClearEvents();
 		
 		Scene.ReloadScene();
 	}

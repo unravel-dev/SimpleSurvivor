@@ -820,7 +820,10 @@ public class Player : ScriptComponent
     /// </summary>
     public override void OnDestroy()
     {
-        // OnDisable already handles event unsubscription
+        // Ensure we're unsubscribed from static events (safeguard in case OnDisable wasn't called)
+        LevelUpMenu.OnUpgradeSelected -= OnUpgradeSelected;
+        
+        // OnDisable already handles other event unsubscription
         Log.Info("Player script destroyed");
     }
 }

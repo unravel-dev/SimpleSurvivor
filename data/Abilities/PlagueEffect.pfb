@@ -2,7 +2,7 @@
  "entities": [
   {
    "prefab_uid": "aa09c5ba-97b1-6942-94ab-063ef2d7ed07",
-   "id": 3145729,
+   "id": 5243076,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -23,9 +23,9 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": 8.87381649017334,
-       "y": 0.8599993586540222,
-       "z": -6.090199947357178
+       "x": 14.190606117248536,
+       "y": 9.4640531539917,
+       "z": -1.4382234811782838
       },
       "rotation": {
        "x": 0.0,
@@ -34,9 +34,9 @@
        "w": 1.0
       },
       "scale": {
-       "x": 1.179999828338623,
-       "y": 1.179999828338623,
-       "z": 1.179999828338623
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
       },
       "skew": {
        "x": 0.0,
@@ -61,6 +61,11 @@
      "max_particles": 400,
      "emission_lifetime": {
       "count": 2.0
+     },
+     "emission_shape_position": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
      },
      "emission_shape_scale": {
       "x": 0.20000000298023225,
@@ -165,6 +170,11 @@
        }
       ]
      },
+     "initial_scale_3d": {
+      "x": 3.0,
+      "y": 3.0,
+      "z": 3.0
+     },
      "opacity": 0.5130000114440918,
      "color_gradient": {
       "points": [
@@ -208,9 +218,25 @@
      },
      "position_easing": 8,
      "texture": {
-      "uid": "e776c53b-10c5-954e-9288-c4e7e0c1e648"
+      "uid": "7146c756-f391-0e43-9f9c-7763b6a2ff21"
      },
-     "loop": true
+     "texture_mode": 0,
+     "render_mode": 1,
+     "texture_sheet_tiles": {
+      "x": 8.0,
+      "y": 8.0
+     },
+     "texture_sheet_cycles": 1.0,
+     "texture_sheet_randomize": false,
+     "loop": true,
+     "start_delay": {
+      "count": 0.0
+     },
+     "align_to_direction": false,
+     "pivot": {
+      "x": 0.5,
+      "y": 0.5
+     }
     }
    }
   }

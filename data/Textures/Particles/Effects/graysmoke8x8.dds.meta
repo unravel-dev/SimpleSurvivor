@@ -1,0 +1,22 @@
+{
+ "meta": {
+  "type": ".dds",
+  "uid": "7146c756-f391-0e43-9f9c-7763b6a2ff21",
+  "importer": {
+   "polymorphic_id": 2147483649,
+   "polymorphic_name": "texture_importer_meta",
+   "ptr_wrapper": {
+    "id": 2147483649,
+    "data": {
+     "base_type": {},
+     "type": 0,
+     "generate_mipmaps": true,
+     "quality": {
+      "max_size": 0,
+      "compression": 0
+     }
+    }
+   }
+  }
+ }
+}

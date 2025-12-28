@@ -191,8 +191,19 @@ public static class DamageSystem
     {
         if (!target)
             return 0;
-
+        
         var healthComponent = target.GetComponent<Health>();
         return healthComponent?.GetHealthPercentage() ?? 0.0f;
+    }
+    
+    /// <summary>
+    /// Clear all static events to prevent callback accumulation when restarting or changing scenes.
+    /// Should be called before scene reloads to prevent memory leaks and duplicate event handlers.
+    /// </summary>
+    public static void ClearEvents()
+    {
+        OnDamageApplied = null;
+        OnHealingApplied = null;
+        OnEntityDied = null;
     }
 }

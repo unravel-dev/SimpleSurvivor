@@ -237,7 +237,7 @@ public class DamageNumberSystem : ScriptComponent
             damageNumberComponent.SetDamageText(breakdown);
             
         }
-        
+    
         // Activate the entity
         damageNumberEntity.SetActive(true);
         
@@ -257,7 +257,7 @@ public class DamageNumberSystem : ScriptComponent
         Vector3 basePosition = targetEntity.transform.position;
         
         // Add height offset
-        Vector3 spawnPosition = basePosition + Vector3.up * spawnHeightOffset;
+        Vector3 spawnPosition = basePosition + Vector3.up * (targetEntity.transform.scale.y + spawnHeightOffset);
         
         // Add random spread
         if (spawnSpreadRadius > 0)
