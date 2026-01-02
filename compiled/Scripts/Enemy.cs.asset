@@ -30,8 +30,8 @@ public class Enemy : ScriptComponent
     public bool autoFindPlayer = true;
     
     //[Header("Enemy Type")]
-    [Tooltip("Enemy type identifier for loot configuration (e.g., 'basic', 'elite', 'boss')")]
-    public string enemyType = "basic";
+    [Tooltip("Enemy type identifier for loot configuration")]
+    public EnemyType enemyType = EnemyType.Basic;
     
     //[Header("Contact Damage")]
     [Tooltip("Distance from player to start dealing contact damage")]
@@ -465,8 +465,8 @@ public class Enemy : ScriptComponent
     /// Get the enemy type for loot configuration.
     /// Used by the LootHandler to determine appropriate loot drops.
     /// </summary>
-    /// <returns>Enemy type string.</returns>
-    public string GetEnemyType()
+    /// <returns>Enemy type enum.</returns>
+    public EnemyType GetEnemyType()
     {
         return enemyType;
     }

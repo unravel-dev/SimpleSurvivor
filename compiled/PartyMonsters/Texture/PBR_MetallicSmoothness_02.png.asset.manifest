@@ -1,8 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/Texture/PBR_MetallicSmoothness_02.png",
+ "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/PartyMonsters/Texture/PBR_MetallicSmoothness_02.png",
  "source_sha": "a9418e7f5865c2372e85c0a66729192207d59c02",
  "source_timestamp": {
-  "count": -5177472089709551616
+  "count": -4670271262108315875
  },
  "format_version": 0
 }

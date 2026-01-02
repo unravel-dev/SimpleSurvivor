@@ -1,8 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonstesEx/Chest/Mesh/[0] lambert1.mat",
- "source_sha": "9d4913f6dddf369bff563e02abccb02e2d64f282",
+ "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/PartyMonstesEx/Chest/Mesh/[0] lambert1.mat",
+ "source_sha": "740a1dd4678cbecba2874eb7caeede5047d2b95d",
  "source_timestamp": {
-  "count": -5035526434967627316
+  "count": -4670271060277220842
  },
  "format_version": 1
 }

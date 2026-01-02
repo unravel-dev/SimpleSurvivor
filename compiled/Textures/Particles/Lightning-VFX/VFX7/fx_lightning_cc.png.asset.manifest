@@ -1,8 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/Textures/Particles/Lightning-VFX/VFX7/fx_lightning_cc.png",
+ "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Textures/Particles/Lightning-VFX/VFX7/fx_lightning_cc.png",
  "source_sha": "5a4498d777db583e83119a0ec254ac616a58223e",
  "source_timestamp": {
-  "count": -5088039516709551616
+  "count": -4670271262107724804
  },
  "format_version": 0
 }

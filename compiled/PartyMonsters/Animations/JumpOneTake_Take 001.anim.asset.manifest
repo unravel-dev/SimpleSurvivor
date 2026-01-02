@@ -1,8 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/Animations/JumpOneTake_Take 001.anim",
- "source_sha": "aeecd1a8499b160fd42e6df63809ce4266950161",
+ "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/PartyMonsters/Animations/JumpOneTake_Take 001.anim",
+ "source_sha": "eaefc77dc280fb26a3029eb435e91782f6f58775",
  "source_timestamp": {
-  "count": -5035526435237229816
+  "count": -4670271058388092007
  },
  "format_version": 1
 }

@@ -1,8 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/Animations/Victory01_Take 001.anim",
- "source_sha": "7cf66846a2372911281d465bc859b7ca8a1b941f",
+ "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/PartyMonsters/Animations/Victory01_Take 001.anim",
+ "source_sha": "1c2626d5bfff50e9ff04ee1596c8c635e8a732df",
  "source_timestamp": {
-  "count": -5035526423403817316
+  "count": -4670271060486316203
  },
  "format_version": 1
 }

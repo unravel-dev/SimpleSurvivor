@@ -48,12 +48,12 @@ public class SparkAbility : Ability
         if (ability == null)
             return;
             
-        ability.damage = 30;
+        ability.damage = 10;
         ability.cooldown = 1.0f;
         ability.maxRange = 10.0f;
         ability.projectileSpeed = 40.0f;
         ability.projectileCount = 1;
-        ability.chainCount = 2;
+        ability.chainCount = 4;
         ability.spawnOffset = Vector3.up;
     }
 

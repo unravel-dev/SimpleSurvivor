@@ -1,8 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/Textures/Abilities/upgrade_epic.png",
+ "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Textures/Abilities/upgrade_epic.png",
  "source_sha": "45ccb396ea748a44aea40ad912f77fd253e240e3",
  "source_timestamp": {
-  "count": -5037910625153450316
+  "count": -4670271262109523502
  },
  "format_version": 0
 }

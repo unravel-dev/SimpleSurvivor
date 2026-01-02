@@ -1,8 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonstesEx/Chest/Animations/SenseSomethingST_Take 001.anim",
- "source_sha": "126c4804b5c69f003162c4f0635c15f8c349d761",
+ "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/PartyMonstesEx/Chest/Animations/SenseSomethingST_Take 001.anim",
+ "source_sha": "b94fa0ca43ac694e7f4d024048bc8b1ee23b6178",
  "source_timestamp": {
-  "count": -5035526434800263116
+  "count": -4670271060289104227
  },
  "format_version": 1
 }

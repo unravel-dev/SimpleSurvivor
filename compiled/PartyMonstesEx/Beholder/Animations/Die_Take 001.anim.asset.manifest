@@ -1,8 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonstesEx/Beholder/Animations/Die_Take 001.anim",
- "source_sha": "a17ab85a9437a23fd4c3787554b187361659dafb",
+ "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/PartyMonstesEx/Beholder/Animations/Die_Take 001.anim",
+ "source_sha": "4f2765e978bb4af93a20d686c19d8813bb5eee89",
  "source_timestamp": {
-  "count": -5035526546621079516
+  "count": -4670271060386721523
  },
  "format_version": 1
 }

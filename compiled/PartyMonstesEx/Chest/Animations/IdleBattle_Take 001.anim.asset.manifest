@@ -1,8 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonstesEx/Chest/Animations/IdleBattle_Take 001.anim",
- "source_sha": "8b01d09419b5580d469c244e75afc46fe154f9f4",
+ "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/PartyMonstesEx/Chest/Animations/IdleBattle_Take 001.anim",
+ "source_sha": "356640a402e83c06ca6344d7bab27f8f1bdb72c6",
  "source_timestamp": {
-  "count": -5035526434757864916
+  "count": -4670271060315434290
  },
  "format_version": 1
 }

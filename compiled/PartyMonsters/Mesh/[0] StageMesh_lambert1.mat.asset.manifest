@@ -1,8 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/Mesh/[0] StageMesh_lambert1.mat",
- "source_sha": "c1b0cb072680368d9714e46e5f237da863983c38",
+ "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/PartyMonsters/Mesh/[0] StageMesh_lambert1.mat",
+ "source_sha": "677e1bf385ae06b494b6d0e04f368e6e2f595018",
  "source_timestamp": {
-  "count": -5035526432962477516
+  "count": -4670271058325648978
  },
  "format_version": 1
 }

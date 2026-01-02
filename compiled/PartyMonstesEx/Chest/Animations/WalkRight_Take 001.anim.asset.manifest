@@ -1,8 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonstesEx/Chest/Animations/WalkRight_Take 001.anim",
- "source_sha": "135867d51d88aa8775ba46bd5a5506e96be33ef8",
+ "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/PartyMonstesEx/Chest/Animations/WalkRight_Take 001.anim",
+ "source_sha": "61054322559124f0127574ec4e041fa7d507ebff",
  "source_timestamp": {
-  "count": -5035526435077748016
+  "count": -4670271060295191115
  },
  "format_version": 1
 }

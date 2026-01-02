@@ -1,8 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonstesEx/Beholder/Animations/Taunting_Take 001.anim",
- "source_sha": "e60f42c8edd70b3240a8288c7d5ec19a66a17301",
+ "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/PartyMonstesEx/Beholder/Animations/Taunting_Take 001.anim",
+ "source_sha": "bc1bc088ed9d5a15f8682ca16d86a044daa2bbbc",
  "source_timestamp": {
-  "count": -5035526434700123116
+  "count": -4670271060389565384
  },
  "format_version": 1
 }

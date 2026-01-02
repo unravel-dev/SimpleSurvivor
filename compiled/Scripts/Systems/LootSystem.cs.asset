@@ -30,6 +30,12 @@ public class LootSystem : ScriptComponent
         
         [Tooltip("Maximum experience value cap")]
         public float maximumExperience = 100.0f;
+        
+        [Tooltip("Chance to drop a magnet when this enemy dies (0-100, e.g., 0.3 = 0.3% chance)")]
+        public float magnetDropChance = 0.3f;
+        
+        [Tooltip("Chance to drop a chest when this enemy dies (0-100, e.g., 0.1 = 0.1% chance, 100 = guaranteed)")]
+        public float chestDropChance = 0.1f;
     }
     
     [System.Serializable]
@@ -65,7 +71,11 @@ public class LootSystem : ScriptComponent
     public float chestDropChance = 1.0f; // 1% chance by default
     
     [Tooltip("Default loot configuration")]
-    public LootConfiguration defaultLootConfig = new LootConfiguration();
+    public LootConfiguration defaultLootConfig = new LootConfiguration
+    {
+        magnetDropChance = 0.3f,
+        chestDropChance = 0.1f
+    };
     
     [Tooltip("Time-based modifiers")]
     public TimeBasedModifiers timeModifiers = new TimeBasedModifiers();
@@ -219,31 +229,31 @@ public class LootSystem : ScriptComponent
     /// <returns>Custom loot configuration, or null to use default.</returns>
     private LootConfiguration GetEnemyLootConfig(Enemy enemy)
     {
-        string enemyType = enemy.GetEnemyType().ToLower();
+        EnemyType enemyType = enemy.GetEnemyType();
         
         // Create loot configs based on enemy type
         switch (enemyType)
         {
-            case "boss":
-                return CreateLootConfig(100.0f, 0.5f, 5); // Boss: 100 base XP, 50% per level, 5 orbs
+            case EnemyType.Boss:
+                return CreateLootConfig(baseExp: 100.0f, levelMultiplier: 0.5f, orbCount: 5, magnetChance: 0.3f, chestChance: 100.0f); // Boss: 100 base XP, 50% per level, 5 orbs, 0.3% magnet, 100% chest
                 
-            case "elite":
-                return CreateLootConfig(25.0f, 0.2f, 3); // Elite: 25 base XP, 20% per level, 3 orbs
+            case EnemyType.Elite:
+                return CreateLootConfig(baseExp: 25.0f, levelMultiplier: 0.2f, orbCount: 3, magnetChance: 0.3f, chestChance: 100.0f); // Elite: 25 base XP, 20% per level, 3 orbs, 0.3% magnet, 100% chest
                 
-            case "heavy":
-                return CreateLootConfig(18.0f, 0.15f, 2); // Heavy: 18 base XP, 15% per level, 2 orbs
+            case EnemyType.Heavy:
+                return CreateLootConfig(baseExp: 18.0f, levelMultiplier: 0.15f, orbCount: 2, magnetChance: 0.3f, chestChance: 0.1f); // Heavy: 18 base XP, 15% per level, 2 orbs, 0.3% magnet, 0.1% chest
                 
-            case "fast":
-                return CreateLootConfig(12.0f, 0.12f, 1); // Fast: 12 base XP, 12% per level, 1 orb
+            case EnemyType.Fast:
+                return CreateLootConfig(baseExp: 12.0f, levelMultiplier: 0.12f, orbCount: 1, magnetChance: 0.3f, chestChance: 0.1f); // Fast: 12 base XP, 12% per level, 1 orb, 0.3% magnet, 0.1% chest
                 
-            case "weak":
-            case "small":
-                return CreateLootConfig(5.0f, 0.05f, 1); // Weak: 5 base XP, 5% per level, 1 orb
+            case EnemyType.Weak:
+            case EnemyType.Small:
+                return CreateLootConfig(baseExp: 5.0f, levelMultiplier: 0.05f, orbCount: 1, magnetChance: 0.3f, chestChance: 0.1f); // Weak: 5 base XP, 5% per level, 1 orb, 0.3% magnet, 0.1% chest
                 
-            case "basic":
+            case EnemyType.Basic:
             default:
-                // Return null to use LootSystem's default configuration
-                return null;
+                // Return config with default drop chances for basic enemies
+                return CreateLootConfig(baseExp: 10.0f, levelMultiplier: 0.1f, orbCount: 1, magnetChance: 0.3f, chestChance: 0.1f); // Basic: default XP, 0.3% magnet, 0.1% chest
         }
     }
     
@@ -279,29 +289,16 @@ public class LootSystem : ScriptComponent
         // Drop experience orbs
         DropExperienceOrbs(enemyPosition, experienceValue, config.orbCount);
         
-        // Randomly drop magnet loot
-        if (magnetLootPrefab != null && Random.Range(0.0f, 100.0f) < magnetDropChance)
+        // Randomly drop magnet loot based on config
+        if (magnetLootPrefab != null && Random.Range(0.0f, 100.0f) < config.magnetDropChance)
         {
             DropMagnetLoot(enemyPosition);
         }
         
-        // Check if this is an elite enemy (guaranteed chest drop)
-        bool isElite = false;
-        var enemyComponent = enemyEntity.GetComponent<Enemy>();
-        if (enemyComponent != null)
+        // Drop chest loot based on config
+        if (chestLootPrefab != null && Random.Range(0.0f, 100.0f) < config.chestDropChance)
         {
-            string enemyType = enemyComponent.GetEnemyType().ToLower(); 
-            isElite = enemyType == "elite";
-        }
-        
-        // Drop chest loot - guaranteed for elites, random chance for others
-        if (chestLootPrefab != null)
-        {
-            bool shouldDropChest = isElite || Random.Range(0.0f, 100.0f) < chestDropChance;
-            if (shouldDropChest)
-            {
-                DropChestLoot(enemyPosition);
-            }
+            DropChestLoot(enemyPosition);
         }
     }
     
@@ -475,8 +472,10 @@ public class LootSystem : ScriptComponent
     /// <param name="baseExp">Base experience value.</param>
     /// <param name="levelMultiplier">Experience per level multiplier.</param>
     /// <param name="orbCount">Number of orbs to drop.</param>
+    /// <param name="magnetChance">Chance to drop a magnet (0-100).</param>
+    /// <param name="chestChance">Chance to drop a chest (0-100).</param>
     /// <returns>New loot configuration.</returns>
-    public static LootConfiguration CreateLootConfig(float baseExp, float levelMultiplier = 0.1f, int orbCount = 1)
+    public static LootConfiguration CreateLootConfig(float baseExp, float levelMultiplier = 0.1f, int orbCount = 1, float magnetChance = 0.3f, float chestChance = 0.1f)
     {
         return new LootConfiguration
         {
@@ -485,7 +484,9 @@ public class LootSystem : ScriptComponent
             orbCount = orbCount,
             experienceVariance = 0.2f,
             minimumExperience = baseExp * 0.5f,
-            maximumExperience = baseExp * 3.0f
+            maximumExperience = baseExp * 3.0f,
+            magnetDropChance = magnetChance,
+            chestDropChance = chestChance
         };
     }
 }

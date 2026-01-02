@@ -769,7 +769,7 @@ public static class UpgradeCardGenerator
             () => new UpgradeCard("Forked Lightning", UpgradeRarity.Legendary, 
                 new List<Upgrade>
                 {
-                    LightningSplitUpgrade.Generate(3, 3),
+                    LightningSplitUpgrade.Generate(2, 2),
                     SparkFlatCooldownModifierUpgrade.Generate(-2.5f, -2.5f)
                 }, 1, typeof(SparkAbility)),
                 

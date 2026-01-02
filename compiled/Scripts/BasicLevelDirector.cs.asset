@@ -26,6 +26,8 @@ public class BasicLevelDirector : ScriptComponent
     public List<Prefab> enemies = new List<Prefab>();
     [Tooltip("Elite enemy prefabs to spawn periodically (randomly selected)")]
     public List<Prefab> eliteEnemies = new List<Prefab>();
+    [Tooltip("Interval in seconds between elite spawn waves (e.g., 120 = every 2 minutes)")]
+    public float eliteSpawnInterval = 120.0f;
     [Tooltip("Base number of spawns per second")]
     public float baseSpawnsPerSecond = 1.0f;
     
@@ -83,8 +85,7 @@ public class BasicLevelDirector : ScriptComponent
     private float currentSpawnRateMultiplier = 1.0f;
     
     // Elite spawning tracking
-    private float timeSinceLastEliteSpawn = 0.0f;
-    private float eliteSpawnInterval = 120.0f; // 2 minutes in seconds
+    private int lastEliteSpawnInterval = -1; // Track the last interval we spawned elites
     
     // Scaling tracking
     private float gameStartTime = 0.0f;
@@ -188,7 +189,13 @@ public class BasicLevelDirector : ScriptComponent
     }
     
     /// <summary>
-    /// Handle elite enemy spawning every 2 minutes.
+    /// Handle elite enemy spawning based on game time.
+    /// Spawns increasing numbers of elites at configurable intervals:
+    /// - After 1st interval: 1 elite
+    /// - After 2nd interval: 2 elites
+    /// - After 3rd interval: 3 elites
+    /// - etc.
+    /// The interval is configurable via eliteSpawnInterval (in seconds).
     /// </summary>
     private void HandleEliteSpawning()
     {
@@ -196,42 +203,58 @@ public class BasicLevelDirector : ScriptComponent
         if (eliteEnemies == null || eliteEnemies.Count == 0)
             return;
         
-        // Update elite spawn timer
-        timeSinceLastEliteSpawn += Time.deltaTime;
+        // Validate interval is set
+        if (eliteSpawnInterval <= 0.0f)
+            return;
         
-        // Check if it's time to spawn an elite
-        if (timeSinceLastEliteSpawn >= eliteSpawnInterval)
+        // Calculate current game time in seconds
+        float gameTimeSeconds = Time.time - gameStartTime;
+        
+        // Calculate which interval we're currently in (1-based)
+        int currentInterval = Mathf.FloorToInt(gameTimeSeconds / eliteSpawnInterval);
+        
+        // Only spawn if we've passed at least one interval and haven't spawned for this interval yet
+        if (currentInterval >= 1 && currentInterval != lastEliteSpawnInterval)
         {
-            // Get a random elite enemy prefab from the list
-            Prefab elitePrefabToSpawn = GetRandomElitePrefab();
+            // Calculate how many elites to spawn (equal to the interval number)
+            int elitesToSpawn = currentInterval;
             
-            if (elitePrefabToSpawn != null)
+            // Spawn the calculated number of elites
+            for (int i = 0; i < elitesToSpawn; i++)
             {
-                // Spawn elite enemy
-                Entity spawnedElite = SpawnAroundPlayer(elitePrefabToSpawn);
+                // Get a random elite enemy prefab from the list
+                Prefab elitePrefabToSpawn = GetRandomElitePrefab();
                 
-                if (spawnedElite != Entity.Invalid)
+                if (elitePrefabToSpawn != null)
                 {
-                    // Mark as elite enemy type
-                    var enemyComponent = spawnedElite.GetComponent<Enemy>();
-                    if (enemyComponent != null)
+                    // Spawn elite enemy
+                    Entity spawnedElite = SpawnAroundPlayer(elitePrefabToSpawn);
+                    
+                    if (spawnedElite != Entity.Invalid)
                     {
-                        enemyComponent.enemyType = "elite";
+                        // Mark as elite enemy type
+                        var enemyComponent = spawnedElite.GetComponent<Enemy>();
+                        if (enemyComponent != null)
+                        {
+                            enemyComponent.enemyType = EnemyType.Elite;
+                        }
+                        
+                        // Apply scaling to the elite enemy
+                        if (enableEnemyScaling)
+                        {
+                            ApplyEnemyScaling(spawnedElite);
+                        }
+                        
+                        currentEnemyCount++;
                     }
-                    
-                    // Apply scaling to the elite enemy
-                    if (enableEnemyScaling)
-                    {
-                        ApplyEnemyScaling(spawnedElite);
-                    }
-                    
-                    // Reset elite spawn timer
-                    timeSinceLastEliteSpawn = 0.0f;
-                    currentEnemyCount++;
-                    
-                    Log.Info("BasicLevelDirector: Elite enemy spawned!");
                 }
             }
+            
+            // Mark that we've spawned elites for this interval
+            lastEliteSpawnInterval = currentInterval;
+            
+            float intervalTime = currentInterval * eliteSpawnInterval;
+            Log.Info($"BasicLevelDirector: Spawned {elitesToSpawn} elite enemy(ies) at {intervalTime:F1} seconds (interval {currentInterval})!");
         }
     }
     

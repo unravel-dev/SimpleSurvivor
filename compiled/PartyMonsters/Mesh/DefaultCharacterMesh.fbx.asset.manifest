@@ -1,8 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/Mesh/DefaultCharacterMesh.fbx",
+ "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/PartyMonsters/Mesh/DefaultCharacterMesh.fbx",
  "source_sha": "9aefc2f13a8bd0f56f6d6a7c55831249ce9d7ff9",
  "source_timestamp": {
-  "count": -5177472064709551616
+  "count": -4670623098994808610
  },
  "format_version": 2
 }

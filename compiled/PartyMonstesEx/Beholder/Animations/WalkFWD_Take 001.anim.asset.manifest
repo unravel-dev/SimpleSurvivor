@@ -1,8 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonstesEx/Beholder/Animations/WalkFWD_Take 001.anim",
- "source_sha": "fecf2537489414a78f3deef1396f1e0e99380e65",
+ "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/PartyMonstesEx/Beholder/Animations/WalkFWD_Take 001.anim",
+ "source_sha": "5159a7dcfff16211906aa4cf02933b09568945b4",
  "source_timestamp": {
-  "count": -5035526546534675316
+  "count": -4670271060444235125
  },
  "format_version": 1
 }

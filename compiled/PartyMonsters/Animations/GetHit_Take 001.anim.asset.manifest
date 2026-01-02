@@ -1,8 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/Animations/GetHit_Take 001.anim",
- "source_sha": "60954c60a12ba969eb819ba0040153a827cce66d",
+ "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/PartyMonsters/Animations/GetHit_Take 001.anim",
+ "source_sha": "bcc391bd8eb187844e4a31156b4af61e8db7472e",
  "source_timestamp": {
-  "count": -5035526435271911516
+  "count": -4670271060484605054
  },
  "format_version": 1
 }

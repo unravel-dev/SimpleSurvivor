@@ -1,8 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/Textures/Particles/Lightning-VFX/VFX3/Sprite-sheet/Sprite-sheet.png",
+ "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Textures/Particles/Lightning-VFX/VFX3/Sprite-sheet/Sprite-sheet.png",
  "source_sha": "4b0f9dea38bff6257ad4dbaf031874364116abe7",
  "source_timestamp": {
-  "count": -5069444507152141716
+  "count": -4670271262108871573
  },
  "format_version": 0
 }

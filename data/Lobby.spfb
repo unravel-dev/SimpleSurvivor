@@ -2,7 +2,7 @@
  "entities_count": 8,
  "entities": [
   {
-   "id": 3145730,
+   "id": 7340034,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -146,7 +146,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 3145732,
+   "id": 7340036,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -234,7 +234,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 3145734,
+   "id": 7340038,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -303,7 +303,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 3145736,
+   "id": 7340040,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -326,6 +326,11 @@
        "entity_uuid": "5100a106-231b-8840-b67e-df42df315363",
        "component_path": "script_component/script_components/LobbyUI/GameScene",
        "pretty_component_path": "Script/Scripts/LobbyUI/GameScene"
+      },
+      {
+       "entity_uuid": "5100a106-231b-8840-b67e-df42df315363",
+       "component_path": "script_component/script_components[0]/LobbyUI/GameScene",
+       "pretty_component_path": "Script/Scripts[0]/LobbyUI/GameScene"
       }
      ],
      "removed_entities": []
@@ -355,7 +360,7 @@
       },
       "skew": {
        "x": 0.0,
-       "y": 0.0,
+       "y": -8.350611868657154e-14,
        "z": 0.0
       }
      },
@@ -364,13 +369,13 @@
      },
      "children": [
       {
-       "id": 3145737
+       "id": 7340041
       },
       {
-       "id": 3145738
+       "id": 7340042
       },
       {
-       "id": 3145739
+       "id": 7340043
       }
      ],
      "active": true
@@ -406,7 +411,7 @@
    }
   },
   {
-   "id": 3145737,
+   "id": 7340041,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -434,7 +439,7 @@
       "rotation": {
        "x": 0.0,
        "y": 0.0,
-       "z": 0.0,
+       "z": -5.570890970751918e-14,
        "w": 1.0
       },
       "scale": {
@@ -445,11 +450,11 @@
       "skew": {
        "x": 0.0,
        "y": 0.0,
-       "z": 0.0
+       "z": -2.2283650619181473e-13
       }
      },
      "parent": {
-      "id": 3145736
+      "id": 7340040
      },
      "children": [],
      "active": true
@@ -472,7 +477,7 @@
    }
   },
   {
-   "id": 3145738,
+   "id": 7340042,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -515,7 +520,7 @@
       }
      },
      "parent": {
-      "id": 3145736
+      "id": 7340040
      },
      "children": [],
      "active": false
@@ -538,7 +543,7 @@
    }
   },
   {
-   "id": 3145739,
+   "id": 7340043,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -581,7 +586,7 @@
       }
      },
      "parent": {
-      "id": 3145736
+      "id": 7340040
      },
      "children": [],
      "active": true
@@ -607,7 +612,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 3145741,
+   "id": 7340045,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -657,7 +662,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 3145743,
+   "id": 7340047,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -700,7 +705,7 @@
      },
      "children": [
       {
-       "id": 3145744
+       "id": 7340048
       }
      ],
      "active": true
@@ -886,7 +891,7 @@
    }
   },
   {
-   "id": 3145744,
+   "id": 7340048,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -925,7 +930,7 @@
       }
      },
      "parent": {
-      "id": 3145743
+      "id": 7340047
      },
      "children": [],
      "active": true
@@ -1132,7 +1137,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 3145746,
+   "id": 7340050,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1194,12 +1199,12 @@
        }
       ],
       "material_instances": [],
-      "lod_limits": [
-       {
-        "min": 0,
-        "max": 100
-       }
-      ]
+      "lod_override_enabled": false,
+      "lod_override_level": 0,
+      "lod_selection_bias": 0.0,
+      "lod_transition_time": {
+       "count": 0.0
+      }
      }
     }
    }
@@ -1208,7 +1213,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 3145748,
+   "id": 7340052,
    "components": {
     "has_tag_component": true,
     "tag_component": {

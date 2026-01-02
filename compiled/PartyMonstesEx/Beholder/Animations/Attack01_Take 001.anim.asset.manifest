@@ -1,8 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonstesEx/Beholder/Animations/Attack01_Take 001.anim",
- "source_sha": "cc50db833c4e8803061d9eb1f93e8045027e54d1",
+ "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/PartyMonstesEx/Beholder/Animations/Attack01_Take 001.anim",
+ "source_sha": "89695d62a89d84230f8f02a0c6f508d1f54e9364",
  "source_timestamp": {
-  "count": -5035526435127304916
+  "count": -4670271060387580503
  },
  "format_version": 1
 }

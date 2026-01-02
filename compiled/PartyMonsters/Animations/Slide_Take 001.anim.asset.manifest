@@ -1,8 +1,8 @@
 {
- "source_key": "C:/Workspace/github/UnravelEngine/SimpleSurvivor/data/PartyMonsters/Animations/Slide_Take 001.anim",
- "source_sha": "db700945683463357a4bb36e186723ebe0c483e4",
+ "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/PartyMonsters/Animations/Slide_Take 001.anim",
+ "source_sha": "eb998b942e241314acb751fce271e026a796feb6",
  "source_timestamp": {
-  "count": -5035526435148489916
+  "count": -4670271060490086860
  },
  "format_version": 1
 }
