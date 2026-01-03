@@ -43,11 +43,17 @@ public class MenuStack
             return;
         }
         
+        bool isMenuInStack = HasMenuInStack(menu);
+        if(isMenuInStack)
+        {
+            return;
+        }
+        
         // Hide the current top menu if stack is not empty
         if (hidePreviousMenu && menuStack.Count > 0)
         {
             var currentTop = menuStack.Peek();
-            if (currentTop)
+            if (currentTop && currentTop != menu)
             {
                 currentTop.SetActive(false);
             }

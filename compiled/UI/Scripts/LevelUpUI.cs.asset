@@ -30,7 +30,8 @@ public class LevelUpUI : ScriptComponent
             {
                 // Subscribe to card selection events
                 levelUpMenuScript.OnCardSelected += OnCardSelected;
-                Log.Info("LevelUpUI: Subscribed to card selection events");
+                levelUpMenuScript.OnCancel += OnCancel;
+                Log.Info("LevelUpUI: Subscribed to card selection and cancel events");
             }
             else
             {
@@ -80,7 +81,9 @@ public class LevelUpUI : ScriptComponent
     /// <param name="card1">Upgrade card for option 1</param>
     /// <param name="card2">Upgrade card for option 2</param>
     /// <param name="card3">Upgrade card for option 3</param>
-    public void ShowLevelUpMenu(UpgradeCard card1, UpgradeCard card2, UpgradeCard card3)
+    /// <param name="remainingBufferedLevelUps">Number of remaining buffered level ups (0 if not buffered)</param>
+    /// <param name="remainingRerolls">Number of remaining rerolls</param>
+    public void ShowLevelUpMenu(UpgradeCard card1, UpgradeCard card2, UpgradeCard card3, int remainingBufferedLevelUps = 0, int remainingRerolls = 5)
     {
         if (!LevelUpMenu)
         {
@@ -88,7 +91,7 @@ public class LevelUpUI : ScriptComponent
             return;
         }
         
-        Log.Info($"LevelUpUI: Showing level up menu with cards: [{card1?.Name}], [{card2?.Name}], [{card3?.Name}]");
+        Log.Info($"LevelUpUI: Showing level up menu with cards: [{card1?.Name}], [{card2?.Name}], [{card3?.Name}], remaining buffered: {remainingBufferedLevelUps}, remaining rerolls: {remainingRerolls}");
         
         // Push level up menu onto the menu stack (handles pause/audio automatically)
         var gameUI = MenuStackUI.FindInScene();
@@ -98,7 +101,7 @@ public class LevelUpUI : ScriptComponent
         // Now set the upgrade cards after the menu is active and elements are cached
         if (levelUpMenuScript != null)
         {
-            levelUpMenuScript.SetUpgradeCards(card1, card2, card3);
+            levelUpMenuScript.SetUpgradeCards(card1, card2, card3, remainingBufferedLevelUps, remainingRerolls);
         }
         
     }
@@ -130,12 +133,23 @@ public class LevelUpUI : ScriptComponent
     }
     
     /// <summary>
+    /// Handle hide button press from the level-up menu.
+    /// </summary>
+    private void OnCancel()
+    {
+        Log.Info("LevelUpUI: Hide button pressed");
+        
+        // Hide the menu (Player will handle adding to buffer and showing menu again via static event)
+        HideLevelUpMenu();
+    }
+    
+    /// <summary>
     /// Static helper method to find the LevelUpUI controller in the current scene.
     /// Can be used by other systems to trigger level-up menus.
     /// </summary>
     public static LevelUpUI FindInScene()
     {
-        var levelUpUIEntity = Scene.FindEntityByName("LevelUpUI");
+        var levelUpUIEntity = Scene.FindEntityByName("UI");
         if (levelUpUIEntity)
         {
             return levelUpUIEntity.GetComponent<LevelUpUI>();
@@ -166,7 +180,8 @@ public class LevelUpUI : ScriptComponent
         if (levelUpMenuScript != null)
         {
             levelUpMenuScript.OnCardSelected -= OnCardSelected;
-            Log.Info("LevelUpUI: Unsubscribed from card selection events");
+            levelUpMenuScript.OnCancel -= OnCancel;
+            Log.Info("LevelUpUI: Unsubscribed from card selection and cancel events");
         }
     }
 }

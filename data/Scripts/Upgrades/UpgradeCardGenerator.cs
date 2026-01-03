@@ -121,7 +121,7 @@ public static class UpgradeCardGenerator
     public static List<UpgradeCard> GenerateLevelUpSelection(int level, Ability[] currentAbilities, float playerLuck = 0.0f, int maxAbilitySlots = 5, int cardCount = 3)
     {
         // Check if this is an ability-only level (every 5 levels) and if ability slots are not full
-        bool isAbilityOnlyLevel = (level % 5 == 0);
+        bool isAbilityOnlyLevel = level == 1 || (level % 5 == 0);
         int currentAbilityCount = currentAbilities != null ? currentAbilities.Length : 0;
         bool hasAvailableAbilitySlots = currentAbilityCount < maxAbilitySlots;
         

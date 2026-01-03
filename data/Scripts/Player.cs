@@ -31,6 +31,7 @@ public class Player : ScriptComponent
     [Tooltip("Base luck value for better upgrade card rarities")]
     public float baseLuck = 0.0f;
     
+    
     // Component references
     private PhysicsComponent physicsComponent;
     private Health Health;
@@ -45,6 +46,11 @@ public class Player : ScriptComponent
     // Level up upgrade cards
     private List<UpgradeCard> currentUpgradeOptions;
 
+    private bool isSelectingUpgrade = false;
+    // Buffered level ups tracking
+    private int bufferedLevelUps = 0;
+    // Reroll tracking
+    private int remainingRerolls = 5;
     private bool initialUpdate = true;
     
     /// <summary>
@@ -123,6 +129,8 @@ public class Player : ScriptComponent
 
         // Subscribe to level-up upgrade selection events
         LevelUpMenu.OnUpgradeSelected += OnUpgradeSelected;
+        LevelUpMenu.OnUpgradeCancelled += OnUpgradeCancelled;
+        LevelUpMenu.OnRerollPressed += OnRerollPressed;
     }
     
     /// <summary>
@@ -148,6 +156,9 @@ public class Player : ScriptComponent
         
         // Unsubscribe from level-up upgrade selection events
         LevelUpMenu.OnUpgradeSelected -= OnUpgradeSelected;
+        LevelUpMenu.OnUpgradeCancelled -= OnUpgradeCancelled;
+        LevelUpMenu.OnRerollPressed -= OnRerollPressed;
+        LevelUpMenu.OnRerollPressed -= OnRerollPressed;
     }
     
     /// <summary>
@@ -178,6 +189,9 @@ public class Player : ScriptComponent
             
         // Handle input
         HandleInput();
+        
+        // Handle buffered level ups (T key)
+        HandleBufferedLevelUps();
         
         // Update movement
         if (usePhysicsMovement)
@@ -538,9 +552,16 @@ public class Player : ScriptComponent
             Health.RestoreToFullHealth();
             Log.Info("Player health restored on level up!");
         }
-        
-        // Show the level-up card selection menu
-        ShowLevelUpMenu(newLevel);
+        bufferedLevelUps++;
+        Log.Info($"Player: Buffered level up. Total buffered: {bufferedLevelUps}");
+        UpdateUpgradeCounterDisplay();
+
+        // If buffering is enabled, buffer the level up instead of showing menu immediately
+        if (bufferedLevelUps == 1)
+        {
+            // Show the level-up card selection menu immediately
+            ShowLevelUpMenu(newLevel);
+        }
     }
     
     public void ShowUpgradeSelectionMenu()
@@ -557,7 +578,7 @@ public class Player : ScriptComponent
         var dashAbilityCard = UpgradeCardGenerator.GenerateBasicDashAbilityCard();
         dashAbilityCard.ApplyUpgrades();
 
-        ShowLevelUpMenu(0);
+        OnLevelUp(0, 1);
     }
     
     /// <summary>
@@ -566,6 +587,11 @@ public class Player : ScriptComponent
     /// <param name="level">The new level the player reached</param>
     private void ShowLevelUpMenu(int level)
     {
+        if(isSelectingUpgrade)
+        {
+            return;
+        }
+        isSelectingUpgrade = true;
         // Find the GameUI entity in the scene
         var gameUIEntity = MenuStackUI.FindInScene<GameUI>().owner;
         if (!gameUIEntity)
@@ -589,12 +615,15 @@ public class Player : ScriptComponent
         
         // Generate upgrade card options (handles ability-only levels automatically)
         var currentAbilities = owner.GetComponentsInChildren<Ability>();
-        currentUpgradeOptions = UpgradeCardGenerator.GenerateLevelUpSelection(level, currentAbilities, baseLuck);
+
+        if(currentUpgradeOptions == null)
+            currentUpgradeOptions = UpgradeCardGenerator.GenerateLevelUpSelection(level, currentAbilities, baseLuck);
         
         // Pass cards directly to the UI
         if (currentUpgradeOptions != null && currentUpgradeOptions.Count >= 3)
         {
-            levelUpUIScript.ShowLevelUpMenu(currentUpgradeOptions[0], currentUpgradeOptions[1], currentUpgradeOptions[2]);
+            int remainingBufferedLevelUps = bufferedLevelUps - 1;
+            levelUpUIScript.ShowLevelUpMenu(currentUpgradeOptions[0], currentUpgradeOptions[1], currentUpgradeOptions[2], remainingBufferedLevelUps, remainingRerolls);
         }
         else
         {
@@ -626,6 +655,7 @@ public class Player : ScriptComponent
     
     /// <summary>
     /// Called when the player selects an upgrade from the level-up menu.
+    /// Handles both buffered and non-buffered upgrades.
     /// </summary>
     /// <param name="selectedCard">The selected upgrade card</param>
     private void OnUpgradeSelected(UpgradeCard selectedCard)
@@ -652,11 +682,48 @@ public class Player : ScriptComponent
         
         // Clear the current options
         currentUpgradeOptions = null;
+        isSelectingUpgrade = false;
+        // Decrement buffered count (we're always buffered now)
+        if (bufferedLevelUps > 0)
+        {
+            bufferedLevelUps--;
+            UpdateUpgradeCounterDisplay();
+            
+            // If there are more buffered level ups, show the next one
+            if (bufferedLevelUps > 0)
+            {
+                ShowNextBufferedLevelUp();
+            }
+        }
         
         Log.Info($"Player: Successfully applied upgrades from card '{selectedCard.Name}'");
     }
     
-
+    private void OnUpgradeCancelled()
+    {
+        isSelectingUpgrade = false;
+    }
+    
+    /// <summary>
+    /// Called when reroll button is pressed. Regenerates upgrade cards.
+    /// </summary>
+    private void OnRerollPressed()
+    {
+        if (remainingRerolls <= 0)
+        {
+            Log.Warning("Player: Cannot reroll - no rerolls remaining");
+            return;
+        }
+        
+        // Decrement rerolls
+        remainingRerolls--;
+        Log.Info($"Player: Reroll pressed. Remaining rerolls: {remainingRerolls}");
+        
+        currentUpgradeOptions = null;
+        isSelectingUpgrade = false;
+        ShowNextBufferedLevelUp();
+    }
+    
     /// <summary>
     /// Called when the player's experience changes.
     /// </summary>
@@ -816,13 +883,81 @@ public class Player : ScriptComponent
     }
     
     /// <summary>
+    /// Handle buffered level ups when T key is pressed.
+    /// </summary>
+    private void HandleBufferedLevelUps()
+    {
+        // Only process if buffering is enabled and we have buffered level ups
+        if (bufferedLevelUps <= 0)
+            return;
+        
+     
+        if (Health != null && Health.IsDead())
+            return;
+        
+        // Check for T key press
+        if (Input.IsPressed(KeyCode.T))
+        {
+            // Show the first buffered level up menu
+            ShowNextBufferedLevelUp();
+        }
+    }
+    
+    /// <summary>
+    /// Show the next buffered level up menu.
+    /// </summary>
+    private void ShowNextBufferedLevelUp()
+    {
+        if (bufferedLevelUps <= 0)
+        {
+            UpdateUpgradeCounterDisplay();
+            return;
+        }
+        
+        // Use the existing ShowLevelUpMenu method with remaining buffered count
+        int currentLevel = GetLevel();
+        ShowLevelUpMenu(currentLevel);
+    }
+    
+    /// <summary>
+    /// Called when hide button is pressed. Adds to buffer and shows menu.
+    /// </summary>
+
+    
+    /// <summary>
+    /// Update the level up counter display in the UI.
+    /// </summary>
+    private void UpdateUpgradeCounterDisplay()
+    {
+        // Find the GameHub entity
+        var gameHubEntity = Scene.FindEntityByName("GameHub");
+        if (!gameHubEntity)
+            return;
+        
+        var gameHubScript = gameHubEntity.GetComponent<GameHub>();
+        if (gameHubScript != null)
+        {
+            gameHubScript.SetBufferedLevelUps(bufferedLevelUps);
+        }
+    }
+    
+    /// <summary>
+    /// Get the number of buffered level ups.
+    /// </summary>
+    public int GetBufferedLevelUps()
+    {
+        return bufferedLevelUps;
+    }
+    
+    
+    /// <summary>
     /// Called when the script is destroyed. Final cleanup.
     /// </summary>
     public override void OnDestroy()
     {
         // Ensure we're unsubscribed from static events (safeguard in case OnDisable wasn't called)
         LevelUpMenu.OnUpgradeSelected -= OnUpgradeSelected;
-        
+        LevelUpMenu.OnUpgradeCancelled -= OnUpgradeCancelled;
         // OnDisable already handles other event unsubscription
         Log.Info("Player script destroyed");
     }

@@ -2,7 +2,7 @@
  "entities": [
   {
    "prefab_uid": "7b2a12a5-b8bc-7749-9b5e-f9c9d0a9f337",
-   "id": 1,
+   "id": 1048579,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -25,7 +25,7 @@
       "position": {
        "x": 4.6700768052687638e-7,
        "y": -0.0000013820827007293702,
-       "z": -2.678639816622308e-7
+       "z": -2.678313535398047e-7
       },
       "rotation": {
        "x": -1.1920938902676426e-7,
@@ -51,27 +51,27 @@
      "children": [
       {
        "prefab_uid": "466422c5-14ca-1e45-a119-ddc36d49af40",
-       "id": 2
+       "id": 1048580
       },
       {
        "prefab_uid": "531932bf-4358-1449-85fe-2d2ea88a54b6",
-       "id": 3
+       "id": 1048581
       },
       {
        "prefab_uid": "153132be-843d-fa4e-b15c-c0077f1bac98",
-       "id": 4
+       "id": 1048582
       },
       {
        "prefab_uid": "fb41a6d0-8542-da4c-a57a-1d73be1ec37c",
-       "id": 5
+       "id": 1048583
       },
       {
        "prefab_uid": "e44fb193-9232-d349-85ed-a527384f3585",
-       "id": 6
+       "id": 1048584
       },
       {
        "prefab_uid": "a66a3c5f-1ab8-e64a-a02c-42103b80e44a",
-       "id": 7
+       "id": 1048585
       }
      ],
      "active": true
@@ -117,37 +117,6 @@
         "prefab_uid": "00000000-0000-0000-0000-000000000000",
         "id": 4294967295
        }
-      },
-      {
-       "type": "GameUI",
-       "GameMenu": {
-        "flags": 2,
-        "prefab_uid": "00000000-0000-0000-0000-000000000000",
-        "id": 4294967295
-       },
-       "SettingsMenu": {
-        "flags": 2,
-        "prefab_uid": "00000000-0000-0000-0000-000000000000",
-        "id": 4294967295
-       },
-       "GameOverMenu": {
-        "flags": 2,
-        "prefab_uid": "00000000-0000-0000-0000-000000000000",
-        "id": 4294967295
-       },
-       "GameHub": {
-        "flags": 2,
-        "prefab_uid": "00000000-0000-0000-0000-000000000000",
-        "id": 4294967295
-       },
-       "BackgroundAudioSource": {
-        "flags": 2,
-        "prefab_uid": "00000000-0000-0000-0000-000000000000",
-        "id": 4294967295
-       },
-       "LobbyScene": {
-        "uid": "00000000-0000-0000-0000-000000000000"
-       }
       }
      ]
     }
@@ -155,7 +124,7 @@
   },
   {
    "prefab_uid": "466422c5-14ca-1e45-a119-ddc36d49af40",
-   "id": 2,
+   "id": 1048580,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -199,7 +168,7 @@
      },
      "parent": {
       "prefab_uid": "7b2a12a5-b8bc-7749-9b5e-f9c9d0a9f337",
-      "id": 1
+      "id": 1048579
      },
      "children": [],
      "active": true
@@ -223,7 +192,7 @@
   },
   {
    "prefab_uid": "531932bf-4358-1449-85fe-2d2ea88a54b6",
-   "id": 3,
+   "id": 1048581,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -267,7 +236,7 @@
      },
      "parent": {
       "prefab_uid": "7b2a12a5-b8bc-7749-9b5e-f9c9d0a9f337",
-      "id": 1
+      "id": 1048579
      },
      "children": [],
      "active": false
@@ -291,7 +260,7 @@
   },
   {
    "prefab_uid": "153132be-843d-fa4e-b15c-c0077f1bac98",
-   "id": 4,
+   "id": 1048582,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -335,7 +304,7 @@
      },
      "parent": {
       "prefab_uid": "7b2a12a5-b8bc-7749-9b5e-f9c9d0a9f337",
-      "id": 1
+      "id": 1048579
      },
      "children": [],
      "active": false
@@ -359,7 +328,7 @@
   },
   {
    "prefab_uid": "fb41a6d0-8542-da4c-a57a-1d73be1ec37c",
-   "id": 5,
+   "id": 1048583,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -403,7 +372,7 @@
      },
      "parent": {
       "prefab_uid": "7b2a12a5-b8bc-7749-9b5e-f9c9d0a9f337",
-      "id": 1
+      "id": 1048579
      },
      "children": [],
      "active": false
@@ -427,7 +396,7 @@
   },
   {
    "prefab_uid": "e44fb193-9232-d349-85ed-a527384f3585",
-   "id": 6,
+   "id": 1048584,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -471,7 +440,7 @@
      },
      "parent": {
       "prefab_uid": "7b2a12a5-b8bc-7749-9b5e-f9c9d0a9f337",
-      "id": 1
+      "id": 1048579
      },
      "children": [],
      "active": true
@@ -495,7 +464,7 @@
   },
   {
    "prefab_uid": "a66a3c5f-1ab8-e64a-a02c-42103b80e44a",
-   "id": 7,
+   "id": 1048585,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -539,7 +508,7 @@
      },
      "parent": {
       "prefab_uid": "7b2a12a5-b8bc-7749-9b5e-f9c9d0a9f337",
-      "id": 1
+      "id": 1048579
      },
      "children": [],
      "active": true

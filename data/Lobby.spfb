@@ -2,7 +2,7 @@
  "entities_count": 8,
  "entities": [
   {
-   "id": 7340034,
+   "id": 5242882,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -146,7 +146,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 7340036,
+   "id": 5242884,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -234,7 +234,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 7340038,
+   "id": 5242886,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -303,7 +303,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 7340040,
+   "id": 5242888,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -331,6 +331,11 @@
        "entity_uuid": "5100a106-231b-8840-b67e-df42df315363",
        "component_path": "script_component/script_components[0]/LobbyUI/GameScene",
        "pretty_component_path": "Script/Scripts[0]/LobbyUI/GameScene"
+      },
+      {
+       "entity_uuid": "5100a106-231b-8840-b67e-df42df315363",
+       "component_path": "script_component/script_components[1]/GameUI/LobbyScene",
+       "pretty_component_path": "Script/Scripts[1]/GameUI/LobbyScene"
       }
      ],
      "removed_entities": []
@@ -369,13 +374,13 @@
      },
      "children": [
       {
-       "id": 7340041
+       "id": 5242889
       },
       {
-       "id": 7340042
+       "id": 5242890
       },
       {
-       "id": 7340043
+       "id": 5242891
       }
      ],
      "active": true
@@ -411,7 +416,7 @@
    }
   },
   {
-   "id": 7340041,
+   "id": 5242889,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -439,7 +444,7 @@
       "rotation": {
        "x": 0.0,
        "y": 0.0,
-       "z": -5.570890970751918e-14,
+       "z": 0.0,
        "w": 1.0
       },
       "scale": {
@@ -450,11 +455,11 @@
       "skew": {
        "x": 0.0,
        "y": 0.0,
-       "z": -2.2283650619181473e-13
+       "z": 0.0
       }
      },
      "parent": {
-      "id": 7340040
+      "id": 5242888
      },
      "children": [],
      "active": true
@@ -477,7 +482,7 @@
    }
   },
   {
-   "id": 7340042,
+   "id": 5242890,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -520,7 +525,7 @@
       }
      },
      "parent": {
-      "id": 7340040
+      "id": 5242888
      },
      "children": [],
      "active": false
@@ -543,7 +548,7 @@
    }
   },
   {
-   "id": 7340043,
+   "id": 5242891,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -586,7 +591,7 @@
       }
      },
      "parent": {
-      "id": 7340040
+      "id": 5242888
      },
      "children": [],
      "active": true
@@ -612,7 +617,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 7340045,
+   "id": 5242893,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -662,7 +667,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 7340047,
+   "id": 5242895,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -705,7 +710,7 @@
      },
      "children": [
       {
-       "id": 7340048
+       "id": 5242896
       }
      ],
      "active": true
@@ -891,7 +896,7 @@
    }
   },
   {
-   "id": 7340048,
+   "id": 5242896,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -930,7 +935,7 @@
       }
      },
      "parent": {
-      "id": 7340047
+      "id": 5242895
      },
      "children": [],
      "active": true
@@ -1137,7 +1142,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 7340050,
+   "id": 5242898,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1213,7 +1218,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 7340052,
+   "id": 5242900,
    "components": {
     "has_tag_component": true,
     "tag_component": {

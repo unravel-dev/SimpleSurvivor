@@ -33,9 +33,17 @@ public class LevelUpMenu : BaseMenu
     
     // Events
     public System.Action<UpgradeCard> OnCardSelected; // (selectedCard)
+    public System.Action OnCancel; // Cancel button pressed
     
     // Static event for global subscription (Player can subscribe to this)
     public static System.Action<UpgradeCard> OnUpgradeSelected; // (selectedCard)
+    public static System.Action OnUpgradeCancelled; // Hide button pressed
+    public static System.Action OnRerollPressed; // Reroll button pressed
+    
+    // UI elements for buffered upgrades display
+    private UIElement remainingUpgradesText;
+    private UIElement hideButton;
+    private UIElement rerollButton;
     
     protected override string GetTitleElementId()
     {
@@ -65,6 +73,11 @@ public class LevelUpMenu : BaseMenu
         card3Description = document.GetElementById("card3_description");
         card3Rarity = document.GetElementById("card3_rarity");
         card3Icon = document.GetElementById("card3_icon");
+        
+        // Cache buffered upgrades UI elements
+        remainingUpgradesText = document.GetElementById("remaining_upgrades");
+        hideButton = document.GetElementById("hide_button");
+        rerollButton = document.GetElementById("reroll_button");
     }
     
     protected override int CountValidElements()
@@ -111,6 +124,28 @@ public class LevelUpMenu : BaseMenu
             (ev) => OnCardLeave(card3, ev, "Card3"),
             (ev) => OnCardRelease(card3, ev, "Card3"));
         
+        // Register hide button event handlers
+        if (hideButton != null)
+        {
+            RegisterButtonEvents(hideButton, "HideButton",
+                (ev) => PlayButtonClickSound(hideButton, ev),
+                (ev) => OnHideClick(ev),
+                (ev) => PlayButtonHoverSound(hideButton, ev),
+                null,
+                null);
+        }
+        
+        // Register reroll button event handlers
+        if (rerollButton != null)
+        {
+            RegisterButtonEvents(rerollButton, "RerollButton",
+                (ev) => PlayButtonClickSound(rerollButton, ev),
+                (ev) => OnRerollClick(ev),
+                (ev) => PlayButtonHoverSound(rerollButton, ev),
+                null,
+                null);
+        }
+        
         Log.Info("LevelUpMenu event handlers registered successfully");
     }
 
@@ -119,6 +154,14 @@ public class LevelUpMenu : BaseMenu
         card1.UnsubscribeAll();
         card2.UnsubscribeAll();
         card3.UnsubscribeAll();
+        if (hideButton != null)
+        {
+            hideButton.UnsubscribeAll();
+        }
+        if (rerollButton != null)
+        {
+            rerollButton.UnsubscribeAll();
+        }
 
         base.UnregisterEventHandlers();
 		Log.Info("LevelUpMenu event handlers unregistered successfully");
@@ -130,7 +173,9 @@ public class LevelUpMenu : BaseMenu
     /// <param name="card1">Upgrade card for slot 1</param>
     /// <param name="card2">Upgrade card for slot 2</param>
     /// <param name="card3">Upgrade card for slot 3</param>
-    public void SetUpgradeCards(UpgradeCard card1, UpgradeCard card2, UpgradeCard card3)
+    /// <param name="remainingBufferedLevelUps">Number of remaining buffered level ups (0 if not buffered)</param>
+    /// <param name="remainingRerolls">Number of remaining rerolls</param>
+    public void SetUpgradeCards(UpgradeCard card1, UpgradeCard card2, UpgradeCard card3, int remainingBufferedLevelUps = 0, int remainingRerolls = 5)
     {
         upgradeCards[0] = card1;
         upgradeCards[1] = card2;
@@ -139,7 +184,69 @@ public class LevelUpMenu : BaseMenu
         // Update the UI text and styling
         UpdateCardDisplay();
         
-        Log.Info($"LevelUpMenu: Set upgrade cards - [{card1?.Name}], [{card2?.Name}], [{card3?.Name}]");
+        // Update buffered level ups display
+        UpdateBufferedLevelUpsDisplay(remainingBufferedLevelUps);
+        
+        // Update reroll button display
+        UpdateRerollButton(remainingRerolls);
+        
+        Log.Info($"LevelUpMenu: Set upgrade cards - [{card1?.Name}], [{card2?.Name}], [{card3?.Name}], remaining buffered: {remainingBufferedLevelUps}, remaining rerolls: {remainingRerolls}");
+    }
+    
+    /// <summary>
+    /// Update the display for remaining buffered upgrades.
+    /// </summary>
+    private void UpdateBufferedLevelUpsDisplay(int remainingBufferedLevelUps)
+    {
+        // Update remaining upgrades text
+        if (remainingUpgradesText != null)
+        {
+            if (remainingBufferedLevelUps > 0)
+            {
+                remainingUpgradesText.InnerRml = $"Remaining Upgrades: {remainingBufferedLevelUps}";
+                remainingUpgradesText.SetClass("hidden", false);
+            }
+            else
+            {
+                remainingUpgradesText.SetClass("hidden", true);
+            }
+        }
+        
+        // Hide button is always visible, no need to show/hide it
+    }
+    
+    /// <summary>
+    /// Handle hide button click.
+    /// </summary>
+    private void OnHideClick(UIPointerEvent ev)
+    {
+        Log.Info("LevelUpMenu: Hide button clicked");
+        // Trigger local event (for LevelUpUI)
+        OnCancel?.Invoke();
+        // Trigger static event (for Player to subscribe to)
+        OnUpgradeCancelled?.Invoke();
+    }
+    
+    /// <summary>
+    /// Handle reroll button click.
+    /// </summary>
+    private void OnRerollClick(UIPointerEvent ev)
+    {
+        Log.Info("LevelUpMenu: Reroll button clicked");
+        // Trigger static event (for Player to subscribe to)
+        OnRerollPressed?.Invoke();
+    }
+    
+    /// <summary>
+    /// Update the reroll button display with remaining rerolls.
+    /// </summary>
+    private void UpdateRerollButton(int remainingRerolls)
+    {
+        if (rerollButton != null)
+        {
+            rerollButton.InnerRml = $"Reroll ({remainingRerolls})";
+            rerollButton.SetClass("disabled", remainingRerolls <= 0);
+        }
     }
     /// <summary>
     /// Update the card display with the current upgrade cards.
@@ -389,5 +496,7 @@ public class LevelUpMenu : BaseMenu
     public static void ClearEvents()
     {
         OnUpgradeSelected = null;
+        OnUpgradeCancelled = null;
+        OnRerollPressed = null;
     }
 }

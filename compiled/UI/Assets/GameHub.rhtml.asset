@@ -23,6 +23,13 @@
 
       <!-- Ability Slots Bar -->
       <div class="ability-bar-container">
+        <!-- Upgrade Counter -->
+        <div id="upgrade_counter" class="upgrade-counter hidden">
+          <span class="upgrade-counter-label">Upgrades:</span>
+          <span id="upgrade_counter_value" class="upgrade-counter-value">0</span>
+          <span class="upgrade-counter-label">Press (T)</span>
+
+        </div>
         <div class="ability-bar">
           <!-- Ability slot 0 - Dash (larger) -->
           <div id="ability_slot_0" class="ability-slot ability-slot-dash">

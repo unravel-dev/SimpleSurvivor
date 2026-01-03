@@ -16,6 +16,8 @@ public class GameHub : ScriptComponent
     private UIElement gameTimer;
     private UIElement healthValue;
     private UIElement levelValue;
+    private UIElement upgradeCounter;
+    private UIElement upgradeCounterValue;
     
     // Ability slot elements (5 slots: 0-4, where 0 is dash)
     private UIElement[] abilitySlots = new UIElement[5];
@@ -91,6 +93,8 @@ public class GameHub : ScriptComponent
         gameTimer = document.GetElementById("game_timer");
         healthValue = document.GetElementById("health_value");
         levelValue = document.GetElementById("level_value");
+        upgradeCounter = document.GetElementById("upgrade_counter");
+        upgradeCounterValue = document.GetElementById("upgrade_counter_value");
         
         if (healthBar?.IsValid() != true)
         {
@@ -659,6 +663,26 @@ public class GameHub : ScriptComponent
                 float maxCooldown = ability.GetCooldown();
                 SetAbilityCooldown(slotIndex, remainingCooldown, maxCooldown);
                 slotIndex++;
+            }
+        }
+    }
+    
+    /// <summary>
+    /// Set the buffered upgrades counter display.
+    /// </summary>
+    /// <param name="count">Number of buffered upgrades</param>
+    public void SetBufferedLevelUps(int count)
+    {
+        if (upgradeCounter != null && upgradeCounterValue != null)
+        {
+            if (count > 0)
+            {
+                upgradeCounterValue.InnerRml = count.ToString();
+                upgradeCounter.SetClass("hidden", false);
+            }
+            else
+            {
+                upgradeCounter.SetClass("hidden", true);
             }
         }
     }

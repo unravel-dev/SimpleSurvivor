@@ -274,6 +274,82 @@ body.theme-light .card-description {
   color: #2d3748;
 }
 
+/* ---------- Footer Elements ---------- */
+.remaining-upgrades {
+  font-size: 16dp;
+  color: #ffcc02;
+  font-weight: bold;
+  margin-bottom: 12dp;
+  text-align: center;
+}
+
+.remaining-upgrades.hidden {
+  display: none;
+}
+
+/* Button Container */
+.button-container {
+  display: flex;
+  flex-direction: row;
+  gap: 12dp;
+  justify-content: center;
+  margin-top: 16dp;
+}
+
+.hide-button,
+.reroll-button {
+  padding: 12dp 24dp;
+  border-radius: 8dp;
+  color: white;
+  font-size: 16dp;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color border-color 0.2s cubic-out;
+  border: 2dp;
+}
+
+.hide-button {
+  background-color: #6c757d;
+  border-color: #5a6268;
+}
+
+.hide-button:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+.hide-button:active {
+  background-color: #545b62;
+  border-color: #484f55;
+}
+
+.reroll-button {
+  background-color: #17a2b8;
+  border-color: #138496;
+}
+
+.reroll-button:hover {
+  background-color: #138496;
+  border-color: #117a8b;
+}
+
+.reroll-button:active {
+  background-color: #117a8b;
+  border-color: #0f6674;
+}
+
+.reroll-button.disabled {
+  background-color: #495057;
+  border-color: #343a40;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.reroll-button.disabled:hover {
+  background-color: #495057;
+  border-color: #343a40;
+}
+
 /* ---------- Responsive Design ---------- */
 @media (max-width: 1000dp) {
   .card-container {

@@ -55,7 +55,12 @@
 
       <!-- Footer Info -->
       <footer class="menu-footer">
+        <div id="remaining_upgrades" class="remaining-upgrades hidden">Remaining Upgrades: 0</div>
         <div class="version-info">Select an upgrade to continue</div>
+        <div class="button-container">
+          <button id="reroll_button" class="reroll-button">Reroll (5)</button>
+          <button id="hide_button" class="hide-button">Hide</button>
+        </div>
       </footer>
 
     </div>
