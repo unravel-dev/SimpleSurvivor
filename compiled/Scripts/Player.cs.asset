@@ -386,12 +386,13 @@ public class Player : ScriptComponent
         // Trigger camera shake
         TriggerCameraShake(damageAmount);
         
-        // Could add other damage reaction behaviors here, like:
-        // - Screen flash
-        // - Play damage sound
-        // - Show damage UI
-        // - Brief invincibility frames
-        // - Knockback effect
+        var invulnerabilityComponent = owner.GetComponent<InvulnerabilityComponent>();
+        if (invulnerabilityComponent == null)
+        {
+            invulnerabilityComponent = owner.AddComponent<InvulnerabilityComponent>();
+        }
+        
+        invulnerabilityComponent.GrantInvulnerability(0.5f);
     }
     
     /// <summary>

@@ -12,8 +12,8 @@ public class ExperienceOrb : LootComponent
     //[Header("Experience Settings")]
     [Tooltip("Experience value this orb provides when collected")]
     public float experienceValue = 10.0f;
-    [Tooltip("Lifetime of the orb in seconds (0 = infinite)")]
-    public float lifetime = 30.0f;
+    // [Tooltip("Lifetime of the orb in seconds (0 = infinite)")]
+    // public float lifetime = 30.0f;
     
     /// <summary>
     /// Called when the script starts execution.
@@ -32,11 +32,11 @@ public class ExperienceOrb : LootComponent
         timeAlive += Time.deltaTime;
         
         // Check if orb should expire
-        if (lifetime > 0 && timeAlive >= lifetime)
-        {
-            Scene.DestroyEntity(owner);
-            return;
-        }
+        // if (lifetime > 0 && timeAlive >= lifetime)
+        // {
+        //     Scene.DestroyEntity(owner);
+        //     return;
+        // }
         
         // Call base update for attraction and floating logic
         base.OnUpdate();

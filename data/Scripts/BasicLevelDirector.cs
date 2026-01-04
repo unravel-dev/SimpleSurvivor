@@ -9,11 +9,11 @@ using System.Collections.Generic;
 [ScriptSourceFile]
 public class BasicLevelDirector : ScriptComponent
 {
-    //[Header("Player Settings")]
+    [Header("Player Settings")]
     [Tooltip("The player entity to spawn around (auto-found if not set)")]
     public Entity player;
     
-    //[Header("Spawn Settings")]
+    [Header("Spawn Position")]
     [Tooltip("Minimum distance from player to spawn entities")]
     public float minSpawnDistance = 5.0f;
     [Tooltip("Maximum distance from player to spawn entities")]
@@ -21,68 +21,73 @@ public class BasicLevelDirector : ScriptComponent
     [Tooltip("Y position offset for spawned entities (relative to player Y)")]
     public float spawnYOffset = 0.0f;
     
-    //[Header("Enemy Spawning")]
+    [Header("Enemy Prefabs")]
     [Tooltip("Enemy prefab to spawn automatically")]
     public List<Prefab> enemies = new List<Prefab>();
     [Tooltip("Elite enemy prefabs to spawn periodically (randomly selected)")]
     public List<Prefab> eliteEnemies = new List<Prefab>();
+    
+    [Header("Wave-Based Spawning")]
+    [Tooltip("Enable auto spawning")]
+    public bool enableAutoSpawning = true;
+    [Tooltip("Duration of one complete wave cycle in seconds (e.g., 120 = 2 minutes per cycle)")]
+    public float waveCycleDuration = 120.0f;
     [Tooltip("Interval in seconds between elite spawn waves (e.g., 120 = every 2 minutes)")]
     public float eliteSpawnInterval = 120.0f;
-    [Tooltip("Base number of spawns per second")]
-    public float baseSpawnsPerSecond = 1.0f;
     
-    [Tooltip("Base minimum number of enemies to maintain")]
-    public int baseMinEnemies = 20;
-    [Tooltip("Additional enemies per player level")]
-    public int enemiesPerLevel = 3;
-    [Tooltip("Maximum enemies allowed at once")]
-    public bool enableAutoSpawning = true;
+    [Header("Adaptive Spawn Rate")]
+    [Tooltip("Minimum time between spawns (prevents spawning too fast)")]
+    public float minSpawnInterval = 0.1f;
+    [Tooltip("Maximum time between spawns when at target count")]
+    public float maxSpawnInterval = 2.0f;
+    [Tooltip("How aggressively to spawn when below target (higher = faster catch-up)")]
+    public float spawnCatchUpMultiplier = 0.05f;
     
-    [Tooltip("Time-based scaling: additional enemies per minute of game time")]
-    public float enemiesPerMinute = 2.0f;
-    [Tooltip("Time-based scaling exponent (higher = faster scaling over time)")]
-    public float timeScalingExponent = 1.5f;
+    [Header("Kill Speed Adaptation")]
     [Tooltip("Kill speed scaling: multiplier for target enemy count based on kill rate")]
     public float killSpeedScalingMultiplier = 0.5f;
     [Tooltip("Maximum multiplier from kill speed (caps how much kill speed can increase enemy count)")]
     public float maxKillSpeedMultiplier = 2.0f;
-    
-    //[Header("Adaptive Spawning")]
-    [Tooltip("How quickly to adapt spawn rate based on kill rate (0-1)")]
-    public float adaptationRate = 0.1f;
     [Tooltip("Time window for measuring kill rate (seconds)")]
     public float killRateWindow = 10.0f;
     
-    //[Header("Enemy Scaling")]
+    [Header("Enemy Scaling")]
     [Tooltip("Enable enemy scaling based on time and player level")]
     public bool enableEnemyScaling = true;
     [Tooltip("Health scaling per minute of game time (multiplier)")]
+
+    [Header("Health Scaling")]
     public float healthScalingPerMinute = 0.1f;
     [Tooltip("Speed scaling per minute of game time (multiplier)")]
+    public float healthScalingPerLevel = 0.15f;
+    [Tooltip("Maximum health scaling multiplier")]
+    public float healthMaxScaling = 1000.0f;
+
+    [Header("Speed Scaling")]
+    [Tooltip("Speed scaling per player level (multiplier)")]
     public float speedScalingPerMinute = 0.05f;
     [Tooltip("Health scaling per player level (multiplier)")]
-    public float healthScalingPerLevel = 0.15f;
-    [Tooltip("Speed scaling per player level (multiplier)")]
     public float speedScalingPerLevel = 0.08f;
+    [Tooltip("Maximum speed scaling multiplier")]
+    public float speedMaxScaling = 3.0f;
+
+    [Header("Damage Scaling")]
+    [Tooltip("Base damage value for enemies (used when PhysicalDamageComponent is missing)")]
+    public int baseEnemyDamage = 10;
+
     [Tooltip("Damage scaling per minute of game time (multiplier)")]
     public float damageScalingPerMinute = 0.1f;
     [Tooltip("Damage scaling per player level (multiplier)")]
     public float damageScalingPerLevel = 0.15f;
-    [Tooltip("Base damage value for enemies (used when PhysicalDamageComponent is missing)")]
-    public int baseEnemyDamage = 10;
-    [Tooltip("Maximum health scaling multiplier")]
-    public float maxHealthScaling = 1000.0f;
-    [Tooltip("Maximum speed scaling multiplier")]
-    public float maxSpeedScaling = 3.0f;
+
     [Tooltip("Maximum damage scaling multiplier")]
-    public float maxDamageScaling = 5.0f;
+    public float damageMaxScaling = 5.0f;
     
     // Spawn timing and tracking
     private float timeSinceLastSpawn = 0.0f;
     private int currentEnemyCount = 0;
     private float[] recentKillTimes = new float[50]; // Circular buffer for recent kills
     private int killTimeIndex = 0;
-    private float currentSpawnRateMultiplier = 1.0f;
     
     // Elite spawning tracking
     private int lastEliteSpawnInterval = -1; // Track the last interval we spawned elites
@@ -92,9 +97,8 @@ public class BasicLevelDirector : ScriptComponent
     private Player playerComponent;
     private Experience playerExperience;
     
-    // Base damage tracking (to preserve original values for scaling)
-    private Dictionary<Entity, int> enemyBaseDamage = new Dictionary<Entity, int>();
-    
+    // Gradient for enemy count control
+    private Gradient<int> enemyCountGradient = new Gradient<int>();    
     /// <summary>
     /// Called when the script is created.
     /// </summary>
@@ -128,6 +132,9 @@ public class BasicLevelDirector : ScriptComponent
         
         // Subscribe to enemy death events to track kills
         SubscribeToEnemyDeaths();
+        
+        // Initialize enemy count gradient
+        InitializeEnemyCountGradient();
     }
     
     
@@ -143,24 +150,20 @@ public class BasicLevelDirector : ScriptComponent
         // Update enemy count
         UpdateEnemyCount();
         
-        // Update adaptive spawn rate based on recent kill rate
-        UpdateAdaptiveSpawnRate();
-        
         // Handle elite enemy spawning (every 2 minutes)
         HandleEliteSpawning();
         
-        // Calculate target enemy count based on player level
+        // Calculate target enemy count based on gradient wave
         int targetEnemyCount = GetTargetEnemyCount();
         
         // Update spawn timer
         timeSinceLastSpawn += Time.deltaTime;
         
-        // Calculate current spawn interval (1 / spawns per second)
-        float currentSpawnsPerSecond = baseSpawnsPerSecond * currentSpawnRateMultiplier;
-        float spawnInterval = 1.0f / currentSpawnsPerSecond;
+        // Calculate adaptive spawn interval based on how far we are from target
+        float spawnInterval = CalculateAdaptiveSpawnInterval(targetEnemyCount);
         
         // Determine if we should spawn based on enemy count and timing
-        bool shouldSpawn = ShouldSpawnEnemy(targetEnemyCount, spawnInterval);
+        bool shouldSpawn = (currentEnemyCount < targetEnemyCount) && (timeSinceLastSpawn >= spawnInterval);
         
         if (shouldSpawn)
         {
@@ -269,6 +272,33 @@ public class BasicLevelDirector : ScriptComponent
         
         int randomIndex = Random.Range(0, eliteEnemies.Count);
         return eliteEnemies[randomIndex];
+    }
+    
+    /// <summary>
+    /// Initialize the enemy count gradient with a sinusoidal wave pattern.
+    /// Creates peaks and valleys for intense combat and rest periods.
+    /// </summary>
+    private void InitializeEnemyCountGradient()
+    {
+        // Clear any existing points
+        enemyCountGradient.Clear();
+        enemyCountGradient.SetInterpolationMode(GradientInterpolationMode.Linear);
+        
+        // Create a sinusoidal wave pattern with two major peaks
+        // This creates intense combat phases at 40% and 80%, with valleys in between
+        // Progress values are 0-1 representing one complete cycle
+        
+        enemyCountGradient.AddPoint(20, 0.0f);     // Start: Low intensity (rest period)
+        enemyCountGradient.AddPoint(50, 0.20f);    // Rising to first peak
+        enemyCountGradient.AddPoint(100, 0.40f);   // FIRST PEAK: Maximum intensity
+        enemyCountGradient.AddPoint(30, 0.60f);    // Valley: Rest/collect loot
+        enemyCountGradient.AddPoint(70, 0.70f);    // Rising to second peak
+        enemyCountGradient.AddPoint(100, 0.80f);   // SECOND PEAK: Maximum intensity
+        enemyCountGradient.AddPoint(40, 0.90f);    // Descending
+        enemyCountGradient.AddPoint(20, 1.0f);     // End: Back to low (cycle repeats)
+        
+        
+        Log.Info($"BasicLevelDirector: Initialized enemy count gradient with {enemyCountGradient.GetPointCount()} points. Wave cycle duration: {waveCycleDuration}s");
     }
     
     /// <summary>
@@ -437,11 +467,6 @@ public class BasicLevelDirector : ScriptComponent
     /// Set the base spawn rate (spawns per second).
     /// </summary>
     /// <param name="newSpawnsPerSecond">Number of spawns per second.</param>
-    public void SetSpawnRate(float newSpawnsPerSecond)
-    {
-        baseSpawnsPerSecond = Mathf.Max(0.1f, newSpawnsPerSecond); // Minimum 0.1 spawns per second
-
-    }
     
     /// <summary>
     /// Enable or disable automatic enemy spawning.
@@ -457,23 +482,9 @@ public class BasicLevelDirector : ScriptComponent
     /// </summary>
     public void ResetSpawnTimer()
     {
-        timeSinceLastSpawn = 1.0f / baseSpawnsPerSecond; // Set to spawn interval to trigger immediate spawn
+        timeSinceLastSpawn = maxSpawnInterval; // Set to max interval to trigger immediate spawn
     }
     
-    /// <summary>
-    /// Get the time remaining until next spawn.
-    /// </summary>
-    /// <returns>Time in seconds until next spawn, or 0 if ready to spawn.</returns>
-    public float GetTimeUntilNextSpawn()
-    {
-        if (!enableAutoSpawning)
-            return -1f; // Auto-spawning disabled
-            
-        float currentSpawnsPerSecond = baseSpawnsPerSecond * currentSpawnRateMultiplier;
-        float spawnInterval = 1.0f / currentSpawnsPerSecond;
-        float timeRemaining = spawnInterval - timeSinceLastSpawn;
-        return Mathf.Max(0f, timeRemaining);
-    }
     
     /// <summary>
     /// Automatically find the player entity.
@@ -579,8 +590,6 @@ public class BasicLevelDirector : ScriptComponent
             damageComponent = enemy.AddComponent<PhysicalDamageComponent>();
             if (damageComponent != null)
             {
-                // Store base damage for future scaling
-                enemyBaseDamage[enemy] = baseEnemyDamage;
                 damageComponent.SetDamage(baseEnemyDamage);
                 // Enemy damage should not be affected by player upgrades
                 damageComponent.affectedByUpgrades = false;
@@ -595,14 +604,8 @@ public class BasicLevelDirector : ScriptComponent
         if (damageComponent != null)
         {
             // Get or store base damage
-            int baseDamage;
-            if (!enemyBaseDamage.TryGetValue(enemy, out baseDamage))
-            {
-                // If not tracked, use current damage as base (first time scaling)
-                baseDamage = damageComponent.GetDamage();
-                enemyBaseDamage[enemy] = baseDamage;
-            }
-            
+            int baseDamage = damageComponent.GetDamage();
+ 
             // Apply scaling
             int scaledDamage = Mathf.RoundToInt(baseDamage * damageMultiplier);
             damageComponent.SetDamage(scaledDamage);
@@ -631,7 +634,7 @@ public class BasicLevelDirector : ScriptComponent
         
         // Combine multipliers and clamp to maximum
         float totalMultiplier = timeMultiplier * levelMultiplier;
-        return Mathf.Min(totalMultiplier, maxHealthScaling);
+        return Mathf.Min(totalMultiplier, healthMaxScaling);
     }
     
     /// <summary>
@@ -656,7 +659,7 @@ public class BasicLevelDirector : ScriptComponent
         
         // Combine multipliers and clamp to maximum
         float totalMultiplier = timeMultiplier * levelMultiplier;
-        return Mathf.Min(totalMultiplier, maxSpeedScaling);
+        return Mathf.Min(totalMultiplier, speedMaxScaling);
     }
     
     /// <summary>
@@ -681,7 +684,7 @@ public class BasicLevelDirector : ScriptComponent
         
         // Combine multipliers and clamp to maximum
         float totalMultiplier = timeMultiplier * levelMultiplier;
-        return Mathf.Min(totalMultiplier, maxDamageScaling);
+        return Mathf.Min(totalMultiplier, damageMaxScaling);
     }
     
     /// <summary>
@@ -742,7 +745,6 @@ public class BasicLevelDirector : ScriptComponent
             recentKillTimes[i] = oldTime;
         }
         killTimeIndex = 0;
-        currentSpawnRateMultiplier = 1.0f;
     }
     
     /// <summary>
@@ -766,28 +768,50 @@ public class BasicLevelDirector : ScriptComponent
     }
     
     /// <summary>
-    /// Get the target number of enemies based on player level, time, and kill speed.
-    /// Uses faster scaling over time and adapts to player kill speed.
+    /// Calculate the target number of enemies to maintain based on gradient wave.
     /// </summary>
-    /// <returns>Target enemy count</returns>
     private int GetTargetEnemyCount()
     {
-        int playerLevel = GetPlayerLevel();
+
+        float gameTimeSeconds = Time.time - gameStartTime;
         
-        // Base count from level (linear scaling)
-        int levelBasedCount = baseMinEnemies + (playerLevel - 1) * enemiesPerLevel;
+        // Calculate progress within the current wave cycle (0-1)
+        float cycleProgress = (gameTimeSeconds % waveCycleDuration) / waveCycleDuration;
         
-        // Time-based scaling (exponential for faster growth)
-        float gameTimeMinutes = (Time.time - gameStartTime) / 60.0f;
-        float timeBasedEnemies = enemiesPerMinute * Mathf.Pow(gameTimeMinutes, timeScalingExponent);
+        // Sample the gradient to get the base target count
+        int baseTargetCount = enemyCountGradient.Sample(cycleProgress);
         
-        // Kill speed-based scaling (adapts to how fast player is killing)
+        // Apply kill speed multiplier
         float killSpeedMultiplier = CalculateKillSpeedMultiplier();
+        int targetCount = (int)(baseTargetCount * killSpeedMultiplier);
         
-        // Combine all factors
-        float totalCount = (levelBasedCount + timeBasedEnemies) * killSpeedMultiplier;
+        return Math.Max(1, targetCount); // Ensure at least 1 enemy
+    }
+    
+    /// <summary>
+    /// Calculate adaptive spawn interval based on deficit from target count.
+    /// Spawns faster when far below target, slower when close or at target.
+    /// </summary>
+    /// <param name="targetEnemyCount">Target enemy count to maintain</param>
+    /// <returns>Time interval until next spawn</returns>
+    private float CalculateAdaptiveSpawnInterval(int targetEnemyCount)
+    {
+        int deficit = targetEnemyCount - currentEnemyCount;
         
-        return Mathf.RoundToInt(totalCount);
+        // If at or above target, use max interval (slow spawning)
+        if (deficit <= 0)
+        {
+            return maxSpawnInterval;
+        }
+        
+        // Calculate interval based on deficit
+        // More deficit = faster spawning (lower interval)
+        // Formula: interval decreases as deficit increases
+        float deficitRatio = (float)deficit / Math.Max(1, targetEnemyCount);
+        float interval = maxSpawnInterval - (deficitRatio * maxSpawnInterval * spawnCatchUpMultiplier * deficit);
+        
+        // Clamp to min/max bounds
+        return Mathf.Clamp(interval, minSpawnInterval, maxSpawnInterval);
     }
     
     /// <summary>
@@ -798,7 +822,9 @@ public class BasicLevelDirector : ScriptComponent
     private float CalculateKillSpeedMultiplier()
     {
         float currentKillRate = CalculateRecentKillRate();
-        float baseKillRate = baseSpawnsPerSecond; // Expected baseline kill rate
+        
+        // Use a baseline of 1 kill per second as reference
+        float baseKillRate = 1.0f;
         
         // If kill rate is higher than baseline, increase target count
         // This creates a positive feedback loop: faster killing -> more enemies -> more challenge
@@ -829,27 +855,6 @@ public class BasicLevelDirector : ScriptComponent
     /// <summary>
     /// Update the adaptive spawn rate based on recent kill rate.
     /// </summary>
-    private void UpdateAdaptiveSpawnRate()
-    {
-        float currentKillRate = CalculateRecentKillRate();
-        float targetKillRate = baseSpawnsPerSecond; // Ideally, kills per second should match spawns per second
-        
-        // Calculate desired spawn rate multiplier
-        float desiredMultiplier = 1.0f;
-        if (currentKillRate > targetKillRate * 1.2f) // Player is killing 20% faster than spawn rate
-        {
-            // Increase spawn rate to maintain challenge (unbounded)
-            desiredMultiplier = currentKillRate / targetKillRate;
-        }
-        else if (currentKillRate < targetKillRate * 0.8f) // Player is killing 20% slower than spawn rate
-        {
-            // Decrease spawn rate to avoid overwhelming player
-            desiredMultiplier = Mathf.Max(currentKillRate / targetKillRate, 0.5f);
-        }
-        
-        // Smoothly adapt to the desired multiplier
-        currentSpawnRateMultiplier = Mathf.Lerp(currentSpawnRateMultiplier, desiredMultiplier, adaptationRate * Time.deltaTime);
-    }
     
     /// <summary>
     /// Calculate the recent kill rate (kills per second).
@@ -947,12 +952,11 @@ public class BasicLevelDirector : ScriptComponent
     /// Get current spawning statistics for debugging/UI.
     /// </summary>
     /// <returns>Spawning stats</returns>
-    public (int currentEnemies, int targetEnemies, float spawnRate, float killRate) GetSpawningStats()
+    public (int currentEnemies, int targetEnemies, float killRate) GetSpawningStats()
     {
         return (
             currentEnemyCount,
             GetTargetEnemyCount(),
-            baseSpawnsPerSecond * currentSpawnRateMultiplier,
             CalculateRecentKillRate()
         );
     }
