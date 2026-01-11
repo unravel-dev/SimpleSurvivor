@@ -13,23 +13,23 @@ public class EnemyStateMachine : ScriptComponent
     [Tooltip("Initial state when the enemy is created")]
     public EnemyState InitialState = EnemyState.Idle;
 
-    
+
     /// <summary>
     /// Event fired when the state changes.
     /// Parameters: (oldState, newState)
     /// </summary>
     public event Action<EnemyState, EnemyState> OnStateChanged;
-    
+
     /// <summary>
     /// Get the current state.
     /// </summary>
     public EnemyState CurrentState = EnemyState.Idle;
-    
+
     /// <summary>
     /// Get the previous state.
     /// </summary>
     public EnemyState PreviousState = EnemyState.Idle;
-    
+
     /// <summary>
     /// Called when the script is created.
     /// </summary>
@@ -37,7 +37,7 @@ public class EnemyStateMachine : ScriptComponent
     {
 
     }
-    
+
     /// <summary>
     /// Set the current state. Fires OnStateChanged event if state actually changes.
     /// </summary>
@@ -51,26 +51,26 @@ public class EnemyStateMachine : ScriptComponent
         {
             return false;
         }
-        
+
         // Validate transition (can't transition from Dead state)
         if (CurrentState == EnemyState.Dead && newState != EnemyState.Dead)
         {
             Log.Warning($"EnemyStateMachine on {owner.name}: Cannot transition from Dead state to {newState}");
             return false;
         }
-        
+
         // Store previous state
         PreviousState = CurrentState;
-        
+
         // Update current state
         CurrentState = newState;
-        
+
         // Fire event
         OnStateChanged?.Invoke(PreviousState, CurrentState);
-        
+
         return true;
     }
-    
+
     /// <summary>
     /// Check if a transition to the given state is allowed.
     /// </summary>
@@ -83,11 +83,11 @@ public class EnemyStateMachine : ScriptComponent
         {
             return newState == EnemyState.Dead;
         }
-        
+
         // All other transitions are allowed
         return true;
     }
-    
+
     /// <summary>
     /// Check if the enemy is currently in a specific state.
     /// </summary>
@@ -97,7 +97,7 @@ public class EnemyStateMachine : ScriptComponent
     {
         return CurrentState == state;
     }
-    
+
     /// <summary>
     /// Check if the enemy is in any of the given states.
     /// </summary>
@@ -112,22 +112,29 @@ public class EnemyStateMachine : ScriptComponent
         }
         return false;
     }
-    
+
     /// <summary>
     /// Check if the enemy can perform actions (not stunned, dying, or dead).
     /// </summary>
     /// <returns>True if the enemy can act.</returns>
     public bool CanAct()
     {
-        return !IsInAnyState(EnemyState.Stunned, EnemyState.Dying, EnemyState.Dead);
+        // Inline to avoid params array allocation in hot path
+        return !IsInState(EnemyState.Stunned) && !IsInState(EnemyState.Dying) && !IsInState(EnemyState.Dead);
     }
-    
+
     /// <summary>
     /// Check if the enemy can move (walking, running, or idle).
     /// </summary>
     /// <returns>True if the enemy can move.</returns>
     public bool CanMove()
     {
-        return IsInAnyState(EnemyState.Idle, EnemyState.Walking, EnemyState.Running);
+        // Inline to avoid params array allocation in hot path
+        return IsInState(EnemyState.Idle) || IsInState(EnemyState.Walking) || IsInState(EnemyState.Running);
+    }
+    
+    public bool IsDeadOrDying()
+    {
+        return IsInState(EnemyState.Dead) || IsInState(EnemyState.Dying);
     }
 }

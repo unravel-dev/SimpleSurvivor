@@ -2,7 +2,7 @@
  "entities_count": 8,
  "entities": [
   {
-   "id": 5242882,
+   "id": 13631490,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -146,7 +146,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 5242884,
+   "id": 13631492,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -234,7 +234,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 5242886,
+   "id": 13631494,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -303,7 +303,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 5242888,
+   "id": 13631496,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -365,7 +365,7 @@
       },
       "skew": {
        "x": 0.0,
-       "y": -8.350611868657154e-14,
+       "y": 0.0,
        "z": 0.0
       }
      },
@@ -374,13 +374,13 @@
      },
      "children": [
       {
-       "id": 5242889
+       "id": 13631497
       },
       {
-       "id": 5242890
+       "id": 13631498
       },
       {
-       "id": 5242891
+       "id": 13631499
       }
      ],
      "active": true
@@ -416,7 +416,7 @@
    }
   },
   {
-   "id": 5242889,
+   "id": 13631497,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -459,7 +459,7 @@
       }
      },
      "parent": {
-      "id": 5242888
+      "id": 13631496
      },
      "children": [],
      "active": true
@@ -482,7 +482,7 @@
    }
   },
   {
-   "id": 5242890,
+   "id": 13631498,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -525,7 +525,7 @@
       }
      },
      "parent": {
-      "id": 5242888
+      "id": 13631496
      },
      "children": [],
      "active": false
@@ -548,7 +548,7 @@
    }
   },
   {
-   "id": 5242891,
+   "id": 13631499,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -591,7 +591,7 @@
       }
      },
      "parent": {
-      "id": 5242888
+      "id": 13631496
      },
      "children": [],
      "active": true
@@ -617,7 +617,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 5242893,
+   "id": 9437197,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -667,7 +667,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 5242895,
+   "id": 9437199,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -710,7 +710,7 @@
      },
      "children": [
       {
-       "id": 5242896
+       "id": 9437200
       }
      ],
      "active": true
@@ -896,7 +896,7 @@
    }
   },
   {
-   "id": 5242896,
+   "id": 9437200,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -935,7 +935,7 @@
       }
      },
      "parent": {
-      "id": 5242895
+      "id": 9437199
      },
      "children": [],
      "active": true
@@ -1142,7 +1142,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 5242898,
+   "id": 9437202,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1218,7 +1218,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 5242900,
+   "id": 9437204,
    "components": {
     "has_tag_component": true,
     "tag_component": {

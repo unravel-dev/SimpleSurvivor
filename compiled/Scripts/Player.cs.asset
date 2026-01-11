@@ -27,7 +27,7 @@ public class Player : ScriptComponent
     [Tooltip("Base maximum health (before upgrades)")]
     public int baseMaxHealth = 100;
     [Tooltip("Base pickup range for experience and items (before upgrades)")]
-    public float basePickupRange = 5.0f;
+    public float basePickupRange = 10.0f;
     [Tooltip("Base luck value for better upgrade card rarities")]
     public float baseLuck = 0.0f;
     

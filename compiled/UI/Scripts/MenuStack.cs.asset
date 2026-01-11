@@ -13,6 +13,7 @@ public class MenuStack
     private Stack<Entity> menuStack = new Stack<Entity>();
     private Entity baseMenu; // The base menu that's always visible (e.g., GameHub)
     private bool isPaused = false;
+    private float previousTimeScale = 1f;
     
     /// <summary>
     /// Initialize the menu stack with a base menu.
@@ -22,7 +23,7 @@ public class MenuStack
     {
         baseMenu = baseMenuEntity;
         menuStack.Clear();
-        
+
         // Show base menu initially
         if (baseMenu)
         {
@@ -187,6 +188,7 @@ public class MenuStack
     {
         if (!isPaused)
         {
+            previousTimeScale = Time.timeScale;
             Time.timeScale = 0f;
             isPaused = true;
             Log.Info("MenuStack: Game paused");
@@ -200,7 +202,7 @@ public class MenuStack
     {
         if (isPaused)
         {
-            Time.timeScale = 1f;
+            Time.timeScale = previousTimeScale;
             isPaused = false;
             Log.Info("MenuStack: Game resumed");
         }

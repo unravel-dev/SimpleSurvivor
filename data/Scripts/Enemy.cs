@@ -120,7 +120,7 @@ public class Enemy : ScriptComponent
             return;
         
         // Don't update if dead or dying
-        if (stateMachine.IsInAnyState(EnemyState.Dead, EnemyState.Dying))
+        if (stateMachine.IsDeadOrDying())
             return;
         
         // Check if stunned - update state accordingly
