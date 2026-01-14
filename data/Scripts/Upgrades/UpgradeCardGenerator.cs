@@ -159,8 +159,13 @@ public static class UpgradeCardGenerator
         else
         {
             // Generate upgrade card options using the new system with player luck
-            cards = GenerateCardSelection(cardCount, playerLuck);     
-            // cards = GenerateCardSelectionDebug("Forked Lightning", cardCount);
+            cards = GenerateCardSelection(cardCount, playerLuck);
+
+            // if (level == 2)
+            // {
+            //     // cards = GenerateCardSelectionDebug("Fireball Nova", cardCount);
+            //     cards = GenerateCardSelectionDebug("Forked Lightning", cardCount);
+            // }    
       
             
         }
@@ -486,10 +491,6 @@ public static class UpgradeCardGenerator
             () => new UpgradeCard("Faster Rotation", UpgradeRarity.Common, 
                 FasterRotationUpgrade.Generate(20.0f, 30.0f), 1, typeof(BoomerangBladeAbility)),
                 
-            // Lightning Bolt upgrades (Common)
-            () => new UpgradeCard("Stun Chain", UpgradeRarity.Common, 
-                LightningStunUpgrade.Generate(0.5f, 1.0f), -1, typeof(SparkAbility)),
-                
             // Black Hole upgrades (Common)
             () => new UpgradeCard("Cursed Vortex", UpgradeRarity.Common, 
                 IncreaseDoomStacksUpgrade.Generate(1, 2), -1, typeof(BlackHoleAbility)),
@@ -619,7 +620,7 @@ public static class UpgradeCardGenerator
                 LightningChainExplosionUpgrade.Generate(2.0f, 3.0f, 40.0f, 60.0f), -1, typeof(SparkAbility)),
                 
             () => new UpgradeCard("Stun Chain+", UpgradeRarity.Epic, 
-                LightningStunUpgrade.Generate(1.0f, 1.5f), -1, typeof(SparkAbility)),
+                LightningStunUpgrade.Generate(1.0f, 1.5f), 1, typeof(SparkAbility)),
                 
             () => new UpgradeCard("Bouncing Lightning", UpgradeRarity.Epic, 
                 LightningBouncingUpgrade.Generate(), -1, typeof(SparkAbility)),
@@ -763,7 +764,7 @@ public static class UpgradeCardGenerator
                     IncreaseDoomStacksUpgrade.Generate(4, 6),
                     IncreasePullStrengthUpgrade.Generate(100.0f, 150.0f),
                     IncreaseDoomDamagePerStackUpgrade.Generate(60.0f, 100.0f)
-                }, -1, typeof(BlackHoleAbility)),
+                }, 1, typeof(BlackHoleAbility)),
             
             // Lightning Bolt upgrades (Legendary)
             () => new UpgradeCard("Forked Lightning", UpgradeRarity.Legendary, 
@@ -772,6 +773,13 @@ public static class UpgradeCardGenerator
                     LightningSplitUpgrade.Generate(2, 2),
                     SparkFlatCooldownModifierUpgrade.Generate(-2.5f, -2.5f)
                 }, 1, typeof(SparkAbility)),
+            
+            // Fireball upgrades (Legendary)
+            () => new UpgradeCard("Fireball Nova", UpgradeRarity.Legendary, 
+                new List<Upgrade>
+                {
+                    FireballNovaUpgrade.Generate(4, 8, 0.6f, 0.8f)
+                }, 1, typeof(FireballAbility)),
                 
             () => new UpgradeCard("Storm Master", UpgradeRarity.Legendary, 
                 new List<Upgrade>
@@ -779,7 +787,7 @@ public static class UpgradeCardGenerator
                     LightningChainExplosionUpgrade.Generate(3.0f, 4.0f, 60.0f, 80.0f),
                     LightningStunUpgrade.Generate(1.5f, 2.0f),
                     LightningBouncingUpgrade.Generate()
-                }, -1, typeof(SparkAbility)),
+                },1, typeof(SparkAbility)),
                 
             () => new UpgradeCard("Eternal Void", UpgradeRarity.Legendary, 
                 new List<Upgrade>

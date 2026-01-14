@@ -301,10 +301,10 @@ public class TopDownCamera : ScriptComponent
             return;
             
         // Get player controller to check movement
-        var Player = target.GetComponent<Player>();
-        if (Player != null)
+        var player = target.GetComponent<Player>();
+        if (player != null)
         {
-            Vector3 inputDirection = Player.GetInputDirection();
+            Vector3 inputDirection = player.GetInputDirection();
             Vector3 desiredLookAhead = inputDirection * lookAheadDistance;
             
             // Smooth the look-ahead offset (use appropriate deltaTime based on physics movement)

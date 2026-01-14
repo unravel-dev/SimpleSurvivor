@@ -53,3 +53,46 @@ public class BurnOnHitUpgrade : Upgrade
     }
 }
 
+/// <summary>
+/// Upgrade that makes Fireball explode into a nova of smaller fireballs in all directions.
+/// Legendary upgrade that can only be selected once.
+/// </summary>
+public class FireballNovaUpgrade : Upgrade
+{
+    /// <summary>
+    /// Number of fireballs to spawn in the nova pattern.
+    /// </summary>
+    public int NovaProjectileCount { get; set; }
+    
+    /// <summary>
+    /// Scale multiplier for nova projectiles (smaller than main fireball).
+    /// </summary>
+    public float NovaProjectileScale { get; set; }
+    
+    /// <summary>
+    /// Create a new fireball nova upgrade.
+    /// </summary>
+    /// <param name="novaProjectileCount">Number of projectiles to spawn in nova pattern.</param>
+    /// <param name="novaProjectileScale">Scale multiplier for nova projectiles (0.0-1.0).</param>
+    public FireballNovaUpgrade(int novaProjectileCount = 6, float novaProjectileScale = 0.7f) 
+        : base("Fireball Nova", $"Fireball explodes into {novaProjectileCount} smaller fireballs in all directions")
+    {
+        NovaProjectileCount = novaProjectileCount;
+        NovaProjectileScale = novaProjectileScale;
+    }
+    
+    /// <summary>
+    /// Generate a new FireballNovaUpgrade with a value from the specified range.
+    /// </summary>
+    /// <param name="minCount">Minimum number of nova projectiles.</param>
+    /// <param name="maxCount">Maximum number of nova projectiles.</param>
+    /// <param name="minScale">Minimum scale multiplier for nova projectiles.</param>
+    /// <param name="maxScale">Maximum scale multiplier for nova projectiles.</param>
+    /// <returns>A new FireballNovaUpgrade with random values from the ranges.</returns>
+    public static FireballNovaUpgrade Generate(int minCount = 4, int maxCount = 8, float minScale = 0.6f, float maxScale = 0.8f)
+    {
+        int count = Random.Range(minCount, maxCount + 1);
+        float scale = Random.Range(minScale, maxScale);
+        return new FireballNovaUpgrade(count, scale);
+    }
+}

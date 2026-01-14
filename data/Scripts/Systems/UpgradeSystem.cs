@@ -54,6 +54,7 @@ public static class UpgradeSystem
     private static readonly ExtendedPlagueDurationUpgrade accumulatedPlagueExtendedDurationUpgrade = new ExtendedPlagueDurationUpgrade(0.0f);
     private static readonly PlagueLifeDrainUpgrade accumulatedPlagueLifeDrainUpgrade = new PlagueLifeDrainUpgrade(0.0f, 0);
     private static readonly SparkFlatCooldownModifierUpgrade accumulatedSparkFlatCooldownModifierUpgrade = new SparkFlatCooldownModifierUpgrade(0.0f);
+    private static readonly FireballNovaUpgrade accumulatedFireballNovaUpgrade = new FireballNovaUpgrade(0, 0.0f);
 
     /// <summary>
     /// Get the total number of active upgrades.
@@ -262,6 +263,8 @@ public static class UpgradeSystem
         accumulatedPlagueLifeDrainUpgrade.HealChancePercent = 0.0f;
         accumulatedPlagueLifeDrainUpgrade.HealAmount = 0;
         accumulatedSparkFlatCooldownModifierUpgrade.ModifierSeconds = 0.0f;
+        accumulatedFireballNovaUpgrade.NovaProjectileCount = 0;
+        accumulatedFireballNovaUpgrade.NovaProjectileScale = 0.0f;
         
         // Accumulate values from all active upgrades
         float totalDamagePercent = 0.0f;
@@ -391,45 +394,35 @@ public static class UpgradeSystem
                 BurnOnHitUpgrade burnOnHitUpgrade = (BurnOnHitUpgrade)upgrade;
                 // Sum burn chances (will be capped at 100% in getter)
                 accumulatedBurnOnHitUpgrade.BurnChancePercent += burnOnHitUpgrade.BurnChancePercent;
-                // Use maximum stacks from all upgrades
-                if (burnOnHitUpgrade.BurnStacks > accumulatedBurnOnHitUpgrade.BurnStacks)
-                {
-                    accumulatedBurnOnHitUpgrade.BurnStacks = burnOnHitUpgrade.BurnStacks;
-                }
+                // Use stacks from all upgrades
+                accumulatedBurnOnHitUpgrade.BurnStacks += burnOnHitUpgrade.BurnStacks;
+            }
+            // Fireball nova upgrades
+            else if (upgrade is FireballNovaUpgrade)
+            {
+                FireballNovaUpgrade novaUpgrade = (FireballNovaUpgrade)upgrade;
+                accumulatedFireballNovaUpgrade.NovaProjectileCount += novaUpgrade.NovaProjectileCount;
+                accumulatedFireballNovaUpgrade.NovaProjectileScale += novaUpgrade.NovaProjectileScale;
             }
             // Lightning split upgrades
             else if (upgrade is LightningSplitUpgrade)
             {
                 LightningSplitUpgrade splitUpgrade = (LightningSplitUpgrade)upgrade;
-                // Use maximum split count from all upgrades (should only be one legendary)
-                if (splitUpgrade.SplitCount > accumulatedLightningSplitUpgrade.SplitCount)
-                {
-                    accumulatedLightningSplitUpgrade.SplitCount = splitUpgrade.SplitCount;
-                }
+                // Use split count from all upgrades
+                accumulatedLightningSplitUpgrade.SplitCount += splitUpgrade.SplitCount;
             }
             // Lightning chain explosion upgrades
             else if (upgrade is LightningChainExplosionUpgrade)
             {
                 LightningChainExplosionUpgrade explosionUpgrade = (LightningChainExplosionUpgrade)upgrade;
-                // Use maximum values from all upgrades
-                if (explosionUpgrade.ExplosionRadius > accumulatedLightningChainExplosionUpgrade.ExplosionRadius)
-                {
-                    accumulatedLightningChainExplosionUpgrade.ExplosionRadius = explosionUpgrade.ExplosionRadius;
-                }
-                if (explosionUpgrade.ExplosionDamagePercent > accumulatedLightningChainExplosionUpgrade.ExplosionDamagePercent)
-                {
-                    accumulatedLightningChainExplosionUpgrade.ExplosionDamagePercent = explosionUpgrade.ExplosionDamagePercent;
-                }
+                accumulatedLightningChainExplosionUpgrade.ExplosionRadius += explosionUpgrade.ExplosionRadius;
+                accumulatedLightningChainExplosionUpgrade.ExplosionDamagePercent += explosionUpgrade.ExplosionDamagePercent;
             }
             // Lightning stun upgrades
             else if (upgrade is LightningStunUpgrade)
             {
                 LightningStunUpgrade stunUpgrade = (LightningStunUpgrade)upgrade;
-                // Use maximum stun duration from all upgrades
-                if (stunUpgrade.StunDuration > accumulatedLightningStunUpgrade.StunDuration)
-                {
-                    accumulatedLightningStunUpgrade.StunDuration = stunUpgrade.StunDuration;
-                }
+                accumulatedLightningStunUpgrade.StunDuration += stunUpgrade.StunDuration;
             }
             // Lightning bouncing upgrade
             else if (upgrade is LightningBouncingUpgrade)
@@ -447,11 +440,7 @@ public static class UpgradeSystem
                 PlaguePoisonUpgrade poisonUpgrade = (PlaguePoisonUpgrade)upgrade;
                 // Sum poison chances (will be capped at 100% in getter)
                 accumulatedPlaguePoisonUpgrade.PoisonChancePercent += poisonUpgrade.PoisonChancePercent;
-                // Use maximum stacks from all upgrades
-                if (poisonUpgrade.PoisonStacks > accumulatedPlaguePoisonUpgrade.PoisonStacks)
-                {
-                    accumulatedPlaguePoisonUpgrade.PoisonStacks = poisonUpgrade.PoisonStacks;
-                }
+                accumulatedPlaguePoisonUpgrade.PoisonStacks += poisonUpgrade.PoisonStacks;
             }
             else if (upgrade is ExtendedPlagueDurationUpgrade)
             {
@@ -463,11 +452,7 @@ public static class UpgradeSystem
                 PlagueLifeDrainUpgrade lifeDrainUpgrade = (PlagueLifeDrainUpgrade)upgrade;
                 // Sum heal chances (will be capped at 100% in getter)
                 accumulatedPlagueLifeDrainUpgrade.HealChancePercent += lifeDrainUpgrade.HealChancePercent;
-                // Use maximum heal amount from all upgrades
-                if (lifeDrainUpgrade.HealAmount > accumulatedPlagueLifeDrainUpgrade.HealAmount)
-                {
-                    accumulatedPlagueLifeDrainUpgrade.HealAmount = lifeDrainUpgrade.HealAmount;
-                }
+                accumulatedPlagueLifeDrainUpgrade.HealAmount    += lifeDrainUpgrade.HealAmount;
             }
             // Spark flat cooldown modifier upgrades
             else if (upgrade is SparkFlatCooldownModifierUpgrade)
@@ -914,6 +899,32 @@ public static class UpgradeSystem
             return false;
         
         return Random.Range(0.0f, 100.0f) < chance;
+    }
+
+    // ========== FIREBALL NOVA UPGRADE HELPERS ==========
+
+    /// <summary>
+    /// Get the nova projectile count from all FireballNovaUpgrade bonuses (cached).
+    /// </summary>
+    public static int GetFireballNovaProjectileCount()
+    {
+        return accumulatedFireballNovaUpgrade.NovaProjectileCount;
+    }
+
+    /// <summary>
+    /// Get the nova projectile scale from all FireballNovaUpgrade bonuses (cached).
+    /// </summary>
+    public static float GetFireballNovaProjectileScale()
+    {
+        return accumulatedFireballNovaUpgrade.NovaProjectileScale;
+    }
+
+    /// <summary>
+    /// Check if fireball nova is enabled.
+    /// </summary>
+    public static bool HasFireballNova()
+    {
+        return accumulatedFireballNovaUpgrade.NovaProjectileCount > 0;
     }
 
     // ========== LIGHTNING SPLIT UPGRADE HELPERS ==========

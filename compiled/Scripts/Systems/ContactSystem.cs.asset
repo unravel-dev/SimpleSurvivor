@@ -197,11 +197,11 @@ public static class ContactSystem
                 }
             }
 
-            if (closestNonVisitedEnemy != Entity.Invalid)
-            {
-                return closestNonVisitedEnemy;
-            }
-            return closestEnemy;
+            // if (closestNonVisitedEnemy != Entity.Invalid)
+            // {
+            //     return closestNonVisitedEnemy;
+            // }
+            return closestNonVisitedEnemy;
         }
     }
     /// <summary>
@@ -503,7 +503,10 @@ public static class ContactSystem
             }
 
             // Decrement split count (like chain - represents remaining splits)
-            splitComponent.splitCount--;
+            if(splitComponent.subsplit)
+            {
+                splitComponent.splitCount--;
+            }
             splitComponent.visitedTargets.Add(target);
 
             var sourcePosition = splitComponent.owner.transform.position;
@@ -513,34 +516,65 @@ public static class ContactSystem
             var sourceChainComponent = source.GetComponent<ChainComponent>();
             var sourcePhysics = source.GetComponent<PhysicsComponent>();
 
-            // Create 2 split projectiles (standard fork pattern)
+            // Determine number of projectiles to spawn and splitting strategy
+            int projectilesToSpawn = splitComponent.splitPolicy == SplitPolicy.Radial 
+                ? splitComponent.projectilesPerSplit 
+                : 2; // Default fork pattern for closest target
+            
             // Each duplicate will have splitCount - 1, allowing recursive splitting
             int successfulSplits = 0;
             var visitedTargets = new List<Entity>(splitComponent.visitedTargets);
 
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < projectilesToSpawn; i++)
             {
-                // Find new targets for the split projectiles
-                QueryClosestTarget query = new QueryClosestTarget();
-                query.source = target;
-                query.maxRange = splitComponent.splitRange;
-                query.visitedTargets = visitedTargets;
+                Vector3 direction;
 
-                // Find a new target for this split projectile
-                Entity newTarget = FindClosestEnemy(query, target.layers);
-
-                if (!newTarget)
+                if (splitComponent.splitPolicy == SplitPolicy.Radial)
                 {
-                    // No target found, skip this split
-                    continue;
+                    // Radial pattern: spawn projectiles in a circle around the split point
+                    float angleStep = 360.0f / projectilesToSpawn;
+                    float angle = (splitComponent.radialStartAngle + angleStep * i) * Mathf.Deg2Rad;
+                    
+                    // Calculate direction in horizontal plane (XZ)
+                    direction = new Vector3(Mathf.Cos(angle), 0.0f, Mathf.Sin(angle));
+                    
+                    // For radial splits, we don't require a target - projectiles fire in all directions
+                    // Optionally try to find a target in this direction for homing, but it's not required
+                    QueryClosestTarget query = new QueryClosestTarget();
+                    query.source = target;
+                    query.maxRange = splitComponent.splitRange;
+                    query.visitedTargets = visitedTargets;
+                    
+                    // If no target found, still spawn the projectile in the radial direction
                 }
-
-                // If the new target is already in the visited targets list, clear it to allow looping
-                if (visitedTargets.Contains(newTarget))
+                else
                 {
-                    visitedTargets.Clear();
+                    // Closest target policy: find nearest enemy for each split
+                    QueryClosestTarget query = new QueryClosestTarget();
+                    query.source = target;
+                    query.maxRange = splitComponent.splitRange;
+                    query.visitedTargets = visitedTargets;
+
+                    // Find a new target for this split projectile
+                    var newTarget = FindClosestEnemy(query, target.layers);
+
+                    if (!newTarget)
+                    {
+                        // No target found, skip this split
+                        continue;
+                    }
+
+                    // If the new target is already in the visited targets list, clear it to allow looping
+                    if (visitedTargets.Contains(newTarget))
+                    {
+                        visitedTargets.Clear();
+                    }
+                    visitedTargets.Add(newTarget);
+
+                    // Calculate direction to new target
+                    var targetPosition = newTarget.transform.position + splitComponent.splitOffset;
+                    direction = (targetPosition - sourcePosition).normalized;
                 }
-                visitedTargets.Add(newTarget);
 
                 // Instantiate the duplicate projectile
                 Entity duplicatedProjectile = Scene.CloneEntity(source);
@@ -563,11 +597,14 @@ public static class ContactSystem
 
                 // Position the duplicated projectile at the hit location
                 duplicatedProjectile.transform.position = sourcePosition;
-
-                // Calculate direction to new target
-                var targetPosition = newTarget.transform.position + splitComponent.splitOffset;
-                var direction = (targetPosition - sourcePosition).normalized;
                 duplicatedProjectile.transform.forward = direction;
+
+                // Scale the duplicated projectile if scale is specified (for nova projectiles)
+                if (splitComponent.splitProjectileScale > 0.0f && splitComponent.splitProjectileScale != 1.0f)
+                {
+                    Vector3 originalScale = duplicatedProjectile.transform.scale;
+                    duplicatedProjectile.transform.scale = originalScale * splitComponent.splitProjectileScale;
+                }
 
                 // Copy the DamageSourceComponent from the original (preserved by CloneEntity, but ensure it exists)
                 var sourceDamageSource = source.GetComponent<DamageSourceComponent>();
@@ -584,16 +621,28 @@ public static class ContactSystem
                     }
                 }
 
-                // Set split count on duplicate to allow recursive splitting (like chain)
-                var duplicateSplitComponent = duplicatedProjectile.GetComponent<SplitComponent>();
-                if (duplicateSplitComponent != null)
+
+                if (splitComponent.subsplit)
                 {
-                    duplicateSplitComponent.splitCount = splitComponent.splitCount; // Pass remaining splits
-                    duplicateSplitComponent.visitedTargets = new List<Entity>(visitedTargets);
+                    // Set split count on duplicate to allow recursive splitting (like chain)
+                    var duplicateSplitComponent = duplicatedProjectile.GetComponent<SplitComponent>();
+                    if (duplicateSplitComponent != null)
+                    {
+                        duplicateSplitComponent.splitCount = splitComponent.splitCount; // Pass remaining splits
+                        duplicateSplitComponent.visitedTargets = new List<Entity>(visitedTargets);
+                        duplicateSplitComponent.splitPolicy = splitComponent.splitPolicy; // Preserve policy
+                        duplicateSplitComponent.projectilesPerSplit = splitComponent.projectilesPerSplit;
+                        duplicateSplitComponent.radialStartAngle = splitComponent.radialStartAngle;
+                        duplicateSplitComponent.splitProjectileScale = splitComponent.splitProjectileScale; // Preserve scale
+                    }
+                }
+                else
+                {
+                    duplicatedProjectile.RemoveComponent<SplitComponent>();
                 }
 
                 // Overwrite ChainComponent visited targets if it exists
-                var duplicateChainComponent = duplicatedProjectile.GetComponent<ChainComponent>();
+                    var duplicateChainComponent = duplicatedProjectile.GetComponent<ChainComponent>();
                 if (sourceChainComponent != null && duplicateChainComponent != null)
                 {
                     duplicateChainComponent.visitedTargets = new List<Entity>(sourceChainComponent.visitedTargets);

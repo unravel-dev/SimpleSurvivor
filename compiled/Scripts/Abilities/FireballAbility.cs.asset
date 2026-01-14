@@ -160,6 +160,23 @@ public class FireballAbility : Ability
             pierceComponent.pierceCount = UpgradeSystem.ApplyPierceUpgrade(basePierceCount);
         }
 
+        // Add fireball nova split component if upgrade is active
+        if (UpgradeSystem.HasFireballNova())
+        {
+            var splitComponent = fireballEntity.AddComponent<SplitComponent>();
+            if (splitComponent != null)
+            {
+                splitComponent.subsplit = false;
+                splitComponent.splitCount = 1; // Only split once on explosion
+                splitComponent.splitRange = UpgradeSystem.ApplyAreaOfEffectUpgrade(maxRange);
+                splitComponent.splitOffset = spawnOffset;
+                splitComponent.splitPolicy = SplitPolicy.Radial;
+                splitComponent.projectilesPerSplit = UpgradeSystem.GetFireballNovaProjectileCount();
+                splitComponent.radialStartAngle = 0.0f; // Start at 0 degrees
+                splitComponent.splitProjectileScale = UpgradeSystem.GetFireballNovaProjectileScale();
+            }
+        }
+
         // var chainComponent = fireballEntity.AddComponent<ChainComponent>();
         // if (chainComponent != null)
         // {

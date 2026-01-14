@@ -206,6 +206,7 @@ public class SparkAbility : Ability
                 var splitComponent = projectileEntity.AddComponent<SplitComponent>();
                 if (splitComponent != null)
                 {
+                    splitComponent.subsplit = false;
                     splitComponent.splitCount = splitCount;
                     splitComponent.splitRange = UpgradeSystem.ApplyAreaOfEffectUpgrade(maxRange);
                     splitComponent.splitOffset = spawnOffset;
