@@ -18,6 +18,17 @@ public struct QueryClosestTarget
     public float maxRange;
 
     public List<Entity> visitedTargets;
+    
+    /// <summary>
+    /// If true, only return targets that have line of sight (no obstacles blocking).
+    /// </summary>
+    public bool requireLineOfSight;
+    
+    /// <summary>
+    /// Layer mask for obstacles when checking line of sight.
+    /// Only used if requireLineOfSight is true.
+    /// </summary>
+    public LayerMask obstacleLayerMask;
 }
 /// <summary>
 /// System that handles contact between entities and determines what effects to apply
@@ -42,6 +53,33 @@ public static class ContactSystem
     private static readonly List<(Entity entity, float distance, bool isVisited)> tempEnemyList = new List<(Entity, float, bool)>(64);
     private static readonly List<Entity> tempResultList = new List<Entity>(64);
     
+    /// <summary>
+    /// Check if there's line of sight between two positions (no obstacles blocking).
+    /// </summary>
+    /// <param name="from">Source position.</param>
+    /// <param name="to">Target position.</param>
+    /// <param name="obstacleLayerMask">Layer mask for obstacles.</param>
+    /// <returns>True if line of sight is clear, false if blocked.</returns>
+    private static bool HasLineOfSight(Vector3 from, Vector3 to, LayerMask obstacleLayerMask)
+    {
+        Vector3 direction = to - from;
+        float distance = direction.magnitude;
+        
+        if (distance < 0.01f)
+        {
+            return true; // Same position, consider it clear
+        }
+        
+        direction = direction.normalized;
+        
+        // Perform raycast to check for obstacles
+        Ray ray;
+        ray.origin = from;
+        ray.direction = direction;
+        
+        var hit = Physics.Raycast(ray, distance, obstacleLayerMask);
+        return !hit.HasValue; // Clear if no hit
+    }
 
     
     /// <summary>
@@ -86,6 +124,15 @@ public static class ContactSystem
                 float distanceSquared = Vector3.Dot(deltaPos, deltaPos);
                 // Early distance check
                 if (distanceSquared > maxRangeSquared) continue;
+
+                // Check line of sight if required
+                if (query.requireLineOfSight)
+                {
+                    if (!HasLineOfSight(sourcePosition, entity.transform.position, query.obstacleLayerMask))
+                    {
+                        continue; // Skip if line of sight is blocked
+                    }
+                }
 
                 // Check if this entity has been visited
                 bool isVisited = query.visitedTargets != null && query.visitedTargets.Contains(entity);
@@ -178,6 +225,15 @@ public static class ContactSystem
 
                 // Calculate distance
                 float distance = Vector3.Distance(sourcePosition, entity.transform.position);
+
+                // Check line of sight if required
+                if (query.requireLineOfSight)
+                {
+                    if (!HasLineOfSight(sourcePosition, entity.transform.position, query.obstacleLayerMask))
+                    {
+                        continue; // Skip if line of sight is blocked
+                    }
+                }
 
                 // Check if this is the closest so far
                 if (distance < closestDistance)

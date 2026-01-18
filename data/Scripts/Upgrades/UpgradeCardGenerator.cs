@@ -8,7 +8,51 @@ using Unravel.Core;
 /// </summary>
 public static class UpgradeCardGenerator
 {
+    // Pool of all card instances - created once and reused
+    private static List<UpgradeCard> cardPool = null;
+    private static bool isPoolInitialized = false;
     
+    /// <summary>
+    /// Initialize the card pool by creating all card instances once.
+    /// Should be called at game start or when resetting.
+    /// </summary>
+    private static void InitializeCardPool()
+    {
+        if (isPoolInitialized && cardPool != null)
+            return;
+            
+        cardPool = new List<UpgradeCard>();
+        
+        // Generate all cards from all rarities
+        var allCardGenerators = new List<System.Func<UpgradeCard>>();
+        allCardGenerators.AddRange(GetNormalCards());
+        allCardGenerators.AddRange(GetCommonCards());
+        allCardGenerators.AddRange(GetEpicCards());
+        allCardGenerators.AddRange(GetLegendaryCards());
+        
+        // Create instances for all cards
+        foreach (var cardGenerator in allCardGenerators)
+        {
+            UpgradeCard card = cardGenerator();
+            if (card != null)
+            {
+                cardPool.Add(card);
+            }
+        }
+        
+        isPoolInitialized = true;
+    }
+    
+    /// <summary>
+    /// Reset the card pool (clears and reinitializes it).
+    /// Should be called when starting a new game.
+    /// </summary>
+    public static void ResetCardPool()
+    {
+        cardPool = null;
+        isPoolInitialized = false;
+        InitializeCardPool();
+    }
     
     /// <summary>
     /// Generate a selection of cards with mixed rarities for player choice.
@@ -18,9 +62,11 @@ public static class UpgradeCardGenerator
     /// <returns>List of upgrade cards with varied rarities.</returns>
     public static List<UpgradeCard> GenerateCardSelection(int cardCount = 3, float playerLuck = 0.0f)
     {
+        // Initialize pool if not already done
+        InitializeCardPool();
+        
         var cards = new List<UpgradeCard>();
-   
-        var validCards = new List<System.Func<UpgradeCard>>();
+        var selectedCardIndices = new HashSet<int>(); // Track which cards we've already selected this round
 
         UpgradeRarity previousRarity = UpgradeRarity.Normal;
         for (int i = 0; i < cardCount; i++)
@@ -28,30 +74,62 @@ public static class UpgradeCardGenerator
             // Weight rarity distribution based on player luck
             UpgradeRarity rarity = GetRandomWeightedRarity(playerLuck);
 
-            if (rarity != previousRarity || validCards.Count == 0)
+            // Get valid cards from pool that match rarity and have remaining picks
+            var validCards = new List<UpgradeCard>();
+            for (int j = 0; j < cardPool.Count; j++)
             {
-                var availableCards = GetAvailableCards(rarity);
-
-                // Filter out cards with 0 remaining picks
-                foreach (var cardGenerator in availableCards)
+                UpgradeCard card = cardPool[j];
+                
+                // Skip if already selected this round
+                if (selectedCardIndices.Contains(j))
+                    continue;
+                
+                // Check rarity match
+                if (card.Rarity != rarity)
+                    continue;
+                
+                // Check if player has required ability (if card requires one)
+                if (card.RequiredAbilityType != null && !PlayerHasAbility(card.RequiredAbilityType))
+                    continue;
+                
+                // Check remaining picks (0 means can't be picked, -1 means unlimited, >0 means has picks left)
+                if (card.GetRemainingPicks() != 0)
                 {
-                    UpgradeCard testCard = cardGenerator();
-                    if (testCard.GetRemainingPicks() != 0) // -1 (unlimited) or >0 (has picks left)
-                    {
-                        validCards.Add(cardGenerator);
-                    }
-                }
-
-                if (validCards.Count == 0)
-                {
-                    validCards = availableCards;
+                    validCards.Add(card);
                 }
             }
 
-            int randomIndex = Random.Range(0, validCards.Count);
-            cards.Add(validCards[randomIndex]());
+            // If no valid cards found for this rarity, fall back to any available cards
+            if (validCards.Count == 0)
+            {
+                for (int j = 0; j < cardPool.Count; j++)
+                {
+                    UpgradeCard card = cardPool[j];
+                    if (!selectedCardIndices.Contains(j) && 
+                        card.Rarity == rarity &&
+                        (card.RequiredAbilityType == null || PlayerHasAbility(card.RequiredAbilityType)) &&
+                        card.GetRemainingPicks() != 0)
+                    {
+                        validCards.Add(card);
+                    }
+                }
+            }
 
-            validCards.RemoveAt(randomIndex);
+            // Select a random card from valid cards
+            if (validCards.Count > 0)
+            {
+                int randomIndex = Random.Range(0, validCards.Count);
+                UpgradeCard selectedCard = validCards[randomIndex];
+                
+                // Find the index in the pool to mark as selected
+                int poolIndex = cardPool.IndexOf(selectedCard);
+                if (poolIndex >= 0)
+                {
+                    selectedCardIndices.Add(poolIndex);
+                }
+                
+                cards.Add(selectedCard);
+            }
             
             previousRarity = rarity;
         }

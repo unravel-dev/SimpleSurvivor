@@ -212,6 +212,9 @@ public static class UpgradeSystem
         
         // Reset all accumulated upgrade instances
         RecalculateAccumulatedUpgrades();
+        
+        // Reset card pool when clearing upgrades (new game/restart)
+        UpgradeCardGenerator.ResetCardPool();
 
         if (DebugUpgrades)
         {

@@ -1,8 +1,8 @@
 {
- "entities_count": 17,
+ "entities_count": 19,
  "entities": [
   {
-   "id": 4194306,
+   "id": 2097154,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -194,7 +194,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 4194308,
+   "id": 2097156,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -282,7 +282,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 4194310,
+   "id": 2097158,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -351,7 +351,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 4194312,
+   "id": 2097160,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -432,28 +432,28 @@
      },
      "children": [
       {
-       "id": 4194313
+       "id": 2097161
       },
       {
-       "id": 4194314
+       "id": 2097162
       },
       {
-       "id": 4194315
+       "id": 2097163
       },
       {
-       "id": 4194316
+       "id": 2097164
       },
       {
-       "id": 4194317
+       "id": 2097165
       },
       {
-       "id": 4194318
+       "id": 2097166
       },
       {
-       "id": 4194319
+       "id": 2097167
       },
       {
-       "id": 4194320
+       "id": 2097168
       }
      ],
      "active": true
@@ -525,7 +525,7 @@
    }
   },
   {
-   "id": 4194313,
+   "id": 2097161,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -568,7 +568,7 @@
       }
      },
      "parent": {
-      "id": 4194312
+      "id": 2097160
      },
      "children": [],
      "active": false
@@ -591,7 +591,7 @@
    }
   },
   {
-   "id": 4194314,
+   "id": 2097162,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -634,7 +634,7 @@
       }
      },
      "parent": {
-      "id": 4194312
+      "id": 2097160
      },
      "children": [],
      "active": false
@@ -657,7 +657,7 @@
    }
   },
   {
-   "id": 4194315,
+   "id": 2097163,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -700,7 +700,7 @@
       }
      },
      "parent": {
-      "id": 4194312
+      "id": 2097160
      },
      "children": [],
      "active": false
@@ -723,7 +723,7 @@
    }
   },
   {
-   "id": 4194316,
+   "id": 2097164,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -762,7 +762,7 @@
       }
      },
      "parent": {
-      "id": 4194312
+      "id": 2097160
      },
      "children": [],
      "active": false
@@ -785,7 +785,7 @@
    }
   },
   {
-   "id": 4194317,
+   "id": 2097165,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -824,7 +824,7 @@
       }
      },
      "parent": {
-      "id": 4194312
+      "id": 2097160
      },
      "children": [],
      "active": true
@@ -847,7 +847,7 @@
    }
   },
   {
-   "id": 4194318,
+   "id": 2097166,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -890,7 +890,7 @@
       }
      },
      "parent": {
-      "id": 4194312
+      "id": 2097160
      },
      "children": [],
      "active": false
@@ -913,7 +913,7 @@
    }
   },
   {
-   "id": 4194319,
+   "id": 2097167,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -956,7 +956,7 @@
       }
      },
      "parent": {
-      "id": 4194312
+      "id": 2097160
      },
      "children": [],
      "active": true
@@ -979,7 +979,7 @@
    }
   },
   {
-   "id": 4194320,
+   "id": 2097168,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1022,7 +1022,7 @@
       }
      },
      "parent": {
-      "id": 4194312
+      "id": 2097160
      },
      "children": [],
      "active": false
@@ -1048,7 +1048,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 4194322,
+   "id": 2097170,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1066,13 +1066,13 @@
      "local_transform": {
       "position": {
        "x": 4.6700768052687638e-7,
-       "y": -0.0000013820827007293702,
-       "z": -2.678904422737105e-7
+       "y": -0.0000013820376807416324,
+       "z": -2.6787918727677609e-7
       },
       "rotation": {
        "x": -1.1920938902676426e-7,
        "y": 1.4901168299275015e-8,
-       "z": -2.980232594040899e-8,
+       "z": -2.980232949312267e-8,
        "w": 1.0
       },
       "scale": {
@@ -1083,7 +1083,7 @@
       "skew": {
        "x": -5.960487214906607e-8,
        "y": -2.980337043823056e-8,
-       "z": -0.000005841220627189614
+       "z": -0.000005841400707140565
       }
      },
      "parent": {
@@ -1091,7 +1091,7 @@
      },
      "children": [
       {
-       "id": 4194323
+       "id": 2097171
       }
      ],
      "active": true
@@ -1099,7 +1099,7 @@
    }
   },
   {
-   "id": 4194323,
+   "id": 2097171,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1138,7 +1138,7 @@
       }
      },
      "parent": {
-      "id": 4194322
+      "id": 2097170
      },
      "children": [],
      "active": true
@@ -1161,12 +1161,12 @@
        }
       ],
       "material_instances": [],
-      "lod_limits": [
-       {
-        "min": 0,
-        "max": 100
-       }
-      ]
+      "lod_override_enabled": false,
+      "lod_override_level": 0,
+      "lod_selection_bias": 0.0,
+      "lod_transition_time": {
+       "count": 0.0
+      }
      }
     },
     "has_physics_component": true,
@@ -1221,7 +1221,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 1048597,
+   "id": 21,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1287,7 +1287,9 @@
         "orbCount": 1,
         "experienceVariance": 0.20000000298023225,
         "minimumExperience": 5.0,
-        "maximumExperience": 100.0
+        "maximumExperience": 100.0,
+        "magnetDropChance": 0.30000001192092898,
+        "chestDropChance": 0.10000000149011612
        },
        "timeModifiers": {
         "experiencePerMinute": 0.05000000074505806,
@@ -1321,7 +1323,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 1048599,
+   "id": 23,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1364,7 +1366,7 @@
      },
      "children": [
       {
-       "id": 1048600
+       "id": 24
       }
      ],
      "active": true
@@ -1372,7 +1374,7 @@
    }
   },
   {
-   "id": 1048600,
+   "id": 24,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1411,7 +1413,7 @@
       }
      },
      "parent": {
-      "id": 1048599
+      "id": 23
      },
      "children": [],
      "active": true
@@ -1437,7 +1439,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 1048602,
+   "id": 26,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1487,7 +1489,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 1048604,
+   "id": 28,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1533,6 +1535,11 @@
       },
       {
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components[1]/Health/destroyOnDeath",
+       "pretty_component_path": "Script/Scripts[1]/Health/destroyOnDeath"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
        "component_path": "tag_component/name",
        "pretty_component_path": "Tag/Name"
       }
@@ -1573,10 +1580,10 @@
      },
      "children": [
       {
-       "id": 1048605
+       "id": 29
       },
       {
-       "id": 1048606
+       "id": 30
       }
      ],
      "active": true
@@ -1635,25 +1642,25 @@
        "arriveRadius": 0.6000000238418579,
        "rotationSpeed": 180.0,
        "usePhysicsMovement": true,
+       "obstacleLookaheadDistance": 1.5,
+       "obstacleDetectionRadius": 0.4000000059604645,
+       "wallFollowDistance": 0.800000011920929,
+       "losCheckInterval": 0.20000000298023225,
+       "useLOSPathfinding": true,
+       "useObstacleAvoidance": true,
        "target": {
         "flags": 2,
         "id": 4294967295
        },
-       "autoFindPlayer": false,
-       "enemyType": "basic",
+       "autoFindPlayer": true,
+       "enemyType": 0,
        "contactDamageRadius": 2.0,
-       "contactDamageInterval": 0.5,
-       "walkAnimation": {
-        "uid": "00000000-0000-0000-0000-000000000000"
-       },
-       "stunAnimation": {
-        "uid": "00000000-0000-0000-0000-000000000000"
-       }
+       "contactDamageInterval": 0.5
       },
       {
        "type": "Health",
-       "maxHealth": 100000,
-       "currentHealth": 100000,
+       "maxHealth": 40,
+       "currentHealth": 40,
        "allowOverheal": false,
        "destroyOnDeath": false,
        "destroyDelay": 0.0
@@ -1663,7 +1670,7 @@
    }
   },
   {
-   "id": 1048605,
+   "id": 29,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1706,7 +1713,7 @@
       }
      },
      "parent": {
-      "id": 1048604
+      "id": 28
      },
      "children": [],
      "active": true
@@ -1729,18 +1736,18 @@
        }
       ],
       "material_instances": [],
-      "lod_limits": [
-       {
-        "min": 0,
-        "max": 100
-       }
-      ]
+      "lod_override_enabled": false,
+      "lod_override_level": 0,
+      "lod_selection_bias": 0.0,
+      "lod_transition_time": {
+       "count": 0.0
+      }
      }
     }
    }
   },
   {
-   "id": 1048606,
+   "id": 30,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1783,7 +1790,7 @@
       }
      },
      "parent": {
-      "id": 1048604
+      "id": 28
      },
      "children": [],
      "active": true
@@ -1806,12 +1813,12 @@
        }
       ],
       "material_instances": [],
-      "lod_limits": [
-       {
-        "min": 0,
-        "max": 100
-       }
-      ]
+      "lod_override_enabled": false,
+      "lod_override_level": 0,
+      "lod_selection_bias": 0.0,
+      "lod_transition_time": {
+       "count": 0.0
+      }
      }
     }
    }
@@ -1820,7 +1827,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 1048608,
+   "id": 32,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1863,6 +1870,11 @@
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
        "component_path": "script_component/script_components/Health/maxHealth",
        "pretty_component_path": "Script/Scripts/Health/maxHealth"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components[1]/Health/destroyOnDeath",
+       "pretty_component_path": "Script/Scripts[1]/Health/destroyOnDeath"
       },
       {
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
@@ -1911,10 +1923,10 @@
      },
      "children": [
       {
-       "id": 1048609
+       "id": 33
       },
       {
-       "id": 1048610
+       "id": 34
       }
      ],
      "active": true
@@ -1973,25 +1985,25 @@
        "arriveRadius": 0.6000000238418579,
        "rotationSpeed": 180.0,
        "usePhysicsMovement": true,
+       "obstacleLookaheadDistance": 1.5,
+       "obstacleDetectionRadius": 0.4000000059604645,
+       "wallFollowDistance": 0.800000011920929,
+       "losCheckInterval": 0.20000000298023225,
+       "useLOSPathfinding": true,
+       "useObstacleAvoidance": true,
        "target": {
         "flags": 2,
         "id": 4294967295
        },
-       "autoFindPlayer": false,
-       "enemyType": "basic",
+       "autoFindPlayer": true,
+       "enemyType": 0,
        "contactDamageRadius": 2.0,
-       "contactDamageInterval": 0.5,
-       "walkAnimation": {
-        "uid": "00000000-0000-0000-0000-000000000000"
-       },
-       "stunAnimation": {
-        "uid": "00000000-0000-0000-0000-000000000000"
-       }
+       "contactDamageInterval": 0.5
       },
       {
        "type": "Health",
-       "maxHealth": 100000,
-       "currentHealth": 100000,
+       "maxHealth": 40,
+       "currentHealth": 40,
        "allowOverheal": false,
        "destroyOnDeath": false,
        "destroyDelay": 0.0
@@ -2001,7 +2013,7 @@
    }
   },
   {
-   "id": 1048609,
+   "id": 33,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2044,7 +2056,7 @@
       }
      },
      "parent": {
-      "id": 1048608
+      "id": 32
      },
      "children": [],
      "active": true
@@ -2067,18 +2079,18 @@
        }
       ],
       "material_instances": [],
-      "lod_limits": [
-       {
-        "min": 0,
-        "max": 100
-       }
-      ]
+      "lod_override_enabled": false,
+      "lod_override_level": 0,
+      "lod_selection_bias": 0.0,
+      "lod_transition_time": {
+       "count": 0.0
+      }
      }
     }
    }
   },
   {
-   "id": 1048610,
+   "id": 34,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2121,7 +2133,7 @@
       }
      },
      "parent": {
-      "id": 1048608
+      "id": 32
      },
      "children": [],
      "active": true
@@ -2144,12 +2156,12 @@
        }
       ],
       "material_instances": [],
-      "lod_limits": [
-       {
-        "min": 0,
-        "max": 100
-       }
-      ]
+      "lod_override_enabled": false,
+      "lod_override_level": 0,
+      "lod_selection_bias": 0.0,
+      "lod_transition_time": {
+       "count": 0.0
+      }
      }
     }
    }
@@ -2158,7 +2170,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 1048612,
+   "id": 36,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2201,6 +2213,11 @@
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
        "component_path": "script_component/script_components/Health/maxHealth",
        "pretty_component_path": "Script/Scripts/Health/maxHealth"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components[1]/Health/destroyOnDeath",
+       "pretty_component_path": "Script/Scripts[1]/Health/destroyOnDeath"
       },
       {
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
@@ -2249,10 +2266,10 @@
      },
      "children": [
       {
-       "id": 1048613
+       "id": 37
       },
       {
-       "id": 1048614
+       "id": 38
       }
      ],
      "active": true
@@ -2311,25 +2328,25 @@
        "arriveRadius": 0.6000000238418579,
        "rotationSpeed": 180.0,
        "usePhysicsMovement": true,
+       "obstacleLookaheadDistance": 1.5,
+       "obstacleDetectionRadius": 0.4000000059604645,
+       "wallFollowDistance": 0.800000011920929,
+       "losCheckInterval": 0.20000000298023225,
+       "useLOSPathfinding": true,
+       "useObstacleAvoidance": true,
        "target": {
         "flags": 2,
         "id": 4294967295
        },
-       "autoFindPlayer": false,
-       "enemyType": "basic",
+       "autoFindPlayer": true,
+       "enemyType": 0,
        "contactDamageRadius": 2.0,
-       "contactDamageInterval": 0.5,
-       "walkAnimation": {
-        "uid": "00000000-0000-0000-0000-000000000000"
-       },
-       "stunAnimation": {
-        "uid": "00000000-0000-0000-0000-000000000000"
-       }
+       "contactDamageInterval": 0.5
       },
       {
        "type": "Health",
-       "maxHealth": 100000,
-       "currentHealth": 100000,
+       "maxHealth": 40,
+       "currentHealth": 40,
        "allowOverheal": false,
        "destroyOnDeath": false,
        "destroyDelay": 0.0
@@ -2339,7 +2356,7 @@
    }
   },
   {
-   "id": 1048613,
+   "id": 37,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2382,7 +2399,7 @@
       }
      },
      "parent": {
-      "id": 1048612
+      "id": 36
      },
      "children": [],
      "active": true
@@ -2405,18 +2422,18 @@
        }
       ],
       "material_instances": [],
-      "lod_limits": [
-       {
-        "min": 0,
-        "max": 100
-       }
-      ]
+      "lod_override_enabled": false,
+      "lod_override_level": 0,
+      "lod_selection_bias": 0.0,
+      "lod_transition_time": {
+       "count": 0.0
+      }
      }
     }
    }
   },
   {
-   "id": 1048614,
+   "id": 38,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2459,7 +2476,7 @@
       }
      },
      "parent": {
-      "id": 1048612
+      "id": 36
      },
      "children": [],
      "active": true
@@ -2482,12 +2499,12 @@
        }
       ],
       "material_instances": [],
-      "lod_limits": [
-       {
-        "min": 0,
-        "max": 100
-       }
-      ]
+      "lod_override_enabled": false,
+      "lod_override_level": 0,
+      "lod_selection_bias": 0.0,
+      "lod_transition_time": {
+       "count": 0.0
+      }
      }
     }
    }
@@ -2496,7 +2513,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 1048616,
+   "id": 40,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2539,6 +2556,11 @@
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
        "component_path": "script_component/script_components/Health/maxHealth",
        "pretty_component_path": "Script/Scripts/Health/maxHealth"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components[1]/Health/destroyOnDeath",
+       "pretty_component_path": "Script/Scripts[1]/Health/destroyOnDeath"
       },
       {
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
@@ -2587,10 +2609,10 @@
      },
      "children": [
       {
-       "id": 1048617
+       "id": 41
       },
       {
-       "id": 1048618
+       "id": 42
       }
      ],
      "active": true
@@ -2649,25 +2671,25 @@
        "arriveRadius": 0.6000000238418579,
        "rotationSpeed": 180.0,
        "usePhysicsMovement": true,
+       "obstacleLookaheadDistance": 1.5,
+       "obstacleDetectionRadius": 0.4000000059604645,
+       "wallFollowDistance": 0.800000011920929,
+       "losCheckInterval": 0.20000000298023225,
+       "useLOSPathfinding": true,
+       "useObstacleAvoidance": true,
        "target": {
         "flags": 2,
         "id": 4294967295
        },
-       "autoFindPlayer": false,
-       "enemyType": "basic",
+       "autoFindPlayer": true,
+       "enemyType": 0,
        "contactDamageRadius": 2.0,
-       "contactDamageInterval": 0.5,
-       "walkAnimation": {
-        "uid": "00000000-0000-0000-0000-000000000000"
-       },
-       "stunAnimation": {
-        "uid": "00000000-0000-0000-0000-000000000000"
-       }
+       "contactDamageInterval": 0.5
       },
       {
        "type": "Health",
-       "maxHealth": 100000,
-       "currentHealth": 100000,
+       "maxHealth": 40,
+       "currentHealth": 40,
        "allowOverheal": false,
        "destroyOnDeath": false,
        "destroyDelay": 0.0
@@ -2677,7 +2699,7 @@
    }
   },
   {
-   "id": 1048617,
+   "id": 41,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2720,7 +2742,7 @@
       }
      },
      "parent": {
-      "id": 1048616
+      "id": 40
      },
      "children": [],
      "active": true
@@ -2743,18 +2765,18 @@
        }
       ],
       "material_instances": [],
-      "lod_limits": [
-       {
-        "min": 0,
-        "max": 100
-       }
-      ]
+      "lod_override_enabled": false,
+      "lod_override_level": 0,
+      "lod_selection_bias": 0.0,
+      "lod_transition_time": {
+       "count": 0.0
+      }
      }
     }
    }
   },
   {
-   "id": 1048618,
+   "id": 42,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2797,7 +2819,7 @@
       }
      },
      "parent": {
-      "id": 1048616
+      "id": 40
      },
      "children": [],
      "active": true
@@ -2820,12 +2842,12 @@
        }
       ],
       "material_instances": [],
-      "lod_limits": [
-       {
-        "min": 0,
-        "max": 100
-       }
-      ]
+      "lod_override_enabled": false,
+      "lod_override_level": 0,
+      "lod_selection_bias": 0.0,
+      "lod_transition_time": {
+       "count": 0.0
+      }
      }
     }
    }
@@ -2834,7 +2856,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 1048620,
+   "id": 44,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2877,6 +2899,11 @@
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
        "component_path": "script_component/script_components/Health/maxHealth",
        "pretty_component_path": "Script/Scripts/Health/maxHealth"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components[1]/Health/destroyOnDeath",
+       "pretty_component_path": "Script/Scripts[1]/Health/destroyOnDeath"
       },
       {
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
@@ -2925,10 +2952,10 @@
      },
      "children": [
       {
-       "id": 1048621
+       "id": 45
       },
       {
-       "id": 1048622
+       "id": 46
       }
      ],
      "active": true
@@ -2987,25 +3014,25 @@
        "arriveRadius": 0.6000000238418579,
        "rotationSpeed": 180.0,
        "usePhysicsMovement": true,
+       "obstacleLookaheadDistance": 1.5,
+       "obstacleDetectionRadius": 0.4000000059604645,
+       "wallFollowDistance": 0.800000011920929,
+       "losCheckInterval": 0.20000000298023225,
+       "useLOSPathfinding": true,
+       "useObstacleAvoidance": true,
        "target": {
         "flags": 2,
         "id": 4294967295
        },
-       "autoFindPlayer": false,
-       "enemyType": "basic",
+       "autoFindPlayer": true,
+       "enemyType": 0,
        "contactDamageRadius": 2.0,
-       "contactDamageInterval": 0.5,
-       "walkAnimation": {
-        "uid": "00000000-0000-0000-0000-000000000000"
-       },
-       "stunAnimation": {
-        "uid": "00000000-0000-0000-0000-000000000000"
-       }
+       "contactDamageInterval": 0.5
       },
       {
        "type": "Health",
-       "maxHealth": 100000,
-       "currentHealth": 100000,
+       "maxHealth": 40,
+       "currentHealth": 40,
        "allowOverheal": false,
        "destroyOnDeath": false,
        "destroyDelay": 0.0
@@ -3015,7 +3042,7 @@
    }
   },
   {
-   "id": 1048621,
+   "id": 45,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3058,7 +3085,7 @@
       }
      },
      "parent": {
-      "id": 1048620
+      "id": 44
      },
      "children": [],
      "active": true
@@ -3081,18 +3108,18 @@
        }
       ],
       "material_instances": [],
-      "lod_limits": [
-       {
-        "min": 0,
-        "max": 100
-       }
-      ]
+      "lod_override_enabled": false,
+      "lod_override_level": 0,
+      "lod_selection_bias": 0.0,
+      "lod_transition_time": {
+       "count": 0.0
+      }
      }
     }
    }
   },
   {
-   "id": 1048622,
+   "id": 46,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3135,7 +3162,7 @@
       }
      },
      "parent": {
-      "id": 1048620
+      "id": 44
      },
      "children": [],
      "active": true
@@ -3158,12 +3185,12 @@
        }
       ],
       "material_instances": [],
-      "lod_limits": [
-       {
-        "min": 0,
-        "max": 100
-       }
-      ]
+      "lod_override_enabled": false,
+      "lod_override_level": 0,
+      "lod_selection_bias": 0.0,
+      "lod_transition_time": {
+       "count": 0.0
+      }
      }
     }
    }
@@ -3172,7 +3199,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 1048624,
+   "id": 48,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3215,6 +3242,11 @@
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
        "component_path": "script_component/script_components/Health/maxHealth",
        "pretty_component_path": "Script/Scripts/Health/maxHealth"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components[1]/Health/destroyOnDeath",
+       "pretty_component_path": "Script/Scripts[1]/Health/destroyOnDeath"
       },
       {
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
@@ -3263,10 +3295,10 @@
      },
      "children": [
       {
-       "id": 1048625
+       "id": 49
       },
       {
-       "id": 1048626
+       "id": 50
       }
      ],
      "active": true
@@ -3325,25 +3357,25 @@
        "arriveRadius": 0.6000000238418579,
        "rotationSpeed": 180.0,
        "usePhysicsMovement": true,
+       "obstacleLookaheadDistance": 1.5,
+       "obstacleDetectionRadius": 0.4000000059604645,
+       "wallFollowDistance": 0.800000011920929,
+       "losCheckInterval": 0.20000000298023225,
+       "useLOSPathfinding": true,
+       "useObstacleAvoidance": true,
        "target": {
         "flags": 2,
         "id": 4294967295
        },
-       "autoFindPlayer": false,
-       "enemyType": "basic",
+       "autoFindPlayer": true,
+       "enemyType": 0,
        "contactDamageRadius": 2.0,
-       "contactDamageInterval": 0.5,
-       "walkAnimation": {
-        "uid": "00000000-0000-0000-0000-000000000000"
-       },
-       "stunAnimation": {
-        "uid": "00000000-0000-0000-0000-000000000000"
-       }
+       "contactDamageInterval": 0.5
       },
       {
        "type": "Health",
-       "maxHealth": 100000,
-       "currentHealth": 100000,
+       "maxHealth": 40,
+       "currentHealth": 40,
        "allowOverheal": false,
        "destroyOnDeath": false,
        "destroyDelay": 0.0
@@ -3353,7 +3385,7 @@
    }
   },
   {
-   "id": 1048625,
+   "id": 49,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3396,7 +3428,7 @@
       }
      },
      "parent": {
-      "id": 1048624
+      "id": 48
      },
      "children": [],
      "active": true
@@ -3419,18 +3451,18 @@
        }
       ],
       "material_instances": [],
-      "lod_limits": [
-       {
-        "min": 0,
-        "max": 100
-       }
-      ]
+      "lod_override_enabled": false,
+      "lod_override_level": 0,
+      "lod_selection_bias": 0.0,
+      "lod_transition_time": {
+       "count": 0.0
+      }
      }
     }
    }
   },
   {
-   "id": 1048626,
+   "id": 50,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3473,7 +3505,7 @@
       }
      },
      "parent": {
-      "id": 1048624
+      "id": 48
      },
      "children": [],
      "active": true
@@ -3496,12 +3528,12 @@
        }
       ],
       "material_instances": [],
-      "lod_limits": [
-       {
-        "min": 0,
-        "max": 100
-       }
-      ]
+      "lod_override_enabled": false,
+      "lod_override_level": 0,
+      "lod_selection_bias": 0.0,
+      "lod_transition_time": {
+       "count": 0.0
+      }
      }
     }
    }
@@ -3510,7 +3542,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 1048628,
+   "id": 52,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3553,6 +3585,11 @@
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
        "component_path": "script_component/script_components/Health/maxHealth",
        "pretty_component_path": "Script/Scripts/Health/maxHealth"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "script_component/script_components[1]/Health/destroyOnDeath",
+       "pretty_component_path": "Script/Scripts[1]/Health/destroyOnDeath"
       },
       {
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
@@ -3601,10 +3638,10 @@
      },
      "children": [
       {
-       "id": 1048629
+       "id": 53
       },
       {
-       "id": 1048630
+       "id": 54
       }
      ],
      "active": true
@@ -3663,25 +3700,25 @@
        "arriveRadius": 0.6000000238418579,
        "rotationSpeed": 180.0,
        "usePhysicsMovement": true,
+       "obstacleLookaheadDistance": 1.5,
+       "obstacleDetectionRadius": 0.4000000059604645,
+       "wallFollowDistance": 0.800000011920929,
+       "losCheckInterval": 0.20000000298023225,
+       "useLOSPathfinding": true,
+       "useObstacleAvoidance": true,
        "target": {
         "flags": 2,
         "id": 4294967295
        },
-       "autoFindPlayer": false,
-       "enemyType": "basic",
+       "autoFindPlayer": true,
+       "enemyType": 0,
        "contactDamageRadius": 2.0,
-       "contactDamageInterval": 0.5,
-       "walkAnimation": {
-        "uid": "00000000-0000-0000-0000-000000000000"
-       },
-       "stunAnimation": {
-        "uid": "00000000-0000-0000-0000-000000000000"
-       }
+       "contactDamageInterval": 0.5
       },
       {
        "type": "Health",
-       "maxHealth": 100000,
-       "currentHealth": 100000,
+       "maxHealth": 40,
+       "currentHealth": 40,
        "allowOverheal": false,
        "destroyOnDeath": false,
        "destroyDelay": 0.0
@@ -3691,7 +3728,7 @@
    }
   },
   {
-   "id": 1048629,
+   "id": 53,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3734,7 +3771,7 @@
       }
      },
      "parent": {
-      "id": 1048628
+      "id": 52
      },
      "children": [],
      "active": true
@@ -3757,18 +3794,18 @@
        }
       ],
       "material_instances": [],
-      "lod_limits": [
-       {
-        "min": 0,
-        "max": 100
-       }
-      ]
+      "lod_override_enabled": false,
+      "lod_override_level": 0,
+      "lod_selection_bias": 0.0,
+      "lod_transition_time": {
+       "count": 0.0
+      }
      }
     }
    }
   },
   {
-   "id": 1048630,
+   "id": 54,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3811,7 +3848,7 @@
       }
      },
      "parent": {
-      "id": 1048628
+      "id": 52
      },
      "children": [],
      "active": true
@@ -3834,12 +3871,12 @@
        }
       ],
       "material_instances": [],
-      "lod_limits": [
-       {
-        "min": 0,
-        "max": 100
-       }
-      ]
+      "lod_override_enabled": false,
+      "lod_override_level": 0,
+      "lod_selection_bias": 0.0,
+      "lod_transition_time": {
+       "count": 0.0
+      }
      }
     }
    }
@@ -3848,7 +3885,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 1048632,
+   "id": 56,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -4097,7 +4134,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 1048634,
+   "id": 58,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -4144,7 +4181,7 @@
       "skew": {
        "x": -5.960487214906607e-8,
        "y": -2.980337399094424e-8,
-       "z": -0.0000058553646340442359
+       "z": -0.000005855795734532876
       }
      },
      "parent": {
@@ -4152,13 +4189,13 @@
      },
      "children": [
       {
-       "id": 1048635
+       "id": 59
       },
       {
-       "id": 1048638
+       "id": 60
       },
       {
-       "id": 1048639
+       "id": 61
       }
      ],
      "active": true
@@ -4216,7 +4253,7 @@
        "maxDeceleration": 30.0,
        "usePhysicsMovement": true,
        "baseMaxHealth": 100,
-       "basePickupRange": 5.0,
+       "basePickupRange": 10.0,
        "baseLuck": 0.0
       },
       {
@@ -4245,7 +4282,7 @@
    }
   },
   {
-   "id": 1048635,
+   "id": 59,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -4288,7 +4325,7 @@
       }
      },
      "parent": {
-      "id": 1048634
+      "id": 58
      },
      "children": [],
      "active": true
@@ -4311,12 +4348,12 @@
        }
       ],
       "material_instances": [],
-      "lod_limits": [
-       {
-        "min": 0,
-        "max": 100
-       }
-      ]
+      "lod_override_enabled": false,
+      "lod_override_level": 0,
+      "lod_selection_bias": 0.0,
+      "lod_transition_time": {
+       "count": 0.0
+      }
      }
     },
     "has_script_component": true,
@@ -4326,7 +4363,7 @@
    }
   },
   {
-   "id": 1048638,
+   "id": 60,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -4369,7 +4406,7 @@
       }
      },
      "parent": {
-      "id": 1048634
+      "id": 58
      },
      "children": [],
      "active": true
@@ -4392,18 +4429,18 @@
        }
       ],
       "material_instances": [],
-      "lod_limits": [
-       {
-        "min": 0,
-        "max": 100
-       }
-      ]
+      "lod_override_enabled": false,
+      "lod_override_level": 0,
+      "lod_selection_bias": 0.0,
+      "lod_transition_time": {
+       "count": 0.0
+      }
      }
     }
    }
   },
   {
-   "id": 1048639,
+   "id": 61,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -4446,7 +4483,7 @@
       }
      },
      "parent": {
-      "id": 1048634
+      "id": 58
      },
      "children": [],
      "active": true
@@ -4469,13 +4506,3229 @@
        }
       ],
       "material_instances": [],
-      "lod_limits": [
-       {
-        "min": 0,
-        "max": 100
-       }
-      ]
+      "lod_override_enabled": false,
+      "lod_override_level": 0,
+      "lod_selection_bias": 0.0,
+      "lod_transition_time": {
+       "count": 0.0
+      }
      }
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 63,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Wall",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 256
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -12.99011516571045,
+       "y": 0.369602769613266,
+       "z": 1.3015727996826172
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 3.0353078842163088,
+       "y": 4.187150955200195,
+       "z": 8.320317268371582
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "790e9074-e0a4-605b-baab-e3bff1339e45"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+       }
+      ],
+      "material_instances": [],
+      "lod_override_enabled": false,
+      "lod_override_level": 0,
+      "lod_selection_bias": 0.0,
+      "lod_transition_time": {
+       "count": 0.0
+      }
+     }
+    },
+    "has_physics_component": true,
+    "physics_component": {
+     "is_using_gravity": false,
+     "is_kinematic": true,
+     "is_sensor": false,
+     "is_autoscaled": true,
+     "mass": 1.0,
+     "include_layers": {
+      "mask": -1
+     },
+     "exclude_layers": {
+      "mask": 0
+     },
+     "freeze_position": {
+      "x": false,
+      "y": false,
+      "z": false
+     },
+     "freeze_rotation": {
+      "x": false,
+      "y": false,
+      "z": false
+     },
+     "material": {
+      "uid": "00000000-0000-0000-0000-000000000000"
+     },
+     "shapes": [
+      {
+       "shape": {
+        "index": 0,
+        "data": {
+         "center": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+         },
+         "extends": {
+          "x": 1.0,
+          "y": 1.0,
+          "z": 1.0
+         }
+        }
+       }
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 65,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "EnemyMonster2",
+     "tag": "Enemy"
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 32
+     }
+    },
+    "has_prefab_component": true,
+    "prefab_component": {
+     "source": {
+      "uid": "75a96678-fa39-de4b-8ada-27cbc39a6881"
+     },
+     "property_overrides": [
+      {
+       "entity_uuid": "3df7d3e0-0c57-7940-9219-029c73f3f172",
+       "component_path": "script_component/script_components[0]/Enemy/losCheckInterval",
+       "pretty_component_path": "Script/Scripts[0]/Enemy/losCheckInterval"
+      },
+      {
+       "entity_uuid": "3df7d3e0-0c57-7940-9219-029c73f3f172",
+       "component_path": "script_component/script_components[0]/Enemy/obstacleLayerMask",
+       "pretty_component_path": "Script/Scripts[0]/Enemy/obstacleLayerMask"
+      },
+      {
+       "entity_uuid": "3df7d3e0-0c57-7940-9219-029c73f3f172",
+       "component_path": "script_component/script_components[1]/Health/currentHealth",
+       "pretty_component_path": "Script/Scripts[1]/Health/currentHealth"
+      },
+      {
+       "entity_uuid": "3df7d3e0-0c57-7940-9219-029c73f3f172",
+       "component_path": "script_component/script_components[1]/Health/destroyOnDeath",
+       "pretty_component_path": "Script/Scripts[1]/Health/destroyOnDeath"
+      },
+      {
+       "entity_uuid": "3df7d3e0-0c57-7940-9219-029c73f3f172",
+       "component_path": "script_component/script_components[1]/Health/maxHealth",
+       "pretty_component_path": "Script/Scripts[1]/Health/maxHealth"
+      }
+     ],
+     "removed_entities": []
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "3df7d3e0-0c57-7940-9219-029c73f3f172"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -21.768798828125,
+       "y": 0.0,
+       "z": -0.6687870025634766
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [
+      {
+       "id": 66
+      }
+     ],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": false,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "b3446100-f1fb-aa4a-88f5-7d633864b984"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "f690511a-9f88-224e-8275-535064772f36"
+       }
+      ],
+      "material_instances": [],
+      "lod_override_enabled": false,
+      "lod_override_level": 0,
+      "lod_selection_bias": 0.0,
+      "lod_transition_time": {
+       "count": 0.0
+      }
+     }
+    },
+    "has_animation_component": true,
+    "animation_component": {
+     "animation": {
+      "uid": "083af0eb-5a62-ed46-abcc-9bb80292c73f"
+     },
+     "auto_play": true,
+     "culling_mode": 0,
+     "apply_root_motion": false,
+     "speed": 1.0,
+     "retargeting_mode": 0
+    },
+    "has_physics_component": true,
+    "physics_component": {
+     "is_using_gravity": false,
+     "is_kinematic": false,
+     "is_sensor": false,
+     "is_autoscaled": true,
+     "mass": 1.0,
+     "include_layers": {
+      "mask": -1
+     },
+     "exclude_layers": {
+      "mask": 128
+     },
+     "freeze_position": {
+      "x": false,
+      "y": true,
+      "z": false
+     },
+     "freeze_rotation": {
+      "x": true,
+      "y": true,
+      "z": true
+     },
+     "material": {
+      "uid": "00000000-0000-0000-0000-000000000000"
+     },
+     "shapes": [
+      {
+       "shape": {
+        "index": 2,
+        "data": {
+         "center": {
+          "x": 0.0,
+          "y": 1.149999976158142,
+          "z": 0.0
+         },
+         "radius": 0.5,
+         "length": 1.0
+        }
+       }
+      }
+     ]
+    },
+    "has_script_component": true,
+    "script_component": {
+     "script_components": [
+      {
+       "type": "Enemy",
+       "maxSpeed": 4.5,
+       "maxAcceleration": 13.0,
+       "slowRadius": 5.0,
+       "arriveRadius": 0.6000000238418579,
+       "rotationSpeed": 180.0,
+       "usePhysicsMovement": true,
+       "obstacleLookaheadDistance": 1.5,
+       "obstacleDetectionRadius": 0.4000000059604645,
+       "wallFollowDistance": 0.800000011920929,
+       "losCheckInterval": 0.10000000149011612,
+       "useLOSPathfinding": true,
+       "useObstacleAvoidance": true,
+       "target": {
+        "flags": 2,
+        "id": 4294967295
+       },
+       "autoFindPlayer": true,
+       "enemyType": 0,
+       "contactDamageRadius": 2.0,
+       "contactDamageInterval": 0.5
+      },
+      {
+       "type": "Health",
+       "maxHealth": 99999,
+       "currentHealth": 99999,
+       "allowOverheal": false,
+       "destroyOnDeath": false,
+       "destroyDelay": 0.0
+      },
+      {
+       "type": "DeathSequence",
+       "sinkDuration": 0.800000011920929,
+       "sinkDepth": 2.0,
+       "fadeOut": false,
+       "scaleDown": false,
+       "finalScale": 0.5,
+       "sinkDelay": 0.0
+      },
+      {
+       "type": "EnemyStateMachine",
+       "InitialState": 0,
+       "CurrentState": 0,
+       "PreviousState": 0
+      },
+      {
+       "type": "EnemyAnimationController",
+       "stateAnimations": {
+        "type": "EnemyAnimationController.StateAnimationMapping",
+        "size": 6,
+        "container": [
+         {
+          "state": 0,
+          "animation": {
+           "uid": "774a6e72-935b-4044-803a-9e9b3e43cfe7"
+          },
+          "blendTime": 0.20000000298023225,
+          "loop": true,
+          "canInterrupt": true
+         },
+         {
+          "state": 1,
+          "animation": {
+           "uid": "39eaa2d3-3b38-3940-a56e-e7e6aaec2216"
+          },
+          "blendTime": 0.20000000298023225,
+          "loop": true,
+          "canInterrupt": true
+         },
+         {
+          "state": 2,
+          "animation": {
+           "uid": "083af0eb-5a62-ed46-abcc-9bb80292c73f"
+          },
+          "blendTime": 0.20000000298023225,
+          "loop": true,
+          "canInterrupt": true
+         },
+         {
+          "state": 3,
+          "animation": {
+           "uid": "6fed1003-6b79-dc49-a8f2-d1e73b8a1191"
+          },
+          "blendTime": 0.20000000298023225,
+          "loop": true,
+          "canInterrupt": true
+         },
+         {
+          "state": 4,
+          "animation": {
+           "uid": "49e89455-3ef9-a146-9978-a76d40d510a4"
+          },
+          "blendTime": 0.20000000298023225,
+          "loop": false,
+          "canInterrupt": true
+         },
+         {
+          "state": 5,
+          "animation": {
+           "uid": "1f667d95-74b9-ee4e-812f-94289881b519"
+          },
+          "blendTime": 0.20000000298023225,
+          "loop": false,
+          "canInterrupt": true
+         }
+        ]
+       },
+       "defaultBlendTime": 0.20000000298023225
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": 66,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "RootNode",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "b9350ebc-7182-1c40-99e5-cecbf2abb9fe"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": -0.7071067094802856,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 0.7071068286895752
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999999403953552,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 65
+     },
+     "children": [
+      {
+       "id": 67
+      },
+      {
+       "id": 68
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "id": 67,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "BeholderMesh",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "b6d15ee3-e28a-6f42-95af-90cc03ca3712"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 66
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "id": 68,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Root",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "4f1f4af5-5ce3-b44b-ab23-eeb83bb3724f"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.1888045221567154,
+       "z": 1.2518948316574097
+      },
+      "rotation": {
+       "x": 0.2587912380695343,
+       "y": -0.6580479741096497,
+       "z": -0.2587912678718567,
+       "w": 0.6580479145050049
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -2.9583105742858608e-8,
+       "y": 1.1634181618092044e-8,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 66
+     },
+     "children": [
+      {
+       "id": 69
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 0
+    }
+   }
+  },
+  {
+   "id": 69,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Body",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "db620b1a-d2c4-834f-bd04-51a837f7fe73"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.2769378423690796,
+       "y": -2.8421708795129299e-16,
+       "z": -9.765644680964292e-18
+      },
+      "rotation": {
+       "x": -0.3603275716304779,
+       "y": 0.9328258633613586,
+       "z": -1.575042141155336e-8,
+       "w": -4.07751059583461e-8
+      },
+      "scale": {
+       "x": 1.0000001192092896,
+       "y": 1.0,
+       "z": 1.000000238418579
+      },
+      "skew": {
+       "x": 3.5527128317675538e-15,
+       "y": -1.0658138495302661e-14,
+       "z": 8.940696716308594e-8
+      }
+     },
+     "parent": {
+      "id": 68
+     },
+     "children": [
+      {
+       "id": 70
+      },
+      {
+       "id": 71
+      },
+      {
+       "id": 72
+      },
+      {
+       "id": 73
+      },
+      {
+       "id": 74
+      },
+      {
+       "id": 75
+      },
+      {
+       "id": 76
+      },
+      {
+       "id": 77
+      },
+      {
+       "id": 78
+      },
+      {
+       "id": 79
+      },
+      {
+       "id": 80
+      },
+      {
+       "id": 81
+      },
+      {
+       "id": 82
+      },
+      {
+       "id": 83
+      },
+      {
+       "id": 84
+      },
+      {
+       "id": 85
+      },
+      {
+       "id": 86
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 1
+    }
+   }
+  },
+  {
+   "id": 70,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "BottomBodyCTRL",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "c448a21b-98ba-3240-850e-4b8097d41d5f"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.33016669750213625,
+       "y": -8.881783998477906e-18,
+       "z": -1.0497143657702086e-16
+      },
+      "rotation": {
+       "x": -0.004294348880648613,
+       "y": -0.7070937752723694,
+       "z": -0.004294348414987326,
+       "w": 0.7070937156677246
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999998807907105,
+       "z": 0.9999998807907105
+      },
+      "skew": {
+       "x": -9.31322685637781e-10,
+       "y": -3.140585014271835e-12,
+       "z": -5.166311267679191e-10
+      }
+     },
+     "parent": {
+      "id": 69
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 2
+    }
+   }
+  },
+  {
+   "id": 71,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TopBodyCTRL",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "3d3dbf98-01d1-e940-afc4-efd797376510"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.3229402005672455,
+       "y": 0.008136196993291378,
+       "z": 1.0328350505393495e-16
+      },
+      "rotation": {
+       "x": -0.004294348880648613,
+       "y": -0.7070937752723694,
+       "z": -0.004294348414987326,
+       "w": 0.7070937156677246
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999998807907105,
+       "z": 0.9999998807907105
+      },
+      "skew": {
+       "x": -9.31322685637781e-10,
+       "y": -3.140585014271835e-12,
+       "z": -5.166311267679191e-10
+      }
+     },
+     "parent": {
+      "id": 69
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 3
+    }
+   }
+  },
+  {
+   "id": 72,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "LeftBodyCTRL",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "8cc5c500-8196-3e47-a27e-2e4f2ede754d"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.005986170843243599,
+       "y": -0.00008502160926582292,
+       "z": 0.3365047872066498
+      },
+      "rotation": {
+       "x": -0.004294348880648613,
+       "y": -0.7070937752723694,
+       "z": -0.004294348414987326,
+       "w": 0.7070937156677246
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999998807907105,
+       "z": 0.9999998807907105
+      },
+      "skew": {
+       "x": -9.31322685637781e-10,
+       "y": -3.140585014271835e-12,
+       "z": -5.166311267679191e-10
+      }
+     },
+     "parent": {
+      "id": 69
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 4
+    }
+   }
+  },
+  {
+   "id": 73,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "RightBodyCTRL",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "74455e04-a7c1-134c-a17c-ebbf0311c24c"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.005988078657537699,
+       "y": -0.00008499842806486413,
+       "z": -0.3365049958229065
+      },
+      "rotation": {
+       "x": 0.7070937156677246,
+       "y": -0.0042943693697452549,
+       "z": 0.7070937752723694,
+       "w": 0.0042943693697452549
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 0.9999998807907105
+      },
+      "skew": {
+       "x": 9.31322685637781e-10,
+       "y": -5.9601507729212247e-8,
+       "z": 5.16638065661823e-10
+      }
+     },
+     "parent": {
+      "id": 69
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 5
+    }
+   }
+  },
+  {
+   "id": 74,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "RearBodyCTRL",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "c3f235c1-b358-0443-a438-3dd72c7b4f25"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0023639199789613487,
+       "y": 0.2998071312904358,
+       "z": 2.17122867045451e-17
+      },
+      "rotation": {
+       "x": -0.004294348880648613,
+       "y": -0.7070937752723694,
+       "z": -0.004294348414987326,
+       "w": 0.7070937156677246
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999998807907105,
+       "z": 0.9999998807907105
+      },
+      "skew": {
+       "x": -9.31322685637781e-10,
+       "y": -3.140585014271835e-12,
+       "z": -5.166311267679191e-10
+      }
+     },
+     "parent": {
+      "id": 69
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 6
+    }
+   }
+  },
+  {
+   "id": 75,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "EyeCTRL",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "353734b9-b54c-1e4c-8de9-5a1b7aad8964"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.008593483828008175,
+       "y": -0.18079181015491486,
+       "z": -2.057979372789875e-17
+      },
+      "rotation": {
+       "x": -0.6911899447441101,
+       "y": 0.7226731777191162,
+       "z": -3.021286687499014e-8,
+       "w": -3.158904959832398e-8
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 7.549516567451065e-15,
+       "y": 7.105427357601002e-15,
+       "z": 5.960464477539063e-8
+      }
+     },
+     "parent": {
+      "id": 69
+     },
+     "children": [
+      {
+       "id": 87
+      },
+      {
+       "id": 88
+      },
+      {
+       "id": 89
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 7
+    }
+   }
+  },
+  {
+   "id": 87,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "EyeBallCTRL",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "926c4c46-587c-e847-8ab3-d0c51b965102"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.12242507934570313,
+       "y": 0.0,
+       "z": -2.1237260039813048e-17
+      },
+      "rotation": {
+       "x": -0.4918394386768341,
+       "y": 0.5080295205116272,
+       "z": 0.4918394982814789,
+       "w": 0.5080294609069824
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": -3.364619871604191e-8,
+       "z": 2.87749628569145e-8
+      }
+     },
+     "parent": {
+      "id": 75
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 8
+    }
+   }
+  },
+  {
+   "id": 88,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "UpperEyelidCTRL",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "c2fc1ee7-f6cf-924d-8da3-4f9bc92fc875"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.12597332894802094,
+       "y": 0.0,
+       "z": -2.1748149947182949e-17
+      },
+      "rotation": {
+       "x": -0.4918394386768341,
+       "y": 0.5080295205116272,
+       "z": 0.4918394982814789,
+       "w": 0.5080294609069824
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": -3.364619871604191e-8,
+       "z": 2.87749628569145e-8
+      }
+     },
+     "parent": {
+      "id": 75
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 9
+    }
+   }
+  },
+  {
+   "id": 89,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "LowerEyelidCTRL",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "e6527bc7-80f6-6547-bf7e-d390076d1cc5"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.12597332894802094,
+       "y": 0.0,
+       "z": -2.1748149947182949e-17
+      },
+      "rotation": {
+       "x": -0.4918394386768341,
+       "y": 0.5080295205116272,
+       "z": 0.4918394982814789,
+       "w": 0.5080294609069824
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": -3.364619871604191e-8,
+       "z": 2.87749628569145e-8
+      }
+     },
+     "parent": {
+      "id": 75
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 10
+    }
+   }
+  },
+  {
+   "id": 76,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Process01",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "dd5f3fc2-c362-144b-a7d1-cb560f1fcd09"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.4153200685977936,
+       "y": -0.06365077942609787,
+       "z": 0.08697647601366043
+      },
+      "rotation": {
+       "x": 0.007078223861753941,
+       "y": 0.9969735741615295,
+       "z": 0.013842483051121235,
+       "w": -0.07617112249135971
+      },
+      "scale": {
+       "x": 1.0000001192092896,
+       "y": 0.9999998211860657,
+       "z": 1.000000238418579
+      },
+      "skew": {
+       "x": -7.450578820566989e-9,
+       "y": -1.4435496353826239e-8,
+       "z": -5.587936335871291e-9
+      }
+     },
+     "parent": {
+      "id": 69
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 11
+    }
+   }
+  },
+  {
+   "id": 77,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TentacleA01",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "37aac9f7-1766-e140-8840-2894b173a2fa"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.23063519597053529,
+       "y": -0.06629878282546997,
+       "z": 0.36039701104164126
+      },
+      "rotation": {
+       "x": -0.06843351572751999,
+       "y": 0.8913586139678955,
+       "z": 0.043040402233600619,
+       "w": -0.4460316598415375
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0000001192092896
+      },
+      "skew": {
+       "x": -6.51925713412993e-9,
+       "y": -2.1886078727106907e-8,
+       "z": 1.4901161193847657e-8
+      }
+     },
+     "parent": {
+      "id": 69
+     },
+     "children": [
+      {
+       "id": 90
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 12
+    }
+   }
+  },
+  {
+   "id": 90,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TentacleA02",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "61fcd01d-14fb-e64c-9944-0f6b1199dee2"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.1259501874446869,
+       "y": -0.0011082638520747424,
+       "z": -0.0017218025168403984
+      },
+      "rotation": {
+       "x": 0.0031488891690969469,
+       "y": 0.0009249650174751878,
+       "z": 0.014682182110846043,
+       "w": 0.9998869299888611
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999998807907105,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 4.656613428188905e-10,
+       "y": 2.9103833926180658e-11,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 77
+     },
+     "children": [
+      {
+       "id": 91
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 13
+    }
+   }
+  },
+  {
+   "id": 91,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TentacleA03",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "4bf5f004-cb1f-c44e-8d40-275c745d9510"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.14155009388923646,
+       "y": 0.000940014491789043,
+       "z": -0.002486491110175848
+      },
+      "rotation": {
+       "x": -0.003906629979610443,
+       "y": 0.06517164409160614,
+       "z": -0.021133694797754289,
+       "w": 0.9976426959037781
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999998807907105,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 4.656612873077393e-10,
+       "y": -1.728767529129982e-8,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 90
+     },
+     "children": [
+      {
+       "id": 92
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 14
+    }
+   }
+  },
+  {
+   "id": 92,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TentacleA04",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "57fd9a5d-f5d6-6c45-9a46-1a8e91778c5f"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.10906152427196503,
+       "y": -0.0009312652400694788,
+       "z": 0.003234411124140024
+      },
+      "rotation": {
+       "x": 0.0007829453097656369,
+       "y": -0.020308252424001695,
+       "z": 0.006149317137897015,
+       "w": 0.9997745752334595
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 0.9999999403953552,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 2.3283064365386965e-10,
+       "y": 3.092281986027956e-9,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 91
+     },
+     "children": [
+      {
+       "id": 93
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 15
+    }
+   }
+  },
+  {
+   "id": 93,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TentacleA05",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "34dc2c02-2d36-b64d-b54e-a47e33ce75b8"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.1638757884502411,
+       "y": 4.973799171496525e-16,
+       "z": 1.8474110452136248e-15
+      },
+      "rotation": {
+       "x": -0.32056814432144167,
+       "y": -0.33300283551216128,
+       "z": 0.6655239462852478,
+       "w": 0.5860231518745422
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0000001192092896,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 1.1548399925231934e-7,
+       "y": 1.1920928955078126e-7,
+       "z": -7.4505797087454088e-9
+      }
+     },
+     "parent": {
+      "id": 92
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 16
+    }
+   }
+  },
+  {
+   "id": 78,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TentacleE01",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "203e4790-72e0-1f44-969e-04811781b672"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.3083833158016205,
+       "y": -0.1754143238067627,
+       "z": -0.215707466006279
+      },
+      "rotation": {
+       "x": -0.24245905876159669,
+       "y": 0.9301437139511108,
+       "z": -0.0759497657418251,
+       "w": 0.2650998532772064
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999999403953552,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 7.450581485102248e-9,
+       "y": 3.026798722771673e-8,
+       "z": -2.980232594040899e-8
+      }
+     },
+     "parent": {
+      "id": 69
+     },
+     "children": [
+      {
+       "id": 94
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 17
+    }
+   }
+  },
+  {
+   "id": 94,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TentacleE02",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "85a24606-2d96-9042-b046-96d815ae2793"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.10821165144443512,
+       "y": 0.0007348276558332145,
+       "z": -0.00046596614993177354
+      },
+      "rotation": {
+       "x": -0.00481913797557354,
+       "y": -0.012426216155290604,
+       "z": 0.014782488346099854,
+       "w": 0.9998019337654114
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 0.9999998807907105,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": -9.31322685637781e-10,
+       "y": 9.604265160945147e-10,
+       "z": 1.862645371275562e-9
+      }
+     },
+     "parent": {
+      "id": 78
+     },
+     "children": [
+      {
+       "id": 95
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 18
+    }
+   }
+  },
+  {
+   "id": 95,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TentacleE03",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "a3776871-9342-e24b-9f42-c5c0b8590dd2"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.11782656610012055,
+       "y": 0.0005614169640466571,
+       "z": -0.00008714364957995713
+      },
+      "rotation": {
+       "x": -0.0006662565865553916,
+       "y": -0.048928793519735339,
+       "z": 0.028200341388583185,
+       "w": 0.9984038472175598
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 0.9999999403953552,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 4.656613428188905e-10,
+       "y": -3.5288396649235666e-9,
+       "z": 7.450581485102248e-9
+      }
+     },
+     "parent": {
+      "id": 94
+     },
+     "children": [
+      {
+       "id": 96
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 19
+    }
+   }
+  },
+  {
+   "id": 96,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TentacleE04",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "5b69a56a-8342-b344-9880-f243f963eded"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.08371619135141373,
+       "y": 0.0038046243134886028,
+       "z": 0.001566025079227984
+      },
+      "rotation": {
+       "x": -0.010149373672902584,
+       "y": -0.003993064630776644,
+       "z": -0.041759226471185687,
+       "w": 0.9990682005882263
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 1.0,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 7.450580596923828e-9
+      }
+     },
+     "parent": {
+      "id": 95
+     },
+     "children": [
+      {
+       "id": 97
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 20
+    }
+   }
+  },
+  {
+   "id": 97,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TentacleE05",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "d933b6c3-1fce-0148-9398-bda1e9c75d1a"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.15094590187072755,
+       "y": 1.4210854397564649e-16,
+       "z": 7.105427198782324e-17
+      },
+      "rotation": {
+       "x": -0.014374797232449055,
+       "y": -0.008410622365772725,
+       "z": 0.07500795274972916,
+       "w": 0.9970438480377197
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 0.9999999403953552,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 1.862645149230957e-9,
+       "y": 1.862645149230957e-9,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 96
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 21
+    }
+   }
+  },
+  {
+   "id": 79,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TentacleD01",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "aa0fc60d-e374-9444-8450-1df2e30d1ecc"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.08171134442090988,
+       "y": 0.06275735050439835,
+       "z": -0.41120031476020815
+      },
+      "rotation": {
+       "x": 0.05557229369878769,
+       "y": 0.6559070348739624,
+       "z": 0.05994401127099991,
+       "w": 0.7504028677940369
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": -5.122274604474342e-9,
+       "y": -5.902257171896963e-8,
+       "z": -2.9802322387695315e-8
+      }
+     },
+     "parent": {
+      "id": 69
+     },
+     "children": [
+      {
+       "id": 98
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 22
+    }
+   }
+  },
+  {
+   "id": 98,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TentacleD02",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "d664ca7b-8f7f-1f40-83f8-779ad1c44b2a"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.12007992714643479,
+       "y": -0.00003058810034417547,
+       "z": 0.00032291971729137003
+      },
+      "rotation": {
+       "x": -0.0024758202489465477,
+       "y": -0.021355461329221727,
+       "z": -0.0014336900785565377,
+       "w": 0.9997678995132446
+      },
+      "scale": {
+       "x": 0.9999998807907105,
+       "y": 0.9999998807907105,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 4.656613428188905e-10,
+       "y": 2.229171736090052e-9,
+       "z": 2.3283067140944527e-10
+      }
+     },
+     "parent": {
+      "id": 79
+     },
+     "children": [
+      {
+       "id": 99
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 23
+    }
+   }
+  },
+  {
+   "id": 99,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TentacleD03",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "c27c8c32-c910-b045-ad2f-993d037287b4"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.15854480862617494,
+       "y": 3.552713599391162e-17,
+       "z": -8.526512638538789e-16
+      },
+      "rotation": {
+       "x": -0.00013895424490328878,
+       "y": -0.028045911341905595,
+       "z": -0.001908616628497839,
+       "w": 0.9996048212051392
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 0.9999999403953552,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": -2.9103833926180658e-11,
+       "y": -5.192874130699465e-9,
+       "z": 2.3283067140944527e-10
+      }
+     },
+     "parent": {
+      "id": 98
+     },
+     "children": [
+      {
+       "id": 100
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 24
+    }
+   }
+  },
+  {
+   "id": 100,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TentacleD04",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "39410983-9dff-f349-a4d3-8a463d931576"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.1210898756980896,
+       "y": -0.0021229975391179325,
+       "z": -0.001701191533356905
+      },
+      "rotation": {
+       "x": -0.0048331525176763538,
+       "y": -0.00424774456769228,
+       "z": 0.02811635099351406,
+       "w": 0.9995839595794678
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 0.9999998807907105,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 9.31322685637781e-10,
+       "y": 2.9103833232291267e-10,
+       "z": -3.725290742551124e-9
+      }
+     },
+     "parent": {
+      "id": 99
+     },
+     "children": [
+      {
+       "id": 101
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 25
+    }
+   }
+  },
+  {
+   "id": 101,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TentacleD05",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "fb8774c8-460f-5541-836a-54b53d5f003b"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.12287930399179459,
+       "y": 4.440891999238953e-18,
+       "z": -8.526512638538789e-16
+      },
+      "rotation": {
+       "x": 0.0030230835545808079,
+       "y": 0.0002845684066414833,
+       "z": 0.0114610455930233,
+       "w": 0.9999297261238098
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 4.656612873077393e-10,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 100
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 26
+    }
+   }
+  },
+  {
+   "id": 80,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TentacleB01",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "ac6984af-50cd-2641-aa06-d59ece11fc3b"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.19650842249393464,
+       "y": -0.18561594188213349,
+       "z": 0.32340559363365176
+      },
+      "rotation": {
+       "x": 0.09763560444116593,
+       "y": -0.47092404961586,
+       "z": -0.23060987889766694,
+       "w": 0.8458823561668396
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -2.2351741790771486e-8,
+       "y": 2.0489096641540528e-8,
+       "z": 2.9802322387695315e-8
+      }
+     },
+     "parent": {
+      "id": 69
+     },
+     "children": [
+      {
+       "id": 102
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 27
+    }
+   }
+  },
+  {
+   "id": 102,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TentacleB02",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "458505fb-c65b-2349-8368-eadadd41f7a7"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.10691486299037934,
+       "y": 0.0006326949223875999,
+       "z": -0.003916408400982618
+      },
+      "rotation": {
+       "x": 0.01128267589956522,
+       "y": -0.02751723676919937,
+       "z": -0.003167020622640848,
+       "w": 0.9995527267456055
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 0.9999999403953552,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -1.862645149230957e-9,
+       "y": -2.3137545213103296e-9,
+       "z": -4.656613428188905e-10
+      }
+     },
+     "parent": {
+      "id": 80
+     },
+     "children": [
+      {
+       "id": 103
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 28
+    }
+   }
+  },
+  {
+   "id": 103,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TentacleB03",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "dee4b7a2-2092-7942-83de-91c2a3764e6a"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.14817827939987184,
+       "y": -0.0004069549613632262,
+       "z": 0.003190345596522093
+      },
+      "rotation": {
+       "x": -0.00774768739938736,
+       "y": 0.05144510790705681,
+       "z": 0.0016001792391762138,
+       "w": 0.9986444711685181
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999999403953552,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 2.1136656869202854e-9,
+       "z": 4.656613428188905e-10
+      }
+     },
+     "parent": {
+      "id": 102
+     },
+     "children": [
+      {
+       "id": 104
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 29
+    }
+   }
+  },
+  {
+   "id": 104,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TentacleB04",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "514ab4e1-e200-a14e-a8d8-35061705e695"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.12711916863918305,
+       "y": 0.0034565036185085775,
+       "z": -0.005482122302055359
+      },
+      "rotation": {
+       "x": 0.014260077849030495,
+       "y": 0.011415183544158936,
+       "z": -0.014309284277260304,
+       "w": 0.9997307658195496
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999998807907105,
+       "z": 0.9999998807907105
+      },
+      "skew": {
+       "x": 1.862645371275562e-9,
+       "y": -2.561137302237171e-9,
+       "z": -1.862645371275562e-9
+      }
+     },
+     "parent": {
+      "id": 103
+     },
+     "children": [
+      {
+       "id": 105
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 30
+    }
+   }
+  },
+  {
+   "id": 105,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TentacleB05",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "295b7afd-88db-2940-9e79-1f0a2d18b437"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.18558551371097566,
+       "y": -3.552713467042264e-16,
+       "z": -4.2632563192693947e-16
+      },
+      "rotation": {
+       "x": 0.020312855020165445,
+       "y": -0.003917228896170855,
+       "z": 0.004073592368513346,
+       "w": 0.9997777342796326
+      },
+      "scale": {
+       "x": 0.9999998807907105,
+       "y": 0.9999998807907105,
+       "z": 0.9999998807907105
+      },
+      "skew": {
+       "x": 0.0,
+       "y": -4.074536819054231e-10,
+       "z": -1.862645371275562e-9
+      }
+     },
+     "parent": {
+      "id": 104
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 31
+    }
+   }
+  },
+  {
+   "id": 81,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Process04",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "c59bc37c-c1d6-1446-ba1e-44cee73069aa"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.31862393021583559,
+       "y": -0.18825478851795197,
+       "z": -0.22134551405906678
+      },
+      "rotation": {
+       "x": -0.041262902319431308,
+       "y": 0.2785656750202179,
+       "z": -0.20209114253520966,
+       "w": 0.9380074143409729
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999999403953552,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 1.1175870895385743e-8,
+       "y": -2.2351741790771486e-8,
+       "z": -2.980232594040899e-8
+      }
+     },
+     "parent": {
+      "id": 69
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 32
+    }
+   }
+  },
+  {
+   "id": 82,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TentacleC01",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "5df6f946-7e23-3c49-b4c9-9f95cf8297fe"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.3912375867366791,
+       "y": 0.056653980165719989,
+       "z": -0.08376418054103852
+      },
+      "rotation": {
+       "x": 0.007051588036119938,
+       "y": 0.09446348249912262,
+       "z": 0.08982592076063156,
+       "w": 0.9914425015449524
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 1.0,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 1.862645371275562e-9,
+       "y": 7.508789146015716e-9,
+       "z": -1.4901161193847657e-8
+      }
+     },
+     "parent": {
+      "id": 69
+     },
+     "children": [
+      {
+       "id": 106
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 33
+    }
+   }
+  },
+  {
+   "id": 106,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TentacleC02",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "836a5b1b-b224-a44e-b3ae-49043cd6672a"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.091420017182827,
+       "y": 0.00042412668699398637,
+       "z": 0.0004841319750994444
+      },
+      "rotation": {
+       "x": 0.0026049395091831686,
+       "y": -0.025947589427232744,
+       "z": -0.016799552366137506,
+       "w": 0.9995187520980835
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 2.6921043172478677e-9,
+       "z": 3.725290298461914e-9
+      }
+     },
+     "parent": {
+      "id": 82
+     },
+     "children": [
+      {
+       "id": 107
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 34
+    }
+   }
+  },
+  {
+   "id": 107,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TentacleC03",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "814e8f29-01db-9046-99ac-0b82521dee9e"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.11585215479135513,
+       "y": -0.00005150587821844965,
+       "z": 0.00006623058288823813
+      },
+      "rotation": {
+       "x": -0.0018535108538344503,
+       "y": 0.02593006193637848,
+       "z": -0.012748245149850846,
+       "w": 0.9995808005332947
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 2.3283064365386965e-10,
+       "y": 4.503817763179541e-9,
+       "z": -1.862645149230957e-9
+      }
+     },
+     "parent": {
+      "id": 106
+     },
+     "children": [
+      {
+       "id": 108
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 35
+    }
+   }
+  },
+  {
+   "id": 108,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TentacleC04",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "79d992dd-fa6d-944f-9ce7-44621c74528e"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.08851312100887299,
+       "y": -0.00031688815215602517,
+       "z": 0.0002729772822931409
+      },
+      "rotation": {
+       "x": 0.0036756026092916729,
+       "y": -0.02518223412334919,
+       "z": 0.02053028717637062,
+       "w": 0.99946528673172
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 0.9999999403953552,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 9.31322685637781e-10,
+       "y": 2.153683675842899e-9,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 107
+     },
+     "children": [
+      {
+       "id": 109
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 36
+    }
+   }
+  },
+  {
+   "id": 109,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TentacleC05",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "18479d93-5368-3842-be65-2dc8ab45711f"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.09819494187831879,
+       "y": -7.105427198782324e-17,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": -0.05294383317232132,
+       "y": -0.10763908922672272,
+       "z": 0.005361428018659353,
+       "w": 0.9927648305892944
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999999403953552,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 5.8207665354359509e-9,
+       "z": -1.862645371275562e-9
+      }
+     },
+     "parent": {
+      "id": 108
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 37
+    }
+   }
+  },
+  {
+   "id": 83,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Process03",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "1c6a9a09-a923-ed45-bafb-9962cb566a0b"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.37940993905067446,
+       "y": 0.18159903585910798,
+       "z": 0.06916866451501847
+      },
+      "rotation": {
+       "x": 0.025668499991297723,
+       "y": -0.03459759056568146,
+       "z": 0.21992842853069306,
+       "w": 0.9745644330978394
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 3.725290298461914e-9,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 69
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 38
+    }
+   }
+  },
+  {
+   "id": 84,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TentacleF01",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "95da2750-ee50-4343-b1cd-3b276745a071"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.2477315068244934,
+       "y": 0.28514009714126589,
+       "z": 0.17913272976875306
+      },
+      "rotation": {
+       "x": 0.37157800793647768,
+       "y": 0.8877905011177063,
+       "z": -0.09984210133552551,
+       "w": -0.2525655925273895
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -3.3527612686157229e-8,
+       "y": 1.6298145055770875e-8,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 69
+     },
+     "children": [
+      {
+       "id": 110
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 39
+    }
+   }
+  },
+  {
+   "id": 110,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TentacleF02",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "71962da6-dcb7-3542-94df-a9ece2ae1d18"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.14963236451148988,
+       "y": 0.00020698836306110024,
+       "z": 0.0007030583801679313
+      },
+      "rotation": {
+       "x": 0.011755015701055527,
+       "y": -0.030120516195893289,
+       "z": -0.004237613640725613,
+       "w": 0.999468207359314
+      },
+      "scale": {
+       "x": 0.9999998807907105,
+       "y": 1.0,
+       "z": 0.9999998807907105
+      },
+      "skew": {
+       "x": -1.862645371275562e-9,
+       "y": 4.802132469450271e-9,
+       "z": 9.313225746154786e-10
+      }
+     },
+     "parent": {
+      "id": 84
+     },
+     "children": [
+      {
+       "id": 111
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 40
+    }
+   }
+  },
+  {
+   "id": 111,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TentacleF03",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "9635900e-5a3b-2046-90bc-7e3c2dbc9429"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.18701715767383576,
+       "y": -0.0009402133291587234,
+       "z": -0.0004595214268192649
+      },
+      "rotation": {
+       "x": -0.00830055121332407,
+       "y": -0.004579371772706509,
+       "z": 0.016385961323976518,
+       "w": 0.9998208284378052
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 0.9999999403953552,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -1.862645149230957e-9,
+       "y": -1.3387762010097504e-9,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 110
+     },
+     "children": [
+      {
+       "id": 112
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 41
+    }
+   }
+  },
+  {
+   "id": 112,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TentacleF04",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "50fb512e-b76c-6843-a14a-66a78030e76c"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.14878641068935395,
+       "y": 0.00588628277182579,
+       "z": 0.009470488876104355
+      },
+      "rotation": {
+       "x": 0.04573225975036621,
+       "y": 0.004282149951905012,
+       "z": -0.03558081015944481,
+       "w": 0.9983106851577759
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999999403953552,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 2.2351743567128325e-8,
+       "y": -4.656613428188905e-10,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 111
+     },
+     "children": [
+      {
+       "id": 113
+      }
+     ],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 42
+    }
+   }
+  },
+  {
+   "id": 113,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "TentacleF05",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "4d5861b9-11e4-4b4d-b1e3-bd3fd60f05cd"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.1789616197347641,
+       "y": 2.8421708795129299e-16,
+       "z": 2.8421708795129299e-16
+      },
+      "rotation": {
+       "x": -0.0414213202893734,
+       "y": -0.10139685869216919,
+       "z": 0.024460993707180024,
+       "w": 0.993682324886322
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999999403953552,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": -7.450581485102248e-9,
+       "y": 1.3969839507410598e-8,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 112
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 43
+    }
+   }
+  },
+  {
+   "id": 85,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Process02",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "657e61a8-4a2b-264f-addf-89659cfe050e"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.07566964626312256,
+       "y": 0.1877395063638687,
+       "z": 0.3880442678928375
+      },
+      "rotation": {
+       "x": -0.1933070570230484,
+       "y": -0.5848531723022461,
+       "z": 0.13885220885276795,
+       "w": 0.7754349112510681
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 0.9999999403953552,
+       "z": 0.9999999403953552
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 3.725290742551124e-9,
+       "z": -5.960465188081798e-8
+      }
+     },
+     "parent": {
+      "id": 69
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 44
+    }
+   }
+  },
+  {
+   "id": 86,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Process05",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "2ef3a880-a27d-c041-9b39-9cf70fbcded3"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.15017788112163545,
+       "y": 0.2623293697834015,
+       "z": -0.2495146095752716
+      },
+      "rotation": {
+       "x": -0.4884420335292816,
+       "y": -0.41940557956695559,
+       "z": 0.7161722779273987,
+       "w": 0.26948222517967226
+      },
+      "scale": {
+       "x": 0.9999999403953552,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 8.940696716308594e-8,
+       "y": 1.4901161193847657e-7,
+       "z": -1.1920928955078126e-7
+      }
+     },
+     "parent": {
+      "id": 69
+     },
+     "children": [],
+     "active": true
+    },
+    "has_bone_component": true,
+    "bone_component": {
+     "bone_index": 45
     }
    }
   }
