@@ -2,7 +2,7 @@
  "entities": [
   {
    "prefab_uid": "19924d2b-cb25-c84c-807b-5e3fc5f7984c",
-   "id": 3145803,
+   "id": 2097269,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -23,9 +23,9 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": -59.54674530029297,
+       "x": 0.0,
        "y": 0.0,
-       "z": -2.103231430053711
+       "z": 0.0
       },
       "rotation": {
        "x": 0.0,
@@ -51,7 +51,7 @@
      "children": [
       {
        "prefab_uid": "4e2516ad-8e17-1e47-a62c-17715b9435ca",
-       "id": 3145804
+       "id": 2097270
       }
      ],
      "active": true
@@ -74,19 +74,64 @@
        }
       ],
       "material_instances": [],
-      "lod_limits": [
-       {
-        "min": 0,
-        "max": 100
-       }
-      ]
+      "lod_override_enabled": false,
+      "lod_override_level": 0,
+      "lod_selection_bias": 0.0,
+      "lod_transition_time": {
+       "count": 0.0
+      }
      }
+    },
+    "has_physics_component": true,
+    "physics_component": {
+     "is_using_gravity": false,
+     "is_kinematic": true,
+     "is_sensor": false,
+     "is_autoscaled": true,
+     "mass": 1.0,
+     "include_layers": {
+      "mask": -1
+     },
+     "exclude_layers": {
+      "mask": 0
+     },
+     "freeze_position": {
+      "x": false,
+      "y": false,
+      "z": false
+     },
+     "freeze_rotation": {
+      "x": false,
+      "y": false,
+      "z": false
+     },
+     "material": {
+      "uid": "00000000-0000-0000-0000-000000000000"
+     },
+     "shapes": [
+      {
+       "shape": {
+        "index": 4,
+        "data": {
+         "center": {
+          "x": 0.0,
+          "y": -0.800000011920929,
+          "z": 0.0
+         },
+         "mesh_asset": {
+          "uid": "c49b6f7f-8982-d446-b87d-a9311e90538b"
+         },
+         "collision_type": 0
+        }
+       }
+      }
+     ]
     }
    }
   },
   {
    "prefab_uid": "4e2516ad-8e17-1e47-a62c-17715b9435ca",
-   "id": 3145804,
+   "id": 2097270,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -130,12 +175,12 @@
      },
      "parent": {
       "prefab_uid": "19924d2b-cb25-c84c-807b-5e3fc5f7984c",
-      "id": 3145803
+      "id": 2097269
      },
      "children": [
       {
        "prefab_uid": "03437df9-6c0b-f54a-a708-9c356497cb33",
-       "id": 3145805
+       "id": 2097271
       }
      ],
      "active": true
@@ -144,7 +189,7 @@
   },
   {
    "prefab_uid": "03437df9-6c0b-f54a-a708-9c356497cb33",
-   "id": 3145805,
+   "id": 2097271,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -188,7 +233,7 @@
      },
      "parent": {
       "prefab_uid": "4e2516ad-8e17-1e47-a62c-17715b9435ca",
-      "id": 3145804
+      "id": 2097270
      },
      "children": [],
      "active": true

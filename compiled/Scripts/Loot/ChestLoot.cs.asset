@@ -34,7 +34,7 @@ public class ChestLoot : ScriptComponent
             return;
         }
 
-        playerComponent.ShowUpgradeSelectionMenu();
+        playerComponent.OnChestLoot();
        
         // Destroy the chest (don't call base.CollectLoot() as it also destroys, and we want to control when)
         Scene.DestroyEntity(owner);

@@ -1,5 +1,5 @@
 {
- "entities_count": 19,
+ "entities_count": 21,
  "entities": [
   {
    "id": 2097154,
@@ -1066,8 +1066,8 @@
      "local_transform": {
       "position": {
        "x": 4.6700768052687638e-7,
-       "y": -0.0000013820376807416324,
-       "z": -2.6787918727677609e-7
+       "y": -0.000001381963897983951,
+       "z": -2.6786074158735575e-7
       },
       "rotation": {
        "x": -1.1920938902676426e-7,
@@ -1083,7 +1083,7 @@
       "skew": {
        "x": -5.960487214906607e-8,
        "y": -2.980337043823056e-8,
-       "z": -0.000005841400707140565
+       "z": -0.00000584169583817129
       }
      },
      "parent": {
@@ -1221,7 +1221,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 21,
+   "id": 1048597,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1323,7 +1323,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 23,
+   "id": 1048599,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1366,7 +1366,7 @@
      },
      "children": [
       {
-       "id": 24
+       "id": 1048600
       }
      ],
      "active": true
@@ -1374,7 +1374,7 @@
    }
   },
   {
-   "id": 24,
+   "id": 1048600,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1413,7 +1413,7 @@
       }
      },
      "parent": {
-      "id": 23
+      "id": 1048599
      },
      "children": [],
      "active": true
@@ -1439,7 +1439,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 26,
+   "id": 1048602,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1489,7 +1489,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 28,
+   "id": 1048604,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1580,10 +1580,10 @@
      },
      "children": [
       {
-       "id": 29
+       "id": 1048605
       },
       {
-       "id": 30
+       "id": 1048606
       }
      ],
      "active": true
@@ -1670,7 +1670,7 @@
    }
   },
   {
-   "id": 29,
+   "id": 1048605,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1713,7 +1713,7 @@
       }
      },
      "parent": {
-      "id": 28
+      "id": 1048604
      },
      "children": [],
      "active": true
@@ -1747,7 +1747,7 @@
    }
   },
   {
-   "id": 30,
+   "id": 1048606,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1790,7 +1790,7 @@
       }
      },
      "parent": {
-      "id": 28
+      "id": 1048604
      },
      "children": [],
      "active": true
@@ -1827,7 +1827,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 32,
+   "id": 1048608,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1923,10 +1923,10 @@
      },
      "children": [
       {
-       "id": 33
+       "id": 1048609
       },
       {
-       "id": 34
+       "id": 1048610
       }
      ],
      "active": true
@@ -2013,7 +2013,7 @@
    }
   },
   {
-   "id": 33,
+   "id": 1048609,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2056,7 +2056,7 @@
       }
      },
      "parent": {
-      "id": 32
+      "id": 1048608
      },
      "children": [],
      "active": true
@@ -2090,7 +2090,7 @@
    }
   },
   {
-   "id": 34,
+   "id": 1048610,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2133,7 +2133,7 @@
       }
      },
      "parent": {
-      "id": 32
+      "id": 1048608
      },
      "children": [],
      "active": true
@@ -2170,7 +2170,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 36,
+   "id": 1048612,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2266,10 +2266,10 @@
      },
      "children": [
       {
-       "id": 37
+       "id": 1048613
       },
       {
-       "id": 38
+       "id": 1048614
       }
      ],
      "active": true
@@ -2356,7 +2356,7 @@
    }
   },
   {
-   "id": 37,
+   "id": 1048613,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2399,7 +2399,7 @@
       }
      },
      "parent": {
-      "id": 36
+      "id": 1048612
      },
      "children": [],
      "active": true
@@ -2433,7 +2433,7 @@
    }
   },
   {
-   "id": 38,
+   "id": 1048614,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2476,7 +2476,7 @@
       }
      },
      "parent": {
-      "id": 36
+      "id": 1048612
      },
      "children": [],
      "active": true
@@ -2513,7 +2513,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 40,
+   "id": 1048616,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2609,10 +2609,10 @@
      },
      "children": [
       {
-       "id": 41
+       "id": 1048617
       },
       {
-       "id": 42
+       "id": 1048618
       }
      ],
      "active": true
@@ -2699,7 +2699,7 @@
    }
   },
   {
-   "id": 41,
+   "id": 1048617,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2742,7 +2742,7 @@
       }
      },
      "parent": {
-      "id": 40
+      "id": 1048616
      },
      "children": [],
      "active": true
@@ -2776,7 +2776,7 @@
    }
   },
   {
-   "id": 42,
+   "id": 1048618,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2819,7 +2819,7 @@
       }
      },
      "parent": {
-      "id": 40
+      "id": 1048616
      },
      "children": [],
      "active": true
@@ -2856,7 +2856,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 44,
+   "id": 1048620,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2952,10 +2952,10 @@
      },
      "children": [
       {
-       "id": 45
+       "id": 1048621
       },
       {
-       "id": 46
+       "id": 1048622
       }
      ],
      "active": true
@@ -3042,7 +3042,7 @@
    }
   },
   {
-   "id": 45,
+   "id": 1048621,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3085,7 +3085,7 @@
       }
      },
      "parent": {
-      "id": 44
+      "id": 1048620
      },
      "children": [],
      "active": true
@@ -3119,7 +3119,7 @@
    }
   },
   {
-   "id": 46,
+   "id": 1048622,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3162,7 +3162,7 @@
       }
      },
      "parent": {
-      "id": 44
+      "id": 1048620
      },
      "children": [],
      "active": true
@@ -3199,7 +3199,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 48,
+   "id": 1048624,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3295,10 +3295,10 @@
      },
      "children": [
       {
-       "id": 49
+       "id": 1048625
       },
       {
-       "id": 50
+       "id": 1048626
       }
      ],
      "active": true
@@ -3385,7 +3385,7 @@
    }
   },
   {
-   "id": 49,
+   "id": 1048625,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3428,7 +3428,7 @@
       }
      },
      "parent": {
-      "id": 48
+      "id": 1048624
      },
      "children": [],
      "active": true
@@ -3462,7 +3462,7 @@
    }
   },
   {
-   "id": 50,
+   "id": 1048626,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3505,7 +3505,7 @@
       }
      },
      "parent": {
-      "id": 48
+      "id": 1048624
      },
      "children": [],
      "active": true
@@ -3542,7 +3542,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 52,
+   "id": 1048628,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3638,10 +3638,10 @@
      },
      "children": [
       {
-       "id": 53
+       "id": 1048629
       },
       {
-       "id": 54
+       "id": 1048630
       }
      ],
      "active": true
@@ -3728,7 +3728,7 @@
    }
   },
   {
-   "id": 53,
+   "id": 1048629,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3771,7 +3771,7 @@
       }
      },
      "parent": {
-      "id": 52
+      "id": 1048628
      },
      "children": [],
      "active": true
@@ -3805,7 +3805,7 @@
    }
   },
   {
-   "id": 54,
+   "id": 1048630,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3848,7 +3848,7 @@
       }
      },
      "parent": {
-      "id": 52
+      "id": 1048628
      },
      "children": [],
      "active": true
@@ -3885,7 +3885,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 56,
+   "id": 1048632,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -4134,7 +4134,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 58,
+   "id": 1048634,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -4152,7 +4152,18 @@
      "source": {
       "uid": "d35f6f73-72f6-2d45-b192-6bea2d27ee52"
      },
-     "property_overrides": [],
+     "property_overrides": [
+      {
+       "entity_uuid": "a82a633d-e387-654e-a55e-7fb2006b3975",
+       "component_path": "physics_component/freeze_position",
+       "pretty_component_path": "Physics/Freeze Position"
+      },
+      {
+       "entity_uuid": "a82a633d-e387-654e-a55e-7fb2006b3975",
+       "component_path": "physics_component/is_using_gravity",
+       "pretty_component_path": "Physics/Use Gravity"
+      }
+     ],
      "removed_entities": []
     },
     "has_prefab_id_component": true,
@@ -4165,7 +4176,7 @@
       "position": {
        "x": 4.670094995162799e-7,
        "y": -0.000004600723968906095,
-       "z": -2.670427647899487e-7
+       "z": -2.670216190381325e-7
       },
       "rotation": {
        "x": -1.1920938902676426e-7,
@@ -4189,20 +4200,20 @@
      },
      "children": [
       {
-       "id": 59
+       "id": 1048635
       },
       {
-       "id": 60
+       "id": 1048636
       },
       {
-       "id": 61
+       "id": 1048637
       }
      ],
      "active": true
     },
     "has_physics_component": true,
     "physics_component": {
-     "is_using_gravity": false,
+     "is_using_gravity": true,
      "is_kinematic": false,
      "is_sensor": false,
      "is_autoscaled": true,
@@ -4215,7 +4226,7 @@
      },
      "freeze_position": {
       "x": false,
-      "y": true,
+      "y": false,
       "z": false
      },
      "freeze_rotation": {
@@ -4282,7 +4293,7 @@
    }
   },
   {
-   "id": 59,
+   "id": 1048635,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -4325,7 +4336,7 @@
       }
      },
      "parent": {
-      "id": 58
+      "id": 1048634
      },
      "children": [],
      "active": true
@@ -4363,7 +4374,7 @@
    }
   },
   {
-   "id": 60,
+   "id": 1048636,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -4406,7 +4417,7 @@
       }
      },
      "parent": {
-      "id": 58
+      "id": 1048634
      },
      "children": [],
      "active": true
@@ -4440,7 +4451,7 @@
    }
   },
   {
-   "id": 61,
+   "id": 1048637,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -4483,7 +4494,7 @@
       }
      },
      "parent": {
-      "id": 58
+      "id": 1048634
      },
      "children": [],
      "active": true
@@ -4520,7 +4531,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 63,
+   "id": 1048639,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -4538,8 +4549,8 @@
      "local_transform": {
       "position": {
        "x": -12.99011516571045,
-       "y": 0.369602769613266,
-       "z": 1.3015727996826172
+       "y": 0.3696027994155884,
+       "z": 1.3015729188919068
       },
       "rotation": {
        "x": 0.0,
@@ -4642,7 +4653,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 65,
+   "id": 1048641,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -4661,6 +4672,16 @@
       "uid": "75a96678-fa39-de4b-8ada-27cbc39a6881"
      },
      "property_overrides": [
+      {
+       "entity_uuid": "3df7d3e0-0c57-7940-9219-029c73f3f172",
+       "component_path": "physics_component/freeze_position",
+       "pretty_component_path": "Physics/Freeze Position"
+      },
+      {
+       "entity_uuid": "3df7d3e0-0c57-7940-9219-029c73f3f172",
+       "component_path": "physics_component/is_using_gravity",
+       "pretty_component_path": "Physics/Use Gravity"
+      },
       {
        "entity_uuid": "3df7d3e0-0c57-7940-9219-029c73f3f172",
        "component_path": "script_component/script_components[0]/Enemy/losCheckInterval",
@@ -4723,7 +4744,7 @@
      },
      "children": [
       {
-       "id": 66
+       "id": 1048642
       }
      ],
      "active": true
@@ -4767,7 +4788,7 @@
     },
     "has_physics_component": true,
     "physics_component": {
-     "is_using_gravity": false,
+     "is_using_gravity": true,
      "is_kinematic": false,
      "is_sensor": false,
      "is_autoscaled": true,
@@ -4780,7 +4801,7 @@
      },
      "freeze_position": {
       "x": false,
-      "y": true,
+      "y": false,
       "z": false
      },
      "freeze_rotation": {
@@ -4926,7 +4947,7 @@
    }
   },
   {
-   "id": 66,
+   "id": 1048642,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -4969,14 +4990,14 @@
       }
      },
      "parent": {
-      "id": 65
+      "id": 1048641
      },
      "children": [
       {
-       "id": 67
+       "id": 1048643
       },
       {
-       "id": 68
+       "id": 1048644
       }
      ],
      "active": true
@@ -4984,7 +5005,7 @@
    }
   },
   {
-   "id": 67,
+   "id": 1048643,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -5027,7 +5048,7 @@
       }
      },
      "parent": {
-      "id": 66
+      "id": 1048642
      },
      "children": [],
      "active": true
@@ -5041,7 +5062,7 @@
    }
   },
   {
-   "id": 68,
+   "id": 1048644,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -5084,11 +5105,11 @@
       }
      },
      "parent": {
-      "id": 66
+      "id": 1048642
      },
      "children": [
       {
-       "id": 69
+       "id": 1048645
       }
      ],
      "active": true
@@ -5100,7 +5121,7 @@
    }
   },
   {
-   "id": 69,
+   "id": 1048645,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -5143,59 +5164,59 @@
       }
      },
      "parent": {
-      "id": 68
+      "id": 1048644
      },
      "children": [
       {
-       "id": 70
+       "id": 1048646
       },
       {
-       "id": 71
+       "id": 1048647
       },
       {
-       "id": 72
+       "id": 1048648
       },
       {
-       "id": 73
+       "id": 1048649
       },
       {
-       "id": 74
+       "id": 1048650
       },
       {
-       "id": 75
+       "id": 1048651
       },
       {
-       "id": 76
+       "id": 1048652
       },
       {
-       "id": 77
+       "id": 1048653
       },
       {
-       "id": 78
+       "id": 1048654
       },
       {
-       "id": 79
+       "id": 1048655
       },
       {
-       "id": 80
+       "id": 1048656
       },
       {
-       "id": 81
+       "id": 1048657
       },
       {
-       "id": 82
+       "id": 1048658
       },
       {
-       "id": 83
+       "id": 1048659
       },
       {
-       "id": 84
+       "id": 1048660
       },
       {
-       "id": 85
+       "id": 1048661
       },
       {
-       "id": 86
+       "id": 1048662
       }
      ],
      "active": true
@@ -5207,7 +5228,7 @@
    }
   },
   {
-   "id": 70,
+   "id": 1048646,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -5250,7 +5271,7 @@
       }
      },
      "parent": {
-      "id": 69
+      "id": 1048645
      },
      "children": [],
      "active": true
@@ -5262,7 +5283,7 @@
    }
   },
   {
-   "id": 71,
+   "id": 1048647,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -5305,7 +5326,7 @@
       }
      },
      "parent": {
-      "id": 69
+      "id": 1048645
      },
      "children": [],
      "active": true
@@ -5317,7 +5338,7 @@
    }
   },
   {
-   "id": 72,
+   "id": 1048648,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -5360,7 +5381,7 @@
       }
      },
      "parent": {
-      "id": 69
+      "id": 1048645
      },
      "children": [],
      "active": true
@@ -5372,7 +5393,7 @@
    }
   },
   {
-   "id": 73,
+   "id": 1048649,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -5415,7 +5436,7 @@
       }
      },
      "parent": {
-      "id": 69
+      "id": 1048645
      },
      "children": [],
      "active": true
@@ -5427,7 +5448,7 @@
    }
   },
   {
-   "id": 74,
+   "id": 1048650,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -5470,7 +5491,7 @@
       }
      },
      "parent": {
-      "id": 69
+      "id": 1048645
      },
      "children": [],
      "active": true
@@ -5482,7 +5503,7 @@
    }
   },
   {
-   "id": 75,
+   "id": 1048651,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -5525,17 +5546,17 @@
       }
      },
      "parent": {
-      "id": 69
+      "id": 1048645
      },
      "children": [
       {
-       "id": 87
+       "id": 1048663
       },
       {
-       "id": 88
+       "id": 1048664
       },
       {
-       "id": 89
+       "id": 1048665
       }
      ],
      "active": true
@@ -5547,7 +5568,7 @@
    }
   },
   {
-   "id": 87,
+   "id": 1048663,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -5590,7 +5611,7 @@
       }
      },
      "parent": {
-      "id": 75
+      "id": 1048651
      },
      "children": [],
      "active": true
@@ -5602,7 +5623,7 @@
    }
   },
   {
-   "id": 88,
+   "id": 1048664,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -5645,7 +5666,7 @@
       }
      },
      "parent": {
-      "id": 75
+      "id": 1048651
      },
      "children": [],
      "active": true
@@ -5657,7 +5678,7 @@
    }
   },
   {
-   "id": 89,
+   "id": 1048665,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -5700,7 +5721,7 @@
       }
      },
      "parent": {
-      "id": 75
+      "id": 1048651
      },
      "children": [],
      "active": true
@@ -5712,7 +5733,7 @@
    }
   },
   {
-   "id": 76,
+   "id": 1048652,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -5755,7 +5776,7 @@
       }
      },
      "parent": {
-      "id": 69
+      "id": 1048645
      },
      "children": [],
      "active": true
@@ -5767,7 +5788,7 @@
    }
   },
   {
-   "id": 77,
+   "id": 1048653,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -5810,11 +5831,11 @@
       }
      },
      "parent": {
-      "id": 69
+      "id": 1048645
      },
      "children": [
       {
-       "id": 90
+       "id": 1048666
       }
      ],
      "active": true
@@ -5826,7 +5847,7 @@
    }
   },
   {
-   "id": 90,
+   "id": 1048666,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -5869,11 +5890,11 @@
       }
      },
      "parent": {
-      "id": 77
+      "id": 1048653
      },
      "children": [
       {
-       "id": 91
+       "id": 1048667
       }
      ],
      "active": true
@@ -5885,7 +5906,7 @@
    }
   },
   {
-   "id": 91,
+   "id": 1048667,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -5928,11 +5949,11 @@
       }
      },
      "parent": {
-      "id": 90
+      "id": 1048666
      },
      "children": [
       {
-       "id": 92
+       "id": 1048668
       }
      ],
      "active": true
@@ -5944,7 +5965,7 @@
    }
   },
   {
-   "id": 92,
+   "id": 1048668,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -5987,11 +6008,11 @@
       }
      },
      "parent": {
-      "id": 91
+      "id": 1048667
      },
      "children": [
       {
-       "id": 93
+       "id": 1048669
       }
      ],
      "active": true
@@ -6003,7 +6024,7 @@
    }
   },
   {
-   "id": 93,
+   "id": 1048669,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -6046,7 +6067,7 @@
       }
      },
      "parent": {
-      "id": 92
+      "id": 1048668
      },
      "children": [],
      "active": true
@@ -6058,7 +6079,7 @@
    }
   },
   {
-   "id": 78,
+   "id": 1048654,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -6101,11 +6122,11 @@
       }
      },
      "parent": {
-      "id": 69
+      "id": 1048645
      },
      "children": [
       {
-       "id": 94
+       "id": 1048670
       }
      ],
      "active": true
@@ -6117,7 +6138,7 @@
    }
   },
   {
-   "id": 94,
+   "id": 1048670,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -6160,11 +6181,11 @@
       }
      },
      "parent": {
-      "id": 78
+      "id": 1048654
      },
      "children": [
       {
-       "id": 95
+       "id": 1048671
       }
      ],
      "active": true
@@ -6176,7 +6197,7 @@
    }
   },
   {
-   "id": 95,
+   "id": 1048671,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -6219,11 +6240,11 @@
       }
      },
      "parent": {
-      "id": 94
+      "id": 1048670
      },
      "children": [
       {
-       "id": 96
+       "id": 1048672
       }
      ],
      "active": true
@@ -6235,7 +6256,7 @@
    }
   },
   {
-   "id": 96,
+   "id": 1048672,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -6278,11 +6299,11 @@
       }
      },
      "parent": {
-      "id": 95
+      "id": 1048671
      },
      "children": [
       {
-       "id": 97
+       "id": 1048673
       }
      ],
      "active": true
@@ -6294,7 +6315,7 @@
    }
   },
   {
-   "id": 97,
+   "id": 1048673,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -6337,7 +6358,7 @@
       }
      },
      "parent": {
-      "id": 96
+      "id": 1048672
      },
      "children": [],
      "active": true
@@ -6349,7 +6370,7 @@
    }
   },
   {
-   "id": 79,
+   "id": 1048655,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -6392,11 +6413,11 @@
       }
      },
      "parent": {
-      "id": 69
+      "id": 1048645
      },
      "children": [
       {
-       "id": 98
+       "id": 1048674
       }
      ],
      "active": true
@@ -6408,7 +6429,7 @@
    }
   },
   {
-   "id": 98,
+   "id": 1048674,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -6451,11 +6472,11 @@
       }
      },
      "parent": {
-      "id": 79
+      "id": 1048655
      },
      "children": [
       {
-       "id": 99
+       "id": 1048675
       }
      ],
      "active": true
@@ -6467,7 +6488,7 @@
    }
   },
   {
-   "id": 99,
+   "id": 1048675,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -6510,11 +6531,11 @@
       }
      },
      "parent": {
-      "id": 98
+      "id": 1048674
      },
      "children": [
       {
-       "id": 100
+       "id": 1048676
       }
      ],
      "active": true
@@ -6526,7 +6547,7 @@
    }
   },
   {
-   "id": 100,
+   "id": 1048676,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -6569,11 +6590,11 @@
       }
      },
      "parent": {
-      "id": 99
+      "id": 1048675
      },
      "children": [
       {
-       "id": 101
+       "id": 1048677
       }
      ],
      "active": true
@@ -6585,7 +6606,7 @@
    }
   },
   {
-   "id": 101,
+   "id": 1048677,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -6628,7 +6649,7 @@
       }
      },
      "parent": {
-      "id": 100
+      "id": 1048676
      },
      "children": [],
      "active": true
@@ -6640,7 +6661,7 @@
    }
   },
   {
-   "id": 80,
+   "id": 1048656,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -6683,11 +6704,11 @@
       }
      },
      "parent": {
-      "id": 69
+      "id": 1048645
      },
      "children": [
       {
-       "id": 102
+       "id": 1048678
       }
      ],
      "active": true
@@ -6699,7 +6720,7 @@
    }
   },
   {
-   "id": 102,
+   "id": 1048678,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -6742,11 +6763,11 @@
       }
      },
      "parent": {
-      "id": 80
+      "id": 1048656
      },
      "children": [
       {
-       "id": 103
+       "id": 1048679
       }
      ],
      "active": true
@@ -6758,7 +6779,7 @@
    }
   },
   {
-   "id": 103,
+   "id": 1048679,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -6801,11 +6822,11 @@
       }
      },
      "parent": {
-      "id": 102
+      "id": 1048678
      },
      "children": [
       {
-       "id": 104
+       "id": 1048680
       }
      ],
      "active": true
@@ -6817,7 +6838,7 @@
    }
   },
   {
-   "id": 104,
+   "id": 1048680,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -6860,11 +6881,11 @@
       }
      },
      "parent": {
-      "id": 103
+      "id": 1048679
      },
      "children": [
       {
-       "id": 105
+       "id": 1048681
       }
      ],
      "active": true
@@ -6876,7 +6897,7 @@
    }
   },
   {
-   "id": 105,
+   "id": 1048681,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -6919,7 +6940,7 @@
       }
      },
      "parent": {
-      "id": 104
+      "id": 1048680
      },
      "children": [],
      "active": true
@@ -6931,7 +6952,7 @@
    }
   },
   {
-   "id": 81,
+   "id": 1048657,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -6974,7 +6995,7 @@
       }
      },
      "parent": {
-      "id": 69
+      "id": 1048645
      },
      "children": [],
      "active": true
@@ -6986,7 +7007,7 @@
    }
   },
   {
-   "id": 82,
+   "id": 1048658,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -7029,11 +7050,11 @@
       }
      },
      "parent": {
-      "id": 69
+      "id": 1048645
      },
      "children": [
       {
-       "id": 106
+       "id": 1048682
       }
      ],
      "active": true
@@ -7045,7 +7066,7 @@
    }
   },
   {
-   "id": 106,
+   "id": 1048682,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -7088,11 +7109,11 @@
       }
      },
      "parent": {
-      "id": 82
+      "id": 1048658
      },
      "children": [
       {
-       "id": 107
+       "id": 1048683
       }
      ],
      "active": true
@@ -7104,7 +7125,7 @@
    }
   },
   {
-   "id": 107,
+   "id": 1048683,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -7147,11 +7168,11 @@
       }
      },
      "parent": {
-      "id": 106
+      "id": 1048682
      },
      "children": [
       {
-       "id": 108
+       "id": 1048684
       }
      ],
      "active": true
@@ -7163,7 +7184,7 @@
    }
   },
   {
-   "id": 108,
+   "id": 1048684,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -7206,11 +7227,11 @@
       }
      },
      "parent": {
-      "id": 107
+      "id": 1048683
      },
      "children": [
       {
-       "id": 109
+       "id": 1048685
       }
      ],
      "active": true
@@ -7222,7 +7243,7 @@
    }
   },
   {
-   "id": 109,
+   "id": 1048685,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -7265,7 +7286,7 @@
       }
      },
      "parent": {
-      "id": 108
+      "id": 1048684
      },
      "children": [],
      "active": true
@@ -7277,7 +7298,7 @@
    }
   },
   {
-   "id": 83,
+   "id": 1048659,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -7320,7 +7341,7 @@
       }
      },
      "parent": {
-      "id": 69
+      "id": 1048645
      },
      "children": [],
      "active": true
@@ -7332,7 +7353,7 @@
    }
   },
   {
-   "id": 84,
+   "id": 1048660,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -7375,11 +7396,11 @@
       }
      },
      "parent": {
-      "id": 69
+      "id": 1048645
      },
      "children": [
       {
-       "id": 110
+       "id": 1048686
       }
      ],
      "active": true
@@ -7391,7 +7412,7 @@
    }
   },
   {
-   "id": 110,
+   "id": 1048686,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -7434,11 +7455,11 @@
       }
      },
      "parent": {
-      "id": 84
+      "id": 1048660
      },
      "children": [
       {
-       "id": 111
+       "id": 1048687
       }
      ],
      "active": true
@@ -7450,7 +7471,7 @@
    }
   },
   {
-   "id": 111,
+   "id": 1048687,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -7493,11 +7514,11 @@
       }
      },
      "parent": {
-      "id": 110
+      "id": 1048686
      },
      "children": [
       {
-       "id": 112
+       "id": 1048688
       }
      ],
      "active": true
@@ -7509,7 +7530,7 @@
    }
   },
   {
-   "id": 112,
+   "id": 1048688,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -7552,11 +7573,11 @@
       }
      },
      "parent": {
-      "id": 111
+      "id": 1048687
      },
      "children": [
       {
-       "id": 113
+       "id": 1048689
       }
      ],
      "active": true
@@ -7568,7 +7589,7 @@
    }
   },
   {
-   "id": 113,
+   "id": 1048689,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -7611,7 +7632,7 @@
       }
      },
      "parent": {
-      "id": 112
+      "id": 1048688
      },
      "children": [],
      "active": true
@@ -7623,7 +7644,7 @@
    }
   },
   {
-   "id": 85,
+   "id": 1048661,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -7666,7 +7687,7 @@
       }
      },
      "parent": {
-      "id": 69
+      "id": 1048645
      },
      "children": [],
      "active": true
@@ -7678,7 +7699,7 @@
    }
   },
   {
-   "id": 86,
+   "id": 1048662,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -7721,7 +7742,7 @@
       }
      },
      "parent": {
-      "id": 69
+      "id": 1048645
      },
      "children": [],
      "active": true
@@ -7729,6 +7750,383 @@
     "has_bone_component": true,
     "bone_component": {
      "bone_index": 45
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 1048691,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Wall",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 256
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -3.782114267349243,
+       "y": 1.64133620262146,
+       "z": 6.118151664733887
+      },
+      "rotation": {
+       "x": -0.15602251887321473,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 0.9877535104751587
+      },
+      "scale": {
+       "x": 4.835579872131348,
+       "y": 4.187159061431885,
+       "z": 23.919950485229493
+      },
+      "skew": {
+       "x": -1.1960823087520112e-7,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "790e9074-e0a4-605b-baab-e3bff1339e45"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "dd11cda0-190d-fd52-84dd-3a6f67d09813"
+       }
+      ],
+      "material_instances": [],
+      "lod_override_enabled": false,
+      "lod_override_level": 0,
+      "lod_selection_bias": 0.0,
+      "lod_transition_time": {
+       "count": 0.0
+      }
+     }
+    },
+    "has_physics_component": true,
+    "physics_component": {
+     "is_using_gravity": false,
+     "is_kinematic": true,
+     "is_sensor": false,
+     "is_autoscaled": true,
+     "mass": 1.0,
+     "include_layers": {
+      "mask": -1
+     },
+     "exclude_layers": {
+      "mask": 0
+     },
+     "freeze_position": {
+      "x": false,
+      "y": false,
+      "z": false
+     },
+     "freeze_rotation": {
+      "x": false,
+      "y": false,
+      "z": false
+     },
+     "material": {
+      "uid": "00000000-0000-0000-0000-000000000000"
+     },
+     "shapes": [
+      {
+       "shape": {
+        "index": 0,
+        "data": {
+         "center": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+         },
+         "extends": {
+          "x": 1.0,
+          "y": 1.0,
+          "z": 1.0
+         }
+        }
+       }
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 116,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Ground_01",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_component": true,
+    "prefab_component": {
+     "source": {
+      "uid": "041c2a53-bdb8-a343-b4ca-cf9e8d485d72"
+     },
+     "property_overrides": [
+      {
+       "entity_uuid": "19924d2b-cb25-c84c-807b-5e3fc5f7984c",
+       "component_path": "transform_component/local_transform/position",
+       "pretty_component_path": "Transform/Local/Position"
+      }
+     ],
+     "removed_entities": []
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "19924d2b-cb25-c84c-807b-5e3fc5f7984c"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 51.391910552978519,
+       "y": 0.6300714015960693,
+       "z": 13.785043716430664
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [
+      {
+       "id": 117
+      }
+     ],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "casts_reflection": false,
+     "model": {
+      "lods": [
+       {
+        "uid": "c49b6f7f-8982-d446-b87d-a9311e90538b"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "70f00a41-30ee-ec4e-85e7-b4a067f95cef"
+       }
+      ],
+      "material_instances": [],
+      "lod_override_enabled": false,
+      "lod_override_level": 0,
+      "lod_selection_bias": 0.0,
+      "lod_transition_time": {
+       "count": 0.0
+      }
+     }
+    },
+    "has_physics_component": true,
+    "physics_component": {
+     "is_using_gravity": false,
+     "is_kinematic": true,
+     "is_sensor": false,
+     "is_autoscaled": true,
+     "mass": 1.0,
+     "include_layers": {
+      "mask": -1
+     },
+     "exclude_layers": {
+      "mask": 0
+     },
+     "freeze_position": {
+      "x": false,
+      "y": false,
+      "z": false
+     },
+     "freeze_rotation": {
+      "x": false,
+      "y": false,
+      "z": false
+     },
+     "material": {
+      "uid": "00000000-0000-0000-0000-000000000000"
+     },
+     "shapes": [
+      {
+       "shape": {
+        "index": 4,
+        "data": {
+         "center": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+         },
+         "mesh_asset": {
+          "uid": "c49b6f7f-8982-d446-b87d-a9311e90538b"
+         },
+         "collision_type": 1
+        }
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": 117,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "RootNode",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "4e2516ad-8e17-1e47-a62c-17715b9435ca"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 116
+     },
+     "children": [
+      {
+       "id": 118
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "id": 118,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Ground_01",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "03437df9-6c0b-f54a-a708-9c356497cb33"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": -0.8019005060195923,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 117
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      0
+     ]
     }
    }
   }

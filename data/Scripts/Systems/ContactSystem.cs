@@ -95,7 +95,7 @@ public static class ContactSystem
         {
             results.Clear();
 
-            var sourcePosition = query.source.transform.position;
+            var sourcePosition = query.source.transform.position + Vector3.up;
             // Perform sphere overlap to find potential targets
             var overlaps = Physics.SphereOverlap(sourcePosition, query.maxRange, layerMask);
 
@@ -119,16 +119,17 @@ public static class ContactSystem
                 // Skip self
                 if (entity == query.source) continue;
 
+                var entityPosition = entity.transform.position + Vector3.up;
                 // Calculate squared distance (faster than Vector3.Distance)
-                var deltaPos = entity.transform.position - sourcePosition;
-                float distanceSquared = Vector3.Dot(deltaPos, deltaPos);
+                var deltaPos = entityPosition - sourcePosition;
+                float distanceSquared = deltaPos.sqrMagnitude;
                 // Early distance check
                 if (distanceSquared > maxRangeSquared) continue;
 
                 // Check line of sight if required
                 if (query.requireLineOfSight)
                 {
-                    if (!HasLineOfSight(sourcePosition, entity.transform.position, query.obstacleLayerMask))
+                    if (!HasLineOfSight(sourcePosition, entityPosition, query.obstacleLayerMask))
                     {
                         continue; // Skip if line of sight is blocked
                     }
@@ -200,7 +201,7 @@ public static class ContactSystem
     {
         using (Profiler.Scope("FindClosestEnemy"))
         {
-            var sourcePosition = query.source.transform.position;
+            var sourcePosition = query.source.transform.position + Vector3.up;
             // Perform sphere overlap to find potential targets
             var overlaps = Physics.SphereOverlap(sourcePosition, query.maxRange, layerMask);
 
@@ -223,13 +224,15 @@ public static class ContactSystem
                 // Skip self
                 if (entity == query.source) continue;
 
+
+                var entityPosition = entity.transform.position + Vector3.up;
                 // Calculate distance
-                float distance = Vector3.Distance(sourcePosition, entity.transform.position);
+                float distance = Vector3.Distance(sourcePosition, entityPosition);
 
                 // Check line of sight if required
                 if (query.requireLineOfSight)
                 {
-                    if (!HasLineOfSight(sourcePosition, entity.transform.position, query.obstacleLayerMask))
+                    if (!HasLineOfSight(sourcePosition, entityPosition, query.obstacleLayerMask))
                     {
                         continue; // Skip if line of sight is blocked
                     }
@@ -469,6 +472,8 @@ public static class ContactSystem
                 QueryClosestTarget query = new QueryClosestTarget();
                 query.source = target;
                 query.maxRange = chainComponent.chainRange;
+                query.requireLineOfSight = true;
+                query.obstacleLayerMask = LayerMask.GetMask("Environment");
                 // Only use visited targets list if not allowing revisits
                 query.visitedTargets = chainComponent.allowRevisitTargets ? null : chainComponent.visitedTargets;
                 Entity newTarget = FindClosestEnemy(query, target.layers);
@@ -593,15 +598,6 @@ public static class ContactSystem
                     
                     // Calculate direction in horizontal plane (XZ)
                     direction = new Vector3(Mathf.Cos(angle), 0.0f, Mathf.Sin(angle));
-                    
-                    // For radial splits, we don't require a target - projectiles fire in all directions
-                    // Optionally try to find a target in this direction for homing, but it's not required
-                    QueryClosestTarget query = new QueryClosestTarget();
-                    query.source = target;
-                    query.maxRange = splitComponent.splitRange;
-                    query.visitedTargets = visitedTargets;
-                    
-                    // If no target found, still spawn the projectile in the radial direction
                 }
                 else
                 {
@@ -610,7 +606,8 @@ public static class ContactSystem
                     query.source = target;
                     query.maxRange = splitComponent.splitRange;
                     query.visitedTargets = visitedTargets;
-
+                    query.requireLineOfSight = true;
+                    query.obstacleLayerMask = LayerMask.GetMask("Environment");
                     // Find a new target for this split projectile
                     var newTarget = FindClosestEnemy(query, target.layers);
 

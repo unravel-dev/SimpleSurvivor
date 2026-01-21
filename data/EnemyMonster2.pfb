@@ -2,7 +2,7 @@
  "entities": [
   {
    "prefab_uid": "3df7d3e0-0c57-7940-9219-029c73f3f172",
-   "id": 3,
+   "id": 12582913,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -51,7 +51,7 @@
      "children": [
       {
        "prefab_uid": "b9350ebc-7182-1c40-99e5-cecbf2abb9fe",
-       "id": 4
+       "id": 12582914
       }
      ],
      "active": true
@@ -76,7 +76,10 @@
       "material_instances": [],
       "lod_override_enabled": false,
       "lod_override_level": 0,
-      "lod_selection_bias": 0.0
+      "lod_selection_bias": 0.0,
+      "lod_transition_time": {
+       "count": 0.0
+      }
      }
     },
     "has_animation_component": true,
@@ -87,11 +90,12 @@
      "auto_play": true,
      "culling_mode": 0,
      "apply_root_motion": false,
-     "speed": 1.0
+     "speed": 1.0,
+     "retargeting_mode": 0
     },
     "has_physics_component": true,
     "physics_component": {
-     "is_using_gravity": false,
+     "is_using_gravity": true,
      "is_kinematic": false,
      "is_sensor": false,
      "is_autoscaled": true,
@@ -104,7 +108,7 @@
      },
      "freeze_position": {
       "x": false,
-      "y": true,
+      "y": false,
       "z": false
      },
      "freeze_rotation": {
@@ -143,13 +147,19 @@
        "arriveRadius": 0.6000000238418579,
        "rotationSpeed": 180.0,
        "usePhysicsMovement": true,
+       "obstacleLookaheadDistance": 1.5,
+       "obstacleDetectionRadius": 0.4000000059604645,
+       "wallFollowDistance": 0.800000011920929,
+       "losCheckInterval": 0.20000000298023225,
+       "useLOSPathfinding": true,
+       "useObstacleAvoidance": true,
        "target": {
         "flags": 2,
         "prefab_uid": "00000000-0000-0000-0000-000000000000",
         "id": 4294967295
        },
        "autoFindPlayer": true,
-       "enemyType": "basic",
+       "enemyType": 0,
        "contactDamageRadius": 2.0,
        "contactDamageInterval": 0.5
       },
@@ -246,7 +256,7 @@
   },
   {
    "prefab_uid": "b9350ebc-7182-1c40-99e5-cecbf2abb9fe",
-   "id": 4,
+   "id": 12582914,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -290,16 +300,16 @@
      },
      "parent": {
       "prefab_uid": "3df7d3e0-0c57-7940-9219-029c73f3f172",
-      "id": 3
+      "id": 12582913
      },
      "children": [
       {
        "prefab_uid": "b6d15ee3-e28a-6f42-95af-90cc03ca3712",
-       "id": 5
+       "id": 12582915
       },
       {
        "prefab_uid": "4f1f4af5-5ce3-b44b-ab23-eeb83bb3724f",
-       "id": 6
+       "id": 11534340
       }
      ],
      "active": true
@@ -308,7 +318,7 @@
   },
   {
    "prefab_uid": "b6d15ee3-e28a-6f42-95af-90cc03ca3712",
-   "id": 5,
+   "id": 12582915,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -352,7 +362,7 @@
      },
      "parent": {
       "prefab_uid": "b9350ebc-7182-1c40-99e5-cecbf2abb9fe",
-      "id": 4
+      "id": 12582914
      },
      "children": [],
      "active": true
@@ -367,7 +377,7 @@
   },
   {
    "prefab_uid": "4f1f4af5-5ce3-b44b-ab23-eeb83bb3724f",
-   "id": 6,
+   "id": 11534340,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -411,12 +421,12 @@
      },
      "parent": {
       "prefab_uid": "b9350ebc-7182-1c40-99e5-cecbf2abb9fe",
-      "id": 4
+      "id": 12582914
      },
      "children": [
       {
        "prefab_uid": "db620b1a-d2c4-834f-bd04-51a837f7fe73",
-       "id": 7
+       "id": 8388613
       }
      ],
      "active": true
@@ -429,7 +439,7 @@
   },
   {
    "prefab_uid": "db620b1a-d2c4-834f-bd04-51a837f7fe73",
-   "id": 7,
+   "id": 8388613,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -473,76 +483,76 @@
      },
      "parent": {
       "prefab_uid": "4f1f4af5-5ce3-b44b-ab23-eeb83bb3724f",
-      "id": 6
+      "id": 11534340
      },
      "children": [
       {
        "prefab_uid": "c448a21b-98ba-3240-850e-4b8097d41d5f",
-       "id": 8
+       "id": 8388614
       },
       {
        "prefab_uid": "3d3dbf98-01d1-e940-afc4-efd797376510",
-       "id": 9
+       "id": 8388615
       },
       {
        "prefab_uid": "8cc5c500-8196-3e47-a27e-2e4f2ede754d",
-       "id": 10
+       "id": 8388616
       },
       {
        "prefab_uid": "74455e04-a7c1-134c-a17c-ebbf0311c24c",
-       "id": 11
+       "id": 8388617
       },
       {
        "prefab_uid": "c3f235c1-b358-0443-a438-3dd72c7b4f25",
-       "id": 12
+       "id": 8388618
       },
       {
        "prefab_uid": "353734b9-b54c-1e4c-8de9-5a1b7aad8964",
-       "id": 13
+       "id": 8388619
       },
       {
        "prefab_uid": "dd5f3fc2-c362-144b-a7d1-cb560f1fcd09",
-       "id": 14
+       "id": 8388620
       },
       {
        "prefab_uid": "37aac9f7-1766-e140-8840-2894b173a2fa",
-       "id": 15
+       "id": 8388621
       },
       {
        "prefab_uid": "203e4790-72e0-1f44-969e-04811781b672",
-       "id": 16
+       "id": 8388622
       },
       {
        "prefab_uid": "aa0fc60d-e374-9444-8450-1df2e30d1ecc",
-       "id": 17
+       "id": 8388623
       },
       {
        "prefab_uid": "ac6984af-50cd-2641-aa06-d59ece11fc3b",
-       "id": 18
+       "id": 8388624
       },
       {
        "prefab_uid": "c59bc37c-c1d6-1446-ba1e-44cee73069aa",
-       "id": 19
+       "id": 8388625
       },
       {
        "prefab_uid": "5df6f946-7e23-3c49-b4c9-9f95cf8297fe",
-       "id": 20
+       "id": 8388626
       },
       {
        "prefab_uid": "1c6a9a09-a923-ed45-bafb-9962cb566a0b",
-       "id": 21
+       "id": 8388627
       },
       {
        "prefab_uid": "95da2750-ee50-4343-b1cd-3b276745a071",
-       "id": 22
+       "id": 8388628
       },
       {
        "prefab_uid": "657e61a8-4a2b-264f-addf-89659cfe050e",
-       "id": 23
+       "id": 8388629
       },
       {
        "prefab_uid": "2ef3a880-a27d-c041-9b39-9cf70fbcded3",
-       "id": 24
+       "id": 8388630
       }
      ],
      "active": true
@@ -555,7 +565,7 @@
   },
   {
    "prefab_uid": "c448a21b-98ba-3240-850e-4b8097d41d5f",
-   "id": 8,
+   "id": 8388614,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -599,7 +609,7 @@
      },
      "parent": {
       "prefab_uid": "db620b1a-d2c4-834f-bd04-51a837f7fe73",
-      "id": 7
+      "id": 8388613
      },
      "children": [],
      "active": true
@@ -612,7 +622,7 @@
   },
   {
    "prefab_uid": "3d3dbf98-01d1-e940-afc4-efd797376510",
-   "id": 9,
+   "id": 8388615,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -656,7 +666,7 @@
      },
      "parent": {
       "prefab_uid": "db620b1a-d2c4-834f-bd04-51a837f7fe73",
-      "id": 7
+      "id": 8388613
      },
      "children": [],
      "active": true
@@ -669,7 +679,7 @@
   },
   {
    "prefab_uid": "8cc5c500-8196-3e47-a27e-2e4f2ede754d",
-   "id": 10,
+   "id": 8388616,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -713,7 +723,7 @@
      },
      "parent": {
       "prefab_uid": "db620b1a-d2c4-834f-bd04-51a837f7fe73",
-      "id": 7
+      "id": 8388613
      },
      "children": [],
      "active": true
@@ -726,7 +736,7 @@
   },
   {
    "prefab_uid": "74455e04-a7c1-134c-a17c-ebbf0311c24c",
-   "id": 11,
+   "id": 8388617,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -770,7 +780,7 @@
      },
      "parent": {
       "prefab_uid": "db620b1a-d2c4-834f-bd04-51a837f7fe73",
-      "id": 7
+      "id": 8388613
      },
      "children": [],
      "active": true
@@ -783,7 +793,7 @@
   },
   {
    "prefab_uid": "c3f235c1-b358-0443-a438-3dd72c7b4f25",
-   "id": 12,
+   "id": 8388618,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -827,7 +837,7 @@
      },
      "parent": {
       "prefab_uid": "db620b1a-d2c4-834f-bd04-51a837f7fe73",
-      "id": 7
+      "id": 8388613
      },
      "children": [],
      "active": true
@@ -840,7 +850,7 @@
   },
   {
    "prefab_uid": "353734b9-b54c-1e4c-8de9-5a1b7aad8964",
-   "id": 13,
+   "id": 8388619,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -884,20 +894,20 @@
      },
      "parent": {
       "prefab_uid": "db620b1a-d2c4-834f-bd04-51a837f7fe73",
-      "id": 7
+      "id": 8388613
      },
      "children": [
       {
        "prefab_uid": "926c4c46-587c-e847-8ab3-d0c51b965102",
-       "id": 25
+       "id": 8388631
       },
       {
        "prefab_uid": "c2fc1ee7-f6cf-924d-8da3-4f9bc92fc875",
-       "id": 26
+       "id": 8388632
       },
       {
        "prefab_uid": "e6527bc7-80f6-6547-bf7e-d390076d1cc5",
-       "id": 27
+       "id": 8388633
       }
      ],
      "active": true
@@ -910,7 +920,7 @@
   },
   {
    "prefab_uid": "926c4c46-587c-e847-8ab3-d0c51b965102",
-   "id": 25,
+   "id": 8388631,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -954,7 +964,7 @@
      },
      "parent": {
       "prefab_uid": "353734b9-b54c-1e4c-8de9-5a1b7aad8964",
-      "id": 13
+      "id": 8388619
      },
      "children": [],
      "active": true
@@ -967,7 +977,7 @@
   },
   {
    "prefab_uid": "c2fc1ee7-f6cf-924d-8da3-4f9bc92fc875",
-   "id": 26,
+   "id": 8388632,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1011,7 +1021,7 @@
      },
      "parent": {
       "prefab_uid": "353734b9-b54c-1e4c-8de9-5a1b7aad8964",
-      "id": 13
+      "id": 8388619
      },
      "children": [],
      "active": true
@@ -1024,7 +1034,7 @@
   },
   {
    "prefab_uid": "e6527bc7-80f6-6547-bf7e-d390076d1cc5",
-   "id": 27,
+   "id": 8388633,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1068,7 +1078,7 @@
      },
      "parent": {
       "prefab_uid": "353734b9-b54c-1e4c-8de9-5a1b7aad8964",
-      "id": 13
+      "id": 8388619
      },
      "children": [],
      "active": true
@@ -1081,7 +1091,7 @@
   },
   {
    "prefab_uid": "dd5f3fc2-c362-144b-a7d1-cb560f1fcd09",
-   "id": 14,
+   "id": 8388620,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1125,7 +1135,7 @@
      },
      "parent": {
       "prefab_uid": "db620b1a-d2c4-834f-bd04-51a837f7fe73",
-      "id": 7
+      "id": 8388613
      },
      "children": [],
      "active": true
@@ -1138,7 +1148,7 @@
   },
   {
    "prefab_uid": "37aac9f7-1766-e140-8840-2894b173a2fa",
-   "id": 15,
+   "id": 8388621,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1182,12 +1192,12 @@
      },
      "parent": {
       "prefab_uid": "db620b1a-d2c4-834f-bd04-51a837f7fe73",
-      "id": 7
+      "id": 8388613
      },
      "children": [
       {
        "prefab_uid": "61fcd01d-14fb-e64c-9944-0f6b1199dee2",
-       "id": 28
+       "id": 8388634
       }
      ],
      "active": true
@@ -1200,7 +1210,7 @@
   },
   {
    "prefab_uid": "61fcd01d-14fb-e64c-9944-0f6b1199dee2",
-   "id": 28,
+   "id": 8388634,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1244,12 +1254,12 @@
      },
      "parent": {
       "prefab_uid": "37aac9f7-1766-e140-8840-2894b173a2fa",
-      "id": 15
+      "id": 8388621
      },
      "children": [
       {
        "prefab_uid": "4bf5f004-cb1f-c44e-8d40-275c745d9510",
-       "id": 29
+       "id": 8388635
       }
      ],
      "active": true
@@ -1262,7 +1272,7 @@
   },
   {
    "prefab_uid": "4bf5f004-cb1f-c44e-8d40-275c745d9510",
-   "id": 29,
+   "id": 8388635,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1306,12 +1316,12 @@
      },
      "parent": {
       "prefab_uid": "61fcd01d-14fb-e64c-9944-0f6b1199dee2",
-      "id": 28
+      "id": 8388634
      },
      "children": [
       {
        "prefab_uid": "57fd9a5d-f5d6-6c45-9a46-1a8e91778c5f",
-       "id": 30
+       "id": 8388636
       }
      ],
      "active": true
@@ -1324,7 +1334,7 @@
   },
   {
    "prefab_uid": "57fd9a5d-f5d6-6c45-9a46-1a8e91778c5f",
-   "id": 30,
+   "id": 8388636,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1368,12 +1378,12 @@
      },
      "parent": {
       "prefab_uid": "4bf5f004-cb1f-c44e-8d40-275c745d9510",
-      "id": 29
+      "id": 8388635
      },
      "children": [
       {
        "prefab_uid": "34dc2c02-2d36-b64d-b54e-a47e33ce75b8",
-       "id": 31
+       "id": 8388637
       }
      ],
      "active": true
@@ -1386,7 +1396,7 @@
   },
   {
    "prefab_uid": "34dc2c02-2d36-b64d-b54e-a47e33ce75b8",
-   "id": 31,
+   "id": 8388637,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1430,7 +1440,7 @@
      },
      "parent": {
       "prefab_uid": "57fd9a5d-f5d6-6c45-9a46-1a8e91778c5f",
-      "id": 30
+      "id": 8388636
      },
      "children": [],
      "active": true
@@ -1443,7 +1453,7 @@
   },
   {
    "prefab_uid": "203e4790-72e0-1f44-969e-04811781b672",
-   "id": 16,
+   "id": 8388622,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1487,12 +1497,12 @@
      },
      "parent": {
       "prefab_uid": "db620b1a-d2c4-834f-bd04-51a837f7fe73",
-      "id": 7
+      "id": 8388613
      },
      "children": [
       {
        "prefab_uid": "85a24606-2d96-9042-b046-96d815ae2793",
-       "id": 32
+       "id": 8388638
       }
      ],
      "active": true
@@ -1505,7 +1515,7 @@
   },
   {
    "prefab_uid": "85a24606-2d96-9042-b046-96d815ae2793",
-   "id": 32,
+   "id": 8388638,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1549,12 +1559,12 @@
      },
      "parent": {
       "prefab_uid": "203e4790-72e0-1f44-969e-04811781b672",
-      "id": 16
+      "id": 8388622
      },
      "children": [
       {
        "prefab_uid": "a3776871-9342-e24b-9f42-c5c0b8590dd2",
-       "id": 33
+       "id": 8388639
       }
      ],
      "active": true
@@ -1567,7 +1577,7 @@
   },
   {
    "prefab_uid": "a3776871-9342-e24b-9f42-c5c0b8590dd2",
-   "id": 33,
+   "id": 8388639,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1611,12 +1621,12 @@
      },
      "parent": {
       "prefab_uid": "85a24606-2d96-9042-b046-96d815ae2793",
-      "id": 32
+      "id": 8388638
      },
      "children": [
       {
        "prefab_uid": "5b69a56a-8342-b344-9880-f243f963eded",
-       "id": 34
+       "id": 8388640
       }
      ],
      "active": true
@@ -1629,7 +1639,7 @@
   },
   {
    "prefab_uid": "5b69a56a-8342-b344-9880-f243f963eded",
-   "id": 34,
+   "id": 8388640,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1673,12 +1683,12 @@
      },
      "parent": {
       "prefab_uid": "a3776871-9342-e24b-9f42-c5c0b8590dd2",
-      "id": 33
+      "id": 8388639
      },
      "children": [
       {
        "prefab_uid": "d933b6c3-1fce-0148-9398-bda1e9c75d1a",
-       "id": 35
+       "id": 8388641
       }
      ],
      "active": true
@@ -1691,7 +1701,7 @@
   },
   {
    "prefab_uid": "d933b6c3-1fce-0148-9398-bda1e9c75d1a",
-   "id": 35,
+   "id": 8388641,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1735,7 +1745,7 @@
      },
      "parent": {
       "prefab_uid": "5b69a56a-8342-b344-9880-f243f963eded",
-      "id": 34
+      "id": 8388640
      },
      "children": [],
      "active": true
@@ -1748,7 +1758,7 @@
   },
   {
    "prefab_uid": "aa0fc60d-e374-9444-8450-1df2e30d1ecc",
-   "id": 17,
+   "id": 8388623,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1792,12 +1802,12 @@
      },
      "parent": {
       "prefab_uid": "db620b1a-d2c4-834f-bd04-51a837f7fe73",
-      "id": 7
+      "id": 8388613
      },
      "children": [
       {
        "prefab_uid": "d664ca7b-8f7f-1f40-83f8-779ad1c44b2a",
-       "id": 36
+       "id": 8388642
       }
      ],
      "active": true
@@ -1810,7 +1820,7 @@
   },
   {
    "prefab_uid": "d664ca7b-8f7f-1f40-83f8-779ad1c44b2a",
-   "id": 36,
+   "id": 8388642,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1854,12 +1864,12 @@
      },
      "parent": {
       "prefab_uid": "aa0fc60d-e374-9444-8450-1df2e30d1ecc",
-      "id": 17
+      "id": 8388623
      },
      "children": [
       {
        "prefab_uid": "c27c8c32-c910-b045-ad2f-993d037287b4",
-       "id": 37
+       "id": 8388643
       }
      ],
      "active": true
@@ -1872,7 +1882,7 @@
   },
   {
    "prefab_uid": "c27c8c32-c910-b045-ad2f-993d037287b4",
-   "id": 37,
+   "id": 8388643,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1916,12 +1926,12 @@
      },
      "parent": {
       "prefab_uid": "d664ca7b-8f7f-1f40-83f8-779ad1c44b2a",
-      "id": 36
+      "id": 8388642
      },
      "children": [
       {
        "prefab_uid": "39410983-9dff-f349-a4d3-8a463d931576",
-       "id": 38
+       "id": 8388644
       }
      ],
      "active": true
@@ -1934,7 +1944,7 @@
   },
   {
    "prefab_uid": "39410983-9dff-f349-a4d3-8a463d931576",
-   "id": 38,
+   "id": 8388644,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1978,12 +1988,12 @@
      },
      "parent": {
       "prefab_uid": "c27c8c32-c910-b045-ad2f-993d037287b4",
-      "id": 37
+      "id": 8388643
      },
      "children": [
       {
        "prefab_uid": "fb8774c8-460f-5541-836a-54b53d5f003b",
-       "id": 39
+       "id": 8388645
       }
      ],
      "active": true
@@ -1996,7 +2006,7 @@
   },
   {
    "prefab_uid": "fb8774c8-460f-5541-836a-54b53d5f003b",
-   "id": 39,
+   "id": 8388645,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2040,7 +2050,7 @@
      },
      "parent": {
       "prefab_uid": "39410983-9dff-f349-a4d3-8a463d931576",
-      "id": 38
+      "id": 8388644
      },
      "children": [],
      "active": true
@@ -2053,7 +2063,7 @@
   },
   {
    "prefab_uid": "ac6984af-50cd-2641-aa06-d59ece11fc3b",
-   "id": 18,
+   "id": 8388624,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2097,12 +2107,12 @@
      },
      "parent": {
       "prefab_uid": "db620b1a-d2c4-834f-bd04-51a837f7fe73",
-      "id": 7
+      "id": 8388613
      },
      "children": [
       {
        "prefab_uid": "458505fb-c65b-2349-8368-eadadd41f7a7",
-       "id": 40
+       "id": 8388646
       }
      ],
      "active": true
@@ -2115,7 +2125,7 @@
   },
   {
    "prefab_uid": "458505fb-c65b-2349-8368-eadadd41f7a7",
-   "id": 40,
+   "id": 8388646,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2159,12 +2169,12 @@
      },
      "parent": {
       "prefab_uid": "ac6984af-50cd-2641-aa06-d59ece11fc3b",
-      "id": 18
+      "id": 8388624
      },
      "children": [
       {
        "prefab_uid": "dee4b7a2-2092-7942-83de-91c2a3764e6a",
-       "id": 41
+       "id": 8388647
       }
      ],
      "active": true
@@ -2177,7 +2187,7 @@
   },
   {
    "prefab_uid": "dee4b7a2-2092-7942-83de-91c2a3764e6a",
-   "id": 41,
+   "id": 8388647,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2221,12 +2231,12 @@
      },
      "parent": {
       "prefab_uid": "458505fb-c65b-2349-8368-eadadd41f7a7",
-      "id": 40
+      "id": 8388646
      },
      "children": [
       {
        "prefab_uid": "514ab4e1-e200-a14e-a8d8-35061705e695",
-       "id": 42
+       "id": 8388648
       }
      ],
      "active": true
@@ -2239,7 +2249,7 @@
   },
   {
    "prefab_uid": "514ab4e1-e200-a14e-a8d8-35061705e695",
-   "id": 42,
+   "id": 8388648,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2283,12 +2293,12 @@
      },
      "parent": {
       "prefab_uid": "dee4b7a2-2092-7942-83de-91c2a3764e6a",
-      "id": 41
+      "id": 8388647
      },
      "children": [
       {
        "prefab_uid": "295b7afd-88db-2940-9e79-1f0a2d18b437",
-       "id": 43
+       "id": 8388649
       }
      ],
      "active": true
@@ -2301,7 +2311,7 @@
   },
   {
    "prefab_uid": "295b7afd-88db-2940-9e79-1f0a2d18b437",
-   "id": 43,
+   "id": 8388649,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2345,7 +2355,7 @@
      },
      "parent": {
       "prefab_uid": "514ab4e1-e200-a14e-a8d8-35061705e695",
-      "id": 42
+      "id": 8388648
      },
      "children": [],
      "active": true
@@ -2358,7 +2368,7 @@
   },
   {
    "prefab_uid": "c59bc37c-c1d6-1446-ba1e-44cee73069aa",
-   "id": 19,
+   "id": 8388625,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2402,7 +2412,7 @@
      },
      "parent": {
       "prefab_uid": "db620b1a-d2c4-834f-bd04-51a837f7fe73",
-      "id": 7
+      "id": 8388613
      },
      "children": [],
      "active": true
@@ -2415,7 +2425,7 @@
   },
   {
    "prefab_uid": "5df6f946-7e23-3c49-b4c9-9f95cf8297fe",
-   "id": 20,
+   "id": 8388626,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2459,12 +2469,12 @@
      },
      "parent": {
       "prefab_uid": "db620b1a-d2c4-834f-bd04-51a837f7fe73",
-      "id": 7
+      "id": 8388613
      },
      "children": [
       {
        "prefab_uid": "836a5b1b-b224-a44e-b3ae-49043cd6672a",
-       "id": 44
+       "id": 8388650
       }
      ],
      "active": true
@@ -2477,7 +2487,7 @@
   },
   {
    "prefab_uid": "836a5b1b-b224-a44e-b3ae-49043cd6672a",
-   "id": 44,
+   "id": 8388650,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2521,12 +2531,12 @@
      },
      "parent": {
       "prefab_uid": "5df6f946-7e23-3c49-b4c9-9f95cf8297fe",
-      "id": 20
+      "id": 8388626
      },
      "children": [
       {
        "prefab_uid": "814e8f29-01db-9046-99ac-0b82521dee9e",
-       "id": 45
+       "id": 8388651
       }
      ],
      "active": true
@@ -2539,7 +2549,7 @@
   },
   {
    "prefab_uid": "814e8f29-01db-9046-99ac-0b82521dee9e",
-   "id": 45,
+   "id": 8388651,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2583,12 +2593,12 @@
      },
      "parent": {
       "prefab_uid": "836a5b1b-b224-a44e-b3ae-49043cd6672a",
-      "id": 44
+      "id": 8388650
      },
      "children": [
       {
        "prefab_uid": "79d992dd-fa6d-944f-9ce7-44621c74528e",
-       "id": 46
+       "id": 8388652
       }
      ],
      "active": true
@@ -2601,7 +2611,7 @@
   },
   {
    "prefab_uid": "79d992dd-fa6d-944f-9ce7-44621c74528e",
-   "id": 46,
+   "id": 8388652,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2645,12 +2655,12 @@
      },
      "parent": {
       "prefab_uid": "814e8f29-01db-9046-99ac-0b82521dee9e",
-      "id": 45
+      "id": 8388651
      },
      "children": [
       {
        "prefab_uid": "18479d93-5368-3842-be65-2dc8ab45711f",
-       "id": 47
+       "id": 8388653
       }
      ],
      "active": true
@@ -2663,7 +2673,7 @@
   },
   {
    "prefab_uid": "18479d93-5368-3842-be65-2dc8ab45711f",
-   "id": 47,
+   "id": 8388653,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2707,7 +2717,7 @@
      },
      "parent": {
       "prefab_uid": "79d992dd-fa6d-944f-9ce7-44621c74528e",
-      "id": 46
+      "id": 8388652
      },
      "children": [],
      "active": true
@@ -2720,7 +2730,7 @@
   },
   {
    "prefab_uid": "1c6a9a09-a923-ed45-bafb-9962cb566a0b",
-   "id": 21,
+   "id": 8388627,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2764,7 +2774,7 @@
      },
      "parent": {
       "prefab_uid": "db620b1a-d2c4-834f-bd04-51a837f7fe73",
-      "id": 7
+      "id": 8388613
      },
      "children": [],
      "active": true
@@ -2777,7 +2787,7 @@
   },
   {
    "prefab_uid": "95da2750-ee50-4343-b1cd-3b276745a071",
-   "id": 22,
+   "id": 8388628,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2821,12 +2831,12 @@
      },
      "parent": {
       "prefab_uid": "db620b1a-d2c4-834f-bd04-51a837f7fe73",
-      "id": 7
+      "id": 8388613
      },
      "children": [
       {
        "prefab_uid": "71962da6-dcb7-3542-94df-a9ece2ae1d18",
-       "id": 48
+       "id": 8388654
       }
      ],
      "active": true
@@ -2839,7 +2849,7 @@
   },
   {
    "prefab_uid": "71962da6-dcb7-3542-94df-a9ece2ae1d18",
-   "id": 48,
+   "id": 8388654,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2883,12 +2893,12 @@
      },
      "parent": {
       "prefab_uid": "95da2750-ee50-4343-b1cd-3b276745a071",
-      "id": 22
+      "id": 8388628
      },
      "children": [
       {
        "prefab_uid": "9635900e-5a3b-2046-90bc-7e3c2dbc9429",
-       "id": 49
+       "id": 8388655
       }
      ],
      "active": true
@@ -2901,7 +2911,7 @@
   },
   {
    "prefab_uid": "9635900e-5a3b-2046-90bc-7e3c2dbc9429",
-   "id": 49,
+   "id": 8388655,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -2945,12 +2955,12 @@
      },
      "parent": {
       "prefab_uid": "71962da6-dcb7-3542-94df-a9ece2ae1d18",
-      "id": 48
+      "id": 8388654
      },
      "children": [
       {
        "prefab_uid": "50fb512e-b76c-6843-a14a-66a78030e76c",
-       "id": 50
+       "id": 8388656
       }
      ],
      "active": true
@@ -2963,7 +2973,7 @@
   },
   {
    "prefab_uid": "50fb512e-b76c-6843-a14a-66a78030e76c",
-   "id": 50,
+   "id": 8388656,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3007,12 +3017,12 @@
      },
      "parent": {
       "prefab_uid": "9635900e-5a3b-2046-90bc-7e3c2dbc9429",
-      "id": 49
+      "id": 8388655
      },
      "children": [
       {
        "prefab_uid": "4d5861b9-11e4-4b4d-b1e3-bd3fd60f05cd",
-       "id": 51
+       "id": 8388657
       }
      ],
      "active": true
@@ -3025,7 +3035,7 @@
   },
   {
    "prefab_uid": "4d5861b9-11e4-4b4d-b1e3-bd3fd60f05cd",
-   "id": 51,
+   "id": 8388657,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3069,7 +3079,7 @@
      },
      "parent": {
       "prefab_uid": "50fb512e-b76c-6843-a14a-66a78030e76c",
-      "id": 50
+      "id": 8388656
      },
      "children": [],
      "active": true
@@ -3082,7 +3092,7 @@
   },
   {
    "prefab_uid": "657e61a8-4a2b-264f-addf-89659cfe050e",
-   "id": 23,
+   "id": 8388629,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3126,7 +3136,7 @@
      },
      "parent": {
       "prefab_uid": "db620b1a-d2c4-834f-bd04-51a837f7fe73",
-      "id": 7
+      "id": 8388613
      },
      "children": [],
      "active": true
@@ -3139,7 +3149,7 @@
   },
   {
    "prefab_uid": "2ef3a880-a27d-c041-9b39-9cf70fbcded3",
-   "id": 24,
+   "id": 8388630,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -3183,7 +3193,7 @@
      },
      "parent": {
       "prefab_uid": "db620b1a-d2c4-834f-bd04-51a837f7fe73",
-      "id": 7
+      "id": 8388613
      },
      "children": [],
      "active": true

@@ -2,7 +2,7 @@
  "entities": [
   {
    "prefab_uid": "a82a633d-e387-654e-a55e-7fb2006b3975",
-   "id": 20971522,
+   "id": 3145729,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -51,22 +51,22 @@
      "children": [
       {
        "prefab_uid": "e34ec6f2-6d4b-5543-aa75-e9bd0166dc35",
-       "id": 20971523
+       "id": 3145730
       },
       {
        "prefab_uid": "88612239-afdf-714b-b269-011919146236",
-       "id": 20971524
+       "id": 3145731
       },
       {
        "prefab_uid": "db0e00fd-cb8d-804a-924e-2b52434d1f72",
-       "id": 20971525
+       "id": 3145732
       }
      ],
      "active": true
     },
     "has_physics_component": true,
     "physics_component": {
-     "is_using_gravity": false,
+     "is_using_gravity": true,
      "is_kinematic": false,
      "is_sensor": false,
      "is_autoscaled": true,
@@ -79,7 +79,7 @@
      },
      "freeze_position": {
       "x": false,
-      "y": true,
+      "y": false,
       "z": false
      },
      "freeze_rotation": {
@@ -147,7 +147,7 @@
   },
   {
    "prefab_uid": "e34ec6f2-6d4b-5543-aa75-e9bd0166dc35",
-   "id": 20971523,
+   "id": 3145730,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -191,7 +191,7 @@
      },
      "parent": {
       "prefab_uid": "a82a633d-e387-654e-a55e-7fb2006b3975",
-      "id": 20971522
+      "id": 3145729
      },
      "children": [],
      "active": true
@@ -230,7 +230,7 @@
   },
   {
    "prefab_uid": "88612239-afdf-714b-b269-011919146236",
-   "id": 20971524,
+   "id": 3145731,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -274,7 +274,7 @@
      },
      "parent": {
       "prefab_uid": "a82a633d-e387-654e-a55e-7fb2006b3975",
-      "id": 20971522
+      "id": 3145729
      },
      "children": [],
      "active": true
@@ -309,7 +309,7 @@
   },
   {
    "prefab_uid": "db0e00fd-cb8d-804a-924e-2b52434d1f72",
-   "id": 20971525,
+   "id": 3145732,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -353,7 +353,7 @@
      },
      "parent": {
       "prefab_uid": "a82a633d-e387-654e-a55e-7fb2006b3975",
-      "id": 20971522
+      "id": 3145729
      },
      "children": [],
      "active": true

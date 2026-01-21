@@ -538,6 +538,12 @@ public class Player : ScriptComponent
         // - Particle effects
     }
     
+    public void OnChestLoot()
+    {
+        var level = GetLevel();
+        OnLevelUp(level, level);
+    }
+    
     /// <summary>
     /// Called when the player levels up.
     /// </summary>
@@ -546,7 +552,7 @@ public class Player : ScriptComponent
     private void OnLevelUp(int newLevel, int oldLevel)
     {
         Log.Info($"Player LEVEL UP! {oldLevel} -> {newLevel}");
-        
+
         // Restore health on level up
         if (Health != null)
         {

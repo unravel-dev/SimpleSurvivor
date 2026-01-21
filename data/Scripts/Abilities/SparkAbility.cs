@@ -89,6 +89,8 @@ public class SparkAbility : Ability
         QueryClosestTarget query = new QueryClosestTarget();
         query.source = owner;
         query.maxRange = UpgradeSystem.ApplyAreaOfEffectUpgrade(maxRange);
+        query.requireLineOfSight = true;
+        query.obstacleLayerMask = LayerMask.GetMask("Environment");
         return ContactSystem.FindClosestEnemies(query, LayerMask.GetMask("Enemy"));
     }
 

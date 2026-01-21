@@ -81,10 +81,8 @@ public class FireballAbility : Ability
     /// <returns>List containing the closest enemy, or empty list if none found</returns>
     protected override Entity[] GatherTargets()
     {
-        QueryClosestTarget query = new QueryClosestTarget();
-        query.source = owner;
-        query.maxRange = UpgradeSystem.ApplyAreaOfEffectUpgrade(maxRange);
-        return ContactSystem.FindClosestEnemies(query, LayerMask.GetMask("Enemy"));
+        return new Entity[] { Entity.Invalid };
+
     }
 
     
@@ -118,15 +116,15 @@ public class FireballAbility : Ability
             return false;
         }
 
-        if (castIndex >= targets.Length)
-        {
-            castIndex = 0;
-        }
+        // if (castIndex >= targets.Length)
+        // {
+        //     castIndex = 0;
+        // }
 
-        Entity target = targets[castIndex];
+        // Entity target = targets[castIndex];
         // Calculate spawn position and direction
         Vector3 spawnPosition = transform.position + spawnOffset;
-        Vector3 targetPosition = target.transform.position + spawnOffset;
+        // Vector3 targetPosition = target.transform.position + spawnOffset;
         // Vector3 direction = (targetPosition - spawnPosition).normalized;
         Vector3 direction = Ability.CalculateSpreadDirectionByAngleBetween(transform.forward, castIndex, totalCasts, 8.0f);
 

@@ -220,7 +220,6 @@ public class Enemy : ScriptComponent
         
         // Calculate direction to player (only X and Z for top-down)
         Vector3 toTarget = playerPosition - enemyPosition;
-        // toTarget.y = 0; // Keep movement on horizontal plane
         
         // Update state based on movement
         if (toTarget.magnitude > 0.0001f)
@@ -243,7 +242,6 @@ public class Enemy : ScriptComponent
             {
                 // Rotate to face velocity direction for physics movement
                 Vector3 velocity = physicsComponent.velocity;
-                // velocity.y = 0;
                 if (velocity.sqrMagnitude > 0.01f)
                 {
                     RotateTowardsDirection(velocity.normalized);
@@ -277,7 +275,6 @@ public class Enemy : ScriptComponent
         
         // Direction to target (flattened to XZ plane for top-down)
         Vector3 toTarget = playerPosition - enemyPosition;
-        // toTarget.y = 0f;
         
         float distance = toTarget.magnitude;
         if (distance < 0.0001f) return;
@@ -354,7 +351,7 @@ public class Enemy : ScriptComponent
         
         // Get current velocity (flattened to XZ plane)
         Vector3 currentVelocity = physicsComponent.velocity;
-        Vector3 currentPlanarVelocity = new Vector3(currentVelocity.x, 0, currentVelocity.z);
+        Vector3 currentPlanarVelocity = currentVelocity; //new Vector3(currentVelocity.x, 0, currentVelocity.z);
         
         // Apply sliding if we're hitting an obstacle
         if (useObstacleAvoidance)
@@ -652,7 +649,6 @@ public class Enemy : ScriptComponent
     {
         // Create ray from enemy to player (on XZ plane)
         Vector3 rayDirection = playerPosition - enemyPosition;
-        // rayDirection.y = 0; // Flatten to XZ plane
         
         float rayDistance = rayDirection.magnitude;
         if (rayDistance < 0.01f)
@@ -664,7 +660,7 @@ public class Enemy : ScriptComponent
         rayDirection = rayDirection.normalized;
         
         // SINGLE sphere cast: enemy to player (accounts for enemy's collision radius)
-        Vector3 castOrigin = enemyPosition + Vector3.up * 0.5f;
+        Vector3 castOrigin = enemyPosition + Vector3.up;
         Ray ray;
         ray.origin = castOrigin;
         ray.direction = rayDirection;
@@ -696,7 +692,6 @@ public class Enemy : ScriptComponent
 
                 // Store the wall normal from the hit
                 Vector3 currentWallNormal = hit.Value.normal;
-                // currentWallNormal.y = 0; // Flatten to XZ plane
 
                 // Validate normal before using
                 if (currentWallNormal.sqrMagnitude > 0.01f)
@@ -856,7 +851,6 @@ public class Enemy : ScriptComponent
         if (hit.HasValue)
         {
             Vector3 normal = hit.Value.normal;
-            // normal.y = 0;
             // Validate that normal is not zero before normalizing (prevents NaN)
             if (normal.sqrMagnitude > 0.01f)
             {

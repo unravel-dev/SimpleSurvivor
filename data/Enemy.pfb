@@ -2,7 +2,7 @@
  "entities": [
   {
    "prefab_uid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
-   "id": 1048579,
+   "id": 7340033,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -51,18 +51,18 @@
      "children": [
       {
        "prefab_uid": "181acae2-d0c5-004b-a243-c9486c8919ac",
-       "id": 1048580
+       "id": 7340034
       },
       {
        "prefab_uid": "f394a2d3-fb82-604e-8a57-97d75348a99d",
-       "id": 1048581
+       "id": 7340035
       }
      ],
      "active": true
     },
     "has_physics_component": true,
     "physics_component": {
-     "is_using_gravity": false,
+     "is_using_gravity": true,
      "is_kinematic": false,
      "is_sensor": false,
      "is_autoscaled": true,
@@ -75,7 +75,7 @@
      },
      "freeze_position": {
       "x": false,
-      "y": true,
+      "y": false,
       "z": false
      },
      "freeze_rotation": {
@@ -114,21 +114,21 @@
        "arriveRadius": 0.6000000238418579,
        "rotationSpeed": 180.0,
        "usePhysicsMovement": true,
+       "obstacleLookaheadDistance": 1.5,
+       "obstacleDetectionRadius": 0.4000000059604645,
+       "wallFollowDistance": 0.800000011920929,
+       "losCheckInterval": 0.20000000298023225,
+       "useLOSPathfinding": true,
+       "useObstacleAvoidance": true,
        "target": {
         "flags": 2,
         "prefab_uid": "00000000-0000-0000-0000-000000000000",
         "id": 4294967295
        },
        "autoFindPlayer": true,
-       "enemyType": "basic",
+       "enemyType": 0,
        "contactDamageRadius": 2.0,
-       "contactDamageInterval": 0.5,
-       "walkAnimation": {
-        "uid": "00000000-0000-0000-0000-000000000000"
-       },
-       "stunAnimation": {
-        "uid": "00000000-0000-0000-0000-000000000000"
-       }
+       "contactDamageInterval": 0.5
       },
       {
        "type": "Health",
@@ -144,7 +144,7 @@
   },
   {
    "prefab_uid": "181acae2-d0c5-004b-a243-c9486c8919ac",
-   "id": 1048580,
+   "id": 7340034,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -188,7 +188,7 @@
      },
      "parent": {
       "prefab_uid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
-      "id": 1048579
+      "id": 7340033
      },
      "children": [],
      "active": true
@@ -211,19 +211,19 @@
        }
       ],
       "material_instances": [],
-      "lod_limits": [
-       {
-        "min": 0,
-        "max": 100
-       }
-      ]
+      "lod_override_enabled": false,
+      "lod_override_level": 0,
+      "lod_selection_bias": 0.0,
+      "lod_transition_time": {
+       "count": 0.0
+      }
      }
     }
    }
   },
   {
    "prefab_uid": "f394a2d3-fb82-604e-8a57-97d75348a99d",
-   "id": 1048581,
+   "id": 7340035,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -267,7 +267,7 @@
      },
      "parent": {
       "prefab_uid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
-      "id": 1048579
+      "id": 7340033
      },
      "children": [],
      "active": true
@@ -290,12 +290,12 @@
        }
       ],
       "material_instances": [],
-      "lod_limits": [
-       {
-        "min": 0,
-        "max": 100
-       }
-      ]
+      "lod_override_enabled": false,
+      "lod_override_level": 0,
+      "lod_selection_bias": 0.0,
+      "lod_transition_time": {
+       "count": 0.0
+      }
      }
     }
    }
