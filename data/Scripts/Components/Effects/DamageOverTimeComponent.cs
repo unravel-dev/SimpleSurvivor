@@ -120,7 +120,7 @@ public abstract class DamageOverTimeComponent : EffectOverTime
             return;
         
         // Apply damage through DamageSystem
-        DamageBreakdown breakdown = UpgradeSystem.CalculateDamage(tickDamage);
+        DamageBreakdown breakdown = UpgradeSystem.CalculateDamage(baseDamage: tickDamage, canCrit: false);
         breakdown.color = GetDamageColor();
         DamageSystem.ApplyDamage(owner, GetSource(), breakdown);
         
@@ -163,7 +163,7 @@ public abstract class DamageOverTimeComponent : EffectOverTime
         
         
         // Apply all remaining damage at once
-        DamageBreakdown breakdown = UpgradeSystem.CalculateDamage(executeDamage);
+        DamageBreakdown breakdown = UpgradeSystem.CalculateDamage(baseDamage: executeDamage, canCrit: false);
         breakdown.color = GetDamageColor();
         DamageSystem.ApplyDamage(owner, GetSource(), breakdown);
         

@@ -172,10 +172,11 @@ public class DeathSequence : ScriptComponent
     {
         if (isPlayingDeathSequence)
             return;
-        
+
         // Disable physics collisions
         if (physicsComponent != null)
         {
+            physicsComponent.useGravity = false;
             physicsComponent.excludeLayers = -1;
         }
         

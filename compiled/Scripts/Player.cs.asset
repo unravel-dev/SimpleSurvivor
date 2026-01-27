@@ -160,7 +160,7 @@ public class Player : ScriptComponent
         LevelUpMenu.OnRerollPressed -= OnRerollPressed;
         LevelUpMenu.OnRerollPressed -= OnRerollPressed;
     }
-    
+
     /// <summary>
     /// Called every frame to handle input and movement.
     /// </summary>
@@ -172,7 +172,7 @@ public class Player : ScriptComponent
             UpgradeSystem.UpdateMagnetEffect(Time.deltaTime);
             UpdatePickupRange();
         }
-        
+
         if (initialUpdate)
         {
             ShowInitialAbilitySelection();
@@ -182,17 +182,17 @@ public class Player : ScriptComponent
 
         if (physicsComponent == null)
             return;
-            
+
         // Don't process input/movement if player is dead
         if (Health != null && Health.IsDead())
             return;
-            
+
         // Handle input
         HandleInput();
-        
+
         // Handle buffered level ups (T key)
         HandleBufferedLevelUps();
-        
+
         // Update movement
         if (usePhysicsMovement)
         {
@@ -201,6 +201,11 @@ public class Player : ScriptComponent
         else
         {
             HandleDirectMovement();
+        }
+        
+        if(Input.IsPressed(KeyCode.C))
+        {
+            OnChestLoot();
         }
     }
     

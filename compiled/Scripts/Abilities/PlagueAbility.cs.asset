@@ -230,7 +230,7 @@ public class PlagueAbility : Ability
                 continue;
 
             // Apply damage
-            DamageBreakdown breakdown = UpgradeSystem.CalculateDamage(plague.plagueDamage);
+            DamageBreakdown breakdown = UpgradeSystem.CalculateDamage(baseDamage: plague.plagueDamage, canCrit: false);
             breakdown.color = Color.white;
             DamageSystem.ApplyDamage(enemy, owner, breakdown);
 

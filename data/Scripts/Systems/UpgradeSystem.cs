@@ -634,25 +634,28 @@ public static class UpgradeSystem
     /// <param name="baseCriticalChance">Base critical chance percentage (0-100).</param>
     /// <param name="baseCriticalMultiplier">Base critical damage multiplier (e.g., 2.0 for 200% damage).</param>
     /// <returns>Final damage value after applying all upgrades and critical strike calculation.</returns>
-    public static DamageBreakdown CalculateDamage(int baseDamage, float baseCriticalChance = 0.0f, float baseCriticalMultiplier = 2.0f)
+    public static DamageBreakdown CalculateDamage(int baseDamage, bool canCrit = true)
     {
         DamageBreakdown damageInfo = new DamageBreakdown();
         // Apply damage upgrades first
         damageInfo.amount = ApplyDamageUpgrade(baseDamage);
         damageInfo.color = Color.white;
-        // Calculate final critical chance
-        float finalCriticalChance = ApplyCriticalChanceUpgrade(baseCriticalChance);
-        
-        // Calculate final critical multiplier
-        float finalCriticalMultiplier = ApplyCriticalDamageUpgrade(baseCriticalMultiplier);
-        
+
+        float criticalChance = 0.0f;
+        float criticalMultiplier = 1.5f;
+        if (canCrit)
+        {
+            criticalChance = ApplyCriticalChanceUpgrade(criticalChance);
+            criticalMultiplier = ApplyCriticalDamageUpgrade(criticalMultiplier);
+        }
+
         // Roll for critical hit
-        damageInfo.isCritical = Random.Range(0f, 100f) < finalCriticalChance;
+        damageInfo.isCritical = Random.Range(0f, 100f) < criticalChance;
         
         // Apply critical multiplier if it's a critical hit
         if (damageInfo.isCritical)
         {
-            damageInfo.amount = Mathf.RoundToInt((float)damageInfo.amount * finalCriticalMultiplier);
+            damageInfo.amount = Mathf.RoundToInt((float)damageInfo.amount * criticalMultiplier);
         }
         
         return damageInfo;

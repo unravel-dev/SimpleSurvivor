@@ -229,29 +229,29 @@ public class Enemy : ScriptComponent
             {
                 stateMachine.SetState(EnemyState.Walking);
             }
-            
+
             // Handle non-physics movement here (direct transform)
             if (!usePhysicsMovement)
             {
                 Vector3 directionToPlayer = toTarget.normalized;
                 MoveTowardsPlayer(directionToPlayer, distanceToPlayer);
+                RotateTowardsDirection(toTarget.normalized);
+
             }
             
             // Rotate to face movement direction (for physics) or player (for direct movement)
-            if (usePhysicsMovement && physicsComponent != null)
-            {
-                // Rotate to face velocity direction for physics movement
-                Vector3 velocity = physicsComponent.velocity;
-                if (velocity.sqrMagnitude > 0.01f)
-                {
-                    RotateTowardsDirection(velocity.normalized);
-                }
-            }
-            else
-            {
+            // if (usePhysicsMovement && physicsComponent != null)
+            // {
+            //     // Rotate to face velocity direction for physics movement
+            //     Vector3 velocity = physicsComponent.velocity;
+            //     Vector3 currentPlanarVelocity = new Vector3(velocity.x, 0, velocity.z);
+            //     RotateTowardsDirection(currentPlanarVelocity.normalized);
+            // }
+            // else
+            // {
                 // Rotate to face player for direct movement
-                RotateTowardsDirection(toTarget.normalized);
-            }
+            //    RotateTowardsDirection(toTarget.normalized);
+            // }
             
             lastPlayerPosition = playerPosition;
         }
@@ -264,7 +264,7 @@ public class Enemy : ScriptComponent
             }
         }
     }
-    
+
     /// <summary>
     /// Update physics-based movement using steering forces with obstacle avoidance (called at fixed intervals).
     /// </summary>
@@ -272,15 +272,15 @@ public class Enemy : ScriptComponent
     {
         Vector3 playerPosition = target.transform.position;
         Vector3 enemyPosition = transform.position;
-        
+
         // Direction to target (flattened to XZ plane for top-down)
         Vector3 toTarget = playerPosition - enemyPosition;
-        
+
         float distance = toTarget.magnitude;
         if (distance < 0.0001f) return;
-        
+
         Vector3 direction = toTarget / distance;
-        
+
         // Check line of sight and update wall-following state
         // When wall-following, check LOS every frame to quickly detect when path is clear
         // When not wall-following, check periodically to save performance
@@ -302,16 +302,16 @@ public class Enemy : ScriptComponent
                     shouldCheckLOS = true;
                 }
             }
-            
+
             if (shouldCheckLOS)
             {
                 CheckLineOfSight(playerPosition, enemyPosition);
             }
         }
-        
+
         // Calculate desired movement direction with obstacle avoidance
         Vector3 desiredDirection = direction;
-        
+
         if (isWallFollowing)
         {
             // Wall-following mode: move tangentially along the wall
@@ -335,7 +335,7 @@ public class Enemy : ScriptComponent
                 }
             }
         }
-        
+
         // Target speed with "arrive" behavior (slow down near target)
         float targetSpeed = maxSpeed;
         if (distance < slowRadius)
@@ -346,15 +346,15 @@ public class Enemy : ScriptComponent
         {
             targetSpeed = 0f;
         }
-        
+
         Vector3 desiredVelocity = desiredDirection * targetSpeed;
-        
+
         // Get current velocity (flattened to XZ plane)
         Vector3 currentVelocity = physicsComponent.velocity;
         Vector3 currentPlanarVelocity = currentVelocity; //new Vector3(currentVelocity.x, 0, currentVelocity.z);
-        
+
         // Apply sliding if we're hitting an obstacle
-        if (useObstacleAvoidance)
+        if (useObstacleAvoidance && currentPlanarVelocity.sqrMagnitude > 0.01f)
         {
             Vector3 obstacleNormal = GetObstacleNormal(enemyPosition, desiredDirection);
             if (obstacleNormal.sqrMagnitude > 0.01f)
@@ -367,21 +367,23 @@ public class Enemy : ScriptComponent
                 }
             }
         }
-        
+
         // Steering = how much we want to change our current velocity
         Vector3 steering = desiredVelocity - currentPlanarVelocity;
-        
+
         // Cap to what we can actually change this frame with our max acceleration
         float maxVelocityChange = maxAcceleration * Time.fixedDeltaTime;
         if (steering.sqrMagnitude > maxVelocityChange * maxVelocityChange)
         {
             steering = steering.normalized * maxVelocityChange;
         }
-        
+
         // Apply as acceleration so it's mass-independent
         // Convert velocity change back to acceleration by dividing by deltaTime
         Vector3 accelerationForce = steering / Time.fixedDeltaTime;
         physicsComponent.ApplyForce(accelerationForce, ForceMode.Acceleration);
+        
+        RotateTowardsDirection(toTarget.normalized);
     }
     
     /// <summary>

@@ -256,10 +256,10 @@ public static class ContactSystem
                 }
             }
 
-            // if (closestNonVisitedEnemy != Entity.Invalid)
-            // {
-            //     return closestNonVisitedEnemy;
-            // }
+            if (query.visitedTargets == null)
+            {
+                return closestEnemy;
+            }
             return closestNonVisitedEnemy;
         }
     }
@@ -475,7 +475,7 @@ public static class ContactSystem
                 query.requireLineOfSight = true;
                 query.obstacleLayerMask = LayerMask.GetMask("Environment");
                 // Only use visited targets list if not allowing revisits
-                query.visitedTargets = chainComponent.allowRevisitTargets ? null : chainComponent.visitedTargets;
+                query.visitedTargets = chainComponent.visitedTargets;
                 Entity newTarget = FindClosestEnemy(query, target.layers);
 
                 if (!newTarget)
