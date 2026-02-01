@@ -2,7 +2,7 @@
  "entities": [
   {
    "prefab_uid": "b46d51d1-fea8-b14f-9a3a-0347104fe3a3",
-   "id": 2097155,
+   "id": 3,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -319,8 +319,8 @@
     "script_component": {
      "script_components": [
       {
-       "type": "ExperienceOrb",
-       "baseAttractionSpeed": 25.5,
+       "type": "HealthOrb",
+       "baseAttractionSpeed": 15.0,
        "playerSpeedMultiplier": 1.5,
        "minimumAttractionSpeed": 12.0,
        "maximumAttractionSpeed": 50.0,
@@ -331,9 +331,9 @@
        "enableBackEasing": true,
        "backEaseDuration": 0.4000000059604645,
        "backEaseOvershoot": 1.0,
-       "bounceBackDistance": 1.0,
-       "bounceBackHeight": 2.0,
-       "experienceValue": 10.0
+       "bounceBackDistance": 1.5,
+       "bounceBackHeight": 0.5,
+       "healAmount": 10
       }
      ]
     }

@@ -11,25 +11,27 @@ using Unravel.Core;
 [ScriptSourceFile]
 public class Player : ScriptComponent
 {
-    //[Header("Movement Settings")]
+    [Header("Movement Settings")]
     [Tooltip("Base maximum movement speed in units per second (before upgrades)")]
     public float baseMaxSpeed = 10.0f;
     [Tooltip("Maximum acceleration in units per second squared")]
     public float maxAcceleration = 50.0f;
     [Tooltip("Maximum deceleration when no input (higher = stops faster)")]
     public float maxDeceleration = 30.0f;
-    
-    //[Header("Physics Settings")]
     [Tooltip("Use physics-based movement (recommended) vs direct transform movement")]
     public bool usePhysicsMovement = true;
     
-    //[Header("Player Stats")]
+    [Header("Player Stats")]
     [Tooltip("Base maximum health (before upgrades)")]
     public int baseMaxHealth = 100;
     [Tooltip("Base pickup range for experience and items (before upgrades)")]
     public float basePickupRange = 10.0f;
     [Tooltip("Base luck value for better upgrade card rarities")]
     public float baseLuck = 0.0f;
+    
+    [Header("Level Up Settings")]
+    [Tooltip("Whether to restore health to full when leveling up")]
+    public bool healOnLevelUp = true;
     
     
     // Component references
@@ -558,8 +560,8 @@ public class Player : ScriptComponent
     {
         Log.Info($"Player LEVEL UP! {oldLevel} -> {newLevel}");
 
-        // Restore health on level up
-        if (Health != null)
+        // Restore health on level up if enabled
+        if (healOnLevelUp && Health != null)
         {
             Health.RestoreToFullHealth();
             Log.Info("Player health restored on level up!");
