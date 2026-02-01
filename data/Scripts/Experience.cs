@@ -116,11 +116,20 @@ public class Experience : ScriptComponent
             }
             else
             {
-                // Check for MagnetLoot as well
-                var magnetLoot = entity.GetComponent<MagnetLoot>();
-                if (magnetLoot != null && !magnetLoot.IsBeingAttracted())
+                // Check for HealthOrb
+                var healthOrb = entity.GetComponent<HealthOrb>();
+                if (healthOrb != null && !healthOrb.IsBeingAttracted())
                 {
-                    magnetLoot.StartAttraction(owner);
+                    healthOrb.StartAttraction(owner);
+                }
+                else
+                {
+                    // Check for MagnetLoot as well
+                    var magnetLoot = entity.GetComponent<MagnetLoot>();
+                    if (magnetLoot != null && !magnetLoot.IsBeingAttracted())
+                    {
+                        magnetLoot.StartAttraction(owner);
+                    }
                 }
             }
         }

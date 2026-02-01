@@ -134,6 +134,11 @@ public class Enemy : ScriptComponent
             }
         }
     }
+
+    public bool IsElite()
+    {
+        return enemyType == EnemyType.Elite || enemyType == EnemyType.Boss;
+    }
     
     public LayerMask GetObstacleLayerMask()
     {

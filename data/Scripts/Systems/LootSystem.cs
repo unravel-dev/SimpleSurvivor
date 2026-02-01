@@ -36,6 +36,12 @@ public class LootSystem : ScriptComponent
         
         [Tooltip("Chance to drop a chest when this enemy dies (0-100, e.g., 0.1 = 0.1% chance, 100 = guaranteed)")]
         public float chestDropChance = 0.1f;
+        
+        [Tooltip("Chance to drop a health orb when this enemy dies (0-100, e.g., 5.0 = 5% chance)")]
+        public float healthOrbDropChance = 5.0f;
+        
+        [Tooltip("Number of health orbs to drop if health orb is dropped")]
+        public int healthOrbCount = 1;
     }
     
     [System.Serializable]
@@ -67,14 +73,21 @@ public class LootSystem : ScriptComponent
     public Prefab chestLootPrefab;
     
     [Tooltip("Chance to drop a chest when an enemy dies (0-100, e.g., 1 = 1% chance)")]
-    
     public float chestDropChance = 1.0f; // 1% chance by default
+    
+    [Tooltip("Health orb prefab to spawn")]
+    public Prefab healthOrbPrefab;
+    
+    [Tooltip("Chance to drop a health orb when an enemy dies (0-100, e.g., 5 = 5% chance)")]
+    public float healthOrbDropChance = 5.0f; // 5% chance by default
     
     [Tooltip("Default loot configuration")]
     public LootConfiguration defaultLootConfig = new LootConfiguration
     {
         magnetDropChance = 0.3f,
-        chestDropChance = 0.1f
+        chestDropChance = 0.1f,
+        healthOrbDropChance = 5.0f,
+        healthOrbCount = 1
     };
     
     [Tooltip("Time-based modifiers")]
@@ -235,25 +248,25 @@ public class LootSystem : ScriptComponent
         switch (enemyType)
         {
             case EnemyType.Boss:
-                return CreateLootConfig(baseExp: 100.0f, levelMultiplier: 0.5f, orbCount: 5, magnetChance: 0.3f, chestChance: 100.0f); // Boss: 100 base XP, 50% per level, 5 orbs, 0.3% magnet, 100% chest
+                return CreateLootConfig(baseExp: 100.0f, levelMultiplier: 0.5f, orbCount: 5, magnetChance: 0.3f, chestChance: 100.0f, healthOrbChance: 15.0f, healthOrbCount: 2); // Boss: 100 base XP, 50% per level, 5 orbs, 0.3% magnet, 100% chest, 15% health orb (2 orbs)
                 
             case EnemyType.Elite:
-                return CreateLootConfig(baseExp: 25.0f, levelMultiplier: 0.2f, orbCount: 3, magnetChance: 0.3f, chestChance: 100.0f); // Elite: 25 base XP, 20% per level, 3 orbs, 0.3% magnet, 100% chest
+                return CreateLootConfig(baseExp: 25.0f, levelMultiplier: 0.2f, orbCount: 3, magnetChance: 0.3f, chestChance: 100.0f, healthOrbChance: 10.0f, healthOrbCount: 1); // Elite: 25 base XP, 20% per level, 3 orbs, 0.3% magnet, 100% chest, 10% health orb
                 
             case EnemyType.Heavy:
-                return CreateLootConfig(baseExp: 18.0f, levelMultiplier: 0.15f, orbCount: 2, magnetChance: 0.3f, chestChance: 0.1f); // Heavy: 18 base XP, 15% per level, 2 orbs, 0.3% magnet, 0.1% chest
+                return CreateLootConfig(baseExp: 18.0f, levelMultiplier: 0.15f, orbCount: 2, magnetChance: 0.3f, chestChance: 0.1f, healthOrbChance: 8.0f, healthOrbCount: 1); // Heavy: 18 base XP, 15% per level, 2 orbs, 0.3% magnet, 0.1% chest, 8% health orb
                 
             case EnemyType.Fast:
-                return CreateLootConfig(baseExp: 12.0f, levelMultiplier: 0.12f, orbCount: 1, magnetChance: 0.3f, chestChance: 0.1f); // Fast: 12 base XP, 12% per level, 1 orb, 0.3% magnet, 0.1% chest
+                return CreateLootConfig(baseExp: 12.0f, levelMultiplier: 0.12f, orbCount: 1, magnetChance: 0.3f, chestChance: 0.1f, healthOrbChance: 6.0f, healthOrbCount: 1); // Fast: 12 base XP, 12% per level, 1 orb, 0.3% magnet, 0.1% chest, 6% health orb
                 
             case EnemyType.Weak:
             case EnemyType.Small:
-                return CreateLootConfig(baseExp: 5.0f, levelMultiplier: 0.05f, orbCount: 1, magnetChance: 0.3f, chestChance: 0.1f); // Weak: 5 base XP, 5% per level, 1 orb, 0.3% magnet, 0.1% chest
+                return CreateLootConfig(baseExp: 5.0f, levelMultiplier: 0.05f, orbCount: 1, magnetChance: 0.3f, chestChance: 0.1f, healthOrbChance: 4.0f, healthOrbCount: 1); // Weak: 5 base XP, 5% per level, 1 orb, 0.3% magnet, 0.1% chest, 4% health orb
                 
             case EnemyType.Basic:
             default:
                 // Return config with default drop chances for basic enemies
-                return CreateLootConfig(baseExp: 10.0f, levelMultiplier: 0.1f, orbCount: 1, magnetChance: 0.3f, chestChance: 0.1f); // Basic: default XP, 0.3% magnet, 0.1% chest
+                return CreateLootConfig(baseExp: 10.0f, levelMultiplier: 0.1f, orbCount: 1, magnetChance: 0.3f, chestChance: 0.1f, healthOrbChance: 5.0f, healthOrbCount: 1); // Basic: default XP, 0.3% magnet, 0.1% chest, 5% health orb
         }
     }
     
@@ -299,6 +312,12 @@ public class LootSystem : ScriptComponent
         if (chestLootPrefab != null && Random.Range(0.0f, 100.0f) < config.chestDropChance)
         {
             DropChestLoot(enemyPosition);
+        }
+        
+        // Randomly drop health orbs based on config
+        if (healthOrbPrefab != null && Random.Range(0.0f, 100.0f) < config.healthOrbDropChance)
+        {
+            DropHealthOrbs(enemyPosition, config.healthOrbCount);
         }
     }
     
@@ -467,6 +486,68 @@ public class LootSystem : ScriptComponent
     }
     
     /// <summary>
+    /// Drop health orbs at the specified location.
+    /// </summary>
+    /// <param name="dropPosition">Position to drop health orbs at.</param>
+    /// <param name="orbCount">Number of health orbs to create.</param>
+    private void DropHealthOrbs(Vector3 dropPosition, int orbCount)
+    {
+        if (healthOrbPrefab == null)
+            return;
+        
+        // Calculate heal amount based on player level (scales with progression)
+        int healAmount = CalculateHealthOrbHealAmount();
+        
+        for (int i = 0; i < orbCount; i++)
+        {
+            // Calculate random position within spread radius
+            Vector2 randomCircle = Random.insideUnitCircle * dropSpreadRadius;
+            Vector3 orbPosition = dropPosition + new Vector3(randomCircle.x, dropHeight, randomCircle.y);
+            
+            // Instantiate health orb
+            var orbEntity = Scene.Instantiate(healthOrbPrefab, ContainerCache.LootContainer);
+            if (orbEntity)
+            {
+                orbEntity.transform.position = orbPosition;
+                
+                // Configure heal amount
+                var healthOrb = orbEntity.GetComponent<HealthOrb>();
+                if (healthOrb != null)
+                {
+                    healthOrb.SetHealAmount(healAmount);
+                    healthOrb.SetPlayerSpeedMultiplier(orbSpeedMultiplier);
+                }
+            }
+        }
+    }
+    
+    /// <summary>
+    /// Calculate the heal amount for health orbs based on player level.
+    /// </summary>
+    /// <returns>Heal amount for health orbs.</returns>
+    private int CalculateHealthOrbHealAmount()
+    {
+        if (playerEntity == null)
+            return 10; // Default heal amount
+        
+        var playerHealth = playerEntity.GetComponent<Health>();
+        if (playerHealth == null)
+            return 10;
+        
+        int maxHealth = playerHealth.GetMaxHealth();
+        
+        // Heal for 10-20% of max health, scaling with level
+        int playerLevel = playerExperience != null ? playerExperience.GetCurrentLevel() : 1;
+        float healPercentage = 0.10f + (playerLevel - 1) * 0.01f; // 10% base, +1% per level
+        healPercentage = Mathf.Clamp(healPercentage, 0.10f, 0.30f); // Cap at 30%
+        
+        int healAmount = Mathf.RoundToInt(maxHealth * healPercentage);
+        
+        // Ensure minimum heal amount
+        return Mathf.Max(5, healAmount);
+    }
+    
+    /// <summary>
     /// Create a custom loot configuration for specific enemy types.
     /// </summary>
     /// <param name="baseExp">Base experience value.</param>
@@ -474,8 +555,10 @@ public class LootSystem : ScriptComponent
     /// <param name="orbCount">Number of orbs to drop.</param>
     /// <param name="magnetChance">Chance to drop a magnet (0-100).</param>
     /// <param name="chestChance">Chance to drop a chest (0-100).</param>
+    /// <param name="healthOrbChance">Chance to drop a health orb (0-100).</param>
+    /// <param name="healthOrbCount">Number of health orbs to drop if health orb is dropped.</param>
     /// <returns>New loot configuration.</returns>
-    public static LootConfiguration CreateLootConfig(float baseExp, float levelMultiplier = 0.1f, int orbCount = 1, float magnetChance = 0.3f, float chestChance = 0.1f)
+    public static LootConfiguration CreateLootConfig(float baseExp, float levelMultiplier = 0.1f, int orbCount = 1, float magnetChance = 0.3f, float chestChance = 0.1f, float healthOrbChance = 5.0f, int healthOrbCount = 1)
     {
         return new LootConfiguration
         {
@@ -486,7 +569,9 @@ public class LootSystem : ScriptComponent
             minimumExperience = baseExp * 0.5f,
             maximumExperience = baseExp * 3.0f,
             magnetDropChance = magnetChance,
-            chestDropChance = chestChance
+            chestDropChance = chestChance,
+            healthOrbDropChance = healthOrbChance,
+            healthOrbCount = healthOrbCount
         };
     }
 }

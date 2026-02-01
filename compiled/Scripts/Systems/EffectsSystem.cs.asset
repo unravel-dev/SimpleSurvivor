@@ -9,6 +9,20 @@ using Unravel.Core;
 public static class EffectsSystem
 {
     /// <summary>
+    /// Check if an entity is a boss (immune to movement-impairing effects).
+    /// </summary>
+    /// <param name="entity">Entity to check.</param>
+    /// <returns>True if the entity is a boss.</returns>
+    private static bool IsElite(Entity entity)
+    {
+        if (!entity)
+            return false;
+        
+        var enemy = entity.GetComponent<Enemy>();
+        return enemy != null && enemy.IsElite();
+    }
+    
+    /// <summary>
     /// Tick the effects system. Should be called every frame from an EffectsSystemUpdater component.
     /// </summary>
     /// <param name="deltaTime">Time since last frame in seconds.</param>
@@ -145,15 +159,22 @@ public static class EffectsSystem
     /// Add or refresh a stun effect on an entity.
     /// If the entity already has a StunComponent, refreshes its duration.
     /// Otherwise, adds a new StunComponent.
+    /// Bosses are immune to stun effects and this will return null.
     /// </summary>
     /// <param name="entity">Entity to apply the stun to.</param>
     /// <param name="source">Entity that caused the stun.</param>
     /// <param name="duration">Duration of the stun in seconds.</param>
-    /// <returns>The StunComponent that was added or refreshed, or null if failed.</returns>
+    /// <returns>The StunComponent that was added or refreshed, or null if failed or entity is a boss.</returns>
     public static StunComponent AddOrRefreshStun(Entity entity, Entity source, float duration)
     {
         if (!entity)
             return null;
+        
+        // Bosses are immune to movement-impairing effects (stuns)
+        if (IsElite(entity))
+        {
+            return null;
+        }
             
         // Try to find existing stun effect
         StunComponent stun = entity.GetComponent<StunComponent>();

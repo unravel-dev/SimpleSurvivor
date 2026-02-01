@@ -2,11 +2,11 @@
  "entities": [
   {
    "prefab_uid": "b46d51d1-fea8-b14f-9a3a-0347104fe3a3",
-   "id": 1048579,
+   "id": 2097155,
    "components": {
     "has_tag_component": true,
     "tag_component": {
-     "name": "ExperienceOrb",
+     "name": "HealthOrb",
      "tag": ""
     },
     "has_layer_component": true,
@@ -65,7 +65,7 @@
       ],
       "materials": [
        {
-        "uid": "e865a23a-9c52-aa48-9a7e-d2e8cc34af58"
+        "uid": "19232235-3082-d24a-8a60-b62ea699d9f3"
        }
       ],
       "material_instances": [],
@@ -249,45 +249,45 @@
        {
         "progress": 0.0,
         "element": {
-         "r": 0.0,
-         "g": 0.8117647171020508,
-         "b": 1.0,
+         "r": 1.0,
+         "g": 0.0,
+         "b": 0.0,
          "a": 0.0
         }
        },
        {
         "progress": 0.25,
         "element": {
-         "r": 0.0,
-         "g": 0.8117647171020508,
-         "b": 1.0,
+         "r": 1.0,
+         "g": 0.0,
+         "b": 0.0,
          "a": 1.0
         }
        },
        {
         "progress": 0.5,
         "element": {
-         "r": 0.0,
-         "g": 0.8117647171020508,
-         "b": 1.0,
+         "r": 1.0,
+         "g": 0.10389608144760132,
+         "b": 0.0,
          "a": 1.0
         }
        },
        {
         "progress": 0.75,
         "element": {
-         "r": 0.0,
-         "g": 0.8117647171020508,
-         "b": 1.0,
+         "r": 1.0,
+         "g": 0.0,
+         "b": 0.0,
          "a": 1.0
         }
        },
        {
         "progress": 1.0,
         "element": {
-         "r": 0.0,
-         "g": 0.8117647171020508,
-         "b": 1.0,
+         "r": 1.0,
+         "g": 0.05194807052612305,
+         "b": 0.0,
          "a": 0.0
         }
        }

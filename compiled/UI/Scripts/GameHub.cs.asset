@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unravel.Core;
 
@@ -33,6 +34,39 @@ public class GameHub : ScriptComponent
     private float gameStartTime;
     private float timerUpdateInterval = 1.0f; // Update timer every second
     private float lastTimerUpdate = 0f;
+    
+    // Boss health bar tracking
+    private UIElement bossHealthContainer;
+    private Dictionary<Entity, BossHealthBarData> bossHealthBars = new Dictionary<Entity, BossHealthBarData>();
+    private float bossUpdateInterval = 0.2f; // Update boss list every 0.2 seconds
+    private float lastBossUpdate = 0f;
+    private int nextBossBarId = 0; // Counter for unique element IDs
+    
+    /// <summary>
+    /// Data structure to track boss health bar UI elements and component references.
+    /// </summary>
+    private class BossHealthBarData
+    {
+        public Entity bossEntity;
+        public Health healthComponent;
+        public Enemy enemyComponent;
+        public string bossName;
+        public string elementId; // Unique ID for this boss's health bar elements
+        
+        // Cached UI element references
+        public UIElement healthBarElement;
+        public UIElement healthValueElement;
+        public UIElement healthNameElement;
+        
+        public BossHealthBarData(Entity entity, Health health, Enemy enemy, string id)
+        {
+            bossEntity = entity;
+            healthComponent = health;
+            enemyComponent = enemy;
+            bossName = entity.name ?? "Boss";
+            elementId = id;
+        }
+    }
     
     /// <summary>
     /// Called when the script is created. Cache all references.
@@ -95,6 +129,7 @@ public class GameHub : ScriptComponent
         levelValue = document.GetElementById("level_value");
         upgradeCounter = document.GetElementById("upgrade_counter");
         upgradeCounterValue = document.GetElementById("upgrade_counter_value");
+        bossHealthContainer = document.GetElementById("boss_health_container");
         
         if (healthBar?.IsValid() != true)
         {
@@ -119,6 +154,11 @@ public class GameHub : ScriptComponent
         if (levelValue?.IsValid() != true)
         {
             Log.Error("GameHub: Level value element not found or invalid");
+        }
+        
+        if (bossHealthContainer?.IsValid() != true)
+        {
+            Log.Warning("GameHub: Boss health container element not found or invalid");
         }
     }
     
@@ -245,6 +285,18 @@ public class GameHub : ScriptComponent
         
         // Update ability cooldowns
         UpdateAbilityCooldowns();
+        
+        // Update boss health bars at controlled intervals
+        if (Time.time - lastBossUpdate >= bossUpdateInterval)
+        {
+            UpdateBossHealthBars();
+            lastBossUpdate = Time.time;
+        }
+        else
+        {
+            // Still update health values every frame for smooth updates
+            UpdateBossHealthBarValues();
+        }
     }
     
     /// <summary>
@@ -685,5 +737,220 @@ public class GameHub : ScriptComponent
                 upgradeCounter.SetClass("hidden", true);
             }
         }
+    }
+    
+    // ========== BOSS HEALTH BAR MANAGEMENT ==========
+    
+    /// <summary>
+    /// Update boss health bars - finds all bosses and creates/removes bars as needed.
+    /// Called at intervals to detect spawns/deaths.
+    /// </summary>
+    private void UpdateBossHealthBars()
+    {
+        if (bossHealthContainer?.IsValid() != true)
+            return;
+        
+        // Find all enemies with Enemy component
+        var allEnemies = Scene.FindEntitiesWithComponent<Enemy>();
+        if (allEnemies == null)
+            return;
+        
+        // Filter to only bosses that are alive
+        List<Entity> currentBosses = new List<Entity>();
+        foreach (var enemyEntity in allEnemies)
+        {
+            if (!enemyEntity)
+                continue;
+            
+            var enemy = enemyEntity.GetComponent<Enemy>();
+            if (enemy == null || !enemy.IsElite())
+                continue;
+            
+            var health = enemyEntity.GetComponent<Health>();
+            if (health == null || health.IsDead())
+                continue;
+            
+            currentBosses.Add(enemyEntity);
+        }
+        
+        // Remove health bars for bosses that no longer exist or are dead
+        List<Entity> bossesToRemove = new List<Entity>();
+        foreach (var kvp in bossHealthBars)
+        {
+            if (!kvp.Key || !currentBosses.Contains(kvp.Key))
+            {
+                bossesToRemove.Add(kvp.Key);
+            }
+        }
+        
+        foreach (var bossEntity in bossesToRemove)
+        {
+            RemoveBossHealthBar(bossEntity);
+        }
+        
+        // Add health bars for new bosses
+        foreach (var bossEntity in currentBosses)
+        {
+            if (!bossHealthBars.ContainsKey(bossEntity))
+            {
+                AddBossHealthBar(bossEntity);
+            }
+        }
+        
+        // Update container visibility
+        bool hasBosses = currentBosses.Count > 0;
+        bossHealthContainer.SetClass("hidden", !hasBosses);
+    }
+    
+    /// <summary>
+    /// Update health values for all existing boss health bars.
+    /// Called every frame for smooth updates. Uses cached element references.
+    /// </summary>
+    private void UpdateBossHealthBarValues()
+    {
+        if (bossHealthBars.Count == 0)
+            return;
+        
+        List<Entity> bossesToRemove = new List<Entity>();
+        
+        foreach (var kvp in bossHealthBars)
+        {
+            var bossEntity = kvp.Key;
+            var data = kvp.Value;
+            
+            // Validate entity still exists and is alive
+            if (!bossEntity || data.healthComponent == null || data.healthComponent.IsDead())
+            {
+                bossesToRemove.Add(bossEntity);
+                continue;
+            }
+            
+            int currentHealth = data.healthComponent.GetCurrentHealth();
+            int maxHealth = data.healthComponent.GetMaxHealth();
+            
+            if (maxHealth <= 0)
+            {
+                bossesToRemove.Add(bossEntity);
+                continue;
+            }
+            
+            float healthPercentage = (float)currentHealth / (float)maxHealth;
+            
+            // Update health bar value using cached element reference
+            if (data.healthBarElement?.IsValid() == true)
+            {
+                data.healthBarElement.SetAttribute("value", healthPercentage.ToString("F3"));
+                
+                // Update low-health class
+                bool isLowHealth = healthPercentage < 0.25f;
+                data.healthBarElement.SetClass("low-health", isLowHealth);
+            }
+            
+            // Update health value text
+            if (data.healthValueElement?.IsValid() == true)
+            {
+                string healthText = $"{currentHealth}/{maxHealth}";
+                data.healthValueElement.InnerRml = healthText;
+            }
+        }
+        
+        // Remove invalid bosses (this will trigger a rebuild)
+        foreach (var bossEntity in bossesToRemove)
+        {
+            RemoveBossHealthBar(bossEntity);
+        }
+    }
+    
+    /// <summary>
+    /// Add a health bar for a new boss.
+    /// </summary>
+    /// <param name="bossEntity">The boss entity</param>
+    private void AddBossHealthBar(Entity bossEntity)
+    {
+        if (!bossEntity || bossHealthContainer?.IsValid() != true)
+            return;
+        
+        var health = bossEntity.GetComponent<Health>();
+        var enemy = bossEntity.GetComponent<Enemy>();
+        
+        if (health == null || enemy == null)
+            return;
+        
+        // Generate unique ID for this boss's health bar
+        string barId = $"boss_{nextBossBarId++}";
+        
+        // Store boss data
+        var data = new BossHealthBarData(bossEntity, health, enemy, barId);
+        bossHealthBars[bossEntity] = data;
+        
+        // Rebuild the entire container to add the new bar
+        RebuildBossHealthBarContainer();
+    }
+    
+    /// <summary>
+    /// Remove a health bar for a boss that died or was destroyed.
+    /// </summary>
+    /// <param name="bossEntity">The boss entity</param>
+    private void RemoveBossHealthBar(Entity bossEntity)
+    {
+        if (bossHealthBars.ContainsKey(bossEntity))
+        {
+            bossHealthBars.Remove(bossEntity);
+            
+            // Rebuild the entire container to remove the bar
+            RebuildBossHealthBarContainer();
+        }
+    }
+    
+    /// <summary>
+    /// Rebuild the entire boss health bar container RML and cache element references.
+    /// Called only when bosses are added or removed, not every frame.
+    /// </summary>
+    private void RebuildBossHealthBarContainer()
+    {
+        if (bossHealthContainer?.IsValid() != true)
+            return;
+        
+        if (bossHealthBars.Count == 0)
+        {
+            bossHealthContainer.InnerRml = "";
+            bossHealthContainer.SetClass("hidden", true);
+            return;
+        }
+        
+        // Build RML content for all boss health bars
+        string rmlContent = "";
+        
+        foreach (var kvp in bossHealthBars)
+        {
+            var data = kvp.Value;
+            string barId = data.elementId;
+            
+            // Create health bar RML with unique IDs
+            rmlContent += $@"
+            <div class=""boss-health-bar-wrapper"">
+                <div id=""boss_health_name_{barId}"" class=""boss-health-name"">{data.bossName}</div>
+                <progress id=""boss_health_bar_{barId}"" class=""boss-health-bar"" value=""1.0"" max=""1.0""></progress>
+                <span id=""boss_health_value_{barId}"" class=""boss-health-value"">100/100</span>
+            </div>";
+        }
+        
+        // Update container content
+        bossHealthContainer.InnerRml = rmlContent;
+        bossHealthContainer.SetClass("hidden", false);
+        
+        // Cache element references for all bosses
+        foreach (var kvp in bossHealthBars)
+        {
+            var data = kvp.Value;
+            string barId = data.elementId;
+            
+            data.healthBarElement = document.GetElementById($"boss_health_bar_{barId}");
+            data.healthValueElement = document.GetElementById($"boss_health_value_{barId}");
+            data.healthNameElement = document.GetElementById($"boss_health_name_{barId}");
+        }
+        
+        // Immediately update values to show correct health
+        UpdateBossHealthBarValues();
     }
 }

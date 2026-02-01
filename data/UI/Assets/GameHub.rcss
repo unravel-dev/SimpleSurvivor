@@ -28,6 +28,83 @@ body {
   gap: 12dp;
 }
 
+
+/* ========== BOSS HEALTH BARS - TOP OF SCREEN ========== */
+.boss-health-container {
+  position: absolute;
+  top: 80dp;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 12dp;
+  z-index: 2000;
+  flex-wrap: wrap;
+  max-width: 90%;
+}
+
+.boss-health-container.hidden {
+  display: none;
+}
+
+.boss-health-bar-wrapper {
+  position: relative;
+  min-width: 200dp;
+  max-width: 350dp;
+  flex: 1 1 auto;
+  /* Allow wrapper to grow to accommodate longer names */
+}
+
+.boss-health-bar {
+  width: 100%;
+  height: 20dp;
+  border: 2dp rgba(200, 50, 50, 255);
+  background-color: rgba(20, 5, 5, 230);
+  box-shadow: 0 2dp 6dp rgba(0, 0, 0, 200);
+}
+
+.boss-health-bar fill {
+  decorator: linear-gradient(90deg, rgb(180, 20, 20), rgb(255, 50, 50));
+  box-shadow: 0 0 6dp rgba(255, 50, 50, 150);
+}
+
+.boss-health-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12dp;
+  font-weight: bold;
+  font-effect: shadow(1dp 2dp rgba(0, 0, 0, 255));
+  z-index: 10;
+  pointer-events: none;
+}
+
+.boss-health-name {
+  position: absolute;
+  top: -18dp;
+  left: 0;
+  color: rgba(255, 200, 0, 255);
+  font-size: 11dp;
+  font-weight: bold;
+  font-effect: shadow(1dp 2dp rgba(0, 0, 0, 255));
+  white-space: nowrap;
+  /* Allow name to extend beyond bar width if needed */
+}
+
+.boss-health-bar.low-health {
+  background-color: rgba(40, 0, 0, 255);
+  border-color: rgba(255, 0, 0, 255);
+}
+
+.boss-health-bar.low-health fill {
+  background: rgb(255, 0, 0);
+  filter: brightness(150%);
+}
+
 .timer-label {
   color: rgba(255, 200, 0, 255);
   font-size: 12dp;

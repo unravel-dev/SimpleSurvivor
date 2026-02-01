@@ -214,6 +214,8 @@ public class PlagueAbility : Ability
         if (overlaps == null || overlaps.Length == 0)
             return;
 
+        bool hasEnemiesHit = false;
+
         // Process each enemy in range
         foreach (var enemy in overlaps)
         {
@@ -228,6 +230,8 @@ public class PlagueAbility : Ability
             float distance = Vector3.Distance(plague.centerPosition, enemy.transform.position);
             if (distance > plague.auraRadius)
                 continue;
+
+            hasEnemiesHit = true;
 
             // Apply damage
             DamageBreakdown breakdown = UpgradeSystem.CalculateDamage(baseDamage: plague.plagueDamage, canCrit: false);
@@ -246,15 +250,15 @@ public class PlagueAbility : Ability
                     5 // max poison stacks
                 );
             }
+        }
 
-            // Check for heal on player
-            if (plague.healChancePercent > 0.0f && Random.Range(0.0f, 100.0f) < plague.healChancePercent)
+        // Check for heal on player - only once per tick, if at least one enemy was hit
+        if (hasEnemiesHit && plague.healChancePercent > 0.0f && Random.Range(0.0f, 100.0f) < plague.healChancePercent)
+        {
+            var player = owner.GetComponent<Player>();
+            if (player != null)
             {
-                var player = owner.GetComponent<Player>();
-                if (player != null)
-                {
-                    player.HealPlayer(plague.healAmount);
-                }
+                player.HealPlayer(plague.healAmount);
             }
         }
     }
