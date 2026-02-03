@@ -326,6 +326,11 @@ public abstract class Ability : ScriptComponent
         }
     }
 
+    public Entity GetAbilityOwner()
+    {
+        return owner.transform.parent;
+    }
+
     /// <summary>
     /// Virtual method called when the ability starts (can be overridden for setup).
     /// </summary>

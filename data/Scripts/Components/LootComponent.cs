@@ -32,6 +32,15 @@ public abstract class LootComponent : ScriptComponent
     [Tooltip("Floating animation amplitude")]
     public float floatAmplitude = 0.3f;
     
+    [Tooltip("Position offset for the loot")]
+    public Vector3 positionOffset = Vector3.zero;
+    
+    [Tooltip("Enable rotation around Y axis")]
+    public bool enableRotation = false;
+    
+    [Tooltip("Rotation speed in degrees per second")]
+    public float rotationSpeed = 90.0f;
+    
     [Tooltip("Enable back easing effect when moving towards player")]
     public bool enableBackEasing = true;
     
@@ -76,7 +85,7 @@ public abstract class LootComponent : ScriptComponent
     {
         timeAlive = 0.0f;
         isBeingAttracted = false;
-        initialPosition = transform.position;
+        initialPosition = transform.position + positionOffset;
         floatOffset = Random.Range(0f, Mathf.PI * 2f); // Random phase for floating animation
     }
     
@@ -93,6 +102,12 @@ public abstract class LootComponent : ScriptComponent
         else if (enableFloating)
         {
             UpdateFloating();
+        }
+        
+        // Update rotation if enabled
+        if (enableRotation)
+        {
+            UpdateRotation();
         }
     }
     
@@ -237,6 +252,17 @@ public abstract class LootComponent : ScriptComponent
         
         // Direct position update for floating
         transform.position = targetPosition;
+    }
+    
+    /// <summary>
+    /// Update rotation around Y axis if enabled.
+    /// </summary>
+    protected void UpdateRotation()
+    {
+        if (rotationSpeed == 0.0f)
+            return;
+        
+        transform.RotateByEulerLocal(Vector3.up * rotationSpeed * Time.deltaTime);
     }
     
     /// <summary>

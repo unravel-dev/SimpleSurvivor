@@ -255,10 +255,11 @@ public class PlagueAbility : Ability
         // Check for heal on player - only once per tick, if at least one enemy was hit
         if (hasEnemiesHit && plague.healChancePercent > 0.0f && Random.Range(0.0f, 100.0f) < plague.healChancePercent)
         {
-            var player = owner.GetComponent<Player>();
-            if (player != null)
+            var abilityOwner = GetAbilityOwner();
+            var health = abilityOwner.GetComponent<Health>();
+            if (health != null)
             {
-                player.HealPlayer(plague.healAmount);
+                health.Heal(plague.healAmount, owner);
             }
         }
     }
