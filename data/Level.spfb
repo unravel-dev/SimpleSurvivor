@@ -2,7 +2,7 @@
  "entities_count": 10,
  "entities": [
   {
-   "id": 2097154,
+   "id": 3145730,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -73,13 +73,13 @@
      },
      "children": [
       {
-       "id": 2097155
+       "id": 3145731
       },
       {
-       "id": 2097156
+       "id": 3145732
       },
       {
-       "id": 2097157
+       "id": 3145733
       }
      ],
      "active": true
@@ -167,7 +167,7 @@
    }
   },
   {
-   "id": 2097155,
+   "id": 3145731,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -210,7 +210,7 @@
       }
      },
      "parent": {
-      "id": 2097154
+      "id": 3145730
      },
      "children": [],
      "active": true
@@ -248,7 +248,7 @@
    }
   },
   {
-   "id": 2097156,
+   "id": 3145732,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -291,7 +291,7 @@
       }
      },
      "parent": {
-      "id": 2097154
+      "id": 3145730
      },
      "children": [],
      "active": true
@@ -325,7 +325,7 @@
    }
   },
   {
-   "id": 2097157,
+   "id": 3145733,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -368,7 +368,7 @@
       }
      },
      "parent": {
-      "id": 2097154
+      "id": 3145730
      },
      "children": [],
      "active": true
@@ -405,7 +405,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 2097159,
+   "id": 3145735,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -597,7 +597,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 2097161,
+   "id": 3145737,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -614,25 +614,25 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": -0.00014513729547616094,
-       "y": 0.9999814033508301,
-       "z": 0.0008168816566467285
+       "x": -0.00014455617929343134,
+       "y": 0.999968409538269,
+       "z": 0.0008062124252319336
       },
       "rotation": {
-       "x": 0.10938126593828201,
-       "y": 0.8754259347915649,
-       "z": -0.4082184135913849,
-       "w": 0.23456953465938569
+       "x": 0.10938046127557755,
+       "y": 0.8754257559776306,
+       "z": -0.40821921825408938,
+       "w": 0.23456929624080659
       },
       "scale": {
-       "x": 1.0000001192092896,
-       "y": 0.9999992251396179,
-       "z": 0.9999993443489075
+       "x": 1.0000019073486329,
+       "y": 0.9999979734420776,
+       "z": 1.000000238418579
       },
       "skew": {
-       "x": 0.000001460314706491772,
-       "y": 0.0000018955587393065799,
-       "z": 2.5960540028791e-7
+       "x": 0.000003188847813362372,
+       "y": 0.000002332774329261156,
+       "z": -0.000002212966137449257
       }
      },
      "parent": {
@@ -646,7 +646,7 @@
      "light": {
       "type": 2,
       "intensity": 2.5,
-      "ambient_intensity": 0.24199999868869782,
+      "ambient_intensity": 0.5,
       "color": {
        "r": 1.0,
        "g": 0.9568628072738648,
@@ -658,15 +658,18 @@
        "type": 2,
        "depth": 0,
        "resolution": 2,
-       "bias": 0.0010999999940395356,
+       "bias": 0.0010400000028312207,
        "normal_bias": 0.014999999664723874,
        "near_plane": 0.20000000298023225,
-       "far_plane": 550.0
+       "far_plane": 550.0,
+       "show_coverage": false,
+       "pcss_penumbra_x_offset": 2.0,
+       "pcss_penumbra_y_offset": 2.0
       },
       "directional_data": {},
       "directional_shadow_params": {
        "num_splits": 4,
-       "split_distribution": 0.6499999761581421,
+       "split_distribution": 0.5,
        "stabilize": true
       }
      }
@@ -675,6 +678,10 @@
     "skylight_component": {
      "mode": 1,
      "turbidity": 1.899999976158142,
+     "cloud_coverage": 0.44999998807907107,
+     "cloud_altitude": 3000.0,
+     "cloud_speed": 1.0,
+     "cloud_density": 1.0,
      "cubemap": {
       "uid": "00000000-0000-0000-0000-000000000000"
      }
