@@ -1,8 +1,8 @@
 {
- "entities_count": 8,
+ "entities_count": 7,
  "entities": [
   {
-   "id": 13631490,
+   "id": 2097154,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -146,164 +146,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 13631492,
-   "components": {
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "Sky & Directional Light",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": -0.000004991891273675719,
-       "y": 1.0,
-       "z": -0.000010901549103436992
-      },
-      "rotation": {
-       "x": 0.10938172042369843,
-       "y": 0.8754260540008545,
-       "z": -0.40821799635887148,
-       "w": 0.23456971347332
-      },
-      "scale": {
-       "x": 1.0,
-       "y": 1.0000001192092896,
-       "z": 0.9999997615814209
-      },
-      "skew": {
-       "x": 8.940698847936801e-8,
-       "y": -5.266767857392551e-7,
-       "z": -1.119864947440874e-7
-      }
-     },
-     "parent": {
-      "id": 4294967295
-     },
-     "children": [],
-     "active": true
-    },
-    "has_light_component": true,
-    "light_component": {
-     "light": {
-      "type": 2,
-      "intensity": 2.5,
-      "ambient_intensity": 0.05000000074505806,
-      "color": {
-       "r": 1.0,
-       "g": 0.9568628072738648,
-       "b": 0.8392157554626465,
-       "a": 1.0
-      },
-      "casts_shadows": true,
-      "shadow_params": {
-       "type": 1,
-       "depth": 0,
-       "resolution": 2,
-       "bias": 0.0010999999940395356,
-       "normal_bias": 0.014999999664723874,
-       "near_plane": 0.20000000298023225,
-       "far_plane": 550.0
-      },
-      "directional_data": {},
-      "directional_shadow_params": {
-       "num_splits": 4,
-       "split_distribution": 0.800000011920929,
-       "stabilize": true
-      }
-     }
-    },
-    "has_skylight_component": true,
-    "skylight_component": {
-     "mode": 1,
-     "turbidity": 1.899999976158142,
-     "cubemap": {
-      "uid": "00000000-0000-0000-0000-000000000000"
-     }
-    }
-   }
-  }
- ],
- "version": "1.0.0",
- "entities": [
-  {
-   "id": 13631494,
-   "components": {
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "Envinroment Probe",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": -0.000002859536834876053,
-       "y": 0.10000133514404297,
-       "z": -0.0000066904817686008759
-      },
-      "rotation": {
-       "x": -0.000002339482307434082,
-       "y": -8.86618067852396e-7,
-       "z": 0.000002056357971014222,
-       "w": 1.0
-      },
-      "scale": {
-       "x": 1.0000001192092896,
-       "y": 0.9999999403953552,
-       "z": 1.0
-      },
-      "skew": {
-       "x": -0.000012010341379209422,
-       "y": 0.0000021457342427311234,
-       "z": 0.0000017434271057936713
-      }
-     },
-     "parent": {
-      "id": 4294967295
-     },
-     "children": [],
-     "active": true
-    },
-    "has_tonemapping_component": true,
-    "tonemapping_component": {
-     "enabled": true,
-     "settings": {
-      "exposure": 1.0,
-      "method": 6
-     }
-    },
-    "has_reflection_probe_component": true,
-    "reflection_probe_component": {
-     "probe": {
-      "type": 1,
-      "method": 0,
-      "intensity": 1.0,
-      "range": 1000.0
-     },
-     "faces_per_frame": 1,
-     "apply_prefilter": false
-    }
-   }
-  }
- ],
- "version": "1.0.0",
- "entities": [
-  {
-   "id": 13631496,
+   "id": 2097156,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -374,13 +217,13 @@
      },
      "children": [
       {
-       "id": 13631497
+       "id": 2097157
       },
       {
-       "id": 13631498
+       "id": 2097158
       },
       {
-       "id": 13631499
+       "id": 2097159
       }
      ],
      "active": true
@@ -416,7 +259,7 @@
    }
   },
   {
-   "id": 13631497,
+   "id": 2097157,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -459,7 +302,7 @@
       }
      },
      "parent": {
-      "id": 13631496
+      "id": 2097156
      },
      "children": [],
      "active": true
@@ -482,7 +325,7 @@
    }
   },
   {
-   "id": 13631498,
+   "id": 2097158,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -525,7 +368,7 @@
       }
      },
      "parent": {
-      "id": 13631496
+      "id": 2097156
      },
      "children": [],
      "active": false
@@ -548,7 +391,7 @@
    }
   },
   {
-   "id": 13631499,
+   "id": 2097159,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -591,7 +434,7 @@
       }
      },
      "parent": {
-      "id": 13631496
+      "id": 2097156
      },
      "children": [],
      "active": true
@@ -617,7 +460,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 9437197,
+   "id": 2097161,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -667,7 +510,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 9437199,
+   "id": 2097163,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -710,7 +553,7 @@
      },
      "children": [
       {
-       "id": 9437200
+       "id": 2097164
       }
      ],
      "active": true
@@ -896,7 +739,7 @@
    }
   },
   {
-   "id": 9437200,
+   "id": 2097164,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -935,7 +778,7 @@
       }
      },
      "parent": {
-      "id": 9437199
+      "id": 2097163
      },
      "children": [],
      "active": true
@@ -1142,7 +985,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 9437202,
+   "id": 2097166,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1218,7 +1061,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 9437204,
+   "id": 1048592,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1439,6 +1282,348 @@
       "x": 0.5,
       "y": 1.0
      }
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 1048594,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Lighting",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [
+      {
+       "id": 1048595
+      },
+      {
+       "id": 1048596
+      },
+      {
+       "id": 1048597
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "id": 1048595,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Volume Global",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 1048594
+     },
+     "children": [],
+     "active": true
+    },
+    "has_volume_component": true,
+    "volume_component": {
+     "mode": 1,
+     "priority": 0,
+     "weight": 1.0,
+     "blend_distance": 1.0,
+     "extents": {
+      "x": 1.0,
+      "y": 1.0,
+      "z": 1.0
+     }
+    },
+    "has_assao_component": true,
+    "assao_component": {
+     "enabled": true,
+     "settings": {
+      "radius": 1.2000000476837159,
+      "shadow_multiplier": 1.0,
+      "shadow_power": 1.0,
+      "shadow_clamp": 0.9800000190734863,
+      "horizon_angle_threshold": 0.05999999865889549,
+      "fade_out_from": 50.0,
+      "fade_out_to": 200.0,
+      "quality_level": 3,
+      "adaptive_quality_limit": 0.44999998807907107,
+      "blur_pass_count": 2,
+      "sharpness": 0.9800000190734863,
+      "temporal_supersampling_angle_offset": 0.0,
+      "temporal_supersampling_radius_offset": 1.0,
+      "detail_shadow_strength": 0.5,
+      "generate_normals": false
+     }
+    },
+    "has_tonemapping_component": true,
+    "tonemapping_component": {
+     "enabled": true,
+     "settings": {
+      "exposure": 1.0,
+      "method": 7
+     }
+    },
+    "has_fxaa_component": true,
+    "fxaa_component": {
+     "enabled": true
+    },
+    "has_ssr_component": true,
+    "ssr_component": {
+     "enabled": true,
+     "settings": {
+      "fidelityfx": {
+       "max_steps": 64,
+       "max_rays": 8,
+       "depth_tolerance": 0.10000000149011612,
+       "brightness": 1.0,
+       "facing_reflections_fading": 0.10000000149011612,
+       "roughness_depth_tolerance": 1.0,
+       "fade_in_start": 0.10000000149011612,
+       "fade_in_end": 0.20000000298023225,
+       "enable_half_res": false,
+       "enable_cone_tracing": false,
+       "cone_tracing": {
+        "cone_angle_bias": 0.05000000074505806,
+        "max_mip_level": 6,
+        "blur_base_sigma": 1.0
+       },
+       "enable_temporal_accumulation": true,
+       "temporal": {
+        "history_strength": 0.8999999761581421,
+        "depth_threshold": 0.009999999776482582,
+        "roughness_sensitivity": 0.30000001192092898,
+        "motion_scale_pixels": 120.0,
+        "normal_dot_threshold": 0.949999988079071,
+        "max_accum_frames": 8
+       }
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": 1048596,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Sky & Directional Light",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.00000476837158203125,
+       "y": 0.9999992847442627,
+       "z": -0.000011354684829711914
+      },
+      "rotation": {
+       "x": 0.10938169807195664,
+       "y": 0.8754260540008545,
+       "z": -0.40821802616119387,
+       "w": 0.2345697283744812
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0000001192092896,
+       "z": 0.9999998211860657
+      },
+      "skew": {
+       "x": 1.788139627478813e-7,
+       "y": -4.2569871538944428e-7,
+       "z": -1.4190767672062067e-7
+      }
+     },
+     "parent": {
+      "id": 1048594
+     },
+     "children": [],
+     "active": true
+    },
+    "has_light_component": true,
+    "light_component": {
+     "light": {
+      "type": 2,
+      "intensity": 2.5,
+      "ambient_intensity": 0.05000000074505806,
+      "color": {
+       "r": 1.0,
+       "g": 0.9568628072738648,
+       "b": 0.8392157554626465,
+       "a": 1.0
+      },
+      "casts_shadows": true,
+      "shadow_params": {
+       "type": 1,
+       "depth": 0,
+       "resolution": 2,
+       "bias": 0.0010999999940395356,
+       "normal_bias": 0.014999999664723874,
+       "near_plane": 0.20000000298023225,
+       "far_plane": 550.0,
+       "show_coverage": false,
+       "pcf_x_offset": 1.0,
+       "pcf_y_offset": 1.0
+      },
+      "directional_data": {},
+      "directional_shadow_params": {
+       "num_splits": 4,
+       "split_distribution": 0.800000011920929,
+       "stabilize": true
+      }
+     }
+    },
+    "has_skylight_component": true,
+    "skylight_component": {
+     "mode": 1,
+     "turbidity": 1.899999976158142,
+     "cloud_coverage": 0.44999998807907107,
+     "cloud_altitude": 3000.0,
+     "cloud_speed": 1.0,
+     "cloud_density": 1.0,
+     "cubemap": {
+      "uid": "00000000-0000-0000-0000-000000000000"
+     }
+    }
+   }
+  },
+  {
+   "id": 1048597,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Envinroment Probe",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -0.000002859536834876053,
+       "y": 0.10000133514404297,
+       "z": -0.0000066904817686008759
+      },
+      "rotation": {
+       "x": -0.000002339482307434082,
+       "y": -8.86618067852396e-7,
+       "z": 0.000002056357971014222,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0000001192092896,
+       "y": 0.9999999403953552,
+       "z": 1.0
+      },
+      "skew": {
+       "x": -0.000012010341379209422,
+       "y": 0.0000021457342427311234,
+       "z": 0.0000017434271057936713
+      }
+     },
+     "parent": {
+      "id": 1048594
+     },
+     "children": [],
+     "active": true
+    },
+    "has_tonemapping_component": true,
+    "tonemapping_component": {
+     "enabled": true,
+     "settings": {
+      "exposure": 1.0,
+      "method": 6
+     }
+    },
+    "has_reflection_probe_component": true,
+    "reflection_probe_component": {
+     "probe": {
+      "type": 1,
+      "method": 0,
+      "intensity": 1.0,
+      "range": 1000.0
+     },
+     "faces_per_frame": 1,
+     "apply_prefilter": false
     }
    }
   }

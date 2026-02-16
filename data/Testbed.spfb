@@ -1,8 +1,8 @@
 {
- "entities_count": 21,
+ "entities_count": 22,
  "entities": [
   {
-   "id": 2097154,
+   "id": 4194306,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -194,7 +194,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 2097156,
+   "id": 4194308,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -211,25 +211,25 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": -0.0000053429525905812629,
-       "y": 0.9999998807907105,
-       "z": -4.657312615563569e-7
+       "x": -0.000006660819053649902,
+       "y": 0.9999984502792358,
+       "z": -0.0000012814998626708985
       },
       "rotation": {
        "x": 0.10938173532485962,
-       "y": 0.8754260540008545,
-       "z": -0.40821805596351626,
+       "y": 0.8754261136054993,
+       "z": -0.408218115568161,
        "w": 0.23456971347332
       },
       "scale": {
-       "x": 1.0000001192092896,
+       "x": 1.000000238418579,
        "y": 1.0000001192092896,
-       "z": 0.9999998211860657
+       "z": 0.9999999403953552
       },
       "skew": {
-       "x": 2.98023280720372e-7,
-       "y": -1.5177943168964703e-7,
-       "z": 1.4174362661378837e-7
+       "x": 3.2782557468635789e-7,
+       "y": -1.3506678442354315e-7,
+       "z": 6.81154261883421e-8
       }
      },
      "parent": {
@@ -243,7 +243,7 @@
      "light": {
       "type": 2,
       "intensity": 2.5,
-      "ambient_intensity": 0.05000000074505806,
+      "ambient_intensity": 0.3499999940395355,
       "color": {
        "r": 1.0,
        "g": 0.9568628072738648,
@@ -258,7 +258,10 @@
        "bias": 0.0010999999940395356,
        "normal_bias": 0.014999999664723874,
        "near_plane": 0.20000000298023225,
-       "far_plane": 550.0
+       "far_plane": 550.0,
+       "show_coverage": false,
+       "pcf_x_offset": 1.0,
+       "pcf_y_offset": 1.0
       },
       "directional_data": {},
       "directional_shadow_params": {
@@ -272,6 +275,10 @@
     "skylight_component": {
      "mode": 1,
      "turbidity": 1.899999976158142,
+     "cloud_coverage": 0.44999998807907107,
+     "cloud_altitude": 3000.0,
+     "cloud_speed": 1.0,
+     "cloud_density": 1.0,
      "cubemap": {
       "uid": "00000000-0000-0000-0000-000000000000"
      }
@@ -282,7 +289,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 2097158,
+   "id": 4194310,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -351,7 +358,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 2097160,
+   "id": 4194312,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -432,28 +439,28 @@
      },
      "children": [
       {
-       "id": 2097161
+       "id": 4194313
       },
       {
-       "id": 2097162
+       "id": 4194314
       },
       {
-       "id": 2097163
+       "id": 4194315
       },
       {
-       "id": 2097164
+       "id": 4194316
       },
       {
-       "id": 2097165
+       "id": 4194317
       },
       {
-       "id": 2097166
+       "id": 4194318
       },
       {
-       "id": 2097167
+       "id": 3145743
       },
       {
-       "id": 2097168
+       "id": 3145744
       }
      ],
      "active": true
@@ -525,7 +532,7 @@
    }
   },
   {
-   "id": 2097161,
+   "id": 4194313,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -568,7 +575,7 @@
       }
      },
      "parent": {
-      "id": 2097160
+      "id": 4194312
      },
      "children": [],
      "active": false
@@ -591,7 +598,7 @@
    }
   },
   {
-   "id": 2097162,
+   "id": 4194314,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -634,7 +641,7 @@
       }
      },
      "parent": {
-      "id": 2097160
+      "id": 4194312
      },
      "children": [],
      "active": false
@@ -657,7 +664,7 @@
    }
   },
   {
-   "id": 2097163,
+   "id": 4194315,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -700,7 +707,7 @@
       }
      },
      "parent": {
-      "id": 2097160
+      "id": 4194312
      },
      "children": [],
      "active": false
@@ -723,7 +730,7 @@
    }
   },
   {
-   "id": 2097164,
+   "id": 4194316,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -762,7 +769,7 @@
       }
      },
      "parent": {
-      "id": 2097160
+      "id": 4194312
      },
      "children": [],
      "active": false
@@ -785,7 +792,7 @@
    }
   },
   {
-   "id": 2097165,
+   "id": 4194317,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -824,7 +831,7 @@
       }
      },
      "parent": {
-      "id": 2097160
+      "id": 4194312
      },
      "children": [],
      "active": true
@@ -847,7 +854,7 @@
    }
   },
   {
-   "id": 2097166,
+   "id": 4194318,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -890,7 +897,7 @@
       }
      },
      "parent": {
-      "id": 2097160
+      "id": 4194312
      },
      "children": [],
      "active": false
@@ -913,7 +920,7 @@
    }
   },
   {
-   "id": 2097167,
+   "id": 3145743,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -956,7 +963,7 @@
       }
      },
      "parent": {
-      "id": 2097160
+      "id": 4194312
      },
      "children": [],
      "active": true
@@ -979,7 +986,7 @@
    }
   },
   {
-   "id": 2097168,
+   "id": 3145744,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1022,7 +1029,7 @@
       }
      },
      "parent": {
-      "id": 2097160
+      "id": 4194312
      },
      "children": [],
      "active": false
@@ -1048,7 +1055,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 2097170,
+   "id": 3145746,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1091,7 +1098,7 @@
      },
      "children": [
       {
-       "id": 2097171
+       "id": 3145747
       }
      ],
      "active": true
@@ -1099,7 +1106,7 @@
    }
   },
   {
-   "id": 2097171,
+   "id": 3145747,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1138,7 +1145,7 @@
       }
      },
      "parent": {
-      "id": 2097170
+      "id": 3145746
      },
      "children": [],
      "active": true
@@ -1221,7 +1228,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 1048597,
+   "id": 3145749,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1281,6 +1288,10 @@
         "uid": "00000000-0000-0000-0000-000000000000"
        },
        "chestDropChance": 1.0,
+       "healthOrbPrefab": {
+        "uid": "00000000-0000-0000-0000-000000000000"
+       },
+       "healthOrbDropChance": 5.0,
        "defaultLootConfig": {
         "baseExperienceValue": 10.0,
         "experiencePerLevel": 0.10000000149011612,
@@ -1289,7 +1300,9 @@
         "minimumExperience": 5.0,
         "maximumExperience": 100.0,
         "magnetDropChance": 0.30000001192092898,
-        "chestDropChance": 0.10000000149011612
+        "chestDropChance": 0.10000000149011612,
+        "healthOrbDropChance": 5.0,
+        "healthOrbCount": 1
        },
        "timeModifiers": {
         "experiencePerMinute": 0.05000000074505806,
@@ -1590,7 +1603,7 @@
     },
     "has_physics_component": true,
     "physics_component": {
-     "is_using_gravity": false,
+     "is_using_gravity": true,
      "is_kinematic": true,
      "is_sensor": false,
      "is_autoscaled": true,
@@ -1603,7 +1616,7 @@
      },
      "freeze_position": {
       "x": false,
-      "y": true,
+      "y": false,
       "z": false
      },
      "freeze_rotation": {
@@ -1933,7 +1946,7 @@
     },
     "has_physics_component": true,
     "physics_component": {
-     "is_using_gravity": false,
+     "is_using_gravity": true,
      "is_kinematic": true,
      "is_sensor": false,
      "is_autoscaled": true,
@@ -1946,7 +1959,7 @@
      },
      "freeze_position": {
       "x": false,
-      "y": true,
+      "y": false,
       "z": false
      },
      "freeze_rotation": {
@@ -2276,7 +2289,7 @@
     },
     "has_physics_component": true,
     "physics_component": {
-     "is_using_gravity": false,
+     "is_using_gravity": true,
      "is_kinematic": true,
      "is_sensor": false,
      "is_autoscaled": true,
@@ -2289,7 +2302,7 @@
      },
      "freeze_position": {
       "x": false,
-      "y": true,
+      "y": false,
       "z": false
      },
      "freeze_rotation": {
@@ -2619,7 +2632,7 @@
     },
     "has_physics_component": true,
     "physics_component": {
-     "is_using_gravity": false,
+     "is_using_gravity": true,
      "is_kinematic": true,
      "is_sensor": false,
      "is_autoscaled": true,
@@ -2632,7 +2645,7 @@
      },
      "freeze_position": {
       "x": false,
-      "y": true,
+      "y": false,
       "z": false
      },
      "freeze_rotation": {
@@ -2962,7 +2975,7 @@
     },
     "has_physics_component": true,
     "physics_component": {
-     "is_using_gravity": false,
+     "is_using_gravity": true,
      "is_kinematic": true,
      "is_sensor": false,
      "is_autoscaled": true,
@@ -2975,7 +2988,7 @@
      },
      "freeze_position": {
       "x": false,
-      "y": true,
+      "y": false,
       "z": false
      },
      "freeze_rotation": {
@@ -3305,7 +3318,7 @@
     },
     "has_physics_component": true,
     "physics_component": {
-     "is_using_gravity": false,
+     "is_using_gravity": true,
      "is_kinematic": true,
      "is_sensor": false,
      "is_autoscaled": true,
@@ -3318,7 +3331,7 @@
      },
      "freeze_position": {
       "x": false,
-      "y": true,
+      "y": false,
       "z": false
      },
      "freeze_rotation": {
@@ -3648,7 +3661,7 @@
     },
     "has_physics_component": true,
     "physics_component": {
-     "is_using_gravity": false,
+     "is_using_gravity": true,
      "is_kinematic": true,
      "is_sensor": false,
      "is_autoscaled": true,
@@ -3661,7 +3674,7 @@
      },
      "freeze_position": {
       "x": false,
-      "y": true,
+      "y": false,
       "z": false
      },
      "freeze_rotation": {
@@ -4265,7 +4278,8 @@
        "usePhysicsMovement": true,
        "baseMaxHealth": 100,
        "basePickupRange": 10.0,
-       "baseLuck": 0.0
+       "baseLuck": 0.0,
+       "healOnLevelUp": true
       },
       {
        "type": "Health",
@@ -7879,7 +7893,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 116,
+   "id": 1048693,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -7940,7 +7954,7 @@
      },
      "children": [
       {
-       "id": 117
+       "id": 1048694
       }
      ],
      "active": true
@@ -8004,13 +8018,13 @@
         "data": {
          "center": {
           "x": 0.0,
-          "y": 0.0,
+          "y": -0.800000011920929,
           "z": 0.0
          },
          "mesh_asset": {
           "uid": "c49b6f7f-8982-d446-b87d-a9311e90538b"
          },
-         "collision_type": 1
+         "collision_type": 0
         }
        }
       }
@@ -8019,7 +8033,7 @@
    }
   },
   {
-   "id": 117,
+   "id": 1048694,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -8062,11 +8076,11 @@
       }
      },
      "parent": {
-      "id": 116
+      "id": 1048693
      },
      "children": [
       {
-       "id": 118
+       "id": 1048695
       }
      ],
      "active": true
@@ -8074,7 +8088,7 @@
    }
   },
   {
-   "id": 118,
+   "id": 1048695,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -8117,7 +8131,7 @@
       }
      },
      "parent": {
-      "id": 117
+      "id": 1048694
      },
      "children": [],
      "active": true
@@ -8127,6 +8141,133 @@
      "submeshes": [
       0
      ]
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "id": 1048697,
+   "components": {
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Volume Global",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "id": 4294967295
+     },
+     "children": [],
+     "active": true
+    },
+    "has_volume_component": true,
+    "volume_component": {
+     "mode": 1,
+     "priority": 0,
+     "weight": 1.0,
+     "blend_distance": 1.0,
+     "extents": {
+      "x": 1.0,
+      "y": 1.0,
+      "z": 1.0
+     }
+    },
+    "has_assao_component": true,
+    "assao_component": {
+     "enabled": true,
+     "settings": {
+      "radius": 1.2000000476837159,
+      "shadow_multiplier": 1.0,
+      "shadow_power": 1.0,
+      "shadow_clamp": 0.9800000190734863,
+      "horizon_angle_threshold": 0.05999999865889549,
+      "fade_out_from": 50.0,
+      "fade_out_to": 200.0,
+      "quality_level": 3,
+      "adaptive_quality_limit": 0.44999998807907107,
+      "blur_pass_count": 2,
+      "sharpness": 0.9800000190734863,
+      "temporal_supersampling_angle_offset": 0.0,
+      "temporal_supersampling_radius_offset": 1.0,
+      "detail_shadow_strength": 0.5,
+      "generate_normals": false
+     }
+    },
+    "has_tonemapping_component": true,
+    "tonemapping_component": {
+     "enabled": true,
+     "settings": {
+      "exposure": 1.0,
+      "method": 7
+     }
+    },
+    "has_fxaa_component": true,
+    "fxaa_component": {
+     "enabled": true
+    },
+    "has_ssr_component": true,
+    "ssr_component": {
+     "enabled": true,
+     "settings": {
+      "fidelityfx": {
+       "max_steps": 64,
+       "max_rays": 8,
+       "depth_tolerance": 0.10000000149011612,
+       "brightness": 1.0,
+       "facing_reflections_fading": 0.10000000149011612,
+       "roughness_depth_tolerance": 1.0,
+       "fade_in_start": 0.10000000149011612,
+       "fade_in_end": 0.20000000298023225,
+       "enable_half_res": false,
+       "enable_cone_tracing": false,
+       "cone_tracing": {
+        "cone_angle_bias": 0.05000000074505806,
+        "max_mip_level": 6,
+        "blur_base_sigma": 1.0
+       },
+       "enable_temporal_accumulation": true,
+       "temporal": {
+        "history_strength": 0.8999999761581421,
+        "depth_threshold": 0.009999999776482582,
+        "roughness_sensitivity": 0.30000001192092898,
+        "motion_scale_pixels": 120.0,
+        "normal_dot_threshold": 0.949999988079071,
+        "max_accum_frames": 8
+       }
+      }
+     }
     }
    }
   }
