@@ -73,6 +73,14 @@
       "mask": 0
      }
     },
+    "has_tonemapping_component": true,
+    "tonemapping_component": {
+     "enabled": true,
+     "settings": {
+      "exposure": 1.0,
+      "method": 6
+     }
+    },
     "has_assao_component": true,
     "assao_component": {
      "enabled": true,
@@ -92,14 +100,6 @@
       "temporal_supersampling_radius_offset": 1.0,
       "detail_shadow_strength": 0.5,
       "generate_normals": false
-     }
-    },
-    "has_tonemapping_component": true,
-    "tonemapping_component": {
-     "enabled": true,
-     "settings": {
-      "exposure": 1.0,
-      "method": 6
      }
     },
     "has_fxaa_component": true,
@@ -312,7 +312,13 @@
      "enabled": true,
      "asset": {
       "uid": "d3f75e99-1d69-4e47-96d8-9da797deda18"
-     }
+     },
+     "render_mode": 0,
+     "size": {
+      "width": 512,
+      "height": 512
+     },
+     "pixels_per_world_unit": 100.0
     },
     "has_script_component": true,
     "script_component": {
@@ -378,7 +384,13 @@
      "enabled": true,
      "asset": {
       "uid": "a3e52d6a-a8d4-e340-9430-116f9818c5e9"
-     }
+     },
+     "render_mode": 0,
+     "size": {
+      "width": 512,
+      "height": 512
+     },
+     "pixels_per_world_unit": 100.0
     },
     "has_script_component": true,
     "script_component": {
@@ -1061,7 +1073,7 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 1048592,
+   "id": 2097168,
    "components": {
     "has_tag_component": true,
     "tag_component": {
@@ -1402,6 +1414,14 @@
       "z": 1.0
      }
     },
+    "has_tonemapping_component": true,
+    "tonemapping_component": {
+     "enabled": true,
+     "settings": {
+      "exposure": 1.0,
+      "method": 7
+     }
+    },
     "has_assao_component": true,
     "assao_component": {
      "enabled": true,
@@ -1421,14 +1441,6 @@
       "temporal_supersampling_radius_offset": 1.0,
       "detail_shadow_strength": 0.5,
       "generate_normals": false
-     }
-    },
-    "has_tonemapping_component": true,
-    "tonemapping_component": {
-     "enabled": true,
-     "settings": {
-      "exposure": 1.0,
-      "method": 7
      }
     },
     "has_fxaa_component": true,
@@ -1487,25 +1499,25 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": -0.00000476837158203125,
-       "y": 0.9999992847442627,
-       "z": -0.000011354684829711914
+       "x": -0.00000470876739200321,
+       "y": 0.9999902248382568,
+       "z": -0.000016123056411743165
       },
       "rotation": {
-       "x": 0.10938169807195664,
-       "y": 0.8754260540008545,
-       "z": -0.40821802616119387,
-       "w": 0.2345697283744812
+       "x": 0.10938160121440888,
+       "y": 0.8754259943962097,
+       "z": -0.40821823477745058,
+       "w": 0.2345695197582245
       },
       "scale": {
-       "x": 1.0,
-       "y": 1.0000001192092896,
-       "z": 0.9999998211860657
+       "x": 0.9999998807907105,
+       "y": 0.9999995827674866,
+       "z": 0.9999997615814209
       },
       "skew": {
-       "x": 1.788139627478813e-7,
-       "y": -4.2569871538944428e-7,
-       "z": -1.4190767672062067e-7
+       "x": 8.642675766168395e-7,
+       "y": -4.5877629872848049e-7,
+       "z": -6.612158358620945e-7
       }
      },
      "parent": {
@@ -1519,7 +1531,6 @@
      "light": {
       "type": 2,
       "intensity": 2.5,
-      "ambient_intensity": 0.05000000074505806,
       "color": {
        "r": 1.0,
        "g": 0.9568628072738648,
@@ -1555,6 +1566,14 @@
      "cloud_altitude": 3000.0,
      "cloud_speed": 1.0,
      "cloud_density": 1.0,
+     "irradiance_intensity": 0.15000000596046449,
+     "irradiance_tint": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "irradiance_quality": 1,
      "cubemap": {
       "uid": "00000000-0000-0000-0000-000000000000"
      }
@@ -1579,13 +1598,13 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": -0.000002859536834876053,
-       "y": 0.10000133514404297,
-       "z": -0.0000066904817686008759
+       "x": -0.0000028595256935659565,
+       "y": 0.09999861568212509,
+       "z": -0.000006690262125630397
       },
       "rotation": {
        "x": -0.000002339482307434082,
-       "y": -8.86618067852396e-7,
+       "y": -8.866179541655583e-7,
        "z": 0.000002056357971014222,
        "w": 1.0
       },
@@ -1595,8 +1614,8 @@
        "z": 1.0
       },
       "skew": {
-       "x": -0.000012010341379209422,
-       "y": 0.0000021457342427311234,
+       "x": -0.000012010174941678997,
+       "y": 0.000002145723328794702,
        "z": 0.0000017434271057936713
       }
      },
@@ -1605,14 +1624,6 @@
      },
      "children": [],
      "active": true
-    },
-    "has_tonemapping_component": true,
-    "tonemapping_component": {
-     "enabled": true,
-     "settings": {
-      "exposure": 1.0,
-      "method": 6
-     }
     },
     "has_reflection_probe_component": true,
     "reflection_probe_component": {
