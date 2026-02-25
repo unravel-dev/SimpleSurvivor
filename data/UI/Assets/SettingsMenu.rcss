@@ -91,7 +91,8 @@ body.theme-light .volume-slider {
 
 .graphics-dropdown {
   width: 100%;
-  padding: 12dp 16dp;
+  height: auto;
+  min-height: 44dp;
   background-color: #2a3a4d;
   color: #e9eef3;
   border: 2dp rgba(58, 74, 93, 128);
@@ -105,14 +106,45 @@ body.theme-light .volume-slider {
   background-color: #3a4a5d;
   border: 2dp rgba(74, 90, 109, 128);
   transition: background-color border-color 0.2s cubic-in;
-
 }
 
-/* Dropdown Options Styling */
-.graphics-dropdown option {
-  background-color: #2a3a4d;
+/* Override rml.rcss defaults for selectvalue (selected text display) */
+.graphics-dropdown selectvalue {
+  background-color: transparent;
   color: #e9eef3;
-  padding: 8dp 12dp;
+  padding: 12dp 16dp;
+  border: 0dp;
+}
+
+/* Override rml.rcss defaults for selectarrow (dropdown trigger) */
+.graphics-dropdown selectarrow {
+  background-color: rgba(58, 74, 93, 128);
+  border-left: 1dp rgba(58, 74, 93, 128);
+  width: 32dp;
+}
+.graphics-dropdown selectarrow:hover,
+.graphics-dropdown:focus-visible selectarrow {
+  background-color: rgba(74, 90, 109, 128);
+}
+.graphics-dropdown selectarrow:active,
+.graphics-dropdown selectarrow:checked {
+  background-color: rgba(58, 74, 93, 180);
+}
+
+/* Override rml.rcss defaults for selectbox (dropdown list) */
+.graphics-dropdown selectbox {
+  margin-top: 2dp;
+  padding: 4dp;
+  background-color: #2a3a4d;
+  border: 2dp rgba(58, 74, 93, 128);
+  border-radius: 8dp;
+}
+
+/* Dropdown options - RmlUi places these inside selectbox */
+.graphics-dropdown selectbox option {
+  background-color: transparent;
+  color: #e9eef3;
+  padding: 10dp 12dp;
   font-size: 16dp;
   font-weight: normal;
   margin: 0;
@@ -120,46 +152,31 @@ body.theme-light .volume-slider {
   border-top: 1dp rgba(58, 74, 93, 64);
 }
 
-/* First option - rounded top corners and no top border */
-.graphics-dropdown option:first-child {
+.graphics-dropdown selectbox option:first-child {
   border-top: 0dp;
-  border-radius: 8dp 8dp 0 0;
+  border-radius: 6dp 6dp 0 0;
 }
 
-/* Last option - rounded bottom corners */
-.graphics-dropdown option:last-child {
-  border-radius: 0 0 8dp 8dp;
+.graphics-dropdown selectbox option:last-child {
+  border-radius: 0 0 6dp 6dp;
 }
 
-/* Single option (when only one exists) - all corners rounded */
-.graphics-dropdown option:only-child {
-  border-radius: 8dp;
+.graphics-dropdown selectbox option:only-child {
+  border-radius: 6dp;
 }
 
-/* Dropdown list container styling */
-.graphics-dropdown:focus option {
-  background-color: #2a3a4d;
-}
-
-/* When dropdown is open, remove bottom border radius from the select element */
-.graphics-dropdown:focus {
-  font-effect: outline(2dp #2a73ff);
+/* When dropdown is open */
+.graphics-dropdown:focus,
+.graphics-dropdown:checked {
   background-color: #3a4a5d;
-
 }
 
-.graphics-dropdown option:hover {
-  background-color:#578df1;
+.graphics-dropdown selectbox option:hover {
+  background-color: #578df1;
   color: #ffffff;
 }
 
-.graphics-dropdown option:selected {
-  background-color: #2a73ff;
-  color: #ffffff;
-  font-weight: bold;
-}
-
-.graphics-dropdown option:checked {
+.graphics-dropdown selectbox option:checked {
   background-color: #2a73ff;
   color: #ffffff;
   font-weight: bold;
@@ -176,34 +193,46 @@ body.theme-light .graphics-dropdown:hover {
   border: 2dp rgba(160, 174, 192, 128);
 }
 
-body.theme-light .graphics-dropdown:focus {
-  font-effect: outline(2dp #3182ce);
-  border-radius: 8dp 8dp 0 0;
+body.theme-light .graphics-dropdown:focus,
+body.theme-light .graphics-dropdown:checked {
+  background-color: #f7fafc;
 }
 
-/* Light Theme Dropdown Options */
-body.theme-light .graphics-dropdown option {
-  background-color: #ffffff;
+body.theme-light .graphics-dropdown selectvalue {
+  background-color: transparent;
   color: #2d3748;
-  border-top: 1dp rgba(203, 213, 224, 128);
 }
 
-body.theme-light .graphics-dropdown option:first-child {
+body.theme-light .graphics-dropdown selectarrow {
+  background-color: rgba(203, 213, 224, 128);
+  border-left-color: rgba(203, 213, 224, 128);
+}
+body.theme-light .graphics-dropdown selectarrow:hover,
+body.theme-light .graphics-dropdown:focus-visible selectarrow {
+  background-color: rgba(160, 174, 192, 128);
+}
+
+body.theme-light .graphics-dropdown selectbox {
+  background-color: #ffffff;
+  border-color: rgba(203, 213, 224, 128);
+}
+
+body.theme-light .graphics-dropdown selectbox option {
+  background-color: transparent;
+  color: #2d3748;
+  border-top-color: rgba(203, 213, 224, 128);
+}
+
+body.theme-light .graphics-dropdown selectbox option:first-child {
   border-top: 0dp;
 }
 
-body.theme-light .graphics-dropdown option:hover {
+body.theme-light .graphics-dropdown selectbox option:hover {
   background-color: #3182ce;
   color: #ffffff;
 }
 
-body.theme-light .graphics-dropdown option:selected {
-  background-color: #3182ce;
-  color: #ffffff;
-  font-weight: bold;
-}
-
-body.theme-light .graphics-dropdown option:checked {
+body.theme-light .graphics-dropdown selectbox option:checked {
   background-color: #3182ce;
   color: #ffffff;
   font-weight: bold;
