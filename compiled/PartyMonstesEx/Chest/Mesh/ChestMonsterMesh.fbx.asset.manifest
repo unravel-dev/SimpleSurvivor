@@ -1,8 +1,4 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/PartyMonstesEx/Chest/Mesh/ChestMonsterMesh.fbx",
  "source_sha": "65aad7a017eeba2524bfd7b24862bcdcde3142b8",
- "source_timestamp": {
-  "count": -4670623098885809307
- },
- "format_version": 2
+ "format_version": 5
 }

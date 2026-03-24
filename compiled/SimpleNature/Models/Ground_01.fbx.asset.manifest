@@ -1,8 +1,4 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/SimpleNature/Models/Ground_01.fbx",
  "source_sha": "17a37cc5c574d41eadcd2c0fc0c8ec123910d045",
- "source_timestamp": {
-  "count": -4670623098867809423
- },
- "format_version": 2
+ "format_version": 5
 }

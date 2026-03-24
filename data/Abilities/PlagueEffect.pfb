@@ -2,8 +2,12 @@
  "entities": [
   {
    "prefab_uid": "aa09c5ba-97b1-6942-94ab-063ef2d7ed07",
-   "id": 1048577,
+   "uid": "6397a73b-3daa-6848-98e6-20c2e7420e2d",
    "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "6397a73b-3daa-6848-98e6-20c2e7420e2d"
+    },
     "has_tag_component": true,
     "tag_component": {
      "name": "PlagueEffect",
@@ -45,8 +49,8 @@
       }
      },
      "parent": {
-      "prefab_uid": "00000000-0000-0000-0000-000000000000",
-      "id": 4294967295
+      "prefab_uid": "nil",
+      "uid": "nil"
      },
      "children": [],
      "active": true
@@ -176,6 +180,7 @@
       "z": 3.0
      },
      "opacity": 0.1509999930858612,
+     "color_intensity": 7.599999904632568,
      "color_gradient": {
       "points": [
        {
@@ -222,6 +227,7 @@
      },
      "texture_mode": 0,
      "render_mode": 1,
+     "blend_mode": 0,
      "texture_sheet_tiles": {
       "x": 8.0,
       "y": 8.0

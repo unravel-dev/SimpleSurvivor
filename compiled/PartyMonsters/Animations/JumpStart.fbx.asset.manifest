@@ -1,8 +1,4 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/PartyMonsters/Animations/JumpStart.fbx",
  "source_sha": "fcff81538444d39da5f918ff7bbfbac5f500cc95",
- "source_timestamp": {
-  "count": -4670623099003808553
- },
- "format_version": 2
+ "format_version": 5
 }

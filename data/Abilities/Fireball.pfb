@@ -2,8 +2,12 @@
  "entities": [
   {
    "prefab_uid": "10ef8358-c389-3a4b-896e-3f9e41e44097",
-   "id": 27262977,
+   "uid": "b0ee393c-8333-fb4a-a57f-9ab20d2cae1d",
    "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "b0ee393c-8333-fb4a-a57f-9ab20d2cae1d"
+    },
     "has_tag_component": true,
     "tag_component": {
      "name": "Fireball",
@@ -45,8 +49,8 @@
       }
      },
      "parent": {
-      "prefab_uid": "00000000-0000-0000-0000-000000000000",
-      "id": 4294967295
+      "prefab_uid": "nil",
+      "uid": "nil"
      },
      "children": [],
      "active": true
@@ -75,7 +79,7 @@
       "z": false
      },
      "material": {
-      "uid": "00000000-0000-0000-0000-000000000000"
+      "uid": "nil"
      },
      "shapes": [
       {
@@ -218,6 +222,7 @@
       "z": 1.0
      },
      "opacity": 1.0,
+     "color_intensity": 14.899999618530274,
      "color_gradient": {
       "points": [
        {
@@ -264,6 +269,7 @@
      },
      "texture_mode": 0,
      "render_mode": 0,
+     "blend_mode": 0,
      "texture_sheet_tiles": {
       "x": 1.0,
       "y": 1.0

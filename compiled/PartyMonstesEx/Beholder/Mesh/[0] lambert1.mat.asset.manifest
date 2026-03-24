@@ -1,8 +1,4 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/PartyMonstesEx/Beholder/Mesh/[0] lambert1.mat",
- "source_sha": "0e7d1303878e2fefe8f9b9151ec1b22fa02061ac",
- "source_timestamp": {
-  "count": -4670271060327608247
- },
- "format_version": 1
+ "source_sha": "925625ee1a7f4b685a3af278c828fd3f662fafd0",
+ "format_version": 2
 }

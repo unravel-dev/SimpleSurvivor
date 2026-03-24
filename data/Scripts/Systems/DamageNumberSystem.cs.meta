@@ -4,6 +4,9 @@
   "uid": "f2529daf-e439-104a-9f4b-71f98e2dc2bf",
   "importer": {
    "polymorphic_id": 0
+  },
+  "header": {
+   "polymorphic_id": 0
   }
  }
 }

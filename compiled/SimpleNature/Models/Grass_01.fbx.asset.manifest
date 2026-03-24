@@ -1,8 +1,4 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/SimpleNature/Models/Grass_01.fbx",
  "source_sha": "e9db79db0f94d7db4ee38041a81e482dc2b8a6d4",
- "source_timestamp": {
-  "count": -4670623098867809423
- },
- "format_version": 2
+ "format_version": 5
 }

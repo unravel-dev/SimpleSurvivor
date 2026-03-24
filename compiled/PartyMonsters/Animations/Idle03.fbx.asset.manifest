@@ -1,8 +1,4 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/PartyMonsters/Animations/Idle03.fbx",
  "source_sha": "8b9243d56c8c29e45ecec9d8a8ee22ac0d85ee57",
- "source_timestamp": {
-  "count": -4670623099008808521
- },
- "format_version": 2
+ "format_version": 5
 }

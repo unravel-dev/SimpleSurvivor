@@ -1,8 +1,4 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/GroundGrass.mat",
  "source_sha": "2906202f3c10aa74b3dbbd702cc66e4ccfcb7b0b",
- "source_timestamp": {
-  "count": -4670229225414745887
- },
- "format_version": 1
+ "format_version": 2
 }

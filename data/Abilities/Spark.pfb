@@ -2,8 +2,12 @@
  "entities": [
   {
    "prefab_uid": "10ef8358-c389-3a4b-896e-3f9e41e44097",
-   "id": 2097156,
+   "uid": "d8ea8642-5714-9041-a947-b28cd18f366c",
    "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "d8ea8642-5714-9041-a947-b28cd18f366c"
+    },
     "has_tag_component": true,
     "tag_component": {
      "name": "Spark",
@@ -34,9 +38,9 @@
        "w": 1.0
       },
       "scale": {
-       "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
+       "x": 0.4699999988079071,
+       "y": 0.4699999988079071,
+       "z": 0.4699999988079071
       },
       "skew": {
        "x": 0.0,
@@ -45,8 +49,8 @@
       }
      },
      "parent": {
-      "prefab_uid": "00000000-0000-0000-0000-000000000000",
-      "id": 4294967295
+      "prefab_uid": "nil",
+      "uid": "nil"
      },
      "children": [],
      "active": true
@@ -75,7 +79,7 @@
       "z": false
      },
      "material": {
-      "uid": "00000000-0000-0000-0000-000000000000"
+      "uid": "nil"
      },
      "shapes": [
       {
@@ -218,6 +222,7 @@
       "z": 1.0
      },
      "opacity": 1.0,
+     "color_intensity": 50.0,
      "color_gradient": {
       "points": [
        {
@@ -264,6 +269,7 @@
      },
      "texture_mode": 1,
      "render_mode": 0,
+     "blend_mode": 0,
      "texture_sheet_tiles": {
       "x": 5.0,
       "y": 1.0

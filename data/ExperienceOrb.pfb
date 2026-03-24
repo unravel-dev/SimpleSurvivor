@@ -2,8 +2,12 @@
  "entities": [
   {
    "prefab_uid": "b46d51d1-fea8-b14f-9a3a-0347104fe3a3",
-   "id": 4,
+   "uid": "0bbffa49-ed18-fd46-8e4e-457ede3c04e7",
    "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "0bbffa49-ed18-fd46-8e4e-457ede3c04e7"
+    },
     "has_tag_component": true,
     "tag_component": {
      "name": "ExperienceOrb",
@@ -45,8 +49,8 @@
       }
      },
      "parent": {
-      "prefab_uid": "00000000-0000-0000-0000-000000000000",
-      "id": 4294967295
+      "prefab_uid": "nil",
+      "uid": "nil"
      },
      "children": [],
      "active": true
@@ -101,7 +105,7 @@
       "z": false
      },
      "material": {
-      "uid": "00000000-0000-0000-0000-000000000000"
+      "uid": "nil"
      },
      "shapes": [
       {
@@ -299,6 +303,7 @@
      },
      "texture_mode": 0,
      "render_mode": 0,
+     "blend_mode": 0,
      "texture_sheet_tiles": {
       "x": 1.0,
       "y": 1.0

@@ -1,8 +1,4 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/PartyMonstesEx/Beholder/Animations/Attack03.fbx",
  "source_sha": "ded9155f49cc97503168b2a63df5a0f643866fda",
- "source_timestamp": {
-  "count": -4670623098928809032
- },
- "format_version": 2
+ "format_version": 5
 }

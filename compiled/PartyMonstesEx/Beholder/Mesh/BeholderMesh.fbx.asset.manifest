@@ -1,8 +1,4 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/PartyMonstesEx/Beholder/Mesh/BeholderMesh.fbx",
  "source_sha": "2ceabe52b5d243a15f209118bfa9402222aee9c9",
- "source_timestamp": {
-  "count": -4670623098903809192
- },
- "format_version": 2
+ "format_version": 5
 }

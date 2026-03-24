@@ -1,8 +1,4 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/PartyMonstesEx/Chest/Mesh/[0] lambert1.mat",
- "source_sha": "740a1dd4678cbecba2874eb7caeede5047d2b95d",
- "source_timestamp": {
-  "count": -4670271060277220842
- },
- "format_version": 1
+ "source_sha": "78f958031fe67a11facd6632653966c0d94b4c8c",
+ "format_version": 2
 }

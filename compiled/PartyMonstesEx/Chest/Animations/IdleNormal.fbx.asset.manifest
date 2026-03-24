@@ -1,8 +1,4 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/PartyMonstesEx/Chest/Animations/IdleNormal.fbx",
  "source_sha": "3567b121177cb897c54789feef5db05952127046",
- "source_timestamp": {
-  "count": -4670623098892809263
- },
- "format_version": 2
+ "format_version": 5
 }

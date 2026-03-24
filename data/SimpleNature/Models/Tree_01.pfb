@@ -2,8 +2,12 @@
  "entities": [
   {
    "prefab_uid": "0d17ea06-3b9b-754e-b7ab-a8acee5d9c1a",
-   "id": 54525969,
+   "uid": "d40202c7-c0dc-f248-9f6b-0abcdcc0ac0d",
    "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "d40202c7-c0dc-f248-9f6b-0abcdcc0ac0d"
+    },
     "has_tag_component": true,
     "tag_component": {
      "name": "Tree_01",
@@ -45,13 +49,13 @@
       }
      },
      "parent": {
-      "prefab_uid": "00000000-0000-0000-0000-000000000000",
-      "id": 4294967295
+      "prefab_uid": "nil",
+      "uid": "nil"
      },
      "children": [
       {
        "prefab_uid": "96cb30ff-6bd8-de4d-945f-36b1c745ad0b",
-       "id": 54525974
+       "uid": "c4f30add-8c30-1d49-bcf2-c92605937f76"
       }
      ],
      "active": true
@@ -74,12 +78,12 @@
        }
       ],
       "material_instances": [],
-      "lod_limits": [
-       {
-        "min": 0,
-        "max": 100
-       }
-      ]
+      "lod_override_enabled": false,
+      "lod_override_level": 0,
+      "lod_selection_bias": 0.0,
+      "lod_transition_time": {
+       "count": 0.0
+      }
      }
     },
     "has_physics_component": true,
@@ -106,7 +110,7 @@
       "z": false
      },
      "material": {
-      "uid": "00000000-0000-0000-0000-000000000000"
+      "uid": "nil"
      },
      "shapes": [
       {
@@ -132,8 +136,12 @@
   },
   {
    "prefab_uid": "96cb30ff-6bd8-de4d-945f-36b1c745ad0b",
-   "id": 54525974,
+   "uid": "c4f30add-8c30-1d49-bcf2-c92605937f76",
    "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "c4f30add-8c30-1d49-bcf2-c92605937f76"
+    },
     "has_tag_component": true,
     "tag_component": {
      "name": "RootNode",
@@ -176,16 +184,16 @@
      },
      "parent": {
       "prefab_uid": "0d17ea06-3b9b-754e-b7ab-a8acee5d9c1a",
-      "id": 54525969
+      "uid": "d40202c7-c0dc-f248-9f6b-0abcdcc0ac0d"
      },
      "children": [
       {
        "prefab_uid": "c824fe62-c056-7f4a-badd-53d0c1e073aa",
-       "id": 54525975
+       "uid": "57bc57f1-1e2f-fc41-b41c-3851df548516"
       },
       {
        "prefab_uid": "1fdc2112-d22f-8442-8941-6a5046929341",
-       "id": 54525976
+       "uid": "9a12f16c-69b8-d64a-a404-098a44758906"
       }
      ],
      "active": true
@@ -194,8 +202,12 @@
   },
   {
    "prefab_uid": "c824fe62-c056-7f4a-badd-53d0c1e073aa",
-   "id": 54525975,
+   "uid": "57bc57f1-1e2f-fc41-b41c-3851df548516",
    "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "57bc57f1-1e2f-fc41-b41c-3851df548516"
+    },
     "has_tag_component": true,
     "tag_component": {
      "name": "Tree_01_LOD0",
@@ -238,7 +250,7 @@
      },
      "parent": {
       "prefab_uid": "96cb30ff-6bd8-de4d-945f-36b1c745ad0b",
-      "id": 54525974
+      "uid": "c4f30add-8c30-1d49-bcf2-c92605937f76"
      },
      "children": [],
      "active": true
@@ -253,8 +265,12 @@
   },
   {
    "prefab_uid": "1fdc2112-d22f-8442-8941-6a5046929341",
-   "id": 54525976,
+   "uid": "9a12f16c-69b8-d64a-a404-098a44758906",
    "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "9a12f16c-69b8-d64a-a404-098a44758906"
+    },
     "has_tag_component": true,
     "tag_component": {
      "name": "Tree_01_LOD1",
@@ -297,7 +313,7 @@
      },
      "parent": {
       "prefab_uid": "96cb30ff-6bd8-de4d-945f-36b1c745ad0b",
-      "id": 54525974
+      "uid": "c4f30add-8c30-1d49-bcf2-c92605937f76"
      },
      "children": [],
      "active": true

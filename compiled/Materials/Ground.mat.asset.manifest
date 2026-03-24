@@ -1,8 +1,4 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Materials/Ground.mat",
  "source_sha": "886878dbca43005f38c046c74067bb2526af1acc",
- "source_timestamp": {
-  "count": -4670623099021808438
- },
- "format_version": 1
+ "format_version": 2
 }

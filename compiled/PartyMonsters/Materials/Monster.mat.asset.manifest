@@ -1,8 +1,4 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/PartyMonsters/Materials/Monster.mat",
  "source_sha": "38fb38c71ce533ecda3fcacbb7b6ecd66d90ad1e",
- "source_timestamp": {
-  "count": -4670135484519458586
- },
- "format_version": 1
+ "format_version": 2
 }

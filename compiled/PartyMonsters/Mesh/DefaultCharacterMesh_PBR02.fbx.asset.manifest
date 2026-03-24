@@ -1,8 +1,4 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/PartyMonsters/Mesh/DefaultCharacterMesh_PBR02.fbx",
  "source_sha": "f569d048a453448b804d6b6232469b3f74df7e0c",
- "source_timestamp": {
-  "count": -4670623098989808642
- },
- "format_version": 2
+ "format_version": 5
 }

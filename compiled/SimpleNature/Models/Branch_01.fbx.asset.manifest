@@ -1,8 +1,4 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/SimpleNature/Models/Branch_01.fbx",
  "source_sha": "32ed9903892b65f2bebb8a82888e1b6f514ff73f",
- "source_timestamp": {
-  "count": -4670623098868358481
- },
- "format_version": 2
+ "format_version": 5
 }

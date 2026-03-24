@@ -1,8 +1,4 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/PartyMonstesEx/Chest/Animations/WalkLeft.fbx",
  "source_sha": "baf1d8f8ce7d00a7902749e1375b53d5f974870a",
- "source_timestamp": {
-  "count": -4670623098886809301
- },
- "format_version": 2
+ "format_version": 5
 }

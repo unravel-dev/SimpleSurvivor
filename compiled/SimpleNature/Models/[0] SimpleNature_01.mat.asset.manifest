@@ -1,8 +1,4 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/SimpleNature/Models/[0] SimpleNature_01.mat",
- "source_sha": "8fda60304144e15d450c5a5eae19d4afd4ad3769",
- "source_timestamp": {
-  "count": -4670227151193853399
- },
- "format_version": 1
+ "source_sha": "cb7b95a9f4a6db6efc65e757314b6ef632e275a5",
+ "format_version": 2
 }
