@@ -2,8 +2,12 @@
  "entities_count": 7,
  "entities": [
   {
-   "id": 2097154,
+   "uid": "600443ac-9d27-3143-92f8-6e221b881e0e",
    "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "600443ac-9d27-3143-92f8-6e221b881e0e"
+    },
     "has_tag_component": true,
     "tag_component": {
      "name": "Main Camera",
@@ -41,7 +45,7 @@
       }
      },
      "parent": {
-      "id": 4294967295
+      "uid": "nil"
      },
      "children": [],
      "active": true
@@ -119,7 +123,7 @@
        "roughness_depth_tolerance": 1.0,
        "fade_in_start": 0.10000000149011612,
        "fade_in_end": 0.20000000298023225,
-       "enable_half_res": false,
+       "resolution": 1,
        "enable_cone_tracing": false,
        "cone_tracing": {
         "cone_angle_bias": 0.05000000074505806,
@@ -134,6 +138,12 @@
         "motion_scale_pixels": 120.0,
         "normal_dot_threshold": 0.949999988079071,
         "max_accum_frames": 8
+       },
+       "enable_spatial_denoise": false,
+       "spatial_denoise": {
+        "depth_sigma": 0.019999999552965165,
+        "normal_power": 64.0,
+        "luma_sigma": 1.0
        }
       }
      }
@@ -146,8 +156,12 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 2097156,
+   "uid": "ce28298b-192d-6c40-834c-1813bd076e4f",
    "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "ce28298b-192d-6c40-834c-1813bd076e4f"
+    },
     "has_tag_component": true,
     "tag_component": {
      "name": "UI",
@@ -213,17 +227,17 @@
       }
      },
      "parent": {
-      "id": 4294967295
+      "uid": "nil"
      },
      "children": [
       {
-       "id": 2097157
+       "uid": "88e1d971-38c7-cf45-971d-9307b563bc3e"
       },
       {
-       "id": 2097158
+       "uid": "12212109-5c15-9e43-9ac7-87a9cac59e00"
       },
       {
-       "id": 2097159
+       "uid": "0a29f563-55af-c248-8a4a-6163ba654e04"
       }
      ],
      "active": true
@@ -235,18 +249,18 @@
        "type": "LobbyUI",
        "MainMenu": {
         "flags": 2,
-        "id": 4294967295
+        "uid": "nil"
        },
        "SettingsMenu": {
         "flags": 2,
-        "id": 4294967295
+        "uid": "nil"
        },
        "GameScene": {
         "uid": "69cb753a-e3ae-4d40-b833-453c6f3075f7"
        },
        "BackgroundAudioSource": {
         "flags": 2,
-        "id": 4294967295
+        "uid": "nil"
        },
        "testNumbers": {
         "type": "System.Int32",
@@ -259,8 +273,12 @@
    }
   },
   {
-   "id": 2097157,
+   "uid": "88e1d971-38c7-cf45-971d-9307b563bc3e",
    "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "88e1d971-38c7-cf45-971d-9307b563bc3e"
+    },
     "has_tag_component": true,
     "tag_component": {
      "name": "MainMenu",
@@ -302,7 +320,7 @@
       }
      },
      "parent": {
-      "id": 2097156
+      "uid": "ce28298b-192d-6c40-834c-1813bd076e4f"
      },
      "children": [],
      "active": true
@@ -331,8 +349,12 @@
    }
   },
   {
-   "id": 2097158,
+   "uid": "12212109-5c15-9e43-9ac7-87a9cac59e00",
    "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "12212109-5c15-9e43-9ac7-87a9cac59e00"
+    },
     "has_tag_component": true,
     "tag_component": {
      "name": "SettingsMenu",
@@ -374,7 +396,7 @@
       }
      },
      "parent": {
-      "id": 2097156
+      "uid": "ce28298b-192d-6c40-834c-1813bd076e4f"
      },
      "children": [],
      "active": false
@@ -403,8 +425,12 @@
    }
   },
   {
-   "id": 2097159,
+   "uid": "0a29f563-55af-c248-8a4a-6163ba654e04",
    "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "0a29f563-55af-c248-8a4a-6163ba654e04"
+    },
     "has_tag_component": true,
     "tag_component": {
      "name": "BackgroundAudioSource",
@@ -446,7 +472,7 @@
       }
      },
      "parent": {
-      "id": 2097156
+      "uid": "ce28298b-192d-6c40-834c-1813bd076e4f"
      },
      "children": [],
      "active": true
@@ -472,8 +498,12 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 2097161,
+   "uid": "d00643c1-9fb1-1b41-91bb-d090daa0ae33",
    "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "d00643c1-9fb1-1b41-91bb-d090daa0ae33"
+    },
     "has_tag_component": true,
     "tag_component": {
      "name": "TestUI",
@@ -511,7 +541,7 @@
       }
      },
      "parent": {
-      "id": 4294967295
+      "uid": "nil"
      },
      "children": [],
      "active": true
@@ -522,8 +552,12 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 2097163,
+   "uid": "73fe21d0-288e-c344-9383-e264348507f8",
    "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "73fe21d0-288e-c344-9383-e264348507f8"
+    },
     "has_tag_component": true,
     "tag_component": {
      "name": "Particle Emitter",
@@ -561,11 +595,11 @@
       }
      },
      "parent": {
-      "id": 4294967295
+      "uid": "nil"
      },
      "children": [
       {
-       "id": 2097164
+       "uid": "6af9cd16-7724-c648-b8b9-b6aaf2227db6"
       }
      ],
      "active": true
@@ -695,6 +729,7 @@
       "z": 0.8500000238418579
      },
      "opacity": 1.0,
+     "color_intensity": 1.0,
      "color_gradient": {
       "points": [
        {
@@ -732,6 +767,7 @@
      },
      "texture_mode": 0,
      "render_mode": 2,
+     "blend_mode": 0,
      "texture_sheet_tiles": {
       "x": 5.0,
       "y": 1.0
@@ -751,8 +787,12 @@
    }
   },
   {
-   "id": 2097164,
+   "uid": "6af9cd16-7724-c648-b8b9-b6aaf2227db6",
    "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "6af9cd16-7724-c648-b8b9-b6aaf2227db6"
+    },
     "has_tag_component": true,
     "tag_component": {
      "name": "Particle Emitter",
@@ -790,7 +830,7 @@
       }
      },
      "parent": {
-      "id": 2097163
+      "uid": "73fe21d0-288e-c344-9383-e264348507f8"
      },
      "children": [],
      "active": true
@@ -920,6 +960,7 @@
       "z": 1.0
      },
      "opacity": 1.0,
+     "color_intensity": 1.0,
      "color_gradient": {
       "points": [
        {
@@ -975,6 +1016,7 @@
      },
      "texture_mode": 0,
      "render_mode": 1,
+     "blend_mode": 0,
      "texture_sheet_tiles": {
       "x": 1.0,
       "y": 1.0
@@ -997,8 +1039,12 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 2097166,
+   "uid": "b9920c05-8e00-fc48-91ed-8eccde5e1401",
    "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "b9920c05-8e00-fc48-91ed-8eccde5e1401"
+    },
     "has_tag_component": true,
     "tag_component": {
      "name": "ground",
@@ -1036,7 +1082,7 @@
       }
      },
      "parent": {
-      "id": 4294967295
+      "uid": "nil"
      },
      "children": [],
      "active": true
@@ -1073,8 +1119,12 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 2097168,
+   "uid": "99cfe516-e3ac-244d-a2a6-51f158087536",
    "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "99cfe516-e3ac-244d-a2a6-51f158087536"
+    },
     "has_tag_component": true,
     "tag_component": {
      "name": "Particle Emitter",
@@ -1112,7 +1162,7 @@
       }
      },
      "parent": {
-      "id": 4294967295
+      "uid": "nil"
      },
      "children": [],
      "active": true
@@ -1242,6 +1292,7 @@
       "z": 0.8500000238418579
      },
      "opacity": 1.0,
+     "color_intensity": 1.0,
      "color_gradient": {
       "points": [
        {
@@ -1279,6 +1330,7 @@
      },
      "texture_mode": 1,
      "render_mode": 2,
+     "blend_mode": 0,
      "texture_sheet_tiles": {
       "x": 4.0,
       "y": 1.0
@@ -1301,8 +1353,12 @@
  "version": "1.0.0",
  "entities": [
   {
-   "id": 1048594,
+   "uid": "d658ad99-ff96-1f47-84fe-6bde7c60fba8",
    "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "d658ad99-ff96-1f47-84fe-6bde7c60fba8"
+    },
     "has_tag_component": true,
     "tag_component": {
      "name": "Lighting",
@@ -1340,17 +1396,17 @@
       }
      },
      "parent": {
-      "id": 4294967295
+      "uid": "nil"
      },
      "children": [
       {
-       "id": 1048595
+       "uid": "02f050f3-76c1-9d47-bb51-bf6c40622766"
       },
       {
-       "id": 1048596
+       "uid": "1373ab93-ddc9-fa4d-94ec-2a72cb182b3b"
       },
       {
-       "id": 1048597
+       "uid": "9d216c28-3de0-1543-b65f-5e7b19921c47"
       }
      ],
      "active": true
@@ -1358,8 +1414,12 @@
    }
   },
   {
-   "id": 1048595,
+   "uid": "02f050f3-76c1-9d47-bb51-bf6c40622766",
    "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "02f050f3-76c1-9d47-bb51-bf6c40622766"
+    },
     "has_tag_component": true,
     "tag_component": {
      "name": "Volume Global",
@@ -1397,7 +1457,7 @@
       }
      },
      "parent": {
-      "id": 1048594
+      "uid": "d658ad99-ff96-1f47-84fe-6bde7c60fba8"
      },
      "children": [],
      "active": true
@@ -1460,7 +1520,7 @@
        "roughness_depth_tolerance": 1.0,
        "fade_in_start": 0.10000000149011612,
        "fade_in_end": 0.20000000298023225,
-       "enable_half_res": false,
+       "resolution": 1,
        "enable_cone_tracing": false,
        "cone_tracing": {
         "cone_angle_bias": 0.05000000074505806,
@@ -1475,6 +1535,12 @@
         "motion_scale_pixels": 120.0,
         "normal_dot_threshold": 0.949999988079071,
         "max_accum_frames": 8
+       },
+       "enable_spatial_denoise": false,
+       "spatial_denoise": {
+        "depth_sigma": 0.019999999552965165,
+        "normal_power": 64.0,
+        "luma_sigma": 1.0
        }
       }
      }
@@ -1482,8 +1548,12 @@
    }
   },
   {
-   "id": 1048596,
+   "uid": "1373ab93-ddc9-fa4d-94ec-2a72cb182b3b",
    "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "1373ab93-ddc9-fa4d-94ec-2a72cb182b3b"
+    },
     "has_tag_component": true,
     "tag_component": {
      "name": "Sky & Directional Light",
@@ -1521,7 +1591,7 @@
       }
      },
      "parent": {
-      "id": 1048594
+      "uid": "d658ad99-ff96-1f47-84fe-6bde7c60fba8"
      },
      "children": [],
      "active": true
@@ -1550,6 +1620,14 @@
        "pcf_x_offset": 1.0,
        "pcf_y_offset": 1.0
       },
+      "contact_shadow": {
+       "enabled": false,
+       "ray_length": 0.20000000298023225,
+       "thickness": 0.15000000596046449,
+       "n_dot_l_fade_start": 0.0,
+       "n_dot_l_fade_end": 0.4749999940395355,
+       "normal_facing_reject": -1.0
+      },
       "directional_data": {},
       "directional_shadow_params": {
        "num_splits": 4,
@@ -1561,11 +1639,24 @@
     "has_skylight_component": true,
     "skylight_component": {
      "mode": 1,
+     "sky_brightness": 1.0,
      "turbidity": 1.899999976158142,
+     "cloud_mode": 2,
      "cloud_coverage": 0.44999998807907107,
-     "cloud_altitude": 3000.0,
+     "cloud_base_altitude": 27500.0,
+     "cloud_top_altitude": 45000.0,
      "cloud_speed": 1.0,
      "cloud_density": 1.0,
+     "cloud_absorption": 0.07999999821186066,
+     "cloud_light_absorption": 0.10000000149011612,
+     "cloud_vol_uv_scale": 0.00007999999797903001,
+     "cloud_vol_edge_width": 0.20000000298023225,
+     "cloud_vol_shape_power": 1.1200000047683716,
+     "cloud_vol_detail_erode": 0.47999998927116396,
+     "cloud_vol_macro_strength": 0.36000001430511477,
+     "cloud_vol_coarse_scale": 0.3799999952316284,
+     "cloud_vol_base_mix": 0.44999998807907107,
+     "cloud_vol_sun_intensity": 24.0,
      "irradiance_intensity": 0.15000000596046449,
      "irradiance_tint": {
       "r": 1.0,
@@ -1575,14 +1666,18 @@
      },
      "irradiance_quality": 1,
      "cubemap": {
-      "uid": "00000000-0000-0000-0000-000000000000"
+      "uid": "nil"
      }
     }
    }
   },
   {
-   "id": 1048597,
+   "uid": "9d216c28-3de0-1543-b65f-5e7b19921c47",
    "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "9d216c28-3de0-1543-b65f-5e7b19921c47"
+    },
     "has_tag_component": true,
     "tag_component": {
      "name": "Envinroment Probe",
@@ -1620,7 +1715,7 @@
       }
      },
      "parent": {
-      "id": 1048594
+      "uid": "d658ad99-ff96-1f47-84fe-6bde7c60fba8"
      },
      "children": [],
      "active": true
@@ -1633,6 +1728,8 @@
       "intensity": 1.0,
       "range": 1000.0
      },
+     "update_mode": 1,
+     "update_interval": 0.0,
      "faces_per_frame": 1,
      "apply_prefilter": false
     }
