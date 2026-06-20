@@ -1,7 +1,5 @@
 {
- "source_sha": "47474d313093a2b534f1c352bf1c22cd8f8588b9",
- "source_timestamp": {
-  "count": -5033425632152148616
- },
- "format_version": 0
+ "source_fingerprint": "6f01ef4cd5765406f60abca381152971",
+ "format_version": 0,
+ "fingerprint_version": 1
 }

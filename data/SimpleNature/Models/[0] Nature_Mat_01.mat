@@ -9,9 +9,9 @@
      "cull_type": 2
     },
     "base_color": {
-     "r": 0.9597198367118836,
-     "g": 0.9597198367118836,
-     "b": 0.9597198367118836,
+     "r": 0.800000011920929,
+     "g": 0.800000011920929,
+     "b": 0.800000011920929,
      "a": 1.0
     },
     "subsurface_color": {
@@ -27,10 +27,10 @@
      "a": 1.0
     },
     "emissive_intensity": 1.0,
-    "roughness": 0.5,
-    "metalness": 0.8263379335403442,
+    "roughness": 0.27216553688049319,
+    "metalness": 0.0,
     "bumpiness": 1.0,
-    "alpha_test_value": 0.25,
+    "alpha_test_value": 0.0,
     "tiling": {
      "x": 1.0,
      "y": 1.0
@@ -40,7 +40,7 @@
      "y": 0.0
     },
     "color_map": {
-     "uid": "5fc04e4e-5fbb-695d-8e88-c3a5db0c6bb9"
+     "uid": "bd727e38-997b-8a4f-828b-b48e8a189e0e"
     },
     "normal_map": {
      "uid": "nil"

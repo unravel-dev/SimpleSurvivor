@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/PartyMonsters/Texture/PBR_Albedo_01.png",
- "source_sha": "ed6c08c8d139fe53805db099ca4f5ac8f97cf0ea",
- "source_timestamp": {
-  "count": -4670271262109448880
- },
- "format_version": 0
+ "source_fingerprint": "177a105de94b8ac39691189eb79be494",
+ "format_version": 1,
+ "fingerprint_version": 1
 }

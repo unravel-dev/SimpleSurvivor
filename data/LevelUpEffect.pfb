@@ -2,8 +2,12 @@
  "entities": [
   {
    "prefab_uid": "30a8ac5d-16ea-9e47-8dc6-72a004fb3942",
-   "id": 7340035,
+   "uid": "a49d54dc-bbf8-9d4b-af55-f444ac23aa2a",
    "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "a49d54dc-bbf8-9d4b-af55-f444ac23aa2a"
+    },
     "has_tag_component": true,
     "tag_component": {
      "name": "LevelUpEffect",
@@ -45,8 +49,8 @@
       }
      },
      "parent": {
-      "prefab_uid": "00000000-0000-0000-0000-000000000000",
-      "id": 4294967295
+      "prefab_uid": "nil",
+      "uid": "nil"
      },
      "children": [],
      "active": true
@@ -176,6 +180,7 @@
       "z": 1.0
      },
      "opacity": 1.0,
+     "color_intensity": 10.0,
      "color_gradient": {
       "points": [
        {
@@ -213,6 +218,7 @@
      },
      "texture_mode": 0,
      "render_mode": 0,
+     "blend_mode": 0,
      "texture_sheet_tiles": {
       "x": 1.0,
       "y": 1.0

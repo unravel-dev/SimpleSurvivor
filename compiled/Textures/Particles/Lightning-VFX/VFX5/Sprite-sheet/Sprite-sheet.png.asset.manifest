@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Textures/Particles/Lightning-VFX/VFX5/Sprite-sheet/Sprite-sheet.png",
- "source_sha": "0cb71af5e29a03acda6e5ab163f4954627c75fac",
- "source_timestamp": {
-  "count": -4670271262109050784
- },
- "format_version": 0
+ "source_fingerprint": "d3a352e24c764bafe63c9adca391b348",
+ "format_version": 1,
+ "fingerprint_version": 1
 }

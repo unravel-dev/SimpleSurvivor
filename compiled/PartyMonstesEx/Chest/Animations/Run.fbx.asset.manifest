@@ -1,4 +1,5 @@
 {
- "source_sha": "32f8736e61b4c195c01a809429d4d6f307fec9db",
- "format_version": 5
+ "source_fingerprint": "641b11be02c34b1fed69609d2619cb46",
+ "format_version": 7,
+ "fingerprint_version": 1
 }

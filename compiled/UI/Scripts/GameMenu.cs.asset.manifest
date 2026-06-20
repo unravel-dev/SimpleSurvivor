@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/UI/Scripts/GameMenu.cs",
- "source_sha": "c34b4ebc10138daed656052a5d2c2fd1a0d5181a",
- "source_timestamp": {
-  "count": -4670215200302738133
- },
- "format_version": 0
+ "source_fingerprint": "c9c6481a8b7e2ab6340b4425566bb183",
+ "format_version": 0,
+ "fingerprint_version": 1
 }

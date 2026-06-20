@@ -228,7 +228,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -313,7 +312,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -394,7 +392,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -562,7 +559,8 @@
        "spatial_denoise": {
         "depth_sigma": 0.019999999552965165,
         "normal_power": 64.0,
-        "luma_sigma": 1.0
+        "luma_sigma": 1.0,
+        "passes": 3
        }
       }
      }
@@ -1249,8 +1247,8 @@
      "local_transform": {
       "position": {
        "x": 0.000136366521473974,
-       "y": 0.0000013863239018974128,
-       "z": 0.0008193245739676058
+       "y": 0.0000013862598962077755,
+       "z": 0.0008193573448807001
       },
       "rotation": {
        "x": -1.1920938902676426e-7,
@@ -1266,7 +1264,7 @@
       "skew": {
        "x": -5.960487214906607e-8,
        "y": -2.9803405965367349e-8,
-       "z": -0.000005917702765145805
+       "z": -0.000005917958787904354
       }
      },
      "parent": {
@@ -1353,7 +1351,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -1483,9 +1480,6 @@
       },
       {
        "uid": "1f32b28b-1b4e-7e43-bb03-3002ce881f70"
-      },
-      {
-       "uid": "d40202c7-c0dc-f248-9f6b-0abcdcc0ac0d"
       },
       {
        "uid": "54c47007-a537-8542-96ea-36b26b1d2fdf"
@@ -1657,7 +1651,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -1798,7 +1791,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -1860,7 +1852,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -1947,7 +1938,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -2088,7 +2078,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -2150,7 +2139,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -2237,7 +2225,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -2378,7 +2365,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -2440,7 +2426,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -2527,7 +2512,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -2668,7 +2652,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -2730,7 +2713,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -2770,9 +2752,9 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": -5.21527099609375,
-       "y": 0.000005524727384909056,
-       "z": -26.198104858398439
+       "x": -5.21498966217041,
+       "y": 0.000005524744210561039,
+       "z": -26.199230194091798
       },
       "rotation": {
        "x": 1.1920926112907182e-7,
@@ -2806,7 +2788,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -2947,7 +2928,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -3009,332 +2989,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
-      1
-     ]
-    }
-   }
-  },
-  {
-   "uid": "d40202c7-c0dc-f248-9f6b-0abcdcc0ac0d",
-   "components": {
-    "has_id_component": true,
-    "id_component": {
-     "id": "d40202c7-c0dc-f248-9f6b-0abcdcc0ac0d"
-    },
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "Tree_01",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_prefab_component": true,
-    "prefab_component": {
-     "source": {
-      "uid": "34b8e717-0462-dd44-b9be-717f494bbc33"
-     },
-     "property_overrides": [],
-     "removed_entities": []
-    },
-    "has_prefab_id_component": true,
-    "prefab_id_component": {
-     "id": "0d17ea06-3b9b-754e-b7ab-a8acee5d9c1a"
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": -12.257625579833985,
-       "y": 0.000004046930371259805,
-       "z": -20.277713775634767
-      },
-      "rotation": {
-       "x": 1.1920926112907182e-7,
-       "y": -1.4901164746561336e-8,
-       "z": 2.9802317058624795e-8,
-       "w": 1.0
-      },
-      "scale": {
-       "x": 1.0,
-       "y": 1.0000001192092896,
-       "z": 0.9999997615814209
-      },
-      "skew": {
-       "x": 5.9604559510262337e-8,
-       "y": 2.9802322387695315e-8,
-       "z": 0.0000058399123190611139
-      }
-     },
-     "parent": {
-      "uid": "0b0ed81f-9a13-a541-ba13-f54ba8ac9b4a"
-     },
-     "children": [
-      {
-       "uid": "c4f30add-8c30-1d49-bcf2-c92605937f76"
-      }
-     ],
-     "active": true
-    },
-    "has_model_component": true,
-    "model_component": {
-     "enabled": true,
-     "static": true,
-     "casts_shadow": true,
-     "casts_reflection": false,
-     "model": {
-      "lods": [
-       {
-        "uid": "a73d1990-29ac-6144-a89b-bb71e4483400"
-       }
-      ],
-      "materials": [
-       {
-        "uid": "70f00a41-30ee-ec4e-85e7-b4a067f95cef"
-       }
-      ],
-      "material_instances": [],
-      "lod_override_enabled": false,
-      "lod_override_level": 0,
-      "lod_selection_bias": 0.0,
-      "lod_transition_time": {
-       "count": 0.0
-      }
-     }
-    },
-    "has_physics_component": true,
-    "physics_component": {
-     "is_using_gravity": false,
-     "is_kinematic": true,
-     "is_sensor": false,
-     "is_autoscaled": true,
-     "mass": 1.0,
-     "include_layers": {
-      "mask": -1
-     },
-     "exclude_layers": {
-      "mask": 0
-     },
-     "freeze_position": {
-      "x": false,
-      "y": false,
-      "z": false
-     },
-     "freeze_rotation": {
-      "x": false,
-      "y": false,
-      "z": false
-     },
-     "material": {
-      "uid": "nil"
-     },
-     "shapes": [
-      {
-       "shape": {
-        "index": 0,
-        "data": {
-         "center": {
-          "x": 0.0,
-          "y": 2.5,
-          "z": 0.0
-         },
-         "extends": {
-          "x": 0.46000000834465029,
-          "y": 5.0,
-          "z": 0.7300000190734863
-         }
-        }
-       }
-      }
-     ]
-    }
-   }
-  },
-  {
-   "uid": "c4f30add-8c30-1d49-bcf2-c92605937f76",
-   "components": {
-    "has_id_component": true,
-    "id_component": {
-     "id": "c4f30add-8c30-1d49-bcf2-c92605937f76"
-    },
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "RootNode",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_prefab_id_component": true,
-    "prefab_id_component": {
-     "id": "96cb30ff-6bd8-de4d-945f-36b1c745ad0b"
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      },
-      "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
-       "w": 1.0
-      },
-      "scale": {
-       "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
-      },
-      "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      }
-     },
-     "parent": {
-      "uid": "d40202c7-c0dc-f248-9f6b-0abcdcc0ac0d"
-     },
-     "children": [
-      {
-       "uid": "57bc57f1-1e2f-fc41-b41c-3851df548516"
-      },
-      {
-       "uid": "9a12f16c-69b8-d64a-a404-098a44758906"
-      }
-     ],
-     "active": true
-    }
-   }
-  },
-  {
-   "uid": "57bc57f1-1e2f-fc41-b41c-3851df548516",
-   "components": {
-    "has_id_component": true,
-    "id_component": {
-     "id": "57bc57f1-1e2f-fc41-b41c-3851df548516"
-    },
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "Tree_01_LOD0",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_prefab_id_component": true,
-    "prefab_id_component": {
-     "id": "c824fe62-c056-7f4a-badd-53d0c1e073aa"
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      },
-      "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
-       "w": 1.0
-      },
-      "scale": {
-       "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
-      },
-      "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      }
-     },
-     "parent": {
-      "uid": "c4f30add-8c30-1d49-bcf2-c92605937f76"
-     },
-     "children": [],
-     "active": true
-    },
-    "has_submesh_component": true,
-    "submesh_component": {
-     "submeshes": [
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "uid": "9a12f16c-69b8-d64a-a404-098a44758906",
-   "components": {
-    "has_id_component": true,
-    "id_component": {
-     "id": "9a12f16c-69b8-d64a-a404-098a44758906"
-    },
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "Tree_01_LOD1",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_prefab_id_component": true,
-    "prefab_id_component": {
-     "id": "1fdc2112-d22f-8442-8941-6a5046929341"
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      },
-      "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
-       "w": 1.0
-      },
-      "scale": {
-       "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
-      },
-      "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      }
-     },
-     "parent": {
-      "uid": "c4f30add-8c30-1d49-bcf2-c92605937f76"
-     },
-     "children": [],
-     "active": true
-    },
-    "has_submesh_component": true,
-    "submesh_component": {
-     "submeshes": [
-      1,
       1
      ]
     }
@@ -3381,7 +3035,7 @@
       "rotation": {
        "x": 1.1920836584522476e-7,
        "y": -1.4901164746561336e-8,
-       "z": 2.9802318834981635e-8,
+       "z": 2.9802317058624795e-8,
        "w": 1.0
       },
       "scale": {
@@ -3410,7 +3064,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -3551,7 +3204,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -3613,7 +3265,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -3660,8 +3311,8 @@
      "local_transform": {
       "position": {
        "x": 8.126103401184082,
-       "y": -0.0000022391759557649495,
-       "z": 20.077964782714845
+       "y": -0.000002239040895801736,
+       "z": 20.077207565307618
       },
       "rotation": {
        "x": 1.1920926112907182e-7,
@@ -3695,7 +3346,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -3836,7 +3486,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -3898,7 +3547,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -3944,14 +3592,14 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": 6.685037612915039,
-       "y": -0.0000016148038639585139,
+       "x": 6.686668395996094,
+       "y": -0.0000016133460576384096,
        "z": 16.621686935424806
       },
       "rotation": {
        "x": 1.1920926112907182e-7,
        "y": -1.4901164746561336e-8,
-       "z": 2.9802258438849095e-8,
+       "z": 2.9802256662492256e-8,
        "w": 1.0
       },
       "scale": {
@@ -3980,7 +3628,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -4121,7 +3768,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -4183,7 +3829,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -4265,7 +3910,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -4406,7 +4050,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -4468,7 +4111,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -4544,7 +4186,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -4685,7 +4326,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -4747,7 +4387,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -4823,7 +4462,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -4964,7 +4602,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -5026,7 +4663,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -5113,7 +4749,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -5254,7 +4889,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -5316,7 +4950,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -5403,7 +5036,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -5544,7 +5176,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -5606,7 +5237,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -5693,7 +5323,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -5834,7 +5463,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -5896,7 +5524,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -5983,7 +5610,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -6124,7 +5750,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -6186,7 +5811,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -6273,7 +5897,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -6414,7 +6037,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -6476,7 +6098,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -6563,7 +6184,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -6704,7 +6324,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -6766,7 +6385,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -6853,7 +6471,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -6994,7 +6611,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -7056,7 +6672,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -7138,7 +6753,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -7279,7 +6893,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -7341,7 +6954,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -7428,7 +7040,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -7569,7 +7180,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -7631,7 +7241,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -7713,7 +7322,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -7854,7 +7462,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -7916,7 +7523,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -7998,7 +7604,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -8136,7 +7741,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -8223,7 +7827,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -8361,7 +7964,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -8437,7 +8039,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -8578,7 +8179,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -8640,7 +8240,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -8722,7 +8321,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -8863,7 +8461,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -8925,7 +8522,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -9007,7 +8603,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -9148,7 +8743,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -9210,7 +8804,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -9262,7 +8855,7 @@
      "local_transform": {
       "position": {
        "x": -29.16582489013672,
-       "y": -0.000004148773768974934,
+       "y": -0.000004148179868934676,
        "z": 26.11961555480957
       },
       "rotation": {
@@ -9297,7 +8890,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -9438,7 +9030,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -9500,7 +9091,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -9587,7 +9177,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -9728,7 +9317,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -9790,7 +9378,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -9877,7 +9464,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -10018,7 +9604,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -10080,7 +9665,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -10167,7 +9751,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -10308,7 +9891,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -10370,7 +9952,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -10452,7 +10033,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -10593,7 +10173,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -10655,7 +10234,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -10737,7 +10315,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -10878,7 +10455,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -10940,7 +10516,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -11027,7 +10602,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -11165,7 +10739,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -11222,9 +10795,6 @@
        "uid": "41bb82ac-e774-fe46-82b8-f231a6a0a6ea"
       },
       {
-       "uid": "d40202c7-c0dc-f248-9f6b-0abcdcc0ac0d"
-      },
-      {
        "uid": "2f519ad2-f8fe-ec44-aa9d-df823db390c6"
       },
       {
@@ -11235,9 +10805,6 @@
       },
       {
        "uid": "e9b948f0-f523-2340-8823-b403fc9333ac"
-      },
-      {
-       "uid": "bafda06d-ad3f-0040-bc72-3b5151cc4c2f"
       },
       {
        "uid": "81d0e356-b344-f64f-b4bb-9804835d1532"
@@ -11307,6 +10874,9 @@
       },
       {
        "uid": "f5350a0d-03a3-8a43-be6b-cbd770211ae9"
+      },
+      {
+       "uid": "bafda06d-ad3f-0040-bc72-3b5151cc4c2f"
       }
      ],
      "active": true
@@ -11383,7 +10953,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -11524,7 +11093,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -11586,332 +11154,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
-      1
-     ]
-    }
-   }
-  },
-  {
-   "uid": "d40202c7-c0dc-f248-9f6b-0abcdcc0ac0d",
-   "components": {
-    "has_id_component": true,
-    "id_component": {
-     "id": "d40202c7-c0dc-f248-9f6b-0abcdcc0ac0d"
-    },
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "Tree_01",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_prefab_component": true,
-    "prefab_component": {
-     "source": {
-      "uid": "34b8e717-0462-dd44-b9be-717f494bbc33"
-     },
-     "property_overrides": [],
-     "removed_entities": []
-    },
-    "has_prefab_id_component": true,
-    "prefab_id_component": {
-     "id": "0d17ea06-3b9b-754e-b7ab-a8acee5d9c1a"
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": -12.257625579833985,
-       "y": 0.000004046930371259805,
-       "z": -20.277713775634767
-      },
-      "rotation": {
-       "x": 1.1920926112907182e-7,
-       "y": -1.4901164746561336e-8,
-       "z": 2.9802317058624795e-8,
-       "w": 1.0
-      },
-      "scale": {
-       "x": 1.0,
-       "y": 1.0000001192092896,
-       "z": 0.9999997615814209
-      },
-      "skew": {
-       "x": 5.9604559510262337e-8,
-       "y": 2.9802322387695315e-8,
-       "z": 0.0000058399123190611139
-      }
-     },
-     "parent": {
-      "uid": "17091c89-8fc8-0c4f-9ef5-a49256284d78"
-     },
-     "children": [
-      {
-       "uid": "c4f30add-8c30-1d49-bcf2-c92605937f76"
-      }
-     ],
-     "active": true
-    },
-    "has_model_component": true,
-    "model_component": {
-     "enabled": true,
-     "static": true,
-     "casts_shadow": true,
-     "casts_reflection": false,
-     "model": {
-      "lods": [
-       {
-        "uid": "a73d1990-29ac-6144-a89b-bb71e4483400"
-       }
-      ],
-      "materials": [
-       {
-        "uid": "70f00a41-30ee-ec4e-85e7-b4a067f95cef"
-       }
-      ],
-      "material_instances": [],
-      "lod_override_enabled": false,
-      "lod_override_level": 0,
-      "lod_selection_bias": 0.0,
-      "lod_transition_time": {
-       "count": 0.0
-      }
-     }
-    },
-    "has_physics_component": true,
-    "physics_component": {
-     "is_using_gravity": false,
-     "is_kinematic": true,
-     "is_sensor": false,
-     "is_autoscaled": true,
-     "mass": 1.0,
-     "include_layers": {
-      "mask": -1
-     },
-     "exclude_layers": {
-      "mask": 0
-     },
-     "freeze_position": {
-      "x": false,
-      "y": false,
-      "z": false
-     },
-     "freeze_rotation": {
-      "x": false,
-      "y": false,
-      "z": false
-     },
-     "material": {
-      "uid": "nil"
-     },
-     "shapes": [
-      {
-       "shape": {
-        "index": 0,
-        "data": {
-         "center": {
-          "x": 0.0,
-          "y": 2.5,
-          "z": 0.0
-         },
-         "extends": {
-          "x": 0.46000000834465029,
-          "y": 5.0,
-          "z": 0.7300000190734863
-         }
-        }
-       }
-      }
-     ]
-    }
-   }
-  },
-  {
-   "uid": "c4f30add-8c30-1d49-bcf2-c92605937f76",
-   "components": {
-    "has_id_component": true,
-    "id_component": {
-     "id": "c4f30add-8c30-1d49-bcf2-c92605937f76"
-    },
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "RootNode",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_prefab_id_component": true,
-    "prefab_id_component": {
-     "id": "96cb30ff-6bd8-de4d-945f-36b1c745ad0b"
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      },
-      "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
-       "w": 1.0
-      },
-      "scale": {
-       "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
-      },
-      "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      }
-     },
-     "parent": {
-      "uid": "d40202c7-c0dc-f248-9f6b-0abcdcc0ac0d"
-     },
-     "children": [
-      {
-       "uid": "57bc57f1-1e2f-fc41-b41c-3851df548516"
-      },
-      {
-       "uid": "9a12f16c-69b8-d64a-a404-098a44758906"
-      }
-     ],
-     "active": true
-    }
-   }
-  },
-  {
-   "uid": "57bc57f1-1e2f-fc41-b41c-3851df548516",
-   "components": {
-    "has_id_component": true,
-    "id_component": {
-     "id": "57bc57f1-1e2f-fc41-b41c-3851df548516"
-    },
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "Tree_01_LOD0",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_prefab_id_component": true,
-    "prefab_id_component": {
-     "id": "c824fe62-c056-7f4a-badd-53d0c1e073aa"
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      },
-      "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
-       "w": 1.0
-      },
-      "scale": {
-       "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
-      },
-      "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      }
-     },
-     "parent": {
-      "uid": "c4f30add-8c30-1d49-bcf2-c92605937f76"
-     },
-     "children": [],
-     "active": true
-    },
-    "has_submesh_component": true,
-    "submesh_component": {
-     "submeshes": [
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "uid": "9a12f16c-69b8-d64a-a404-098a44758906",
-   "components": {
-    "has_id_component": true,
-    "id_component": {
-     "id": "9a12f16c-69b8-d64a-a404-098a44758906"
-    },
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "Tree_01_LOD1",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_prefab_id_component": true,
-    "prefab_id_component": {
-     "id": "1fdc2112-d22f-8442-8941-6a5046929341"
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      },
-      "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
-       "w": 1.0
-      },
-      "scale": {
-       "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
-      },
-      "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      }
-     },
-     "parent": {
-      "uid": "c4f30add-8c30-1d49-bcf2-c92605937f76"
-     },
-     "children": [],
-     "active": true
-    },
-    "has_submesh_component": true,
-    "submesh_component": {
-     "submeshes": [
-      1,
       1
      ]
     }
@@ -11987,7 +11229,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -12128,7 +11369,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -12190,7 +11430,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -12272,7 +11511,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -12413,7 +11651,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -12475,7 +11712,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -12557,7 +11793,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -12698,7 +11933,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -12760,7 +11994,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -12842,7 +12075,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -12983,7 +12215,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -13045,286 +12276,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
-      1
-     ]
-    }
-   }
-  },
-  {
-   "uid": "bafda06d-ad3f-0040-bc72-3b5151cc4c2f",
-   "components": {
-    "has_id_component": true,
-    "id_component": {
-     "id": "bafda06d-ad3f-0040-bc72-3b5151cc4c2f"
-    },
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "Tree_03",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_prefab_component": true,
-    "prefab_component": {
-     "source": {
-      "uid": "4149dca2-e09e-3744-9461-e0d78642becc"
-     },
-     "property_overrides": [],
-     "removed_entities": []
-    },
-    "has_prefab_id_component": true,
-    "prefab_id_component": {
-     "id": "60310cce-e456-ea4f-8405-7d761e89f21c"
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": -44.64234924316406,
-       "y": 0.00000527813517692266,
-       "z": -36.486961364746097
-      },
-      "rotation": {
-       "x": 1.1920926112907182e-7,
-       "y": -1.4901164746561336e-8,
-       "z": 2.9801009659990997e-8,
-       "w": 1.0
-      },
-      "scale": {
-       "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
-      },
-      "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      }
-     },
-     "parent": {
-      "uid": "17091c89-8fc8-0c4f-9ef5-a49256284d78"
-     },
-     "children": [
-      {
-       "uid": "de970031-93c1-3c4e-a5fb-78920e3d0f78"
-      }
-     ],
-     "active": true
-    },
-    "has_model_component": true,
-    "model_component": {
-     "enabled": true,
-     "static": true,
-     "casts_shadow": true,
-     "casts_reflection": false,
-     "model": {
-      "lods": [
-       {
-        "uid": "216a4711-4a1f-5042-b86c-a9b6fcd9bb2d"
-       }
-      ],
-      "materials": [
-       {
-        "uid": "70f00a41-30ee-ec4e-85e7-b4a067f95cef"
-       }
-      ],
-      "material_instances": [],
-      "lod_override_enabled": false,
-      "lod_override_level": 0,
-      "lod_selection_bias": 0.0,
-      "lod_transition_time": {
-       "count": 0.0
-      }
-     }
-    }
-   }
-  },
-  {
-   "uid": "de970031-93c1-3c4e-a5fb-78920e3d0f78",
-   "components": {
-    "has_id_component": true,
-    "id_component": {
-     "id": "de970031-93c1-3c4e-a5fb-78920e3d0f78"
-    },
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "RootNode",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_prefab_id_component": true,
-    "prefab_id_component": {
-     "id": "b9d21096-6e26-3d47-a423-459ba4382bf1"
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      },
-      "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
-       "w": 1.0
-      },
-      "scale": {
-       "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
-      },
-      "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      }
-     },
-     "parent": {
-      "uid": "bafda06d-ad3f-0040-bc72-3b5151cc4c2f"
-     },
-     "children": [
-      {
-       "uid": "700f9755-6a03-174e-8acf-42a4e37b539c"
-      },
-      {
-       "uid": "46c5b8f4-8f9e-df4e-9f95-3328a5fd011e"
-      }
-     ],
-     "active": true
-    }
-   }
-  },
-  {
-   "uid": "700f9755-6a03-174e-8acf-42a4e37b539c",
-   "components": {
-    "has_id_component": true,
-    "id_component": {
-     "id": "700f9755-6a03-174e-8acf-42a4e37b539c"
-    },
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "Tree_03_LOD0",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_prefab_id_component": true,
-    "prefab_id_component": {
-     "id": "4ba56569-bf4f-7548-877b-da54e556aeab"
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      },
-      "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
-       "w": 1.0
-      },
-      "scale": {
-       "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
-      },
-      "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      }
-     },
-     "parent": {
-      "uid": "de970031-93c1-3c4e-a5fb-78920e3d0f78"
-     },
-     "children": [],
-     "active": true
-    },
-    "has_submesh_component": true,
-    "submesh_component": {
-     "submeshes": [
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "uid": "46c5b8f4-8f9e-df4e-9f95-3328a5fd011e",
-   "components": {
-    "has_id_component": true,
-    "id_component": {
-     "id": "46c5b8f4-8f9e-df4e-9f95-3328a5fd011e"
-    },
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "Tree_03_LOD1",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_prefab_id_component": true,
-    "prefab_id_component": {
-     "id": "ba1a91aa-2a6f-144f-a64c-b8f2ec1e44ca"
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      },
-      "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
-       "w": 1.0
-      },
-      "scale": {
-       "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
-      },
-      "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      }
-     },
-     "parent": {
-      "uid": "de970031-93c1-3c4e-a5fb-78920e3d0f78"
-     },
-     "children": [],
-     "active": true
-    },
-    "has_submesh_component": true,
-    "submesh_component": {
-     "submeshes": [
-      1,
       1
      ]
     }
@@ -13400,7 +12351,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -13541,7 +12491,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -13603,7 +12552,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -13690,7 +12638,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -13831,7 +12778,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -13893,7 +12839,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -13980,7 +12925,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -14121,7 +13065,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -14183,7 +13126,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -14270,7 +13212,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -14411,7 +13352,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -14473,7 +13413,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -14560,7 +13499,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -14701,7 +13639,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -14763,7 +13700,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -14850,7 +13786,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -14991,7 +13926,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -15053,7 +13987,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -15140,7 +14073,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -15281,7 +14213,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -15343,7 +14274,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -15430,7 +14360,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -15571,7 +14500,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -15633,7 +14561,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -15715,7 +14642,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -15856,7 +14782,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -15918,7 +14843,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -16005,7 +14929,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -16146,7 +15069,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -16208,7 +15130,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -16290,7 +15211,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -16431,7 +15351,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -16493,7 +15412,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -16575,7 +15493,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -16713,7 +15630,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -16800,7 +15716,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -16938,7 +15853,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -17014,7 +15928,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -17155,7 +16068,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -17217,7 +16129,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -17299,7 +16210,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -17440,7 +16350,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -17502,7 +16411,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -17549,8 +16457,8 @@
      "local_transform": {
       "position": {
        "x": -34.35368347167969,
-       "y": -0.000005293100002745632,
-       "z": 25.714580535888673
+       "y": -0.000005293113645166159,
+       "z": 25.714582443237306
       },
       "rotation": {
        "x": 1.1921780185275566e-7,
@@ -17584,7 +16492,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -17725,7 +16632,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -17787,7 +16693,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -17838,8 +16743,8 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": -29.16581153869629,
-       "y": -0.0000041490670810162559,
+       "x": -29.165803909301759,
+       "y": -0.000004149129381403327,
        "z": 26.11961555480957
       },
       "rotation": {
@@ -17874,7 +16779,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -18015,7 +16919,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -18077,7 +16980,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -18164,7 +17066,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -18305,7 +17206,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -18367,7 +17267,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -18454,7 +17353,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -18595,7 +17493,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -18657,7 +17554,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -18744,7 +17640,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -18885,7 +17780,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -18947,7 +17841,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -19029,7 +17922,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -19170,7 +18062,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -19232,7 +18123,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -19314,7 +18204,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -19455,7 +18344,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -19517,7 +18405,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -19604,7 +18491,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -19742,8 +18628,283 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
+     ]
+    }
+   }
+  },
+  {
+   "uid": "bafda06d-ad3f-0040-bc72-3b5151cc4c2f",
+   "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "bafda06d-ad3f-0040-bc72-3b5151cc4c2f"
+    },
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Tree_03",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_component": true,
+    "prefab_component": {
+     "source": {
+      "uid": "4149dca2-e09e-3744-9461-e0d78642becc"
+     },
+     "property_overrides": [],
+     "removed_entities": []
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "60310cce-e456-ea4f-8405-7d761e89f21c"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -44.64234924316406,
+       "y": 0.0000052064715418964628,
+       "z": -36.486961364746097
+      },
+      "rotation": {
+       "x": 1.1920926112907182e-7,
+       "y": -1.4901164746561336e-8,
+       "z": 2.9801009659990997e-8,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "uid": "17091c89-8fc8-0c4f-9ef5-a49256284d78"
+     },
+     "children": [
+      {
+       "uid": "de970031-93c1-3c4e-a5fb-78920e3d0f78"
+      }
+     ],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "model": {
+      "lods": [
+       {
+        "uid": "216a4711-4a1f-5042-b86c-a9b6fcd9bb2d"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "70f00a41-30ee-ec4e-85e7-b4a067f95cef"
+       }
+      ],
+      "material_instances": [],
+      "lod_override_enabled": false,
+      "lod_override_level": 0,
+      "lod_selection_bias": 0.0,
+      "lod_transition_time": {
+       "count": 0.0
+      }
+     }
+    }
+   }
+  },
+  {
+   "uid": "de970031-93c1-3c4e-a5fb-78920e3d0f78",
+   "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "de970031-93c1-3c4e-a5fb-78920e3d0f78"
+    },
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "RootNode",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "b9d21096-6e26-3d47-a423-459ba4382bf1"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "uid": "bafda06d-ad3f-0040-bc72-3b5151cc4c2f"
+     },
+     "children": [
+      {
+       "uid": "700f9755-6a03-174e-8acf-42a4e37b539c"
+      },
+      {
+       "uid": "46c5b8f4-8f9e-df4e-9f95-3328a5fd011e"
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "uid": "700f9755-6a03-174e-8acf-42a4e37b539c",
+   "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "700f9755-6a03-174e-8acf-42a4e37b539c"
+    },
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Tree_03_LOD0",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "4ba56569-bf4f-7548-877b-da54e556aeab"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "uid": "de970031-93c1-3c4e-a5fb-78920e3d0f78"
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "uid": "46c5b8f4-8f9e-df4e-9f95-3328a5fd011e",
+   "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "46c5b8f4-8f9e-df4e-9f95-3328a5fd011e"
+    },
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Tree_03_LOD1",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "ba1a91aa-2a6f-144f-a64c-b8f2ec1e44ca"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "uid": "de970031-93c1-3c4e-a5fb-78920e3d0f78"
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      1
      ]
     }
    }
@@ -19797,9 +18958,6 @@
      "children": [
       {
        "uid": "da021309-c34b-1a44-815d-b46f320d45ab"
-      },
-      {
-       "uid": "d40202c7-c0dc-f248-9f6b-0abcdcc0ac0d"
       },
       {
        "uid": "0f12b753-669d-2d4d-a1d9-ad568bd56dde"
@@ -19960,7 +19118,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -20101,7 +19258,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -20163,332 +19319,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
-      1
-     ]
-    }
-   }
-  },
-  {
-   "uid": "d40202c7-c0dc-f248-9f6b-0abcdcc0ac0d",
-   "components": {
-    "has_id_component": true,
-    "id_component": {
-     "id": "d40202c7-c0dc-f248-9f6b-0abcdcc0ac0d"
-    },
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "Tree_01",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_prefab_component": true,
-    "prefab_component": {
-     "source": {
-      "uid": "34b8e717-0462-dd44-b9be-717f494bbc33"
-     },
-     "property_overrides": [],
-     "removed_entities": []
-    },
-    "has_prefab_id_component": true,
-    "prefab_id_component": {
-     "id": "0d17ea06-3b9b-754e-b7ab-a8acee5d9c1a"
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": -12.257625579833985,
-       "y": 0.000004046930371259805,
-       "z": -20.277713775634767
-      },
-      "rotation": {
-       "x": 1.1920926112907182e-7,
-       "y": -1.4901164746561336e-8,
-       "z": 2.9802317058624795e-8,
-       "w": 1.0
-      },
-      "scale": {
-       "x": 1.0,
-       "y": 1.0000001192092896,
-       "z": 0.9999997615814209
-      },
-      "skew": {
-       "x": 5.9604559510262337e-8,
-       "y": 2.9802322387695315e-8,
-       "z": 0.0000058399123190611139
-      }
-     },
-     "parent": {
-      "uid": "d2cdf073-41b7-5046-b0fe-aa53d52a7eec"
-     },
-     "children": [
-      {
-       "uid": "c4f30add-8c30-1d49-bcf2-c92605937f76"
-      }
-     ],
-     "active": true
-    },
-    "has_model_component": true,
-    "model_component": {
-     "enabled": true,
-     "static": true,
-     "casts_shadow": true,
-     "casts_reflection": false,
-     "model": {
-      "lods": [
-       {
-        "uid": "a73d1990-29ac-6144-a89b-bb71e4483400"
-       }
-      ],
-      "materials": [
-       {
-        "uid": "70f00a41-30ee-ec4e-85e7-b4a067f95cef"
-       }
-      ],
-      "material_instances": [],
-      "lod_override_enabled": false,
-      "lod_override_level": 0,
-      "lod_selection_bias": 0.0,
-      "lod_transition_time": {
-       "count": 0.0
-      }
-     }
-    },
-    "has_physics_component": true,
-    "physics_component": {
-     "is_using_gravity": false,
-     "is_kinematic": true,
-     "is_sensor": false,
-     "is_autoscaled": true,
-     "mass": 1.0,
-     "include_layers": {
-      "mask": -1
-     },
-     "exclude_layers": {
-      "mask": 0
-     },
-     "freeze_position": {
-      "x": false,
-      "y": false,
-      "z": false
-     },
-     "freeze_rotation": {
-      "x": false,
-      "y": false,
-      "z": false
-     },
-     "material": {
-      "uid": "nil"
-     },
-     "shapes": [
-      {
-       "shape": {
-        "index": 0,
-        "data": {
-         "center": {
-          "x": 0.0,
-          "y": 2.5,
-          "z": 0.0
-         },
-         "extends": {
-          "x": 0.46000000834465029,
-          "y": 5.0,
-          "z": 0.7300000190734863
-         }
-        }
-       }
-      }
-     ]
-    }
-   }
-  },
-  {
-   "uid": "c4f30add-8c30-1d49-bcf2-c92605937f76",
-   "components": {
-    "has_id_component": true,
-    "id_component": {
-     "id": "c4f30add-8c30-1d49-bcf2-c92605937f76"
-    },
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "RootNode",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_prefab_id_component": true,
-    "prefab_id_component": {
-     "id": "96cb30ff-6bd8-de4d-945f-36b1c745ad0b"
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      },
-      "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
-       "w": 1.0
-      },
-      "scale": {
-       "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
-      },
-      "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      }
-     },
-     "parent": {
-      "uid": "d40202c7-c0dc-f248-9f6b-0abcdcc0ac0d"
-     },
-     "children": [
-      {
-       "uid": "57bc57f1-1e2f-fc41-b41c-3851df548516"
-      },
-      {
-       "uid": "9a12f16c-69b8-d64a-a404-098a44758906"
-      }
-     ],
-     "active": true
-    }
-   }
-  },
-  {
-   "uid": "57bc57f1-1e2f-fc41-b41c-3851df548516",
-   "components": {
-    "has_id_component": true,
-    "id_component": {
-     "id": "57bc57f1-1e2f-fc41-b41c-3851df548516"
-    },
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "Tree_01_LOD0",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_prefab_id_component": true,
-    "prefab_id_component": {
-     "id": "c824fe62-c056-7f4a-badd-53d0c1e073aa"
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      },
-      "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
-       "w": 1.0
-      },
-      "scale": {
-       "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
-      },
-      "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      }
-     },
-     "parent": {
-      "uid": "c4f30add-8c30-1d49-bcf2-c92605937f76"
-     },
-     "children": [],
-     "active": true
-    },
-    "has_submesh_component": true,
-    "submesh_component": {
-     "submeshes": [
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "uid": "9a12f16c-69b8-d64a-a404-098a44758906",
-   "components": {
-    "has_id_component": true,
-    "id_component": {
-     "id": "9a12f16c-69b8-d64a-a404-098a44758906"
-    },
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "Tree_01_LOD1",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_prefab_id_component": true,
-    "prefab_id_component": {
-     "id": "1fdc2112-d22f-8442-8941-6a5046929341"
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      },
-      "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
-       "w": 1.0
-      },
-      "scale": {
-       "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
-      },
-      "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      }
-     },
-     "parent": {
-      "uid": "c4f30add-8c30-1d49-bcf2-c92605937f76"
-     },
-     "children": [],
-     "active": true
-    },
-    "has_submesh_component": true,
-    "submesh_component": {
-     "submeshes": [
-      1,
       1
      ]
     }
@@ -20564,7 +19394,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -20705,7 +19534,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -20767,7 +19595,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -20849,7 +19676,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -20990,7 +19816,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -21052,7 +19877,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -21134,7 +19958,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -21275,7 +20098,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -21337,7 +20159,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -21419,7 +20240,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -21560,7 +20380,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -21622,7 +20441,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -21698,7 +20516,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -21839,7 +20656,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -21901,7 +20717,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -21977,7 +20792,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -22118,7 +20932,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -22180,7 +20993,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -22267,7 +21079,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -22408,7 +21219,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -22470,7 +21280,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -22557,7 +21366,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -22698,7 +21506,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -22760,7 +21567,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -22847,7 +21653,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -22988,7 +21793,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -23050,7 +21854,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -23137,7 +21940,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -23278,7 +22080,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -23340,7 +22141,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -23427,7 +22227,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -23568,7 +22367,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -23630,7 +22428,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -23717,7 +22514,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -23858,7 +22654,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -23920,7 +22715,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -24007,7 +22801,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -24148,7 +22941,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -24210,7 +23002,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -24292,7 +23083,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -24433,7 +23223,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -24495,7 +23284,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -24582,7 +23370,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -24723,7 +23510,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -24785,7 +23571,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -24867,7 +23652,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -25008,7 +23792,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -25070,7 +23853,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -25152,7 +23934,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -25290,7 +24071,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -25377,7 +24157,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -25515,7 +24294,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -25591,7 +24369,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -25732,7 +24509,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -25794,7 +24570,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -25876,7 +24651,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -26017,7 +24791,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -26079,7 +24852,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -26161,7 +24933,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -26302,7 +25073,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -26364,7 +25134,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -26451,7 +25220,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -26592,7 +25360,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -26654,7 +25421,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -26741,7 +25507,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -26882,7 +25647,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -26944,7 +25708,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -27031,7 +25794,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -27172,7 +25934,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -27234,7 +25995,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -27321,7 +26081,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -27462,7 +26221,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -27524,7 +26282,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -27606,7 +26363,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -27747,7 +26503,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -27809,7 +26564,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -27891,7 +26645,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -28032,7 +26785,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -28094,7 +26846,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -28181,7 +26932,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -28319,7 +27069,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -28374,9 +27123,6 @@
      "children": [
       {
        "uid": "0e2f93bf-746e-5746-9db7-f6f812a3ef0b"
-      },
-      {
-       "uid": "d40202c7-c0dc-f248-9f6b-0abcdcc0ac0d"
       },
       {
        "uid": "6804175e-d851-3247-b2b6-738251060b6f"
@@ -28537,7 +27283,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -28678,7 +27423,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -28740,332 +27484,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
-      1
-     ]
-    }
-   }
-  },
-  {
-   "uid": "d40202c7-c0dc-f248-9f6b-0abcdcc0ac0d",
-   "components": {
-    "has_id_component": true,
-    "id_component": {
-     "id": "d40202c7-c0dc-f248-9f6b-0abcdcc0ac0d"
-    },
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "Tree_01",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_prefab_component": true,
-    "prefab_component": {
-     "source": {
-      "uid": "34b8e717-0462-dd44-b9be-717f494bbc33"
-     },
-     "property_overrides": [],
-     "removed_entities": []
-    },
-    "has_prefab_id_component": true,
-    "prefab_id_component": {
-     "id": "0d17ea06-3b9b-754e-b7ab-a8acee5d9c1a"
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": -12.257625579833985,
-       "y": 0.000004046930371259805,
-       "z": -20.277713775634767
-      },
-      "rotation": {
-       "x": 1.1920926112907182e-7,
-       "y": -1.4901164746561336e-8,
-       "z": 2.9802317058624795e-8,
-       "w": 1.0
-      },
-      "scale": {
-       "x": 1.0,
-       "y": 1.0000001192092896,
-       "z": 0.9999997615814209
-      },
-      "skew": {
-       "x": 5.9604559510262337e-8,
-       "y": 2.9802322387695315e-8,
-       "z": 0.0000058399123190611139
-      }
-     },
-     "parent": {
-      "uid": "1dc9d299-2a50-8e47-8ea7-a4735fc86a40"
-     },
-     "children": [
-      {
-       "uid": "c4f30add-8c30-1d49-bcf2-c92605937f76"
-      }
-     ],
-     "active": true
-    },
-    "has_model_component": true,
-    "model_component": {
-     "enabled": true,
-     "static": true,
-     "casts_shadow": true,
-     "casts_reflection": false,
-     "model": {
-      "lods": [
-       {
-        "uid": "a73d1990-29ac-6144-a89b-bb71e4483400"
-       }
-      ],
-      "materials": [
-       {
-        "uid": "70f00a41-30ee-ec4e-85e7-b4a067f95cef"
-       }
-      ],
-      "material_instances": [],
-      "lod_override_enabled": false,
-      "lod_override_level": 0,
-      "lod_selection_bias": 0.0,
-      "lod_transition_time": {
-       "count": 0.0
-      }
-     }
-    },
-    "has_physics_component": true,
-    "physics_component": {
-     "is_using_gravity": false,
-     "is_kinematic": true,
-     "is_sensor": false,
-     "is_autoscaled": true,
-     "mass": 1.0,
-     "include_layers": {
-      "mask": -1
-     },
-     "exclude_layers": {
-      "mask": 0
-     },
-     "freeze_position": {
-      "x": false,
-      "y": false,
-      "z": false
-     },
-     "freeze_rotation": {
-      "x": false,
-      "y": false,
-      "z": false
-     },
-     "material": {
-      "uid": "nil"
-     },
-     "shapes": [
-      {
-       "shape": {
-        "index": 0,
-        "data": {
-         "center": {
-          "x": 0.0,
-          "y": 2.5,
-          "z": 0.0
-         },
-         "extends": {
-          "x": 0.46000000834465029,
-          "y": 5.0,
-          "z": 0.7300000190734863
-         }
-        }
-       }
-      }
-     ]
-    }
-   }
-  },
-  {
-   "uid": "c4f30add-8c30-1d49-bcf2-c92605937f76",
-   "components": {
-    "has_id_component": true,
-    "id_component": {
-     "id": "c4f30add-8c30-1d49-bcf2-c92605937f76"
-    },
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "RootNode",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_prefab_id_component": true,
-    "prefab_id_component": {
-     "id": "96cb30ff-6bd8-de4d-945f-36b1c745ad0b"
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      },
-      "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
-       "w": 1.0
-      },
-      "scale": {
-       "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
-      },
-      "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      }
-     },
-     "parent": {
-      "uid": "d40202c7-c0dc-f248-9f6b-0abcdcc0ac0d"
-     },
-     "children": [
-      {
-       "uid": "57bc57f1-1e2f-fc41-b41c-3851df548516"
-      },
-      {
-       "uid": "9a12f16c-69b8-d64a-a404-098a44758906"
-      }
-     ],
-     "active": true
-    }
-   }
-  },
-  {
-   "uid": "57bc57f1-1e2f-fc41-b41c-3851df548516",
-   "components": {
-    "has_id_component": true,
-    "id_component": {
-     "id": "57bc57f1-1e2f-fc41-b41c-3851df548516"
-    },
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "Tree_01_LOD0",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_prefab_id_component": true,
-    "prefab_id_component": {
-     "id": "c824fe62-c056-7f4a-badd-53d0c1e073aa"
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      },
-      "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
-       "w": 1.0
-      },
-      "scale": {
-       "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
-      },
-      "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      }
-     },
-     "parent": {
-      "uid": "c4f30add-8c30-1d49-bcf2-c92605937f76"
-     },
-     "children": [],
-     "active": true
-    },
-    "has_submesh_component": true,
-    "submesh_component": {
-     "submeshes": [
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "uid": "9a12f16c-69b8-d64a-a404-098a44758906",
-   "components": {
-    "has_id_component": true,
-    "id_component": {
-     "id": "9a12f16c-69b8-d64a-a404-098a44758906"
-    },
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "Tree_01_LOD1",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_prefab_id_component": true,
-    "prefab_id_component": {
-     "id": "1fdc2112-d22f-8442-8941-6a5046929341"
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      },
-      "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
-       "w": 1.0
-      },
-      "scale": {
-       "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
-      },
-      "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      }
-     },
-     "parent": {
-      "uid": "c4f30add-8c30-1d49-bcf2-c92605937f76"
-     },
-     "children": [],
-     "active": true
-    },
-    "has_submesh_component": true,
-    "submesh_component": {
-     "submeshes": [
-      1,
       1
      ]
     }
@@ -29141,7 +27559,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -29282,7 +27699,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -29344,7 +27760,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -29426,7 +27841,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -29567,7 +27981,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -29629,7 +28042,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -29711,7 +28123,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -29852,7 +28263,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -29914,7 +28324,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -29996,7 +28405,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -30137,7 +28545,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -30199,7 +28606,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -30275,7 +28681,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -30416,7 +28821,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -30478,7 +28882,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -30554,7 +28957,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -30695,7 +29097,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -30757,7 +29158,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -30844,7 +29244,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -30985,7 +29384,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -31047,7 +29445,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -31134,7 +29531,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -31275,7 +29671,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -31337,7 +29732,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -31424,7 +29818,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -31565,7 +29958,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -31627,7 +30019,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -31714,7 +30105,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -31855,7 +30245,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -31917,7 +30306,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -32004,7 +30392,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -32145,7 +30532,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -32207,7 +30593,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -32294,7 +30679,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -32435,7 +30819,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -32497,7 +30880,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -32584,7 +30966,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -32725,7 +31106,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -32787,7 +31167,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -32869,7 +31248,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -33010,7 +31388,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -33072,7 +31449,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -33159,7 +31535,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -33300,7 +31675,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -33362,7 +31736,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -33444,7 +31817,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -33585,7 +31957,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -33647,7 +32018,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -33729,7 +32099,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -33867,7 +32236,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -33954,7 +32322,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -34092,7 +32459,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -34168,7 +32534,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -34309,7 +32674,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -34371,7 +32735,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -34453,7 +32816,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -34594,7 +32956,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -34656,7 +33017,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -34738,7 +33098,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -34879,7 +33238,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -34941,7 +33299,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -35028,7 +33385,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -35169,7 +33525,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -35231,7 +33586,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -35318,7 +33672,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -35459,7 +33812,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -35521,7 +33873,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -35608,7 +33959,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -35749,7 +34099,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -35811,7 +34160,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -35898,7 +34246,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -36039,7 +34386,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -36101,7 +34447,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -36183,7 +34528,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -36324,7 +34668,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -36386,7 +34729,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -36468,7 +34810,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -36609,7 +34950,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -36671,7 +35011,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -36758,7 +35097,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -36896,7 +35234,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -36951,9 +35288,6 @@
      "children": [
       {
        "uid": "1a024c85-d457-bd4c-9ff5-829b70effa83"
-      },
-      {
-       "uid": "d40202c7-c0dc-f248-9f6b-0abcdcc0ac0d"
       },
       {
        "uid": "cb0204dd-2844-b24d-ab01-00581fc205de"
@@ -37114,7 +35448,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -37255,7 +35588,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -37317,332 +35649,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
-      1
-     ]
-    }
-   }
-  },
-  {
-   "uid": "d40202c7-c0dc-f248-9f6b-0abcdcc0ac0d",
-   "components": {
-    "has_id_component": true,
-    "id_component": {
-     "id": "d40202c7-c0dc-f248-9f6b-0abcdcc0ac0d"
-    },
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "Tree_01",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_prefab_component": true,
-    "prefab_component": {
-     "source": {
-      "uid": "34b8e717-0462-dd44-b9be-717f494bbc33"
-     },
-     "property_overrides": [],
-     "removed_entities": []
-    },
-    "has_prefab_id_component": true,
-    "prefab_id_component": {
-     "id": "0d17ea06-3b9b-754e-b7ab-a8acee5d9c1a"
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": -12.257625579833985,
-       "y": 0.000004046930371259805,
-       "z": -20.277713775634767
-      },
-      "rotation": {
-       "x": 1.1920926112907182e-7,
-       "y": -1.4901164746561336e-8,
-       "z": 2.9802317058624795e-8,
-       "w": 1.0
-      },
-      "scale": {
-       "x": 1.0,
-       "y": 1.0000001192092896,
-       "z": 0.9999997615814209
-      },
-      "skew": {
-       "x": 5.9604559510262337e-8,
-       "y": 2.9802322387695315e-8,
-       "z": 0.0000058399123190611139
-      }
-     },
-     "parent": {
-      "uid": "d5107d17-a9a3-7149-81bd-b4d5769a1151"
-     },
-     "children": [
-      {
-       "uid": "c4f30add-8c30-1d49-bcf2-c92605937f76"
-      }
-     ],
-     "active": true
-    },
-    "has_model_component": true,
-    "model_component": {
-     "enabled": true,
-     "static": true,
-     "casts_shadow": true,
-     "casts_reflection": false,
-     "model": {
-      "lods": [
-       {
-        "uid": "a73d1990-29ac-6144-a89b-bb71e4483400"
-       }
-      ],
-      "materials": [
-       {
-        "uid": "70f00a41-30ee-ec4e-85e7-b4a067f95cef"
-       }
-      ],
-      "material_instances": [],
-      "lod_override_enabled": false,
-      "lod_override_level": 0,
-      "lod_selection_bias": 0.0,
-      "lod_transition_time": {
-       "count": 0.0
-      }
-     }
-    },
-    "has_physics_component": true,
-    "physics_component": {
-     "is_using_gravity": false,
-     "is_kinematic": true,
-     "is_sensor": false,
-     "is_autoscaled": true,
-     "mass": 1.0,
-     "include_layers": {
-      "mask": -1
-     },
-     "exclude_layers": {
-      "mask": 0
-     },
-     "freeze_position": {
-      "x": false,
-      "y": false,
-      "z": false
-     },
-     "freeze_rotation": {
-      "x": false,
-      "y": false,
-      "z": false
-     },
-     "material": {
-      "uid": "nil"
-     },
-     "shapes": [
-      {
-       "shape": {
-        "index": 0,
-        "data": {
-         "center": {
-          "x": 0.0,
-          "y": 2.5,
-          "z": 0.0
-         },
-         "extends": {
-          "x": 0.46000000834465029,
-          "y": 5.0,
-          "z": 0.7300000190734863
-         }
-        }
-       }
-      }
-     ]
-    }
-   }
-  },
-  {
-   "uid": "c4f30add-8c30-1d49-bcf2-c92605937f76",
-   "components": {
-    "has_id_component": true,
-    "id_component": {
-     "id": "c4f30add-8c30-1d49-bcf2-c92605937f76"
-    },
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "RootNode",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_prefab_id_component": true,
-    "prefab_id_component": {
-     "id": "96cb30ff-6bd8-de4d-945f-36b1c745ad0b"
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      },
-      "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
-       "w": 1.0
-      },
-      "scale": {
-       "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
-      },
-      "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      }
-     },
-     "parent": {
-      "uid": "d40202c7-c0dc-f248-9f6b-0abcdcc0ac0d"
-     },
-     "children": [
-      {
-       "uid": "57bc57f1-1e2f-fc41-b41c-3851df548516"
-      },
-      {
-       "uid": "9a12f16c-69b8-d64a-a404-098a44758906"
-      }
-     ],
-     "active": true
-    }
-   }
-  },
-  {
-   "uid": "57bc57f1-1e2f-fc41-b41c-3851df548516",
-   "components": {
-    "has_id_component": true,
-    "id_component": {
-     "id": "57bc57f1-1e2f-fc41-b41c-3851df548516"
-    },
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "Tree_01_LOD0",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_prefab_id_component": true,
-    "prefab_id_component": {
-     "id": "c824fe62-c056-7f4a-badd-53d0c1e073aa"
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      },
-      "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
-       "w": 1.0
-      },
-      "scale": {
-       "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
-      },
-      "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      }
-     },
-     "parent": {
-      "uid": "c4f30add-8c30-1d49-bcf2-c92605937f76"
-     },
-     "children": [],
-     "active": true
-    },
-    "has_submesh_component": true,
-    "submesh_component": {
-     "submeshes": [
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "uid": "9a12f16c-69b8-d64a-a404-098a44758906",
-   "components": {
-    "has_id_component": true,
-    "id_component": {
-     "id": "9a12f16c-69b8-d64a-a404-098a44758906"
-    },
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "Tree_01_LOD1",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_prefab_id_component": true,
-    "prefab_id_component": {
-     "id": "1fdc2112-d22f-8442-8941-6a5046929341"
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      },
-      "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
-       "w": 1.0
-      },
-      "scale": {
-       "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
-      },
-      "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      }
-     },
-     "parent": {
-      "uid": "c4f30add-8c30-1d49-bcf2-c92605937f76"
-     },
-     "children": [],
-     "active": true
-    },
-    "has_submesh_component": true,
-    "submesh_component": {
-     "submeshes": [
-      1,
       1
      ]
     }
@@ -37718,7 +35724,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -37859,7 +35864,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -37921,7 +35925,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -38003,7 +36006,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -38144,7 +36146,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -38206,7 +36207,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -38288,7 +36288,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -38429,7 +36428,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -38491,7 +36489,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -38573,7 +36570,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -38714,7 +36710,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -38776,7 +36771,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -38852,7 +36846,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -38993,7 +36986,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -39055,7 +37047,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -39131,7 +37122,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -39272,7 +37262,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -39334,7 +37323,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -39421,7 +37409,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -39562,7 +37549,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -39624,7 +37610,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -39711,7 +37696,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -39852,7 +37836,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -39914,7 +37897,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -40001,7 +37983,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -40142,7 +38123,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -40204,7 +38184,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -40291,7 +38270,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -40432,7 +38410,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -40494,7 +38471,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -40581,7 +38557,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -40722,7 +38697,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -40784,7 +38758,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -40871,7 +38844,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -41012,7 +38984,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -41074,7 +39045,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -41161,7 +39131,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -41302,7 +39271,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -41364,7 +39332,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -41446,7 +39413,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -41587,7 +39553,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -41649,7 +39614,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -41736,7 +39700,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -41877,7 +39840,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -41939,7 +39901,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -42021,7 +39982,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -42162,7 +40122,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -42224,7 +40183,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -42306,7 +40264,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -42444,7 +40401,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -42531,7 +40487,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -42669,7 +40624,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -42745,7 +40699,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -42886,7 +40839,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -42948,7 +40900,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -43030,7 +40981,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -43171,7 +41121,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -43233,7 +41182,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -43315,7 +41263,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -43456,7 +41403,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -43518,7 +41464,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -43605,7 +41550,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -43746,7 +41690,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -43808,7 +41751,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -43895,7 +41837,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -44036,7 +41977,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -44098,7 +42038,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -44185,7 +42124,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -44326,7 +42264,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -44388,7 +42325,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -44475,7 +42411,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -44616,7 +42551,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -44678,7 +42612,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -44760,7 +42693,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -44901,7 +42833,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -44963,7 +42894,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -45045,7 +42975,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -45186,7 +43115,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -45248,7 +43176,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -45335,7 +43262,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -45473,7 +43399,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -45527,10 +43452,10 @@
      },
      "children": [
       {
-       "uid": "7f396ae2-f092-8041-8a57-0401c144d056"
+       "uid": "d40202c7-c0dc-f248-9f6b-0abcdcc0ac0d"
       },
       {
-       "uid": "d40202c7-c0dc-f248-9f6b-0abcdcc0ac0d"
+       "uid": "7f396ae2-f092-8041-8a57-0401c144d056"
       },
       {
        "uid": "f68744e1-4616-3f44-962d-17ae99c80480"
@@ -45622,285 +43547,6 @@
    }
   },
   {
-   "uid": "7f396ae2-f092-8041-8a57-0401c144d056",
-   "components": {
-    "has_id_component": true,
-    "id_component": {
-     "id": "7f396ae2-f092-8041-8a57-0401c144d056"
-    },
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "Bush_01",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_prefab_component": true,
-    "prefab_component": {
-     "source": {
-      "uid": "3ff9650a-b864-7745-800c-fe4efd29dd4e"
-     },
-     "property_overrides": [],
-     "removed_entities": []
-    },
-    "has_prefab_id_component": true,
-    "prefab_id_component": {
-     "id": "d6aa640b-b8df-a44d-bc1b-376a2a3ffa56"
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": -5.21527099609375,
-       "y": 0.000005524727384909056,
-       "z": -26.198104858398439
-      },
-      "rotation": {
-       "x": 1.1920926112907182e-7,
-       "y": -1.4901164746561336e-8,
-       "z": 2.9802320611338474e-8,
-       "w": 1.0
-      },
-      "scale": {
-       "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
-      },
-      "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      }
-     },
-     "parent": {
-      "uid": "729f043a-2e77-714c-9de9-81b26a759b39"
-     },
-     "children": [
-      {
-       "uid": "e2378059-1437-814b-813a-6077bd933207"
-      }
-     ],
-     "active": true
-    },
-    "has_model_component": true,
-    "model_component": {
-     "enabled": true,
-     "static": true,
-     "casts_shadow": true,
-     "casts_reflection": false,
-     "model": {
-      "lods": [
-       {
-        "uid": "6814693e-9298-d44c-8a40-49ed7f72a8ce"
-       }
-      ],
-      "materials": [
-       {
-        "uid": "70f00a41-30ee-ec4e-85e7-b4a067f95cef"
-       }
-      ],
-      "material_instances": [],
-      "lod_override_enabled": false,
-      "lod_override_level": 0,
-      "lod_selection_bias": 0.0,
-      "lod_transition_time": {
-       "count": 0.0
-      }
-     }
-    }
-   }
-  },
-  {
-   "uid": "e2378059-1437-814b-813a-6077bd933207",
-   "components": {
-    "has_id_component": true,
-    "id_component": {
-     "id": "e2378059-1437-814b-813a-6077bd933207"
-    },
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "RootNode",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_prefab_id_component": true,
-    "prefab_id_component": {
-     "id": "14092d2b-220e-5b41-91f0-000852bb1adc"
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      },
-      "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
-       "w": 1.0
-      },
-      "scale": {
-       "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
-      },
-      "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      }
-     },
-     "parent": {
-      "uid": "7f396ae2-f092-8041-8a57-0401c144d056"
-     },
-     "children": [
-      {
-       "uid": "8aa9ce69-e4ea-f946-ba97-c13dded154b0"
-      },
-      {
-       "uid": "56bbdec6-7eca-bf40-9164-75c7bbce0e20"
-      }
-     ],
-     "active": true
-    }
-   }
-  },
-  {
-   "uid": "8aa9ce69-e4ea-f946-ba97-c13dded154b0",
-   "components": {
-    "has_id_component": true,
-    "id_component": {
-     "id": "8aa9ce69-e4ea-f946-ba97-c13dded154b0"
-    },
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "Bush_01_LOD0",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_prefab_id_component": true,
-    "prefab_id_component": {
-     "id": "5c47737f-8ca3-024a-973b-5f81b3b882b7"
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      },
-      "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
-       "w": 1.0
-      },
-      "scale": {
-       "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
-      },
-      "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      }
-     },
-     "parent": {
-      "uid": "e2378059-1437-814b-813a-6077bd933207"
-     },
-     "children": [],
-     "active": true
-    },
-    "has_submesh_component": true,
-    "submesh_component": {
-     "submeshes": [
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "uid": "56bbdec6-7eca-bf40-9164-75c7bbce0e20",
-   "components": {
-    "has_id_component": true,
-    "id_component": {
-     "id": "56bbdec6-7eca-bf40-9164-75c7bbce0e20"
-    },
-    "has_tag_component": true,
-    "tag_component": {
-     "name": "Bush_01_LOD1",
-     "tag": ""
-    },
-    "has_layer_component": true,
-    "layer_component": {
-     "layers": {
-      "mask": 1
-     }
-    },
-    "has_prefab_id_component": true,
-    "prefab_id_component": {
-     "id": "dcde4a39-d87d-8a42-a489-b8bb910c4775"
-    },
-    "has_transform_component": true,
-    "transform_component": {
-     "local_transform": {
-      "position": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      },
-      "rotation": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0,
-       "w": 1.0
-      },
-      "scale": {
-       "x": 1.0,
-       "y": 1.0,
-       "z": 1.0
-      },
-      "skew": {
-       "x": 0.0,
-       "y": 0.0,
-       "z": 0.0
-      }
-     },
-     "parent": {
-      "uid": "e2378059-1437-814b-813a-6077bd933207"
-     },
-     "children": [],
-     "active": true
-    },
-    "has_submesh_component": true,
-    "submesh_component": {
-     "submeshes": [
-      1,
-      1
-     ]
-    }
-   }
-  },
-  {
    "uid": "d40202c7-c0dc-f248-9f6b-0abcdcc0ac0d",
    "components": {
     "has_id_component": true,
@@ -45970,7 +43616,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -46157,7 +43802,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -46219,7 +43863,282 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
+      1
+     ]
+    }
+   }
+  },
+  {
+   "uid": "7f396ae2-f092-8041-8a57-0401c144d056",
+   "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "7f396ae2-f092-8041-8a57-0401c144d056"
+    },
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Bush_01",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_component": true,
+    "prefab_component": {
+     "source": {
+      "uid": "3ff9650a-b864-7745-800c-fe4efd29dd4e"
+     },
+     "property_overrides": [],
+     "removed_entities": []
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "d6aa640b-b8df-a44d-bc1b-376a2a3ffa56"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": -5.21527099609375,
+       "y": 0.000005524727384909056,
+       "z": -26.198104858398439
+      },
+      "rotation": {
+       "x": 1.1920926112907182e-7,
+       "y": -1.4901164746561336e-8,
+       "z": 2.9802320611338474e-8,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "uid": "729f043a-2e77-714c-9de9-81b26a759b39"
+     },
+     "children": [
+      {
+       "uid": "e2378059-1437-814b-813a-6077bd933207"
+      }
+     ],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "model": {
+      "lods": [
+       {
+        "uid": "6814693e-9298-d44c-8a40-49ed7f72a8ce"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "70f00a41-30ee-ec4e-85e7-b4a067f95cef"
+       }
+      ],
+      "material_instances": [],
+      "lod_override_enabled": false,
+      "lod_override_level": 0,
+      "lod_selection_bias": 0.0,
+      "lod_transition_time": {
+       "count": 0.0
+      }
+     }
+    }
+   }
+  },
+  {
+   "uid": "e2378059-1437-814b-813a-6077bd933207",
+   "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "e2378059-1437-814b-813a-6077bd933207"
+    },
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "RootNode",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "14092d2b-220e-5b41-91f0-000852bb1adc"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "uid": "7f396ae2-f092-8041-8a57-0401c144d056"
+     },
+     "children": [
+      {
+       "uid": "8aa9ce69-e4ea-f946-ba97-c13dded154b0"
+      },
+      {
+       "uid": "56bbdec6-7eca-bf40-9164-75c7bbce0e20"
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "uid": "8aa9ce69-e4ea-f946-ba97-c13dded154b0",
+   "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "8aa9ce69-e4ea-f946-ba97-c13dded154b0"
+    },
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Bush_01_LOD0",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "5c47737f-8ca3-024a-973b-5f81b3b882b7"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "uid": "e2378059-1437-814b-813a-6077bd933207"
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "uid": "56bbdec6-7eca-bf40-9164-75c7bbce0e20",
+   "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "56bbdec6-7eca-bf40-9164-75c7bbce0e20"
+    },
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Bush_01_LOD1",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_prefab_id_component": true,
+    "prefab_id_component": {
+     "id": "dcde4a39-d87d-8a42-a489-b8bb910c4775"
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "uid": "e2378059-1437-814b-813a-6077bd933207"
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
       1
      ]
     }
@@ -46295,7 +44214,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -46436,7 +44354,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -46498,7 +44415,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -46580,7 +44496,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -46721,7 +44636,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -46783,7 +44697,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -46865,7 +44778,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -47006,7 +44918,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -47068,7 +44979,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -47150,7 +45060,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -47291,7 +45200,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -47353,7 +45261,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -47429,7 +45336,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -47570,7 +45476,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -47632,7 +45537,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -47708,7 +45612,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -47849,7 +45752,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -47911,7 +45813,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -47998,7 +45899,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -48139,7 +46039,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -48201,7 +46100,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -48288,7 +46186,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -48429,7 +46326,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -48491,7 +46387,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -48578,7 +46473,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -48719,7 +46613,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -48781,7 +46674,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -48868,7 +46760,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -49009,7 +46900,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -49071,7 +46961,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -49158,7 +47047,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -49299,7 +47187,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -49361,7 +47248,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -49448,7 +47334,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -49589,7 +47474,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -49651,7 +47535,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -49738,7 +47621,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -49879,7 +47761,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -49941,7 +47822,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -50023,7 +47903,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -50164,7 +48043,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -50226,7 +48104,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -50313,7 +48190,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -50454,7 +48330,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -50516,7 +48391,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -50598,7 +48472,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -50739,7 +48612,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -50801,7 +48673,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -50883,7 +48754,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -51021,7 +48891,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -51108,7 +48977,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -51246,7 +49114,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -51322,7 +49189,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -51463,7 +49329,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -51525,7 +49390,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -51607,7 +49471,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -51748,7 +49611,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -51810,7 +49672,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -51892,7 +49753,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -52033,7 +49893,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -52095,7 +49954,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -52182,7 +50040,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -52323,7 +50180,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -52385,7 +50241,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -52472,7 +50327,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -52613,7 +50467,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -52675,7 +50528,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -52762,7 +50614,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -52903,7 +50754,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -52965,7 +50815,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -53052,7 +50901,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -53193,7 +51041,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -53255,7 +51102,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -53337,7 +51183,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -53478,7 +51323,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -53540,7 +51384,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -53622,7 +51465,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -53763,7 +51605,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -53825,7 +51666,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -53912,7 +51752,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -54050,7 +51889,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -54503,7 +52341,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": true,
      "model": {
       "lods": [
        {
@@ -54899,7 +52736,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -55020,7 +52856,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      1,
       1
      ]
     }
@@ -56156,25 +53991,25 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": -0.00012931227684020996,
-       "y": 0.9999455809593201,
-       "z": 0.0007735788822174072
+       "x": -0.00013484062219504267,
+       "y": 0.9999486207962036,
+       "z": 0.0007804632186889648
       },
       "rotation": {
-       "x": 0.1093805581331253,
-       "y": 0.8754249215126038,
-       "z": -0.4082208275794983,
-       "w": 0.23456962406635285
+       "x": 0.10938072204589844,
+       "y": 0.8754248023033142,
+       "z": -0.4082208573818207,
+       "w": 0.23456977307796479
       },
       "scale": {
-       "x": 1.0000263452529908,
-       "y": 0.999992847442627,
-       "z": 1.0000208616256714
+       "x": 1.000025749206543,
+       "y": 0.9999924302101135,
+       "z": 1.000020146369934
       },
       "skew": {
-       "x": 0.00001773201256582979,
-       "y": 0.0000017619132677282324,
-       "z": -0.00000791611455497332
+       "x": 0.000018357861335971394,
+       "y": 0.0000022122444534034004,
+       "z": -0.000007222813565022079
       }
      },
      "parent": {
@@ -56252,6 +54087,7 @@
       "a": 1.0
      },
      "irradiance_quality": 1,
+     "irradiance_use_sky": true,
      "cubemap": {
       "uid": "nil"
      }
@@ -56281,8 +54117,8 @@
      "local_transform": {
       "position": {
        "x": 0.00013624218991026282,
-       "y": 0.10000989586114884,
-       "z": 0.0008104336448013783
+       "y": 0.10001086443662644,
+       "z": 0.000810441211797297
       },
       "rotation": {
        "x": -1.1920938902676426e-7,
@@ -56296,9 +54132,9 @@
        "z": 1.000000238418579
       },
       "skew": {
-       "x": -5.958870019640017e-8,
+       "x": -5.958685278528719e-8,
        "y": -2.980337399094424e-8,
-       "z": -0.000005857991709490307
+       "z": -0.000005858050826645922
       }
      },
      "parent": {
@@ -56318,7 +54154,10 @@
      "update_mode": 1,
      "update_interval": 0.0,
      "faces_per_frame": 0,
-     "apply_prefilter": false
+     "apply_prefilter": false,
+     "resolution": 4,
+     "capture_sky": true,
+     "capture_shadows": true
     }
    }
   },
@@ -56393,7 +54232,9 @@
       "adaptation_speed_up": 3.0,
       "adaptation_speed_down": 1.0,
       "low_percentile": 0.5,
-      "high_percentile": 0.949999988079071
+      "high_percentile": 0.949999988079071,
+      "metering_mode": 1,
+      "metering_area": 0.699999988079071
      }
     },
     "has_tonemapping_component": true,
@@ -56401,7 +54242,7 @@
      "enabled": true,
      "settings": {
       "exposure": 1.0,
-      "method": 7
+      "method": 12
      }
     },
     "has_assao_component": true,
@@ -56477,13 +54318,27 @@
     "fxaa_component": {
      "enabled": true
     },
+    "has_taa_component": true,
+    "taa_component": {
+     "enabled": false,
+     "settings": {
+      "temporal_sample_count": 8,
+      "jitter_mode": 3,
+      "jitter_amplitude": 1.0,
+      "jitter_temporal_phase_scale": 0.44999998807907107,
+      "history_blend": 0.8199999928474426,
+      "sharpen": 0.5,
+      "depth_reject_scale": 1.0,
+      "variance_clip_scale": 1.350000023841858
+     }
+    },
     "has_ssr_component": true,
     "ssr_component": {
-     "enabled": true,
+     "enabled": false,
      "settings": {
       "fidelityfx": {
        "max_steps": 64,
-       "max_rays": 8,
+       "max_rays": 4,
        "depth_tolerance": 0.10000000149011612,
        "brightness": 1.0,
        "facing_reflections_fading": 0.10000000149011612,
@@ -56510,8 +54365,39 @@
        "spatial_denoise": {
         "depth_sigma": 0.019999999552965165,
         "normal_power": 64.0,
-        "luma_sigma": 1.0
+        "luma_sigma": 1.0,
+        "passes": 3
        }
+      }
+     }
+    },
+    "has_ssil_component": true,
+    "ssil_component": {
+     "enabled": false,
+     "settings": {
+      "max_rays": 4,
+      "max_steps": 64,
+      "depth_tolerance": 0.15000000596046449,
+      "thickness": 0.5,
+      "brightness": 0.5,
+      "max_distance": 300.0,
+      "resolution": 2,
+      "enable_multi_bounce": true,
+      "multi_bounce_intensity": 0.800000011920929,
+      "enable_spatial_denoise": true,
+      "spatial_denoise": {
+       "depth_sigma": 0.019999999552965165,
+       "normal_power": 64.0,
+       "luma_sigma": 4.0,
+       "passes": 4,
+       "full_res_passes": 0,
+       "max_step": 16
+      },
+      "enable_temporal_accumulation": true,
+      "temporal": {
+       "history_strength": 0.8999999761581421,
+       "depth_threshold": 0.20000000298023225,
+       "max_accum_frames": 16
       }
      }
     }

@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Scripts/Utils/Gradient.cs",
- "source_sha": "8022e43a43d61dc44fb73498f4a73297cc54fba4",
- "source_timestamp": {
-  "count": -4670188697911129503
- },
- "format_version": 0
+ "source_fingerprint": "7c562c8757dfa6fc576f30a10bcd1004",
+ "format_version": 0,
+ "fingerprint_version": 1
 }

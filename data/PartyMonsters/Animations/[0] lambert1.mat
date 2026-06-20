@@ -30,7 +30,7 @@
     "roughness": 0.5,
     "metalness": 0.0,
     "bumpiness": 1.0,
-    "alpha_test_value": 0.25,
+    "alpha_test_value": 0.0,
     "tiling": {
      "x": 1.0,
      "y": 1.0
@@ -40,7 +40,7 @@
      "y": 0.0
     },
     "color_map": {
-     "uid": "71f69f1c-22b4-4743-8598-1363d91b2329"
+     "uid": "4992eb4c-8060-0744-8a04-77c60965bde2"
     },
     "normal_map": {
      "uid": "nil"

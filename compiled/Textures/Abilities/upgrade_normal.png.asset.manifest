@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Textures/Abilities/upgrade_normal.png",
- "source_sha": "7176410b3877cab39f93e85ccdb73ae120dd601e",
- "source_timestamp": {
-  "count": -4670271262109233211
- },
- "format_version": 0
+ "source_fingerprint": "fc7a35c559c1b7f6adb06af61299b24f",
+ "format_version": 1,
+ "fingerprint_version": 1
 }

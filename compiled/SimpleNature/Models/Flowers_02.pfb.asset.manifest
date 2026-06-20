@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/SimpleNature/Models/Flowers_02.pfb",
- "source_sha": "2f8c98eb4632559e14b71aa9f6b904660e1b4a3b",
- "source_timestamp": {
-  "count": -4670623098867809423
- },
- "format_version": 0
+ "source_fingerprint": "e269be53d33343401fb176b03db00d88",
+ "format_version": 0,
+ "fingerprint_version": 1
 }

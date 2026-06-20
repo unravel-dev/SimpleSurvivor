@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Scripts/Upgrades/DurationUpgrade.cs",
- "source_sha": "3fd41ebc90c1cc865d0da578e1ee8bf8f6fd62e9",
- "source_timestamp": {
-  "count": -4670215200302170344
- },
- "format_version": 0
+ "source_fingerprint": "e9b6044e30fbda73efb1253f39c55bb6",
+ "format_version": 0,
+ "fingerprint_version": 1
 }

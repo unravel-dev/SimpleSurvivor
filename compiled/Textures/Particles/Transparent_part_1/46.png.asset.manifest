@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Textures/Particles/Transparent_part_1/46.png",
- "source_sha": "79a93217ccc2b65f17e92dbc6f47dc4a20a1006f",
- "source_timestamp": {
-  "count": -4670271262107456287
- },
- "format_version": 0
+ "source_fingerprint": "21d1574f4956fcf7e300f8e995fe11ae",
+ "format_version": 1,
+ "fingerprint_version": 1
 }

@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/SimpleNature/Models/Stump_01.pfb",
- "source_sha": "46dca3748a2d2bc8310a8392d396c8a3d5dbbcfd",
- "source_timestamp": {
-  "count": -4670623098865809435
- },
- "format_version": 0
+ "source_fingerprint": "faa5e6d92d89fbdc7fc2981599a5c237",
+ "format_version": 0,
+ "fingerprint_version": 1
 }

@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/UI/Sounds/menu-music.mp3",
- "source_sha": "43a6449cd86139cac9a0b8735fc30297dbf5e8ff",
- "source_timestamp": {
-  "count": -4670623098713810408
- },
- "format_version": 1
+ "source_fingerprint": "9028a8d9c14ebdd24f7c93e89ef5a349",
+ "format_version": 1,
+ "fingerprint_version": 1
 }

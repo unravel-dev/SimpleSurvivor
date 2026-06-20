@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Textures/Particles/Zap/T_VFX_Zap_Lightning_01_H_Opti.tga",
- "source_sha": "d7935413e2c0520ad9f554c56bd96cd92e6307e0",
- "source_timestamp": {
-  "count": -4670271262110094391
- },
- "format_version": 0
+ "source_fingerprint": "76bdcde38cfa709888f15a73f49109f8",
+ "format_version": 1,
+ "fingerprint_version": 1
 }

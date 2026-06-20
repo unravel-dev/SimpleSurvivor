@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Scripts/Upgrades/MulticastUpgrade.cs",
- "source_sha": "2a078c066cad81c8505dec8ec2da1df8ce717983",
- "source_timestamp": {
-  "count": -4670215200303187321
- },
- "format_version": 0
+ "source_fingerprint": "7bc8df489d6ef8476b741ac8c988adfe",
+ "format_version": 0,
+ "fingerprint_version": 1
 }

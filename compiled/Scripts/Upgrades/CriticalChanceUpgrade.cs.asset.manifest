@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Scripts/Upgrades/CriticalChanceUpgrade.cs",
- "source_sha": "2bf19b40519e59e24ff8188c19d73d69d13cbe43",
- "source_timestamp": {
-  "count": -4670215200301963303
- },
- "format_version": 0
+ "source_fingerprint": "2d3cc149085e575c936998ced9ab22ec",
+ "format_version": 0,
+ "fingerprint_version": 1
 }

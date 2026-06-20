@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Textures/Particles/Effects/graysmoke8x8.dds",
- "source_sha": "63c21538f7e02e0f3fe32cb87e64aa65326a4b3b",
- "source_timestamp": {
-  "count": -4670271262109903979
- },
- "format_version": 0
+ "source_fingerprint": "b93a49d7b1e077de494f1c4909326fc8",
+ "format_version": 1,
+ "fingerprint_version": 1
 }

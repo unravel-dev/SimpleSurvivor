@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/PartyMonsters/Texture/PBR_AO01.png",
- "source_sha": "9b9caafa00479bb4d8f4c15b4cfba9cb5c336582",
- "source_timestamp": {
-  "count": -4670271262109326154
- },
- "format_version": 0
+ "source_fingerprint": "df36668fc16320359c267b2689e82afa",
+ "format_version": 1,
+ "fingerprint_version": 1
 }

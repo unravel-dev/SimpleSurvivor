@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Textures/Particles/Lightning-VFX/VFX7/fx_lightning_pp.png",
- "source_sha": "ab581b7eabdfc8ad3d911383160106e774daa674",
- "source_timestamp": {
-  "count": -4670271262107340263
- },
- "format_version": 0
+ "source_fingerprint": "4d5ab78d756d920670f23476bbb48431",
+ "format_version": 1,
+ "fingerprint_version": 1
 }

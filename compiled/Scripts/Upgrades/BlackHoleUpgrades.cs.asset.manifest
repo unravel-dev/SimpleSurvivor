@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Scripts/Upgrades/BlackHoleUpgrades.cs",
- "source_sha": "036b0f20209f763bcf627c3f2aaf181be09de2b2",
- "source_timestamp": {
-  "count": -4670215200301508739
- },
- "format_version": 0
+ "source_fingerprint": "19612d09c5a31c227beeef1cb159d193",
+ "format_version": 0,
+ "fingerprint_version": 1
 }

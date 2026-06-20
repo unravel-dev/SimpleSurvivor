@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Textures/Abilities/meteorshower.png",
- "source_sha": "efcdf72673c28a9fbe4a7df871d242f1eb2814b2",
- "source_timestamp": {
-  "count": -4670271262107898379
- },
- "format_version": 0
+ "source_fingerprint": "c61211b6696bb80f413a7186faf02c22",
+ "format_version": 1,
+ "fingerprint_version": 1
 }

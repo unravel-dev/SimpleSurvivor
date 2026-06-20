@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Sounds/spark/spark_electric_stronger.wav",
- "source_sha": "75861fa517aafa9464bce4b872d1d3a46094664c",
- "source_timestamp": {
-  "count": -4670623098844464863
- },
- "format_version": 1
+ "source_fingerprint": "5533e41ac646751f137cc8db0123ca84",
+ "format_version": 1,
+ "fingerprint_version": 1
 }

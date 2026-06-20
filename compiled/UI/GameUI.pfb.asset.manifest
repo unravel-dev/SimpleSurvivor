@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/UI/GameUI.pfb",
- "source_sha": "cb46877a70a8ecf13b70baa8c597dac773e5b623",
- "source_timestamp": {
-  "count": -4670218213879858974
- },
- "format_version": 0
+ "source_fingerprint": "71b410d73e460abd63d9cfff0798b604",
+ "format_version": 0,
+ "fingerprint_version": 1
 }

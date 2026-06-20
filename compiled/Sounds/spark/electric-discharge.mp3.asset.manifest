@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Sounds/spark/electric-discharge.mp3",
- "source_sha": "fa248dd1084c1fac44f0ed9d5dd810356b91a866",
- "source_timestamp": {
-  "count": -4670623098844464863
- },
- "format_version": 1
+ "source_fingerprint": "69dea9543a41a71f548b1fdcb2a0cf10",
+ "format_version": 1,
+ "fingerprint_version": 1
 }

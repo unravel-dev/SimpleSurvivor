@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Abilities/Meteor.pfb",
- "source_sha": "9ff7052783691947ea025f2b1e48374eabaf1831",
- "source_timestamp": {
-  "count": -4670623099035573783
- },
- "format_version": 0
+ "source_fingerprint": "a71215b41f5628788a10ac26ac28a987",
+ "format_version": 0,
+ "fingerprint_version": 1
 }

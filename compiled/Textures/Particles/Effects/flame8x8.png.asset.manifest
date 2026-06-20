@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Textures/Particles/Effects/flame8x8.png",
- "source_sha": "aa5115b18c05e668fa2c723a6dde9c614fdb41c5",
- "source_timestamp": {
-  "count": -4670271262107926760
- },
- "format_version": 0
+ "source_fingerprint": "20114c6f7ac56b6b06af6823f960d420",
+ "format_version": 1,
+ "fingerprint_version": 1
 }

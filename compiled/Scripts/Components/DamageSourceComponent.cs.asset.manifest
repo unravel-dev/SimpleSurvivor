@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Scripts/Components/DamageSourceComponent.cs",
- "source_sha": "454188932a8af6d9f2fd20503b0d362c827a6552",
- "source_timestamp": {
-  "count": -4670215200302076350
- },
- "format_version": 0
+ "source_fingerprint": "d78c9353e3959200923ed0350cf36081",
+ "format_version": 0,
+ "fingerprint_version": 1
 }

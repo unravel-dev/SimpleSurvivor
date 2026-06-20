@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/cube.pfb",
- "source_sha": "0f3729bea571425769365669c65cacde89631f25",
- "source_timestamp": {
-  "count": -4670623098712810414
- },
- "format_version": 0
+ "source_fingerprint": "3bb89a13f7a2e1946fd6c3f1ca554b23",
+ "format_version": 0,
+ "fingerprint_version": 1
 }

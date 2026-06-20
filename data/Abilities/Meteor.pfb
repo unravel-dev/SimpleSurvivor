@@ -2,8 +2,12 @@
  "entities": [
   {
    "prefab_uid": "10ef8358-c389-3a4b-896e-3f9e41e44097",
-   "id": 13631489,
+   "uid": "cc8d37c8-f280-3543-b568-ca61c1a6d7fc",
    "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "cc8d37c8-f280-3543-b568-ca61c1a6d7fc"
+    },
     "has_tag_component": true,
     "tag_component": {
      "name": "Meteor",
@@ -45,8 +49,8 @@
       }
      },
      "parent": {
-      "prefab_uid": "00000000-0000-0000-0000-000000000000",
-      "id": 4294967295
+      "prefab_uid": "nil",
+      "uid": "nil"
      },
      "children": [],
      "active": true
@@ -75,7 +79,7 @@
       "z": false
      },
      "material": {
-      "uid": "00000000-0000-0000-0000-000000000000"
+      "uid": "nil"
      },
      "shapes": [
       {
@@ -98,10 +102,16 @@
      "enabled": true,
      "shape": 0,
      "direction": 0,
+     "spawn_location": 0,
      "simulation_space": 0,
      "max_particles": 1024,
      "emission_lifetime": {
       "count": 2.0
+     },
+     "emission_shape_position": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
      },
      "emission_shape_scale": {
       "x": 1.0,
@@ -206,7 +216,13 @@
        }
       ]
      },
+     "initial_scale_3d": {
+      "x": 1.0,
+      "y": 1.0,
+      "z": 1.0
+     },
      "opacity": 1.0,
+     "color_intensity": 10.090999603271485,
      "color_gradient": {
       "points": [
        {
@@ -251,7 +267,24 @@
      "texture": {
       "uid": "3e61e816-855e-744e-8e90-ded9546f8fb0"
      },
-     "loop": true
+     "texture_mode": 0,
+     "render_mode": 0,
+     "blend_mode": 0,
+     "texture_sheet_tiles": {
+      "x": 1.0,
+      "y": 1.0
+     },
+     "texture_sheet_cycles": 0.0,
+     "texture_sheet_randomize": false,
+     "loop": true,
+     "start_delay": {
+      "count": 0.0
+     },
+     "align_to_direction": false,
+     "pivot": {
+      "x": 0.5,
+      "y": 0.5
+     }
     }
    }
   }

@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Scripts/Components/AreaDamageComponent.cs",
- "source_sha": "e0f44d5eeddce6b4447bbda3f17ee5c6465b56c8",
- "source_timestamp": {
-  "count": -4670215200301759988
- },
- "format_version": 0
+ "source_fingerprint": "9466855381844969c8f6741a4540f689",
+ "format_version": 0,
+ "fingerprint_version": 1
 }

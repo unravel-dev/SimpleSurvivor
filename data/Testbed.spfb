@@ -1,5 +1,5 @@
 {
- "entities_count": 22,
+ "entities_count": 23,
  "entities": [
   {
    "uid": "34909b81-29f6-c641-8df6-5f77462e6c58",
@@ -143,7 +143,8 @@
        "spatial_denoise": {
         "depth_sigma": 0.019999999552965165,
         "normal_power": 64.0,
-        "luma_sigma": 1.0
+        "luma_sigma": 1.0,
+        "passes": 3
        }
       }
      }
@@ -321,6 +322,7 @@
       "a": 1.0
      },
      "irradiance_quality": 1,
+     "irradiance_use_sky": true,
      "cubemap": {
       "uid": "nil"
      }
@@ -352,14 +354,14 @@
     "transform_component": {
      "local_transform": {
       "position": {
-       "x": -1.3415224486834632e-7,
-       "y": 0.09999865293502808,
+       "x": -1.3415815658390785e-7,
+       "y": 0.09999996423721314,
        "z": -2.525538036479702e-7
       },
       "rotation": {
        "x": -1.1920938902676426e-7,
        "y": 1.4901168299275015e-8,
-       "z": -2.980232594040899e-8,
+       "z": -2.980232949312267e-8,
        "w": 1.0
       },
       "scale": {
@@ -370,7 +372,7 @@
       "skew": {
        "x": -5.960487214906607e-8,
        "y": -2.980337399094424e-8,
-       "z": -0.000005856123152625514
+       "z": -0.00000585620318815927
       }
      },
      "parent": {
@@ -398,7 +400,10 @@
      "update_mode": 1,
      "update_interval": 0.0,
      "faces_per_frame": 1,
-     "apply_prefilter": false
+     "apply_prefilter": false,
+     "resolution": 4,
+     "capture_sky": true,
+     "capture_shadows": true
     }
    }
   }
@@ -1289,7 +1294,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -1709,6 +1713,11 @@
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
        "component_path": "tag_component/name",
        "pretty_component_path": "Tag/Name"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "transform_component/active",
+       "pretty_component_path": "Transform/Active"
       }
      ],
      "removed_entities": []
@@ -1894,7 +1903,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -1975,7 +1983,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -2059,6 +2066,11 @@
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
        "component_path": "tag_component/name",
        "pretty_component_path": "Tag/Name"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "transform_component/active",
+       "pretty_component_path": "Transform/Active"
       },
       {
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
@@ -2249,7 +2261,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -2330,7 +2341,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -2414,6 +2424,11 @@
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
        "component_path": "tag_component/name",
        "pretty_component_path": "Tag/Name"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "transform_component/active",
+       "pretty_component_path": "Transform/Active"
       },
       {
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
@@ -2604,7 +2619,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -2685,7 +2699,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -2769,6 +2782,11 @@
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
        "component_path": "tag_component/name",
        "pretty_component_path": "Tag/Name"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "transform_component/active",
+       "pretty_component_path": "Transform/Active"
       },
       {
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
@@ -2959,7 +2977,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -3040,7 +3057,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -3124,6 +3140,11 @@
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
        "component_path": "tag_component/name",
        "pretty_component_path": "Tag/Name"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "transform_component/active",
+       "pretty_component_path": "Transform/Active"
       },
       {
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
@@ -3314,7 +3335,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -3395,7 +3415,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -3479,6 +3498,11 @@
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
        "component_path": "tag_component/name",
        "pretty_component_path": "Tag/Name"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "transform_component/active",
+       "pretty_component_path": "Transform/Active"
       },
       {
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
@@ -3669,7 +3693,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -3750,7 +3773,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -3834,6 +3856,11 @@
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
        "component_path": "tag_component/name",
        "pretty_component_path": "Tag/Name"
+      },
+      {
+       "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
+       "component_path": "transform_component/active",
+       "pretty_component_path": "Transform/Active"
       },
       {
        "entity_uuid": "b9060a96-8626-6d46-a19c-0c4cbaa2c47d",
@@ -4024,7 +4051,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -4105,7 +4131,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -4419,6 +4444,11 @@
        "entity_uuid": "a82a633d-e387-654e-a55e-7fb2006b3975",
        "component_path": "physics_component/is_using_gravity",
        "pretty_component_path": "Physics/Use Gravity"
+      },
+      {
+       "entity_uuid": "a82a633d-e387-654e-a55e-7fb2006b3975",
+       "component_path": "transform_component/active",
+       "pretty_component_path": "Transform/Active"
       }
      ],
      "removed_entities": []
@@ -4608,7 +4638,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -4693,7 +4722,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -4774,7 +4802,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -4854,7 +4881,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -4984,6 +5010,11 @@
        "entity_uuid": "3df7d3e0-0c57-7940-9219-029c73f3f172",
        "component_path": "script_component/script_components[1]/Health/maxHealth",
        "pretty_component_path": "Script/Scripts[1]/Health/maxHealth"
+      },
+      {
+       "entity_uuid": "3df7d3e0-0c57-7940-9219-029c73f3f172",
+       "component_path": "transform_component/active",
+       "pretty_component_path": "Transform/Active"
       }
      ],
      "removed_entities": []
@@ -5032,7 +5063,6 @@
      "enabled": true,
      "static": false,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -5342,7 +5372,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -6216,10 +6245,10 @@
        "z": -0.0017218025168403984
       },
       "rotation": {
-       "x": 0.0031488891690969469,
-       "y": 0.0009249650174751878,
-       "z": 0.014682182110846043,
-       "w": 0.9998869299888611
+       "x": 0.0031488887034356596,
+       "y": 0.000924964901059866,
+       "z": 0.014682180248200894,
+       "w": 0.9998868107795715
       },
       "scale": {
        "x": 1.0,
@@ -7708,10 +7737,10 @@
        "z": 0.0
       },
       "rotation": {
-       "x": -0.05294383317232132,
-       "y": -0.10763908922672272,
-       "z": 0.005361428018659353,
-       "w": 0.9927648305892944
+       "x": -0.052943840622901919,
+       "y": -0.10763910412788391,
+       "z": 0.0053614284843206409,
+       "w": 0.992764949798584
       },
       "scale": {
        "x": 1.0,
@@ -7767,10 +7796,10 @@
        "z": 0.06916866451501847
       },
       "rotation": {
-       "x": 0.025668499991297723,
-       "y": -0.03459759056568146,
-       "z": 0.21992842853069306,
-       "w": 0.9745644330978394
+       "x": 0.025668496266007425,
+       "y": -0.03459758684039116,
+       "z": 0.21992839872837068,
+       "w": 0.9745643138885498
       },
       "scale": {
        "x": 1.0,
@@ -8078,10 +8107,10 @@
        "z": 2.8421708795129299e-16
       },
       "rotation": {
-       "x": -0.0414213202893734,
-       "y": -0.10139685869216919,
-       "z": 0.024460993707180024,
-       "w": 0.993682324886322
+       "x": -0.041421324014663699,
+       "y": -0.10139687359333039,
+       "z": 0.02446099743247032,
+       "w": 0.9936824440956116
       },
       "scale": {
        "x": 1.0,
@@ -8281,7 +8310,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -8379,6 +8407,11 @@
      "property_overrides": [
       {
        "entity_uuid": "19924d2b-cb25-c84c-807b-5e3fc5f7984c",
+       "component_path": "transform_component/active",
+       "pretty_component_path": "Transform/Active"
+      },
+      {
+       "entity_uuid": "19924d2b-cb25-c84c-807b-5e3fc5f7984c",
        "component_path": "transform_component/local_transform/position",
        "pretty_component_path": "Transform/Local/Position"
       }
@@ -8429,7 +8462,6 @@
      "enabled": true,
      "static": true,
      "casts_shadow": true,
-     "casts_reflection": false,
      "model": {
       "lods": [
        {
@@ -8612,7 +8644,6 @@
     "has_submesh_component": true,
     "submesh_component": {
      "submeshes": [
-      0,
       0
      ]
     }
@@ -8717,7 +8748,7 @@
     },
     "has_ssr_component": true,
     "ssr_component": {
-     "enabled": true,
+     "enabled": false,
      "settings": {
       "fidelityfx": {
        "max_steps": 64,
@@ -8728,7 +8759,7 @@
        "roughness_depth_tolerance": 1.0,
        "fade_in_start": 0.10000000149011612,
        "fade_in_end": 0.20000000298023225,
-       "resolution": 1,
+       "resolution": 2,
        "enable_cone_tracing": false,
        "cone_tracing": {
         "cone_angle_bias": 0.05000000074505806,
@@ -8748,10 +8779,564 @@
        "spatial_denoise": {
         "depth_sigma": 0.019999999552965165,
         "normal_power": 64.0,
-        "luma_sigma": 1.0
+        "luma_sigma": 1.0,
+        "passes": 3
        }
       }
      }
+    },
+    "has_ssil_component": true,
+    "ssil_component": {
+     "enabled": false,
+     "settings": {
+      "max_rays": 4,
+      "max_steps": 64,
+      "depth_tolerance": 0.15000000596046449,
+      "thickness": 0.5,
+      "brightness": 0.5,
+      "max_distance": 300.0,
+      "resolution": 1,
+      "enable_multi_bounce": true,
+      "multi_bounce_intensity": 0.800000011920929,
+      "enable_spatial_denoise": true,
+      "spatial_denoise": {
+       "depth_sigma": 0.019999999552965165,
+       "normal_power": 64.0,
+       "luma_sigma": 4.0,
+       "passes": 4,
+       "full_res_passes": 0,
+       "max_step": 16
+      },
+      "enable_temporal_accumulation": true,
+      "temporal": {
+       "history_strength": 0.8999999761581421,
+       "depth_threshold": 0.20000000298023225,
+       "max_accum_frames": 16
+      }
+     }
+    }
+   }
+  }
+ ],
+ "version": "1.0.0",
+ "entities": [
+  {
+   "uid": "49073da3-e620-684a-8d79-579ee8744350",
+   "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "49073da3-e620-684a-8d79-579ee8744350"
+    },
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "magnet",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 23.141014099121095,
+       "y": 1.9288594722747803,
+       "z": -4.725757598876953
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "uid": "nil"
+     },
+     "children": [
+      {
+       "uid": "f69ba7de-88d9-ef4c-bd28-e300d15863ee"
+      }
+     ],
+     "active": true
+    },
+    "has_model_component": true,
+    "model_component": {
+     "enabled": true,
+     "static": true,
+     "casts_shadow": true,
+     "model": {
+      "lods": [
+       {
+        "uid": "7deeca8f-1a54-e64e-b3fc-1c47605fc1d6"
+       }
+      ],
+      "materials": [
+       {
+        "uid": "d25c5e1d-5da2-2440-a32a-5e771c9af932"
+       },
+       {
+        "uid": "dd51573f-ea0c-8146-9987-5597a164b946"
+       }
+      ],
+      "material_instances": [],
+      "lod_override_enabled": false,
+      "lod_override_level": 0,
+      "lod_selection_bias": 0.0,
+      "lod_transition_time": {
+       "count": 0.0
+      }
+     }
+    },
+    "has_physics_component": true,
+    "physics_component": {
+     "is_using_gravity": false,
+     "is_kinematic": true,
+     "is_sensor": false,
+     "is_autoscaled": true,
+     "mass": 1.0,
+     "include_layers": {
+      "mask": -1
+     },
+     "exclude_layers": {
+      "mask": 0
+     },
+     "freeze_position": {
+      "x": false,
+      "y": false,
+      "z": false
+     },
+     "freeze_rotation": {
+      "x": false,
+      "y": false,
+      "z": false
+     },
+     "material": {
+      "uid": "nil"
+     },
+     "shapes": [
+      {
+       "shape": {
+        "index": 4,
+        "data": {
+         "center": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+         },
+         "mesh_asset": {
+          "uid": "7deeca8f-1a54-e64e-b3fc-1c47605fc1d6"
+         },
+         "collision_type": 1
+        }
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "uid": "f69ba7de-88d9-ef4c-bd28-e300d15863ee",
+   "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "f69ba7de-88d9-ef4c-bd28-e300d15863ee"
+    },
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Sketchfab_model",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": -0.0
+      },
+      "rotation": {
+       "x": -3.090862321641907e-8,
+       "y": 0.7071068286895752,
+       "z": -0.7071068286895752,
+       "w": -3.090862321641907e-8
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "uid": "49073da3-e620-684a-8d79-579ee8744350"
+     },
+     "children": [
+      {
+       "uid": "2e16eabc-e02f-4e49-b48b-4837d7033330"
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "uid": "2e16eabc-e02f-4e49-b48b-4837d7033330",
+   "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "2e16eabc-e02f-4e49-b48b-4837d7033330"
+    },
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "990c7fa7debc413b946016448ebd2879.fbx",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": -0.0
+      },
+      "rotation": {
+       "x": -0.7071068286895752,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 0.7071068286895752
+      },
+      "scale": {
+       "x": 0.009999999776482582,
+       "y": 0.009999999776482582,
+       "z": 0.009999999776482582
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "uid": "f69ba7de-88d9-ef4c-bd28-e300d15863ee"
+     },
+     "children": [
+      {
+       "uid": "2b99f174-72e1-5449-b540-712c64b1d903"
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "uid": "2b99f174-72e1-5449-b540-712c64b1d903",
+   "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "2b99f174-72e1-5449-b540-712c64b1d903"
+    },
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "RootNode",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": -0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "uid": "2e16eabc-e02f-4e49-b48b-4837d7033330"
+     },
+     "children": [
+      {
+       "uid": "38cab4a1-328b-d94a-bc47-ea676652d999"
+      },
+      {
+       "uid": "5913d123-475e-da41-a8a2-8d60900f9d3e"
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "uid": "38cab4a1-328b-d94a-bc47-ea676652d999",
+   "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "38cab4a1-328b-d94a-bc47-ea676652d999"
+    },
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Cube",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": -0.0
+      },
+      "rotation": {
+       "x": -2.1855694143368966e-8,
+       "y": -1.1102231569740546e-16,
+       "z": -1.1102232893229526e-16,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 100.0,
+       "y": 100.0,
+       "z": 100.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 7.234779834718503e-24,
+       "z": -1.6940658566432773e-23
+      }
+     },
+     "parent": {
+      "uid": "2b99f174-72e1-5449-b540-712c64b1d903"
+     },
+     "children": [
+      {
+       "uid": "8573f763-64fc-ef48-9f03-dfa25eea5d1a"
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "uid": "8573f763-64fc-ef48-9f03-dfa25eea5d1a",
+   "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "8573f763-64fc-ef48-9f03-dfa25eea5d1a"
+    },
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Cube_Red_0",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": -0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "uid": "38cab4a1-328b-d94a-bc47-ea676652d999"
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "uid": "5913d123-475e-da41-a8a2-8d60900f9d3e",
+   "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "5913d123-475e-da41-a8a2-8d60900f9d3e"
+    },
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Cube.001",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": -0.0
+      },
+      "rotation": {
+       "x": -2.1855694143368966e-8,
+       "y": -1.1102231569740546e-16,
+       "z": -1.1102232893229526e-16,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 100.0,
+       "y": 100.0,
+       "z": 100.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 7.234779834718503e-24,
+       "z": -1.6940658566432773e-23
+      }
+     },
+     "parent": {
+      "uid": "2b99f174-72e1-5449-b540-712c64b1d903"
+     },
+     "children": [
+      {
+       "uid": "69c36843-38a4-8448-a6d5-8f4719ce8a82"
+      }
+     ],
+     "active": true
+    }
+   }
+  },
+  {
+   "uid": "69c36843-38a4-8448-a6d5-8f4719ce8a82",
+   "components": {
+    "has_id_component": true,
+    "id_component": {
+     "id": "69c36843-38a4-8448-a6d5-8f4719ce8a82"
+    },
+    "has_tag_component": true,
+    "tag_component": {
+     "name": "Cube.001_White_0",
+     "tag": ""
+    },
+    "has_layer_component": true,
+    "layer_component": {
+     "layers": {
+      "mask": 1
+     }
+    },
+    "has_transform_component": true,
+    "transform_component": {
+     "local_transform": {
+      "position": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": -0.0
+      },
+      "rotation": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0,
+       "w": 1.0
+      },
+      "scale": {
+       "x": 1.0,
+       "y": 1.0,
+       "z": 1.0
+      },
+      "skew": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "parent": {
+      "uid": "5913d123-475e-da41-a8a2-8d60900f9d3e"
+     },
+     "children": [],
+     "active": true
+    },
+    "has_submesh_component": true,
+    "submesh_component": {
+     "submeshes": [
+      1
+     ]
     }
    }
   }

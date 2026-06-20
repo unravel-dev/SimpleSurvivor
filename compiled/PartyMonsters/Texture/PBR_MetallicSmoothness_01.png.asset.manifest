@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/PartyMonsters/Texture/PBR_MetallicSmoothness_01.png",
- "source_sha": "9057e2641dd11e0cbaa616b7abf23fec863fb4e8",
- "source_timestamp": {
-  "count": -4670271262107677425
- },
- "format_version": 0
+ "source_fingerprint": "e77ceb8c4e517e853845900edcfacff2",
+ "format_version": 1,
+ "fingerprint_version": 1
 }

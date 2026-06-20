@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/SimpleNature/Models/Tree_04.pfb",
- "source_sha": "052f7270d08a8d01f18a60b9d422b33bb9230723",
- "source_timestamp": {
-  "count": -4670623098865809435
- },
- "format_version": 0
+ "source_fingerprint": "a6e22543098de6d414042bc98285e43a",
+ "format_version": 0,
+ "fingerprint_version": 1
 }

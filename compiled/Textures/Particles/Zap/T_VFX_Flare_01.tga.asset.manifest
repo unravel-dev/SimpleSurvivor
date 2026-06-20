@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Textures/Particles/Zap/T_VFX_Flare_01.tga",
- "source_sha": "7e63a0f65c41cea9018a45903117f9d929c9aa95",
- "source_timestamp": {
-  "count": -4670271262107513532
- },
- "format_version": 0
+ "source_fingerprint": "c6bc9702c839ab52fc7fe11404904c93",
+ "format_version": 1,
+ "fingerprint_version": 1
 }

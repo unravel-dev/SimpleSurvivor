@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Scripts/Abilities/MeteorShowerAbility.cs",
- "source_sha": "810895156d638fe5f4f97dda0996249ca75cea3e",
- "source_timestamp": {
-  "count": -4670215200301200913
- },
- "format_version": 0
+ "source_fingerprint": "b37742a9455d38610611e3bd878d1470",
+ "format_version": 0,
+ "fingerprint_version": 1
 }

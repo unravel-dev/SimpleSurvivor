@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Textures/Particles/Effects/explosion8x8.dds",
- "source_sha": "8fad5686b90358adbc0d10063b74de7cf372b602",
- "source_timestamp": {
-  "count": -4670271262109032867
- },
- "format_version": 0
+ "source_fingerprint": "bbd5da24e2c258d8981392f57793f8fc",
+ "format_version": 1,
+ "fingerprint_version": 1
 }

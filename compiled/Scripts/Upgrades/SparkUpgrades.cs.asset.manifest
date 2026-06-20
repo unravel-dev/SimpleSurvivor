@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Scripts/Upgrades/SparkUpgrades.cs",
- "source_sha": "05697d26c07a98a47076c375dbee19f4cb2a9156",
- "source_timestamp": {
-  "count": -4670215200303156167
- },
- "format_version": 0
+ "source_fingerprint": "d123f64ee4e05758be76688ab53a80da",
+ "format_version": 0,
+ "fingerprint_version": 1
 }

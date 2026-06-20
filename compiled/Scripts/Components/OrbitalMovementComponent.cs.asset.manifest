@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Scripts/Components/OrbitalMovementComponent.cs",
- "source_sha": "5d0d6a2f888d1c90390a470d7dc471d621fb5b68",
- "source_timestamp": {
-  "count": -4670215200302442664
- },
- "format_version": 0
+ "source_fingerprint": "cc02ea9d29603f76c5b13c1dbba64aed",
+ "format_version": 0,
+ "fingerprint_version": 1
 }

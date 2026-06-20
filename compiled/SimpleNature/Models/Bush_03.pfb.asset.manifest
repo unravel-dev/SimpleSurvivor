@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/SimpleNature/Models/Bush_03.pfb",
- "source_sha": "ef1b0400cf3f96418982d17142562e70563e7ae4",
- "source_timestamp": {
-  "count": -4670623098867809423
- },
- "format_version": 0
+ "source_fingerprint": "ac68b0978c848946ccb06913a6d49e32",
+ "format_version": 0,
+ "fingerprint_version": 1
 }

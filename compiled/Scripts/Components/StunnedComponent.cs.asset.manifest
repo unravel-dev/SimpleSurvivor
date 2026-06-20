@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Scripts/Components/StunnedComponent.cs",
- "source_sha": "7f102afec447cc181e11552592b99f938092a33c",
- "source_timestamp": {
-  "count": -4670215200301102543
- },
- "format_version": 0
+ "source_fingerprint": "b6d2ba61d1160fb3a8f0e3506b6f3a93",
+ "format_version": 0,
+ "fingerprint_version": 1
 }

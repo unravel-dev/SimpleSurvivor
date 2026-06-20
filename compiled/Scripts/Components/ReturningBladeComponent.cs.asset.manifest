@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Scripts/Components/ReturningBladeComponent.cs",
- "source_sha": "c8bd327e7e2abd2235c62ce65b5baab45e0c6308",
- "source_timestamp": {
-  "count": -4670215200301300223
- },
- "format_version": 0
+ "source_fingerprint": "1f47d1743025e3d91cb9aa31b57940d0",
+ "format_version": 0,
+ "fingerprint_version": 1
 }

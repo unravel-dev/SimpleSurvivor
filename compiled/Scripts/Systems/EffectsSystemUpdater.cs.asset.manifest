@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Scripts/Systems/EffectsSystemUpdater.cs",
- "source_sha": "4eb0fd1ceaa6751db34e6530ac6970dcea3078c7",
- "source_timestamp": {
-  "count": -4670215200301975764
- },
- "format_version": 0
+ "source_fingerprint": "1dd87811a1488404d27798cbcf3f58b7",
+ "format_version": 0,
+ "fingerprint_version": 1
 }

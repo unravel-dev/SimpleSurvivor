@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Textures/Particles/Lightning/lightning_long.png",
- "source_sha": "31bb7822d87acd9e8b733dab8978df4ca1c29a11",
- "source_timestamp": {
-  "count": -4670271262109202554
- },
- "format_version": 0
+ "source_fingerprint": "a259207b070bbabe30a384d3d0b1e6ec",
+ "format_version": 1,
+ "fingerprint_version": 1
 }

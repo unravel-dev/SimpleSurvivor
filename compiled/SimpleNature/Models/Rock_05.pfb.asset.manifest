@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/SimpleNature/Models/Rock_05.pfb",
- "source_sha": "0d9de75c5ea851225608a5d50786761eeebfa0a4",
- "source_timestamp": {
-  "count": -4670623098865809435
- },
- "format_version": 0
+ "source_fingerprint": "ded37fb2319df891f27c3c2105772392",
+ "format_version": 0,
+ "fingerprint_version": 1
 }

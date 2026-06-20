@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Scripts/Upgrades/CooldownReductionUpgrade.cs",
- "source_sha": "3f4bac148718941de2cedbffe508a0c2ef4b30eb",
- "source_timestamp": {
-  "count": -4670215200303278824
- },
- "format_version": 0
+ "source_fingerprint": "4d54a0d65d2723b6d422671e636e571c",
+ "format_version": 0,
+ "fingerprint_version": 1
 }

@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Textures/Abilities/upgrade_epic.png",
- "source_sha": "45ccb396ea748a44aea40ad912f77fd253e240e3",
- "source_timestamp": {
-  "count": -4670271262109523502
- },
- "format_version": 0
+ "source_fingerprint": "df2cbcb310eb2961ba875d738655041d",
+ "format_version": 1,
+ "fingerprint_version": 1
 }

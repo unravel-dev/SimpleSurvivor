@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/UI/Scripts/BaseMenu.cs",
- "source_sha": "b535a196c87c087dd1d1c7484738d8c909ac45b9",
- "source_timestamp": {
-  "count": -4670215200301927303
- },
- "format_version": 0
+ "source_fingerprint": "c988780cd97c195a322a919d8170dac7",
+ "format_version": 0,
+ "fingerprint_version": 1
 }

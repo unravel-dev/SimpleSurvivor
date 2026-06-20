@@ -74,10 +74,10 @@ public class MeteorShowerAbility : Ability
             return;
 
         ability.damage = 8;
-        ability.cooldown = 12.0f; // Bigger cooldown
+        ability.cooldown = 10.0f; // Bigger cooldown
         ability.impactRadius = 2.0f;
-        ability.showerDuration = 10.0f;
-        ability.spawnInterval = 0.25f;
+        ability.showerDuration = 2.0f;
+        ability.spawnInterval = 0.05f;
         ability.showerRadius = 4.0f;
         ability.spawnHeight = 25.0f;
         ability.meteorSpeed = 25.0f;

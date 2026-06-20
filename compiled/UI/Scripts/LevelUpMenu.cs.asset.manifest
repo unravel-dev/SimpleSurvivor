@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/UI/Scripts/LevelUpMenu.cs",
- "source_sha": "3788d2613c4feeb2b6c093883dbc17d7b3f82d99",
- "source_timestamp": {
-  "count": -4670211296669591152
- },
- "format_version": 0
+ "source_fingerprint": "f4ff3d5bcc9c168bd0167126ec9b3091",
+ "format_version": 0,
+ "fingerprint_version": 1
 }

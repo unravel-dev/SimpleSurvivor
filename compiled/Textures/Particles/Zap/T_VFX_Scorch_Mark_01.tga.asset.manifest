@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Textures/Particles/Zap/T_VFX_Scorch_Mark_01.tga",
- "source_sha": "d08b384fcb7866a485a9c16c20f7b1bcdb30309f",
- "source_timestamp": {
-  "count": -4670271262110031966
- },
- "format_version": 0
+ "source_fingerprint": "ec4081cd2b5de71769a5f7d4d5fb16e3",
+ "format_version": 1,
+ "fingerprint_version": 1
 }

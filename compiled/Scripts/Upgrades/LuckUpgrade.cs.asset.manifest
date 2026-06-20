@@ -1,8 +1,5 @@
 {
- "source_key": "/home/volcoma/workspace/github/SimpleSurvivor/data/Scripts/Upgrades/LuckUpgrade.cs",
- "source_sha": "8352fd9d3c20d59ec8ae687a684ce65e33bd30be",
- "source_timestamp": {
-  "count": -4670215200301009701
- },
- "format_version": 0
+ "source_fingerprint": "c7a6d62e9b60f63b33cef593991adc68",
+ "format_version": 0,
+ "fingerprint_version": 1
 }

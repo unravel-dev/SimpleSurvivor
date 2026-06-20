@@ -6,7 +6,7 @@
    "id": 2147483649,
    "data": {
     "base_type": {
-     "cull_type": 2
+     "cull_type": 0
     },
     "base_color": {
      "r": 1.0,
@@ -30,7 +30,7 @@
     "roughness": 0.9524611830711365,
     "metalness": 0.0,
     "bumpiness": 1.0,
-    "alpha_test_value": 0.25,
+    "alpha_test_value": 0.5,
     "tiling": {
      "x": 1.0,
      "y": 1.0
